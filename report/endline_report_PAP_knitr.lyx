@@ -1,0 +1,303 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Final report on the baraza impact evaluation
+\end_layout
+
+\begin_layout Abstract
+This report presents the results from the impact evaluation of community
+ advocacy forums (Baraza) in Uganda, a project Implemented by the Office
+ of the Prime Minister (OPM), funded by the International Initiative for
+ Impact Evaluations (3ie).
+ This report was prepared as a “mock report”, which contains the analysis
+ for a core set of primary measures to test a set of primary hypotheses.
+ Once the data has been collected, this report will .
+ The document was prepared using Lyx, and all R code is contained in the
+ document using the R package knitr.
+ This document was also placed under revision control using git.
+\end_layout
+
+\begin_layout Abstract
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<boring-random,  echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(MatchIt) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+endline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation
+ Surveys/endline/data/public/endline_dummy.csv")
+\end_layout
+
+\begin_layout Plain Layout
+
+treat <- subset(endline, !is.na(month)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+control <- subset(endline, is.na(month)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+treat$date <- as.character(paste("15",paste(treat$month, treat$year, sep="/"),sep
+="/")) 
+\end_layout
+
+\begin_layout Plain Layout
+
+treat$date <- as.Date(treat$date,format = "%d/%m/%Y") 
+\end_layout
+
+\begin_layout Plain Layout
+
+treat$today <- as.Date(Sys.Date()) 
+\end_layout
+
+\begin_layout Plain Layout
+
+treat$time_dif <- as.numeric(as.character(treat$today - treat$date))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+##access_to_extension 
+\end_layout
+
+\begin_layout Plain Layout
+
+treat$extension <- NA 
+\end_layout
+
+\begin_layout Plain Layout
+
+treat$extension[treat$b21=="Yes"] <- 1 
+\end_layout
+
+\begin_layout Plain Layout
+
+treat$extension[treat$b21=="No"] <- 0 
+\end_layout
+
+\begin_layout Plain Layout
+
+control$extension <- NA 
+\end_layout
+
+\begin_layout Plain Layout
+
+control$extension[control$b21=="Yes"] <- 1 
+\end_layout
+
+\begin_layout Plain Layout
+
+control$extension[control$b21=="No"] <- 0
+\end_layout
+
+\begin_layout Plain Layout
+
+kable(coefficients(lm((b21=="Yes")~information*deliberation+ka21_region,
+ data=endline)), booktabs=T) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+## merge in baseline
+\end_layout
+
+\begin_layout Plain Layout
+
+dta <- merge(endline, baseline, by="hhid")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+##matching
+\end_layout
+
+\begin_layout Plain Layout
+
+nearest.match <- matchit(formula = treated ~ age + education+ black + married
+ + nodegree + re74 + re75 + hispanic +u74 + u75, data = dta,method = "nearest",d
+istance = "mahalanobis",discard="control")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+nearest.data <- match.data(nearest.match)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+nearest.model <- lm(re78 ~ treated + age + education + black+ married + nodegree
+ + re74 + re75 + hispanic + u74 + u75,data = nearest.data)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We also look at how impact changes over time.
+ A graphical approach uses non-parametric smoothing to look at the average
+ impact depending on the time between treatment assignment and endline data
+ collection.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<non-parametric,  echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(treat, aes(time_dif, extension))+ geom_smooth(method = loess) + geom_hlin
+e(yintercept=mean(control$extension), linetype="dashed", color = "red")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
