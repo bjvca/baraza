@@ -31,7 +31,17 @@ knitr
 \index_command default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "linkcolor=black, urlcolor=blue, citecolor=blue, pdfstartview={FitH}, hyperfootnotes=false, unicode=true"
 \papersize default
 \use_geometry false
 \use_package amsmath 1
@@ -44,8 +54,8 @@ knitr
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
+\cite_engine natbib
+\cite_engine_type authoryear
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -93,6 +103,31 @@ This report presents the results from the impact evaluation of community
 
 \begin_layout Section
 Introduction
+\end_layout
+
+\begin_layout Standard
+This report tests the effectiveness of barazas as a policy intervention
+ to improve public service delivery.
+ The project also wants to explore pathways through which communnity advocacy
+ forums may affect outctomes.
+ In particular, using a two by two factorial design, it differentiates between
+ the impact of (1) providing citizens with information related to budgeting
+ and planing, and (2) the impact of letting citizens engage with public
+ servants and politicians in a questions and answer session.
+\end_layout
+
+\begin_layout Standard
+The outcomes can be categorized into four broad sectors: agriculture, health,
+ education and infrastructure (including drinking water and roads).
+ In this report, we select a few key outcomes in each sector, and combine
+ the outcomes in the four sectors into a single index following 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "anderson2008multiple"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -872,20 +907,65 @@ status open
 
 \begin_layout Plain Layout
 
+##matched dif-in-dif 
+\end_layout
+
+\begin_layout Plain Layout
+
 baseline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation
- Surveys/endline/data/raw/endline_dummy.csv")[c("hhid","b21","a6","b11","informat
-ion","deliberation","ka21_region")] 
+ Surveys/endline/data/raw/endline_dummy.csv")[c("hhid","information","deliberatio
+n","ka21_region","b21")] 
 \end_layout
 
 \begin_layout Plain Layout
 
-nearest.match <- matchit(formula = information ~ a6,  data =baseline,method
- = "nearest",distance = "logit",discard="control")
+###merge in baseline hhchar (these were constructed using initial.do at the
+ time of the preparation of baseline balance table) 
 \end_layout
 
 \begin_layout Plain Layout
 
-data.matched <- match.data(nearest.match) 
+hh_char <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation
+ Surveys/endline/report/data/baseline_hh_char.csv")  
+\end_layout
+
+\begin_layout Plain Layout
+
+baseline <- merge(baseline,read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact
+ Evaluation Surveys/endline/report/data/baseline_hh_char.csv") , by="hhid")
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+baseline$farmsize <- log(baseline$farmsize) 
+\end_layout
+
+\begin_layout Plain Layout
+
+baseline$ironroof <- as.numeric(baseline$a512 =="Corrugated iron sheets")
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+baseline$improved_wall <- as.numeric(baseline$a513 %in% c("Mud_bricks_burnt_brick
+s","Concrete_blocks") ) 
+\end_layout
+
+\begin_layout Plain Layout
+
+baseline$farmsize[is.infinite(baseline$farmsize)] <- NA 
+\end_layout
+
+\begin_layout Plain Layout
+
+baseline$has_phone <-  baseline$a31!= 0 
+\end_layout
+
+\begin_layout Plain Layout
+
+baseline$head_sec <- (as.numeric(baseline$a36) > 15) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -894,31 +974,239 @@ data.matched <- match.data(nearest.match)
 
 \begin_layout Plain Layout
 
-ols <- lm((b21=="Yes") ~ information*deliberation +ka21_region,data = data.matche
-d) 
+baseline <- baseline[complete.cases(baseline[c("hhsize","femhead","agehead","farm
+size","ironroof","improved_wall","has_phone","head_sec","a26a","a26b")]),]
 \end_layout
 
 \begin_layout Plain Layout
 
-df <-data.frame( rbind(summary(ols)$coef[2,1],summary(ols)$coef[2,2],summary(ols)
-$coef[2,4]), rbind(summary(ols)$coef[3,1],summary(ols)$coef[3,2],summary(ols)$co
-ef[3,4]), rbind(summary(ols)$coef[7,1],summary(ols)$coef[7,2],summary(ols)$coef[
-7,4]))
 \end_layout
 
 \begin_layout Plain Layout
 
-names(df) <- c("info","delib","inter")
+nearest.match <- matchit(formula = information ~ hhsize + femhead + agehead
+ + farmsize + ironroof + improved_wall + has_phone +head_sec+a26a+a26b,
+  data =baseline,method = "nearest",distance = "logit") 
 \end_layout
 
 \begin_layout Plain Layout
 
-kable(df)
 \end_layout
 
 \begin_layout Plain Layout
 
-print(summary(ols))
+matched.baseline <- match.data(nearest.match)
+\end_layout
+
+\begin_layout Plain Layout
+
+### this is the matched data -  we now need to extract these ids from the
+ endline and stack base and endline to do a dif-in-dif
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.endline <- endline[endline$hhid %in% matched.baseline$hhid,] 
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.baseline$time <- 0 
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.endline$time <- 1 
+\end_layout
+
+\begin_layout Plain Layout
+
+names(matched.baseline)[names(matched.baseline) == "b21"] <- "access_extension"
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.baseline <- matched.baseline[,names(matched.endline)]
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.baseline$access_extension <- as.numeric((matched.baseline$access_extension
+ == "Yes"))
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.dta <- rbind(matched.endline, matched.baseline[,names(matched.endline)])
+\end_layout
+
+\begin_layout Plain Layout
+
+ols <- lm(access_extension~information*deliberation*time+ka21_region, data=match
+ed.dta) 
+\end_layout
+
+\begin_layout Plain Layout
+
+df <-data.frame( rbind(summary(ols)$coef[9,1],summary(ols)$coef[9,2],summary(ols)
+$coef[9,4]))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+### now for delib 
+\end_layout
+
+\begin_layout Plain Layout
+
+nearest.match <- matchit(formula = deliberation ~ hhsize + femhead + agehead
+ + farmsize + ironroof + improved_wall + has_phone +head_sec+a26a+a26b,
+  data =baseline,method = "nearest",distance = "logit") 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.baseline <- match.data(nearest.match)
+\end_layout
+
+\begin_layout Plain Layout
+
+### this is the matched data -  we now need to extract these ids from the
+ endline and stack base and endline to do a dif-in-dif
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.endline <- endline[endline$hhid %in% matched.baseline$hhid,] 
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.baseline$time <- 0 
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.endline$time <- 1 
+\end_layout
+
+\begin_layout Plain Layout
+
+names(matched.baseline)[names(matched.baseline) == "b21"] <- "access_extension"
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.baseline <- matched.baseline[,names(matched.endline)]
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.baseline$access_extension <- as.numeric((matched.baseline$access_extension
+ == "Yes"))
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.dta <- rbind(matched.endline, matched.baseline[,names(matched.endline)])
+\end_layout
+
+\begin_layout Plain Layout
+
+ols <- lm(access_extension~information*deliberation*time+ka21_region, data=match
+ed.dta) 
+\end_layout
+
+\begin_layout Plain Layout
+
+df <-data.frame(df, rbind(summary(ols)$coef[10,1],summary(ols)$coef[10,2],summary
+(ols)$coef[10,4]))
+\end_layout
+
+\begin_layout Plain Layout
+
+### now for interaction 
+\end_layout
+
+\begin_layout Plain Layout
+
+nearest.match <- matchit(formula = deliberation*information ~ hhsize + femhead
+ + agehead + farmsize + ironroof + improved_wall + has_phone +head_sec+a26a+a26b
+,  data =baseline,method = "nearest",distance = "logit") 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.baseline <- match.data(nearest.match)
+\end_layout
+
+\begin_layout Plain Layout
+
+### this is the matched data -  we now need to extract these ids from the
+ endline and stack base and endline to do a dif-in-dif
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.endline <- endline[endline$hhid %in% matched.baseline$hhid,] 
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.baseline$time <- 0 
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.endline$time <- 1 
+\end_layout
+
+\begin_layout Plain Layout
+
+names(matched.baseline)[names(matched.baseline) == "b21"] <- "access_extension"
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.baseline <- matched.baseline[,names(matched.endline)]
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.baseline$access_extension <- as.numeric((matched.baseline$access_extension
+ == "Yes"))
+\end_layout
+
+\begin_layout Plain Layout
+
+matched.dta <- rbind(matched.endline, matched.baseline[,names(matched.endline)])
+\end_layout
+
+\begin_layout Plain Layout
+
+ols <- lm(access_extension~information*deliberation*time+ka21_region, data=match
+ed.dta) 
+\end_layout
+
+\begin_layout Plain Layout
+
+df <-data.frame(df, rbind(summary(ols)$coef[11,1],summary(ols)$coef[11,2],summary
+(ols)$coef[11,4]))
 \end_layout
 
 \begin_layout Plain Layout
@@ -1204,6 +1492,17 @@ e(yintercept=mean(control$extension), linetype="dashed", color = "red")
 
 @
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "endline_report_bib"
+options "IFPRI_Style"
 
 \end_inset
 
