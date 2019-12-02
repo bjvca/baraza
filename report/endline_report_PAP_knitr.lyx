@@ -80,7 +80,7 @@ Final report on the baraza impact evaluation
 
 \begin_layout Abstract
 This report presents the results from the impact evaluation of community
- advocacy forums (Baraza) in Uganda, a project Implemented by the Office
+ advocacy forums (Baraza) in Uganda, a project implemented by the Office
  of the Prime Minister (OPM), funded by the International Initiative for
  Impact Evaluations (3ie).
  This report was prepared as a “mock report”, which contains the analysis
@@ -91,8 +91,16 @@ This report presents the results from the impact evaluation of community
  This document was also placed under revision control using git.
 \end_layout
 
-\begin_layout Abstract
+\begin_layout Section
+Introduction
+\end_layout
 
+\begin_layout Section
+Results
+\end_layout
+
+\begin_layout Subsection
+Between estimator
 \end_layout
 
 \begin_layout Standard
@@ -101,7 +109,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<boring-random,  echo=FALSE>>=
+<<boring-random,  echo=FALSE, message=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -116,12 +124,1000 @@ library(MatchIt)
 
 \begin_layout Plain Layout
 
+set.seed(12345)
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
 
 endline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation
- Surveys/endline/data/public/endline_dummy.csv")
+ Surveys/endline/data/raw/endline_dummy.csv")[c("hhid","information","deliberatio
+n","ka21_region")]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+###randomly generate adoption 
+\end_layout
+
+\begin_layout Plain Layout
+
+endline$access_extension <- rbinom(n=dim(endline)[1], size=1, prob=0.1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+ols <- lm(access_extension~information*deliberation+ka21_region, data=endline)
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+df <-data.frame( rbind(summary(ols)$coef[2,1],summary(ols)$coef[2,2],summary(ols)
+$coef[2,4]), rbind(summary(ols)$coef[3,1],summary(ols)$coef[3,2],summary(ols)$co
+ef[3,4]), rbind(summary(ols)$coef[7,1],summary(ols)$coef[7,2],summary(ols)$coef[
+7,4]))
+\end_layout
+
+\begin_layout Plain Layout
+
+df <- round(df,digits=3)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Treatment-control differences
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:treatment_ctrl"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+scriptsize
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{rccccccc} 
+\backslash
+hline 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+	& mean & Information	&		p-val & Deliberation	&	 p-val	&	interaction &	
+ p-val
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cline{2-8} 
+\end_layout
+
+\begin_layout Plain Layout
+
+Access to extension	&	
+\backslash
+Sexpr{format(round(mean(endline$access_extension),digits=3),nsmall=3)}	&	
+\backslash
+Sexpr{format(round(df[1,1],digits=3),nsmall=3)}	&	
+\backslash
+Sexpr{format(round(df[3,1],digits=3),nsmall=3)}	&		
+\backslash
+Sexpr{format(round(df[1,2],digits=3),nsmall=3)}	&	
+\backslash
+Sexpr{format(round(df[3,2],digits=3),nsmall=3)} &	
+\backslash
+Sexpr{format(round(df[1,3],digits=3),nsmall=3)}	&	
+\backslash
+Sexpr{format(round(df[3,3],digits=3),nsmall=3)}	
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(sd(endline$access_extension),digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df[2,1],digits=3),nsmall=3)})	&	&	(
+\backslash
+Sexpr{format(round(df[2,2],digits=3),nsmall=3)})	&	&	(
+\backslash
+Sexpr{format(round(df[2,3],digits=3),nsmall=3)})	&		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline  
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+scriptsize
+\end_layout
+
+\begin_layout Plain Layout
+
+Note: First column reports sample means (and standard deviations below);
+ Column 2 reports differences (and standard errors below)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ancova
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<ancova,  echo=FALSE, message=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+## merge in baseline
+\end_layout
+
+\begin_layout Plain Layout
+
+baseline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation
+ Surveys/endline/data/raw/endline_dummy.csv")[c("hhid","b21")]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+dta <- merge(endline, baseline, by="hhid")
+\end_layout
+
+\begin_layout Plain Layout
+
+ols <- lm(access_extension~information*deliberation+ka21_region+b21 , data=dta)
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+df <-data.frame( rbind(summary(ols)$coef[2,1],summary(ols)$coef[2,2],summary(ols)
+$coef[2,4]), rbind(summary(ols)$coef[3,1],summary(ols)$coef[3,2],summary(ols)$co
+ef[3,4]), rbind(summary(ols)$coef[8,1],summary(ols)$coef[8,2],summary(ols)$coef[
+8,4]))
+\end_layout
+
+\begin_layout Plain Layout
+
+df <- round(df,digits=3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Analysis of Covariance
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:ancova"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+scriptsize
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{rccccccc} 
+\backslash
+hline 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+	& mean & Information	&		p-val & Deliberation	&	 p-val	&	interaction &	
+ p-val
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cline{2-8} 
+\end_layout
+
+\begin_layout Plain Layout
+
+Access to extension	&	
+\backslash
+Sexpr{format(round(mean(endline$access_extension),digits=3),nsmall=3)}	&	
+\backslash
+Sexpr{format(round(df[1,1],digits=3),nsmall=3)}	&	
+\backslash
+Sexpr{format(round(df[3,1],digits=3),nsmall=3)}	&		
+\backslash
+Sexpr{format(round(df[1,2],digits=3),nsmall=3)}	&	
+\backslash
+Sexpr{format(round(df[3,2],digits=3),nsmall=3)} &	
+\backslash
+Sexpr{format(round(df[1,3],digits=3),nsmall=3)}	&	
+\backslash
+Sexpr{format(round(df[3,3],digits=3),nsmall=3)}	
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(sd(endline$access_extension),digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df[2,1],digits=3),nsmall=3)})	&	&	(
+\backslash
+Sexpr{format(round(df[2,2],digits=3),nsmall=3)})	&	&	(
+\backslash
+Sexpr{format(round(df[2,3],digits=3),nsmall=3)})	&		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline  
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+scriptsize
+\end_layout
+
+\begin_layout Plain Layout
+
+Note: First column reports sample means (and standard deviations below);
+ Column 2 reports differences (and standard errors below)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Difference-in-difference
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<dif-in-dif,  echo=FALSE, message=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+## merge in baseline
+\end_layout
+
+\begin_layout Plain Layout
+
+baseline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation
+ Surveys/endline/data/raw/endline_dummy.csv")[c("hhid","b21","information","delib
+eration","ka21_region")] 
+\end_layout
+
+\begin_layout Plain Layout
+
+baseline$time <- 0 
+\end_layout
+
+\begin_layout Plain Layout
+
+names(baseline)[names(baseline) == "b21"] <- "access_extension" 
+\end_layout
+
+\begin_layout Plain Layout
+
+endline$time <- 1 
+\end_layout
+
+\begin_layout Plain Layout
+
+endline <- endline[names(baseline)] 
+\end_layout
+
+\begin_layout Plain Layout
+
+baseline$access_extension <- as.numeric((baseline$access_extension == "Yes"))
+\end_layout
+
+\begin_layout Plain Layout
+
+dta <- rbind(endline, baseline)
+\end_layout
+
+\begin_layout Plain Layout
+
+ols <- lm(access_extension~information*deliberation*time+ka21_region, data=dta)
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+df <-data.frame( rbind(summary(ols)$coef[9,1],summary(ols)$coef[9,2],summary(ols)
+$coef[9,4]), rbind(summary(ols)$coef[10,1],summary(ols)$coef[10,2],summary(ols)$
+coef[10,4]), rbind(summary(ols)$coef[11,1],summary(ols)$coef[11,2],summary(ols)$
+coef[11,4])) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Difference-in-difference
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:dif-in-dif"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+scriptsize
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{rccccccc} 
+\backslash
+hline 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+	& mean & Information	&		p-val & Deliberation	&	 p-val	&	interaction &	
+ p-val
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cline{2-8} 
+\end_layout
+
+\begin_layout Plain Layout
+
+Access to extension	&	
+\backslash
+Sexpr{format(round(mean(endline$access_extension),digits=3),nsmall=3)}	&	
+\backslash
+Sexpr{format(round(df[1,1],digits=3),nsmall=3)}	&	
+\backslash
+Sexpr{format(round(df[3,1],digits=3),nsmall=3)}	&		
+\backslash
+Sexpr{format(round(df[1,2],digits=3),nsmall=3)}	&	
+\backslash
+Sexpr{format(round(df[3,2],digits=3),nsmall=3)} &	
+\backslash
+Sexpr{format(round(df[1,3],digits=3),nsmall=3)}	&	
+\backslash
+Sexpr{format(round(df[3,3],digits=3),nsmall=3)}	
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(sd(endline$access_extension),digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df[2,1],digits=3),nsmall=3)})	&	&	(
+\backslash
+Sexpr{format(round(df[2,2],digits=3),nsmall=3)})	&	&	(
+\backslash
+Sexpr{format(round(df[2,3],digits=3),nsmall=3)})	&		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline  
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+scriptsize
+\end_layout
+
+\begin_layout Plain Layout
+
+Note: First column reports sample means (and standard deviations below);
+ Column 2 reports differences (and standard errors below)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+matched difference-in-difference
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<matching,  echo=FALSE, message=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+baseline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation
+ Surveys/endline/data/raw/endline_dummy.csv")[c("hhid","b21","a6","b11","informat
+ion","deliberation","ka21_region")] 
+\end_layout
+
+\begin_layout Plain Layout
+
+nearest.match <- matchit(formula = information ~ a6,  data =baseline,method
+ = "nearest",distance = "logit",discard="control")
+\end_layout
+
+\begin_layout Plain Layout
+
+data.matched <- match.data(nearest.match) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ols <- lm((b21=="Yes") ~ information*deliberation +ka21_region,data = data.matche
+d) 
+\end_layout
+
+\begin_layout Plain Layout
+
+df <-data.frame( rbind(summary(ols)$coef[2,1],summary(ols)$coef[2,2],summary(ols)
+$coef[2,4]), rbind(summary(ols)$coef[3,1],summary(ols)$coef[3,2],summary(ols)$co
+ef[3,4]), rbind(summary(ols)$coef[7,1],summary(ols)$coef[7,2],summary(ols)$coef[
+7,4]))
+\end_layout
+
+\begin_layout Plain Layout
+
+names(df) <- c("info","delib","inter")
+\end_layout
+
+\begin_layout Plain Layout
+
+kable(df)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(summary(ols))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Matched
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:matching"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+scriptsize
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{rccccccc} 
+\backslash
+hline 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+	& mean & Information	&		p-val & Deliberation	&	 p-val	&	interaction &	
+ p-val
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cline{2-8} 
+\end_layout
+
+\begin_layout Plain Layout
+
+Access to extension	&	
+\backslash
+Sexpr{format(round(mean(endline$access_extension),digits=3),nsmall=3)}	&	
+\backslash
+Sexpr{format(round(df[1,1],digits=3),nsmall=3)}	&	
+\backslash
+Sexpr{format(round(df[3,1],digits=3),nsmall=3)}	&		
+\backslash
+Sexpr{format(round(df[1,2],digits=3),nsmall=3)}	&	
+\backslash
+Sexpr{format(round(df[3,2],digits=3),nsmall=3)} &	
+\backslash
+Sexpr{format(round(df[1,3],digits=3),nsmall=3)}	&	
+\backslash
+Sexpr{format(round(df[3,3],digits=3),nsmall=3)}	
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(sd(endline$access_extension),digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df[2,1],digits=3),nsmall=3)})	&	&	(
+\backslash
+Sexpr{format(round(df[2,2],digits=3),nsmall=3)})	&	&	(
+\backslash
+Sexpr{format(round(df[2,3],digits=3),nsmall=3)})	&		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline  
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+scriptsize
+\end_layout
+
+\begin_layout Plain Layout
+
+Note: First column reports sample means (and standard deviations below);
+ Column 2 reports differences (and standard errors below)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We also look at how impact changes over time.
+ A graphical approach uses non-parametric smoothing to look at the average
+ impact depending on the time between treatment assignment and endline data
+ collection.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<non-parametric,  echo=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -196,91 +1192,6 @@ control$extension[control$b21=="No"] <- 0
 
 \begin_layout Plain Layout
 
-kable(coefficients(lm((b21=="Yes")~information*deliberation+ka21_region,
- data=endline)), booktabs=T) 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-## merge in baseline
-\end_layout
-
-\begin_layout Plain Layout
-
-dta <- merge(endline, baseline, by="hhid")
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-##matching
-\end_layout
-
-\begin_layout Plain Layout
-
-nearest.match <- matchit(formula = treated ~ age + education+ black + married
- + nodegree + re74 + re75 + hispanic +u74 + u75, data = dta,method = "nearest",d
-istance = "mahalanobis",discard="control")
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-nearest.data <- match.data(nearest.match)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-nearest.model <- lm(re78 ~ treated + age + education + black+ married + nodegree
- + re74 + re75 + hispanic + u74 + u75,data = nearest.data)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We also look at how impact changes over time.
- A graphical approach uses non-parametric smoothing to look at the average
- impact depending on the time between treatment assignment and endline data
- collection.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<non-parametric,  echo=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
