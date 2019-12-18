@@ -267,6 +267,14 @@ key "humphreys2013fishing"
  The document was prepared using Lyx.
  All R code is placed under revision control using git and called when the
  lyx document is compiled.
+ The git repository can be found at 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://github.com/bjvca/baraza/"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -279,7 +287,7 @@ key "bjorkman2009power"
 
 \end_inset
 
- that look at the impact of a community driven local accountability project
+ that looks at the impact of a community driven local accountability project
  in primary health care provision in Uganda.
  They find that the intervention resulted in significant improvements in
  health care delivery (e.g., on utilization) and health outcomes (e.g., child
@@ -318,8 +326,40 @@ key "bjorkman2009power"
 \end_layout
 
 \begin_layout Standard
-However First, our study evaluates the impact of a government initiative,
- which may instigate in an entirely different set of dynamics than interventions
+Our study contributes to this literature in various ways.
+ First, it is the first study that considers the role of administrative
+ placement on the effectiveness of community monitoring.
+ The level at which the intervention occurs may affect its effectiveness
+ in opposing ways.
+ On the one hand, interventions at a more local level may result in more
+ concrete issues being discussed.
+ However, qualitative explorations suggest that often, issues raised in
+ lower level barazas fall under the responsibility of higher levels of governmen
+t or other institutions that are beyond the operational jurisdiction of
+ the participating officials 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "van2018impact"
+
+\end_inset
+
+.
+ This may be less of a problem when barazas are organized at district level.
+ Most other studies consider interventions that are placed at fairly local
+ levels.
+ For instance, the intervention in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "raffler2018weakness"
+
+\end_inset
+
+ is implemented in health centers and their associated catchment areas.
+\end_layout
+
+\begin_layout Standard
+Second, our study evaluates the impact of a government initiative, which
+ may instigate in an entirely different set of dynamics than interventions
  that are organized by local or international NGO's.
  Some argue that successful devolution can only happen in the context of
  a strong state, able to ensure consistent regulation, and a well‐informed
@@ -335,8 +375,18 @@ key "golooba2005popular"
 \end_layout
 
 \begin_layout Standard
-Second, baraza's take a comprehensive approach, potentially allowing for
- re-allocations across sectors.
+Third, baraza's take a comprehensive approach, enabling cross-sectoral planning
+ and potentially allowing for re-allocations across sectors.
+ Most other studies focus on a single sector.
+ The health sector in particular seems to be a popular sector for these
+ kind of interventions 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "arkedis2019can,bjorkman2009power,raffler2018weakness"
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Section
@@ -613,6 +663,13 @@ Experimental design and balance at baseline
 
 \begin_layout Section
 Outcomes
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Outcomes"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -720,7 +777,8 @@ al establishments such as teacher absenteeism, class size, availability
 \begin_layout Standard
 For continuous variables, 5 percent trimmed values will be use (2.5 percent
  trimming at each side of the distribution).
- Logarithms will be used if skewness exceeds 1.96.
+ Inverse hyperbolic sine transformations will be used if skewness exceeds
+ 1.96.
  Trimming will always be done on end results.
  For instance, if the outcome is yield at the plot level, then production
  will first be divided by plot area, after which logarithms are taken and
@@ -851,18 +909,15 @@ Table 1 presents the balance table that was presented in the baseline report,
  sub-counties and control sub-counties, the table compares sub-counties
  that were allocated to a particular treatment cell in the factorial design
  but did not end up receiving the treatment to the control.
- To prepare the table, we base ourselves on the latest data from the implementin
-g partners, and include sub-counties that are planned to be treated in the
- current fiscal year as treated.
- This information reveals that by the end of this fiscal year, 34 sub-counties
- would have received the Information treatment, 18 the deliberation treatment
- and 20 the combined information and deliberation treatment.
- Furthermore, we planned for about 50 sub-counties in each treatment cell,
- and in each sub-county, 50 households were surveyed.
+ At the time of endline data collection, 34 sub-counties had received the
+ Information treatment, 18 the deliberation treatment and 20 the combined
+ information and deliberation treatment.
+ Furthermore, we planned for 51 sub-counties in each treatment cell, and
+ in each sub-county, 50 households were surveyed.
  Therefore, we get 2,550 observations in the control sub-counties; 1,650
  households in sub-counties that were supposed to receive the deliberation
  treatment but did not get it; 850 households in sub-counties that were
- supposed to receive the information treatment but did not get it; and 1,650
+ supposed to receive the information treatment but did not get it; and 1,550
  households in sub-counties that were supposed to receive both the information
  and deliberation treatment but did not get it.
 \end_layout
@@ -874,22 +929,6 @@ The table seems to suggest that the roll-out did not introduce imbalance,
  We find that, out of 45 comparisons, it is only in one case that we can
  reject the null hypothesis of no difference at a 5 percent significance
  level.
-\end_layout
-
-\begin_layout Standard
-While the results in Table 1 are reassuring, it should be noted that pre-treatme
-nt characteristics were collected some time ago and results may be different
- if more recent data is used and/or if selection happened on characteristics
- that change over time.
- Therefore, comparing characteristics between control sub-counties and sub-count
-ies that were allocated to a treatment cell but ended up not being treated
- will be an important strategy to test for selection bias that may have
- been introduced by the incomplete roll-out of the treatment.
- In particular, instead of simply collecting information from the (planned)
- control sub-counties, we will also collect information from sub-counties
- that were supposed to receive a treatment but did not get one.
- If the incomplete roll-out introduced selection bias, this information
- may also be useful to assess the direction and magnitude of the bias.
 \end_layout
 
 \begin_layout Subsection
@@ -915,10 +954,47 @@ Figure 2 summarizes the factorial design that underlies the Baraza impact
 \end_layout
 
 \begin_layout Standard
-However, information obtained from the implementing partner suggests that,
- even if all barazas that are planned in the current fiscal year are also
- implemented, only 72 of a total of 155 sub-counties that would have received
- any treatment will have been treated.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figure/fact_design.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Factorial design
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+However, as mentioned above, the incomplete rollout resulted in the fact
+ that only 72 of a total of 155 sub-counties that would have received any
+ treatment were actually treated.
  Referring to table 2, we see that to test the impact of the information
  Baraza, 54 sub-counties that were treated can be used.
  This means that a total of 152 sub-counties that did not receive the informatio
@@ -1009,6 +1085,126 @@ Note also that from the matched control sub-counties in the top right and
  Adding to this all these treated sub-counties, we get a total of 114 sub-counti
 es we will collect data on, corresponding to about 5,700 households.
  
+\end_layout
+
+\begin_layout Standard
+We follow the following procedure:
+\end_layout
+
+\begin_layout Standard
+match 10 untreated sc from the 0 0 group to the 1 1 group
+\end_layout
+
+\begin_layout Standard
+KYEGEGWA HAPUYO 
+\end_layout
+
+\begin_layout Standard
+KIBAALE BWANSWA 
+\end_layout
+
+\begin_layout Standard
+KIBAALE KIRYANGA 
+\end_layout
+
+\begin_layout Standard
+APAC CEGERE 
+\end_layout
+
+\begin_layout Standard
+MANAFWA BUTIRU 
+\end_layout
+
+\begin_layout Standard
+KALIRO NAWAIKOKE 
+\end_layout
+
+\begin_layout Standard
+BUTALEJA BUSABA 
+\end_layout
+
+\begin_layout Standard
+MBARARA RUGANDO 
+\end_layout
+
+\begin_layout Standard
+SEMBABULE NTUSI 
+\end_layout
+
+\begin_layout Standard
+KIBAALE KYEBANDO 
+\end_layout
+
+\begin_layout Standard
+match 10 untreated sc from the 1 1 group to the 1 1 group
+\end_layout
+
+\begin_layout Standard
+LWENGO KKINGO
+\end_layout
+
+\begin_layout Standard
+HOIMA KYABIGAMBIRE 
+\end_layout
+
+\begin_layout Standard
+LAMWO MADI_OPEI 
+\end_layout
+
+\begin_layout Standard
+MBARARA KAKOBA 
+\end_layout
+
+\begin_layout Standard
+YUMBE KURU 
+\end_layout
+
+\begin_layout Standard
+BUDUDA BUMAYOKA 
+\end_layout
+
+\begin_layout Standard
+BUTALEJA KACHONGA 
+\end_layout
+
+\begin_layout Standard
+MANAFWA BUMWONI 
+\end_layout
+
+\begin_layout Standard
+BULAMBULI BULUGANYA 
+\end_layout
+
+\begin_layout Standard
+LWENGO MALONGO 
+\end_layout
+
+\begin_layout Standard
+Next, we look at the information treatment.
+ In this treatment, 54 have been treated, either as information alone or
+ as part of the inf+deliberation treatment.
+ This means we also need 54 controls.
+ We already have selected 20 pure controls in the previous step which we
+ can use.
+ Furthermore, 18 pure deliberation treatments can be used as controls for
+ the information treatment as well.
+ This means we need an additional 16 controls.
+ As we want to investigate balance between control and planned but not treated
+ controls, we select these 16 controls from the non treated subcounties
+ that were planned to receive the information treatment.
+ 
+\end_layout
+
+\begin_layout Standard
+Finally, we look at the deliberation treatment.
+ In this treatment, 38 have been treated, either as deliberation alone or
+ as part of the infd+delib treatment, so we also need 38 controls.
+ We already have the 20 pure controls and and addtional 16 controls from
+ the previous.
+ So we need an additional 2 controls.
+ As we want to investigate balance between control and planned but not treated
+ controls, we select these 2 controls from the non treated subcounties that
+ were planned to receive the deliberation treatment; we can
 \end_layout
 
 \begin_layout Subsection
@@ -1113,6 +1309,143 @@ s whose propensity scores lie within the range of propensity scores of the
 The average treatment effect will then be estimated using DID, and through
  regression in a linear probability model—as mentioned, both on the full
  dataset as well on only the common support of the propensity score.
+\end_layout
+
+\begin_layout Section
+Updated power calculations
+\end_layout
+
+\begin_layout Standard
+The original power calculations assumed full roll-out of the intervention.
+ The partial roll-out necessitates an update to these power calculations
+ to obtain a new set of minimal detectable effects (MDEs) associated with
+ the sample that will be collected.
+ Below, we use baseline data to simulate MDEs for a selection of the outcomes
+ defined in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Outcomes"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figure/power_extension.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Power curves for access to extension
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Power-curves-for"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Power-curves-for"
+
+\end_inset
+
+ plots MDEs against power for the first outcome variable that will be used
+ to assess changes impact on public service delivery in the agricultural
+ sector (extension at home, measured as the percentage of households in
+ our sample who report that they were visited by an expert ).
+ On average, about 11 percent of households in our sample report that they
+ were visited by an extension officer in the last year.
+ The gray solid line shows the power curve associated to the deliberation
+ treatment, comparing the 1,900 households that received the information
+ treatment to the 3,450 households that did not receive a deliberation focused
+ baraza.
+ The blue dashed line shows power for different MDEs for the information
+ component of the baraza intervention.
+ Here, we compare the 2,450 households that live in subcounties that received
+ an information baraza to the 2,900 households that did not receive a subcounty
+ information baraza.
+ Finally, the dotted dark blue line compares effectiveness of barazas conducted
+ at different levels, with the MDE defined as the difference in outcome
+ between 1,000 households that received the combined information and deliberatio
+n subcounty level baraza and 2,000 households that were exposed to a district
+ level baraza.
+ MDEs are estimated using a simple ANCOVA model that controls for the outcome
+ at baseline.
+\end_layout
+
+\begin_layout Standard
+Not surprisingly, we have most power for testing the information treatment.
+ We see that the power curve hits the 80 percent threshold a first time
+ at an MDE of about 2.5.
+ The deliberation experiment is similarly powered, and at 80 percent we
+ can expect to identify effects of 3 percent of more.
+ Due to the smaller sample size and more aggregated treatment, directly
+ comparing sub-county level barazas to district level barazas seems harder.
+ Here, the difference needs to be at least 5.5 percent
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Unless effects from district level barazas and sub-county level barazas
+ go in opposite directions, it seems unlikely that we will be able to detect
+ a difference in a direct comparison.
+ Even though a direct comparison is most interesting and most relevant from
+ a policy perspective, we have more power for other comparisons.
+ For instance, we can also compare outcomes of the 2,000 households that
+ were exposed to a district level baraza to the 2,000 households that did
+ not receive a baraza.
+ Alternatively, we can compare outcomes of the 2,000 households that were
+ exposed to a district level baraza to the 3,350 households that received
+ any type of sub-county level baraza (information only, deliberation only,
+ or the combined).
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+In figure XXX, we plot MDEs for an infrastructure related outcome (distance
+ to water)
 \end_layout
 
 \begin_layout Section
@@ -1965,7 +2298,7 @@ Sexpr{format(round(df_matcher[2,1,4],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_matcher[2,2,4],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_matcher[2,3,4],digits=3),nsmall=3)})			
+Sexpr{format(round(df_matcher[2,3,4],dig**its=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -2222,7 +2555,19 @@ Threat to validity
 \begin_layout Standard
 The main threat to validity stems from the risk that incomplete roll-out
  introduced selection bias into the study.
- In section
+ While the results in Table 1 are reassuring, it should be noted that pre-treatm
+ent characteristics were collected some time ago and results may be different
+ if more recent data is used and/or if selection happened on characteristics
+ that change over time.
+ Therefore, comparing characteristics between control sub-counties and sub-count
+ies that were allocated to a treatment cell but ended up not being treated
+ will be an important strategy to test for selection bias that may have
+ been introduced by the incomplete roll-out of the treatment.
+ In particular, instead of simply collecting information from the (planned)
+ control sub-counties, we will also collect information from sub-counties
+ that were supposed to receive a treatment but did not get one.
+ If the incomplete roll-out introduced selection bias, this information
+ may also be useful to assess the direction and magnitude of the bias.
 \end_layout
 
 \begin_layout Section

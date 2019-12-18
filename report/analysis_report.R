@@ -1,6 +1,3 @@
-### to solve - this also gives me the same results regardless of random seed...
-
-
 rm(list=ls())
 library(dplyr)
 library(ggplot2)
@@ -10,7 +7,7 @@ library(plm)
 library(lmtest)
 library(clubSandwich)
 library(moments)
-set.seed(66666) #not needed for final version?
+set.seed(12345) #not needed for final version?
 
 ########################################################### functions declarations #####################################################
 
@@ -78,7 +75,7 @@ endline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Survey
 ### and merge in the treatments
 list <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/sampling_list_hh.csv")[c("hhid","a21","a22","a23")]
 endline <- merge(list, endline, by="hhid", all.x=T)
-treats <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/final_list.csv")
+treats <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/final_list_5.csv")
 endline <- merge(treats, endline, by.x=c("district","subcounty"), by.y=c("a22","a23"))
 
 ## baseline not needed in this first section, but used to generate fake data
@@ -86,6 +83,8 @@ baseline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surve
 baseline$a23 <- as.character(baseline$a23)
 baseline$a23[baseline$a23 == "LUWERO TC"] <- "LUWERO_TC"
 baseline$a23[baseline$a23 == "SEMBABULE TC"] <- "SEMBABULE_TC"
+baseline$a23[baseline$a23 == "RAKAI TC"] <- "RAKAI_TC"
+baseline$a23[baseline$a23 == "NTUSI"] <- "NTUUSI"
 
 baseline$b21 <-  as.numeric(baseline$b21=="Yes")
 baseline$b31 <-  as.numeric(baseline$b31=="Yes")
