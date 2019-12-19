@@ -31,6 +31,7 @@ baseline$b21 <-  as.numeric(baseline$b21=="Yes")
 baseline$b31 <- as.numeric(baseline$b31=="Yes")
 baseline$b44 <-  as.numeric(baseline$b44=="Yes")
 baseline$b44[is.na(baseline$b44)] <- 0
+baseline$base_inputs <- as.numeric(baseline$used_seed=="Yes" | baseline$used_fert=="Yes")
 
 #baseline$c12source <- log(baseline$c12source + sqrt(baseline$c12source ^ 2 + 1))
 #baseline <- trim("c12source", baseline)
@@ -40,7 +41,7 @@ baseline$b44[is.na(baseline$b44)] <- 0
 treats <- subset(treats, district_baraza == 0 )
 baseline <- subset(baseline, district_baraza == 0 )
 ## should loop somewhere here
-baseline$outcome <- baseline$b44
+baseline$outcome <- baseline$base_inputs
 #baseline$outcome <- baseline$c12source
 
 baseline_orig <- baseline[c("outcome","a21","a22","a23")]
@@ -125,6 +126,7 @@ baseline$b21 <-  as.numeric(baseline$b21=="Yes")
 baseline$b31 <- as.numeric(baseline$b31=="Yes")
 baseline$b44 <-  as.numeric(baseline$b44=="Yes")
 baseline$b44[is.na(baseline$b44)] <- 0
+baseline$base_inputs <- as.numeric(baseline$used_seed=="Yes" | baseline$used_fert=="Yes")
 
 #baseline$c12source <- log(baseline$c12source + sqrt(baseline$c12source ^ 2 + 1))
 #baseline <- trim("c12source", baseline)
@@ -137,7 +139,7 @@ baseline <- merge(baseline, treats,  by.x=c("a22","a23"), by.y=c("district","sub
 treats <- aggregate(treats$district_baraza,list(treats$district), max)
 names(treats) <- c("district","district_baraza")
 ## should loop somewhere here
-baseline$outcome <- baseline$b44
+baseline$outcome <- baseline$base_inputs 
 #baseline$outcome <- baseline$c12source
 
 baseline_orig <- baseline[c("outcome","a21","a22","a23")]
@@ -213,6 +215,6 @@ ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, l
 dev.off()
 
 ##to copy from AWS to local machine, use:
-scp -i "bjornkey.pem" ubuntu@ec2-52-31-191-248.eu-west-1.compute.amazonaws.com:/home/ubuntu/power_extension.png "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_NAADS_in_village.png"
+scp -i "bjornkey.pem" ubuntu@ec2-52-31-191-248.eu-west-1.compute.amazonaws.com:/home/ubuntu/power_extension.png "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_inputs.png"
 
 
