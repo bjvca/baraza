@@ -7,7 +7,7 @@ library(plm)
 library(lmtest)
 library(clubSandwich)
 library(moments)
-set.seed(12345) #not needed for final version?
+set.seed(123456789) #not needed for final version?
 
 ########################################################### functions declarations #####################################################
 
@@ -54,12 +54,12 @@ credplot.gg <- function(d,units, hypo, axlabs, lim){
  # d$yhi gives upper limits
  require(ggplot2)
  p <- ggplot(d, aes(x=x, y=y, ymin=ylo, ymax=yhi, colour=as.factor(grp)))+
- geom_pointrange(position=position_dodge(-.4), size=1)+
+ geom_pointrange(position=position_dodge(-.4), size=.5)+
  geom_hline(yintercept = 0, linetype=2)+
  coord_flip(ylim = c(-lim,lim))+
  xlab('') + ylab(units)+ labs(title=hypo)  + theme_minimal()+ theme(axis.text=element_text(size=18),
         axis.title=element_text(size=14,face="bold"),legend.text=element_text(size=18), plot.title = element_text(size=22,hjust = 0.5), legend.title=element_blank())+
-    geom_errorbar(aes(ymin=ylo, ymax=yhi),position=position_dodge(-.4),width=0,cex=2.5) + scale_colour_manual(values = c("#CCCCCC", "#6E8DAB", "#104E8B")) + scale_x_discrete(labels=axlabs)
+    geom_errorbar(aes(ymin=ylo, ymax=yhi),position=position_dodge(-.4),width=0,cex=1.5) + scale_colour_manual(values = c("#CCCCCC", "#6E8DAB", "#104E8B", "#000000")) + scale_x_discrete(labels=axlabs)
  return(p)
 }
 
@@ -98,6 +98,8 @@ baseline$b5146 <- as.numeric(baseline$b5146=="Yes")
 baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Rain water","Surface water","Tube well or borehole","Unprotected dug well","Unprotected spring"))    )
 ### is there are water committee
 baseline$c10 <- as.numeric(baseline$c10=="Yes")
+
+
 baseline$c12source <- log(baseline$c12source + sqrt(baseline$c12source ^ 2 + 1))
 baseline <- trim("c12source", baseline)
 baseline$qc15 <- log(baseline$qc15 + sqrt(baseline$qc15 ^ 2 + 1))
@@ -117,10 +119,20 @@ baseline$d11 <- as.numeric(baseline$d11=="Yes")
 
 baseline$tot_sick[baseline$d11==0] <- 0 
 
+baseline$wait_time <- baseline$d410hh*60+ baseline$d410mm
+baseline$wait_time <- log(baseline$wait_time + sqrt(baseline$wait_time ^ 2 + 1))
+baseline <- trim("wait_time", baseline)
+
+baseline$d61 <- as.numeric(baseline$d61=="Yes")
+
 #children in public schools
 baseline$base_n_children <- rowSums(cbind(baseline$e2bupe,baseline$e2aupe,baseline$e2fuse,baseline$e2muse), na.rm=T)
 baseline$e5 <- rowMeans(cbind(as.numeric(baseline$e5upe) , as.numeric(baseline$e5use)), na.rm=T) 
 baseline$e5[is.na(baseline$e5upe) & is.na(baseline$e5use)] <- NA
+baseline$e5 <- log(baseline$e5 + sqrt(baseline$e5 ^ 2 + 1))
+baseline <- trim("e5", baseline)
+
+
 
 baseline$e12 <- rowSums(cbind(as.numeric(baseline$e12upe == "Yes") , as.numeric(baseline$e12use == "Yes")), na.rm=T) > 0
 baseline$e12[is.na(baseline$e12upe) & is.na(baseline$e12use)] <- NA
@@ -137,6 +149,8 @@ baseline$e32[is.na(baseline$e32upe) & is.na(baseline$e32use)] <- NA
 baseline$e45 <- rowSums(cbind(as.numeric(baseline$e45upe == "Yes") , as.numeric(baseline$e45use == "Yes")), na.rm=T) > 0
 baseline$e45[is.na(baseline$e45upe) & is.na(baseline$e45use)] <- NA
 #
+
+
 
 ##need to take logs?
 baseline$log_farmsize <- log(baseline$farmsize + sqrt(baseline$farmsize ^ 2 + 1))
@@ -189,7 +203,8 @@ endline$baraza.D4.2 <- sample(baseline$d43 ,dim(endline)[1])  ### this needs to 
 endline$baraza.D1  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$d11, na.rm=T))
 endline$baraza.D1.2 <- sample(baseline$tot_sick ,dim(endline)[1]) 
 endline$baraza.D1.2[is.na(endline$baraza.D1.2)] <- 0
-
+endline$baraza.D4.6 <- sample(baseline$wait_time ,dim(endline)[1]) 
+endline$baraza.D6  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$d61, na.rm=T))
 
 ##edu
 endline$n_children <- rowSums(cbind(endline$baraza.E1.2,endline$baraza.E2.1), na.rm=T) 
@@ -238,11 +253,11 @@ names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_infra_ind
 ##17 has been sick
 ###18 number of days sick
 ## 19 index
-endline <- FW_index(c("baraza.D2","baraza.D2.4","baraza.D3","baraza.D4.2", "baraza.D1",  "baraza.D1.2"),revcols=c(4,5,6),data=endline)
+endline <- FW_index(c("baraza.D2","baraza.D2.4","baraza.D3","baraza.D4.2", "baraza.D1",  "baraza.D4.6", "baraza.D6"),revcols=c(4,5,6,7),data=endline)
 names(endline)[names(endline) == 'index'] <- 'health_index'
-baseline <- FW_index(c("pub_health_access","maternal_health_access","d31","d43","d11","tot_sick"),revcols=c(4,5,6),data=baseline)
+baseline <- FW_index(c("pub_health_access","maternal_health_access","d31","d43","d11","wait_time","d61"),revcols=c(4,5,6,7),data=baseline)
 names(baseline)[names(baseline) == 'index'] <- 'base_health_index'
-baseline_matching <- FW_index(c("pub_health_access","maternal_health_access","d31","d43","d11","tot_sick"),revcols=c(4,5,6),data=baseline_matching)
+baseline_matching <- FW_index(c("pub_health_access","maternal_health_access","d31","d43","d11","wait_time","d61"),revcols=c(4,5,6,7),data=baseline_matching)
 names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_health_index'
 
 ###make and education index
@@ -263,51 +278,51 @@ names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_pub_servi
 
 
 
-outcomes <- c("baraza.B2","baraza.B3","baraza.B4.1","inputs","baraza.B5.2","baraza.B5.3","ag_index","unprotected", "baraza.C1.2", "baraza.C1.3","baraza.C2.3","baraza.A6","infra_index","baraza.D2","baraza.D2.4","baraza.D3","baraza.D4.2", "baraza.D1",  "baraza.D1.2","health_index","n_children","baraza.E1","baraza.E1.4","baraza.E1.6","baraza.E1.10","baraza.E1.13","baraza.E1.18","education_index", "pub_service_index")
-baseline_outcomes <- c("b21","b31","b44","base_inputs","b5144","b5146","base_ag_index","base_unprotected","c12source", "qc15","c10","a6","base_infra_index","pub_health_access","maternal_health_access","d31","d43","d11","tot_sick","base_health_index","base_n_children","e5","e12", "e14","e22","e32","e45","base_education_index","base_pub_service_index")
+outcomes <- c("baraza.B2","baraza.B3","baraza.B4.1","inputs","baraza.B5.2","baraza.B5.3","ag_index","unprotected", "baraza.C1.2", "baraza.C1.3","baraza.C2.3","baraza.A6","infra_index","baraza.D2","baraza.D2.4","baraza.D3","baraza.D4.2", "baraza.D1",  "baraza.D4.6","baraza.D6","health_index","n_children","baraza.E1","baraza.E1.4","baraza.E1.6","baraza.E1.10","baraza.E1.13","baraza.E1.18","education_index", "pub_service_index")
+baseline_outcomes <- c("b21","b31","b44","base_inputs","b5144","b5146","base_ag_index","base_unprotected","c12source", "qc15","c10","a6","base_infra_index","pub_health_access","maternal_health_access","d31","d43","d11","wait_time","d61","base_health_index","base_n_children","e5","e12", "e14","e22","e32","e45","base_education_index","base_pub_service_index")
 
 ##      outcomes            baseline_outcomes    
 
 ## agriculture   
-## [1,] "baraza.B2"         "b21"                   
-## [2,] "baraza.B3"         "b31"                   
-## [3,] "baraza.B4.1"       "b44"                   
-## [4,] "inputs"            "base_inputs"           
-## [5,] "baraza.B5.2"       "b5144"                 
-## [6,] "baraza.B5.3"       "b5146"                 
+## [1,] "baraza.B2"         "b21"                   	Was visited by extension officer at home (yes/no)
+## [2,] "baraza.B3"         "b31"                   	Visited training or demonstration site (yes/no)
+## [3,] "baraza.B4.1"       "b44"                   	NAADS or OWC in village (yes/no)
+## [4,] "inputs"            "base_inputs"           	Uses modern inputs (improved seed or fertilizer) (yes/no)
+## [5,] "baraza.B5.2"       "b5144"                 	Support in marketing from village procurement committe (yes/no)
+## [6,] "baraza.B5.3"       "b5146"                 	Support in marketing from cooperative (yes/no)
 ## [7,] "ag_index"          "base_ag_index"         
 
 ##infrastructure
-## [8,] "unprotected"       "base_unprotected"      	"Household uses unprotected water source during dry season"
-## [9,] "baraza.C1.2"       "c12source"             	"How far in Km is this water source from your household?"
-##[10,] "baraza.C1.3"       "qc15"                  	"On average, how long do you have to wait to collect water during the dry season? (mins)"
-##[11,] "baraza.C2.3"       "c10"             		"Is there a Water User Committee in this village?"
-##[12,] "baraza.A6"         "a6"			"Distance to nearest all weather road (km)"             
+## [8,] "unprotected"       "base_unprotected"      	Household uses unprotected water source during dry season (yes/no)
+## [9,] "baraza.C1.2"       "c12source"             	Distance to water source
+##[10,] "baraza.C1.3"       "qc15"                  	Average waiting time at source (min)
+##[11,] "baraza.C2.3"       "c10"             		Is there a Water User Committee in this village? (yes/no)
+##[12,] "baraza.A6"         "a6"			Distance to nearest all weather road (km)             
 ##[13,] "infra_index"       "base_infra_index"   
 
 ##health   
-##[14,] "baraza.D2"         "pub_health_access"     	"Seek treatment for fever in public health facility"
-##[15,] "baraza.D2.4"       "maternal_health_access"	"Go to public health facility to give birth"
-##[16,] "baraza.D3"         "d31"                   	"Is there a VHT in village"
-##[17,] "baraza.D4.2"       "d43"                   	"Distance to nearest govt health facility"
-##[18,] "baraza.D1"         "d11"                   	"Were any household members unable to work or go to school due to an illness in the past one year?"
-##[19,] "baraza.D1.2"       "tot_sick"           
+##[14,] "baraza.D2"         "pub_health_access"     	Seek treatment for fever in public health facility (1=yes) 
+##[15,] "baraza.D2.4"       "maternal_health_access"	Go to public health facility to give birth (1=yes)  
+##[16,] "baraza.D3"         "d31"                   	Is there a VHT in village? (1=yes) 
+##[17,] "baraza.D4.2"       "d43"                   	Distance to nearest govt health facility (km) 
+##[18,] "baraza.D1"         "d11"                   	Were days work/school missed due to illness? (1=yes)  
+##[19,] "baraza.D4.6"       "wait_time"           	Waiting time before being attended (min)  
+#20	"baraza.D6" 		"d61"			Has visited traditional health practitioner? (1=yes)  
    
-##[20,] "health_index"      "base_health_index"     
+##[21,] "health_index"      "base_health_index"     
 
 ##educations
-##[21,] "n_children"	    "base_n_children"		"Number of children in UPS or USE"
+##[22,] "n_children"	    "base_n_children"		Number of children in UPS or USE 
+##23"baraza.E1"		e5				Distance to public school (km)  
+##24"baraza.E1.4" "e12" 				Has complete boundary fence (1=yes) 
+##25"baraza.E1.6" "e14" 				Has water facility (1=yes) 
+##26"baraza.E1.10 "e22" 				Has School Management Committee (1=yes)  
+##27"baraza.E1.13 "e32" 				Is informed about School Management Committee (1=yes)  
+##28"baraza.E1.18 "e45" 				Inspectors visited schools (1=yes)  
 
-##22"baraza.E1"		e5upe Distance to UPE school
-##23"baraza.E1.4" baseline$e12upe Complete boundary fence
-##24"baraza.E1.6" baseline$e14upe Has water facility
-##25"baraza.E1.10 baseline$e22upe Has SMC
-##26"baraza.E1.13 baseline$e32upe Informed about SMC
-##27"baraza.E1.18 e45upe Inspectors visited schools
+##29 "education_index"      "base_education_index"  
 
-##28##[21,] "education_index"      "base_education_index"  
-
-##29##[20,] "pub_service_index" "base_pub_service_index"
+##30 "pub_service_index" "base_pub_service_index"
 
 
 #create unique ID for clustering based on district and subcounty
@@ -336,10 +351,10 @@ dta_long <- rbind(endline[c("information","deliberation","district_baraza","time
 
 
 ###init arrays to store results
-df_ols <- array(NA,dim=c(6,3,length(outcomes)))
-df_ancova <- array(NA,dim=c(6,3,length(outcomes)))
-df_dif_in_dif <- array(NA,dim=c(6,3,length(outcomes)))
-df_matcher <- array(NA,dim=c(6,3,length(outcomes)))
+df_ols <- array(NA,dim=c(6,4,length(outcomes)))
+df_ancova <- array(NA,dim=c(6,4,length(outcomes)))
+df_dif_in_dif <- array(NA,dim=c(6,4,length(outcomes)))
+df_matcher <- array(NA,dim=c(6,4,length(outcomes)))
 df_averages <- array(NA,dim=c(2,length(outcomes)))
 
 for (i in 1:length(outcomes)) {
@@ -354,14 +369,15 @@ vcov_cluster <- vcovCR(ols, cluster = endline$clusterID[endline$district_baraza 
 res <- coeftest(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_ols[,1,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
-df_ols[,2,i] <- c(res[3,1],res[3,2],res[3,4], conf[3,4],conf[3,5], nobs(ols))
+df_ols[,2,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
+df_ols[,3,i] <- c(res[3,1],res[3,2],res[3,4], conf[3,4],conf[3,5], nobs(ols))
+df_ols[,1,i] <- c(res[7,1],res[7,2],res[7,4], conf[7,4],conf[7,5], nobs(ols))
 
 ols <- lm(as.formula(paste(outcomes[i],"district_baraza+a21",sep="~")), data=endline[(endline$information == 1 & endline$deliberation==1) | endline$district_baraza == 1 ,]) 
 vcov_cluster <- vcovCR(ols, cluster = endline$clusterID2[(endline$information == 1 & endline$deliberation==1) | endline$district_baraza == 1 ], type = "CR0")
 res <- coeftest(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
-df_ols[,3,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
+df_ols[,4,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
 
 ##ancova
 ## merge in baseline
@@ -371,16 +387,16 @@ vcov_cluster <- vcovCR(ols, cluster = dta$clusterID[dta$district_baraza == 0], t
 res <- coeftest(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_ancova[,1,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
-df_ancova[,2,i] <- c(res[3,1],res[3,2],res[3,4], conf[3,4],conf[3,5], nobs(ols))
-
+df_ancova[,2,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
+df_ancova[,3,i] <- c(res[3,1],res[3,2],res[3,4], conf[3,4],conf[3,5], nobs(ols))
+df_ancova[,1,i] <- c(res[7,1],res[7,2],res[7,4], conf[7,4],conf[7,5], nobs(ols))
 
 
 ols <- lm(as.formula(paste(paste(outcomes[i],"district_baraza+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ,]) 
 vcov_cluster <- vcovCR(ols, cluster = dta$clusterID2[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ], type = "CR0")
 res <- coeftest(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
-df_ancova[,3,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
+df_ancova[,4,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
 
 
 ## dif-in-dif
@@ -389,15 +405,16 @@ vcov_cluster <- vcovCR(ols, cluster = dta_long$clusterID[dta_long$district_baraz
 res <- coeftest(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_dif_in_dif[,1,i] <- c(res[6,1],res[6,2],res[6,4], conf[6,1], conf[6,2], nobs(ols))
-df_dif_in_dif[,2,i] <- c(res[7,1],res[7,2],res[7,4], conf[7,1], conf[7,2], nobs(ols))
+df_dif_in_dif[,2,i] <- c(res[6,1],res[6,2],res[6,4], conf[6,4], conf[6,5], nobs(ols))
+df_dif_in_dif[,3,i] <- c(res[7,1],res[7,2],res[7,4], conf[7,4], conf[7,5], nobs(ols))
+df_dif_in_dif[,1,i] <- c(res[8,1],res[8,2],res[8,4], conf[8,4], conf[8,5], nobs(ols))
 
 
 ols <- lm(as.formula(paste(outcomes[i],"district_baraza*time",sep="~")), data=dta_long[(dta_long$information == 1 & dta_long$deliberation==1) | dta_long$district_baraza == 1 ,]) 
 vcov_cluster <- vcovCR(ols, cluster = dta_long$clusterID2[(dta_long$information == 1 & dta_long$deliberation==1) | dta_long$district_baraza == 1 ], type = "CR0")
 res <- coeftest(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
-df_dif_in_dif[,3,i] <- c(res[4,1],res[4,2],res[4,4], conf[4,4], conf[4,5], nobs(ols))
+df_dif_in_dif[,4,i] <- c(res[4,1],res[4,2],res[4,4], conf[4,4], conf[4,5], nobs(ols))
 
 
 ###matched dif-in-dif
@@ -432,7 +449,7 @@ res <- coeftest(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
 
-df_matcher[,1,i] <- c(res[6,1],res[6,2],res[6,4], conf[6,4], conf[6,5], nobs(ols))
+df_matcher[,2,i] <- c(res[6,1],res[6,2],res[6,4], conf[6,4], conf[6,5], nobs(ols))
 
 ####matching for deliberation
 nearest.match <- matchit(formula = deliberation ~ hhsize + femhead + agehead + log_farmsize + ironroof + improved_wall + has_phone +head_sec+a26a+a26b,  data =baseline_complete[baseline_complete$district_baraza == 0,] ,method = "nearest",distance = "logit")
@@ -460,9 +477,37 @@ res <- coeftest(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
 
-df_matcher[,2,i] <- c(res[7,1],res[7,2],res[7,4], conf[7,4], conf[7,5], nobs(ols))
+df_matcher[,3,i] <- c(res[7,1],res[7,2],res[7,4], conf[7,4], conf[7,5], nobs(ols))
+
 
 ####matching for interaction
+nearest.match <- matchit(formula = deliberation*information ~ hhsize + femhead + agehead + log_farmsize + ironroof + improved_wall + has_phone +head_sec+a26a+a26b,  data =baseline_complete[baseline_complete$district_baraza == 0,] ,method = "nearest",distance = "logit")
+summary(nearest.match)
+#plot(nearest.match)
+#plot(nearest.match, type="hist")
+#plot(nearest.match, type="jitter")
+
+matched.baseline <- match.data(nearest.match)
+
+### this is the matched data -  we now need to extract these ids from the endline and stack base and endline to do a dif-in-dif
+
+matched.endline <- endline[endline$hhid %in% matched.baseline$hhid,]
+matched.baseline$time <- 0
+matched.endline$time <- 1
+
+matched.baseline <- matched.baseline[c("information","deliberation","time","clusterID","clusterID2",baseline_outcomes[i] )]
+names(matched.baseline) <- c("information","deliberation","time","clusterID","clusterID2",outcomes[i] )
+
+
+matched.dta_long <- rbind(matched.endline[c("information","deliberation","time","clusterID","clusterID2", outcomes[i])], matched.baseline[ c("information","deliberation","time","clusterID","clusterID2",outcomes[i] )])
+ols <- lm(as.formula(paste(outcomes[i],"information*deliberation*time",sep="~")), data=matched.dta_long)
+vcov_cluster <- vcovCR(ols, cluster = matched.dta_long$clusterID, type = "CR0")
+res <- coeftest(ols, vcov_cluster)
+conf <- conf_int(ols, vcov_cluster)
+
+
+df_matcher[,1,i] <- c(res[8,1],res[8,2],res[8,4], conf[8,4], conf[8,5], nobs(ols))
+####matching for district baraza
 nearest.match <- matchit(formula = district_baraza ~ hhsize + femhead + agehead + log_farmsize + ironroof + improved_wall + has_phone +head_sec+a26a+a26b,  data =baseline_complete[(baseline_complete$information == 1 & baseline_complete$deliberation==1) | baseline_complete$district_baraza == 1 ,] ,method = "nearest",distance = "logit")
 summary(nearest.match)
 #plot(nearest.match)
@@ -487,27 +532,46 @@ vcov_cluster <- vcovCR(ols, cluster = matched.dta_long$clusterID2, type = "CR0")
 res <- coeftest(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_matcher[,3,i] <- c(res[4,1],res[4,2],res[4,4], conf[4,4], conf[4,5], nobs(ols))
+df_matcher[,4,i] <- c(res[4,1],res[4,2],res[4,4], conf[4,4], conf[4,5], nobs(ols))
 
 }
 
 ### create data.frame to plot - make sure you get correct i's for the indices; last one is overall index
-d_plot <- data.frame(rbind(df_matcher[c(1,4,5),1,7],df_matcher[c(1,4,5),2,7],df_matcher[c(1,4,5),3,7]))
-d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,13],df_matcher[c(1,4,5),2,13],df_matcher[c(1,4,5),3,13])))
-d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,20],df_matcher[c(1,4,5),2,20],df_matcher[c(1,4,5),3,20])))
-d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,28],df_matcher[c(1,4,5),2,28],df_matcher[c(1,4,5),3,28])))
-d_plot <- rbind(d_plot, data.frame(rbind(c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA))))
-d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,29],df_matcher[c(1,4,5),2,29],df_matcher[c(1,4,5),3,29])))
+d_plot <- data.frame(rbind(df_ancova[c(1,4,5),1,7],df_ancova[c(1,4,5),2,7],df_ancova[c(1,4,5),3,7],df_ancova[c(1,4,5),4,7]))
+d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,13],df_ancova[c(1,4,5),2,13],df_ancova[c(1,4,5),3,13],df_ancova[c(1,4,5),4,13])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,21],df_ancova[c(1,4,5),2,21],df_ancova[c(1,4,5),3,21],df_ancova[c(1,4,5),4,21])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,29],df_ancova[c(1,4,5),2,29],df_ancova[c(1,4,5),3,29],df_ancova[c(1,4,5),4,29])))
+d_plot <- rbind(d_plot, data.frame(rbind(c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA))))
+d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,30],df_ancova[c(1,4,5),2,30],df_ancova[c(1,4,5),3,30],df_ancova[c(1,4,5),4,30])))
 
 
 names(d_plot) <- c("y","ylo","yhi")
-rep(1:4, times=3, each=3)
-d_plot$x <- rep(c("agricuture","infrastructure","health","education","","index"), each=3)
-d_plot$grp <- rep(c("info","delib","level"), times=6)
-d_plot$grp <-  factor(d_plot$grp , levels=c("info","delib","level"))
+
+d_plot$x <- rep(c("agricuture","infrastructure","health","education","","index"), each=4)
+d_plot$grp <- rep(c("sc baraza","info","delib","level"), times=6)
+d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib","level"))
 d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","health","education","","index"))))
-png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/impact_summary.png", units="px", height=3200, width= 6400, res=600)
+png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/impact_summary_ancova.png", units="px", height=3200, width= 6400, res=600)
 credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3)
+dev.off()
+
+### create data.frame to plot - make sure you get correct i's for the indices; last one is overall index
+d_plot <- data.frame(rbind(df_matcher[c(1,4,5),1,7],df_matcher[c(1,4,5),2,7],df_matcher[c(1,4,5),3,7],df_matcher[c(1,4,5),4,7]))
+d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,13],df_matcher[c(1,4,5),2,13],df_matcher[c(1,4,5),3,13],df_matcher[c(1,4,5),4,13])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,21],df_matcher[c(1,4,5),2,21],df_matcher[c(1,4,5),3,21],df_matcher[c(1,4,5),4,21])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,29],df_matcher[c(1,4,5),2,29],df_matcher[c(1,4,5),3,29],df_matcher[c(1,4,5),4,29])))
+d_plot <- rbind(d_plot, data.frame(rbind(c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA))))
+d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,30],df_matcher[c(1,4,5),2,30],df_matcher[c(1,4,5),3,30],df_matcher[c(1,4,5),4,30])))
+
+
+names(d_plot) <- c("y","ylo","yhi")
+
+d_plot$x <- rep(c("agricuture","infrastructure","health","education","","index"), each=4)
+d_plot$grp <- rep(c("sc baraza","info","delib","level"), times=6)
+d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib","level"))
+d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","health","education","","index"))))
+png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/impact_summary_matcher.png", units="px", height=3200, width= 6400, res=600)
+credplot.gg(d_plot,'SDs','',levels(d_plot$x),.5)
 dev.off()
  # d is a data frame with 4 columns
  # d$x gives variable names
