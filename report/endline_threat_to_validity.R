@@ -65,6 +65,8 @@ credplot.gg <- function(d,units, hypo, axlabs, lim){
 
 ################################################################## end of funtions declarations
 
+################################################################## end of funtions declarations
+
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
 #source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/anonyize.R")
 ### for the mock report, I use a dummy endline - I read in a dummy endline of 3 households just to get the correct variable names
@@ -173,48 +175,54 @@ endline$unprotected <- (as.numeric(endline$baraza.C1 %in% c(4,6,8,9,12)) )
 ### here we simulate endline variables - remove if endline data is in
 endline$baraza.B2  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b21 == 1, na.rm=T))
 ###visits
-
+### here we simulate endline variables - remove if endline data is in
 endline$baraza.B3 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b31 == 1, na.rm=T))
 ###naads in village
+### here we simulate endline variables - remove if endline data is in
 endline$baraza.B4.1  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b44 == 1, na.rm=T))
 ###simulate an effect on this one
 endline$inputs <- rbinom(n=length(endline$inputs),size=1,prob=mean(baseline$base_inputs, na.rm=T)) 
+###simulate an effect on this one
 endline$baraza.B5.2  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b5144 == 1, na.rm=T))
+###simulate an effect on this one
 endline$baraza.B5.3  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b5146 == 1, na.rm=T))
-
+###simulate an effect on this one
 endline$unprotected <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$base_unprotected ==1, na.rm=T))
-endline$baraza.C1.2 <- sample(baseline$c12source,dim(endline)[1])  ### this needs to be inverse hypersine transformed and trimmed in final version
+endline$baraza.C1.2 <- sample(baseline$c12source[!is.na(baseline$c12source)],dim(endline)[1])  ### this needs to be inverse hypersine transformed and trimmed in final version
 #endline$baraza.C1.2 <-  log(endline$baraza.C1.2 + sqrt(endline$baraza.C1.2 ^ 2 + 1))
 #endline <- trim("baraza.C1.2",endline)
-endline$baraza.C1.3 <- sample(baseline$qc15,dim(endline)[1]) ### this needs to be inverse hypersine transformed and trimmed in final version
+endline$baraza.C1.3 <- sample(baseline$qc15[!is.na(baseline$qc15)],dim(endline)[1]) ### this needs to be inverse hypersine transformed and trimmed in final version
 #endline$baraza.C1.3 <- log(endline$baraza.C1.3 + sqrt(endline$baraza.C1.3 ^ 2 + 1))
 #endline <- trim("baraza.C1.3",endline)
 endline$baraza.C2.3 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$c10 ==1, na.rm=T))
-endline$baraza.A6 <- sample(baseline$a6,dim(endline)[1]) ### this needs to be inverse hypersine transformed and trimmed in final version
+endline$baraza.A6 <- sample(baseline$a6[!is.na(baseline$a6)],dim(endline)[1]) ### this needs to be inverse hypersine transformed and trimmed in final version
 
 ### access to public health if sick
 endline$baraza.D2 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$pub_health_access, na.rm=T))
 endline$baraza.D2.4 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$maternal_health_access , na.rm=T))
 endline$baraza.D3 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$pub_health_access, na.rm=T))
-endline$baraza.D4.2 <- sample(baseline$d43 ,dim(endline)[1])  ### this needs to be inverse hypersine transformed and trimmed in final version
+endline$baraza.D4.2 <- sample(baseline$d43[!is.na(baseline$d43)] ,dim(endline)[1])  ### this needs to be inverse hypersine transformed and trimmed in final version
 #endline$baraza.D4.2 <- log(endline$baraza.D4.2 + sqrt(endline$baraza.D4.2 ^ 2 + 1))
 #endline <- trim("baraza.D4.2",endline)
 #health outcome - less people sick 
 endline$baraza.D1  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$d11, na.rm=T))
-endline$baraza.D1.2 <- sample(baseline$tot_sick ,dim(endline)[1]) 
+endline$baraza.D1.2 <- sample(baseline$tot_sick[!is.na(baseline$tot_sick)] ,dim(endline)[1]) 
 endline$baraza.D1.2[is.na(endline$baraza.D1.2)] <- 0
-endline$baraza.D4.6 <- sample(baseline$wait_time ,dim(endline)[1]) 
+endline$baraza.D4.6 <- sample(baseline$wait_time[!is.na(baseline$wait_time)] ,dim(endline)[1]) 
 endline$baraza.D6  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$d61, na.rm=T))
 
 ##edu
 endline$n_children <- rowSums(cbind(endline$baraza.E1.2,endline$baraza.E2.1), na.rm=T) 
 endline$n_children <- sample(baseline$base_n_children ,dim(endline)[1]) 
-endline$baraza.E1  <- sample(baseline$e5 ,dim(endline)[1]) 
+endline$baraza.E1  <- sample(baseline$e5[!is.na(baseline$e5)] ,dim(endline)[1], replace=TRUE) 
 endline$baraza.E1.4 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e12, na.rm=T))
 endline$baraza.E1.6 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e14, na.rm=T))
 endline$baraza.E1.10 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e22, na.rm=T))
 endline$baraza.E1.13 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e32, na.rm=T))
 endline$baraza.E1.18 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e45, na.rm=T))
+##ag
+
+
 ##ag
 
 #1 access to extension, 
@@ -261,12 +269,20 @@ baseline_matching <- FW_index(c("pub_health_access","maternal_health_access","d3
 names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_health_index'
 
 ###make and education index
-endline <- FW_index(c("n_children","baraza.E1","baraza.E1.4","baraza.E1.6","baraza.E1.10","baraza.E1.13","baraza.E1.18"),revcols=c(2),data=endline)
+#endline <- FW_index(c("n_children","baraza.E1","baraza.E1.4","baraza.E1.6","baraza.E1.10","baraza.E1.13","baraza.E1.18"),revcols=c(2),data=endline)
+#names(endline)[names(endline) == 'index'] <- 'education_index'
+#baseline <- FW_index(c("base_n_children","e5","e12", "e14","e22","e32","e45"),revcols=c(2),data=baseline)
+#names(baseline)[names(baseline) == 'index'] <- 'base_education_index'
+#baseline_matching <- FW_index(c("base_n_children","e5","e12", "e14","e22","e32","e45"),revcols=c(2),data=baseline_matching)
+#names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_education_index'
+
+endline <- FW_index(c("n_children","baraza.E1","baraza.E1.4","baraza.E1.6","baraza.E1.10"),revcols=c(2),data=endline)
 names(endline)[names(endline) == 'index'] <- 'education_index'
-baseline <- FW_index(c("base_n_children","e5","e12", "e14","e22","e32","e45"),revcols=c(2),data=baseline)
+baseline <- FW_index(c("base_n_children","e5","e12", "e14","e22"),revcols=c(2),data=baseline)
 names(baseline)[names(baseline) == 'index'] <- 'base_education_index'
-baseline_matching <- FW_index(c("base_n_children","e5","e12", "e14","e22","e32","e45"),revcols=c(2),data=baseline_matching)
+baseline_matching <- FW_index(c("base_n_children","e5","e12", "e14","e22"),revcols=c(2),data=baseline_matching)
 names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_education_index'
+
 
 #20 make an index of indices
 endline <- FW_index(c("ag_index","infra_index","health_index","education_index"),data=endline)
@@ -284,41 +300,41 @@ baseline_outcomes <- c("b21","b31","b44","base_inputs","b5144","b5146","base_ag_
 ##      outcomes            baseline_outcomes    
 
 ## agriculture   
-## [1,] "baraza.B2"         "b21"                   	"Was visited by an extension officer at home"
-## [2,] "baraza.B3"         "b31"                   	"Visited extension office or demo site"
-## [3,] "baraza.B4.1"       "b44"                   	"NAADS/OWC in village"
-## [4,] "inputs"            "base_inputs"           	"uses modern inputs"
-## [5,] "baraza.B5.2"       "b5144"                 	"marketing help village committee"
-## [6,] "baraza.B5.3"       "b5146"                 	"marketing help cooperative"
+## [1,] "baraza.B2"         "b21"                   	Was visited by extension officer at home (yes/no)
+## [2,] "baraza.B3"         "b31"                   	Visited training or demonstration site (yes/no)
+## [3,] "baraza.B4.1"       "b44"                   	NAADS or OWC in village (yes/no)
+## [4,] "inputs"            "base_inputs"           	Uses modern inputs (improved seed or fertilizer) (yes/no)
+## [5,] "baraza.B5.2"       "b5144"                 	Support in marketing from village procurement committe (yes/no)
+## [6,] "baraza.B5.3"       "b5146"                 	Support in marketing from cooperative (yes/no)
 ## [7,] "ag_index"          "base_ag_index"         
 
 ##infrastructure
-## [8,] "unprotected"       "base_unprotected"      	"Household uses unprotected water source during dry season"
-## [9,] "baraza.C1.2"       "c12source"             	"How far in Km is this water source from your household?"
-##[10,] "baraza.C1.3"       "qc15"                  	"On average, how long do you have to wait to collect water during the dry season? (mins)"
-##[11,] "baraza.C2.3"       "c10"             		"Is there a Water User Committee in this village?"
-##[12,] "baraza.A6"         "a6"			"Distance to nearest all weather road (km)"             
+## [8,] "unprotected"       "base_unprotected"      	Household uses unprotected water source during dry season (yes/no)
+## [9,] "baraza.C1.2"       "c12source"             	Distance to water source
+##[10,] "baraza.C1.3"       "qc15"                  	Average waiting time at source (min)
+##[11,] "baraza.C2.3"       "c10"             		Is there a Water User Committee in this village? (yes/no)
+##[12,] "baraza.A6"         "a6"			Distance to nearest all weather road (km)             
 ##[13,] "infra_index"       "base_infra_index"   
 
 ##health   
-##[14,] "baraza.D2"         "pub_health_access"     	"Seek treatment for fever in public health facility"
-##[15,] "baraza.D2.4"       "maternal_health_access"	"Go to public health facility to give birth"
-##[16,] "baraza.D3"         "d31"                   	"Is there a VHT in village"
-##[17,] "baraza.D4.2"       "d43"                   	"Distance to nearest govt health facility"
-##[18,] "baraza.D1"         "d11"                   	"Were any household members unable to work or go to school due to an illness in the past one year?"
-##[19,] "baraza.D4.6"       "wait_time"           	"How long did you have to wait before being attended (in min)"
-#20	"baraza.D6" 		"d61"			"Have you visited a traditional health practitioner in the last year?"
+##[14,] "baraza.D2"         "pub_health_access"     	Seek treatment for fever in public health facility (1=yes) 
+##[15,] "baraza.D2.4"       "maternal_health_access"	Go to public health facility to give birth (1=yes)  
+##[16,] "baraza.D3"         "d31"                   	Is there a VHT in village? (1=yes) 
+##[17,] "baraza.D4.2"       "d43"                   	Distance to nearest govt health facility (km) 
+##[18,] "baraza.D1"         "d11"                   	Were days work/school missed due to illness? (1=yes)  
+##[19,] "baraza.D4.6"       "wait_time"           	Waiting time before being attended (min)  
+#20	"baraza.D6" 		"d61"			Has visited traditional health practitioner? (1=yes)  
    
 ##[21,] "health_index"      "base_health_index"     
 
 ##educations
-##[22,] "n_children"	    "base_n_children"		"Number of children in UPS or USE"
-##23"baraza.E1"		e5				"Distance to UPE school
-##24"baraza.E1.4" "e12" 			"Complete boundary fence
-##25"baraza.E1.6" "e14" 			"Has water facility
-##26"baraza.E1.10 "e22" 			"Has SMC
-##27"baraza.E1.13 "e32" 			"Informed about SMC
-##28"baraza.E1.18 "e45" 				"Inspectors visited schools
+##[22,] "n_children"	    "base_n_children"		Number of children in UPS or USE 
+##23"baraza.E1"		e5				Distance to public school (km)  
+##24"baraza.E1.4" "e12" 				Has complete boundary fence (1=yes) 
+##25"baraza.E1.6" "e14" 				Has water facility (1=yes) 
+##26"baraza.E1.10 "e22" 				Has School Management Committee (1=yes)  
+##27"baraza.E1.13 "e32" 				Is informed about School Management Committee (1=yes)  
+##28"baraza.E1.18 "e45" 				Inspectors visited schools (1=yes)  
 
 ##29 "education_index"      "base_education_index"  
 
@@ -337,11 +353,30 @@ endline$information_planned <- 0
 endline$information_planned[endline$treat == "info" | endline$treat == "scbza"] <- 1
 endline$deliberation_planned <- 0
 endline$deliberation_planned[endline$treat == "delib" | endline$treat == "scbza"] <- 1
+endline$interaction_planned <- 0
+endline$interaction_planned[endline$treat == "scbza"] <- 1
 
 endline_info <- subset(endline, information == 0)
 
 ##init arrays to store results
-df_balance <- array(NA,dim=c(6,2,length(outcomes)))
+df_balance <- array(NA,dim=c(6,3,length(outcomes)))
+
+endline_interact <- subset(endline, (information ==0 & deliberation == 0))
+
+for (i in 1:length(outcomes)) {
+## simple difference and adjust se for clustered treatment assignment
+ols <- lm(as.formula(paste(outcomes[i],"interaction_planned+a21",sep="~")), data=endline_interact) 
+vcov_cluster <- vcovCR(ols, cluster = endline_interact$clusterID, type = "CR0")
+res <- coeftest(ols, vcov_cluster)
+conf <- conf_int(ols, vcov_cluster)
+
+df_balance[,1,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
+
+}
+
+
+endline_info <- subset(endline, information == 0)
+
 
 for (i in 1:length(outcomes)) {
 ## simple difference and adjust se for clustered treatment assignment
@@ -350,7 +385,7 @@ vcov_cluster <- vcovCR(ols, cluster = endline_info$clusterID, type = "CR0")
 res <- coeftest(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_balance[,1,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
+df_balance[,2,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
 
 }
 
@@ -366,7 +401,7 @@ vcov_cluster <- vcovCR(ols, cluster = endline_delib$clusterID, type = "CR0")
 res <- coeftest(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_balance[,2,i] <- c(res[3,1],res[3,2],res[3,4], conf[3,4],conf[3,5], nobs(ols))
+df_balance[,3,i] <- c(res[3,1],res[3,2],res[3,4], conf[3,4],conf[3,5], nobs(ols))
 }
 
 #

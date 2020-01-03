@@ -220,9 +220,6 @@ endline$baraza.E1.13 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e32, 
 endline$baraza.E1.18 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e45, na.rm=T))
 ##ag
 
-
-##ag
-
 #1 access to extension, 
 #2 visit extension officer or demo site, 
 #2 farmer in naads supported group, 
@@ -365,232 +362,63 @@ dta_long <- rbind(endline[c("information","deliberation","district_baraza","time
 
 
 ###init arrays to store results
-df_ols <- array(NA,dim=c(6,4,length(outcomes)))
-df_ancova <- array(NA,dim=c(6,4,length(outcomes)))
-df_dif_in_dif <- array(NA,dim=c(6,4,length(outcomes)))
-df_matcher <- array(NA,dim=c(6,4,length(outcomes)))
-df_averages <- array(NA,dim=c(2,length(outcomes)))
 
+df_ancova <- array(NA,dim=c(6,12,length(outcomes)))
+df_averages <- array(NA,dim=c(2,length(outcomes)))
+################
+
+dta$date <- as.character(paste("15",paste(dta$month, dta$year, sep="/"),sep="/"))
+dta$date <- as.Date(dta$date,format = "%d/%m/%Y")
+dta$today <- as.Date("2020-02-15") ### set this as 15th of feb 2020, which is prob when half of endline data is collected
+dta$time_dif <- as.numeric(as.character(dta$today - dta$date))/30/12
+dta$time_dif[is.na(dta$time_dif)] <- 0 
+dta$time_dif2 <- dta$time_dif * dta$time_dif
+#####################
 for (i in 1:length(outcomes)) {
 #print(i)
 
 df_averages[1,i] <- mean(as.matrix(endline[outcomes[i]]), na.rm=T)
 df_averages[2,i] <- sd(as.matrix(endline[outcomes[i]]), na.rm=T)
 
-### simple difference and adjust se for clustered treatment assignment
-ols <- lm(as.formula(paste(outcomes[i],"information*deliberation+a21",sep="~")), data=endline[endline$district_baraza == 0,]) 
-vcov_cluster <- vcovCR(ols, cluster = endline$clusterID[endline$district_baraza == 0], type = "CR0")
-res <- coeftest(ols, vcov_cluster)
-conf <- conf_int(ols, vcov_cluster)
-
-df_ols[,2,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
-df_ols[,3,i] <- c(res[3,1],res[3,2],res[3,4], conf[3,4],conf[3,5], nobs(ols))
-df_ols[,1,i] <- c(res[7,1],res[7,2],res[7,4], conf[7,4],conf[7,5], nobs(ols))
-
-ols <- lm(as.formula(paste(outcomes[i],"district_baraza+a21",sep="~")), data=endline[(endline$information == 1 & endline$deliberation==1) | endline$district_baraza == 1 ,]) 
-vcov_cluster <- vcovCR(ols, cluster = endline$clusterID2[(endline$information == 1 & endline$deliberation==1) | endline$district_baraza == 1 ], type = "CR0")
-res <- coeftest(ols, vcov_cluster)
-conf <- conf_int(ols, vcov_cluster)
-df_ols[,4,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
-
 ##ancova
 ## merge in baseline
-
-ols <- lm(as.formula(paste(paste(outcomes[i],"information*deliberation+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[dta$district_baraza == 0,]) 
+## sc baraza
+ols <- lm(as.formula(paste(paste(outcomes[i],"information*deliberation+information:deliberation:time_dif+information:deliberation:time_dif2+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[dta$district_baraza == 0,]) 
 vcov_cluster <- vcovCR(ols, cluster = dta$clusterID[dta$district_baraza == 0], type = "CR0")
 res <- coeftest(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_ancova[,2,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
-df_ancova[,3,i] <- c(res[3,1],res[3,2],res[3,4], conf[3,4],conf[3,5], nobs(ols))
-df_ancova[,1,i] <- c(res[7,1],res[7,2],res[7,4], conf[7,4],conf[7,5], nobs(ols))
+df_ancova[,1,i] <- c(res[8,1],res[8,2],res[8,4], conf[8,4],conf[8,5], nobs(ols))
+df_ancova[,2,i] <- c(res[9,1],res[9,2],res[9,4], conf[9,4],conf[9,5], nobs(ols))
+df_ancova[,3,i] <- c(res[10,1],res[10,2],res[10,4], conf[10,4],conf[10,5], nobs(ols))
+#info baraza
+ols <- lm(as.formula(paste(paste(outcomes[i],"information*deliberation+information:time_dif+information:time_dif2+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[dta$district_baraza == 0,]) 
+vcov_cluster <- vcovCR(ols, cluster = dta$clusterID[dta$district_baraza == 0], type = "CR0")
+res <- coeftest(ols, vcov_cluster)
+conf <- conf_int(ols, vcov_cluster)
+
+df_ancova[,4,i] <- c(res[8,1],res[8,2],res[8,4], conf[8,4],conf[8,5], nobs(ols))
+df_ancova[,5,i] <- c(res[9,1],res[9,2],res[9,4], conf[9,4],conf[9,5], nobs(ols))
+df_ancova[,6,i] <- c(res[10,1],res[10,2],res[10,4], conf[10,4],conf[10,5], nobs(ols))
+
+#info baraza
+ols <- lm(as.formula(paste(paste(outcomes[i],"information*deliberation+deliberation:time_dif+deliberation:time_dif2+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[dta$district_baraza == 0,]) 
+vcov_cluster <- vcovCR(ols, cluster = dta$clusterID[dta$district_baraza == 0], type = "CR0")
+res <- coeftest(ols, vcov_cluster)
+conf <- conf_int(ols, vcov_cluster)
+
+df_ancova[,7,i] <- c(res[8,1],res[8,2],res[8,4], conf[8,4],conf[8,5], nobs(ols))
+df_ancova[,8,i] <- c(res[9,1],res[9,2],res[9,4], conf[9,4],conf[9,5], nobs(ols))
+df_ancova[,9,i] <- c(res[10,1],res[10,2],res[10,4], conf[10,4],conf[10,5], nobs(ols))
 
 
-ols <- lm(as.formula(paste(paste(outcomes[i],"district_baraza+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ,]) 
+ols <- lm(as.formula(paste(paste(outcomes[i],"district_baraza+district_baraza:time_dif+district_baraza:time_dif2+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ,]) 
 vcov_cluster <- vcovCR(ols, cluster = dta$clusterID2[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ], type = "CR0")
 res <- coeftest(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
-df_ancova[,4,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
-
-
-## dif-in-dif
-ols <- lm(as.formula(paste(outcomes[i],"information*deliberation*time",sep="~")), data=dta_long[dta_long$district_baraza == 0,])
-vcov_cluster <- vcovCR(ols, cluster = dta_long$clusterID[dta_long$district_baraza == 0], type = "CR0")
-res <- coeftest(ols, vcov_cluster)
-conf <- conf_int(ols, vcov_cluster)
-
-df_dif_in_dif[,2,i] <- c(res[6,1],res[6,2],res[6,4], conf[6,4], conf[6,5], nobs(ols))
-df_dif_in_dif[,3,i] <- c(res[7,1],res[7,2],res[7,4], conf[7,4], conf[7,5], nobs(ols))
-df_dif_in_dif[,1,i] <- c(res[8,1],res[8,2],res[8,4], conf[8,4], conf[8,5], nobs(ols))
-
-
-ols <- lm(as.formula(paste(outcomes[i],"district_baraza*time",sep="~")), data=dta_long[(dta_long$information == 1 & dta_long$deliberation==1) | dta_long$district_baraza == 1 ,]) 
-vcov_cluster <- vcovCR(ols, cluster = dta_long$clusterID2[(dta_long$information == 1 & dta_long$deliberation==1) | dta_long$district_baraza == 1 ], type = "CR0")
-res <- coeftest(ols, vcov_cluster)
-conf <- conf_int(ols, vcov_cluster)
-df_dif_in_dif[,4,i] <- c(res[4,1],res[4,2],res[4,4], conf[4,4], conf[4,5], nobs(ols))
-
-
-###matched dif-in-dif
-
-baseline_complete <- baseline_matching[complete.cases(baseline_matching[c("information", "deliberation","district_baraza","hhsize","femhead","agehead","log_farmsize","ironroof","improved_wall","has_phone","head_sec","a26a","a26b","hhid","clusterID","clusterID2",baseline_outcomes[i])]),] 
-baseline_complete <- baseline_complete[c("information","deliberation","district_baraza","hhsize","femhead","agehead","log_farmsize","ironroof","improved_wall","has_phone","head_sec","a26a","a26b","hhid","clusterID","clusterID2",baseline_outcomes[i])]
-
-####matching for information
-nearest.match <- matchit(formula = information ~ hhsize + femhead + agehead + log_farmsize + ironroof + improved_wall + has_phone +head_sec+a26a+a26b,  data =baseline_complete[baseline_complete$district_baraza == 0,] ,method = "nearest",distance = "logit")
-summary(nearest.match)
-#plot(nearest.match)
-#plot(nearest.match, type="hist")
-#plot(nearest.match, type="jitter")
-
-matched.baseline <- match.data(nearest.match)
-
-### this is the matched data -  we now need to extract these ids from the endline and stack base and endline to do a dif-in-dif
-
-matched.endline <- endline[endline$hhid %in% matched.baseline$hhid,]
-matched.baseline$time <- 0
-matched.endline$time <- 1
-
-matched.baseline <- matched.baseline[c("information","deliberation","time","clusterID","clusterID2",baseline_outcomes[i] )]
-names(matched.baseline) <- c("information","deliberation","time","clusterID","clusterID2",outcomes[i] )
-
-
-matched.dta_long <- rbind(matched.endline[c("information","deliberation","time","clusterID","clusterID2", outcomes[i])], matched.baseline[ c("information","deliberation","time","clusterID","clusterID2",outcomes[i] )])
-
-ols <- lm(as.formula(paste(outcomes[i],"information*deliberation*time",sep="~")), data=matched.dta_long)
-vcov_cluster <- vcovCR(ols, cluster = matched.dta_long$clusterID, type = "CR0")
-res <- coeftest(ols, vcov_cluster)
-conf <- conf_int(ols, vcov_cluster)
-
-
-df_matcher[,2,i] <- c(res[6,1],res[6,2],res[6,4], conf[6,4], conf[6,5], nobs(ols))
-
-####matching for deliberation
-nearest.match <- matchit(formula = deliberation ~ hhsize + femhead + agehead + log_farmsize + ironroof + improved_wall + has_phone +head_sec+a26a+a26b,  data =baseline_complete[baseline_complete$district_baraza == 0,] ,method = "nearest",distance = "logit")
-summary(nearest.match)
-#plot(nearest.match)
-#plot(nearest.match, type="hist")
-#plot(nearest.match, type="jitter")
-
-matched.baseline <- match.data(nearest.match)
-
-### this is the matched data -  we now need to extract these ids from the endline and stack base and endline to do a dif-in-dif
-
-matched.endline <- endline[endline$hhid %in% matched.baseline$hhid,]
-matched.baseline$time <- 0
-matched.endline$time <- 1
-
-matched.baseline <- matched.baseline[c("information","deliberation","time","clusterID","clusterID2",baseline_outcomes[i] )]
-names(matched.baseline) <- c("information","deliberation","time","clusterID","clusterID2",outcomes[i] )
-
-
-matched.dta_long <- rbind(matched.endline[c("information","deliberation","time","clusterID","clusterID2", outcomes[i])], matched.baseline[ c("information","deliberation","time","clusterID","clusterID2",outcomes[i] )])
-ols <- lm(as.formula(paste(outcomes[i],"information*deliberation*time",sep="~")), data=matched.dta_long)
-vcov_cluster <- vcovCR(ols, cluster = matched.dta_long$clusterID, type = "CR0")
-res <- coeftest(ols, vcov_cluster)
-conf <- conf_int(ols, vcov_cluster)
-
-
-df_matcher[,3,i] <- c(res[7,1],res[7,2],res[7,4], conf[7,4], conf[7,5], nobs(ols))
-
-
-####matching for interaction
-nearest.match <- matchit(formula = deliberation*information ~ hhsize + femhead + agehead + log_farmsize + ironroof + improved_wall + has_phone +head_sec+a26a+a26b,  data =baseline_complete[baseline_complete$district_baraza == 0,] ,method = "nearest",distance = "logit")
-summary(nearest.match)
-#plot(nearest.match)
-#plot(nearest.match, type="hist")
-#plot(nearest.match, type="jitter")
-
-matched.baseline <- match.data(nearest.match)
-
-### this is the matched data -  we now need to extract these ids from the endline and stack base and endline to do a dif-in-dif
-
-matched.endline <- endline[endline$hhid %in% matched.baseline$hhid,]
-matched.baseline$time <- 0
-matched.endline$time <- 1
-
-matched.baseline <- matched.baseline[c("information","deliberation","time","clusterID","clusterID2",baseline_outcomes[i] )]
-names(matched.baseline) <- c("information","deliberation","time","clusterID","clusterID2",outcomes[i] )
-
-
-matched.dta_long <- rbind(matched.endline[c("information","deliberation","time","clusterID","clusterID2", outcomes[i])], matched.baseline[ c("information","deliberation","time","clusterID","clusterID2",outcomes[i] )])
-ols <- lm(as.formula(paste(outcomes[i],"information*deliberation*time",sep="~")), data=matched.dta_long)
-vcov_cluster <- vcovCR(ols, cluster = matched.dta_long$clusterID, type = "CR0")
-res <- coeftest(ols, vcov_cluster)
-conf <- conf_int(ols, vcov_cluster)
-
-
-df_matcher[,1,i] <- c(res[8,1],res[8,2],res[8,4], conf[8,4], conf[8,5], nobs(ols))
-####matching for district baraza
-nearest.match <- matchit(formula = district_baraza ~ hhsize + femhead + agehead + log_farmsize + ironroof + improved_wall + has_phone +head_sec+a26a+a26b,  data =baseline_complete[(baseline_complete$information == 1 & baseline_complete$deliberation==1) | baseline_complete$district_baraza == 1 ,] ,method = "nearest",distance = "logit")
-summary(nearest.match)
-#plot(nearest.match)
-#plot(nearest.match, type="hist")
-#plot(nearest.match, type="jitter")
-
-matched.baseline <- match.data(nearest.match)
-
-### this is the matched data -  we now need to extract these ids from the endline and stack base and endline to do a dif-in-dif
-
-matched.endline <- endline[endline$hhid %in% matched.baseline$hhid,]
-matched.baseline$time <- 0
-matched.endline$time <- 1
-
-matched.baseline <- matched.baseline[c("district_baraza","time","clusterID","clusterID2",baseline_outcomes[i] )]
-names(matched.baseline) <- c("district_baraza","time","clusterID","clusterID2",outcomes[i] )
-
-
-matched.dta_long <- rbind(matched.endline[c("district_baraza","time","clusterID","clusterID2", outcomes[i])], matched.baseline[ c("district_baraza","time","clusterID","clusterID2",outcomes[i] )])
-ols <- lm(as.formula(paste(outcomes[i],"district_baraza*time",sep="~")), data=matched.dta_long)
-vcov_cluster <- vcovCR(ols, cluster = matched.dta_long$clusterID2, type = "CR0")
-res <- coeftest(ols, vcov_cluster)
-conf <- conf_int(ols, vcov_cluster)
-
-df_matcher[,4,i] <- c(res[4,1],res[4,2],res[4,4], conf[4,4], conf[4,5], nobs(ols))
+df_ancova[,10,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
+df_ancova[,11,i] <- c(res[7,1],res[7,2],res[7,4], conf[7,4],conf[7,5], nobs(ols))
+df_ancova[,12,i] <- c(res[8,1],res[8,2],res[8,4], conf[8,4],conf[8,5], nobs(ols))
 
 }
-
-### create data.frame to plot - make sure you get correct i's for the indices; last one is overall index
-d_plot <- data.frame(rbind(df_ancova[c(1,4,5),1,7],df_ancova[c(1,4,5),2,7],df_ancova[c(1,4,5),3,7],df_ancova[c(1,4,5),4,7]))
-d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,13],df_ancova[c(1,4,5),2,13],df_ancova[c(1,4,5),3,13],df_ancova[c(1,4,5),4,13])))
-d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,21],df_ancova[c(1,4,5),2,21],df_ancova[c(1,4,5),3,21],df_ancova[c(1,4,5),4,21])))
-d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,29],df_ancova[c(1,4,5),2,29],df_ancova[c(1,4,5),3,29],df_ancova[c(1,4,5),4,29])))
-d_plot <- rbind(d_plot, data.frame(rbind(c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA))))
-d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,30],df_ancova[c(1,4,5),2,30],df_ancova[c(1,4,5),3,30],df_ancova[c(1,4,5),4,30])))
-
-
-names(d_plot) <- c("y","ylo","yhi")
-
-d_plot$x <- rep(c("agricuture","infrastructure","health","education","","index"), each=4)
-d_plot$grp <- rep(c("sc baraza","info","delib","level"), times=6)
-d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib","level"))
-d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","health","education","","index"))))
-png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/impact_summary_ancova.png", units="px", height=3200, width= 6400, res=600)
-credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3)
-dev.off()
-
-### create data.frame to plot - make sure you get correct i's for the indices; last one is overall index
-d_plot <- data.frame(rbind(df_matcher[c(1,4,5),1,7],df_matcher[c(1,4,5),2,7],df_matcher[c(1,4,5),3,7],df_matcher[c(1,4,5),4,7]))
-d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,13],df_matcher[c(1,4,5),2,13],df_matcher[c(1,4,5),3,13],df_matcher[c(1,4,5),4,13])))
-d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,21],df_matcher[c(1,4,5),2,21],df_matcher[c(1,4,5),3,21],df_matcher[c(1,4,5),4,21])))
-d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,29],df_matcher[c(1,4,5),2,29],df_matcher[c(1,4,5),3,29],df_matcher[c(1,4,5),4,29])))
-d_plot <- rbind(d_plot, data.frame(rbind(c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA))))
-d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,30],df_matcher[c(1,4,5),2,30],df_matcher[c(1,4,5),3,30],df_matcher[c(1,4,5),4,30])))
-
-
-names(d_plot) <- c("y","ylo","yhi")
-
-d_plot$x <- rep(c("agricuture","infrastructure","health","education","","index"), each=4)
-d_plot$grp <- rep(c("sc baraza","info","delib","level"), times=6)
-d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib","level"))
-d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","health","education","","index"))))
-png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/impact_summary_matcher.png", units="px", height=3200, width= 6400, res=600)
-credplot.gg(d_plot,'SDs','',levels(d_plot$x),.5)
-dev.off()
- # d is a data frame with 4 columns
- # d$x gives variable names
- # d$y gives center point
- # d$ylo gives lower limits
- # d$yhi gives upper limits
-
 

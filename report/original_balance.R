@@ -147,7 +147,7 @@ df_averages <- array(NA,dim=c(2,length(outcomes)))
 
 
 for (i in 1:length(outcomes)) {
-print(i)
+#print(i)
 
 df_averages[1,i] <- mean(as.matrix(baseline[outcomes[i]]), na.rm=T)
 df_averages[2,i] <- sd(as.matrix(baseline[outcomes[i]]), na.rm=T)
@@ -243,7 +243,7 @@ df_averages_end <- array(NA,dim=c(2,length(outcomes)))
 
 
 for (i in 1:length(outcomes)) {
-print(i)
+#print(i)
 
 df_averages_end[1,i] <- mean(as.matrix(baseline[outcomes[i]]), na.rm=T)
 df_averages_end[2,i] <- sd(as.matrix(baseline[outcomes[i]]), na.rm=T)

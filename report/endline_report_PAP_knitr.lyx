@@ -129,12 +129,12 @@ Community advocacy forums and public service delivery - Impact, and the
 \end_layout
 
 \begin_layout Abstract
-To improve governance and public service delivery public service delivery,
- the Government of Uganda organizes community forums – popularly known as
- barazas – where citizens receive information from government officials,
- and get the opportunity to directly engage with them.
+To improve governance and public service delivery, the Government of Uganda
+ organizes community forums – popularly known as barazas – where citizens
+ receive information from government officials, and get the opportunity
+ to directly engage with them.
  We run a cluster randomize control trial to assess the impact of the baraza
- intervention on a range of outcomes related to agriculture, health, education
+ intervention on a range of outcomes related to agriculture, health, education,
  and infrastructure.
  Using a factorial design, we further test the relative importance of the
  two main components of the intervention – information provision and citizen
@@ -1772,8 +1772,9 @@ Note: First column reports sample means (and standard deviations below);
  Column 2 reports effect (and standard errors below) of the subcounty level
  baraza intervention; Column 3 reports the effect (and standard errors below)
  of the information component of the baraza intervention; Column 4 reports
- the effect (and standard errors below) of the administrative placement
- of the baraza intervention.
+ the effect (and standard errors below) of the deliberation component of
+ the baraza intervention; Column 5 reports the effect (and standard errors
+ below) of the administrative placement of the baraza intervention.
  **, * and + denotes significance at the 1, 5 and 10 percent levels.
    
 \end_layout
@@ -1899,7 +1900,7 @@ reference "tab:balance_orig"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -2534,13 +2535,13 @@ scriptsize
 \begin_layout Plain Layout
 
 Note: First column reports sample means (and standard deviations below);
- Column 2 reports differences (and standard errors below) of the information
- component of the baraza intervention; Column 3 reports differences (and
- standard errors below) of the information component of the baraza intervention;
- Column 4 reports differences (and standard errors below) of the administrative
- placement of the baraza intervention.
+ Column 2 reports effect (and standard errors below) of the subcounty level
+ baraza intervention; Column 3 reports the effect (and standard errors below)
+ of the information component of the baraza intervention; Column 4 reports
+ the effect (and standard errors below) of the deliberation component of
+ the baraza intervention.
  **, * and + denotes significance at the 1, 5 and 10 percent levels.
-  
+    
 \end_layout
 
 \end_inset
@@ -2885,7 +2886,7 @@ begin{center}
 
 
 \backslash
-begin{tabular}{rcccc} 
+begin{tabular}{rccccc} 
 \backslash
 hline 
 \backslash
@@ -2903,7 +2904,7 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& level 
 \backslash
 
 \backslash
@@ -2914,7 +2915,7 @@ hline
 
 
 \backslash
-cline{2-5} 
+cline{2-6} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -2935,17 +2936,22 @@ Sexpr{format(round(df_averages_end[1,1],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ols_end[1,1,1],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,1,1]<.01,"**",ifelse(df_ols_end[3,1,1]<.05,"*",ifelse(df
-_ols_end[3,1,1]<.1,"+","")))}}	&	
+_ols_end[3,1,1]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ols_end[1,2,1],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,2,1]<.01,"**",ifelse(df_ols_end[3,2,1]<.05,"*",ifelse(df
-_ols_end[3,2,1]<.1,"+","")))}} &	
+_ols_end[3,2,1]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ols_end[1,3,1],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,3,1]<.01,"**",ifelse(df_ols_end[3,3,1]<.05,"*",ifelse(df
-_ols_end[3,3,1]<.1,"+","")))}}	
+_ols_end[3,3,1]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ols_end[1,4,1],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols_end[3,4,1]<.01,"**",ifelse(df_ols_end[3,4,1]<.05,"*",ifelse(df
+_ols_end[3,4,1]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -2957,7 +2963,9 @@ Sexpr{format(round(df_ols_end[2,1,1],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ols_end[2,2,1],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ols_end[2,3,1],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ols_end[2,3,1],digits=3),nsmall=3)}) &		(
+\backslash
+Sexpr{format(round(df_ols_end[2,4,1],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -2977,17 +2985,22 @@ Sexpr{format(round(df_averages_end[1,2],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ols_end[1,1,2],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,1,2]<.01,"**",ifelse(df_ols_end[3,1,2]<.05,"*",ifelse(df
-_ols_end[3,1,2]<.1,"+","")))}}	&	
+_ols_end[3,1,2]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ols_end[1,2,2],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,2,2]<.01,"**",ifelse(df_ols_end[3,2,2]<.05,"*",ifelse(df
-_ols_end[3,2,2]<.1,"+","")))}} &	
+_ols_end[3,2,2]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ols_end[1,3,2],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,3,2]<.01,"**",ifelse(df_ols_end[3,3,2]<.05,"*",ifelse(df
-_ols_end[3,3,2]<.1,"+","")))}}	
+_ols_end[3,3,2]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ols_end[1,4,2],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols_end[3,4,2]<.01,"**",ifelse(df_ols_end[3,4,2]<.05,"*",ifelse(df
+_ols_end[3,4,2]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -2999,7 +3012,9 @@ Sexpr{format(round(df_ols_end[2,1,2],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ols_end[2,2,2],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ols_end[2,3,2],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ols_end[2,3,2],digits=3),nsmall=3)}) &		(
+\backslash
+Sexpr{format(round(df_ols_end[2,4,2],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -3019,17 +3034,22 @@ Sexpr{format(round(df_averages_end[1,3],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ols_end[1,1,3],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,1,3]<.01,"**",ifelse(df_ols_end[3,1,3]<.05,"*",ifelse(df
-_ols_end[3,1,3]<.1,"+","")))}}	&	
+_ols_end[3,1,3]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ols_end[1,2,3],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,2,3]<.01,"**",ifelse(df_ols_end[3,2,3]<.05,"*",ifelse(df
-_ols_end[3,2,3]<.1,"+","")))}} &	
+_ols_end[3,2,3]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ols_end[1,3,3],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,3,3]<.01,"**",ifelse(df_ols_end[3,3,3]<.05,"*",ifelse(df
-_ols_end[3,3,3]<.1,"+","")))}}	
+_ols_end[3,3,3]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ols_end[1,4,3],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols_end[3,4,3]<.01,"**",ifelse(df_ols_end[3,4,3]<.05,"*",ifelse(df
+_ols_end[3,4,3]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -3041,7 +3061,9 @@ Sexpr{format(round(df_ols_end[2,1,3],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ols_end[2,2,3],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ols_end[2,3,3],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ols_end[2,3,3],digits=3),nsmall=3)}) &		(
+\backslash
+Sexpr{format(round(df_ols_end[2,4,3],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -3061,17 +3083,22 @@ Sexpr{format(round(df_averages_end[1,4],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ols_end[1,1,4],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,1,4]<.01,"**",ifelse(df_ols_end[3,1,4]<.05,"*",ifelse(df
-_ols_end[3,1,4]<.1,"+","")))}}	&	
+_ols_end[3,1,4]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ols_end[1,2,4],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,2,4]<.01,"**",ifelse(df_ols_end[3,2,4]<.05,"*",ifelse(df
-_ols_end[3,2,4]<.1,"+","")))}} &	
+_ols_end[3,2,4]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ols_end[1,3,4],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,3,4]<.01,"**",ifelse(df_ols_end[3,3,4]<.05,"*",ifelse(df
-_ols_end[3,3,4]<.1,"+","")))}}	
+_ols_end[3,3,4]<.1,"+","")))}}$	 &	
+\backslash
+Sexpr{format(round(df_ols_end[1,4,4],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols_end[3,4,4]<.01,"**",ifelse(df_ols_end[3,4,4]<.05,"*",ifelse(df
+_ols_end[3,4,4]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -3083,7 +3110,9 @@ Sexpr{format(round(df_ols_end[2,1,4],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ols_end[2,2,4],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ols_end[2,3,4],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ols_end[2,3,4],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ols_end[2,4,4],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -3103,17 +3132,22 @@ Sexpr{format(round(df_averages_end[1,5],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ols_end[1,1,5],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,1,5]<.01,"**",ifelse(df_ols_end[3,1,5]<.05,"*",ifelse(df
-_ols_end[3,1,5]<.1,"+","")))}}	&	
+_ols_end[3,1,5]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ols_end[1,2,5],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,2,5]<.01,"**",ifelse(df_ols_end[3,2,5]<.05,"*",ifelse(df
-_ols_end[3,2,5]<.1,"+","")))}} &	
+_ols_end[3,2,5]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ols_end[1,3,5],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,3,5]<.01,"**",ifelse(df_ols_end[3,3,5]<.05,"*",ifelse(df
-_ols_end[3,3,5]<.1,"+","")))}}	
+_ols_end[3,3,5]<.1,"+","")))}}$	 &	
+\backslash
+Sexpr{format(round(df_ols_end[1,4,5],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols_end[3,4,5]<.01,"**",ifelse(df_ols_end[3,4,5]<.05,"*",ifelse(df
+_ols_end[3,4,5]<.1,"+","")))}}$
 \backslash
 
 \backslash
@@ -3125,7 +3159,9 @@ Sexpr{format(round(df_ols_end[2,1,5],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ols_end[2,2,5],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ols_end[2,3,5],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ols_end[2,3,5],digits=3),nsmall=3)}) &		(
+\backslash
+Sexpr{format(round(df_ols_end[2,4,5],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -3145,17 +3181,22 @@ Sexpr{format(round(df_averages_end[1,6],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ols_end[1,1,6],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,1,6]<.01,"**",ifelse(df_ols_end[3,1,6]<.05,"*",ifelse(df
-_ols_end[3,1,6]<.1,"+","")))}}	&	
+_ols_end[3,1,6]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ols_end[1,2,6],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,2,6]<.01,"**",ifelse(df_ols_end[3,2,6]<.05,"*",ifelse(df
-_ols_end[3,2,6]<.1,"+","")))}} &	
+_ols_end[3,2,6]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ols_end[1,3,6],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,3,6]<.01,"**",ifelse(df_ols_end[3,3,6]<.05,"*",ifelse(df
-_ols_end[3,3,6]<.1,"+","")))}}	
+_ols_end[3,3,6]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ols_end[1,4,6],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols_end[3,4,6]<.01,"**",ifelse(df_ols_end[3,4,6]<.05,"*",ifelse(df
+_ols_end[3,4,6]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -3167,7 +3208,9 @@ Sexpr{format(round(df_ols_end[2,1,6],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ols_end[2,2,6],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ols_end[2,3,6],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ols_end[2,3,6],digits=3),nsmall=3)}) &		(
+\backslash
+Sexpr{format(round(df_ols_end[2,4,6],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -3187,17 +3230,22 @@ Sexpr{format(round(df_averages_end[1,7],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ols_end[1,1,7],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,1,7]<.01,"**",ifelse(df_ols_end[3,1,7]<.05,"*",ifelse(df
-_ols_end[3,1,7]<.1,"+","")))}}	&	
+_ols_end[3,1,7]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ols_end[1,2,7],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,2,7]<.01,"**",ifelse(df_ols_end[3,2,7]<.05,"*",ifelse(df
-_ols_end[3,2,7]<.1,"+","")))}} &	
+_ols_end[3,2,7]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ols_end[1,3,7],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,3,7]<.01,"**",ifelse(df_ols_end[3,3,7]<.05,"*",ifelse(df
-_ols_end[3,3,7]<.1,"+","")))}}	
+_ols_end[3,3,7]<.1,"+","")))}}$	 &	
+\backslash
+Sexpr{format(round(df_ols_end[1,4,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols_end[3,4,7]<.01,"**",ifelse(df_ols_end[3,4,7]<.05,"*",ifelse(df
+_ols_end[3,4,7]<.1,"+","")))}}$
 \backslash
 
 \backslash
@@ -3209,7 +3257,9 @@ Sexpr{format(round(df_ols_end[2,1,7],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ols_end[2,2,7],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ols_end[2,3,7],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ols_end[2,3,7],digits=3),nsmall=3)}) &		(
+\backslash
+Sexpr{format(round(df_ols_end[2,4,7],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -3229,17 +3279,22 @@ Sexpr{format(round(df_averages_end[1,8],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ols_end[1,1,8],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,1,8]<.01,"**",ifelse(df_ols_end[3,1,8]<.05,"*",ifelse(df
-_ols_end[3,1,8]<.1,"+","")))}}	&	
+_ols_end[3,1,8]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ols_end[1,2,8],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,2,8]<.01,"**",ifelse(df_ols_end[3,2,8]<.05,"*",ifelse(df
-_ols_end[3,2,8]<.1,"+","")))}} &	
+_ols_end[3,2,8]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ols_end[1,3,8],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,3,8]<.01,"**",ifelse(df_ols_end[3,3,8]<.05,"*",ifelse(df
-_ols_end[3,3,8]<.1,"+","")))}}	
+_ols_end[3,3,8]<.1,"+","")))}}$	 &	
+\backslash
+Sexpr{format(round(df_ols_end[1,4,8],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols_end[3,4,8]<.01,"**",ifelse(df_ols_end[3,4,8]<.05,"*",ifelse(df
+_ols_end[3,4,8]<.1,"+","")))}}$
 \backslash
 
 \backslash
@@ -3251,7 +3306,9 @@ Sexpr{format(round(df_ols_end[2,1,8],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ols_end[2,2,8],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ols_end[2,3,8],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ols_end[2,3,8],digits=3),nsmall=3)}) &		(
+\backslash
+Sexpr{format(round(df_ols_end[2,4,8],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -3271,17 +3328,22 @@ Sexpr{format(round(df_averages_end[1,9],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ols_end[1,1,9],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,1,9]<.01,"**",ifelse(df_ols_end[3,1,9]<.05,"*",ifelse(df
-_ols_end[3,1,9]<.1,"+","")))}}	&	
+_ols_end[3,1,9]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ols_end[1,2,9],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,2,9]<.01,"**",ifelse(df_ols_end[3,2,9]<.05,"*",ifelse(df
-_ols_end[3,2,9]<.1,"+","")))}} &	
+_ols_end[3,2,9]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ols_end[1,3,9],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,3,9]<.01,"**",ifelse(df_ols_end[3,3,9]<.05,"*",ifelse(df
-_ols_end[3,3,9]<.1,"+","")))}}	
+_ols_end[3,3,9]<.1,"+","")))}}$	 &	
+\backslash
+Sexpr{format(round(df_ols_end[1,4,9],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols_end[3,4,9]<.01,"**",ifelse(df_ols_end[3,4,9]<.05,"*",ifelse(df
+_ols_end[3,4,9]<.1,"+","")))}}$
 \backslash
 
 \backslash
@@ -3293,7 +3355,9 @@ Sexpr{format(round(df_ols_end[2,1,9],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ols_end[2,2,9],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ols_end[2,3,9],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ols_end[2,3,9],digits=3),nsmall=3)}) &		(
+\backslash
+Sexpr{format(round(df_ols_end[2,4,9],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -3309,17 +3373,22 @@ Sexpr{format(round(df_averages_end[1,10],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ols_end[1,1,10],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,1,10]<.01,"**",ifelse(df_ols_end[3,1,10]<.05,"*",ifelse(
-df_ols_end[3,1,10]<.1,"+","")))}}	&	
+df_ols_end[3,1,10]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ols_end[1,2,10],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,2,10]<.01,"**",ifelse(df_ols_end[3,2,10]<.05,"*",ifelse(
-df_ols_end[3,2,10]<.1,"+","")))}} &	
+df_ols_end[3,2,10]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ols_end[1,3,10],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ols_end[3,3,10]<.01,"**",ifelse(df_ols_end[3,3,10]<.05,"*",ifelse(
-df_ols_end[3,3,10]<.1,"+","")))}}	
+df_ols_end[3,3,10]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ols_end[1,4,10],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols_end[3,4,10]<.01,"**",ifelse(df_ols_end[3,4,10]<.05,"*",ifelse(
+df_ols_end[3,4,10]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -3331,7 +3400,9 @@ Sexpr{format(round(df_ols_end[2,1,10],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ols_end[2,2,10],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ols_end[2,3,10],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ols_end[2,3,10],digits=3),nsmall=3)})			&		(
+\backslash
+Sexpr{format(round(df_ols_end[2,4,10],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -3355,7 +3426,9 @@ Sexpr{format(round(df_ols_end[6,1,1],digits=3),nsmall=0)} &
 \backslash
 Sexpr{format(round(df_ols_end[6,2,1],digits=3),nsmall=0)} &  
 \backslash
-Sexpr{format(round(df_ols_end[6,3,1],digits=3),nsmall=0)} 
+Sexpr{format(round(df_ols_end[6,3,1],digits=3),nsmall=0)} &  
+\backslash
+Sexpr{format(round(df_ols_end[6,4,1],digits=3),nsmall=0)}  
 \backslash
 
 \backslash
@@ -3416,13 +3489,14 @@ scriptsize
 \begin_layout Plain Layout
 
 Note: First column reports sample means (and standard deviations below);
- Column 2 reports differences (and standard errors below) of the information
- component of the baraza intervention; Column 3 reports differences (and
- standard errors below) of the information component of the baraza intervention;
- Column 4 reports differences (and standard errors below) of the administrative
- placement of the baraza intervention.
+ Column 2 reports effect (and standard errors below) of the subcounty level
+ baraza intervention; Column 3 reports the effect (and standard errors below)
+ of the information component of the baraza intervention; Column 4 reports
+ the effect (and standard errors below) of the deliberation component of
+ the baraza intervention; Column 5 reports the effect (and standard errors
+ below) of the administrative placement of the baraza intervention.
  **, * and + denotes significance at the 1, 5 and 10 percent levels.
-  
+   
 \end_layout
 
 \end_inset
@@ -3754,7 +3828,7 @@ name "sec:Results"
 \end_layout
 
 \begin_layout Standard
-In this section, we provide results for the three main hypotheses outlined
+In this section, we provide results for the four main hypotheses outlined
  in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3958,7 +4032,7 @@ ort/analysis_report.R")
 \begin_inset Float table
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -4052,17 +4126,17 @@ Sexpr{format(round(df_averages[1,1],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,1],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,1]<.01,"**",ifelse(df_ancova[3,1,1]<.05,"*",ifelse(df_a
-ncova[3,1,1]<.1,"+","")))}}	&	
+ncova[3,1,1]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,1],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,1]<.01,"**",ifelse(df_ancova[3,2,1]<.05,"*",ifelse(df_a
-ncova[3,2,1]<.1,"+","")))}} &	
+ncova[3,2,1]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,1],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,1]<.01,"**",ifelse(df_ancova[3,3,1]<.05,"*",ifelse(df_a
-ncova[3,3,1]<.1,"+","")))}}
+ncova[3,3,1]<.1,"+","")))}}$
 \end_layout
 
 \begin_layout Plain Layout
@@ -4072,7 +4146,7 @@ ncova[3,3,1]<.1,"+","")))}}
 Sexpr{format(round(df_ancova[1,4,1],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,4,1]<.01,"**",ifelse(df_ancova[3,4,1]<.05,"*",ifelse(df_a
-ncova[3,4,1]<.1,"+","")))}}	
+ncova[3,4,1]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -4106,22 +4180,22 @@ Sexpr{format(round(df_averages[1,2],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,2],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,2]<.01,"**",ifelse(df_ancova[3,1,2]<.05,"*",ifelse(df_a
-ncova[3,1,2]<.1,"+","")))}}	&	
+ncova[3,1,2]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,2],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,2]<.01,"**",ifelse(df_ancova[3,2,2]<.05,"*",ifelse(df_a
-ncova[3,2,2]<.1,"+","")))}} &	
+ncova[3,2,2]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,2],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,2]<.01,"**",ifelse(df_ancova[3,3,2]<.05,"*",ifelse(df_a
-ncova[3,3,2]<.1,"+","")))}}	&	
+ncova[3,3,2]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,4,2],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,4,2]<.01,"**",ifelse(df_ancova[3,4,2]<.05,"*",ifelse(df_a
-ncova[3,4,2]<.1,"+","")))}}	
+ncova[3,4,2]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -4155,22 +4229,22 @@ Sexpr{format(round(df_averages[1,3],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,3],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,3]<.01,"**",ifelse(df_ancova[3,1,3]<.05,"*",ifelse(df_a
-ncova[3,1,3]<.1,"+","")))}}	&	
+ncova[3,1,3]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,3],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,3]<.01,"**",ifelse(df_ancova[3,2,3]<.05,"*",ifelse(df_a
-ncova[3,2,3]<.1,"+","")))}} &	
+ncova[3,2,3]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,3],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,3]<.01,"**",ifelse(df_ancova[3,3,3]<.05,"*",ifelse(df_a
-ncova[3,3,3]<.1,"+","")))}}	&	
+ncova[3,3,3]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,4,3],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,4,3]<.01,"**",ifelse(df_ancova[3,4,3]<.05,"*",ifelse(df_a
-ncova[3,4,3]<.1,"+","")))}}
+ncova[3,4,3]<.1,"+","")))}}$ 
 \backslash
 
 \backslash
@@ -4204,22 +4278,22 @@ Sexpr{format(round(df_averages[1,4],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,4],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,4]<.01,"**",ifelse(df_ancova[3,1,4]<.05,"*",ifelse(df_a
-ncova[3,1,4]<.1,"+","")))}}	&	
+ncova[3,1,4]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,4],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,4]<.01,"**",ifelse(df_ancova[3,2,4]<.05,"*",ifelse(df_a
-ncova[3,2,4]<.1,"+","")))}} &	
+ncova[3,2,4]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,4],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,4]<.01,"**",ifelse(df_ancova[3,3,4]<.05,"*",ifelse(df_a
-ncova[3,3,4]<.1,"+","")))}}	&	
+ncova[3,3,4]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,4,4],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,4,4]<.01,"**",ifelse(df_ancova[3,4,4]<.05,"*",ifelse(df_a
-ncova[3,4,4]<.1,"+","")))}}
+ncova[3,4,4]<.1,"+","")))}}$ 
 \backslash
 
 \backslash
@@ -4253,22 +4327,22 @@ Sexpr{format(round(df_averages[1,5],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,5],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,5]<.01,"**",ifelse(df_ancova[3,1,5]<.05,"*",ifelse(df_a
-ncova[3,1,5]<.1,"+","")))}}	&	
+ncova[3,1,5]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,5],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,5]<.01,"**",ifelse(df_ancova[3,2,5]<.05,"*",ifelse(df_a
-ncova[3,2,5]<.1,"+","")))}} &	
+ncova[3,2,5]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,5],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,5]<.01,"**",ifelse(df_ancova[3,3,5]<.05,"*",ifelse(df_a
-ncova[3,3,5]<.1,"+","")))}}	&	
+ncova[3,3,5]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,4,5],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,4,5]<.01,"**",ifelse(df_ancova[3,4,5]<.05,"*",ifelse(df_a
-ncova[3,4,5]<.1,"+","")))}}
+ncova[3,4,5]<.1,"+","")))}}$ 
 \backslash
 
 \backslash
@@ -4302,22 +4376,22 @@ Sexpr{format(round(df_averages[1,6],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,6],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,6]<.01,"**",ifelse(df_ancova[3,1,6]<.05,"*",ifelse(df_a
-ncova[3,1,6]<.1,"+","")))}}	&	
+ncova[3,1,6]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,6],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,6]<.01,"**",ifelse(df_ancova[3,2,6]<.05,"*",ifelse(df_a
-ncova[3,2,6]<.1,"+","")))}} &	
+ncova[3,2,6]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,6],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,6]<.01,"**",ifelse(df_ancova[3,3,6]<.05,"*",ifelse(df_a
-ncova[3,3,6]<.1,"+","")))}}	&	
+ncova[3,3,6]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,4,6],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,4,6]<.01,"**",ifelse(df_ancova[3,4,6]<.05,"*",ifelse(df_a
-ncova[3,4,6]<.1,"+","")))}}	
+ncova[3,4,6]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -4356,22 +4430,22 @@ Sexpr{format(round(df_averages[1,7],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,7],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,7]<.01,"**",ifelse(df_ancova[3,1,7]<.05,"*",ifelse(df_a
-ncova[3,1,7]<.1,"+","")))}}	&	
+ncova[3,1,7]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,7],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,7]<.01,"**",ifelse(df_ancova[3,2,7]<.05,"*",ifelse(df_a
-ncova[3,2,7]<.1,"+","")))}} &	
+ncova[3,2,7]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,7],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,7]<.01,"**",ifelse(df_ancova[3,3,7]<.05,"*",ifelse(df_a
-ncova[3,3,7]<.1,"+","")))}}	&	
+ncova[3,3,7]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,4,7],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,4,7]<.01,"**",ifelse(df_ancova[3,4,7]<.05,"*",ifelse(df_a
-ncova[3,4,7]<.1,"+","")))}}
+ncova[3,4,7]<.1,"+","")))}}$ 
 \backslash
 
 \backslash
@@ -4517,7 +4591,7 @@ reference "tab:anova_infra"
 \begin_inset Float table
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -4561,7 +4635,7 @@ begin{center}
 
 
 \backslash
-begin{tabular}{rcccc} 
+begin{tabular}{rccccc} 
 \backslash
 hline 
 \backslash
@@ -4579,7 +4653,7 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & information & deliberation	& level 
+	& mean & sc baraza & information & deliberation	& level 
 \backslash
 
 \backslash
@@ -4590,7 +4664,7 @@ hline
 
 
 \backslash
-cline{2-5} 
+cline{2-6} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -4611,17 +4685,22 @@ Sexpr{format(round(df_averages[1,8],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,8],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,8]<.01,"**",ifelse(df_ancova[3,1,8]<.05,"*",ifelse(df_a
-ncova[3,1,8]<.1,"+","")))}}	&	
+ncova[3,1,8]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,8],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,8]<.01,"**",ifelse(df_ancova[3,2,8]<.05,"*",ifelse(df_a
-ncova[3,2,8]<.1,"+","")))}} &	
+ncova[3,2,8]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,8],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,8]<.01,"**",ifelse(df_ancova[3,3,8]<.05,"*",ifelse(df_a
-ncova[3,3,8]<.1,"+","")))}}	
+ncova[3,3,8]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,4,8],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,8]<.01,"**",ifelse(df_ancova[3,4,8]<.05,"*",ifelse(df_a
+ncova[3,4,8]<.1,"+","")))}}$		
 \backslash
 
 \backslash
@@ -4633,7 +4712,9 @@ Sexpr{format(round(df_ancova[2,1,8],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,8],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,8],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,8],digits=3),nsmall=3)}) 	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,8],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -4653,17 +4734,22 @@ Sexpr{format(round(df_averages[1,9],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,9],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,9]<.01,"**",ifelse(df_ancova[3,1,9]<.05,"*",ifelse(df_a
-ncova[3,1,9]<.1,"+","")))}}	&	
+ncova[3,1,9]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,9],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,9]<.01,"**",ifelse(df_ancova[3,2,9]<.05,"*",ifelse(df_a
-ncova[3,2,9]<.1,"+","")))}} &	
+ncova[3,2,9]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,9],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,9]<.01,"**",ifelse(df_ancova[3,3,9]<.05,"*",ifelse(df_a
-ncova[3,3,9]<.1,"+","")))}}	
+ncova[3,3,9]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,4,9],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,9]<.01,"**",ifelse(df_ancova[3,4,9]<.05,"*",ifelse(df_a
+ncova[3,4,9]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -4675,7 +4761,9 @@ Sexpr{format(round(df_ancova[2,1,9],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,9],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,9],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,9],digits=3),nsmall=3)})	 &		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,9],digits=3),nsmall=3)})		
 \backslash
 
 \backslash
@@ -4695,17 +4783,22 @@ Sexpr{format(round(df_averages[1,10],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,10],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,10]<.01,"**",ifelse(df_ancova[3,1,10]<.05,"*",ifelse(df
-_ancova[3,1,10]<.1,"+","")))}}	&	
+_ancova[3,1,10]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,10],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,10]<.01,"**",ifelse(df_ancova[3,2,10]<.05,"*",ifelse(df
-_ancova[3,2,10]<.1,"+","")))}} &	
+_ancova[3,2,10]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,10],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,10]<.01,"**",ifelse(df_ancova[3,3,10]<.05,"*",ifelse(df
-_ancova[3,3,10]<.1,"+","")))}}	
+_ancova[3,3,10]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,10],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,10]<.01,"**",ifelse(df_ancova[3,4,10]<.05,"*",ifelse(df
+_ancova[3,4,10]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -4717,7 +4810,9 @@ Sexpr{format(round(df_ancova[2,1,10],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,10],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,10],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,10],digits=3),nsmall=3)}) &		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,10],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -4737,17 +4832,22 @@ Sexpr{format(round(df_averages[1,11],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,11],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,11]<.01,"**",ifelse(df_ancova[3,1,11]<.05,"*",ifelse(df
-_ancova[3,1,11]<.1,"+","")))}}	&	
+_ancova[3,1,11]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,11],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,11]<.01,"**",ifelse(df_ancova[3,2,11]<.05,"*",ifelse(df
-_ancova[3,2,11]<.1,"+","")))}} &	
+_ancova[3,2,11]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,11],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,11]<.01,"**",ifelse(df_ancova[3,3,11]<.05,"*",ifelse(df
-_ancova[3,3,11]<.1,"+","")))}}	
+_ancova[3,3,11]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,4,11],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,11]<.01,"**",ifelse(df_ancova[3,4,11]<.05,"*",ifelse(df
+_ancova[3,4,11]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -4759,7 +4859,9 @@ Sexpr{format(round(df_ancova[2,1,11],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,11],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,11],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,11],digits=3),nsmall=3)}) &		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,11],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -4779,17 +4881,22 @@ Sexpr{format(round(df_averages[1,12],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,12],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,12]<.01,"**",ifelse(df_ancova[3,1,12]<.05,"*",ifelse(df
-_ancova[3,1,12]<.1,"+","")))}}	&	
+_ancova[3,1,12]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,12],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,12]<.01,"**",ifelse(df_ancova[3,2,12]<.05,"*",ifelse(df
-_ancova[3,2,12]<.1,"+","")))}} &	
+_ancova[3,2,12]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,12],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,12]<.01,"**",ifelse(df_ancova[3,3,12]<.05,"*",ifelse(df
-_ancova[3,3,12]<.1,"+","")))}}	
+_ancova[3,3,12]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,4,12],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,12]<.01,"**",ifelse(df_ancova[3,4,12]<.05,"*",ifelse(df
+_ancova[3,4,12]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -4801,7 +4908,9 @@ Sexpr{format(round(df_ancova[2,1,12],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,12],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,12],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,12],digits=3),nsmall=3)}) &		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,12],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -4839,17 +4948,22 @@ Sexpr{format(round(df_averages[1,13],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,13],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,13]<.01,"**",ifelse(df_ancova[3,1,13]<.05,"*",ifelse(df
-_ancova[3,1,13]<.1,"+","")))}}	&	
+_ancova[3,1,13]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,13],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,13]<.01,"**",ifelse(df_ancova[3,2,13]<.05,"*",ifelse(df
-_ancova[3,2,13]<.1,"+","")))}} &	
+_ancova[3,2,13]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,13],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,13]<.01,"**",ifelse(df_ancova[3,3,13]<.05,"*",ifelse(df
-_ancova[3,3,13]<.1,"+","")))}}	
+_ancova[3,3,13]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,13],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,13]<.01,"**",ifelse(df_ancova[3,4,13]<.05,"*",ifelse(df
+_ancova[3,4,13]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -4861,7 +4975,9 @@ Sexpr{format(round(df_ancova[2,1,13],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,13],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,13],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,13],digits=3),nsmall=3)}) &		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,13],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -4968,7 +5084,7 @@ Health: ##[14,] "baraza.D2" "pub_health_access" "Seek treatment for fever
 \begin_inset Float table
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -5012,7 +5128,7 @@ begin{center}
 
 
 \backslash
-begin{tabular}{rcccc} 
+begin{tabular}{rccccc} 
 \backslash
 hline 
 \backslash
@@ -5030,7 +5146,7 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & information & deliberation	& level 
+	& mean & sc baraza & information & deliberation	& level 
 \backslash
 
 \backslash
@@ -5041,7 +5157,7 @@ hline
 
 
 \backslash
-cline{2-5} 
+cline{2-6} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -5062,17 +5178,22 @@ Sexpr{format(round(df_averages[1,14],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,14],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,14]<.01,"**",ifelse(df_ancova[3,1,14]<.05,"*",ifelse(df
-_ancova[3,1,14]<.1,"+","")))}}	&	
+_ancova[3,1,14]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,14],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,14]<.01,"**",ifelse(df_ancova[3,2,14]<.05,"*",ifelse(df
-_ancova[3,2,14]<.1,"+","")))}} &	
+_ancova[3,2,14]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,14],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,14]<.01,"**",ifelse(df_ancova[3,3,14]<.05,"*",ifelse(df
-_ancova[3,3,14]<.1,"+","")))}}	
+_ancova[3,3,14]<.1,"+","")))}}$	 &	
+\backslash
+Sexpr{format(round(df_ancova[1,4,14],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,14]<.01,"**",ifelse(df_ancova[3,4,14]<.05,"*",ifelse(df
+_ancova[3,4,14]<.1,"+","")))}}$
 \backslash
 
 \backslash
@@ -5084,7 +5205,9 @@ Sexpr{format(round(df_ancova[2,1,14],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,14],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,14],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,14],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,14],digits=3),nsmall=3)})		
 \backslash
 
 \backslash
@@ -5104,17 +5227,22 @@ Sexpr{format(round(df_averages[1,15],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,15],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,15]<.01,"**",ifelse(df_ancova[3,1,15]<.05,"*",ifelse(df
-_ancova[3,1,15]<.1,"+","")))}}	&	
+_ancova[3,1,15]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,15],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,15]<.01,"**",ifelse(df_ancova[3,2,15]<.05,"*",ifelse(df
-_ancova[3,2,15]<.1,"+","")))}} &	
+_ancova[3,2,15]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,15],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,15]<.01,"**",ifelse(df_ancova[3,3,15]<.05,"*",ifelse(df
-_ancova[3,3,15]<.1,"+","")))}}	
+_ancova[3,3,15]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,4,15],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,15]<.01,"**",ifelse(df_ancova[3,4,15]<.05,"*",ifelse(df
+_ancova[3,4,15]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -5126,7 +5254,9 @@ Sexpr{format(round(df_ancova[2,1,15],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,15],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,15],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,15],digits=3),nsmall=3)})	 &		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,15],digits=3),nsmall=3)})		
 \backslash
 
 \backslash
@@ -5146,17 +5276,22 @@ Sexpr{format(round(df_averages[1,16],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,16],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,16]<.01,"**",ifelse(df_ancova[3,1,16]<.05,"*",ifelse(df
-_ancova[3,1,16]<.1,"+","")))}}	&	
+_ancova[3,1,16]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,16],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,16]<.01,"**",ifelse(df_ancova[3,2,16]<.05,"*",ifelse(df
-_ancova[3,2,16]<.1,"+","")))}} &	
+_ancova[3,2,16]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,16],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,16]<.01,"**",ifelse(df_ancova[3,3,16]<.05,"*",ifelse(df
-_ancova[3,3,16]<.1,"+","")))}}	
+_ancova[3,3,16]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,16],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,16]<.01,"**",ifelse(df_ancova[3,4,16]<.05,"*",ifelse(df
+_ancova[3,4,16]<.1,"+","")))}}$ 
 \backslash
 
 \backslash
@@ -5168,7 +5303,9 @@ Sexpr{format(round(df_ancova[2,1,16],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,16],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,16],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,16],digits=3),nsmall=3)}) 	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,16],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -5188,17 +5325,22 @@ Sexpr{format(round(df_averages[1,17],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,17],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,17]<.01,"**",ifelse(df_ancova[3,1,17]<.05,"*",ifelse(df
-_ancova[3,1,17]<.1,"+","")))}}	&	
+_ancova[3,1,17]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,17],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,17]<.01,"**",ifelse(df_ancova[3,2,17]<.05,"*",ifelse(df
-_ancova[3,2,17]<.1,"+","")))}} &	
+_ancova[3,2,17]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,17],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,17]<.01,"**",ifelse(df_ancova[3,3,17]<.05,"*",ifelse(df
-_ancova[3,3,17]<.1,"+","")))}}	
+_ancova[3,3,17]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,4,17],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,17]<.01,"**",ifelse(df_ancova[3,4,17]<.05,"*",ifelse(df
+_ancova[3,4,17]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -5210,7 +5352,9 @@ Sexpr{format(round(df_ancova[2,1,17],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,17],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,17],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,17],digits=3),nsmall=3)})		&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,17],digits=3),nsmall=3)})		
 \backslash
 
 \backslash
@@ -5230,17 +5374,22 @@ Sexpr{format(round(df_averages[1,18],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,18],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,18]<.01,"**",ifelse(df_ancova[3,1,18]<.05,"*",ifelse(df
-_ancova[3,1,18]<.1,"+","")))}}	&	
+_ancova[3,1,18]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,18],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,18]<.01,"**",ifelse(df_ancova[3,2,18]<.05,"*",ifelse(df
-_ancova[3,2,18]<.1,"+","")))}} &	
+_ancova[3,2,18]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,18],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,18]<.01,"**",ifelse(df_ancova[3,3,18]<.05,"*",ifelse(df
-_ancova[3,3,18]<.1,"+","")))}}	
+_ancova[3,3,18]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,18],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,18]<.01,"**",ifelse(df_ancova[3,4,18]<.05,"*",ifelse(df
+_ancova[3,4,18]<.1,"+","")))}}$ 
 \backslash
 
 \backslash
@@ -5252,7 +5401,9 @@ Sexpr{format(round(df_ancova[2,1,18],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,18],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,18],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,18],digits=3),nsmall=3)})		&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,18],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -5272,17 +5423,22 @@ Sexpr{format(round(df_averages[1,19],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,19],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,19]<.01,"**",ifelse(df_ancova[3,1,19]<.05,"*",ifelse(df
-_ancova[3,1,19]<.1,"+","")))}}	&	
+_ancova[3,1,19]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,19],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,19]<.01,"**",ifelse(df_ancova[3,2,19]<.05,"*",ifelse(df
-_ancova[3,2,19]<.1,"+","")))}} &	
+_ancova[3,2,19]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,19],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,19]<.01,"**",ifelse(df_ancova[3,3,19]<.05,"*",ifelse(df
-_ancova[3,3,19]<.1,"+","")))}}	
+_ancova[3,3,19]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,4,19],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,19]<.01,"**",ifelse(df_ancova[3,4,19]<.05,"*",ifelse(df
+_ancova[3,4,19]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -5294,7 +5450,9 @@ Sexpr{format(round(df_ancova[2,1,19],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,19],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,19],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,19],digits=3),nsmall=3)})		&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,19],digits=3),nsmall=3)})		
 \backslash
 
 \backslash
@@ -5314,17 +5472,22 @@ Sexpr{format(round(df_averages[1,20],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,20],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,20]<.01,"**",ifelse(df_ancova[3,1,20]<.05,"*",ifelse(df
-_ancova[3,1,20]<.1,"+","")))}}	&	
+_ancova[3,1,20]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,20],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,20]<.01,"**",ifelse(df_ancova[3,2,20]<.05,"*",ifelse(df
-_ancova[3,2,20]<.1,"+","")))}} &	
+_ancova[3,2,20]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,20],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,20]<.01,"**",ifelse(df_ancova[3,3,20]<.05,"*",ifelse(df
-_ancova[3,3,20]<.1,"+","")))}}	
+_ancova[3,3,20]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,4,20],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,20]<.01,"**",ifelse(df_ancova[3,4,20]<.05,"*",ifelse(df
+_ancova[3,4,20]<.1,"+","")))}}$		
 \backslash
 
 \backslash
@@ -5336,7 +5499,9 @@ Sexpr{format(round(df_ancova[2,1,20],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,20],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,20],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,20],digits=3),nsmall=3)})	 &		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,20],digits=3),nsmall=3)})		
 \backslash
 
 \backslash
@@ -5374,17 +5539,22 @@ Sexpr{format(round(df_averages[1,21],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,21],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,21]<.01,"**",ifelse(df_ancova[3,1,21]<.05,"*",ifelse(df
-_ancova[3,1,21]<.1,"+","")))}}	&	
+_ancova[3,1,21]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,21],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,21]<.01,"**",ifelse(df_ancova[3,2,21]<.05,"*",ifelse(df
-_ancova[3,2,21]<.1,"+","")))}} &	
+_ancova[3,2,21]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,21],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,21]<.01,"**",ifelse(df_ancova[3,3,21]<.05,"*",ifelse(df
-_ancova[3,3,21]<.1,"+","")))}}	
+_ancova[3,3,21]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,21],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,21]<.01,"**",ifelse(df_ancova[3,4,21]<.05,"*",ifelse(df
+_ancova[3,4,21]<.1,"+","")))}}$
 \backslash
 
 \backslash
@@ -5396,7 +5566,9 @@ Sexpr{format(round(df_ancova[2,1,21],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,21],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,21],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,21],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,21],digits=3),nsmall=3)})		
 \backslash
 
 \backslash
@@ -5499,7 +5671,7 @@ Education
 \begin_inset Float table
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -5543,7 +5715,7 @@ begin{center}
 
 
 \backslash
-begin{tabular}{rcccc} 
+begin{tabular}{rccccc} 
 \backslash
 hline 
 \backslash
@@ -5561,7 +5733,7 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & information & deliberation	& level 
+	& mean & sc baraza & information & deliberation	& level 
 \backslash
 
 \backslash
@@ -5572,7 +5744,7 @@ hline
 
 
 \backslash
-cline{2-5} 
+cline{2-6} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -5593,17 +5765,22 @@ Sexpr{format(round(df_averages[1,22],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,22],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,22]<.01,"**",ifelse(df_ancova[3,1,22]<.05,"*",ifelse(df
-_ancova[3,1,22]<.1,"+","")))}}	&	
+_ancova[3,1,22]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,22],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,22]<.01,"**",ifelse(df_ancova[3,2,22]<.05,"*",ifelse(df
-_ancova[3,2,22]<.1,"+","")))}} &	
+_ancova[3,2,22]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,22],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,22]<.01,"**",ifelse(df_ancova[3,3,22]<.05,"*",ifelse(df
-_ancova[3,3,22]<.1,"+","")))}}	
+_ancova[3,3,22]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,4,22],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,22]<.01,"**",ifelse(df_ancova[3,4,22]<.05,"*",ifelse(df
+_ancova[3,4,22]<.1,"+","")))}}$		
 \backslash
 
 \backslash
@@ -5615,7 +5792,9 @@ Sexpr{format(round(df_ancova[2,1,22],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,22],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,22],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,22],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,22],digits=3),nsmall=3)})		
 \backslash
 
 \backslash
@@ -5635,17 +5814,22 @@ Sexpr{format(round(df_averages[1,23],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,23],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,23]<.01,"**",ifelse(df_ancova[3,1,23]<.05,"*",ifelse(df
-_ancova[3,1,23]<.1,"+","")))}}	&	
+_ancova[3,1,23]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,23],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,23]<.01,"**",ifelse(df_ancova[3,2,23]<.05,"*",ifelse(df
-_ancova[3,2,23]<.1,"+","")))}} &	
+_ancova[3,2,23]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,23],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,23]<.01,"**",ifelse(df_ancova[3,3,23]<.05,"*",ifelse(df
-_ancova[3,3,23]<.1,"+","")))}}	
+_ancova[3,3,23]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,23],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,23]<.01,"**",ifelse(df_ancova[3,4,23]<.05,"*",ifelse(df
+_ancova[3,4,23]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -5657,7 +5841,9 @@ Sexpr{format(round(df_ancova[2,1,23],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,23],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,23],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,23],digits=3),nsmall=3)})		&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,23],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -5677,17 +5863,22 @@ Sexpr{format(round(df_averages[1,24],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,24],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,24]<.01,"**",ifelse(df_ancova[3,1,24]<.05,"*",ifelse(df
-_ancova[3,1,24]<.1,"+","")))}}	&	
+_ancova[3,1,24]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,24],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,24]<.01,"**",ifelse(df_ancova[3,2,24]<.05,"*",ifelse(df
-_ancova[3,2,24]<.1,"+","")))}} &	
+_ancova[3,2,24]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,24],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,24]<.01,"**",ifelse(df_ancova[3,3,24]<.05,"*",ifelse(df
-_ancova[3,3,24]<.1,"+","")))}}	
+_ancova[3,3,24]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,24],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,24]<.01,"**",ifelse(df_ancova[3,4,24]<.05,"*",ifelse(df
+_ancova[3,4,24]<.1,"+","")))}}$ 
 \backslash
 
 \backslash
@@ -5699,7 +5890,9 @@ Sexpr{format(round(df_ancova[2,1,24],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,24],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,24],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,24],digits=3),nsmall=3)}) &		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,24],digits=3),nsmall=3)})					
 \backslash
 
 \backslash
@@ -5719,17 +5912,22 @@ Sexpr{format(round(df_averages[1,25],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,25],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,25]<.01,"**",ifelse(df_ancova[3,1,25]<.05,"*",ifelse(df
-_ancova[3,1,25]<.1,"+","")))}}	&	
+_ancova[3,1,25]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,25],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,25]<.01,"**",ifelse(df_ancova[3,2,25]<.05,"*",ifelse(df
-_ancova[3,2,25]<.1,"+","")))}} &	
+_ancova[3,2,25]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,25],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,25]<.01,"**",ifelse(df_ancova[3,3,25]<.05,"*",ifelse(df
-_ancova[3,3,25]<.1,"+","")))}}	
+_ancova[3,3,25]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,25],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,25]<.01,"**",ifelse(df_ancova[3,4,25]<.05,"*",ifelse(df
+_ancova[3,4,25]<.1,"+","")))}}$ 
 \backslash
 
 \backslash
@@ -5741,7 +5939,9 @@ Sexpr{format(round(df_ancova[2,1,25],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,25],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,25],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,25],digits=3),nsmall=3)})	 	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,25],digits=3),nsmall=3)})		
 \backslash
 
 \backslash
@@ -5761,17 +5961,22 @@ Sexpr{format(round(df_averages[1,26],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,26],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,26]<.01,"**",ifelse(df_ancova[3,1,26]<.05,"*",ifelse(df
-_ancova[3,1,26]<.1,"+","")))}}	&	
+_ancova[3,1,26]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,26],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,26]<.01,"**",ifelse(df_ancova[3,2,26]<.05,"*",ifelse(df
-_ancova[3,2,26]<.1,"+","")))}} &	
+_ancova[3,2,26]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,26],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,26]<.01,"**",ifelse(df_ancova[3,3,26]<.05,"*",ifelse(df
-_ancova[3,3,26]<.1,"+","")))}}	
+_ancova[3,3,26]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,4,26],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,26]<.01,"**",ifelse(df_ancova[3,4,26]<.05,"*",ifelse(df
+_ancova[3,4,26]<.1,"+","")))}}$ 
 \backslash
 
 \backslash
@@ -5783,7 +5988,9 @@ Sexpr{format(round(df_ancova[2,1,26],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,26],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,26],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,26],digits=3),nsmall=3)})		&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,26],digits=3),nsmall=3)})		
 \backslash
 
 \backslash
@@ -5803,17 +6010,22 @@ Sexpr{format(round(df_averages[1,27],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,27],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,27]<.01,"**",ifelse(df_ancova[3,1,27]<.05,"*",ifelse(df
-_ancova[3,1,27]<.1,"+","")))}}	&	
+_ancova[3,1,27]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,27],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,27]<.01,"**",ifelse(df_ancova[3,2,27]<.05,"*",ifelse(df
-_ancova[3,2,27]<.1,"+","")))}} &	
+_ancova[3,2,27]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,27],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,27]<.01,"**",ifelse(df_ancova[3,3,27]<.05,"*",ifelse(df
-_ancova[3,3,27]<.1,"+","")))}}	
+_ancova[3,3,27]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,4,27],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,27]<.01,"**",ifelse(df_ancova[3,4,27]<.05,"*",ifelse(df
+_ancova[3,4,27]<.1,"+","")))}}$		
 \backslash
 
 \backslash
@@ -5825,7 +6037,9 @@ Sexpr{format(round(df_ancova[2,1,27],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,27],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,27],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,27],digits=3),nsmall=3)}) &		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,27],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -5845,17 +6059,22 @@ Sexpr{format(round(df_averages[1,28],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,28],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,28]<.01,"**",ifelse(df_ancova[3,1,28]<.05,"*",ifelse(df
-_ancova[3,1,28]<.1,"+","")))}}	&	
+_ancova[3,1,28]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,28],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,28]<.01,"**",ifelse(df_ancova[3,2,28]<.05,"*",ifelse(df
-_ancova[3,2,28]<.1,"+","")))}} &	
+_ancova[3,2,28]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,28],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,28]<.01,"**",ifelse(df_ancova[3,3,28]<.05,"*",ifelse(df
-_ancova[3,3,28]<.1,"+","")))}}	
+_ancova[3,3,28]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,28],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,28]<.01,"**",ifelse(df_ancova[3,4,28]<.05,"*",ifelse(df
+_ancova[3,4,28]<.1,"+","")))}}$ 
 \backslash
 
 \backslash
@@ -5867,7 +6086,9 @@ Sexpr{format(round(df_ancova[2,1,28],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,28],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,28],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,28],digits=3),nsmall=3)}) 	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,28],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -5905,17 +6126,22 @@ Sexpr{format(round(df_averages[1,29],digits=3),nsmall=3)}		&
 Sexpr{format(round(df_ancova[1,1,29],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,1,29]<.01,"**",ifelse(df_ancova[3,1,29]<.05,"*",ifelse(df
-_ancova[3,1,29]<.1,"+","")))}}	&	
+_ancova[3,1,29]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_ancova[1,2,29],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,2,29]<.01,"**",ifelse(df_ancova[3,2,29]<.05,"*",ifelse(df
-_ancova[3,2,29]<.1,"+","")))}} &	
+_ancova[3,2,29]<.1,"+","")))}}$ &	
 \backslash
 Sexpr{format(round(df_ancova[1,3,29],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_ancova[3,3,29]<.01,"**",ifelse(df_ancova[3,3,29]<.05,"*",ifelse(df
-_ancova[3,3,29]<.1,"+","")))}}	
+_ancova[3,3,29]<.1,"+","")))}}$	 &	
+\backslash
+Sexpr{format(round(df_ancova[1,4,29],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,29]<.01,"**",ifelse(df_ancova[3,4,29]<.05,"*",ifelse(df
+_ancova[3,4,29]<.1,"+","")))}}$
 \backslash
 
 \backslash
@@ -5927,7 +6153,9 @@ Sexpr{format(round(df_ancova[2,1,29],digits=3),nsmall=3)})		&	(
 \backslash
 Sexpr{format(round(df_ancova[2,2,29],digits=3),nsmall=3)})	&		(
 \backslash
-Sexpr{format(round(df_ancova[2,3,29],digits=3),nsmall=3)})			
+Sexpr{format(round(df_ancova[2,3,29],digits=3),nsmall=3)})	 &		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,29],digits=3),nsmall=3)})		
 \backslash
 
 \backslash
@@ -5993,15 +6221,15 @@ Note: First column reports sample means (and standard deviations below);
 
 \end_layout
 
-\begin_layout Subsection
-matched difference-in-difference
+\begin_layout Standard
+This should be in the appendix
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -6440,19 +6668,951 @@ Note: First column reports sample means (and standard deviations below);
 
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-We also look at how impact changes over time.
- A graphical approach uses non-parametric smoothing to look at the average
- impact depending on the time between treatment assignment and endline data
- collection.
-\end_layout
-
 \begin_layout Section
-Threat to validity
+Additional analysis
+\end_layout
+
+\begin_layout Subsection
+Heterogeneity in the timing of the intervention
+\end_layout
+
+\begin_layout Standard
+The slow roll-out of the intervention over an extended period also introduces
+ variation in the time that passed between treatment administration and
+ endline data collection.
+ For instance, the first barazas were held around June 2016 (about one year
+ after the baseline) and so more than 3 years will have passed between treatment
+ administration and endline data collection.
+ For the most recent barazas, there will only be a few months between treatment
+ administration and endline data collection.
+ One may argue that sub-counties or districts that were treated early on
+ have been exposed to the program much longer and hence one may expect larger
+ effects on a range of outcomes for these sub-counties or districts than
+ areas that only recently received treatment.
+ At the same time, for some outcomes, effects of the baraza intervention
+ may reduce over time as promises are forgotten and plans abandoned.
+ We thus take an agnostic stance and estimate different models that allow
+ for both increasing and decreasing effects as a function of time elapsed
+ between the treatment and outcome measurement.
+ In particular, we will interact the treatment indicator with the time elapsed
+ between treatment and endline data collection, and with its square.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<heterogeneity_timing,  echo=FALSE, warning = FALSE, message=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/rep
+ort/analysis_report_interaction_time.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways true
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Heterogeneity in timing
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:timing_hetero"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{rcccccccccccc} 
+\backslash
+hline 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    &  
+\backslash
+multicolumn{3}{c}{
+\backslash
+textit{sc baraza}} &  
+\backslash
+multicolumn{3}{c}{
+\backslash
+textit{information}} &  
+\backslash
+multicolumn{3}{c}{
+\backslash
+textit{deliberation}}&  
+\backslash
+multicolumn{3}{c}{
+\backslash
+textit{level}}  
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+& (1) & (2) & (3) & (1) & (2) & (3) & (1) & (2) & (3) & (1) & (2) & (3)
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cline{2-13} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Agriculture index &		
+\backslash
+Sexpr{format(round(df_ancova[1,1,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,7]<.01,"**",ifelse(df_ancova[3,1,7]<.05,"*",ifelse(df_a
+ncova[3,1,7]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,7]<.01,"**",ifelse(df_ancova[3,2,7]<.05,"*",ifelse(df_a
+ncova[3,2,7]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,3,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,7]<.01,"**",ifelse(df_ancova[3,3,7]<.05,"*",ifelse(df_a
+ncova[3,3,7]<.1,"+","")))}}$	&		
+\backslash
+Sexpr{format(round(df_ancova[1,4,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,7]<.01,"**",ifelse(df_ancova[3,4,7]<.05,"*",ifelse(df_a
+ncova[3,4,7]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,5,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,5,7]<.01,"**",ifelse(df_ancova[3,5,7]<.05,"*",ifelse(df_a
+ncova[3,5,7]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,6,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,6,7]<.01,"**",ifelse(df_ancova[3,6,7]<.05,"*",ifelse(df_a
+ncova[3,6,7]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,7,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,7,7]<.01,"**",ifelse(df_ancova[3,7,7]<.05,"*",ifelse(df_a
+ncova[3,7,7]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,8,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,8,7]<.01,"**",ifelse(df_ancova[3,8,7]<.05,"*",ifelse(df_a
+ncova[3,8,7]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,9,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,9,7]<.01,"**",ifelse(df_ancova[3,9,7]<.05,"*",ifelse(df_a
+ncova[3,9,7]<.1,"+","")))}}$  &
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,10,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,10,7]<.01,"**",ifelse(df_ancova[3,10,7]<.05,"*",ifelse(df
+_ancova[3,10,7]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,11,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,11,7]<.01,"**",ifelse(df_ancova[3,11,7]<.05,"*",ifelse(df
+_ancova[3,11,7]<.1,"+","")))}}$	&
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,12,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,12,7]<.01,"**",ifelse(df_ancova[3,12,7]<.05,"*",ifelse(df
+_ancova[3,12,7]<.1,"+","")))}}$	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,7],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,7],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,3,7],digits=3),nsmall=3)}) & (
+\backslash
+Sexpr{format(round(df_ancova[2,4,7],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,5,7],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,6,7],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,7,7],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,8,7],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,9,7],digits=3),nsmall=3)})	 &	(
+\backslash
+Sexpr{format(round(df_ancova[2,10,7],digits=3),nsmall=3)})	 &	(
+\backslash
+Sexpr{format(round(df_ancova[2,11,7],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,12,7],digits=3),nsmall=3)}) 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Infrastructure index &		
+\backslash
+Sexpr{format(round(df_ancova[1,1,13],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,13]<.01,"**",ifelse(df_ancova[3,1,13]<.05,"*",ifelse(df
+_ancova[3,1,13]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,13],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,13]<.01,"**",ifelse(df_ancova[3,2,13]<.05,"*",ifelse(df
+_ancova[3,2,13]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,3,13],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,13]<.01,"**",ifelse(df_ancova[3,3,13]<.05,"*",ifelse(df
+_ancova[3,3,13]<.1,"+","")))}}$	&		
+\backslash
+Sexpr{format(round(df_ancova[1,4,13],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,13]<.01,"**",ifelse(df_ancova[3,4,13]<.05,"*",ifelse(df
+_ancova[3,4,13]<.1,"+","")))}}	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,5,13],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,5,13]<.01,"**",ifelse(df_ancova[3,5,13]<.05,"*",ifelse(df
+_ancova[3,5,13]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,6,13],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,6,13]<.01,"**",ifelse(df_ancova[3,6,13]<.05,"*",ifelse(df
+_ancova[3,6,13]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,7,13],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,7,13]<.01,"**",ifelse(df_ancova[3,7,13]<.05,"*",ifelse(df
+_ancova[3,7,13]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,8,13],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,8,13]<.01,"**",ifelse(df_ancova[3,8,13]<.05,"*",ifelse(df
+_ancova[3,8,13]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,9,13],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,9,13]<.01,"**",ifelse(df_ancova[3,9,13]<.05,"*",ifelse(df
+_ancova[3,9,13]<.1,"+","")))}}$ &
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,10,13],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,10,13]<.01,"**",ifelse(df_ancova[3,10,13]<.05,"*",ifelse(
+df_ancova[3,10,13]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,11,13],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,11,13]<.01,"**",ifelse(df_ancova[3,11,13]<.05,"*",ifelse(
+df_ancova[3,11,13]<.1,"+","")))}}$	&
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,12,13],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,12,13]<.01,"**",ifelse(df_ancova[3,12,13]<.05,"*",ifelse(
+df_ancova[3,12,13]<.1,"+","")))}}$	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,13],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,13],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,3,13],digits=3),nsmall=3)}) & (
+\backslash
+Sexpr{format(round(df_ancova[2,4,13],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,5,13],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,6,13],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,7,13],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,8,13],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,9,13],digits=3),nsmall=3)})	 &	(
+\backslash
+Sexpr{format(round(df_ancova[2,10,13],digits=3),nsmall=3)})	 &	(
+\backslash
+Sexpr{format(round(df_ancova[2,11,13],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,12,13],digits=3),nsmall=3)}) 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Health index &		
+\backslash
+Sexpr{format(round(df_ancova[1,1,21],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,21]<.01,"**",ifelse(df_ancova[3,1,21]<.05,"*",ifelse(df
+_ancova[3,1,21]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,21],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,21]<.01,"**",ifelse(df_ancova[3,2,21]<.05,"*",ifelse(df
+_ancova[3,2,21]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,3,21],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,21]<.01,"**",ifelse(df_ancova[3,3,21]<.05,"*",ifelse(df
+_ancova[3,3,21]<.1,"+","")))}}$	&		
+\backslash
+Sexpr{format(round(df_ancova[1,4,21],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,21]<.01,"**",ifelse(df_ancova[3,4,21]<.05,"*",ifelse(df
+_ancova[3,4,21]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,5,21],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,5,21]<.01,"**",ifelse(df_ancova[3,5,21]<.05,"*",ifelse(df
+_ancova[3,5,21]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,6,21],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,6,21]<.01,"**",ifelse(df_ancova[3,6,21]<.05,"*",ifelse(df
+_ancova[3,6,21]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,7,21],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,7,21]<.01,"**",ifelse(df_ancova[3,7,21]<.05,"*",ifelse(df
+_ancova[3,7,21]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,8,21],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,8,21]<.01,"**",ifelse(df_ancova[3,8,21]<.05,"*",ifelse(df
+_ancova[3,8,21]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,9,21],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,9,21]<.01,"**",ifelse(df_ancova[3,9,21]<.05,"*",ifelse(df
+_ancova[3,9,21]<.1,"+","")))}}$ &
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,10,21],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,10,21]<.01,"**",ifelse(df_ancova[3,10,21]<.05,"*",ifelse(
+df_ancova[3,10,21]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,11,21],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,11,21]<.01,"**",ifelse(df_ancova[3,11,21]<.05,"*",ifelse(
+df_ancova[3,11,21]<.1,"+","")))}}$	&
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,12,21],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,12,21]<.01,"**",ifelse(df_ancova[3,12,21]<.05,"*",ifelse(
+df_ancova[3,12,21]<.1,"+","")))}}$	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,21],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,21],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,3,21],digits=3),nsmall=3)}) & (
+\backslash
+Sexpr{format(round(df_ancova[2,4,21],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,5,21],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,6,21],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,7,21],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,8,21],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,9,21],digits=3),nsmall=3)})	 &	(
+\backslash
+Sexpr{format(round(df_ancova[2,10,21],digits=3),nsmall=3)})	 &	(
+\backslash
+Sexpr{format(round(df_ancova[2,11,21],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,12,21],digits=3),nsmall=3)}) 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Education index &		
+\backslash
+Sexpr{format(round(df_ancova[1,1,29],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,29]<.01,"**",ifelse(df_ancova[3,1,29]<.05,"*",ifelse(df
+_ancova[3,1,29]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,29],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,29]<.01,"**",ifelse(df_ancova[3,2,29]<.05,"*",ifelse(df
+_ancova[3,2,29]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,3,29],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,29]<.01,"**",ifelse(df_ancova[3,3,29]<.05,"*",ifelse(df
+_ancova[3,3,29]<.1,"+","")))}}$	&		
+\backslash
+Sexpr{format(round(df_ancova[1,4,29],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,29]<.01,"**",ifelse(df_ancova[3,4,29]<.05,"*",ifelse(df
+_ancova[3,4,29]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,5,29],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,5,29]<.01,"**",ifelse(df_ancova[3,5,29]<.05,"*",ifelse(df
+_ancova[3,5,29]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,6,29],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,6,29]<.01,"**",ifelse(df_ancova[3,6,29]<.05,"*",ifelse(df
+_ancova[3,6,29]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,7,29],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,7,29]<.01,"**",ifelse(df_ancova[3,7,29]<.05,"*",ifelse(df
+_ancova[3,7,29]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,8,29],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,8,29]<.01,"**",ifelse(df_ancova[3,8,29]<.05,"*",ifelse(df
+_ancova[3,8,29]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,9,29],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,9,29]<.01,"**",ifelse(df_ancova[3,9,29]<.05,"*",ifelse(df
+_ancova[3,9,29]<.1,"+","")))}}$ &
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,10,29],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,10,29]<.01,"**",ifelse(df_ancova[3,10,29]<.05,"*",ifelse(
+df_ancova[3,10,29]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,11,29],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,11,29]<.01,"**",ifelse(df_ancova[3,11,29]<.05,"*",ifelse(
+df_ancova[3,11,29]<.1,"+","")))}}$	&
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,12,29],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,12,29]<.01,"**",ifelse(df_ancova[3,12,29]<.05,"*",ifelse(
+df_ancova[3,12,29]<.1,"+","")))}}$	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,29],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,29],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,3,29],digits=3),nsmall=3)}) & (
+\backslash
+Sexpr{format(round(df_ancova[2,4,29],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,5,29],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,6,29],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,7,29],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,8,29],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,9,29],digits=3),nsmall=3)})	 &	(
+\backslash
+Sexpr{format(round(df_ancova[2,10,29],digits=3),nsmall=3)})	 &	(
+\backslash
+Sexpr{format(round(df_ancova[2,11,29],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,12,29],digits=3),nsmall=3)}) 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Overall index &		
+\backslash
+Sexpr{format(round(df_ancova[1,1,30],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,30]<.01,"**",ifelse(df_ancova[3,1,30]<.05,"*",ifelse(df
+_ancova[3,1,30]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,30],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,30]<.01,"**",ifelse(df_ancova[3,2,30]<.05,"*",ifelse(df
+_ancova[3,2,30]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,3,30],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,30]<.01,"**",ifelse(df_ancova[3,3,30]<.05,"*",ifelse(df
+_ancova[3,3,30]<.1,"+","")))}}$	&		
+\backslash
+Sexpr{format(round(df_ancova[1,4,30],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,30]<.01,"**",ifelse(df_ancova[3,4,30]<.05,"*",ifelse(df
+_ancova[3,4,30]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,5,30],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,5,30]<.01,"**",ifelse(df_ancova[3,5,30]<.05,"*",ifelse(df
+_ancova[3,5,30]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,6,30],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,6,30]<.01,"**",ifelse(df_ancova[3,6,30]<.05,"*",ifelse(df
+_ancova[3,6,30]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,7,30],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,7,30]<.01,"**",ifelse(df_ancova[3,7,30]<.05,"*",ifelse(df
+_ancova[3,7,30]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,8,30],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,8,30]<.01,"**",ifelse(df_ancova[3,8,30]<.05,"*",ifelse(df
+_ancova[3,8,30]<.1,"+","")))}}$	& 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,9,30],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,9,30]<.01,"**",ifelse(df_ancova[3,9,30]<.05,"*",ifelse(df
+_ancova[3,9,30]<.1,"+","")))}}$ &
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,10,30],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,10,30]<.01,"**",ifelse(df_ancova[3,10,30]<.05,"*",ifelse(
+df_ancova[3,10,30]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,11,30],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,11,30]<.01,"**",ifelse(df_ancova[3,11,30]<.05,"*",ifelse(
+df_ancova[3,11,30]<.1,"+","")))}}$	&
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ancova[1,12,30],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,12,30]<.01,"**",ifelse(df_ancova[3,12,30]<.05,"*",ifelse(
+df_ancova[3,12,30]<.1,"+","")))}}$	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,30],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,30],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,3,30],digits=3),nsmall=3)}) & (
+\backslash
+Sexpr{format(round(df_ancova[2,4,30],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,5,30],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,6,30],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,7,30],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,8,30],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,9,30],digits=3),nsmall=3)})	 &	(
+\backslash
+Sexpr{format(round(df_ancova[2,10,30],digits=3),nsmall=3)})	 &	(
+\backslash
+Sexpr{format(round(df_ancova[2,11,30],digits=3),nsmall=3)}) &	(
+\backslash
+Sexpr{format(round(df_ancova[2,12,30],digits=3),nsmall=3)}) 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline  
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+scriptsize
+\end_layout
+
+\begin_layout Plain Layout
+
+Note: First column reports differences (and standard errors below) of the
+ information component of the baraza intervention; Column 3 reports differences
+ (and standard errors below) of the deliberation component of the baraza
+ intervention;  standard errors are clustered at the subcounty level; **,
+ * and + denotes significance at the 1, 5 and 10 percent levels.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:timing_hetero"
+
+\end_inset
+
+ provides a summary of such a treatment heterogeneity analysis by looking
+ only at sector level and the overall index that was also used in the overall
+ summary of the impact evaluation (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Summary-of-baraza"
+
+\end_inset
+
+).
+ For each hypothesis (subcounty baraza impact, information component, deliberati
+on component, and administrative placement) we now report estimates for
+ three coefficients.
+ The first, reported as (1), is the overall effect of the treatment.
+ In a second column and indicated as (2) we report the coefficient of the
+ treatment indicator interacted with the time that elapsed between treatment
+ assignment in that district or subcounty (expressed in years).
+ Finally, in column (3) we report the coefficient of the treatment indicator
+ interacted with the square of the time that elapsed between treatment assignmen
+t in that district or subcounty to capture potential non-linearities.
+\end_layout
+
+\begin_layout Subsection
+Endline imbalance and matched difference-in-difference
 \end_layout
 
 \begin_layout Standard
@@ -6481,12 +7641,17 @@ ort/endline_threat_to_validity.R")
 \end_layout
 
 \begin_layout Standard
-The main threat to validity stems from the risk that incomplete roll-out
- introduced selection bias into the study.
- While the results in Table 
+While the results in Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Balance_planed_ctrl"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:balance_final"
 
 \end_inset
 
@@ -6579,7 +7744,7 @@ begin{center}
 
 
 \backslash
-begin{tabular}{rcc} 
+begin{tabular}{rccc} 
 \backslash
 hline 
 \backslash
@@ -6597,7 +7762,7 @@ hline
 
 \begin_layout Plain Layout
 
-	& information & deliberation	 
+	& sc baraza & information & deliberation	 
 \backslash
 
 \backslash
@@ -6608,7 +7773,7 @@ hline
 
 
 \backslash
-cline{2-3} 
+cline{2-4} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -6627,12 +7792,22 @@ Agriculture index &
 Sexpr{format(round(df_balance[1,1,7],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_balance[3,1,7]<.01,"**",ifelse(df_balance[3,1,7]<.05,"*",ifelse(df
-_balance[3,1,7]<.1,"+","")))}}	&	
+_balance[3,1,7]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_balance[1,2,7],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_balance[3,2,7]<.01,"**",ifelse(df_balance[3,2,7]<.05,"*",ifelse(df
-_balance[3,2,7]<.1,"+","")))}}	
+_balance[3,2,7]<.1,"+","")))}}$	&
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_balance[1,3,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_balance[3,3,7]<.01,"**",ifelse(df_balance[3,3,7]<.05,"*",ifelse(df
+_balance[3,3,7]<.1,"+","")))}}$
 \backslash
 
 \backslash
@@ -6640,7 +7815,9 @@ _balance[3,2,7]<.1,"+","")))}}
 \backslash
 Sexpr{format(round(df_balance[2,1,7],digits=3),nsmall=3)})		&	(
 \backslash
-Sexpr{format(round(df_balance[2,2,7],digits=3),nsmall=3)})				
+Sexpr{format(round(df_balance[2,2,7],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_balance[2,3,7],digits=3),nsmall=3)})			
 \backslash
 
 \backslash
@@ -6654,12 +7831,17 @@ Infrastructure index &
 Sexpr{format(round(df_balance[1,1,13],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_balance[3,1,13]<.01,"**",ifelse(df_balance[3,1,13]<.05,"*",ifelse(
-df_balance[3,1,13]<.1,"+","")))}}	&	
+df_balance[3,1,13]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_balance[1,2,13],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_balance[3,2,13]<.01,"**",ifelse(df_balance[3,2,13]<.05,"*",ifelse(
-df_balance[3,2,13]<.1,"+","")))}}	
+df_balance[3,2,13]<.1,"+","")))}}$		&	
+\backslash
+Sexpr{format(round(df_balance[1,3,13],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_balance[3,3,13]<.01,"**",ifelse(df_balance[3,3,13]<.05,"*",ifelse(
+df_balance[3,3,13]<.1,"+","")))}}$
 \backslash
 
 \backslash
@@ -6667,7 +7849,9 @@ df_balance[3,2,13]<.1,"+","")))}}
 \backslash
 Sexpr{format(round(df_balance[2,1,13],digits=3),nsmall=3)})		&	(
 \backslash
-Sexpr{format(round(df_balance[2,2,13],digits=3),nsmall=3)})				
+Sexpr{format(round(df_balance[2,2,13],digits=3),nsmall=3)})			&	(
+\backslash
+Sexpr{format(round(df_balance[2,2,13],digits=3),nsmall=3)})		
 \backslash
 
 \backslash
@@ -6681,12 +7865,17 @@ Health index &
 Sexpr{format(round(df_balance[1,1,21],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_balance[3,1,21]<.01,"**",ifelse(df_balance[3,1,21]<.05,"*",ifelse(
-df_balance[3,1,21]<.1,"+","")))}}	&	
+df_balance[3,1,21]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_balance[1,2,21],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_balance[3,2,21]<.01,"**",ifelse(df_balance[3,2,21]<.05,"*",ifelse(
-df_balance[3,2,21]<.1,"+","")))}}	
+df_balance[3,2,21]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_balance[1,3,21],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_balance[3,3,21]<.01,"**",ifelse(df_balance[3,3,21]<.05,"*",ifelse(
+df_balance[3,3,21]<.1,"+","")))}}$
 \backslash
 
 \backslash
@@ -6694,7 +7883,9 @@ df_balance[3,2,21]<.1,"+","")))}}
 \backslash
 Sexpr{format(round(df_balance[2,1,21],digits=3),nsmall=3)})		&	(
 \backslash
-Sexpr{format(round(df_balance[2,2,21],digits=3),nsmall=3)})				
+Sexpr{format(round(df_balance[2,2,21],digits=3),nsmall=3)})			&	(
+\backslash
+Sexpr{format(round(df_balance[2,3,21],digits=3),nsmall=3)})				
 \backslash
 
 \backslash
@@ -6708,12 +7899,17 @@ Education index &
 Sexpr{format(round(df_balance[1,1,29],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_balance[3,1,29]<.01,"**",ifelse(df_balance[3,1,29]<.05,"*",ifelse(
-df_balance[3,1,29]<.1,"+","")))}}	&	
+df_balance[3,1,29]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_balance[1,2,29],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_balance[3,2,29]<.01,"**",ifelse(df_balance[3,2,29]<.05,"*",ifelse(
-df_balance[3,2,29]<.1,"+","")))}}	
+df_balance[3,2,29]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_balance[1,3,29],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_balance[3,3,29]<.01,"**",ifelse(df_balance[3,3,29]<.05,"*",ifelse(
+df_balance[3,3,29]<.1,"+","")))}}$
 \backslash
 
 \backslash
@@ -6721,7 +7917,9 @@ df_balance[3,2,29]<.1,"+","")))}}
 \backslash
 Sexpr{format(round(df_balance[2,1,29],digits=3),nsmall=3)})		&	(
 \backslash
-Sexpr{format(round(df_balance[2,2,29],digits=3),nsmall=3)})				
+Sexpr{format(round(df_balance[2,2,29],digits=3),nsmall=3)})			&	(
+\backslash
+Sexpr{format(round(df_balance[2,3,29],digits=3),nsmall=3)})		
 \backslash
 
 \backslash
@@ -6744,12 +7942,17 @@ Public service delivery index &
 Sexpr{format(round(df_balance[1,1,30],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_balance[3,1,30]<.01,"**",ifelse(df_balance[3,1,30]<.05,"*",ifelse(
-df_balance[3,1,30]<.1,"+","")))}}	&	
+df_balance[3,1,30]<.1,"+","")))}}$	&	
 \backslash
 Sexpr{format(round(df_balance[1,2,30],digits=3),nsmall=3)}$^{
 \backslash
 Sexpr{ifelse(df_balance[3,2,30]<.01,"**",ifelse(df_balance[3,2,30]<.05,"*",ifelse(
-df_balance[3,2,30]<.1,"+","")))}}	
+df_balance[3,2,30]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_balance[1,3,30],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_balance[3,3,30]<.01,"**",ifelse(df_balance[3,3,30]<.05,"*",ifelse(
+df_balance[3,3,30]<.1,"+","")))}}$	
 \backslash
 
 \backslash
@@ -6757,7 +7960,9 @@ df_balance[3,2,30]<.1,"+","")))}}
 \backslash
 Sexpr{format(round(df_balance[2,1,30],digits=3),nsmall=3)})		&	(
 \backslash
-Sexpr{format(round(df_balance[2,2,30],digits=3),nsmall=3)})				
+Sexpr{format(round(df_balance[2,2,30],digits=3),nsmall=3)})			&	(
+\backslash
+Sexpr{format(round(df_balance[2,3,30],digits=3),nsmall=3)})		
 \backslash
 
 \backslash
@@ -6795,7 +8000,9 @@ Number of observations   &
 \backslash
 Sexpr{format(round(df_balance[6,1,7],digits=3),nsmall=0)} & 
 \backslash
-Sexpr{format(round(df_balance[6,2,7],digits=3),nsmall=0)}   
+Sexpr{format(round(df_balance[6,2,7],digits=3),nsmall=0)}  & 
+\backslash
+Sexpr{format(round(df_balance[6,3,7],digits=3),nsmall=0)}    
 \backslash
 
 \backslash
@@ -6864,6 +8071,17 @@ Note: First column reports differences (and standard errors below) of the
 
 \end_layout
 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+We also look at how impact changes over time.
+ A graphical approach uses non-parametric smoothing to look at the average
+ impact depending on the time between treatment assignment and endline data
+ collection.
+\end_layout
+
 \begin_layout Section
 Acknowledgment
 \end_layout
@@ -6921,7 +8139,7 @@ Appendix One
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -7070,7 +8288,7 @@ Appendix Two
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -7446,7 +8664,7 @@ Note: First column reports differences (and standard errors below) of the
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -7799,7 +9017,7 @@ Note: First column reports differences (and standard errors below) of the
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -8202,7 +9420,7 @@ Note: First column reports differences (and standard errors below) of the
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
