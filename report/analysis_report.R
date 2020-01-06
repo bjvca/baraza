@@ -99,19 +99,26 @@ baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Rain water","Su
 ### is there are water committee
 baseline$c10 <- as.numeric(baseline$c10=="Yes")
 
-
+baseline$dist_source <- baseline$c12source 
 baseline$c12source <- log(baseline$c12source + sqrt(baseline$c12source ^ 2 + 1))
 baseline <- trim("c12source", baseline)
+baseline <- trim("dist_source", baseline)
+baseline$wait_source <- baseline$qc15
 baseline$qc15 <- log(baseline$qc15 + sqrt(baseline$qc15 ^ 2 + 1))
 baseline <- trim("qc15", baseline)
+baseline <- trim("wait_source", baseline)
+baseline$dist_road <- baseline$a6 
 baseline$a6 <- log(baseline$a6 + sqrt(baseline$a6 ^ 2 + 1))
 baseline <- trim("a6", baseline)
+baseline <- trim("dist_road", baseline)
 baseline$pub_health_access <- as.numeric((baseline$feverd21_fever %in% c("HCII","HCIII","HCIV","Regional_referral_hospital")))
 baseline$maternal_health_access <- as.numeric((baseline$delivery_birthd21_delivery_birth %in% c("HCII","HCIII","HCIV","Regional_referral_hospital")))
 baseline$d31 <- as.numeric(baseline$d31=="Yes")
 baseline$d43 <- NA
 baseline$d43[!is.na(baseline$d43a)] <- baseline$d43a[!is.na(baseline$d43a)]
 baseline$d43[!is.na(baseline$d43b)] <- baseline$d43b[!is.na(baseline$d43b)] 
+baseline$dist_health <- baseline$d43
+baseline <- trim("dist_health", baseline)
 baseline$d43 <- log(baseline$d43 + sqrt(baseline$d43 ^ 2 + 1))
 baseline <- trim("d43", baseline)
 ## has anyone been sick
@@ -120,18 +127,21 @@ baseline$d11 <- as.numeric(baseline$d11=="Yes")
 baseline$tot_sick[baseline$d11==0] <- 0 
 
 baseline$wait_time <- baseline$d410hh*60+ baseline$d410mm
+baseline$wait_time_min  <- baseline$d410hh*60+ baseline$d410mm
 baseline$wait_time <- log(baseline$wait_time + sqrt(baseline$wait_time ^ 2 + 1))
 baseline <- trim("wait_time", baseline)
+baseline <- trim("wait_time_min", baseline)
 
 baseline$d61 <- as.numeric(baseline$d61=="Yes")
 
 #children in public schools
 baseline$base_n_children <- rowSums(cbind(baseline$e2bupe,baseline$e2aupe,baseline$e2fuse,baseline$e2muse), na.rm=T)
 baseline$e5 <- rowMeans(cbind(as.numeric(baseline$e5upe) , as.numeric(baseline$e5use)), na.rm=T) 
+baseline$dist_school <- rowMeans(cbind(as.numeric(baseline$e5upe) , as.numeric(baseline$e5use)), na.rm=T) 
 baseline$e5[is.na(baseline$e5upe) & is.na(baseline$e5use)] <- NA
 baseline$e5 <- log(baseline$e5 + sqrt(baseline$e5 ^ 2 + 1))
 baseline <- trim("e5", baseline)
-
+baseline <- trim("dist_school", baseline)
 
 
 baseline$e12 <- rowSums(cbind(as.numeric(baseline$e12upe == "Yes") , as.numeric(baseline$e12use == "Yes")), na.rm=T) > 0
@@ -160,7 +170,7 @@ baseline <- trim("farmsize", baseline)
 baseline$ironroof <- as.numeric(baseline$a512 =="Corrugated iron sheets")
 baseline$improved_wall <- as.numeric(baseline$a513 %in% c("Mud_bricks_burnt_bricks","Concrete_blocks") )
 baseline$head_sec <- as.numeric(baseline$a36) > 15
-
+baseline_desc <- baseline
 baseline_matching <- merge(baseline,treats, by.x=c("a22","a23"), by.y=c("district","subcounty"))
 
 #define endline variables
