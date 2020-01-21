@@ -9,6 +9,36 @@ library(clubSandwich)
 library(moments)
 set.seed(123456789) #not needed for final version?
 
+# takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
+source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/anonyize.R")
+endline$a21 <- as.character(endline$region)
+endline$region <- NULL
+### EDITS SHOULD BE MADE HERE FOR FINAL VERSION###########################################################################################
+### to do in final version: #
+### - check skewness before taking IHS.
+### - variables in endline that were transformed should also be transformed in baseline
+### - number of days sick can only be determined if all data is in, as we need to establish the max number of sick household members
+### there should be no duplicates in this dataset
+endline <- endline[!duplicated(endline$hhid),]
+
+endline$district_baraza[endline$subcounty=="CEGERE"] <- 1
+endline$deliberation[endline$subcounty=="INOMO"] <- 1
+endline$information[endline$subcounty=="INOMO"] <- 0
+endline$a21[sample(1:dim(endline)[1],50)] <- "Central"
+endline$a21 <- as.factor(endline$a21)
+
+### also search and delete below:
+
+###################################################################
+#baseline$district_baraza[baseline$a23 == "KAKOBA"] <- 1
+####################################################################
+##########################################################################################################################################
+
+
+
+
+
+
 ########################################################### functions declarations #####################################################
 
 trim <- function(var, dataset, trim_perc=.05) {
@@ -19,12 +49,9 @@ return(dataset)
 
 FW_index <- function(indexer,revcols = NULL,data_orig) {
 ### function to make family wise index using covariance as weights (following http://cyrussamii.com/?p=2656)
-### FW_index("messenger != 'ctrl' ", c("know_space", "know_combine", "know_weed"),dta)
-
-#FW_index(c("baraza.D2","baraza.D2.4","baraza.D3","baraza.D4.2", "baraza.D1",  "baraza.D1.2"),revcols=c(5,6),data=endline)
-#indexer <- c("baraza.D2","baraza.D2.4","baraza.D3","baraza.D4.2", "baraza.D1",  "baraza.D1.2")
-#revcols <- c(5,6)
-#data_orig <- endline
+### FW_index(c("baraza.B2","baraza.B3","baraza.B4.1","inputs","baraza.B5.2","baraza.B5.3"),data=endline)
+##indexer <- c("baraza.B2","baraza.B3","baraza.B4.1","inputs","baraza.B5.2","baraza.B5.3")
+##data_orig <- endline
 
 data <- data_orig[complete.cases(data_orig[indexer]),]
 x <- data[indexer]
@@ -65,17 +92,15 @@ credplot.gg <- function(d,units, hypo, axlabs, lim){
 
 ################################################################## end of funtions declarations
 
-# takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
-#source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/anonyize.R")
 ### for the mock report, I use a dummy endline - I read in a dummy endline of 3 households just to get the correct variable names
-endline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/endline.csv")[10:403]
+#endline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/endline.csv")[10:403]
 
-### I then merge with the sampling list to basically create an empty endline dataset
-### and merge in the treatments
-list <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/sampling_list_hh.csv")[c("hhid","a21","a22","a23")]
-endline <- merge(list, endline, by="hhid", all.x=T)
-treats <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/final_list_5.csv")
-endline <- merge(treats, endline, by.x=c("district","subcounty"), by.y=c("a22","a23"))
+#### I then merge with the sampling list to basically create an empty endline dataset
+#### and merge in the treatments
+#list <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/sampling_list_hh.csv")[c("hhid","a21","a22","a23")]
+#endline <- merge(list, endline, by="hhid", all.x=T)
+#treats <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/final_list_5.csv")
+#endline <- merge(treats, endline, by.x=c("district","subcounty"), by.y=c("a22","a23"))
 
 
 
@@ -87,6 +112,7 @@ baseline$a23[baseline$a23 == "SEMBABULE TC"] <- "SEMBABULE_TC"
 baseline$a23[baseline$a23 == "RAKAI TC"] <- "RAKAI_TC"
 baseline$a23[baseline$a23 == "NTUSI"] <- "NTUUSI"
 
+
 baseline$b21 <-  as.numeric(baseline$b21=="Yes")
 baseline$b31 <-  as.numeric(baseline$b31=="Yes")
 baseline$b44 <-  as.numeric(baseline$b44=="Yes")
@@ -95,7 +121,8 @@ baseline$base_inputs <- as.numeric(baseline$used_seed=="Yes" | baseline$used_fer
 baseline$b5144 <- as.numeric(baseline$b5144=="Yes")
 baseline$b5146 <- as.numeric(baseline$b5146=="Yes")
 ##use of unprotected water sources in dry season
-baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Rain water","Surface water","Tube well or borehole","Unprotected dug well","Unprotected spring"))    )
+###this was changed post registration to follow https://www.who.int/water_sanitation_health/monitoring/jmp2012/key_terms/en/ guidelines on what is considered improved, that also considers rainwater a protected source
+baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Bottled water","Cart with small tank","Unprotected dug well","Unprotected spring","Tanker truck"))    )
 ### is there are water committee
 baseline$c10 <- as.numeric(baseline$c10=="Yes")
 
@@ -173,61 +200,114 @@ baseline$head_sec <- as.numeric(baseline$a36) > 15
 baseline_desc <- baseline
 baseline_matching <- merge(baseline,treats, by.x=c("a22","a23"), by.y=c("district","subcounty"))
 
-#define endline variables
-endline$baraza.B3 <- 0
+#define endline variables -
+#endline$baraza.B3 <- 0
 endline$baraza.B3 <- endline$baraza.B3 ==1 |  endline$baraza.B3.3 ==1
-endline$inputs <- 0
+#endline$inputs <- 0
 endline$inputs <- as.numeric(endline$baraza.B1==1 | endline$baraza.B1.5==1) 
-endline$unprotected <- (as.numeric(endline$baraza.C1 %in% c(4,6,8,9,12)) )
+###this was changed post registration to follow https://www.who.int/water_sanitation_health/monitoring/jmp2012/key_terms/en/ guidelines on what is considered improved, that also considers rainwater a protected source
+#baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Bottled water","Cart with small tank","Unprotected dug well","Unprotected spring","Tanker truck"))    )
+### is there are water committee
+endline$unprotected <- (as.numeric(endline$baraza.C1 %in% c(5,7,9,10,11,12)) )
 
 ### here we simulate endline variables - remove if endline data is in
-endline$baraza.B2  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b21 == 1, na.rm=T))
+#endline$baraza.B2  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b21 == 1, na.rm=T))
+endline$baraza.B2  <- endline$baraza.B2  == 1
 ###visits
 ### here we simulate endline variables - remove if endline data is in
-endline$baraza.B3 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b31 == 1, na.rm=T))
+#endline$baraza.B3 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b31 == 1, na.rm=T))
 ###naads in village
 ### here we simulate endline variables - remove if endline data is in
-endline$baraza.B4.1  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b44 == 1, na.rm=T))
+#endline$baraza.B4.1  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b44 == 1, na.rm=T))
+endline$baraza.B4.1 <- endline$baraza.B4.1 == 1
 ###simulate an effect on this one
-endline$inputs <- rbinom(n=length(endline$inputs),size=1,prob=mean(baseline$base_inputs, na.rm=T)) 
+#endline$inputs <- rbinom(n=length(endline$inputs),size=1,prob=mean(baseline$base_inputs, na.rm=T)) 
 ###simulate an effect on this one
-endline$baraza.B5.2  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b5144 == 1, na.rm=T))
+#endline$baraza.B5.2  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b5144 == 1, na.rm=T))
+endline$baraza.B5.2 <- endline$baraza.B5.2 ==1 
 ###simulate an effect on this one
-endline$baraza.B5.3  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b5146 == 1, na.rm=T))
+#endline$baraza.B5.3  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b5146 == 1, na.rm=T))
+endline$baraza.B5.3 <- endline$baraza.B5.3 == 1
 ###simulate an effect on this one
-endline$unprotected <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$base_unprotected ==1, na.rm=T))
-endline$baraza.C1.2 <- sample(baseline$c12source[!is.na(baseline$c12source)],dim(endline)[1])  ### this needs to be inverse hypersine transformed and trimmed in final version
-#endline$baraza.C1.2 <-  log(endline$baraza.C1.2 + sqrt(endline$baraza.C1.2 ^ 2 + 1))
-#endline <- trim("baraza.C1.2",endline)
-endline$baraza.C1.3 <- sample(baseline$qc15[!is.na(baseline$qc15)],dim(endline)[1]) ### this needs to be inverse hypersine transformed and trimmed in final version
-#endline$baraza.C1.3 <- log(endline$baraza.C1.3 + sqrt(endline$baraza.C1.3 ^ 2 + 1))
-#endline <- trim("baraza.C1.3",endline)
-endline$baraza.C2.3 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$c10 ==1, na.rm=T))
-endline$baraza.A6 <- sample(baseline$a6[!is.na(baseline$a6)],dim(endline)[1]) ### this needs to be inverse hypersine transformed and trimmed in final version
+#endline$unprotected <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$base_unprotected ==1, na.rm=T))
+#endline$baraza.C1.2 <- sample(baseline$c12source[!is.na(baseline$c12source)],dim(endline)[1])  ### this needs to be inverse hypersine transformed and trimmed in final version
+endline$baraza.C1.2 <-  as.numeric(as.character(endline$baraza.C1.2))
+endline$baraza.C1.2[is.na(endline$baraza.C1.2)] <- 0 ## is na for households with piped water in compound -> distance set to 0
+endline$baraza.C1.2[endline$baraza.C1.2 == 999] <- NA ## code for dont know is 999
+endline$baraza.C1.2 <-  log(endline$baraza.C1.2 + sqrt(endline$baraza.C1.2 ^ 2 + 1))
+endline <- trim("baraza.C1.2",endline)
+#endline$baraza.C1.3 <- sample(baseline$qc15[!is.na(baseline$qc15)],dim(endline)[1]) ### this needs to be inverse hypersine transformed and trimmed in final version
+endline$baraza.C1.3 <-  as.numeric(as.character(endline$baraza.C1.3))
+endline$baraza.C1.3[is.na(endline$baraza.C1.3)] <- 0 ## is na for households with piped water in compound -> waiting time set to 0
+endline$baraza.C1.3[endline$baraza.C1.3 == 999] <- NA ## code for dont know is 999
+endline$baraza.C1.3 <-  log(endline$baraza.C1.3 + sqrt(endline$baraza.C1.3 ^ 2 + 1))
+endline <- trim("baraza.C1.3",endline)
+
+#endline$baraza.C2.3 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$c10 ==1, na.rm=T))
+endline$baraza.C2.3 <- endline$baraza.C2.3 == 1
+#endline$baraza.A6 <- sample(baseline$a6[!is.na(baseline$a6)],dim(endline)[1]) ### this needs to be inverse hypersine transformed and trimmed in final version
+endline$baraza.A6 <-  as.numeric(as.character(endline$baraza.A6))
+endline$baraza.A6[endline$baraza.A6 == 999] <- NA ## code for dont know is 999
+endline$baraza.A6 <-  log(endline$baraza.A6 + sqrt(endline$baraza.A6 ^ 2 + 1))
+endline <- trim("baraza.A6",endline)
 
 ### access to public health if sick
-endline$baraza.D2 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$pub_health_access, na.rm=T))
-endline$baraza.D2.4 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$maternal_health_access , na.rm=T))
-endline$baraza.D3 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$pub_health_access, na.rm=T))
-endline$baraza.D4.2 <- sample(baseline$d43[!is.na(baseline$d43)] ,dim(endline)[1])  ### this needs to be inverse hypersine transformed and trimmed in final version
-#endline$baraza.D4.2 <- log(endline$baraza.D4.2 + sqrt(endline$baraza.D4.2 ^ 2 + 1))
-#endline <- trim("baraza.D4.2",endline)
+#endline$baraza.D2 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$pub_health_access, na.rm=T))
+endline$baraza.D2 <- (endline$baraza.D2 %in% 2:5)
+#endline$baraza.D2.4 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$maternal_health_access , na.rm=T))
+endline$baraza.D2.4 <- (endline$baraza.D2.4 %in% 2:5)
+#endline$baraza.D3 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$pub_health_access, na.rm=T))
+endline$baraza.D3 <- endline$baraza.D3 == 1
+#endline$baraza.D4.2 <- sample(baseline$d43[!is.na(baseline$d43)] ,dim(endline)[1])  ### this needs to be inverse hypersine transformed and trimmed in final version
+endline$baraza.D4.2 <-  as.numeric(as.character(endline$baraza.D4.2))
+endline$baraza.D4.2[endline$baraza.D4.2 == 999] <- NA ## code for dont know is 999
+endline$baraza.D4.2 <-  log(endline$baraza.D4.2 + sqrt(endline$baraza.D4.2 ^ 2 + 1))
+endline <- trim("baraza.D4.2",endline)
+
 #health outcome - less people sick 
-endline$baraza.D1  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$d11, na.rm=T))
+#endline$baraza.D1  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$d11, na.rm=T))
+endline$baraza.D1 <- endline$baraza.D1 == 1
 endline$baraza.D1.2 <- sample(baseline$tot_sick[!is.na(baseline$tot_sick)] ,dim(endline)[1]) 
 endline$baraza.D1.2[is.na(endline$baraza.D1.2)] <- 0
-endline$baraza.D4.6 <- sample(baseline$wait_time[!is.na(baseline$wait_time)] ,dim(endline)[1]) 
-endline$baraza.D6  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$d61, na.rm=T))
+
+#endline$baraza.D4.6 <- sample(baseline$wait_time[!is.na(baseline$wait_time)] ,dim(endline)[1]) 
+endline$baraza.D4.6 <-  as.numeric(as.character(endline$baraza.D4.6))
+endline$baraza.D4.6[endline$baraza.D4.6 == 999] <- NA ## code for dont know is 999
+endline$baraza.D4.6 <-  log(endline$baraza.D4.6 + sqrt(endline$baraza.D4.6 ^ 2 + 1))
+endline <- trim("baraza.D4.6",endline)
+
+#endline$baraza.D6  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$d61, na.rm=T))
+endline$baraza.D6 <- endline$baraza.D6 == 1
 
 ##edu
-endline$n_children <- rowSums(cbind(endline$baraza.E1.2,endline$baraza.E2.1), na.rm=T) 
-endline$n_children <- sample(baseline$base_n_children ,dim(endline)[1]) 
-endline$baraza.E1  <- sample(baseline$e5[!is.na(baseline$e5)] ,dim(endline)[1], replace=TRUE) 
-endline$baraza.E1.4 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e12, na.rm=T))
-endline$baraza.E1.6 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e14, na.rm=T))
-endline$baraza.E1.10 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e22, na.rm=T))
-endline$baraza.E1.13 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e32, na.rm=T))
-endline$baraza.E1.18 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e45, na.rm=T))
+endline$n_children <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.1)),as.numeric(as.character(endline$baraza.E2.1))), na.rm=T) 
+#endline$n_children <- sample(baseline$base_n_children ,dim(endline)[1]) 
+endline$baraza.E1.2[endline$baraza.E1.2 == 999] <- NA
+endline$baraza.E2.2[endline$baraza.E2.2 == 999] <- NA 
+endline$baraza.E5  <- rowMeans(cbind(as.numeric(as.character(endline$baraza.E1.2)),as.numeric(as.character(endline$baraza.E2.2))), na.rm=T) 
+endline$baraza.E5[is.na(as.numeric(as.character(endline$baraza.E1.2))) & is.na(as.numeric(as.character(endline$baraza.E2.2)))] <- NA
+endline$baraza.E5 <- log(endline$baraza.E5 + sqrt(endline$baraza.E5 ^ 2 + 1))
+#boundery fence
+#endline$baraza.E1.4 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e12, na.rm=T))
+endline$baraza.E12 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.4)) == 1 , as.numeric(as.character(endline$baraza.E2.4))==1), na.rm=T) > 0
+endline$baraza.E12[is.na(as.numeric(as.character(endline$baraza.E1.4)) ) & is.na(as.numeric(as.character(endline$baraza.E2.4)) )] <- NA
+
+endline$baraza.E14 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.6)) == 1 , as.numeric(as.character(endline$baraza.E2.6))==1), na.rm=T) > 0
+endline$baraza.E14[is.na(as.numeric(as.character(endline$baraza.E1.6)) ) & is.na(as.numeric(as.character(endline$baraza.E2.6)) )] <- NA
+
+endline$baraza.E22 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.10)) == 1 , as.numeric(as.character(endline$baraza.E2.10))==1), na.rm=T) > 0
+endline$baraza.E22[is.na(as.numeric(as.character(endline$baraza.E1.10)) ) & is.na(as.numeric(as.character(endline$baraza.E2.10)) )] <- NA
+
+endline$baraza.E32 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.13)) == 1 , as.numeric(as.character(endline$baraza.E2.13))==1), na.rm=T) > 0
+endline$baraza.E32[is.na(as.numeric(as.character(endline$baraza.E1.13)) ) & is.na(as.numeric(as.character(endline$baraza.E2.13)) )] <- NA
+
+endline$baraza.E45 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.18)) == 1 , as.numeric(as.character(endline$baraza.E2.18))==1), na.rm=T) > 0
+endline$baraza.E45[is.na(as.numeric(as.character(endline$baraza.E1.18)) ) & is.na(as.numeric(as.character(endline$baraza.E2.18)) )] <- NA
+
+##endline$baraza.E1.6 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e14, na.rm=T))
+##endline$baraza.E1.10 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e22, na.rm=T))
+##endline$baraza.E1.13 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e32, na.rm=T))
+##endline$baraza.E1.18 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e45, na.rm=T))
 ##ag
 
 
@@ -284,7 +364,7 @@ names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_health_in
 #baseline_matching <- FW_index(c("base_n_children","e5","e12", "e14","e22","e32","e45"),revcols=c(2),data=baseline_matching)
 #names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_education_index'
 
-endline <- FW_index(c("n_children","baraza.E1","baraza.E1.4","baraza.E1.6","baraza.E1.10"),revcols=c(2),data=endline)
+endline <- FW_index(c("n_children","baraza.E5","baraza.E12","baraza.E14","baraza.E22"),revcols=c(2),data=endline)
 names(endline)[names(endline) == 'index'] <- 'education_index'
 baseline <- FW_index(c("base_n_children","e5","e12", "e14","e22"),revcols=c(2),data=baseline)
 names(baseline)[names(baseline) == 'index'] <- 'base_education_index'
@@ -302,7 +382,7 @@ names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_pub_servi
 
 
 
-outcomes <- c("baraza.B2","baraza.B3","baraza.B4.1","inputs","baraza.B5.2","baraza.B5.3","ag_index","unprotected", "baraza.C1.2", "baraza.C1.3","baraza.C2.3","baraza.A6","infra_index","baraza.D2","baraza.D2.4","baraza.D3","baraza.D4.2", "baraza.D1",  "baraza.D4.6","baraza.D6","health_index","n_children","baraza.E1","baraza.E1.4","baraza.E1.6","baraza.E1.10","baraza.E1.13","baraza.E1.18","education_index", "pub_service_index")
+outcomes <- c("baraza.B2","baraza.B3","baraza.B4.1","inputs","baraza.B5.2","baraza.B5.3","ag_index","unprotected", "baraza.C1.2", "baraza.C1.3","baraza.C2.3","baraza.A6","infra_index","baraza.D2","baraza.D2.4","baraza.D3","baraza.D4.2", "baraza.D1",  "baraza.D4.6","baraza.D6","health_index","n_children","baraza.E5","baraza.E12","baraza.E14","baraza.E22","baraza.E32","baraza.E45","education_index", "pub_service_index")
 baseline_outcomes <- c("b21","b31","b44","base_inputs","b5144","b5146","base_ag_index","base_unprotected","c12source", "qc15","c10","a6","base_infra_index","pub_health_access","maternal_health_access","d31","d43","d11","wait_time","d61","base_health_index","base_n_children","e5","e12", "e14","e22","e32","e45","base_education_index","base_pub_service_index")
 
 ##      outcomes            baseline_outcomes    
@@ -363,6 +443,13 @@ baseline$information[baseline$treat=="info" | baseline$treat=="scbza"] <- 1
 baseline$deliberation[baseline$treat=="delib" | baseline$treat=="scbza"] <- 1 
 baseline$district_baraza[baseline$treat=="dbza"] <- 1 
 
+
+###################################################################
+baseline$district_baraza[baseline$a23 == "KAKOBA"] <- 1
+baseline$deliberation[baseline$a23 == "INOMO"] <- 1
+baseline$information[baseline$a23 == "INOMO"] <- 0 
+####################################################################
+
 ### merge in clusterID for standard error clustering in dif-in-dif
 baseline <- merge(baseline, endline[c("hhid","clusterID","clusterID2")], by="hhid", all.y=T)
 baseline_matching <- merge(baseline_matching, endline[c("hhid","clusterID","clusterID2")], by="hhid", all.y=T)
@@ -383,6 +470,7 @@ df_averages <- array(NA,dim=c(2,length(outcomes)))
 
 for (i in 1:length(outcomes)) {
 #print(i)
+# i <- 1
 
 df_averages[1,i] <- mean(as.matrix(endline[outcomes[i]]), na.rm=T)
 df_averages[2,i] <- sd(as.matrix(endline[outcomes[i]]), na.rm=T)

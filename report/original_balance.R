@@ -65,7 +65,8 @@ baseline$base_inputs <- as.numeric(baseline$used_seed=="Yes" | baseline$used_fer
 baseline$b5144 <- as.numeric(baseline$b5144=="Yes")
 baseline$b5146 <- as.numeric(baseline$b5146=="Yes")
 ##use of unprotected water sources in dry season
-baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Rain water","Surface water","Tube well or borehole","Unprotected dug well","Unprotected spring"))    )
+###this was changed post registration to follow https://www.who.int/water_sanitation_health/monitoring/jmp2012/key_terms/en/ guidelines on what is considered improved, that also considers rainwater a protected source
+baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Bottled water","Cart with small tank","Unprotected dug well","Unprotected spring","Tanker truck"))    )
 ### is there are water committee
 baseline$c10 <- as.numeric(baseline$c10=="Yes")
 baseline$c12source <- log(baseline$c12source + sqrt(baseline$c12source ^ 2 + 1))
