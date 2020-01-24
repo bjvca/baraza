@@ -22,8 +22,8 @@ endline$region <- NULL
 endline <- endline[!duplicated(endline$hhid),]
 
 endline$district_baraza[endline$subcounty=="CEGERE"] <- 1
-endline$deliberation[endline$subcounty=="INOMO"] <- 1
-endline$information[endline$subcounty=="INOMO"] <- 0
+#endline$deliberation[endline$subcounty=="INOMO"] <- 1
+#endline$information[endline$subcounty=="INOMO"] <- 0
 endline$a21[sample(1:dim(endline)[1],50)] <- "Central"
 endline$a21 <- as.factor(endline$a21)
 

@@ -21,9 +21,6 @@ endline$region <- NULL
 ### there should be no duplicates in this dataset
 endline <- endline[!duplicated(endline$hhid),]
 
-endline$district_baraza[endline$subcounty=="CEGERE"] <- 1
-endline$deliberation[endline$subcounty=="INOMO"] <- 1
-endline$information[endline$subcounty=="INOMO"] <- 0
 endline$a21[sample(1:dim(endline)[1],50)] <- "Central"
 endline$a21 <- as.factor(endline$a21)
 
@@ -444,11 +441,6 @@ baseline$deliberation[baseline$treat=="delib" | baseline$treat=="scbza"] <- 1
 baseline$district_baraza[baseline$treat=="dbza"] <- 1 
 
 
-###################################################################
-baseline$district_baraza[baseline$a23 == "KAKOBA"] <- 1
-baseline$deliberation[baseline$a23 == "INOMO"] <- 1
-baseline$information[baseline$a23 == "INOMO"] <- 0 
-####################################################################
 ### merge in clusterID for standard error clustering in dif-in-dif
 baseline <- merge(baseline, endline[c("hhid","clusterID","clusterID2")], by="hhid", all.y=T)
 baseline_matching <- merge(baseline_matching, endline[c("hhid","clusterID","clusterID2")], by="hhid", all.y=T)
