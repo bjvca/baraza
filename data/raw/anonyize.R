@@ -6,7 +6,7 @@ set.seed(12345) ### for gps offset
 dta <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/clean.csv")
 
 
-dta <- dta[,1:275]
+dta <- dta[,1:256]
 dta <- dta[c(10,11,12,13,18,26:length(names(dta)))]
 
 dta$baraza.labour.1..D1.1 <- NULL
@@ -21,9 +21,9 @@ dta$baraza.labour.9..D1.1 <- NULL
 dta$baraza.labour.10..D1.1 <- NULL
 dta$baraza.labour.11..D1.1 <- NULL
 dta$baraza.labour.12..D1.1 <- NULL
-dta$baraza.labour.13..D1.1 <- NULL
-dta$baraza.labour.14..D1.1 <- NULL
-dta$baraza.labour.15..D1.1 <- NULL
+#dta$baraza.labour.13..D1.1 <- NULL
+#dta$baraza.labour.14..D1.1 <- NULL
+#dta$baraza.labour.15..D1.1 <- NULL
 
 dta <- dta[!duplicated(dta$hh_id),] #this should not be needed if data is cleaned
 ### merge in treatment status
@@ -71,3 +71,6 @@ hh_level <- hh_level[!duplicated(hh_level$hhid),]
 
 
 write.csv(hh_level,"/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/baseline.csv",row.names=FALSE)
+
+#exit
+

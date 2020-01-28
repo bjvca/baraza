@@ -10,7 +10,9 @@ library(moments)
 set.seed(123456789) #not needed for final version?
 
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
+source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/cleaning.R")
 source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/anonyize.R")
+#endline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/endline.csv")
 endline$a21 <- as.character(endline$region)
 endline$region <- NULL
 ### EDITS SHOULD BE MADE HERE FOR FINAL VERSION###########################################################################################
@@ -21,23 +23,8 @@ endline$region <- NULL
 ### there should be no duplicates in this dataset
 endline <- endline[!duplicated(endline$hhid),]
 
-#endline$district_baraza[endline$subcounty=="CEGERE"] <- 1
-#endline$deliberation[endline$subcounty=="INOMO"] <- 1
-#endline$information[endline$subcounty=="INOMO"] <- 0
-endline$a21[sample(1:dim(endline)[1],50)] <- "Central"
+endline$a21[sample(1:dim(endline)[1],500)] <- "Central"
 endline$a21 <- as.factor(endline$a21)
-
-### also search and delete below:
-
-###################################################################
-#baseline$district_baraza[baseline$a23 == "KAKOBA"] <- 1
-####################################################################
-##########################################################################################################################################
-
-
-
-
-
 
 ########################################################### functions declarations #####################################################
 
@@ -541,6 +528,26 @@ d_plot$grp <- rep(c("sc baraza","info","delib","level"), times=6)
 d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib","level"))
 d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","health","education","","index"))))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/impact_summary_ancova.png", units="px", height=3200, width= 6400, res=600)
+credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3)
+dev.off()
+
+
+### create data.frame to plot - make sure you get correct i's for the indices; last one is overall index
+d_plot <- data.frame(rbind(df_dif_in_dif[c(1,4,5),1,7],df_dif_in_dif[c(1,4,5),2,7],df_dif_in_dif[c(1,4,5),3,7],df_dif_in_dif[c(1,4,5),4,7]))
+d_plot <- rbind(d_plot,data.frame(rbind(df_dif_in_dif[c(1,4,5),1,13],df_dif_in_dif[c(1,4,5),2,13],df_dif_in_dif[c(1,4,5),3,13],df_dif_in_dif[c(1,4,5),4,13])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_dif_in_dif[c(1,4,5),1,21],df_dif_in_dif[c(1,4,5),2,21],df_dif_in_dif[c(1,4,5),3,21],df_dif_in_dif[c(1,4,5),4,21])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_dif_in_dif[c(1,4,5),1,29],df_dif_in_dif[c(1,4,5),2,29],df_dif_in_dif[c(1,4,5),3,29],df_dif_in_dif[c(1,4,5),4,29])))
+d_plot <- rbind(d_plot, data.frame(rbind(c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA))))
+d_plot <- rbind(d_plot,data.frame(rbind(df_dif_in_dif[c(1,4,5),1,30],df_dif_in_dif[c(1,4,5),2,30],df_dif_in_dif[c(1,4,5),3,30],df_dif_in_dif[c(1,4,5),4,30])))
+
+
+names(d_plot) <- c("y","ylo","yhi")
+
+d_plot$x <- rep(c("agricuture","infrastructure","health","education","","index"), each=4)
+d_plot$grp <- rep(c("sc baraza","info","delib","level"), times=6)
+d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib","level"))
+d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","health","education","","index"))))
+png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/impact_summary_dif_in_dif.png", units="px", height=3200, width= 6400, res=600)
 credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3)
 dev.off()
 

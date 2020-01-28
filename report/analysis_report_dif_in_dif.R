@@ -10,6 +10,8 @@ library(moments)
 set.seed(123456789) #not needed for final version?
 
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
+#source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/cleaning.R")
+source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/cleaning.R")
 source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/anonyize.R")
 endline$a21 <- as.character(endline$region)
 endline$region <- NULL
@@ -21,18 +23,8 @@ endline$region <- NULL
 ### there should be no duplicates in this dataset
 endline <- endline[!duplicated(endline$hhid),]
 
-endline$a21[sample(1:dim(endline)[1],50)] <- "Central"
+endline$a21[sample(1:dim(endline)[1],500)] <- "Central"
 endline$a21 <- as.factor(endline$a21)
-
-### also search and delete below:
-
-###################################################################
-#baseline$district_baraza[baseline$a23 == "KAKOBA"] <- 1
-####################################################################
-##########################################################################################################################################
-
-
-
 
 
 

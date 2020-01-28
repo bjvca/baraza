@@ -10,6 +10,7 @@ library(moments)
 set.seed(123456789) #not needed for final version?
 
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
+source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/cleaning.R")
 source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/anonyize.R")
 endline$a21 <- as.character(endline$region)
 endline$region <- NULL
@@ -21,22 +22,8 @@ endline$region <- NULL
 ### there should be no duplicates in this dataset
 endline <- endline[!duplicated(endline$hhid),]
 
-endline$district_baraza[endline$subcounty=="CEGERE"] <- 1
-#endline$deliberation[endline$subcounty=="INOMO"] <- 1
-#endline$information[endline$subcounty=="INOMO"] <- 0
-endline$a21[sample(1:dim(endline)[1],50)] <- "Central"
+endline$a21[sample(1:dim(endline)[1],500)] <- "Central"
 endline$a21 <- as.factor(endline$a21)
-
-### also search and delete below:
-
-###################################################################
-#baseline$district_baraza[baseline$a23 == "KAKOBA"] <- 1
-####################################################################
-##########################################################################################################################################
-
-
-
-
 
 
 ########################################################### functions declarations #####################################################
@@ -444,11 +431,6 @@ baseline$deliberation[baseline$treat=="delib" | baseline$treat=="scbza"] <- 1
 baseline$district_baraza[baseline$treat=="dbza"] <- 1 
 
 
-###################################################################
-baseline$district_baraza[baseline$a23 == "KAKOBA"] <- 1
-baseline$deliberation[baseline$a23 == "INOMO"] <- 1
-baseline$information[baseline$a23 == "INOMO"] <- 0 
-####################################################################
 ### merge in clusterID for standard error clustering in dif-in-dif
 baseline <- merge(baseline, endline[c("hhid","clusterID","clusterID2")], by="hhid", all.y=T)
 baseline_matching <- merge(baseline_matching, endline[c("hhid","clusterID","clusterID2")], by="hhid", all.y=T)
