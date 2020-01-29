@@ -11,8 +11,8 @@ set.seed(123456789) #not needed for final version?
 
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
 #source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/cleaning.R")
-source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/cleaning.R")
-source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/anonyize.R")
+#source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/anonyize.R")
+endline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/endline.csv")
 endline$a21 <- as.character(endline$region)
 endline$region <- NULL
 ### EDITS SHOULD BE MADE HERE FOR FINAL VERSION###########################################################################################
@@ -88,7 +88,7 @@ credplot.gg <- function(d,units, hypo, axlabs, lim){
 #### and merge in the treatments
 #list <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/sampling_list_hh.csv")[c("hhid","a21","a22","a23")]
 #endline <- merge(list, endline, by="hhid", all.x=T)
-#treats <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/final_list_5.csv")
+treats <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/final_list_5.csv")
 #endline <- merge(treats, endline, by.x=c("district","subcounty"), by.y=c("a22","a23"))
 
 
@@ -323,7 +323,7 @@ names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_ag_index'
 #10 waiting time, 
 #11 is there a water commitee?
 #12  #index
-endline <- FW_index(c("unprotected", "baraza.C1.2", "baraza.C1.3","baraza.C2.3","baraza.A6"),revcols=c(1,2,3),data=endline)
+endline <- FW_index(c("unprotected", "baraza.C1.2", "baraza.C1.3","baraza.C2.3","baraza.A6"),revcols=c(1,2,3,5),data=endline)
 names(endline)[names(endline) == 'index'] <- 'infra_index'
 baseline <- FW_index(c("base_unprotected","c12source", "qc15","c10","a6"),revcols=c(1,2,3,5),data=baseline)
 names(baseline)[names(baseline) == 'index'] <- 'base_infra_index'
@@ -373,6 +373,7 @@ names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_pub_servi
 
 outcomes <- c("baraza.B2","baraza.B3","baraza.B4.1","inputs","baraza.B5.2","baraza.B5.3","ag_index","unprotected", "baraza.C1.2", "baraza.C1.3","baraza.C2.3","baraza.A6","infra_index","baraza.D2","baraza.D2.4","baraza.D3","baraza.D4.2", "baraza.D1",  "baraza.D4.6","baraza.D6","health_index","n_children","baraza.E5","baraza.E12","baraza.E14","baraza.E22","baraza.E32","baraza.E45","education_index", "pub_service_index")
 baseline_outcomes <- c("b21","b31","b44","base_inputs","b5144","b5146","base_ag_index","base_unprotected","c12source", "qc15","c10","a6","base_infra_index","pub_health_access","maternal_health_access","d31","d43","d11","wait_time","d61","base_health_index","base_n_children","e5","e12", "e14","e22","e32","e45","base_education_index","base_pub_service_index")
+
 
 ##      outcomes            baseline_outcomes    
 
@@ -451,8 +452,8 @@ df_dif_in_dif <- array(NA,dim=c(6,4,length(outcomes)))
 df_matcher <- array(NA,dim=c(6,4,length(outcomes)))
 df_averages <- array(NA,dim=c(2,length(outcomes)))
 
-for (i in 1:length(outcomes)) {
-#print(i)
+for (i in 1:(length(outcomes)-1)) {
+
 
 df_averages[1,i] <- mean(as.matrix(endline[outcomes[i]]), na.rm=T)
 df_averages[2,i] <- sd(as.matrix(endline[outcomes[i]]), na.rm=T)

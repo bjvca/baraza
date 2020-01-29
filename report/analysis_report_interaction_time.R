@@ -10,8 +10,7 @@ library(moments)
 set.seed(123456789) #not needed for final version?
 
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
-source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/cleaning.R")
-source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/anonyize.R")
+endline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/endline.csv")
 endline$a21 <- as.character(endline$region)
 endline$region <- NULL
 ### EDITS SHOULD BE MADE HERE FOR FINAL VERSION###########################################################################################
@@ -86,7 +85,7 @@ credplot.gg <- function(d,units, hypo, axlabs, lim){
 #### and merge in the treatments
 #list <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/sampling_list_hh.csv")[c("hhid","a21","a22","a23")]
 #endline <- merge(list, endline, by="hhid", all.x=T)
-#treats <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/final_list_5.csv")
+treats <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/final_list_5.csv")
 #endline <- merge(treats, endline, by.x=c("district","subcounty"), by.y=c("a22","a23"))
 
 
@@ -482,7 +481,7 @@ df_ancova[,4,i] <- c(res[8,1],res[8,2],res[8,4], conf[8,4],conf[8,5], nobs(ols))
 df_ancova[,5,i] <- c(res[9,1],res[9,2],res[9,4], conf[9,4],conf[9,5], nobs(ols))
 df_ancova[,6,i] <- c(res[10,1],res[10,2],res[10,4], conf[10,4],conf[10,5], nobs(ols))
 
-#info baraza
+#deliberation baraza
 ols <- lm(as.formula(paste(paste(outcomes[i],"information*deliberation+deliberation:time_dif+deliberation:time_dif2+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[dta$district_baraza == 0,]) 
 vcov_cluster <- vcovCR(ols, cluster = dta$clusterID[dta$district_baraza == 0], type = "CR0")
 res <- coeftest(ols, vcov_cluster)
@@ -492,7 +491,7 @@ df_ancova[,7,i] <- c(res[8,1],res[8,2],res[8,4], conf[8,4],conf[8,5], nobs(ols))
 df_ancova[,8,i] <- c(res[9,1],res[9,2],res[9,4], conf[9,4],conf[9,5], nobs(ols))
 df_ancova[,9,i] <- c(res[10,1],res[10,2],res[10,4], conf[10,4],conf[10,5], nobs(ols))
 
-
+###district level baraza
 ols <- lm(as.formula(paste(paste(outcomes[i],"district_baraza+district_baraza:time_dif+district_baraza:time_dif2+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ,]) 
 vcov_cluster <- vcovCR(ols, cluster = dta$clusterID2[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ], type = "CR0")
 res <- coeftest(ols, vcov_cluster)
