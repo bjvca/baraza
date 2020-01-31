@@ -452,7 +452,7 @@ df_dif_in_dif <- array(NA,dim=c(6,4,length(outcomes)))
 df_matcher <- array(NA,dim=c(6,4,length(outcomes)))
 df_averages <- array(NA,dim=c(2,length(outcomes)))
 
-for (i in 1:(length(outcomes)-1)) {
+for (i in 1:length(outcomes)) {
 
 
 df_averages[1,i] <- mean(as.matrix(endline[outcomes[i]]), na.rm=T)
