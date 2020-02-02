@@ -444,10 +444,10 @@ for (i in 1:length(outcomes)) {
 ## simple difference and adjust se for clustered treatment assignment
 ols <- lm(as.formula(paste(outcomes[i],"interaction_planned+a21",sep="~")), data=endline_interact) 
 vcov_cluster <- vcovCR(ols, cluster = endline_interact$clusterID, type = "CR0")
-res <- coeftest(ols, vcov_cluster)
+res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_balance[,1,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
+df_balance[,1,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
 
 }
 
@@ -459,10 +459,10 @@ for (i in 1:length(outcomes)) {
 ## simple difference and adjust se for clustered treatment assignment
 ols <- lm(as.formula(paste(outcomes[i],"information_planned+a21",sep="~")), data=endline_info) 
 vcov_cluster <- vcovCR(ols, cluster = endline_info$clusterID, type = "CR0")
-res <- coeftest(ols, vcov_cluster)
+res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_balance[,2,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
+df_balance[,2,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
 
 }
 
@@ -475,10 +475,10 @@ for (i in 1:length(outcomes)) {
 ### simple difference and adjust se for clustered treatment assignment
 ols <- lm(as.formula(paste(outcomes[i],"deliberation_planned+a21",sep="~")), data=endline_delib) 
 vcov_cluster <- vcovCR(ols, cluster = endline_delib$clusterID, type = "CR0")
-res <- coeftest(ols, vcov_cluster)
+res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_balance[,3,i] <- c(res[3,1],res[3,2],res[3,4], conf[3,4],conf[3,5], nobs(ols))
+df_balance[,3,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5], nobs(ols))
 }
 
 #

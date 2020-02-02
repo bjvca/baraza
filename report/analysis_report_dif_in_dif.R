@@ -494,11 +494,11 @@ matched.dta_long <- rbind(matched.endline[c("information","deliberation","time",
 
 ols <- lm(as.formula(paste(outcomes[i],"information*deliberation*time",sep="~")), data=matched.dta_long)
 vcov_cluster <- vcovCR(ols, cluster = matched.dta_long$clusterID, type = "CR0")
-res <- coeftest(ols, vcov_cluster)
+res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
 
-df_matcher[,2,i] <- c(res[6,1],res[6,2],res[6,4], conf[6,4], conf[6,5], nobs(ols))
+df_matcher[,2,i] <- c(res[6,1],res[6,2],res[6,5], conf[6,4], conf[6,5], nobs(ols))
 
 ####matching for deliberation
 a26a_cut <- seq(min(baseline_complete$a26a),max(baseline_complete$a26a),by=1)
@@ -528,11 +528,11 @@ names(matched.baseline) <- c("information","deliberation","time","clusterID","cl
 matched.dta_long <- rbind(matched.endline[c("information","deliberation","time","clusterID","clusterID2", outcomes[i])], matched.baseline[ c("information","deliberation","time","clusterID","clusterID2",outcomes[i] )])
 ols <- lm(as.formula(paste(outcomes[i],"information*deliberation*time",sep="~")), data=matched.dta_long)
 vcov_cluster <- vcovCR(ols, cluster = matched.dta_long$clusterID, type = "CR0")
-res <- coeftest(ols, vcov_cluster)
+res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
 
-df_matcher[,3,i] <- c(res[7,1],res[7,2],res[7,4], conf[7,4], conf[7,5], nobs(ols))
+df_matcher[,3,i] <- c(res[7,1],res[7,2],res[7,5], conf[7,4], conf[7,5], nobs(ols))
 
 
 ####matching for interaction
@@ -562,11 +562,11 @@ names(matched.baseline) <- c("information","deliberation","time","clusterID","cl
 matched.dta_long <- rbind(matched.endline[c("information","deliberation","time","clusterID","clusterID2", outcomes[i])], matched.baseline[ c("information","deliberation","time","clusterID","clusterID2",outcomes[i] )])
 ols <- lm(as.formula(paste(outcomes[i],"information*deliberation*time",sep="~")), data=matched.dta_long)
 vcov_cluster <- vcovCR(ols, cluster = matched.dta_long$clusterID, type = "CR0")
-res <- coeftest(ols, vcov_cluster)
+res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
 
-df_matcher[,1,i] <- c(res[8,1],res[8,2],res[8,4], conf[8,4], conf[8,5], nobs(ols))
+df_matcher[,1,i] <- c(res[8,1],res[8,2],res[8,5], conf[8,4], conf[8,5], nobs(ols))
 ####matching for district baraza
 a26a_cut <- seq(min(baseline_complete$a26a),max(baseline_complete$a26a),by=1)
 a26b_cut <- seq(min(baseline_complete$a26b),max(baseline_complete$a26b),by=1)
@@ -593,10 +593,10 @@ names(matched.baseline) <- c("district_baraza","time","clusterID","clusterID2",o
 matched.dta_long <- rbind(matched.endline[c("district_baraza","time","clusterID","clusterID2", outcomes[i])], matched.baseline[ c("district_baraza","time","clusterID","clusterID2",outcomes[i] )])
 ols <- lm(as.formula(paste(outcomes[i],"district_baraza*time",sep="~")), data=matched.dta_long)
 vcov_cluster <- vcovCR(ols, cluster = matched.dta_long$clusterID2, type = "CR0")
-res <- coeftest(ols, vcov_cluster)
+res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_matcher[,4,i] <- c(res[4,1],res[4,2],res[4,4], conf[4,4], conf[4,5], nobs(ols))
+df_matcher[,4,i] <- c(res[4,1],res[4,2],res[4,5], conf[4,4], conf[4,5], nobs(ols))
 
 }
 

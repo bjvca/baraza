@@ -465,40 +465,40 @@ df_averages[2,i] <- sd(as.matrix(endline[outcomes[i]]), na.rm=T)
 ## sc baraza
 ols <- lm(as.formula(paste(paste(outcomes[i],"information*deliberation+information:deliberation:time_dif+information:deliberation:time_dif2+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[dta$district_baraza == 0,]) 
 vcov_cluster <- vcovCR(ols, cluster = dta$clusterID[dta$district_baraza == 0], type = "CR0")
-res <- coeftest(ols, vcov_cluster)
+res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_ancova[,1,i] <- c(res[8,1],res[8,2],res[8,4], conf[8,4],conf[8,5], nobs(ols))
-df_ancova[,2,i] <- c(res[9,1],res[9,2],res[9,4], conf[9,4],conf[9,5], nobs(ols))
-df_ancova[,3,i] <- c(res[10,1],res[10,2],res[10,4], conf[10,4],conf[10,5], nobs(ols))
+df_ancova[,1,i] <- c(res[8,1],res[8,2],res[8,5], conf[8,4],conf[8,5], nobs(ols))
+df_ancova[,2,i] <- c(res[9,1],res[9,2],res[9,5], conf[9,4],conf[9,5], nobs(ols))
+df_ancova[,3,i] <- c(res[10,1],res[10,2],res[10,5], conf[10,4],conf[10,5], nobs(ols))
 #info baraza
 ols <- lm(as.formula(paste(paste(outcomes[i],"information*deliberation+information:time_dif+information:time_dif2+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[dta$district_baraza == 0,]) 
 vcov_cluster <- vcovCR(ols, cluster = dta$clusterID[dta$district_baraza == 0], type = "CR0")
-res <- coeftest(ols, vcov_cluster)
+res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_ancova[,4,i] <- c(res[8,1],res[8,2],res[8,4], conf[8,4],conf[8,5], nobs(ols))
-df_ancova[,5,i] <- c(res[9,1],res[9,2],res[9,4], conf[9,4],conf[9,5], nobs(ols))
-df_ancova[,6,i] <- c(res[10,1],res[10,2],res[10,4], conf[10,4],conf[10,5], nobs(ols))
+df_ancova[,4,i] <- c(res[8,1],res[8,2],res[8,5], conf[8,4],conf[8,5], nobs(ols))
+df_ancova[,5,i] <- c(res[9,1],res[9,2],res[9,5], conf[9,4],conf[9,5], nobs(ols))
+df_ancova[,6,i] <- c(res[10,1],res[10,2],res[10,5], conf[10,4],conf[10,5], nobs(ols))
 
 #deliberation baraza
 ols <- lm(as.formula(paste(paste(outcomes[i],"information*deliberation+deliberation:time_dif+deliberation:time_dif2+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[dta$district_baraza == 0,]) 
 vcov_cluster <- vcovCR(ols, cluster = dta$clusterID[dta$district_baraza == 0], type = "CR0")
-res <- coeftest(ols, vcov_cluster)
+res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_ancova[,7,i] <- c(res[8,1],res[8,2],res[8,4], conf[8,4],conf[8,5], nobs(ols))
-df_ancova[,8,i] <- c(res[9,1],res[9,2],res[9,4], conf[9,4],conf[9,5], nobs(ols))
-df_ancova[,9,i] <- c(res[10,1],res[10,2],res[10,4], conf[10,4],conf[10,5], nobs(ols))
+df_ancova[,7,i] <- c(res[8,1],res[8,2],res[8,5], conf[8,4],conf[8,5], nobs(ols))
+df_ancova[,8,i] <- c(res[9,1],res[9,2],res[9,5], conf[9,4],conf[9,5], nobs(ols))
+df_ancova[,9,i] <- c(res[10,1],res[10,2],res[10,5], conf[10,4],conf[10,5], nobs(ols))
 
 ###district level baraza
 ols <- lm(as.formula(paste(paste(outcomes[i],"district_baraza+district_baraza:time_dif+district_baraza:time_dif2+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ,]) 
 vcov_cluster <- vcovCR(ols, cluster = dta$clusterID2[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ], type = "CR0")
-res <- coeftest(ols, vcov_cluster)
+res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
-df_ancova[,10,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
-df_ancova[,11,i] <- c(res[7,1],res[7,2],res[7,4], conf[7,4],conf[7,5], nobs(ols))
-df_ancova[,12,i] <- c(res[8,1],res[8,2],res[8,4], conf[8,4],conf[8,5], nobs(ols))
+df_ancova[,10,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
+df_ancova[,11,i] <- c(res[7,1],res[7,2],res[7,5], conf[7,4],conf[7,5], nobs(ols))
+df_ancova[,12,i] <- c(res[8,1],res[8,2],res[8,5], conf[8,4],conf[8,5], nobs(ols))
 
 }
 

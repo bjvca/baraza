@@ -156,18 +156,18 @@ df_averages[2,i] <- sd(as.matrix(baseline[outcomes[i]]), na.rm=T)
 ### simple difference and adjust se for clustered treatment assignment
 ols <- lm(as.formula(paste(outcomes[i],"information*deliberation+a21",sep="~")), data=baseline[baseline$district_baraza == 0,]) 
 vcov_cluster <- vcovCR(ols, cluster = baseline$clusterID[baseline$district_baraza == 0], type = "CR0")
-res <- coeftest(ols, vcov_cluster)
+res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_ols[,2,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
-df_ols[,3,i] <- c(res[3,1],res[3,2],res[3,4], conf[3,4],conf[3,5], nobs(ols))
-df_ols[,1,i] <- c(res[7,1],res[7,2],res[7,4], conf[7,4],conf[7,5], nobs(ols))
+df_ols[,2,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
+df_ols[,3,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5], nobs(ols))
+df_ols[,1,i] <- c(res[7,1],res[7,2],res[7,5], conf[7,4],conf[7,5], nobs(ols))
 
 ols <- lm(as.formula(paste(outcomes[i],"district_baraza+a21",sep="~")), data=baseline[(baseline$information == 1 & baseline$deliberation==1) | baseline$district_baraza == 1 ,]) 
 vcov_cluster <- vcovCR(ols, cluster = baseline$clusterID2[(baseline$information == 1 & baseline$deliberation==1) | baseline$district_baraza == 1 ], type = "CR0")
-res <- coeftest(ols, vcov_cluster)
+res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
-df_ols[,4,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
+df_ols[,4,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
 }
 
 ### merge in treatments to drop the treated and then compare planned controls and untreated sub-counties
@@ -186,10 +186,10 @@ for (i in 1:length(outcomes)) {
 ## simple difference and adjust se for clustered treatment assignment
 ols <- lm(as.formula(paste(outcomes[i],"information.x*deliberation.x+a21",sep="~")), data=baseline_treat_info) 
 vcov_cluster <- vcovCR(ols, cluster = baseline_treat_info$clusterID, type = "CR0")
-res <- coeftest(ols, vcov_cluster)
+res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_balance[,2,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
+df_balance[,2,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
 
 }
 
@@ -204,10 +204,10 @@ for (i in 1:length(outcomes)) {
 ### simple difference and adjust se for clustered treatment assignment
 ols <- lm(as.formula(paste(outcomes[i],"information.x*deliberation.x+a21",sep="~")), data=baseline_treat_delib) 
 vcov_cluster <- vcovCR(ols, cluster = baseline_treat_delib$clusterID, type = "CR0")
-res <- coeftest(ols, vcov_cluster)
+res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_balance[,3,i] <- c(res[3,1],res[3,2],res[3,4], conf[3,4],conf[3,5], nobs(ols))
+df_balance[,3,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5], nobs(ols))
 }
 
 #for interaction
@@ -222,10 +222,10 @@ for (i in 1:length(outcomes)) {
 ## simple difference and adjust se for clustered treatment assignment
 ols <- lm(as.formula(paste(outcomes[i],"information.x*deliberation.x+a21",sep="~")), data=baseline_treat_info) 
 vcov_cluster <- vcovCR(ols, cluster = baseline_treat_info$clusterID, type = "CR0")
-res <- coeftest(ols, vcov_cluster)
+res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_balance[,1,i] <- c(res[7,1],res[7,2],res[7,4], conf[7,4],conf[7,5], nobs(ols))
+df_balance[,1,i] <- c(res[7,1],res[7,2],res[7,5], conf[7,4],conf[7,5], nobs(ols))
 
 }
 
@@ -252,18 +252,18 @@ df_averages_end[2,i] <- sd(as.matrix(baseline[outcomes[i]]), na.rm=T)
 ### simple difference and adjust se for clustered treatment assignment
 ols <- lm(as.formula(paste(outcomes[i],"information*deliberation+a21",sep="~")), data=baseline[baseline$district_baraza == 0,]) 
 vcov_cluster <- vcovCR(ols, cluster = baseline$clusterID[baseline$district_baraza == 0], type = "CR0")
-res <- coeftest(ols, vcov_cluster)
+res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_ols_end[,2,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
-df_ols_end[,3,i] <- c(res[3,1],res[3,2],res[3,4], conf[3,4],conf[3,5], nobs(ols))
-df_ols_end[,1,i] <- c(res[7,1],res[7,2],res[7,4], conf[7,4],conf[7,5], nobs(ols))
+df_ols_end[,2,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
+df_ols_end[,3,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5], nobs(ols))
+df_ols_end[,1,i] <- c(res[7,1],res[7,2],res[7,5], conf[7,4],conf[7,5], nobs(ols))
 
 ols <- lm(as.formula(paste(outcomes[i],"district_baraza+a21",sep="~")), data=baseline[(baseline$information == 1 & baseline$deliberation==1) | baseline$district_baraza == 1 ,]) 
 vcov_cluster <- vcovCR(ols, cluster = baseline$clusterID2[(baseline$information == 1 & baseline$deliberation==1) | baseline$district_baraza == 1 ], type = "CR0")
-res <- coeftest(ols, vcov_cluster)
+res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
-df_ols_end[,4,i] <- c(res[2,1],res[2,2],res[2,4], conf[2,4],conf[2,5], nobs(ols))
+df_ols_end[,4,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
 }
 
 
