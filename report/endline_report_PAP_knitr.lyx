@@ -143,6 +143,17 @@ To improve governance and public service delivery, the Government of Uganda
  level to the effectiveness of barazas organized at the sub-county level,
  as the administrative placement of the barazas is a key determinant of
  the cost-effectiveness of this policy intervention.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If you compile this, the figure may not be the correct one because it takes
+ time to print to file
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -4107,7 +4118,7 @@ ture, health, and education.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -8600,6 +8611,10 @@ This project received funding from the International Institute for Impact
  Institutions, and Markets (PIM), led by the International Food Policy Research
  Institute (IFPRI) and carried out with support from the CGIAR Fund contributors
  (https://www.cgiar.org/funders/) under grant number PIM 203002.002.221.
+ This research was cleared by the Uganda National Council for Science and
+ Technology (UNCST SS 5179), Makerere University School of Social Sciences
+ Research Ethics Committee (MAKSS REC 05.19.291), as well as IPFRI's Institutional
+ Review Board (DSG-19-1053).
  We would like to thank Alvina Erman, Jennifer Smart, Marc Charles Wanume,
  Wilberforce Walukano, Fiona Nattembo, Emmanuel Bizimungu, Leocardia Nabwire,
  Richard Ariong and people at the Office of the Prime Minister, Joseph Muserero

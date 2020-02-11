@@ -602,19 +602,21 @@ df_matcher[,4,i] <- c(res[4,1],res[4,2],res[4,5], conf[4,4], conf[4,5], nobs(ols
 
 
 ### create data.frame to plot - make sure you get correct i's for the indices; last one is overall index
-d_plot <- data.frame(rbind(df_matcher[c(1,4,5),1,7],df_matcher[c(1,4,5),2,7],df_matcher[c(1,4,5),3,7]))
-d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,13],df_matcher[c(1,4,5),2,13],df_matcher[c(1,4,5),3,13])))
-d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,21],df_matcher[c(1,4,5),2,21],df_matcher[c(1,4,5),3,21])))
-d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,29],df_matcher[c(1,4,5),2,29],df_matcher[c(1,4,5),3,29])))
-d_plot <- rbind(d_plot, data.frame(rbind(c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA))))
-d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,30],df_matcher[c(1,4,5),2,30],df_matcher[c(1,4,5),3,30])))
+d_plot <- data.frame(rbind(df_matcher[c(1,4,5),1,7],df_matcher[c(1,4,5),2,7],df_matcher[c(1,4,5),3,7],df_matcher[c(1,4,5),4,7]))
+d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,13],df_matcher[c(1,4,5),2,13],df_matcher[c(1,4,5),3,13],df_matcher[c(1,4,5),4,13])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,21],df_matcher[c(1,4,5),2,21],df_matcher[c(1,4,5),3,21],df_matcher[c(1,4,5),4,21])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,29],df_matcher[c(1,4,5),2,29],df_matcher[c(1,4,5),3,29],df_matcher[c(1,4,5),4,29])))
+d_plot <- rbind(d_plot, data.frame(rbind(c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA))))
+d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,30],df_matcher[c(1,4,5),2,30],df_matcher[c(1,4,5),3,30],df_matcher[c(1,4,5),4,30])))
+
+
 
 
 names(d_plot) <- c("y","ylo","yhi")
 
-d_plot$x <- rep(c("agricuture","infrastructure","health","education","","index"), each=3)
-d_plot$grp <- rep(c("sc baraza","info","delib"), times=6)
-d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib"))
+d_plot$x <- rep(c("agricuture","infrastructure","health","education","","index"), each=4)
+d_plot$grp <- rep(c("sc baraza","info","delib","level"), times=6)
+d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib","level"))
 d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","health","education","","index"))))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/impact_summary_matcher.png", units="px", height=3200, width= 6400, res=600)
 credplot.gg(d_plot,'SDs','',levels(d_plot$x),.5)
