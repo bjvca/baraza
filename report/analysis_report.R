@@ -23,7 +23,6 @@ endline$region <- NULL
 ### there should be no duplicates in this dataset
 endline <- endline[!duplicated(endline$hhid),]
 
-endline$a21[sample(1:dim(endline)[1],500)] <- "Central"
 endline$a21 <- as.factor(endline$a21)
 
 ########################################################### functions declarations #####################################################
