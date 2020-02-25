@@ -78,7 +78,7 @@ credplot.gg <- function(d,units, hypo, axlabs, lim){
 
 ################################################################## end of funtions declarations
 
-### for the mock report, I use a dummy endline - I read in a dummy endline of 3 households just to get the correct variable names
+#### for the mock report, I use a dummy endline - I read in a dummy endline of 3 households just to get the correct variable names
 #endline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/endline.csv")[10:403]
 
 #### I then merge with the sampling list to basically create an empty endline dataset
@@ -138,6 +138,9 @@ baseline <- trim("d43", baseline)
 baseline$d11 <- as.numeric(baseline$d11=="Yes")
 
 baseline$tot_sick[baseline$d11==0] <- 0 
+
+baseline$tot_sick <- log(baseline$tot_sick + sqrt(baseline$tot_sick ^ 2 + 1))
+baseline <- trim("tot_sick", baseline)
 
 baseline$wait_time <- baseline$d410hh*60+ baseline$d410mm
 baseline$wait_time_min  <- baseline$d410hh*60+ baseline$d410mm
@@ -253,8 +256,15 @@ endline <- trim("baraza.D4.2",endline)
 #health outcome - less people sick 
 #endline$baraza.D1  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$d11, na.rm=T))
 endline$baraza.D1 <- endline$baraza.D1 == 1
-endline$baraza.D1.2 <- sample(baseline$tot_sick[!is.na(baseline$tot_sick)] ,dim(endline)[1]) 
-endline$baraza.D1.2[is.na(endline$baraza.D1.2)] <- 0
+
+members <- paste(paste("baraza.labour", 1:15, sep="."),".D1.2", sep=".")
+
+endline[members] <- lapply(endline[members], function(x) as.numeric(as.character(x)) )
+endline[members] <- lapply(endline[members], function(x) replace(x, x == 999,NA) )
+endline$baraza.D1.2 <- rowSums(endline[members], na.rm=T)
+
+endline$baraza.D1.2 <- log(endline$baraza.D1.2 + sqrt(endline$baraza.D1.2 ^ 2 + 1))
+endline <- trim("baraza.D1.2", endline)
 
 #endline$baraza.D4.6 <- sample(baseline$wait_time[!is.na(baseline$wait_time)] ,dim(endline)[1]) 
 endline$baraza.D4.6 <-  as.numeric(as.character(endline$baraza.D4.6))
@@ -297,6 +307,7 @@ endline$baraza.E45[is.na(as.numeric(as.character(endline$baraza.E1.18)) ) & is.n
 ##ag
 
 
+
 ##ag
 
 #1 access to extension, 
@@ -332,14 +343,14 @@ names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_infra_ind
 #14 maternal health acess
 #15 is there a VHT?
 #16 distance to gvt health facility
-##17 has been sick
-###18 number of days sick
+##17 number of days sick
+###18 wait time
 ## 19 index
-endline <- FW_index(c("baraza.D2","baraza.D2.4","baraza.D3","baraza.D4.2", "baraza.D1",  "baraza.D4.6", "baraza.D6"),revcols=c(4,5,6,7),data=endline)
+endline <- FW_index(c("baraza.D2","baraza.D2.4","baraza.D3","baraza.D4.2", "baraza.D1.2",  "baraza.D4.6", "baraza.D6"),revcols=c(4,5,6,7),data=endline)
 names(endline)[names(endline) == 'index'] <- 'health_index'
-baseline <- FW_index(c("pub_health_access","maternal_health_access","d31","d43","d11","wait_time","d61"),revcols=c(4,5,6,7),data=baseline)
+baseline <- FW_index(c("pub_health_access","maternal_health_access","d31","d43","tot_sick","wait_time","d61"),revcols=c(4,5,6,7),data=baseline)
 names(baseline)[names(baseline) == 'index'] <- 'base_health_index'
-baseline_matching <- FW_index(c("pub_health_access","maternal_health_access","d31","d43","d11","wait_time","d61"),revcols=c(4,5,6,7),data=baseline_matching)
+baseline_matching <- FW_index(c("pub_health_access","maternal_health_access","d31","d43","tot_sick","wait_time","d61"),revcols=c(4,5,6,7),data=baseline_matching)
 names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_health_index'
 
 ###make and education index
@@ -368,8 +379,8 @@ names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_pub_servi
 
 
 
-outcomes <- c("baraza.B2","baraza.B3","baraza.B4.1","inputs","baraza.B5.2","baraza.B5.3","ag_index","unprotected", "baraza.C1.2", "baraza.C1.3","baraza.C2.3","baraza.A6","infra_index","baraza.D2","baraza.D2.4","baraza.D3","baraza.D4.2", "baraza.D1",  "baraza.D4.6","baraza.D6","health_index","n_children","baraza.E5","baraza.E12","baraza.E14","baraza.E22","baraza.E32","baraza.E45","education_index", "pub_service_index")
-baseline_outcomes <- c("b21","b31","b44","base_inputs","b5144","b5146","base_ag_index","base_unprotected","c12source", "qc15","c10","a6","base_infra_index","pub_health_access","maternal_health_access","d31","d43","d11","wait_time","d61","base_health_index","base_n_children","e5","e12", "e14","e22","e32","e45","base_education_index","base_pub_service_index")
+outcomes <- c("baraza.B2","baraza.B3","baraza.B4.1","inputs","baraza.B5.2","baraza.B5.3","ag_index","unprotected", "baraza.C1.2", "baraza.C1.3","baraza.C2.3","baraza.A6","infra_index","baraza.D2","baraza.D2.4","baraza.D3","baraza.D4.2", "baraza.D1.2",  "baraza.D4.6","baraza.D6","health_index","n_children","baraza.E5","baraza.E12","baraza.E14","baraza.E22","baraza.E32","baraza.E45","education_index", "pub_service_index")
+baseline_outcomes <- c("b21","b31","b44","base_inputs","b5144","b5146","base_ag_index","base_unprotected","c12source", "qc15","c10","a6","base_infra_index","pub_health_access","maternal_health_access","d31","d43","tot_sick","wait_time","d61","base_health_index","base_n_children","e5","e12", "e14","e22","e32","e45","base_education_index","base_pub_service_index")
 
 ##      outcomes            baseline_outcomes    
 
@@ -395,7 +406,7 @@ baseline_outcomes <- c("b21","b31","b44","base_inputs","b5144","b5146","base_ag_
 ##[15,] "baraza.D2.4"       "maternal_health_access"	Go to public health facility to give birth (1=yes)  
 ##[16,] "baraza.D3"         "d31"                   	Is there a VHT in village? (1=yes) 
 ##[17,] "baraza.D4.2"       "d43"                   	Distance to nearest govt health facility (km) 
-##[18,] "baraza.D1"         "d11"                   	Were days work/school missed due to illness? (1=yes)  
+##[18,] "baraza.D1.2"	"tot_sick"		Number of days missed school/work due to illness
 ##[19,] "baraza.D4.6"       "wait_time"           	Waiting time before being attended (min)  
 #20	"baraza.D6" 		"d61"			Has visited traditional health practitioner? (1=yes)  
    
