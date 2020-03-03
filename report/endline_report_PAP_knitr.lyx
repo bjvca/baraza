@@ -213,12 +213,26 @@ While the project was initially assumed to take about 2 years, OPM faced
 \end_layout
 
 \begin_layout Standard
-The current version of this paper serves as a registered report.
- In particular, it was prepared as a “mock report”, which contains the analysis
- on simulated end-line data for a core set of primary outcomes to test the
- four primary research questions (impact of sub-county barazas, relative
- importance of information component, relative importance of deliberative
- component, and consequences of administrative placement).
+As the project was designed to affect a range of outcomes in different sectors,
+ we strictly adhere to our pre-analysis plan.
+ In particular, before endline data collection, we prepared a “mock report”,
+ which contains the analysis on simulated end-line data for a core set of
+ primary outcomes to test the four primary research questions (impact of
+ sub-county barazas, relative importance of information component, relative
+ importance of deliberative component, and consequences of administrative
+ placement).
+ This mock report was registered at the American Economic Association's
+ RCT registry with a time stamp
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+https://www.socialscienceregistry.org/versions/60398/docs/version/document
+\end_layout
+
+\end_inset
+
+.
  The outcomes can be categorized into four broad sectors: agriculture, health,
  education, and infrastructure (including drinking water and roads).
  With this report, we thus commit to key outcomes in each sector, and combine
@@ -231,9 +245,6 @@ key "anderson2008multiple"
 \end_inset
 
  to account for multiple hypothesis testing.
- Once end-line data has been collected, we will simply replace the simulated
- data with real data, and we will immediately be able to publish the report
- by running the pre-coded analysis.
  Pre-registration and mock reports are effective tools against fishing and
  false-positive science 
 \begin_inset CommandInset citation
@@ -432,6 +443,16 @@ key "arkedis2019can,bjorkman2009power,raffler2018weakness"
 \end_inset
 
  
+\end_layout
+
+\begin_layout Standard
+We find no impact of either of the two components of the baraza.
+ There is some evidence that a full baraza at the subcounty level consisting
+ of both the information and deliberation component increases public service
+ delivery in the education sector, but reduces outcomes for infrastructure.
+ We also find that a baraza organized at the district level leads to significant
+ly lower outcomes in agricultural service delivery than when the baraza
+ is organized at the sub-county level.
 \end_layout
 
 \begin_layout Standard
@@ -8577,26 +8598,19 @@ OPM faced various complications that affected the timely roll-out of the
 \end_layout
 
 \begin_layout Standard
-This pre-registered report serves as a dummy report for the yet to be collected
- endline data.
- Currently, most of the tables are populated using simulated data.
- However, the purpose of developing and publishing this detailed report
- in this way is to tie our hands: it will reduce our researcher degrees
- of freedom in the selection of what specifications to run and what variables
- to select to assess impact of the baraza 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "simmons2011false"
-
-\end_inset
-
-.
- In an effort to be as transparent as possible, this entire project with
- all code is publicly available from github.
- End-line data collection is scheduled to start on January 17th, 2020.
- We hope to be able to compile a version of this report with end-line data
- as soon as end-line data collection is finished (which is scheduled to
- be the beginning of March).
+Overall, we do not find that barazas have an impact on public service delivery.
+ Looking at the different sectors, we also do not find significant effects
+ of the two components of the baraza.
+ We do find that a sub-county level baraza that combines both information
+ sharing and a moderated deliberation session does increase outcomes in
+ education.
+ At the same time, sub-counties that received the combined treatment seem
+ to do worse on infrastructure related outcomes than sub-counties that did
+ not get the combined treatment.
+ We generally also do not find that district level barazas are more or less
+ effective than barazas organized at the sub-county level.
+ Only for agricultural related outcomes, we see that sub-county level barazas
+ are more effective than district level barazas.
  
 \end_layout
 
