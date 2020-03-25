@@ -46,12 +46,16 @@ return( data )
 }
 
 ################################################################## end of funtions declarations
+if (Sys.info()['sysname'] =="Linux") {
+path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
+} else {
+path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
+}
 
-treats <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/final_list_5.csv")
+treats <- read.csv(paste(path,"questionnaire/final_list_5.csv", sep ="/"))
 
 ## baseline not needed in this first section, but used to generate fake data
-baseline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/baseline.csv")
-baseline$a23 <- as.character(baseline$a23)
+baseline <- read.csv(paste(path,"data/public/baseline.csv", sep ="/"))
 baseline$a23[baseline$a23 == "LUWERO TC"] <- "LUWERO_TC"
 baseline$a23[baseline$a23 == "SEMBABULE TC"] <- "SEMBABULE_TC"
 baseline$a23[baseline$a23 == "RAKAI TC"] <- "RAKAI_TC"
