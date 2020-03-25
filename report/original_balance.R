@@ -46,8 +46,8 @@ return( data )
 }
 
 ################################################################## end of funtions declarations
-if (Sys.info()['sysname'] =="Linux") {
-path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
+if (Sys.info()['sysname'] =="Windows") {
+path <- "C:/users/u0127963/Desktop/PhD/baraza"
 } else {
 path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
 }
