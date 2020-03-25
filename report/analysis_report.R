@@ -9,11 +9,12 @@ library(clubSandwich)
 library(moments)
 set.seed(123456789) #not needed for final version?
 
-if (Sys.info()['sysname'] =="Linux") {
-path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
+if (Sys.info()['sysname'] =="Windows") {
+path <- "C:/users/u0127963/Desktop/PhD/baraza"
 } else {
 path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
 }
+
 
 
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below

@@ -9,10 +9,18 @@ library(clubSandwich)
 library(moments)
 set.seed(123456789) #not needed for final version?
 
+if (Sys.info()['sysname'] =="Windows") {
+path <- "C:/users/u0127963/Desktop/PhD/baraza"
+} else {
+path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
+}
+
+
+
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
 #source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/cleaning.R")
 #source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/anonyize.R")
-endline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/endline.csv")
+endline <- read.csv(paste(path,"data/public/endline.csv", sep="/"))
 endline$a21 <- as.character(endline$region)
 endline$region <- NULL
 ### EDITS SHOULD BE MADE HERE FOR FINAL VERSION###########################################################################################
@@ -87,13 +95,13 @@ credplot.gg <- function(d,units, hypo, axlabs, lim){
 #### and merge in the treatments
 #list <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/sampling_list_hh.csv")[c("hhid","a21","a22","a23")]
 #endline <- merge(list, endline, by="hhid", all.x=T)
-treats <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/final_list_5.csv")
+treats <- read.csv(paste(path,"questionnaire/final_list_5.csv", sep ="/"))
 #endline <- merge(treats, endline, by.x=c("district","subcounty"), by.y=c("a22","a23"))
 
 
 
 ## baseline not needed in this first section, but used to generate fake data
-baseline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/baseline.csv")
+baseline <- read.csv(paste(path,"data/public/baseline.csv",sep="/"))
 baseline$a23 <- as.character(baseline$a23)
 baseline$a23[baseline$a23 == "LUWERO TC"] <- "LUWERO_TC"
 baseline$a23[baseline$a23 == "SEMBABULE TC"] <- "SEMBABULE_TC"
@@ -626,7 +634,7 @@ d_plot$x <- rep(c("agricuture","infrastructure","health","education","","index")
 d_plot$grp <- rep(c("sc baraza","info","delib","level"), times=6)
 d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib","level"))
 d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","health","education","","index"))))
-png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/impact_summary_matcher.png", units="px", height=3200, width= 6400, res=600)
+png(paste(path,"report/figure/impact_summary_matcher.png", sep="/"), units="px", height=3200, width= 6400, res=600)
 credplot.gg(d_plot,'SDs','',levels(d_plot$x),.5)
 dev.off()
  # d is a data frame with 4 columns
