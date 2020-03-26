@@ -1144,8 +1144,28 @@ status open
 
 \begin_layout Plain Layout
 
-source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/rep
-ort/original_balance.R")
+if (Sys.info()['sysname'] =="Windows") { 
+\end_layout
+
+\begin_layout Plain Layout
+
+path <- "C:/users/u0127963/Desktop/PhD/baraza" } else { 
+\end_layout
+
+\begin_layout Plain Layout
+
+path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\begin_layout Plain Layout
+
+source(paste(path,"report/original_balance.R", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -4032,8 +4052,28 @@ status open
 
 \begin_layout Plain Layout
 
-source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/rep
-ort/analysis_report.R")
+if (Sys.info()['sysname'] =="Windows") { 
+\end_layout
+
+\begin_layout Plain Layout
+
+path <- "C:/users/u0127963/Desktop/PhD/baraza" } else { 
+\end_layout
+
+\begin_layout Plain Layout
+
+path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\begin_layout Plain Layout
+
+source(paste(path,"report/analysis_report.R", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -4139,7 +4179,7 @@ ture, health, and education.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -4335,7 +4375,7 @@ Sexpr{format(round(df_averages[1,6]*100,digits=0),nsmall=0)}
 \begin_inset Float table
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -7073,8 +7113,28 @@ status open
 
 \begin_layout Plain Layout
 
-source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/rep
-ort/analysis_report_interaction_time.R")
+if (Sys.info()['sysname'] =="Windows") { 
+\end_layout
+
+\begin_layout Plain Layout
+
+path <- "C:/users/u0127963/Desktop/PhD/baraza" } else { 
+\end_layout
+
+\begin_layout Plain Layout
+
+path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\begin_layout Plain Layout
+
+source(paste(path,"report/analysis_report_interaction_time.R", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -7997,8 +8057,28 @@ status open
 
 \begin_layout Plain Layout
 
-source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/rep
-ort/endline_threat_to_validity.R")
+if (Sys.info()['sysname'] =="Windows") { 
+\end_layout
+
+\begin_layout Plain Layout
+
+path <- "C:/users/u0127963/Desktop/PhD/baraza" } else { 
+\end_layout
+
+\begin_layout Plain Layout
+
+path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\begin_layout Plain Layout
+
+source(paste(path,"report/endline_threat_to_validity.R", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -8499,8 +8579,28 @@ status open
 
 \begin_layout Plain Layout
 
-source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/rep
-ort/analysis_report_dif_in_dif.R")
+if (Sys.info()['sysname'] =="Windows") { 
+\end_layout
+
+\begin_layout Plain Layout
+
+path <- "C:/users/u0127963/Desktop/PhD/baraza" } else { 
+\end_layout
+
+\begin_layout Plain Layout
+
+path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\begin_layout Plain Layout
+
+source(paste(path,"report/analysis_report_dif_in_dif.R", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -9529,8 +9629,28 @@ status open
 
 \begin_layout Plain Layout
 
-source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/rep
-ort/endline_threat_to_validity.R")
+if (Sys.info()['sysname'] =="Windows") { 
+\end_layout
+
+\begin_layout Plain Layout
+
+path <- "C:/users/u0127963/Desktop/PhD/baraza" } else { 
+\end_layout
+
+\begin_layout Plain Layout
+
+path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\begin_layout Plain Layout
+
+source(paste(path,"report/endline_threat_to_validity.R", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -10832,7 +10952,7 @@ Note: First column reports differences (and standard errors below) of the
 \begin_inset Float table
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -11319,8 +11439,28 @@ e'>>=
 
 \begin_layout Plain Layout
 
-source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/rep
-ort/analysis_report_dif_in_dif.R")
+if (Sys.info()['sysname'] =="Windows") { 
+\end_layout
+
+\begin_layout Plain Layout
+
+path <- "C:/users/u0127963/Desktop/PhD/baraza" } else { 
+\end_layout
+
+\begin_layout Plain Layout
+
+path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\begin_layout Plain Layout
+
+source(paste(path,"report/analysis_report_dif_in_dif.R", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
