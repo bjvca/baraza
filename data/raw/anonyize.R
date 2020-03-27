@@ -72,5 +72,19 @@ hh_level <- hh_level[!duplicated(hh_level$hhid),]
 
 write.csv(hh_level,"/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/baseline.csv",row.names=FALSE)
 
+###anonymize sc level data
+
+
+sc_dta <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/sc_level.csv")
+sc_dta <- sc_dta[c(9:13,15,18:229)]
+write.csv(sc_dta,"/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/sc_level_endline.csv",row.names=FALSE)
+
+### also baseline sc level data
+
+sc_base <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/baseline/quant/Subcounty data/main.csv")
+
+sc_base <- sc_base[c(7:10,15,17:20,22:575)]
+write.csv(sc_base,"/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/sc_level_baseline.csv",row.names=FALSE)
+
 #exit
 
