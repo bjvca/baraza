@@ -566,6 +566,5 @@ d_plot$grp <- rep(c("sc baraza","info","delib","level"), times=6)
 d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib","level"))
 d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","health","education","","index"))))
 png(paste(path,"report/figure/impact_summary_dif_in_dif.png", sep="/"), units="px", height=3200, width= 6400, res=600)
-credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3)
+print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3))
 dev.off()
-
