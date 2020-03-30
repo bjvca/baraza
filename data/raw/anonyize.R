@@ -61,7 +61,12 @@ sickdays_hh <- aggregate(cbind(get_sickdays[c("d111","d112","d113")]), by=list(g
 names(sickdays_hh) <- c("key","tot_sick","not_work","not_school")
 hh_level <- merge(hh_level,sickdays_hh, by="key", all.x=T)
 
-hh_level <- hh_level[c(2,12:15,18,19, 23:718, 724:736)]
+get_participation <- read.dta13("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/baseline/quant/Household data/BARAZA_cleaned datasets/BARAZA ELECTION PARTICIPATION DATA FILE.dta")
+
+hh_level <-  merge(hh_level,reshape(get_participation[,1:3], idvar = "key", timevar = "sno", direction = "wide"), by="key", all.x=T)
+
+####
+hh_level <- hh_level[c(2,12:15,18,19, 23:718, 724:743)]
 
 ## we need an offset for the gps coordinates
 hh_level$a26a <- hh_level$a26a +rnorm(dim(hh_level)[1],0,.05)
