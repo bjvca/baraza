@@ -65,8 +65,47 @@ get_participation <- read.dta13("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evalu
 
 hh_level <-  merge(hh_level,reshape(get_participation[,1:3], idvar = "key", timevar = "sno", direction = "wide"), by="key", all.x=T)
 
+get_contributions <- read.dta13("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/baseline/quant/Household data/BARAZA_cleaned datasets/BARAZA PROJECTS CONTRIBUTIONS DATA FILE.dta")
+
+contributions <- reshape(get_contributions[,c(1:2,4)], idvar = "key", timevar = "project", direction = "wide")
+
+contributions$cschoolk <- contributions$g21.School %in% c("In-kind","Both 1 & 2")
+contributions$cschoolk[is.na(contributions$cschoolk)] <- NA
+contributions$cschoolc <- contributions$g21.School %in% c("Money","Both 1 & 2")
+contributions$cschoolc[is.na(contributions$cschoolc)] <- NA
+
+contributions$chealthk <- contributions$"g21.Health centre" %in% c("In-kind","Both 1 & 2")
+contributions$chealthk[is.na(contributions$chealthk)] <- NA
+contributions$chealthc <- contributions$"g21.Health centre" %in% c("Money","Both 1 & 2")
+contributions$chealthc[is.na(contributions$chealthc)] <- NA
+
+contributions$croadk <- contributions$"g21.Road/bridge" %in% c("In-kind","Both 1 & 2")
+contributions$croadk[is.na(contributions$croadk)] <- NA
+contributions$croadc <- contributions$"g21.Road/bridge" %in% c("Money","Both 1 & 2")
+contributions$croadc[is.na(contributions$croadc)] <- NA
+
+contributions$cwaterk <- contributions$"g21.Drinking water facility" %in% c("In-kind","Both 1 & 2")
+contributions$cwaterk[is.na(contributions$cwaterk)] <- NA
+contributions$cwaterc <- contributions$"g21.Drinking water facility" %in% c("Money","Both 1 & 2")
+contributions$cwaterc[is.na(contributions$cwaterc)] <- NA
+
+contributions$cdamk <- contributions$"g21.Dam/irrigation facility" %in% c("In-kind","Both 1 & 2")
+contributions$cdamk[is.na(contributions$cdamk)] <- NA
+contributions$cdamc <- contributions$"g21.Dam/irrigation facility" %in% c("Money","Both 1 & 2")
+contributions$cdamc[is.na(contributions$cdamc)] <- NA
+
+
+contributions$cbuildk <- contributions$"g21.Other building/structure" %in% c("In-kind","Both 1 & 2")
+contributions$cbuildk[is.na(contributions$cbuildk)] <- NA
+contributions$cbuildc <- contributions$"g21.Other building/structure" %in% c("Money","Both 1 & 2")
+contributions$cbuildc[is.na(contributions$cbuildc)] <- NA
+contributions <- contributions[,c(1,9:20)]
+
+
+hh_level <-  merge(hh_level,contributions, by="key", all.x=T)
+
 ####
-hh_level <- hh_level[c(2,12:15,18,19, 23:718, 724:743)]
+hh_level <- hh_level[c(2,12:15,18,19, 23:718, 724:755)]
 
 ## we need an offset for the gps coordinates
 hh_level$a26a <- hh_level$a26a +rnorm(dim(hh_level)[1],0,.05)

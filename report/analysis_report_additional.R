@@ -209,6 +209,8 @@ baseline$f2307  <- as.numeric(baseline$f2307) %in% c(1,3,6,7)
 baseline$f2309 <- as.numeric(baseline$f2309) %in% c(1,2,3,6,7)
 baseline$f2310 <- as.numeric(baseline$f2310) %in% c(1,2,3,6,7)
 
+baseline$f21 <- baseline$f21 == "Yes"
+
 baseline_desc <- baseline
 baseline_matching <- merge(baseline,treats, by.x=c("a22","a23"), by.y=c("district","subcounty"))
 
@@ -327,7 +329,7 @@ endline$baraza.E45[is.na(as.numeric(as.character(endline$baraza.E1.18)) ) & is.n
 #PLEASE DESCRIBE YOUR PARTICIPATION IN DIFFERENT TYPES OF ELECTIONS:
 #F1	F1. In this household, are there any members who currently hold any political/traditional positions?
 endline$baraza.F1 <- (endline$baraza.F1 == 1)
-baseline$f21 <- baseline$f21 == "Yes"
+
 
 #F2	F2. In the last elections did you participate in the  LCI elections? 
 #F2.1	F2.1 In the last elections did you participate in the  LC3 elections? 
@@ -368,14 +370,7 @@ endline$baraza.F1.3 <- (endline$baraza.F1.3<=4) # last 1/2 year
 endline$baraza.F1.4 <- (endline$baraza.F1.4<=5) # last year 
 endline$baraza.F1.5 <- (endline$baraza.F1.5<=5) # last year 
 
-
-
-###make an infrastructure index - note the revcols argument as the first 3 outcomes are "more is worse"
-##8 unprotected water source in dry season, 
-##9 distance to water source in dry season, 
-##10 waiting time, 
-##11 is there a water commitee?
-##12  #index
+###make a contact index
 endline <- FW_index(c("baraza.F1.1", "baraza.F1.2", "baraza.F1.3","baraza.F1.4","baraza.F1.5"),data=endline)
 names(endline)[names(endline) == 'index'] <- 'contact_index'
 baseline <- FW_index(c("f2301","f2303", "f2307","f2309","f2310"),data=baseline)
@@ -383,35 +378,84 @@ names(baseline)[names(baseline) == 'index'] <- 'base_contact_index'
 baseline_matching <- FW_index(c("f2301","f2303", "f2307","f2309","f2310"),data=baseline_matching)
 names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_contact_index'
 
-###make a health index
-##13 pub health access
-##14 maternal health acess
-##15 is there a VHT?
-##16 distance to gvt health facility
-###17 number of days sick
-####18 wait time
-### 19 index
-#endline <- FW_index(c("baraza.D2","baraza.D2.4","baraza.D3","baraza.D4.2", "baraza.D1.2",  "baraza.D4.6", "baraza.D6"),revcols=c(4,5,6,7),data=endline)
-#names(endline)[names(endline) == 'index'] <- 'health_index'
-#baseline <- FW_index(c("pub_health_access","maternal_health_access","d31","d43","tot_sick","wait_time","d61"),revcols=c(4,5,6,7),data=baseline)
-#names(baseline)[names(baseline) == 'index'] <- 'base_health_index'
-#baseline_matching <- FW_index(c("pub_health_access","maternal_health_access","d31","d43","tot_sick","wait_time","d61"),revcols=c(4,5,6,7),data=baseline_matching)
-#names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_health_index'
+###priority rankings
+#H1	H1.  Access to a drinking water source is a serious problem. (where 1 means you completely disagree and 10 means you completely agree) 
+#H2	H2. Drinking water is usually dirty. (where 1 means you completely disagree and 10 means you completely agree)    
+#H3	H3.  Access to a government health centre or hospital is a serious problem. (where 1 means you completely disagree and 10 means you completely agree)
+#H4	H4  Government health centres or hospitals do not have relevant medicines. (where 1 means you completely disagree and 10 means you completely agree)
+#H5	H5 Staff at government health centres or hospitals are rude to patients. (where 1 means you completely disagree and 10 means you completely agree)
+#H6	H6.  Medical staff at government health centres or hospitals are often absent. (where 1 means you completely disagree and 10 means you completely agree)
+#H7	H7 Access to a government primary school is a serious problem. (where 1 means you completely disagree and 10 means you completely agree)
+#H8	H8 Teachers in government schools are often absent. (where 1 means you completely disagree and 10 means you completely agree)
+#H9	H9 Children’s learning outcomes in government schools are poor. (where 1 means you completely disagree and 10 means you completely agree)  
+#H10	H10.  Availability/ Access to all-weather roads is a serious problem (where 1 means you completely disagree and 10 means you completely agree)
+#H11	H11  Agricultural inputs supplied by the government are of poor quality. (where 1 means you completely disagree and 10 means you completely agree)
+#H11b	H11  Agricultural inputs supplied by the government are delivered in time. (where 1 means you completely disagree and 10 means you completely agree)
+#H12	H12 There is lack of transparency in how farmers are selected to receive agricultural inputs from the government. (where 1 means you completely disagree and 10 means you completely agree)
+#H13	H13  Agricultural extension agents rarely visit. (where 1 means you completely disagree and 10 means you completely agree)
+#H14	H14.  Agricultural extension agents are not aware of enterprises or agricultural inputs relevant to farmers. (where 1 means you completely disagree and 10 means you completely agree)
+
+endline$baraza.H1[endline$baraza.H1 == 11] <- NA
+endline$baraza.H2[endline$baraza.H2 == 11] <- NA
+endline$baraza.H3[endline$baraza.H3 == 11] <- NA
+endline$baraza.H4[endline$baraza.H4 == 11] <- NA
+endline$baraza.H5[endline$baraza.H5 == 11] <- NA
+endline$baraza.H6[endline$baraza.H6 == 11] <- NA
+endline$baraza.H7[endline$baraza.H7 == 11] <- NA
+endline$baraza.H8[endline$baraza.H8 == 11] <- NA
+endline$baraza.H9[endline$baraza.H9 == 11] <- NA
+endline$baraza.H10[endline$baraza.H10 == 11] <- NA
+endline$baraza.H11[endline$baraza.H11 == 11] <- NA
+endline$baraza.H12[endline$baraza.H12 == 11] <- NA
+endline$baraza.H13[endline$baraza.H13 == 11] <- NA
+endline$baraza.H14[endline$baraza.H14 == 11] <- NA 
+
+endline <- FW_index(c("baraza.H1","baraza.H2","baraza.H3","baraza.H4", "baraza.H5",  "baraza.H6", "baraza.H7", "baraza.H8", "baraza.H9", "baraza.H10", "baraza.H11", "baraza.H12", "baraza.H13","baraza.H14"),data=endline)
+names(endline)[names(endline) == 'index'] <- 'priority_index'
+baseline <- FW_index(c("i1","i2","i3","i4","i5","i6","i7","i8","i9","i10","i11","i12","i13","i14"),data=baseline)
+names(baseline)[names(baseline) == 'index'] <- 'base_priority_index'
+baseline_matching <- FW_index(c("i1","i2","i3","i4","i5","i6","i7","i8","i9","i10","i11","i12","i13","i14"),data=baseline_matching)
+names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_priority_index'
+
+### contributions
+#G1	G1: Did you ever make any contributions to the school in the last two years? 
+#G1.1	G1.1 Did you ever make any contributions to the health centre in the last two years? 
+#G1.2	G1.2 Did you ever make any contributions to the road/ bridge in the last two years? 
+#G1.3	G1.3 Did you ever make any contributions to the drinking water facility in the last two years? 
+#G1.4	G1.4 Did you ever make any contributions to the dam/ irrigation facility in the last two years? 
+#G1.5	G1.5 Did you  make any contributions to any other government or community building/ structure in the last two years? 
+endline$baraza.G1k <- endline$baraza.G1 %in% c(1,3)
+endline$baraza.G1c <- endline$baraza.G1 %in% c(2,3)
+
+endline$baraza.G1.1k <- endline$baraza.G1.1 %in% c(1,3)
+endline$baraza.G1.1c <- endline$baraza.G1.1 %in% c(2,3)
+
+endline$baraza.G1.2k <- endline$baraza.G1.2 %in% c(1,3)
+endline$baraza.G1.2c <- endline$baraza.G1.2 %in% c(2,3)
+
+endline$baraza.G1.3k <- endline$baraza.G1.3 %in% c(1,3)
+endline$baraza.G1.3c <- endline$baraza.G1.3 %in% c(2,3)
+
+endline$baraza.G1.4k <- endline$baraza.G1.4 %in% c(1,3)
+endline$baraza.G1.4c <- endline$baraza.G1.4 %in% c(2,3)
+
+endline$baraza.G1.5k <- endline$baraza.G1.5 %in% c(1,3)
+endline$baraza.G1.5c <- endline$baraza.G1.5 %in% c(2,3)
 
 ####make and education index
-##endline <- FW_index(c("n_children","baraza.E1","baraza.E1.4","baraza.E1.6","baraza.E1.10","baraza.E1.13","baraza.E1.18"),revcols=c(2),data=endline)
-##names(endline)[names(endline) == 'index'] <- 'education_index'
-##baseline <- FW_index(c("base_n_children","e5","e12", "e14","e22","e32","e45"),revcols=c(2),data=baseline)
-##names(baseline)[names(baseline) == 'index'] <- 'base_education_index'
-##baseline_matching <- FW_index(c("base_n_children","e5","e12", "e14","e22","e32","e45"),revcols=c(2),data=baseline_matching)
-##names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_education_index'
+endline <- FW_index(c("baraza.G1k","baraza.G1.1k","baraza.G1.2k","baraza.G1.3k","baraza.G1.4k","baraza.G1.5k"),data=endline)
+names(endline)[names(endline) == 'index'] <- 'in_kind_index'
+baseline <- FW_index(c("cschoolk", "chealthk","croadk","cwaterk",  "cdamk",    "cbuildk"),data=baseline)
+names(baseline)[names(baseline) == 'index'] <- 'base_in_kind_index'
+baseline_matching <- FW_index(c("cschoolk", "chealthk","croadk","cwaterk",  "cdamk",    "cbuildk"),data=baseline_matching)
+names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_in_kind_index'
 
-#endline <- FW_index(c("n_children","baraza.E5","baraza.E12","baraza.E14","baraza.E22"),revcols=c(2),data=endline)
-#names(endline)[names(endline) == 'index'] <- 'education_index'
-#baseline <- FW_index(c("base_n_children","e5","e12", "e14","e22"),revcols=c(2),data=baseline)
-#names(baseline)[names(baseline) == 'index'] <- 'base_education_index'
-#baseline_matching <- FW_index(c("base_n_children","e5","e12", "e14","e22"),revcols=c(2),data=baseline_matching)
-#names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_education_index'
+endline <- FW_index(c("baraza.G1c","baraza.G1.1c","baraza.G1.2c","baraza.G1.3c","baraza.G1.4c","baraza.G1.5c"),data=endline)
+names(endline)[names(endline) == 'index'] <- 'in_cash_index'
+baseline <- FW_index(c("cschoolc", "chealthc","croadc","cwaterc",  "cdamc",    "cbuildc"),data=baseline)
+names(baseline)[names(baseline) == 'index'] <- 'base_in_cash_index'
+baseline_matching <- FW_index(c("cschoolc", "chealthc","croadc","cwaterc",  "cdamc",    "cbuildc"),data=baseline_matching)
+names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_in_cash_index'
 
 
 ##20 make an index of indices
@@ -424,8 +468,8 @@ names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_contact_i
 
 
 
-outcomes <- c("baraza.F1","baraza.part.F2","baraza.part.F2.1","baraza.part.F2.2","baraza.part.F2.3","baraza.part.F2.4","baraza.part.F2.5", "pol_index", "baraza.F1.1", "baraza.F1.2", "baraza.F1.3","baraza.F1.4","baraza.F1.5", "contact_index")
-baseline_outcomes <- c("f21","f241.LC1.election", "f241.LC3.election","f241.LC5.election", "f241.Pesidential", "f241.Parliamentary", "f241.Party.leader" ,"base_pol_index","f2301","f2303", "f2307","f2309","f2310","base_contact_index")
+outcomes <- c("baraza.F1","baraza.part.F2","baraza.part.F2.1","baraza.part.F2.2","baraza.part.F2.3","baraza.part.F2.4","baraza.part.F2.5", "pol_index", "baraza.F1.1", "baraza.F1.2", "baraza.F1.3","baraza.F1.4","baraza.F1.5", "contact_index","baraza.H1","baraza.H2","baraza.H3","baraza.H4", "baraza.H5",  "baraza.H6", "baraza.H7", "baraza.H8", "baraza.H9", "baraza.H10", "baraza.H11", "baraza.H12", "baraza.H13","baraza.H14","priority_index","baraza.G1k","baraza.G1.1k","baraza.G1.2k","baraza.G1.3k","baraza.G1.4k","baraza.G1.5k","in_kind_index","baraza.G1c", "baraza.G1.1c","baraza.G1.2c","baraza.G1.3c","baraza.G1.4c","baraza.G1.5c", "in_cash_index" )
+baseline_outcomes <- c("f21","f241.LC1.election", "f241.LC3.election","f241.LC5.election", "f241.Pesidential", "f241.Parliamentary", "f241.Party.leader" ,"base_pol_index","f2301","f2303", "f2307","f2309","f2310","base_contact_index","i1","i2","i3","i4","i5","i6","i7","i8","i9","i10","i11","i12","i13","i14","base_priority_index","cschoolk", "chealthk","croadk","cwaterk",  "cdamk",    "cbuildk","base_in_kind_index","cschoolc", "chealthc","croadc","cwaterc",  "cdamc",    "cbuildc","base_in_cash_index")
 
 ##      outcomes            baseline_outcomes    
 
