@@ -179,8 +179,244 @@ summary(lm(baraza.finance1.E5a~ind_treat, data = sc_endline_no_dist))
 sc_endline_no_dist$baraza.finance1.E5a
 summary(lm(baraza.finance1.E5a~ind_treat, data = sc_endline_no_dist))
 
-########Caroline's first R day, after call at 4pm
-#sc, information and deliberation
-ols <- lm( baraza.H1~ information * deliberation + region, data = sc_endline[sc_endline$district_baraza == 0,] )
-summary(ols)
-coef(ols)
+########31/03/20
+#SUBSECTION H1 - HEALTH
+sc_endline_no_dist$baraza.H1[sc_endline_no_dist$baraza.H1==999] <- NA
+sc_endline_no_dist$baraza.H1 <- as.numeric(as.character(sc_endline_no_dist$baraza.H1))
+plot(density(sc_endline_no_dist$baraza.H1, na.rm=T))
+ols <- lm(baraza.H1~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+sc_endline_no_dist$baraza.H2[sc_endline_no_dist$baraza.H2==999] <- NA
+sc_endline_no_dist$baraza.H2 <- as.numeric(as.character(sc_endline_no_dist$baraza.H2))
+plot(density(sc_endline_no_dist$baraza.H2, na.rm=T))
+ols <- lm(baraza.H2~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+sc_endline_no_dist$baraza.H5[sc_endline_no_dist$baraza.H5==999] <- NA
+sc_endline_no_dist$baraza.H5 <- as.numeric(as.character(sc_endline_no_dist$baraza.H5))
+plot(density(sc_endline_no_dist$baraza.H5, na.rm=T))
+ols <- lm(baraza.H5~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+sc_endline_no_dist$baraza.H6[sc_endline_no_dist$baraza.H6==999] <- NA
+sc_endline_no_dist$baraza.H6 <- as.numeric(as.character(sc_endline_no_dist$baraza.H6))
+plot(density(sc_endline_no_dist$baraza.H6, na.rm=T))
+ols <- lm(baraza.H6~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+sc_endline_no_dist$baraza.H7[sc_endline_no_dist$baraza.H7==999] <- NA
+sc_endline_no_dist$baraza.H7 <- as.numeric(as.character(sc_endline_no_dist$baraza.H7))
+plot(density(sc_endline_no_dist$baraza.H7, na.rm=T))
+ols <- lm(baraza.H7~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+#does NOT look like the gauss curve
+sc_endline_no_dist$baraza.H10[sc_endline_no_dist$baraza.H10==999] <- NA
+sc_endline_no_dist$baraza.H10 <- as.numeric(as.character(sc_endline_no_dist$baraza.H10))
+plot(density(sc_endline_no_dist$baraza.H10, na.rm=T))
+ols <- lm(baraza.H10~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+#outlier?
+sc_endline_no_dist$baraza.H24[sc_endline_no_dist$baraza.H24==999] <- NA
+sc_endline_no_dist$baraza.H24 <- as.numeric(as.character(sc_endline_no_dist$baraza.H24))
+plot(density(sc_endline_no_dist$baraza.H24, na.rm=T))
+ols <- lm(baraza.H24~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+#outlier?
+sc_endline_no_dist$baraza.H25[sc_endline_no_dist$baraza.H25==999] <- NA
+sc_endline_no_dist$baraza.H25 <- as.numeric(as.character(sc_endline_no_dist$baraza.H25))
+plot(density(sc_endline_no_dist$baraza.H25, na.rm=T))
+ols <- lm(baraza.H25~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+#does NOT look like the gauss curve
+sc_endline_no_dist$baraza.H30[sc_endline_no_dist$baraza.H30==999] <- NA
+sc_endline_no_dist$baraza.H30 <- as.numeric(as.character(sc_endline_no_dist$baraza.H30))
+plot(density(sc_endline_no_dist$baraza.H30, na.rm=T))
+ols <- lm(baraza.H30~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+#does NOT look like the gauss curve
+sc_endline_no_dist$baraza.H33[sc_endline_no_dist$baraza.H33==999] <- NA
+sc_endline_no_dist$baraza.H33 <- as.numeric(as.character(sc_endline_no_dist$baraza.H33))
+plot(density(sc_endline_no_dist$baraza.H33, na.rm=T))
+ols <- lm(baraza.H33~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+#does NOT look like the gauss curve
+sc_endline_no_dist$baraza.H37[sc_endline_no_dist$baraza.H37==999] <- NA
+sc_endline_no_dist$baraza.H37 <- as.numeric(as.character(sc_endline_no_dist$baraza.H37))
+plot(density(sc_endline_no_dist$baraza.H37, na.rm=T))
+ols <- lm(baraza.H37~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+#outlier?
+sc_endline_no_dist$baraza.H43[sc_endline_no_dist$baraza.H43==999] <- NA
+sc_endline_no_dist$baraza.H43 <- as.numeric(as.character(sc_endline_no_dist$baraza.H43))
+plot(density(sc_endline_no_dist$baraza.H43, na.rm=T))
+ols <- lm(baraza.H43~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+#does NOT look like the gauss curve
+sc_endline_no_dist$baraza.H44[sc_endline_no_dist$baraza.H44==999] <- NA
+sc_endline_no_dist$baraza.H44 <- as.numeric(as.character(sc_endline_no_dist$baraza.H44))
+plot(density(sc_endline_no_dist$baraza.H44, na.rm=T))
+ols <- lm(baraza.H44~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+sc_endline_no_dist$baraza.H53[sc_endline_no_dist$baraza.H53==999] <- NA
+sc_endline_no_dist$baraza.H53 <- as.numeric(as.character(sc_endline_no_dist$baraza.H53))
+plot(density(sc_endline_no_dist$baraza.H53, na.rm=T))
+ols <- lm(baraza.H53~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+sc_endline_no_dist$baraza.H54[sc_endline_no_dist$baraza.H54==999] <- NA
+sc_endline_no_dist$baraza.H54 <- as.numeric(as.character(sc_endline_no_dist$baraza.H54))
+plot(density(sc_endline_no_dist$baraza.H54, na.rm=T))
+ols <- lm(baraza.H54~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+sc_endline_no_dist$baraza.H55[sc_endline_no_dist$baraza.H55==999] <- NA
+sc_endline_no_dist$baraza.H55 <- as.numeric(as.character(sc_endline_no_dist$baraza.H55))
+plot(density(sc_endline_no_dist$baraza.H55, na.rm=T))
+ols <- lm(baraza.H55~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+sc_endline_no_dist$baraza.H57[sc_endline_no_dist$baraza.H57==999] <- NA
+sc_endline_no_dist$baraza.H57 <- as.numeric(as.character(sc_endline_no_dist$baraza.H57))
+plot(density(sc_endline_no_dist$baraza.H57, na.rm=T))
+ols <- lm(baraza.H57~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+sc_endline_no_dist$baraza.H58[sc_endline_no_dist$baraza.H58==999] <- NA
+sc_endline_no_dist$baraza.H58 <- as.numeric(as.character(sc_endline_no_dist$baraza.H58))
+plot(density(sc_endline_no_dist$baraza.H58, na.rm=T))
+ols <- lm(baraza.H58~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+sc_endline_no_dist$baraza.H62[sc_endline_no_dist$baraza.H62==999] <- NA
+sc_endline_no_dist$baraza.H62 <- as.numeric(as.character(sc_endline_no_dist$baraza.H62))
+plot(density(sc_endline_no_dist$baraza.H62, na.rm=T))
+ols <- lm(baraza.H62~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+sc_endline_no_dist$baraza.H62[sc_endline_no_dist$baraza.H62==999] <- NA
+sc_endline_no_dist$baraza.H62 <- as.numeric(as.character(sc_endline_no_dist$baraza.H62))
+plot(density(sc_endline_no_dist$baraza.H62, na.rm=T))
+ols <- lm(baraza.H62~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+#yes/no question
+#sc_endline_no_dist$baraza.H65[sc_endline_no_dist$baraza.H65==98] <- NA
+#sc_endline_no_dist$baraza.H65[sc_endline_no_dist$baraza.H65==999] <- NA
+#sc_endline_no_dist$baraza.H65 <- as.numeric(as.character(sc_endline_no_dist$baraza.H65))
+#plot(density(sc_endline_no_dist$baraza.H65, na.rm=T))
+#ols <- lm(baraza.H65~information*deliberation+region, data = sc_endline_no_dist)
+#vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+#res <- coef_test(ols, vcov_cluster)
+#print(res)
+
+#OUTLIER
+sc_endline_no_dist$baraza.H70[sc_endline_no_dist$baraza.H70==999] <- NA
+sc_endline_no_dist$baraza.H70 <- as.numeric(as.character(sc_endline_no_dist$baraza.H70))
+plot(density(sc_endline_no_dist$baraza.H70, na.rm=T))
+ols <- lm(baraza.H70~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+#SUBSECTION : WATER INFRASTRUCTURE
+sc_endline_no_dist$baraza.H72[sc_endline_no_dist$baraza.H72==999] <- NA
+sc_endline_no_dist$baraza.H72 <- as.numeric(as.character(sc_endline_no_dist$baraza.H72))
+plot(density(sc_endline_no_dist$baraza.H72, na.rm=T))
+ols <- lm(baraza.H72~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+#SUBSECTION H3: EDUCATION
+sc_endline_no_dist$baraza.H80[sc_endline_no_dist$baraza.H80==999] <- NA
+sc_endline_no_dist$baraza.H80 <- as.numeric(as.character(sc_endline_no_dist$baraza.H80))
+plot(density(sc_endline_no_dist$baraza.H80, na.rm=T))
+ols <- lm(baraza.H80~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+sc_endline_no_dist$baraza.H81[sc_endline_no_dist$baraza.H81==999] <- NA
+sc_endline_no_dist$baraza.H81 <- as.numeric(as.character(sc_endline_no_dist$baraza.H81))
+plot(density(sc_endline_no_dist$baraza.H81, na.rm=T))
+ols <- lm(baraza.H81~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+#outlier?
+sc_endline_no_dist$baraza.H91[sc_endline_no_dist$baraza.H91==999] <- NA
+sc_endline_no_dist$baraza.H91 <- as.numeric(as.character(sc_endline_no_dist$baraza.H91))
+plot(density(sc_endline_no_dist$baraza.H91, na.rm=T))
+ols <- lm(baraza.H91~information*deliberation+region, data = sc_endline_no_dist)
+vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+print(res)
+
+#yes/no question
+#sc_endline_no_dist$baraza.H109[sc_endline_no_dist$baraza.H109==999] <- NA
+#sc_endline_no_dist$baraza.H109 <- as.numeric(as.character(sc_endline_no_dist$baraza.H109))
+#plot(density(sc_endline_no_dist$baraza.H109, na.rm=T))
+#ols <- lm(baraza.H109~information*deliberation+region, data = sc_endline_no_dist)
+#vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+#res <- coef_test(ols, vcov_cluster)
+#print(res)
+
+#yes/no question
+#sc_endline_no_dist$baraza.H110[sc_endline_no_dist$baraza.H110==999] <- NA
+#sc_endline_no_dist$baraza.H110 <- as.numeric(as.character(sc_endline_no_dist$baraza.H110))
+#plot(density(sc_endline_no_dist$baraza.H110, na.rm=T))
+#ols <- lm(baraza.H110~information*deliberation+region, data = sc_endline_no_dist)
+#vcov_cluster <- vcovCR(ols, cluster = sc_endline_no_dist$subcounty, type = "CR0")
+#res <- coef_test(ols, vcov_cluster)
+#print(res)
