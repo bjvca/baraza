@@ -557,7 +557,7 @@ a26b_cut <- seq(min(baseline_complete$a26b),max(baseline_complete$a26b),by=1)
 agehead_cut <- seq(min(baseline_complete$agehead),max(baseline_complete$agehead),by=20)
 log_farmsize_cut <- seq(min(baseline_complete$log_farmsize),max(baseline_complete$log_farmsize),by=1)
 
-nearest.match <- matchit(formula = deliberation*information ~ hhsize + femhead + agehead  + head_sec+ log_farmsize + ironroof + improved_wall+has_phone+a26a+a26b,  data =baseline_complete[baseline_complete$district_baraza == 0 & (dta$information == dta$deliberation),]  ,method = "cem",distance = "mahalanobis", cutpoints = my.cutpoints )
+nearest.match <- matchit(formula = deliberation*information ~ hhsize + femhead + agehead  + head_sec+ log_farmsize + ironroof + improved_wall+has_phone+a26a+a26b,  data =baseline_complete[baseline_complete$district_baraza == 0 & (baseline_complete$information == baseline_complete$deliberation),]  ,method = "cem",distance = "mahalanobis", cutpoints = my.cutpoints )
 summary(nearest.match)
 #plot(nearest.match)
 #plot(nearest.match, type="hist")
