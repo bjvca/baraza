@@ -47,14 +47,28 @@ hh_level$has_phone <-  hh_level$a31!= 0
 
 inputs <- read.dta13("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/baseline/quant/Household data/BARAZA_cleaned datasets/BARAZA INPUTS DATA FILE.dta")
 seed <- subset(inputs, inputs == "Improved crop seed" & b121=="Yes")
+seed$b122 <- seed$b122 %in% c("Extension worker","Commmunity based facilitator")
 hh_level <- merge(hh_level,seed[c("key","b121")], by="key", all.x=T)
+hh_level <- merge(hh_level,seed[c("key","b122")], by="key", all.x=T)
 names(hh_level)[names(hh_level) == 'b121'] <- 'used_seed'
+names(hh_level)[names(hh_level) == 'b122'] <- 'seed_NARO'
 
 fertilizer <- subset(inputs, inputs == "Fertilizers (DAP, Urea, NPK, etc.)" & b121=="Yes")
 hh_level <- merge(hh_level,fertilizer[c("key","b121")], by="key", all.x=T) 
 names(hh_level)[names(hh_level) == 'b121'] <- 'used_fert'
+
+livestock_tech <- subset(inputs, inputs %in% c("Improved livestock breeds","Artificial Insemination","Veterinary drugs","Livestock feed") & b121=="Yes")
+hh_level <- merge(hh_level,livestock_tech[c("key","b121")], by="key", all.x=T) 
+names(hh_level)[names(hh_level) == 'b121'] <- 'used_livestock_tech'
+
+chemicals <- subset(inputs, inputs %in% c("Pesticide","Herbicide") & b121=="Yes")
+hh_level <- merge(hh_level,chemicals[c("key","b121")], by="key", all.x=T) 
+names(hh_level)[names(hh_level) == 'b121'] <- 'used_chem'
 hh_level$used_fert[is.na(hh_level$used_fert)] <- "No"
 hh_level$used_seed[is.na(hh_level$used_seed)] <- "No"
+hh_level$seed_NARO[is.na(hh_level$seed_NARO)] <- FALSE
+hh_level$used_chem[is.na(hh_level$used_chem)] <- "No"
+hh_level$used_livestock_tech[is.na(hh_level$used_livestock_tech)] <- "No"
 
 get_sickdays <- read.dta13("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/baseline/quant/Household data/BARAZA_cleaned datasets/BARAZA HOUSEHOLD IMPACT DATA FILE.dta")
 sickdays_hh <- aggregate(cbind(get_sickdays[c("d111","d112","d113")]), by=list(get_sickdays$key), FUN= sum, na.rm=T)
@@ -121,6 +135,8 @@ write.csv(hh_level,"/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys
 
 sc_dta <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/sc_level.csv")
 sc_dta <- sc_dta[c(9:13,15,18:229)]
+#create a sc_id - just used row number as ID
+sc_dta$scID <- as.numeric(rownames(sc_dta))
 write.csv(sc_dta,"/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/sc_level_endline.csv",row.names=FALSE)
 
 ### also baseline sc level data
@@ -128,6 +144,7 @@ write.csv(sc_dta,"/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/e
 sc_base <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/baseline/quant/Subcounty data/main.csv")
 
 sc_base <- sc_base[c(7:10,15,17:20,22:575)]
+
 write.csv(sc_base,"/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/sc_level_baseline.csv",row.names=FALSE)
 
 #exit

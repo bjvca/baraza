@@ -211,6 +211,9 @@ baseline$f2310 <- as.numeric(baseline$f2310) %in% c(1,2,3,6,7)
 
 baseline$f21 <- baseline$f21 == "Yes"
 
+baseline$roof <- baseline$a512 %in% c("Corrugated iron sheets", "Tiles")
+baseline$wall <- baseline$a513 == "Mud_bricks_burnt_bricks"
+
 baseline_desc <- baseline
 baseline_matching <- merge(baseline,treats, by.x=c("a22","a23"), by.y=c("district","subcounty"))
 
@@ -219,6 +222,9 @@ baseline_matching <- merge(baseline,treats, by.x=c("a22","a23"), by.y=c("distric
 endline$baraza.B3 <- endline$baraza.B3 ==1 |  endline$baraza.B3.3 ==1
 #endline$inputs <- 0
 endline$inputs <- as.numeric(endline$baraza.B1==1 | endline$baraza.B1.5==1) 
+endline$baraza.B1 <- endline$baraza.B1==1
+endline$baraza.B1.5 <- endline$baraza.B1.5==1
+
 ###this was changed post registration to follow https://www.who.int/water_sanitation_health/monitoring/jmp2012/key_terms/en/ guidelines on what is considered improved, that also considers rainwater a protected source
 #baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Bottled water","Cart with small tank","Unprotected dug well","Unprotected spring","Tanker truck"))    )
 ### is there are water committee
@@ -324,6 +330,15 @@ endline$baraza.E32[is.na(as.numeric(as.character(endline$baraza.E1.13)) ) & is.n
 
 endline$baraza.E45 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.18)) == 1 , as.numeric(as.character(endline$baraza.E2.18))==1), na.rm=T) > 0
 endline$baraza.E45[is.na(as.numeric(as.character(endline$baraza.E1.18)) ) & is.na(as.numeric(as.character(endline$baraza.E2.18)) )] <- NA
+
+### assorted outcomes
+### type of roof
+endline$baraza.roof <- endline$baraza.roof %in% 1:2
+
+endline$baraza.wall <- endline$baraza.wall == 2
+
+### type of wall
+
 
 
 #PLEASE DESCRIBE YOUR PARTICIPATION IN DIFFERENT TYPES OF ELECTIONS:
@@ -442,7 +457,7 @@ endline$baraza.G1.4c <- endline$baraza.G1.4 %in% c(2,3)
 endline$baraza.G1.5k <- endline$baraza.G1.5 %in% c(1,3)
 endline$baraza.G1.5c <- endline$baraza.G1.5 %in% c(2,3)
 
-####make and education index
+####make a contribution  index
 endline <- FW_index(c("baraza.G1k","baraza.G1.1k","baraza.G1.2k","baraza.G1.3k","baraza.G1.4k","baraza.G1.5k"),data=endline)
 names(endline)[names(endline) == 'index'] <- 'in_kind_index'
 baseline <- FW_index(c("cschoolk", "chealthk","croadk","cwaterk",  "cdamk",    "cbuildk"),data=baseline)
@@ -468,8 +483,8 @@ names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_in_cash_i
 
 
 
-outcomes <- c("baraza.F1","baraza.part.F2","baraza.part.F2.1","baraza.part.F2.2","baraza.part.F2.3","baraza.part.F2.4","baraza.part.F2.5", "pol_index", "baraza.F1.1", "baraza.F1.2", "baraza.F1.3","baraza.F1.4","baraza.F1.5", "contact_index","baraza.H1","baraza.H2","baraza.H3","baraza.H4", "baraza.H5",  "baraza.H6", "baraza.H7", "baraza.H8", "baraza.H9", "baraza.H10", "baraza.H11", "baraza.H12", "baraza.H13","baraza.H14","priority_index","baraza.G1k","baraza.G1.1k","baraza.G1.2k","baraza.G1.3k","baraza.G1.4k","baraza.G1.5k","in_kind_index","baraza.G1c", "baraza.G1.1c","baraza.G1.2c","baraza.G1.3c","baraza.G1.4c","baraza.G1.5c", "in_cash_index" )
-baseline_outcomes <- c("f21","f241.LC1.election", "f241.LC3.election","f241.LC5.election", "f241.Pesidential", "f241.Parliamentary", "f241.Party.leader" ,"base_pol_index","f2301","f2303", "f2307","f2309","f2310","base_contact_index","i1","i2","i3","i4","i5","i6","i7","i8","i9","i10","i11","i12","i13","i14","base_priority_index","cschoolk", "chealthk","croadk","cwaterk",  "cdamk",    "cbuildk","base_in_kind_index","cschoolc", "chealthc","croadc","cwaterc",  "cdamc",    "cbuildc","base_in_cash_index")
+outcomes <- c("baraza.F1","baraza.part.F2","baraza.part.F2.1","baraza.part.F2.2","baraza.part.F2.3","baraza.part.F2.4","baraza.part.F2.5", "pol_index", "baraza.F1.1", "baraza.F1.2", "baraza.F1.3","baraza.F1.4","baraza.F1.5", "contact_index","baraza.H1","baraza.H2","baraza.H3","baraza.H4", "baraza.H5",  "baraza.H6", "baraza.H7", "baraza.H8", "baraza.H9", "baraza.H10", "baraza.H11", "baraza.H12", "baraza.H13","baraza.H14","priority_index","baraza.G1k","baraza.G1.1k","baraza.G1.2k","baraza.G1.3k","baraza.G1.4k","baraza.G1.5k","in_kind_index","baraza.G1c", "baraza.G1.1c","baraza.G1.2c","baraza.G1.3c","baraza.G1.4c","baraza.G1.5c", "in_cash_index","baraza.roof","baraza.wall" )
+baseline_outcomes <- c("f21","f241.LC1.election", "f241.LC3.election","f241.LC5.election", "f241.Pesidential", "f241.Parliamentary", "f241.Party.leader" ,"base_pol_index","f2301","f2303", "f2307","f2309","f2310","base_contact_index","i1","i2","i3","i4","i5","i6","i7","i8","i9","i10","i11","i12","i13","i14","base_priority_index","cschoolk", "chealthk","croadk","cwaterk",  "cdamk",    "cbuildk","base_in_kind_index","cschoolc", "chealthc","croadc","cwaterc",  "cdamc",  "cbuildc","base_in_cash_index","roof","wall")
 
 ##      outcomes            baseline_outcomes    
 

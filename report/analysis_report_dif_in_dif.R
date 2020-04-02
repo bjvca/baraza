@@ -557,7 +557,7 @@ a26b_cut <- seq(min(baseline_complete$a26b),max(baseline_complete$a26b),by=1)
 agehead_cut <- seq(min(baseline_complete$agehead),max(baseline_complete$agehead),by=20)
 log_farmsize_cut <- seq(min(baseline_complete$log_farmsize),max(baseline_complete$log_farmsize),by=1)
 
-nearest.match <- matchit(formula = deliberation*information ~ hhsize + femhead + agehead  + head_sec+ log_farmsize + ironroof + improved_wall+has_phone+a26a+a26b,  data =baseline_complete[baseline_complete$district_baraza == 0,]  ,method = "cem",distance = "mahalanobis", cutpoints = my.cutpoints )
+nearest.match <- matchit(formula = deliberation*information ~ hhsize + femhead + agehead  + head_sec+ log_farmsize + ironroof + improved_wall+has_phone+a26a+a26b,  data =baseline_complete[baseline_complete$district_baraza == 0 & (dta$information == dta$deliberation),]  ,method = "cem",distance = "mahalanobis", cutpoints = my.cutpoints )
 summary(nearest.match)
 #plot(nearest.match)
 #plot(nearest.match, type="hist")
@@ -576,13 +576,13 @@ names(matched.baseline) <- c("information","deliberation","time","clusterID","cl
 
 
 matched.dta_long <- rbind(matched.endline[c("information","deliberation","time","clusterID","clusterID2", outcomes[i])], matched.baseline[ c("information","deliberation","time","clusterID","clusterID2",outcomes[i] )])
-ols <- lm(as.formula(paste(outcomes[i],"information*deliberation*time",sep="~")), data=matched.dta_long)
+ols <- lm(as.formula(paste(outcomes[i],"information:deliberation*time",sep="~")), data=matched.dta_long)
 vcov_cluster <- vcovCR(ols, cluster = matched.dta_long$clusterID, type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
 
-df_matcher[,1,i] <- c(res[8,1],res[8,2],res[8,5], conf[8,4], conf[8,5], nobs(ols))
+df_matcher[,1,i] <- c(res[4,1],res[4,2],res[4,5], conf[4,4], conf[4,5], nobs(ols))
 ####matching for district baraza
 a26a_cut <- seq(min(baseline_complete$a26a),max(baseline_complete$a26a),by=1)
 a26b_cut <- seq(min(baseline_complete$a26b),max(baseline_complete$a26b),by=1)

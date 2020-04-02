@@ -2,6 +2,7 @@ rm(list=ls())
 #remove and rm can be used to remove objects
 #list: a character vector naming objects to be removed
 #ls shows what data sets and functions a user has defined
+library(clubSandwich)
 
 if (Sys.info()['sysname'] =="Windows") {
 path <- "C:/users/u0127963/Desktop/PhD/baraza"
@@ -9,13 +10,71 @@ path <- "C:/users/u0127963/Desktop/PhD/baraza"
 path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
 }
 
-### this loads sub-county endline data
+### this loads sub-county endline and baseline data
 sc_endline <- read.csv(paste(path,"data/public/sc_level_endline.csv", sep ="/"))
+sc_baseline <- read.csv(paste(path,"data/public/sc_level_baseline.csv", sep ="/"))
+sc_baseline$actor <- NA
+sc_baseline$actor[sc_baseline$designation %in% c("LC3_chair","Vice Chairperson LCIII")] <- "politician"
+sc_baseline$actor[sc_baseline$designation %in% c("Subcounty Chief/Town Clerk","Parish Chief","Acting Subcounty Chief/Town Clerk","Deputy subcounty chief/Town Clerk","Community Development Officer")] <- "civil servant"
+sc_endline$actor <- NA
+sc_endline$actor[sc_endline$baraza.B1 %in% c(1,3,5,6) ]  <- "civil servant"
+sc_endline$actor[sc_endline$baraza.B1 %in% c(2,4) ]  <- "politician"
+
+### look at typed in designation if B1 == "other"
+baraza.other_b1
+sc_endline[sc_endline$baraza.B1==96,c("baraza.other_b1","scID")]
+
+sc_endline$actor[sc_endline$scID == 9] <- "civil servant" #                         Secretary for Production    9
+sc_endline$actor[sc_endline$scID == 28] <- "civil servant" #        Secretary for General Purpose and Works   28
+sc_endline$actor[sc_endline$scID == 44] <- "politician" #                       Vice Chairperson LC 3   44
+sc_endline$actor[sc_endline$scID == 58] <- "politician" #                        VICE LC III CHAIRPERSON   58
+sc_endline$actor[sc_endline$scID == 61] <- "politician" #                          Vice LC3 chairperson   61
+sc_endline$actor[sc_endline$scID == 66] <- "politician" #                         Vice Chairperson LC 3   66
+sc_endline$actor[sc_endline$scID == 68] <- "politician" #                                  Vice chairperson   68
+sc_endline$actor[sc_endline$scID == 74] <- "civil servant" #                     Parish chief   74
+sc_endline$actor[sc_endline$scID == 76] <- "politician" #                             Lc 3 VICE CHAIRPERSON   76
+sc_endline$actor[sc_endline$scID == 79] <- "politician" #                               Vice chairman L c 3   79
+sc_endline$actor[sc_endline$scID == 91] <- "politician"                 Secretary to the chairman LC III   91
+sc_endline$actor[sc_endline$scID == 101] <- "politician" #                            Vice Chairperson LC3  101
+sc_endline$actor[sc_endline$scID == 107] <- "civil servant"                          Town board treasurer  107
+sc_endline$actor[sc_endline$scID == 109] <- "politician" #                               Vice Chairperson   109
+sc_endline$actor[sc_endline$scID == 110] <- "civil servant" #                                   Town agent  110
+sc_endline$actor[sc_endline$scID == 112] <- "politician" #                        Concillor Bunasaka parish  112
+sc_endline$actor[sc_endline$scID == 116] <- "politician" #               Head of finance (Area councillor).  116
+sc_endline$actor[sc_endline$scID == 120]  <- "civil servant"OFFICER FOR AGRICULTURE AND FISHERIES DEPARTMENT  120
+sc_endline$actor[sc_endline$scID == 122] <- "politician" #                            Sub County Councilor  122
+sc_endline$actor[sc_endline$scID == 134] <- "politician" #                                      LC3 VICE    134
+sc_endline$actor[sc_endline$scID == 150] <- "politician" #                       Secretary Social services.  150
+sc_endline$actor[sc_endline$scID == 187] <- "politician" #                          VICE CHAIRPERSON LCIII  187
+sc_endline$actor[sc_endline$scID == 197] <- "politician" #    Interim L.C 3  Chairperson  Bumbo T. Council  197
+sc_endline$actor[sc_endline$scID == 199]  <- "civil servant"                                Health Assistant  199
+sc_endline$actor[sc_endline$scID == 200] <- "politician" #                          Vice  Chairperson  LC3  200
+sc_endline$actor[sc_endline$scID == 215] <- "politician" #                                       Councillor  215
+sc_endline$actor[sc_endline$scID == 221] <- "politician" #                                      Councillor   221
+sc_endline$actor[sc_endline$scID == 225] <- "politician" #                                   LC3 Councillor  225
+sc_endline$actor[sc_endline$scID == 232] <- "politician" #                                Youth   Councilor  232
+sc_endline$actor[sc_endline$scID == 234] <- "politician" #                     FINANCIAL COMMITTEE CHAIRMAN  234
+sc_endline$actor[sc_endline$scID == 249] <- "politician" #                    Councilor  Bufumbo  Subcounty  249
+sc_endline$actor[sc_endline$scID == 252] <- "politician" #                            S/c vice Chairperson  252
+sc_endline$actor[sc_endline$scID == 254] <- "politician" #                                     Vice Chair  254
+sc_endline$actor[sc_endline$scID == 256] <- "politician" #                                    Councilor PWD  256
+sc_endline$actor[sc_endline$scID == 258] <- "civil servant" #                                    Town clerk  258
+
+
 ### this loads the treatment assignment
 treats <- read.csv(paste(path,"questionnaire/final_list_5.csv", sep ="/"))
-
 ### this merges in treatments
 sc_endline <- merge(treats, sc_endline, by.x=c("district","subcounty"), by.y=c("district","sub"))
+
+#setdiff(sc_endline$subcounty,sc_baseline$subcounty)
+#[1] "HARUGALI"     "KIGULYA": these two were apparenty not inteviewed during baseline? 
+#    "NTUUSI"       "SEMBABULE_TC":: these two have spelling errors
+
+sc_baseline$subcounty <- as.character(sc_baseline$subcounty)
+sc_baseline$subcounty[sc_baseline$subcounty == "SEMBABULE TC"] <- "SEMBABULE_TC"
+sc_baseline$subcounty[sc_baseline$subcounty ==  "NTUSI"] <- "NTUUSI"
+
+sc_merged <- merge(sc_baseline,sc_endline,by.x = c("subcounty","actor"), by.y=c("subcounty","actor"))
 
 #drop sc that received the district treatment
 sc_endline_no_dist <- subset(sc_endline, district_baraza == 0)
