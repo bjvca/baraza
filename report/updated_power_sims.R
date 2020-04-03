@@ -23,9 +23,9 @@ mde <- seq(from=.05, to=.2, by=.0025)
 
 
 baseline_outcomes <- c("base_unprotected","qc15","c10","a6","pub_health_access","maternal_health_access","d31","d43","d11","wait_time","d61","base_n_children","e5","e12", "e14","e22","e32","e45")
-#baseline_outcomes <- c("b21","b31","b44","base_inputs","b5144","b5146","c12source")
+#baseline_outcomes <- c("b31","b44","base_inputs","b5144","b5146","c12source")
 #baseline_outcomes <- c("c12source")
-
+#baseline_outcomes <- c("b21")
 for (outcome_index in 1:length(baseline_outcomes)) {
 #outcome_index <- 1
 print(baseline_outcomes[outcome_index])
@@ -51,8 +51,8 @@ baseline$b44[is.na(baseline$b44)] <- 0
 baseline$base_inputs <- as.numeric(baseline$used_seed=="Yes" | baseline$used_fert=="Yes")
 baseline$b5144 <- as.numeric(baseline$b5144=="Yes")
 baseline$b5146 <- as.numeric(baseline$b5146=="Yes")
-##use of unprotected water sources in dry season
-baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Rain water","Surface water","Tube well or borehole","Unprotected dug well","Unprotected spring"))    )
+###this was changed post registration to follow https://www.who.int/water_sanitation_health/monitoring/jmp2012/key_terms/en/ guidelines on what is considered improved, that also considers rainwater a protected source
+baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Bottled water","Cart with small tank","Unprotected dug well","Unprotected spring","Tanker truck"))    )
 ### is there are water committee
 baseline$c10 <- as.numeric(baseline$c10=="Yes")
 
@@ -130,6 +130,7 @@ powers3 <- rep(NA, length(mde)) # Empty object to collect simulation estimates
 powers4 <- rep(NA, length(mde)) # Empty object to collect simulation estimates
 
 #for sc baraza
+#### Outer loop to vary MDE #### 
 for (j in 1:length(mde)){ 
 #print(j/length(mde)*100)
 ## for binary outcome
@@ -150,15 +151,15 @@ baseline_orig$base_out <- as.numeric(baseline_orig$outcome +  rnorm(length(basel
 	treats$deliberation <- sample(treats$deliberation)
  	baseline_sim <- merge(baseline_orig,treats, by.x=c("a22","a23"), by.y=c("district","subcounty"))
        	baseline_sim$Y.sim <- baseline_sim$Y1*baseline_sim$information*baseline_sim$deliberation + baseline_sim$outcome*(1-baseline_sim$information*baseline_sim$deliberation) # Reveal 
-        fit.sim <- lm(Y.sim ~ information*deliberation +base_out, data=baseline_sim) # Do analysis (Simple regression) 
-        p.value <- summary(fit.sim)$coefficients[5,4] # Extract p-values 
+        fit.sim <- lm(Y.sim ~ information:deliberation +base_out, data=baseline_sim[baseline_sim$information == baseline_sim$deliberation,]) # Do analysis (Simple regression) 
+        p.value <- summary(fit.sim)$coefficients[3,4] # Extract p-values 
         return(p.value <= alpha) # Determine significance according to p <= 0.05
         }
   powers4[j] <- mean(oper) # store average success rate (power) for each N 
   } 
 
 # for information
-#### Outer loop to vary the number of subjects #### 
+#### Outer loop to vary MDE #### 
 for (j in 1:length(mde)){ 
 #print(j/length(mde)*100)
 ## for binary outcome
@@ -187,7 +188,7 @@ baseline_orig$base_out <- as.numeric(baseline_orig$outcome +  rnorm(length(basel
 
 ###now for deliberation
 
-#### Outer loop to vary the number of subjects #### 
+#### Outer loop to vary MDE #### 
 for (j in 1:length(mde)){ 
 #print(j/length(mde)*100)
 ## for binary outcome
@@ -229,7 +230,7 @@ baseline_orig <- baseline[c("outcome","a21","a22","a23")]
 
 
 
-#### Outer loop to vary the number of subjects #### 
+#### Outer loop to vary MDE #### 
 for (j in 1:length(mde)){ 
 ## for binary outcome
 if (max(baseline_orig$outcome, na.rm=T) <= 1) {
@@ -304,7 +305,7 @@ write.csv(df, file = paste(baseline_outcomes[outcome_index],"csv",sep="."))
 ### could not figure out how to easily automate this so do this manually:
 
 ##to copy entire folder from AWS to local machine, use:
-scp -i "bjornkey.pem" ubuntu@ec2-34-241-206-247.eu-west-1.compute.amazonaws.com:/home/ubuntu/* "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/"
+scp -i "bjornkey.pem" ubuntu@ec2-3-249-40-192.eu-west-1.compute.amazonaws.com:/home/ubuntu/* "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/"
 ## in a local terminal
 
 ###f***ing R: want to save this as png but for some reason I can not use dynamic names with he png command

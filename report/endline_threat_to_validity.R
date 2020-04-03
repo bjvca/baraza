@@ -449,7 +449,7 @@ endline$deliberation_planned[endline$treat == "delib" | endline$treat == "scbza"
 endline$interaction_planned <- 0
 endline$interaction_planned[endline$treat == "scbza"] <- 1
 
-endline_info <- subset(endline, information == 0)
+
 
 ##init arrays to store results
 df_balance <- array(NA,dim=c(6,3,length(outcomes)))
