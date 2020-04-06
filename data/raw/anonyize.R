@@ -119,7 +119,7 @@ contributions <- contributions[,c(1,9:20)]
 hh_level <-  merge(hh_level,contributions, by="key", all.x=T)
 
 ####
-hh_level <- hh_level[c(2,12:15,18,19, 23:718, 724:755)]
+hh_level <- hh_level[c(2,12:15,18,19, 23:718, 724:758)]
 
 ## we need an offset for the gps coordinates
 hh_level$a26a <- hh_level$a26a +rnorm(dim(hh_level)[1],0,.05)

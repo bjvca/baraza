@@ -84,6 +84,7 @@ credplot.gg <- function(d,units, hypo, axlabs, lim){
  return(p)
 }
 
+
 ################################################################## end of funtions declarations
 
 #### for the mock report, I use a dummy endline - I read in a dummy endline of 3 households just to get the correct variable names

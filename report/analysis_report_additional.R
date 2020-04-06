@@ -458,13 +458,14 @@ endline$baraza.G1.5k <- endline$baraza.G1.5 %in% c(1,3)
 endline$baraza.G1.5c <- endline$baraza.G1.5 %in% c(2,3)
 
 ####make a contribution  index
+## in kind
 endline <- FW_index(c("baraza.G1k","baraza.G1.1k","baraza.G1.2k","baraza.G1.3k","baraza.G1.4k","baraza.G1.5k"),data=endline)
 names(endline)[names(endline) == 'index'] <- 'in_kind_index'
 baseline <- FW_index(c("cschoolk", "chealthk","croadk","cwaterk",  "cdamk",    "cbuildk"),data=baseline)
 names(baseline)[names(baseline) == 'index'] <- 'base_in_kind_index'
 baseline_matching <- FW_index(c("cschoolk", "chealthk","croadk","cwaterk",  "cdamk",    "cbuildk"),data=baseline_matching)
 names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_in_kind_index'
-
+## in cash
 endline <- FW_index(c("baraza.G1c","baraza.G1.1c","baraza.G1.2c","baraza.G1.3c","baraza.G1.4c","baraza.G1.5c"),data=endline)
 names(endline)[names(endline) == 'index'] <- 'in_cash_index'
 baseline <- FW_index(c("cschoolc", "chealthc","croadc","cwaterc",  "cdamc",    "cbuildc"),data=baseline)
@@ -473,62 +474,8 @@ baseline_matching <- FW_index(c("cschoolc", "chealthc","croadc","cwaterc",  "cda
 names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_in_cash_index'
 
 
-##20 make an index of indices
-#endline <- FW_index(c("ag_index","infra_index","health_index","education_index"),data=endline)
-#names(endline)[names(endline) == 'index'] <- 'pub_service_index'
-#baseline <- FW_index(c("base_ag_index","base_infra_index","base_health_index","base_education_index"),data=baseline)
-#names(baseline)[names(baseline) == 'index'] <- 'base_pub_service_index'
-#baseline_matching <- FW_index(c("base_ag_index","base_infra_index","base_health_index","base_education_index"),data=baseline_matching)
-#names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_pub_service_index'
-
-
-
-outcomes <- c("baraza.F1","baraza.part.F2","baraza.part.F2.1","baraza.part.F2.2","baraza.part.F2.3","baraza.part.F2.4","baraza.part.F2.5", "pol_index", "baraza.F1.1", "baraza.F1.2", "baraza.F1.3","baraza.F1.4","baraza.F1.5", "contact_index","baraza.H1","baraza.H2","baraza.H3","baraza.H4", "baraza.H5",  "baraza.H6", "baraza.H7", "baraza.H8", "baraza.H9", "baraza.H10", "baraza.H11", "baraza.H12", "baraza.H13","baraza.H14","priority_index","baraza.G1k","baraza.G1.1k","baraza.G1.2k","baraza.G1.3k","baraza.G1.4k","baraza.G1.5k","in_kind_index","baraza.G1c", "baraza.G1.1c","baraza.G1.2c","baraza.G1.3c","baraza.G1.4c","baraza.G1.5c", "in_cash_index","baraza.roof","baraza.wall" )
-baseline_outcomes <- c("f21","f241.LC1.election", "f241.LC3.election","f241.LC5.election", "f241.Pesidential", "f241.Parliamentary", "f241.Party.leader" ,"base_pol_index","f2301","f2303", "f2307","f2309","f2310","base_contact_index","i1","i2","i3","i4","i5","i6","i7","i8","i9","i10","i11","i12","i13","i14","base_priority_index","cschoolk", "chealthk","croadk","cwaterk",  "cdamk",    "cbuildk","base_in_kind_index","cschoolc", "chealthc","croadc","cwaterc",  "cdamc",  "cbuildc","base_in_cash_index","roof","wall")
-
-##      outcomes            baseline_outcomes    
-
-## agriculture   
-## [1,] "baraza.B2"         "b21"                   	Was visited by extension officer at home (yes/no)
-## [2,] "baraza.B3"         "b31"                   	Visited training or demonstration site (yes/no)
-## [3,] "baraza.B4.1"       "b44"                   	NAADS or OWC in village (yes/no)
-## [4,] "inputs"            "base_inputs"           	Uses modern inputs (improved seed or fertilizer) (yes/no)
-## [5,] "baraza.B5.2"       "b5144"                 	Support in marketing from village procurement committe (yes/no)
-## [6,] "baraza.B5.3"       "b5146"                 	Support in marketing from cooperative (yes/no)
-## [7,] "ag_index"          "base_ag_index"         
-
-##infrastructure
-## [8,] "unprotected"       "base_unprotected"      	Household uses unprotected water source during dry season (yes/no)
-## [9,] "baraza.C1.2"       "c12source"             	Distance to water source
-##[10,] "baraza.C1.3"       "qc15"                  	Average waiting time at source (min)
-##[11,] "baraza.C2.3"       "c10"             		Is there a Water User Committee in this village? (yes/no)
-##[12,] "baraza.A6"         "a6"			Distance to nearest all weather road (km)             
-##[13,] "infra_index"       "base_infra_index"   
-
-##health   
-##[14,] "baraza.D2"         "pub_health_access"     	Seek treatment for fever in public health facility (1=yes) 
-##[15,] "baraza.D2.4"       "maternal_health_access"	Go to public health facility to give birth (1=yes)  
-##[16,] "baraza.D3"         "d31"                   	Is there a VHT in village? (1=yes) 
-##[17,] "baraza.D4.2"       "d43"                   	Distance to nearest govt health facility (km) 
-##[18,] "baraza.D1.2"	"tot_sick"		Number of days missed school/work due to illness
-##[19,] "baraza.D4.6"       "wait_time"           	Waiting time before being attended (min)  
-#20	"baraza.D6" 		"d61"			Has visited traditional health practitioner? (1=yes)  
-   
-##[21,] "health_index"      "base_health_index"     
-
-##educations
-##[22,] "n_children"	    "base_n_children"		Number of children in UPS or USE 
-##23"baraza.E1"		e5				Distance to public school (km)  
-##24"baraza.E1.4" "e12" 				Has complete boundary fence (1=yes) 
-##25"baraza.E1.6" "e14" 				Has water facility (1=yes) 
-##26"baraza.E1.10 "e22" 				Has School Management Committee (1=yes)  
-##27"baraza.E1.13 "e32" 				Is informed about School Management Committee (1=yes)  
-##28"baraza.E1.18 "e45" 				Inspectors visited schools (1=yes)  
-
-##29 "education_index"      "base_education_index"  
-
-##30 "pub_service_index" "base_pub_service_index"
-
+outcomes <- c("baraza.F1","baraza.part.F2","baraza.part.F2.1","baraza.part.F2.2","baraza.part.F2.3","baraza.part.F2.4","baraza.part.F2.5", "pol_index", "baraza.F1.1", "baraza.F1.2", "baraza.F1.3","baraza.F1.4","baraza.F1.5", "contact_index","baraza.H1","baraza.H2","baraza.H3","baraza.H4", "baraza.H5",  "baraza.H6", "baraza.H7", "baraza.H8", "baraza.H9", "baraza.H10", "baraza.H11", "baraza.H12", "baraza.H13","baraza.H14","priority_index","baraza.G1k","baraza.G1.1k","baraza.G1.2k","baraza.G1.3k","baraza.G1.4k","baraza.G1.5k","in_kind_index","baraza.G1c", "baraza.G1.1c","baraza.G1.2c","baraza.G1.3c","baraza.G1.4c","baraza.G1.5c", "in_cash_index" )
+baseline_outcomes <- c("f21","f241.LC1.election", "f241.LC3.election","f241.LC5.election", "f241.Pesidential", "f241.Parliamentary", "f241.Party.leader" ,"base_pol_index","f2301","f2303", "f2307","f2309","f2310","base_contact_index","i1","i2","i3","i4","i5","i6","i7","i8","i9","i10","i11","i12","i13","i14","base_priority_index","cschoolk", "chealthk","croadk","cwaterk",  "cdamk",    "cbuildk","base_in_kind_index","cschoolc", "chealthc","croadc","cwaterc",  "cdamc",  "cbuildc","base_in_cash_index")
 
 #create unique ID for clustering based on district and subcounty
 endline <- endline %>%  mutate(clusterID = group_indices(., district, subcounty))
