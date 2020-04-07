@@ -86,56 +86,8 @@ sc_merged_no_dist <- subset(sc_merged, district_baraza == 0)
 #make indicator that pools I, D and ID
 sc_merged_no_dist$ind_treat <- (sc_merged_no_dist$information == 1 | sc_merged_no_dist$deliberation == 1)
 
-########LOOPS########
-
-#SECTION D: SUBCOUNTY'S BASIC INFORMATION#
-outcomes_D <- c("baraza.km.D1","baraza.km.D2","baraza.km.D3","baraza.km.D4a","baraza.km.D4b")
-baseline_outcomes_D <- c("d12","d13","d14","d15a","d15b")
-
-df_ols <- array(NA,dim=c(6,4,length(outcomes_D)))
-
-sc_merged[outcomes_D] <- lapply(sc_merged[outcomes_D], function(x) replace(x, x == 999, NA) )
-
-for (i in 1:length(outcomes_D)) {
-  print(i)
-  
-  ols <- lm(as.formula(paste(paste(outcomes_D[i],"information*deliberation+region.x",sep="~"),baseline_outcomes_D[i],sep="+")), data=sc_merged[sc_merged$district_baraza == 0,])
-  
-  vcov_cluster <- vcovCR(ols, cluster = sc_merged$subcounty[sc_merged$district_baraza == 0], type = "CR0")
-  
-  res <- coef_test(ols, vcov_cluster)
-  
-  #conf <- conf_int(ols, vcov_cluster)
-  
-  print(res)
-  #print(conf)
-  
-  #df_ols[,2,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5],
-                    #nobs(ols))
-  #df_ols[,3,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5],
-                    #nobs(ols))
-  
-  ols <- lm(as.formula(paste(paste(outcomes_D[i],"information:deliberation+region.x",sep="~"),baseline_outcomes_D[i],sep="+")), data=sc_merged[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation),])
-  vcov_cluster <- vcovCR(ols, cluster = sc_merged$subcounty[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation)], type = "CR0")
-  res <- coef_test(ols, vcov_cluster)
-  #conf <- conf_int(ols, vcov_cluster)
-  
-  print(res)
-  #print(conf)
-  
-  #df_ols[,1,i] <- c(res[5,1],res[5,2],res[5,5], conf[5,4],conf[5,5],
-  #nobs(ols))
-  
-}
-
+########RECODING########
 #SECTION E: GOVERNMENT AND COMMUNITY BODIES IN THE SUBCOUNTY#
-outcomes_E <- c("baraza.production.E1a","baraza.health.E2a","baraza.gender1.E3a","baraza.works.E4a","baraza.finance1.E5a","baraza.E7")
-baseline_outcomes_E <- c("e11a","e11b","e11c","e11d","e11e","e13")
-
-df_ols <- array(NA,dim=c(6,4,length(outcomes_E)))
-
-sc_merged[outcomes_E] <- lapply(sc_merged[outcomes_E], function(x) replace(x, x == 999, NA) )
-
 sc_merged$baraza.production.E1a_binary <- (sc_merged$baraza.production.E1a == 1)
 sc_merged$baraza.health.E2a_binary <- (sc_merged$baraza.health.E2a == 1)
 sc_merged$baraza.gender1.E3a_binary <- (sc_merged$baraza.gender1.E3a == 1)
@@ -152,80 +104,204 @@ sc_merged$e11d_binary <- (sc_merged$e11d == "Yes")
 sc_merged$e11e_binary <- (sc_merged$e11e == "Yes")
 sc_merged$e13_binary <- (sc_merged$e13 %in% c("After every two months", "Monthly","Quarterly"))
 
-outcomes_E_binary <- c("baraza.production.E1a_binary","baraza.health.E2a_binary","baraza.gender1.E3a_binary","baraza.works.E4a_binary","baraza.finance1.E5a_binary","baraza.E7_binary")
-baseline_outcomes_E_binary <- c("e11a_binary","e11b_binary","e11c_binary","e11d_binary","e11e_binary","e13_binary")
-
-
-for (i in 1:length(outcomes_E_binary)) {
-  print(i)
-  
-  ols <- lm(as.formula(paste(paste(outcomes_E_binary[i],"information*deliberation+region.x",sep="~"),baseline_outcomes_E_binary[i],sep="+")), data=sc_merged[sc_merged$district_baraza == 0,])
-  
-  vcov_cluster <- vcovCR(ols, cluster = sc_merged$subcounty[sc_merged$district_baraza == 0], type = "CR0")
-  
-  res <- coef_test(ols, vcov_cluster)
-  
-  #conf <- conf_int(ols, vcov_cluster)
-  
-  print(res)
-  #print(conf)
-  
-  #df_ols[,2,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5],
-  #nobs(ols))
-  #df_ols[,3,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5],
-  #nobs(ols))
-  
-  ols <- lm(as.formula(paste(paste(outcomes_E_binary[i],"information:deliberation+region.x",sep="~"),baseline_outcomes_E_binary[i],sep="+")), data=sc_merged[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation),])
-  vcov_cluster <- vcovCR(ols, cluster = sc_merged$subcounty[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation)], type = "CR0")
-  res <- coef_test(ols, vcov_cluster)
-  #conf <- conf_int(ols, vcov_cluster)
-  
-  print(res)
-  #print(conf)
-  
-  #df_ols[,1,i] <- c(res[5,1],res[5,2],res[5,5], conf[5,4],conf[5,5],
-  #nobs(ols))
-  
-}
-
 #SECTION F: COMMUNITY MEETINGS HELD IN THE SUBCOUNTY#
 sc_merged$f14a[sc_merged$f14a==2015] <- NA
 
-outcomes_F <- c("baraza.meeting.F1","baraza.meeting.F2","baraza.meeting.F3","baraza.meeting.F4")
-baseline_outcomes_F <- c("f14a","f14b","f14c","f14d")
+#SUBSECTION H1 - HEALTH#
+sc_merged$baraza.H3[sc_merged$baraza.H3=="n/a" | sc_merged$baraza.H3==999] <- NA
+sc_merged$baraza.H4[sc_merged$baraza.H4=="n/a" | sc_merged$baraza.H4==999] <- NA
+sc_merged$baraza.H5[sc_merged$baraza.H5=="n/a" | sc_merged$baraza.H5==999] <- NA
 
-df_ols <- array(NA,dim=c(6,4,length(outcomes_F)))
+sc_merged$baraza.H3 <- as.numeric(as.character(sc_merged$baraza.H3))
+sc_merged$baraza.H4 <- as.numeric(as.character(sc_merged$baraza.H4))
+sc_merged$baraza.H5 <- as.numeric(as.character(sc_merged$baraza.H5))
 
-sc_merged[outcomes_F] <- lapply(sc_merged[outcomes_F], function(x) replace(x, x == 999, NA) )
+#recoded NA in baraza.H3, baraza.H4, baraza.H5 and h181a, h181b, h181d as 0
+sc_merged$baraza.H3 <- replace(sc_merged$baraza.H3, is.na(sc_merged$baraza.H3), 0)
+sc_merged$baraza.H4 <- replace(sc_merged$baraza.H4, is.na(sc_merged$baraza.H4), 0)
+sc_merged$baraza.H5 <- replace(sc_merged$baraza.H5, is.na(sc_merged$baraza.H5), 0)
 
-for (i in 1:length(outcomes_F)) {
+sc_merged$h181a <- replace(sc_merged$h181a, is.na(sc_merged$h181a), 0)
+sc_merged$h181b <- replace(sc_merged$h181b, is.na(sc_merged$h181b), 0)
+sc_merged$h181d <- replace(sc_merged$h181d, is.na(sc_merged$h181d), 0)
+
+sc_merged$baraza.H6[sc_merged$baraza.H6=="n/a" | sc_merged$baraza.H6==999] <- NA
+sc_merged$baraza.H7[sc_merged$baraza.H7=="n/a" | sc_merged$baraza.H7==999] <- NA
+sc_merged$baraza.H8[sc_merged$baraza.H8=="n/a" | sc_merged$baraza.H8==999] <- NA
+sc_merged$baraza.H9[sc_merged$baraza.H9=="n/a" | sc_merged$baraza.H9==999] <- NA
+sc_merged$baraza.H10[sc_merged$baraza.H10=="n/a" | sc_merged$baraza.H10==999] <- NA
+sc_merged$baraza.H11[sc_merged$baraza.H11=="n/a" | sc_merged$baraza.H11==999] <- NA
+
+sc_merged$baraza.H6 <- as.numeric(as.character(sc_merged$baraza.H6))
+sc_merged$baraza.H7 <- as.numeric(as.character(sc_merged$baraza.H7))
+sc_merged$baraza.H8 <- as.numeric(as.character(sc_merged$baraza.H8))
+sc_merged$baraza.H9 <- as.numeric(as.character(sc_merged$baraza.H9))
+sc_merged$baraza.H10 <- as.numeric(as.character(sc_merged$baraza.H10))
+sc_merged$baraza.H11 <- as.numeric(as.character(sc_merged$baraza.H11))
+
+sc_merged$sum_h182a_h183a <- (sc_merged$h182a + sc_merged$h183a)
+sc_merged$sum_h182b_h183b <- (sc_merged$h182b + sc_merged$h183b)
+sc_merged$sum_h182d_h183d <- (sc_merged$h182d + sc_merged$h183d)
+
+sc_merged$baraza.H12 <- as.numeric(as.character(sc_merged$baraza.H12))
+sc_merged$baraza.H13 <- as.numeric(as.character(sc_merged$baraza.H13))
+sc_merged$baraza.H15 <- as.numeric(as.character(sc_merged$baraza.H15))
+sc_merged$baraza.H16 <- as.numeric(as.character(sc_merged$baraza.H16))
+sc_merged$baraza.H17 <- as.numeric(as.character(sc_merged$baraza.H17))
+
+sc_merged$baraza.H12[sc_merged$baraza.H13=="n/a" | sc_merged$baraza.H13==999] <- NA
+sc_merged$baraza.H13[sc_merged$baraza.H13=="n/a" | sc_merged$baraza.H13==999] <- NA
+sc_merged$baraza.H15[sc_merged$baraza.H15=="n/a" | sc_merged$baraza.H15==999] <- NA
+sc_merged$baraza.H16[sc_merged$baraza.H16=="n/a" | sc_merged$baraza.H16==999] <- NA
+sc_merged$baraza.H17[sc_merged$baraza.H17=="n/a" | sc_merged$baraza.H17==999] <- NA
+
+sc_merged$baraza.H18 <- as.numeric(as.character(sc_merged$baraza.H18))
+sc_merged$baraza.H19 <- as.numeric(as.character(sc_merged$baraza.H19))
+sc_merged$baraza.H20 <- as.numeric(as.character(sc_merged$baraza.H20))
+sc_merged$baraza.H21 <- as.numeric(as.character(sc_merged$baraza.H21))
+sc_merged$baraza.H22 <- as.numeric(as.character(sc_merged$baraza.H22))
+
+sc_merged$baraza.H18[sc_merged$baraza.H18=="n/a" | sc_merged$baraza.H18==999] <- NA
+sc_merged$baraza.H19[sc_merged$baraza.H19=="n/a" | sc_merged$baraza.H19==999] <- NA
+sc_merged$baraza.H20[sc_merged$baraza.H20=="n/a" | sc_merged$baraza.H20==999] <- NA
+sc_merged$baraza.H21[sc_merged$baraza.H21=="n/a" | sc_merged$baraza.H21==999] <- NA
+sc_merged$baraza.H22[sc_merged$baraza.H22=="n/a" | sc_merged$baraza.H22==999] <- NA
+
+sc_merged$baraza.H23 <- as.numeric(as.character(sc_merged$baraza.H23))
+sc_merged$baraza.H24 <- as.numeric(as.character(sc_merged$baraza.H24))
+sc_merged$baraza.H25 <- as.numeric(as.character(sc_merged$baraza.H25))
+sc_merged$baraza.H26 <- as.numeric(as.character(sc_merged$baraza.H26))
+sc_merged$baraza.H27 <- as.numeric(as.character(sc_merged$baraza.H27))
+
+sc_merged$baraza.H23[sc_merged$baraza.H23=="n/a" | sc_merged$baraza.H23==999] <- NA
+sc_merged$baraza.H24[sc_merged$baraza.H24=="n/a" | sc_merged$baraza.H24==999] <- NA
+sc_merged$baraza.H25[sc_merged$baraza.H25=="n/a" | sc_merged$baraza.H25==999] <- NA
+sc_merged$baraza.H26[sc_merged$baraza.H26=="n/a" | sc_merged$baraza.H26==999] <- NA
+sc_merged$baraza.H27[sc_merged$baraza.H27=="n/a" | sc_merged$baraza.H27==999] <- NA
+
+sc_merged$sum_h1123a_h1124a <- (sc_merged$h1123a + sc_merged$h1124a)
+sc_merged$sum_h1123b_h1124b <- (sc_merged$h1123b + sc_merged$h1124b)
+sc_merged$sum_h1123c_h1124c <- (sc_merged$h1123c + sc_merged$h1124c)
+
+sc_merged$baraza.H28 <- as.numeric(as.character(sc_merged$baraza.H28))
+sc_merged$baraza.H29 <- as.numeric(as.character(sc_merged$baraza.H29))
+sc_merged$baraza.H30 <- as.numeric(as.character(sc_merged$baraza.H30))
+sc_merged$baraza.H31 <- as.numeric(as.character(sc_merged$baraza.H31))
+sc_merged$baraza.H32 <- as.numeric(as.character(sc_merged$baraza.H32))
+
+sc_merged$baraza.H28[sc_merged$baraza.H28=="n/a" | sc_merged$baraza.H28==999] <- NA
+sc_merged$baraza.H29[sc_merged$baraza.H29=="n/a" | sc_merged$baraza.H29==999] <- NA
+sc_merged$baraza.H30[sc_merged$baraza.H30=="n/a" | sc_merged$baraza.H30==999] <- NA
+sc_merged$baraza.H31[sc_merged$baraza.H31=="n/a" | sc_merged$baraza.H31==999] <- NA
+sc_merged$baraza.H32[sc_merged$baraza.H32=="n/a" | sc_merged$baraza.H32==999] <- NA
+
+########LOOPS########
+outcomes <- c("baraza.km.D1","baraza.km.D2","baraza.km.D3","baraza.km.D4a","baraza.km.D4b","baraza.production.E1a_binary","baraza.health.E2a_binary","baraza.gender1.E3a_binary","baraza.works.E4a_binary","baraza.finance1.E5a_binary","baraza.E7_binary","baraza.meeting.F1","baraza.meeting.F2","baraza.meeting.F3","baraza.meeting.F4","baraza.H1","baraza.H2","baraza.H2b")
+baseline_outcomes <- c("d12","d13","d14","d15a","d15b","e11a_binary","e11b_binary","e11c_binary","e11d_binary","e11e_binary","e13_binary","f14a","f14b","f14c","f14d","h11","h12","h15")
+df_ols <- array(NA,dim=c(6,4,length(outcomes)))
+sc_merged[outcomes] <- lapply(sc_merged[outcomes], function(x) replace(x, x == 999, NA) )
+
+for (i in 1:length(outcomes)) {
   print(i)
-  
-  ols <- lm(as.formula(paste(paste(outcomes_F[i],"information*deliberation+region.x",sep="~"),baseline_outcomes_F[i],sep="+")), data=sc_merged[sc_merged$district_baraza == 0,])
-  
+  ols <- lm(as.formula(paste(paste(outcomes[i],"information*deliberation+region.x",sep="~"),baseline_outcomes[i],sep="+")), data=sc_merged[sc_merged$district_baraza == 0,])
   vcov_cluster <- vcovCR(ols, cluster = sc_merged$subcounty[sc_merged$district_baraza == 0], type = "CR0")
-  
   res <- coef_test(ols, vcov_cluster)
-  
   #conf <- conf_int(ols, vcov_cluster)
-  
   print(res)
   #print(conf)
-  
+  #df_ols[,2,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5],
+                    #nobs(ols))
+  #df_ols[,3,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5],
+                    #nobs(ols))
+  ols <- lm(as.formula(paste(paste(outcomes[i],"information:deliberation+region.x",sep="~"),baseline_outcomes[i],sep="+")), data=sc_merged[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation),])
+  vcov_cluster <- vcovCR(ols, cluster = sc_merged$subcounty[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation)], type = "CR0")
+  res <- coef_test(ols, vcov_cluster)
+  #conf <- conf_int(ols, vcov_cluster)
+  print(res)
+  #print(conf)
+  #df_ols[,1,i] <- c(res[5,1],res[5,2],res[5,5], conf[5,4],conf[5,5],
+  #nobs(ols))
+}
+
+#loop for health variables
+outcomes_health <- c("baraza.H3","baraza.H4","baraza.H5","baraza.H6","baraza.H7","baraza.H8","baraza.H9","baraza.H10","baraza.H11","baraza.H12","baraza.H13","baraza.H18","baraza.H19","baraza.H20","baraza.H21","baraza.H22","baraza.H23","baraza.H24","baraza.H25","baraza.H26","baraza.H27","baraza.H28","baraza.H29","baraza.H30","baraza.H31","baraza.H32")
+baseline_outcomes_health <- c("h181a","h181b","h181d","sum_h182a_h183a","sum_h182b_h183b","sum_h182d_h183d","h184a","h184b","h184d","h110","h111","h1121a","h1121b","h1121c","h1122a","h1122b","h1122c","sum_h1123a_h1124a","sum_h1123b_h1124b","sum_h1123c_h1124c","h1125a","h1125b","h1125c","h1126a","h1126b","h1126c")
+df_ols <- array(NA,dim=c(6,4,length(outcomes_health)))
+sc_merged[outcomes_health] <- lapply(sc_merged[outcomes_health], function(x) replace(x, x == 999, NA) )
+
+for (i in 1:length(outcomes_health)) {
+  #A: NAs remain NAs
+  print(i)
+  ols <- lm(as.formula(paste(paste(outcomes_health[i],"information*deliberation+region.x",sep="~"),baseline_outcomes_health[i],sep="+")), data=sc_merged[sc_merged$district_baraza == 0,])
+  vcov_cluster <- vcovCR(ols, cluster = sc_merged$subcounty[sc_merged$district_baraza == 0], type = "CR0")
+  res <- coef_test(ols, vcov_cluster)
+  #conf <- conf_int(ols, vcov_cluster)
+  print(res)
+  #print(conf)
   #df_ols[,2,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5],
   #nobs(ols))
   #df_ols[,3,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5],
   #nobs(ols))
   
-  ols <- lm(as.formula(paste(paste(outcomes_F[i],"information:deliberation+region.x",sep="~"),baseline_outcomes_F[i],sep="+")), data=sc_merged[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation),])
+  ols <- lm(as.formula(paste(paste(outcomes_health[i],"information:deliberation+region.x",sep="~"),baseline_outcomes_health[i],sep="+")), data=sc_merged[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation),])
   vcov_cluster <- vcovCR(ols, cluster = sc_merged$subcounty[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation)], type = "CR0")
   res <- coef_test(ols, vcov_cluster)
   #conf <- conf_int(ols, vcov_cluster)
-  
   print(res)
   #print(conf)
-  
   #df_ols[,1,i] <- c(res[5,1],res[5,2],res[5,5], conf[5,4],conf[5,5],
   #nobs(ols))
   
+  #B: recode NAs in baseline data as 0
+  sc_merged$baseline_outcomes_health[i] <- replace(sc_merged$baseline_outcomes_health[i], is.na(sc_merged$baseline_outcomes_health[i]), 0)
+  
+  print(i)
+  ols <- lm(as.formula(paste(paste(outcomes_health[i],"information*deliberation+region.x",sep="~"),baseline_outcomes_health[i],sep="+")), data=sc_merged[sc_merged$district_baraza == 0,])
+  vcov_cluster <- vcovCR(ols, cluster = sc_merged$subcounty[sc_merged$district_baraza == 0], type = "CR0")
+  res <- coef_test(ols, vcov_cluster)
+  #conf <- conf_int(ols, vcov_cluster)
+  print(res)
+  #print(conf)
+  #df_ols[,2,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5],
+  #nobs(ols))
+  #df_ols[,3,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5],
+  #nobs(ols))
+  
+  ols <- lm(as.formula(paste(paste(outcomes_health[i],"information:deliberation+region.x",sep="~"),baseline_outcomes_health[i],sep="+")), data=sc_merged[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation),])
+  vcov_cluster <- vcovCR(ols, cluster = sc_merged$subcounty[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation)], type = "CR0")
+  res <- coef_test(ols, vcov_cluster)
+  #conf <- conf_int(ols, vcov_cluster)
+  print(res)
+  #print(conf)
+  #df_ols[,1,i] <- c(res[5,1],res[5,2],res[5,5], conf[5,4],conf[5,5],
+  #nobs(ols))
+  
+  #C: recode NAs in baseline and endline data as 0
+  sc_merged$outcomes_health[i] <- replace(sc_merged$outcomes_health[i], is.na(sc_merged$outcomes_health[i]), 0)
+  
+  print(i)
+  ols <- lm(as.formula(paste(paste(outcomes_health[i],"information*deliberation+region.x",sep="~"),baseline_outcomes_health[i],sep="+")), data=sc_merged[sc_merged$district_baraza == 0,])
+  vcov_cluster <- vcovCR(ols, cluster = sc_merged$subcounty[sc_merged$district_baraza == 0], type = "CR0")
+  res <- coef_test(ols, vcov_cluster)
+  #conf <- conf_int(ols, vcov_cluster)
+  print(res)
+  #print(conf)
+  #df_ols[,2,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5],
+  #nobs(ols))
+  #df_ols[,3,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5],
+  #nobs(ols))
+  
+  ols <- lm(as.formula(paste(paste(outcomes_health[i],"information:deliberation+region.x",sep="~"),baseline_outcomes_health[i],sep="+")), data=sc_merged[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation),])
+  vcov_cluster <- vcovCR(ols, cluster = sc_merged$subcounty[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation)], type = "CR0")
+  res <- coef_test(ols, vcov_cluster)
+  #conf <- conf_int(ols, vcov_cluster)
+  print(res)
+  #print(conf)
+  #df_ols[,1,i] <- c(res[5,1],res[5,2],res[5,5], conf[5,4],conf[5,5],
+  #nobs(ols))
+
 }
+
+#waiting for Bjorns answer
+#outcomes_H1h <- c("baraza.H15","baraza.H16","baraza.H17")
+#baseline_outcomes_H1h <- c("?","?","?")
