@@ -80,11 +80,6 @@ sc_baseline$subcounty[sc_baseline$subcounty ==  "NTUSI"] <- "NTUUSI"
 
 sc_merged <- merge(sc_baseline,sc_endline,by.x = c("district","subcounty","actor"), by.y=c("district","subcounty","actor"))
 
-#drop sc with district treatment
-sc_merged_no_dist <- subset(sc_merged, district_baraza == 0)
-
-#make indicator that pools I, D and ID
-sc_merged_no_dist$ind_treat <- (sc_merged_no_dist$information == 1 | sc_merged_no_dist$deliberation == 1)
 
 ########RECODING########
 #SECTION E: GOVERNMENT AND COMMUNITY BODIES IN THE SUBCOUNTY#
