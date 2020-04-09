@@ -81,7 +81,6 @@ sc_merged <- merge(sc_baseline,sc_endline,by.x = c("district","subcounty","actor
 ########RECODING########
 #SECTION E: GOVERNMENT AND COMMUNITY BODIES IN THE SUBCOUNTY#
 sc_merged$d15a[sc_merged$d15a==0.60000002] <- 60
-
 sc_merged$baraza.production.E1a_binary <- (sc_merged$baraza.production.E1a == 1)
 sc_merged$baraza.health.E2a_binary <- (sc_merged$baraza.health.E2a == 1)
 sc_merged$baraza.gender1.E3a_binary <- (sc_merged$baraza.gender1.E3a == 1)
@@ -89,7 +88,6 @@ sc_merged$baraza.works.E4a_binary <- (sc_merged$baraza.works.E4a == 1)
 sc_merged$baraza.finance1.E5a_binary <- (sc_merged$baraza.finance1.E5a == 1)
 sc_merged$baraza.E7[sc_merged$baraza.E7==96] <- NA
 sc_merged$baraza.E7_binary <- (sc_merged$baraza.E7 > 2) #median is 2
-
 sc_merged$e11a_binary <- (sc_merged$e11a == "Yes")
 sc_merged$e11b_binary <- (sc_merged$e11b == "Yes")
 sc_merged$e11c_binary <- (sc_merged$e11c == "Yes")
@@ -110,7 +108,6 @@ sc_merged$baraza.H8 <- as.numeric(as.character(sc_merged$baraza.H8))
 sc_merged$baraza.H9 <- as.numeric(as.character(sc_merged$baraza.H9))
 sc_merged$baraza.H10 <- as.numeric(as.character(sc_merged$baraza.H10))
 sc_merged$baraza.H11 <- as.numeric(as.character(sc_merged$baraza.H11))
-sc_merged$baraza.H12 <- as.numeric(as.character(sc_merged$baraza.H12))
 sc_merged$baraza.H13 <- as.numeric(as.character(sc_merged$baraza.H13))
 sc_merged$baraza.H15 <- as.numeric(as.character(sc_merged$baraza.H15))
 sc_merged$baraza.H16 <- as.numeric(as.character(sc_merged$baraza.H16))
@@ -166,48 +163,40 @@ sc_merged$baraza.H70 <- as.numeric(as.character(sc_merged$baraza.H70))
 sc_merged$baraza.H71 <- as.numeric(as.character(sc_merged$baraza.H71))
 
 #baraza.H5 has 115 NA's and is excluded from analysis
-
 sc_merged$baraza.H24[sc_merged$baraza.H24==49] <- NA
 sc_merged$baraza.H25[sc_merged$baraza.H25==49] <- NA
-
 sc_merged$h181a <- replace(sc_merged$h181a, is.na(sc_merged$h181a), 0)
 sc_merged$h181b <- replace(sc_merged$h181b, is.na(sc_merged$h181b), 0)
 sc_merged$h181d <- replace(sc_merged$h181d, is.na(sc_merged$h181d), 0)
-
 sc_merged$sum_h182a_h183a <- (sc_merged$h182a + sc_merged$h183a)
 sc_merged$sum_h182b_h183b <- (sc_merged$h182b + sc_merged$h183b)
 sc_merged$sum_h182d_h183d <- (sc_merged$h182d + sc_merged$h183d)
-
 sc_merged$sum_h1123a_h1124a <- (sc_merged$h1123a + sc_merged$h1124a)
 sc_merged$sum_h1123b_h1124b <- (sc_merged$h1123b + sc_merged$h1124b)
 sc_merged$sum_h1123c_h1124c <- (sc_merged$h1123c + sc_merged$h1124c)
-
-sc_merged <- sc_merged %>%  mutate(clusterID = group_indices(., district, subcounty))
-
 sc_merged$h1131f[sc_merged$h1131f=="Na"] <- NA
 sc_merged$h1131h[sc_merged$h1131h=="I1"] <- 1
-
 #baraza.H48 excluded from analysis because no HC2 has isolation room
-
 sc_merged$"h1132f" <- replace(sc_merged$"h1132f", is.na(sc_merged$"h1132f"), 0) #otherwise loop does not run because 59 1's and 177 NA's
 sc_merged$"h1132j" <- replace(sc_merged$"h1132j", is.na(sc_merged$"h1132j"), 0) #otherwise loop does not run
 sc_merged$"h1132k" <- replace(sc_merged$"h1132k", is.na(sc_merged$"h1132k"), 0) #otherwise loop does not run
 sc_merged$"h1132o" <- replace(sc_merged$"h1132o", is.na(sc_merged$"h1132o"), 0) #otherwise loop does not run
 sc_merged$"h1132p" <- replace(sc_merged$"h1132p", is.na(sc_merged$"h1132p"), 0) #otherwise loop does not run
-
 sc_merged$baraza.H65[sc_merged$baraza.H65==98] <- NA
 sc_merged$baraza.H65_binary <- (sc_merged$baraza.H65 == 1)
 sc_merged$h1171_binary <- (sc_merged$h1171 == "yes")
-
 sc_merged$h119a[sc_merged$h119a==0.25] <- 25
 sc_merged$h119b[sc_merged$h119b==0.2] <- 20
-
 sc_merged$baraza.H69[sc_merged$baraza.H69==98] <- NA
 sc_merged$baraza.H69_binary <- (sc_merged$baraza.H69 == 1)
 sc_merged$h121_binary <- (sc_merged$h121 == "yes")
-
 sc_merged$sum_h1221_to_h1224 <- (sc_merged$h1221 + sc_merged$h1222 + sc_merged$h1223 + sc_merged$h1224)
 
+#SUBSECTION: WATER INFRASTRUCTURE#
+sc_merged$baraza.H78 <- as.numeric(as.character(sc_merged$baraza.H78))
+sc_merged$baraza.H79 <- as.numeric(as.character(sc_merged$baraza.H79))
+
+sc_merged <- sc_merged %>%  mutate(clusterID = group_indices(., district, subcounty))
 
 ########LOOPS########
 #loop if NA cannot be interpreted as 0
