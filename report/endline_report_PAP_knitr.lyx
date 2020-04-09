@@ -4069,12 +4069,22 @@ path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
 
 \begin_layout Plain Layout
 
-} 
+}
 \end_layout
 
 \begin_layout Plain Layout
 
-source(paste(path,"report/analysis_report.R", sep="/"))
+load(paste(path,"report/results/df_averages.Rd", sep="/"))
+\end_layout
+
+\begin_layout Plain Layout
+
+load(paste(path,"report/results/df_ancova.Rd", sep="/"))
+\end_layout
+
+\begin_layout Plain Layout
+
+load(paste(path,"report/results/baseline_desc.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -4172,7 +4182,36 @@ ture, health, and education.
  The graphs are based on indices that are composed of individual outcomes
  in each sector, which are discussed in detail below.
  We also combine the four indices into one overall index that assesses the
- impact on public service delivery in general.
+ impact on public service delivery in general
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Confidence intervals are obtained following the permutation method explained
+ in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "gerber2012field"
+
+\end_inset
+
+.
+ This method first reconstructs a complete schedule of potential outcomes
+ by adding and subtracting the average treatment effect for control and
+ treated units respectively.
+ These potential outcomes are then used to simulate all possible random
+ allocations.
+ For each allocation, average treatment effects are estimated and 2.5th and
+ 97.5th percentiles are then taken as the lower and upper limits of the 95
+ percent confidence interval.
+ As this provides a conservative estimate of the confidence interval, it
+ may be that results in the graph appear insignificant, but do show up as
+ significant when testing significance using Fisher's exact test.
+\end_layout
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -4376,7 +4415,7 @@ Sexpr{format(round(df_averages[1,6]*100,digits=0),nsmall=0)}
 \begin_inset Float table
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -4892,7 +4931,9 @@ Note: First column reports sample means (and standard deviations below);
  the effect (and standard errors below) of the deliberation component of
  the baraza intervention; Column 5 reports the effect (and standard errors
  below) of the administrative placement of the baraza intervention.
- **, * and + denotes significance at the 1, 5 and 10 percent levels.
+ **, * and + denotes significance at the 1, 5 and 10 percent levels as assessed
+ using randomization inference.
+ Reported standard errors are clustered at the level of randomization.
    
 \end_layout
 
