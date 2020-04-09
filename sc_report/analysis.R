@@ -254,6 +254,25 @@ sc_merged$baraza.H44 <- as.numeric(as.character(sc_merged$baraza.H44))
 sc_merged$baraza.H45 <- as.numeric(as.character(sc_merged$baraza.H45))
 sc_merged$baraza.H46 <- as.numeric(as.character(sc_merged$baraza.H46))
 sc_merged$baraza.H47 <- as.numeric(as.character(sc_merged$baraza.H47))
+sc_merged$baraza.H49 <- as.numeric(as.character(sc_merged$baraza.H49))
+sc_merged$baraza.H50 <- as.numeric(as.character(sc_merged$baraza.H50))
+sc_merged$baraza.H51 <- as.numeric(as.character(sc_merged$baraza.H51))
+sc_merged$baraza.H52 <- as.numeric(as.character(sc_merged$baraza.H52))
+sc_merged$baraza.H53 <- as.numeric(as.character(sc_merged$baraza.H53))
+sc_merged$baraza.H54 <- as.numeric(as.character(sc_merged$baraza.H54))
+sc_merged$baraza.H55 <- as.numeric(as.character(sc_merged$baraza.H55))
+sc_merged$baraza.H56 <- as.numeric(as.character(sc_merged$baraza.H56))
+sc_merged$baraza.H57 <- as.numeric(as.character(sc_merged$baraza.H57))
+sc_merged$baraza.H58 <- as.numeric(as.character(sc_merged$baraza.H58))
+sc_merged$baraza.H59 <- as.numeric(as.character(sc_merged$baraza.H59))
+sc_merged$baraza.H60 <- as.numeric(as.character(sc_merged$baraza.H60))
+sc_merged$baraza.H61 <- as.numeric(as.character(sc_merged$baraza.H61))
+sc_merged$baraza.H62 <- as.numeric(as.character(sc_merged$baraza.H62))
+sc_merged$baraza.H63 <- as.numeric(as.character(sc_merged$baraza.H63))
+sc_merged$baraza.H64 <- as.numeric(as.character(sc_merged$baraza.H64))
+sc_merged$baraza.H68 <- as.numeric(as.character(sc_merged$baraza.H68))
+sc_merged$baraza.H70 <- as.numeric(as.character(sc_merged$baraza.H70))
+sc_merged$baraza.H71 <- as.numeric(as.character(sc_merged$baraza.H71))
 
 #baraza.H5 has 115 NA's and is excluded from analysis
 
@@ -274,44 +293,43 @@ sc_merged$sum_h1123c_h1124c <- (sc_merged$h1123c + sc_merged$h1124c)
 
 sc_merged <- sc_merged %>%  mutate(clusterID = group_indices(., district, subcounty))
 
-sc_merged$h1131a[sc_merged$h1131a==""] <- NA
-sc_merged$h1131a[sc_merged$h1131a=="N/A"] <- NA
-sc_merged$h1131b[sc_merged$h1131b==""] <- NA
-sc_merged$h1131b[sc_merged$h1131b=="N/A"] <- NA
-sc_merged$h1131c[sc_merged$h1131c==""] <- NA
-sc_merged$h1131c[sc_merged$h1131c=="N/A"] <- NA
-sc_merged$h1131d[sc_merged$h1131d==""] <- NA
-sc_merged$h1131d[sc_merged$h1131d=="N/A"] <- NA
-sc_merged$h1131e[sc_merged$h1131e==""] <- NA
-sc_merged$h1131e[sc_merged$h1131e=="N/A"] <- NA
-sc_merged$h1131f[sc_merged$h1131f==""] <- NA
-sc_merged$h1131f[sc_merged$h1131f=="N/A"] <- NA
 sc_merged$h1131f[sc_merged$h1131f=="Na"] <- NA
-sc_merged$h1131g[sc_merged$h1131g==""] <- NA
-sc_merged$h1131g[sc_merged$h1131g=="N/A"] <- NA
-sc_merged$h1131h[sc_merged$h1131h==""] <- NA
-sc_merged$h1131h[sc_merged$h1131h=="N/A"] <- NA
 sc_merged$h1131h[sc_merged$h1131h=="I1"] <- 1
-sc_merged$h1132i[sc_merged$h1132i==""] <- NA
-sc_merged$h1132i[sc_merged$h1132i=="N/A"] <- NA
-sc_merged$h1131m[sc_merged$h1131m==""] <- NA
-sc_merged$h1131m[sc_merged$h1131m=="N/A"] <- NA
-sc_merged$h1131n[sc_merged$h1131n==""] <- NA
-sc_merged$h1131n[sc_merged$h1131n=="N/A"] <- NA
 
 #baraza.H48 excluded from analysis because no HC2 has isolation room
+
+sc_merged$"h1132f" <- replace(sc_merged$"h1132f", is.na(sc_merged$"h1132f"), 0) #otherwise loop does not run because 59 1's and 177 NA's
+sc_merged$"h1132j" <- replace(sc_merged$"h1132j", is.na(sc_merged$"h1132j"), 0) #otherwise loop does not run
+sc_merged$"h1132k" <- replace(sc_merged$"h1132k", is.na(sc_merged$"h1132k"), 0) #otherwise loop does not run
+sc_merged$"h1132o" <- replace(sc_merged$"h1132o", is.na(sc_merged$"h1132o"), 0) #otherwise loop does not run
+sc_merged$"h1132p" <- replace(sc_merged$"h1132p", is.na(sc_merged$"h1132p"), 0) #otherwise loop does not run
+
+sc_merged$baraza.H65[sc_merged$baraza.H65==98] <- NA
+sc_merged$baraza.H65_binary <- (sc_merged$baraza.H65 == 1)
+sc_merged$h1171_binary <- (sc_merged$h1171 == "yes")
+
+sc_merged$h119a[sc_merged$h119a==0.25] <- 25
+sc_merged$h119b[sc_merged$h119b==0.2] <- 20
+
+sc_merged$baraza.H69[sc_merged$baraza.H69==98] <- NA
+sc_merged$baraza.H69_binary <- (sc_merged$baraza.H69 == 1)
+sc_merged$h121_binary <- (sc_merged$h121 == "yes")
+
+sc_merged$sum_h1221_to_h1224 <- (sc_merged$h1221 + sc_merged$h1222 + sc_merged$h1223 + sc_merged$h1224)
 
 
 ########LOOPS########
 #loop if NA cannot be interpreted as 0
-outcomes <- c("baraza.km.D1","baraza.km.D2","baraza.km.D3","baraza.km.D4a","baraza.km.D4b","baraza.production.E1a_binary","baraza.health.E2a_binary","baraza.gender1.E3a_binary","baraza.works.E4a_binary","baraza.finance1.E5a_binary","baraza.E7_binary","baraza.meeting.F3","baraza.H1","baraza.H2","baraza.H2b","baraza.H12","baraza.H20","baraza.H29","baraza.H32")
-baseline_outcomes <- c("d12","d13","d14","d15a","d15b","e11a_binary","e11b_binary","e11c_binary","e11d_binary","e11e_binary","e13_binary","f14c","h11","h12","h15","h110","h1121c","h1125c","h1126c")
+outcomes <- c("baraza.km.D1","baraza.km.D2","baraza.km.D3","baraza.km.D4a","baraza.km.D4b","baraza.production.E1a_binary","baraza.health.E2a_binary","baraza.gender1.E3a_binary","baraza.works.E4a_binary","baraza.finance1.E5a_binary","baraza.E7_binary","baraza.meeting.F3","baraza.H1","baraza.H2","baraza.H2b","baraza.H12","baraza.H20","baraza.H29","baraza.H32","baraza.H65_binary","baraza.H69_binary")
+baseline_outcomes <- c("d12","d13","d14","d15a","d15b","e11a_binary","e11b_binary","e11c_binary","e11d_binary","e11e_binary","e13_binary","f14c","h11","h12","h15","h110","h1121c","h1125c","h1126c","h1171_binary","h121_binary")
 #df_ols <- array(NA,dim=c(6,3,length(outcomes)))
 #df_ols <- array(NA,dim=c(7,3,length(outcomes)))
 df_ols <- array(NA,dim=c(3,3,length(outcomes)))
 
 sc_merged[outcomes] <- lapply(sc_merged[outcomes], function(x) replace(x, x == 999, NA) )
 sc_merged[outcomes] <- lapply(sc_merged[outcomes], function(x) replace(x, x == "n/a", NA) )
+sc_merged[baseline_outcomes] <- lapply(sc_merged[baseline_outcomes], function(x) replace(x, x == "", NA) )
+sc_merged[baseline_outcomes] <- lapply(sc_merged[baseline_outcomes], function(x) replace(x, x == "N/A", NA) )
 
 ### parallel computing for RI
 cl <- makeCluster(detectCores(all.tests = FALSE, logical = TRUE))
@@ -352,13 +370,16 @@ res[6,5] <- RI_store$pval_1
 }
 
 #loop if NA can be interpreted as 0
-outcomes_NAcouldbe0 <- c("baraza.H3","baraza.H4","baraza.H6","baraza.H7","baraza.H9","baraza.H10","baraza.H13","baraza.H18","baraza.H19","baraza.H21","baraza.H22","baraza.H24","baraza.H25","baraza.H27","baraza.H28","baraza.H30","baraza.H31","baraza.H33","baraza.H34","baraza.H35","baraza.H36","baraza.H37","baraza.H38","baraza.H39","baraza.H40","baraza.H41","baraza.H45","baraza.H46")
-baseline_outcomes_NAcouldbe0 <- c("h181a","h181b","sum_h182a_h183a","sum_h182b_h183b","h184a","h184b","h111","h1121a","h1121b","h1122a","h1122b","sum_h1123a_h1124a","sum_h1123b_h1124b","h1125a","h1125b","h1126a","h1126b","h1131a","h1131b","h1131c","h1131d","h1131e","h1131f","h1131g","h1131h","h1132i","h1131m","h1131n")
+outcomes_NAcouldbe0 <- c("baraza.H3","baraza.H4","baraza.H6","baraza.H7","baraza.H9","baraza.H10","baraza.H13","baraza.H18","baraza.H19","baraza.H21","baraza.H22","baraza.H24","baraza.H25","baraza.H27","baraza.H28","baraza.H30","baraza.H31","baraza.H33","baraza.H34","baraza.H35","baraza.H36","baraza.H37","baraza.H38","baraza.H39","baraza.H40","baraza.H41","baraza.H45","baraza.H46","baraza.H49","baraza.H50","baraza.H51","baraza.H52","baraza.H53","baraza.H54","baraza.H55","baraza.H56","baraza.H57","baraza.H58","baraza.H59","baraza.H60","baraza.H61","baraza.H62","baraza.H63","baraza.H64","baraza.H67","baraza.H67","baraza.H68","baraza.H70","baraza.H71")
+baseline_outcomes_NAcouldbe0 <- c("h181a","h181b","sum_h182a_h183a","sum_h182b_h183b","h184a","h184b","h111","h1121a","h1121b","h1122a","h1122b","sum_h1123a_h1124a","sum_h1123b_h1124b","h1125a","h1125b","h1126a","h1126b","h1131a","h1131b","h1131c","h1131d","h1131e","h1131f","h1131g","h1131h","h1132i","h1131m","h1131n","h1132a","h1132b","h1132c","h1132d","h1132e","h1132f","h1132g","h1132h","h1132i","h1132j","h1132k","h1132l","h1132m","h1132n","h1132o","h1132p","h119a","h119b","h1201","sum_h1221_to_h1224","h123")
 #df_ols_NAcouldbe0 <- array(NA,dim=c(6,10,length(outcomes_NAcouldbe0)))
 df_ols_NAcouldbe0 <- array(NA,dim=c(3,9,length(outcomes_NAcouldbe0)))
 
 sc_merged[outcomes_NAcouldbe0] <- lapply(sc_merged[outcomes_NAcouldbe0], function(x) replace(x, x == 999, NA) )
 sc_merged[outcomes_NAcouldbe0] <- lapply(sc_merged[outcomes_NAcouldbe0], function(x) replace(x, x == "n/a", NA) )
+sc_merged[baseline_outcomes_NAcouldbe0] <- lapply(sc_merged[baseline_outcomes_NAcouldbe0], function(x) replace(x, x == "", NA) )
+sc_merged[baseline_outcomes_NAcouldbe0] <- lapply(sc_merged[baseline_outcomes_NAcouldbe0], function(x) replace(x, x == "N/A", NA) )
+
 
 for (i in 1:length(outcomes_NAcouldbe0)) {
   #A: NAs remain NAs
@@ -471,6 +492,9 @@ df_ols_nobaseline <- array(NA,dim=c(3,3,length(outcomes_nobaseline)))
 
 sc_merged[outcomes_nobaseline] <- lapply(sc_merged[outcomes_nobaseline], function(x) replace(x, x == 999, NA) )
 sc_merged[outcomes_nobaseline] <- lapply(sc_merged[outcomes_nobaseline], function(x) replace(x, x == "n/a", NA) )
+sc_merged[baseline_outcomes_nobaseline] <- lapply(sc_merged[baseline_outcomes_nobaseline], function(x) replace(x, x == "", NA) )
+sc_merged[baseline_outcomes_nobaseline] <- lapply(sc_merged[baseline_outcomes_nobaseline], function(x) replace(x, x == "N/A", NA) )
+
 
 for (i in 1:length(outcomes_nobaseline)) {
   print(i)
