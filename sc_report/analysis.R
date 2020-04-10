@@ -1,3 +1,6 @@
+outcomes_NAcouldbe0 <- c("baraza.H72","baraza.H73","baraza.H74","baraza.75","baraza76","baraza.H78","baraza.H79")
+baseline_outcomes_NAcouldbe0 <- c("h213a","h213b","h213c","h213d")
+
 rm(list=ls())
 library(dplyr)
 library(ggplot2)
@@ -15,10 +18,9 @@ path <- "C:/users/u0127963/Desktop/PhD/baraza"
 path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
 }
 
-RI_conf_switch <- TRUE
+RI_conf_switch <- FALSE
 glob_repli <- 1000
 glob_sig <- c(.025,.975) ### 5 percent conf intervals
-
 
 ########################################################## function definitions #########################################################################################
 RI_conf_sc <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr_repl = 1000, sig = c(.025,.975)) {
@@ -304,6 +306,12 @@ sc_merged$sum_h1221_to_h1224 <- (sc_merged$h1221 + sc_merged$h1222 + sc_merged$h
 #SUBSECTION: WATER INFRASTRUCTURE#
 sc_merged$baraza.H78 <- as.numeric(as.character(sc_merged$baraza.H78))
 sc_merged$baraza.H79 <- as.numeric(as.character(sc_merged$baraza.H79))
+sc_merged$baraza.H77[sc_merged$baraza.H77==98] <- NA
+sc_merged$baraza.H77_binary <- (sc_merged$baraza.H77 == 1)
+sc_merged$h216_binary <- (sc_merged$h216 == "yes")
+sc_merged$sum_h217a_to_h217d <- (sc_merged$h217a + sc_merged$h217b + sc_merged$h217c + sc_merged$h217d)
+
+
 
 sc_merged <- sc_merged %>%  mutate(clusterID = group_indices(., district, subcounty))
 
@@ -359,8 +367,8 @@ res[6,5] <- RI_store$pval_1
 }
 
 #loop if NA can be interpreted as 0
-outcomes_NAcouldbe0 <- c("baraza.H3","baraza.H4","baraza.H6","baraza.H7","baraza.H9","baraza.H10","baraza.H13","baraza.H18","baraza.H19","baraza.H21","baraza.H22","baraza.H24","baraza.H25","baraza.H27","baraza.H28","baraza.H30","baraza.H31","baraza.H33","baraza.H34","baraza.H35","baraza.H36","baraza.H37","baraza.H38","baraza.H39","baraza.H40","baraza.H41","baraza.H45","baraza.H46","baraza.H49","baraza.H50","baraza.H51","baraza.H52","baraza.H53","baraza.H54","baraza.H55","baraza.H56","baraza.H57","baraza.H58","baraza.H59","baraza.H60","baraza.H61","baraza.H62","baraza.H63","baraza.H64","baraza.H67","baraza.H67","baraza.H68","baraza.H70","baraza.H71")
-baseline_outcomes_NAcouldbe0 <- c("h181a","h181b","sum_h182a_h183a","sum_h182b_h183b","h184a","h184b","h111","h1121a","h1121b","h1122a","h1122b","sum_h1123a_h1124a","sum_h1123b_h1124b","h1125a","h1125b","h1126a","h1126b","h1131a","h1131b","h1131c","h1131d","h1131e","h1131f","h1131g","h1131h","h1132i","h1131m","h1131n","h1132a","h1132b","h1132c","h1132d","h1132e","h1132f","h1132g","h1132h","h1132i","h1132j","h1132k","h1132l","h1132m","h1132n","h1132o","h1132p","h119a","h119b","h1201","sum_h1221_to_h1224","h123")
+outcomes_NAcouldbe0 <- c("baraza.H3","baraza.H4","baraza.H6","baraza.H7","baraza.H9","baraza.H10","baraza.H13","baraza.H18","baraza.H19","baraza.H21","baraza.H22","baraza.H24","baraza.H25","baraza.H27","baraza.H28","baraza.H30","baraza.H31","baraza.H33","baraza.H34","baraza.H35","baraza.H36","baraza.H37","baraza.H38","baraza.H39","baraza.H40","baraza.H45","baraza.H46","baraza.H49","baraza.H50","baraza.H51","baraza.H52","baraza.H53","baraza.H54","baraza.H55","baraza.H56","baraza.H57","baraza.H58","baraza.H59","baraza.H60","baraza.H61","baraza.H62","baraza.H63","baraza.H64","baraza.H67","baraza.H68","baraza.H70","baraza.H71","baraza.H72","baraza.H73","baraza.H74","baraza.H75","baraza.H77_binary","baraza.H78","baraza.H79")
+baseline_outcomes_NAcouldbe0 <- c("h181a","h181b","sum_h182a_h183a","sum_h182b_h183b","h184a","h184b","h111","h1121a","h1121b","h1122a","h1122b","sum_h1123a_h1124a","sum_h1123b_h1124b","h1125a","h1125b","h1126a","h1126b","h1131a","h1131b","h1131c","h1131d","h1131e","h1131f","h1131g","h1131h","h1131m","h1131n","h1132a","h1132b","h1132c","h1132d","h1132e","h1132f","h1132g","h1132h","h1132i","h1132j","h1132k","h1132l","h1132m","h1132n","h1132o","h1132p","h119a","h1201","sum_h1221_to_h1224","h123","h213a","h213b","h213c","h213d","h216_binary","sum_h217a_to_h217d","h218")
 #df_ols_NAcouldbe0 <- array(NA,dim=c(6,10,length(outcomes_NAcouldbe0)))
 df_ols_NAcouldbe0 <- array(NA,dim=c(3,9,length(outcomes_NAcouldbe0)))
 
@@ -472,18 +480,17 @@ res[6,5] <- RI_store$pval_1
 #baraza.H8: sum_h182d_h183d 109 NAs
 #baraza.H11: h184d 159 NAs
 #baraza.H26: sum_h1123c_h1124c 81 NAs
+#baraza.H41: no corresponding baseline variable
 #baraza.H42 and baraza.H43 and baraza.H44: no corresponding baseline variable
 #baraza.H47: h1131o 235 NAs
-outcomes_nobaseline <- c("baraza.H15","baraza.H16","baraza.H17","baraza.H23","baraza.meeting.F1","baraza.meeting.F2","baraza.meeting.F4","baraza.H8","baraza.H11","baraza.H26","baraza.H42","baraza.H43","baraza.H44","baraza.H47")
+#baraza.H76: no corresponding baseline variable
+outcomes_nobaseline <- c("baraza.H15","baraza.H16","baraza.H17","baraza.H23","baraza.meeting.F1","baraza.meeting.F2","baraza.meeting.F4","baraza.H8","baraza.H11","baraza.H26","baraza.H41","baraza.H42","baraza.H43","baraza.H44","baraza.H47","baraza.H76")
 #df_ols_nobaseline <- array(NA,dim=c(6,3,length(outcomes_nobaseline)))
 #df_ols_nobaseline <- array(NA,dim=c(7,3,length(outcomes_nobaseline)))
 df_ols_nobaseline <- array(NA,dim=c(3,3,length(outcomes_nobaseline)))
 
 sc_merged[outcomes_nobaseline] <- lapply(sc_merged[outcomes_nobaseline], function(x) replace(x, x == 999, NA) )
 sc_merged[outcomes_nobaseline] <- lapply(sc_merged[outcomes_nobaseline], function(x) replace(x, x == "n/a", NA) )
-sc_merged[baseline_outcomes_nobaseline] <- lapply(sc_merged[baseline_outcomes_nobaseline], function(x) replace(x, x == "", NA) )
-sc_merged[baseline_outcomes_nobaseline] <- lapply(sc_merged[baseline_outcomes_nobaseline], function(x) replace(x, x == "N/A", NA) )
-
 
 for (i in 1:length(outcomes_nobaseline)) {
   print(i)
