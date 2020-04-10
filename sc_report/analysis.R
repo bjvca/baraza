@@ -117,7 +117,7 @@ RI_conf_sc <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr
 		r3 <- coef(lm(formula2, data=dta_perm))["deliberation"]
 		oper <- return(c(r1,r2,r3, exceed1, exceed2, exceed3))
 	}
-	return(list(conf_1 = quantile(oper[,1],sig),conf_2 = quantile(oper[,2],sig),conf_3 = quantile(oper[,3],sig), pval_1= sum(oper[,4])/nr_repl, pval_2= sum(oper[,5])/nr_repl, pval_3= sum(oper[,6])/nr_repl))
+	return(list(conf_1 = quantile(oper[,1],sig),conf_2 = quantile(oper[,2],sig),conf_3 = quantile(oper[,3],sig), pval_1= (sum(oper[,4])/nr_repl)*2, pval_2= (sum(oper[,5])/nr_repl)*2, pval_3= (sum(oper[,6])/nr_repl)*2))
 	}
 
 ########################################################################################### end functions definitions ###############################################################
