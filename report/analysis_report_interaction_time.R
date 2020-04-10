@@ -481,7 +481,7 @@ df_averages[2,i] <- sd(as.matrix(endline[outcomes[i]]), na.rm=T)
 ## merge in baseline
 ## sc baraza
 ols <- lm(as.formula(paste(paste(outcomes[i],"information:deliberation+information:deliberation:time_dif+information:deliberation:time_dif2+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[dta$district_baraza == 0  & (dta$information == dta$deliberation),]) 
-vcov_cluster <- vcovCR(ols, cluster = dta$clusterID[dta$district_baraza == 0 & (dtta$information == dta$deliberation)], type = "CR0")
+vcov_cluster <- vcovCR(ols, cluster = dta$clusterID[dta$district_baraza == 0 & (dta$information == dta$deliberation)], type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 

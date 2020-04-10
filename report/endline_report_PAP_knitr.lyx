@@ -213,8 +213,9 @@ While the project was initially assumed to take about 2 years, OPM faced
 \end_layout
 
 \begin_layout Standard
-As the project was designed to affect a range of outcomes in different sectors,
- we strictly adhere to our pre-analysis plan.
+In a first part of the paper, we present a strictly confirmatory analysis.
+ As the project was designed to affect a range of outcomes in different
+ sectors, we strictly adhere to our pre-analysis plan.
  In particular, before endline data collection, we prepared a “mock report”,
  which contains the analysis on simulated end-line data for a core set of
  primary outcomes to test the four primary research questions (impact of
@@ -276,6 +277,10 @@ target "https://github.com/bjvca/baraza/"
 \end_inset
 
  
+\end_layout
+
+\begin_layout Standard
+In a second part of the paper, we proceed in a more exploratory way 
 \end_layout
 
 \begin_layout Standard
@@ -1165,7 +1170,27 @@ path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
 
 \begin_layout Plain Layout
 
-source(paste(path,"report/original_balance.R", sep="/"))
+load(paste(path,"report/results/df_averages_baseline.Rd", sep="/"))
+\end_layout
+
+\begin_layout Plain Layout
+
+load(paste(path,"report/results/df_ols_baseline.Rd", sep="/"))
+\end_layout
+
+\begin_layout Plain Layout
+
+load(paste(path,"report/results/df_balance_baseline.Rd", sep="/"))
+\end_layout
+
+\begin_layout Plain Layout
+
+load(paste(path,"report/results/df_ols_end.Rd", sep="/"))
+\end_layout
+
+\begin_layout Plain Layout
+
+load(paste(path,"report/results/df_averages_end.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -4860,7 +4885,7 @@ Sexpr{format(round(df_ancova[2,4,7],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Number of observations & 12545 & 
+Number of observations & 7,300 & 
 \backslash
 Sexpr{format(round(df_ancova[6,1,7],digits=3),nsmall=0)} & 
 \backslash
@@ -8625,51 +8650,6 @@ reference "subsec:Appendix-Three"
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<dif-in-dif,  echo=FALSE, warning = FALSE, message=FALSE,  results='hide'>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-if (Sys.info()['sysname'] =="Windows") { 
-\end_layout
-
-\begin_layout Plain Layout
-
-path <- "C:/users/u0127963/Desktop/PhD/baraza" } else { 
-\end_layout
-
-\begin_layout Plain Layout
-
-path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-} 
-\end_layout
-
-\begin_layout Plain Layout
-
-source(paste(path,"report/analysis_report_dif_in_dif.R", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -11516,7 +11496,12 @@ path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
 
 \begin_layout Plain Layout
 
-source(paste(path,"report/analysis_report_dif_in_dif.R", sep="/"))
+load(paste(path,"report/results/df_averages_matcher.Rd", sep="/"))
+\end_layout
+
+\begin_layout Plain Layout
+
+load(paste(path,"report/results/df_matcher.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -11533,7 +11518,7 @@ source(paste(path,"report/analysis_report_dif_in_dif.R", sep="/"))
 \begin_inset Float table
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard

@@ -1,3 +1,9 @@
+### This file runs the analysis that accounts for potential introduction of selection bias due to incomplete roll-out.
+### Initially this was proposed as a matched dif-in-dif (and coded like that for the mock report)
+### I have decided to change this to CEM and ancova, for the following reasons:
+### https://blogs.worldbank.org/impactevaluations/why-difference-difference-estimation-still-so-popular-experimental-analysis
+### https://medium.com/@devmotivation/cem-coarsened-exact-matching-explained-7f4d64acc5ef
+
 rm(list=ls())
 library(dplyr)
 library(ggplot2)
@@ -7,6 +13,7 @@ library(plm)
 library(lmtest)
 library(clubSandwich)
 library(moments)
+library(doParallel)
 set.seed(123456789) #not needed for final version?
 
 if (Sys.info()['sysname'] =="Windows") {
@@ -15,6 +22,9 @@ path <- "C:/users/u0127963/Desktop/PhD/baraza"
 path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
 }
 
+RI_conf_switch <- TRUE
+glob_repli <- 1000
+glob_sig <- c(.025,.975) ### 5 percent conf intervals
 
 
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
@@ -86,6 +96,217 @@ credplot.gg <- function(d,units, hypo, axlabs, lim){
  return(p)
 }
 
+## function definitions 
+RI_conf_sc <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr_repl = 1000, sig = c(.025,.975)) {
+
+#dta_sim <- matched.merged
+#ctrls <- "a21"
+#nr_repl <- glob_repli
+#sig <- glob_sig
+	if (is.null(baseline_outcomes)) {
+		formula1 <- as.formula(paste(outcomes[i],paste("information:deliberation",ctrls,sep="+"),sep="~"))
+		formula2 <- as.formula(paste(outcomes[i],paste("information*deliberation",ctrls,sep="+"),sep="~"))
+	} else {
+		formula1 <- as.formula(paste(paste(outcomes[i],paste("information:deliberation",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
+		formula2 <- as.formula(paste(paste(outcomes[i],paste("information*deliberation",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
+	}
+
+
+	dta_sim <- dta_sim %>%  mutate(clusterID = group_indices(., district, subcounty))
+	### get ATEs for two different models
+	ols_1 <- lm(formula1, data=dta_sim[dta_sim$deliberation == dta_sim$information,], weights= weights) 
+	ols_2 <- lm(formula2, data=dta_sim, weights= weights) 
+	dta_sim$dep <- as.numeric(unlist(dta_sim[as.character(formula1[[2]])]))
+
+	treat_nrs <- table(data.frame(aggregate(dta_sim[c("information","deliberation")], list(dta_sim$clusterID),mean))[,2:3])
+
+	### calculate potential outcomes
+	### for model 1 (sc effect)
+	dta_sim$pot_out_0_1 <- NA
+	dta_sim$pot_out_0_1[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0]
+	dta_sim$pot_out_0_1[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] - coef(ols_1)["information:deliberation"]
+
+	dta_sim$pot_out_1_1 <- NA
+	dta_sim$pot_out_1_1[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1]
+	dta_sim$pot_out_1_1[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] + coef(ols_1)["information:deliberation"]
+
+	### for model 2 (factorial design with )
+	### potential outcomes for I=0 D=0
+
+	dta_sim$pot_out_00_2 <- NA
+	dta_sim$pot_out_00_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0]
+	dta_sim$pot_out_00_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] - coef(ols_2)["information"]
+	dta_sim$pot_out_00_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] - coef(ols_2)["information"] - coef(ols_2)["deliberation"] - coef(ols_2)["information:deliberation"]
+	dta_sim$pot_out_00_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] - coef(ols_2)["deliberation"]
+
+	### potential outcomes for I=1 and D-1
+	dta_sim$pot_out_11_2 <- NA
+	dta_sim$pot_out_11_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1]
+	dta_sim$pot_out_11_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] +  coef(ols_2)["information"]
+	dta_sim$pot_out_11_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] + coef(ols_2)["deliberation"]
+	dta_sim$pot_out_11_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] + coef(ols_2)["information"] + coef(ols_2)["deliberation"] + coef(ols_2)["information:deliberation"]
+
+	### potential outcomes for I=1 and D=0
+	dta_sim$pot_out_10_2 <- NA
+	dta_sim$pot_out_10_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0]
+	dta_sim$pot_out_10_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] -  coef(ols_2)["deliberation"] - coef(ols_2)["information:deliberation"]
+	dta_sim$pot_out_10_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] + coef(ols_2)["information"] -  coef(ols_2)["deliberation"]
+	dta_sim$pot_out_10_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] +  coef(ols_2)["information"] 
+
+	### potential outcomes for I=0 and D=1
+	dta_sim$pot_out_01_2 <- NA
+	dta_sim$pot_out_01_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1]
+	dta_sim$pot_out_01_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] -  coef(ols_2)["information"] - coef(ols_2)["information:deliberation"]
+	dta_sim$pot_out_01_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] - coef(ols_2)["information"] +  coef(ols_2)["deliberation"]
+	dta_sim$pot_out_01_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] +  coef(ols_2)["deliberation"] 
+
+	oper <- foreach (repl = 1:nr_repl,.combine=rbind) %dopar% {
+		#do the permuations	
+		perm_treat <- data.frame(cbind(sample(c(rep("C",treat_nrs[1,1]), rep("D",treat_nrs[1,2]), rep("I",treat_nrs[2,1]),rep("B",treat_nrs[2,2]))),names(table(dta_sim$clusterID))))  
+		names(perm_treat) <- c("perm_treat","clusterID")
+		dta_perm <- merge(dta_sim, perm_treat, by.x="clusterID", by.y="clusterID")
+		dta_perm$information <- ifelse(dta_perm$perm_treat %in% c("I","B"), 1, 0)
+		dta_perm$deliberation <- ifelse(dta_perm$perm_treat %in% c("D","B"), 1, 0)
+
+		dta_perm$dep_1 <- NA
+		dta_perm$dep_1[dta_perm["information"] ==1 & dta_perm["deliberation"] ==1] <- dta_perm$pot_out_1_1[dta_perm["information"] ==1 & dta_perm["deliberation"] ==1]
+		dta_perm$dep_1[dta_perm["information"] ==0 & dta_perm["deliberation"] ==0] <- dta_perm$pot_out_0_1[dta_perm["information"] ==0 & dta_perm["deliberation"] ==0]
+
+		dta_perm$dep_2 <- NA
+		dta_perm$dep_2[dta_perm["information"] ==1 & dta_perm["deliberation"] ==1] <- dta_perm$pot_out_11_2[dta_perm["information"] ==1 & dta_perm["deliberation"] ==1]
+		dta_perm$dep_2[dta_perm["information"] ==0 & dta_perm["deliberation"] ==0] <- dta_perm$pot_out_00_2[dta_perm["information"] ==0 & dta_perm["deliberation"] ==0] 
+		dta_perm$dep_2[dta_perm["information"] ==1 & dta_perm["deliberation"] ==0] <- dta_perm$pot_out_10_2[dta_perm["information"] ==1 & dta_perm["deliberation"] ==0] 
+		dta_perm$dep_2[dta_perm["information"] ==0 & dta_perm["deliberation"] ==1] <- dta_perm$pot_out_01_2[dta_perm["information"] ==0 & dta_perm["deliberation"] ==1] 
+
+### p-value
+		exceed1 <- coef(lm(formula1, data=dta_perm, weights= weights))["information:deliberation"] > abs(coef(ols_1)["information:deliberation"])
+		exceed2 <- coef(lm(formula2, data=dta_perm, weights= weights))["information"] > abs(coef(ols_2)["information"])
+		exceed3 <- coef(lm(formula2, data=dta_perm, weights= weights))["deliberation"] > abs(coef(ols_2)["deliberation"])
+
+
+		dta_perm[outcomes[i]] <- dta_perm$dep_1
+		r1 <-coef(lm(formula1, data=dta_perm[dta_perm$deliberation == dta_perm$information,]))["information:deliberation"]
+
+		dta_perm[outcomes[i]] <- dta_perm$dep_2
+		r2 <-coef(lm(formula2, data=dta_perm))["information"]
+		r3 <- coef(lm(formula2, data=dta_perm))["deliberation"]
+		oper <- return(c(r1,r2,r3, exceed1, exceed2, exceed3))
+	}
+	return(list(conf_1 = quantile(oper[,1],sig, na.rm=T),conf_2 = quantile(oper[,2],sig, na.rm=T),conf_3 = quantile(oper[,3],sig, na.rm=T), pval_1= (sum(oper[,4], na.rm=T)/nr_repl)*2, pval_2= (sum(oper[,5], na.rm=T)/nr_repl)*2, pval_3= (sum(oper[,6], na.rm=T)/nr_repl)*2))
+	}
+
+RI_conf_sc_custom <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr_repl = 1000, sig = c(.025,.975)) {
+#RI_conf_sc(i,outcomes, baseline_outcomes, matched.merged , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
+#dta_sim <- matched.merged
+#ctrls <- "a21"
+#nr_repl <- glob_repli
+#sig <- glob_sig
+	if (is.null(baseline_outcomes)) {
+		formula1 <- as.formula(paste(outcomes[i],paste("information:deliberation",ctrls,sep="+"),sep="~"))
+		formula2 <- as.formula(paste(outcomes[i],paste("information*deliberation",ctrls,sep="+"),sep="~"))
+	} else {
+		formula1 <- as.formula(paste(paste(outcomes[i],paste("information:deliberation",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
+		formula2 <- as.formula(paste(paste(outcomes[i],paste("information*deliberation",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
+	}
+
+
+	dta_sim <- dta_sim %>%  mutate(clusterID = group_indices(., district, subcounty))
+	### get ATEs for two different models
+	ols_1 <- lm(formula1, data=dta_sim[dta_sim$deliberation == dta_sim$information,], weights= weights) 
+
+	dta_sim$dep <- as.numeric(unlist(dta_sim[as.character(formula1[[2]])]))
+
+	treat_nrs <- table(data.frame(aggregate(dta_sim[c("information","deliberation")], list(dta_sim$clusterID),mean))[,2:3])
+
+	### calculate potential outcomes
+	### for model 1 (sc effect)
+	dta_sim$pot_out_0_1 <- NA
+	dta_sim$pot_out_0_1[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0]
+	dta_sim$pot_out_0_1[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] - coef(ols_1)["information:deliberation"]
+
+	dta_sim$pot_out_1_1 <- NA
+	dta_sim$pot_out_1_1[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1]
+	dta_sim$pot_out_1_1[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] + coef(ols_1)["information:deliberation"]
+
+	oper <- foreach (repl = 1:nr_repl,.combine=rbind) %dopar% {
+		#do the permuations	
+		perm_treat <- data.frame(cbind(sample(c(rep("C",treat_nrs[1,1]), rep("D",treat_nrs[1,2]), rep("I",treat_nrs[2,1]),rep("B",treat_nrs[2,2]))),names(table(dta_sim$clusterID))))  
+		names(perm_treat) <- c("perm_treat","clusterID")
+		dta_perm <- merge(dta_sim, perm_treat, by.x="clusterID", by.y="clusterID")
+		dta_perm$information <- ifelse(dta_perm$perm_treat %in% c("I","B"), 1, 0)
+		dta_perm$deliberation <- ifelse(dta_perm$perm_treat %in% c("D","B"), 1, 0)
+
+		dta_perm$dep_1 <- NA
+		dta_perm$dep_1[dta_perm["information"] ==1 & dta_perm["deliberation"] ==1] <- dta_perm$pot_out_1_1[dta_perm["information"] ==1 & dta_perm["deliberation"] ==1]
+		dta_perm$dep_1[dta_perm["information"] ==0 & dta_perm["deliberation"] ==0] <- dta_perm$pot_out_0_1[dta_perm["information"] ==0 & dta_perm["deliberation"] ==0]
+
+		
+### p-value
+		exceed1 <- coef(lm(formula1, data=dta_perm, weights= weights))["information:deliberation"] > abs(coef(ols_1)["information:deliberation"])
+	
+		dta_perm[outcomes[i]] <- dta_perm$dep_1
+		r1 <-coef(lm(formula1, data=dta_perm[dta_perm$deliberation == dta_perm$information,]))["information:deliberation"]	
+		oper <- return(c(r1, exceed1))
+	}
+	return(list(conf_1 = quantile(oper[,1],sig), pval_1= (sum(oper[,2])/nr_repl)*2))
+	}
+
+
+RI_conf_dist <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr_repl = 1000, sig = c(.025,.975)) {
+
+
+### a function to esimate confidence intervals using randomization inference following Gerber and Green pages 66-71 and 83.
+	if (is.null(baseline_outcomes)) {
+		formula <- as.formula(paste(outcomes[i],paste("district_baraza",ctrls,sep="+"),sep="~"))
+		
+	} else {
+		formula <- as.formula(paste(paste(outcomes[i],paste("district_baraza",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
+	}
+
+
+	dta_sim <- dta_sim %>%  mutate(clusterID = group_indices(., district))
+	### get ATEs for two different models
+	ols <- lm(formula, data=dta_sim, weights= weights) 
+	
+	dta_sim$dep <- as.numeric(unlist(dta_sim[as.character(formula[[2]])]))
+
+	treat_nrs <- table(data.frame(aggregate(dta_sim["district_baraza"], list(dta_sim$clusterID),mean)[,2]))
+
+	### calculate potential outcomes
+	### for model 1 (sc effect)
+	dta_sim$pot_out_0 <- NA
+	dta_sim$pot_out_0[dta_sim["district_baraza"] == 0 ] <- dta_sim$dep[dta_sim["district_baraza"] == 0 ]
+	dta_sim$pot_out_0[dta_sim["district_baraza"] == 1 ] <- dta_sim$dep[dta_sim["district_baraza"] == 1] - coef(ols)["district_baraza"]
+
+	dta_sim$pot_out_1 <- NA
+	dta_sim$pot_out_1[dta_sim["district_baraza"] == 0 ] <- dta_sim$dep[dta_sim["district_baraza"] == 0 ] + coef(ols)["district_baraza"]
+	dta_sim$pot_out_1[dta_sim["district_baraza"] == 1 ] <- dta_sim$dep[dta_sim["district_baraza"] == 1]	
+
+	
+	oper <- foreach (repl = 1:nr_repl,.combine=rbind) %dopar% {
+		#do the permuations	
+		perm_treat <- data.frame(cbind(sample(c(rep("SC",treat_nrs[1]), rep("D",treat_nrs[2]))),names(table(dta_sim$clusterID))))  
+		names(perm_treat) <- c("perm_treat","clusterID")
+		dta_perm <- merge(dta_sim, perm_treat, by.x="clusterID", by.y="clusterID")
+		dta_perm$district_baraza <- ifelse(dta_perm$perm_treat == "D", 1, 0)
+	
+
+		dta_perm$dep <- NA
+		dta_perm$dep[dta_perm["district_baraza"] ==1 ] <- dta_perm$pot_out_1[dta_perm["district_baraza"] ==1 ]
+		dta_perm$dep[dta_perm["district_baraza"] ==0 ] <- dta_perm$pot_out_0[dta_perm["district_baraza"] ==0 ]
+
+
+		### p-value
+		exceed <- coef(lm(formula, data=dta_perm, weights= weights))["district_baraza"] > abs(coef(ols)["district_baraza"])
+
+		
+
+		dta_perm[outcomes[i]] <- dta_perm$dep
+		res_list <- cbind(coef(lm(formula, data=dta_perm))["district_baraza"],"exceed" = exceed)
+		return(res_list) 
+	}
+	return(list(conf = quantile(oper[,1],sig),pval= (sum(oper[,2])/nr_repl)*2))
+}
 ################################################################### end of funtions declarations
 
 ### for the mock report, I use a dummy endline - I read in a dummy endline of 3 households just to get the correct variable names
@@ -460,6 +681,9 @@ names(baseline) <- c("information","deliberation","district_baraza","time","clus
 
 dta_long <- rbind(endline[c("information","deliberation","district_baraza","time", "clusterID","clusterID2",outcomes)], baseline[ c("information","deliberation","district_baraza","time", "clusterID","clusterID2",outcomes )])
 
+### parallel computing for RI
+cl <- makeCluster(detectCores(all.tests = FALSE, logical = TRUE)-1)
+registerDoParallel(cl)
 
 ###init arrays to store results
 df_ols <- array(NA,dim=c(6,4,length(outcomes)))
@@ -484,10 +708,11 @@ a26a_cut <- seq(min(baseline_complete$a26a),max(baseline_complete$a26a),by=1)
 a26b_cut <- seq(min(baseline_complete$a26b),max(baseline_complete$a26b),by=1)
 agehead_cut <- seq(min(baseline_complete$agehead),max(baseline_complete$agehead),by=20)
 log_farmsize_cut <- seq(min(baseline_complete$log_farmsize),max(baseline_complete$log_farmsize),by=1)
-
+log_farmsize_cut <- seq(min(baseline_complete$log_farmsize),max(baseline_complete$log_farmsize),by=1)
+#log_farmsize_cut <- c(0,1.7,6)
 my.cutpoints <- list(a26a=a26a_cut, a26b=a26b_cut, agehead = agehead_cut, log_farmsize=log_farmsize_cut)
 
-nearest.match <- matchit(formula = information ~ hhsize + femhead + agehead  + head_sec+ log_farmsize + ironroof + improved_wall+has_phone+a26a+a26b,  data =baseline_complete[baseline_complete$district_baraza == 0,] ,method = "cem",distance = "mahalanobis", cutpoints = my.cutpoints )
+nearest.match <- matchit(formula = information ~ hhsize + femhead + agehead  + head_sec+ log_farmsize + ironroof + improved_wall+has_phone+a26a+a26b,  data =baseline_complete[baseline_complete$district_baraza == 0,] ,method = "cem", cutpoints = my.cutpoints )
 
 summary(nearest.match)
 #plot(nearest.match)
@@ -498,32 +723,25 @@ matched.baseline <- match.data(nearest.match)
 
 ### this is the matched data -  we now need to extract these ids from the endline and stack base and endline to do a dif-in-dif
 
-matched.endline <- endline[endline$hhid %in% matched.baseline$hhid,]
-matched.baseline$time <- 0
-matched.endline$time <- 1
+matched.merged <-   merge(matched.baseline, endline[c("hhid","a21","district","subcounty",outcomes[i])], by="hhid")
 
-matched.baseline <- matched.baseline[c("information","deliberation","time","clusterID","clusterID2",baseline_outcomes[i] )]
-names(matched.baseline) <- c("information","deliberation","time","clusterID","clusterID2",outcomes[i] )
+df_averages[1,i] <- mean(as.matrix(matched.merged[outcomes[i]]), na.rm=T)
+df_averages[2,i] <- sd(as.matrix(matched.merged[outcomes[i]]), na.rm=T)
 
-
-matched.dta_long <- rbind(matched.endline[c("information","deliberation","time","clusterID","clusterID2", outcomes[i])], matched.baseline[ c("information","deliberation","time","clusterID","clusterID2",outcomes[i] )])
-
-ols <- lm(as.formula(paste(outcomes[i],"information*deliberation*time",sep="~")), data=matched.dta_long)
-vcov_cluster <- vcovCR(ols, cluster = matched.dta_long$clusterID, type = "CR0")
+ols <- lm(as.formula(paste(paste(outcomes[i],"information*deliberation+a21",sep="~"),baseline_outcomes[i],sep="+")), data=matched.merged, weights= weights) 
+vcov_cluster <- vcovCR(ols, cluster = matched.merged$clusterID, type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
+if (RI_conf_switch) {
+RI_store <- RI_conf_sc(i,outcomes, baseline_outcomes, matched.merged , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
+conf[2,4:5] <- RI_store$conf_2 
+res[2,5] <- RI_store$pval_2
+}
 
-
-df_matcher[,2,i] <- c(res[6,1],res[6,2],res[6,5], conf[6,4], conf[6,5], nobs(ols))
+df_matcher[,2,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4], conf[2,5], nobs(ols))
 
 ####matching for deliberation
-a26a_cut <- seq(min(baseline_complete$a26a),max(baseline_complete$a26a),by=1)
-a26b_cut <- seq(min(baseline_complete$a26b),max(baseline_complete$a26b),by=1)
-agehead_cut <- seq(min(baseline_complete$agehead),max(baseline_complete$agehead),by=20)
-log_farmsize_cut <- seq(min(baseline_complete$log_farmsize),max(baseline_complete$log_farmsize),by=1)
-
-my.cutpoints <- list(a26a=a26a_cut, a26b=a26b_cut, agehead = agehead_cut, log_farmsize=log_farmsize_cut)
-nearest.match <- matchit(formula = deliberation ~  hhsize + femhead + agehead  + head_sec+ log_farmsize + ironroof + improved_wall+has_phone+a26a+a26b,   data =baseline_complete[baseline_complete$district_baraza == 0,]  ,method = "cem",distance = "mahalanobis", cutpoints = my.cutpoints )
+nearest.match <- matchit(formula = deliberation ~  hhsize + femhead + agehead  + head_sec+ log_farmsize + ironroof + improved_wall+has_phone+a26a+a26b,   data =baseline_complete[baseline_complete$district_baraza == 0,]  ,method = "cem", cutpoints = my.cutpoints )
 summary(nearest.match)
 #plot(nearest.match)
 #plot(nearest.match, type="hist")
@@ -531,88 +749,70 @@ summary(nearest.match)
 
 matched.baseline <- match.data(nearest.match)
 
-### this is the matched data -  we now need to extract these ids from the endline and stack base and endline to do a dif-in-dif
-
-matched.endline <- endline[endline$hhid %in% matched.baseline$hhid,]
-matched.baseline$time <- 0
-matched.endline$time <- 1
-
-matched.baseline <- matched.baseline[c("information","deliberation","time","clusterID","clusterID2",baseline_outcomes[i] )]
-names(matched.baseline) <- c("information","deliberation","time","clusterID","clusterID2",outcomes[i] )
+matched.merged <-   merge(matched.baseline, endline[c("hhid","a21","district","subcounty",outcomes[i])], by="hhid")
 
 
-matched.dta_long <- rbind(matched.endline[c("information","deliberation","time","clusterID","clusterID2", outcomes[i])], matched.baseline[ c("information","deliberation","time","clusterID","clusterID2",outcomes[i] )])
-ols <- lm(as.formula(paste(outcomes[i],"information*deliberation*time",sep="~")), data=matched.dta_long)
-vcov_cluster <- vcovCR(ols, cluster = matched.dta_long$clusterID, type = "CR0")
+ols <- lm(as.formula(paste(paste(outcomes[i],"information*deliberation+a21",sep="~"),baseline_outcomes[i],sep="+")), data=matched.merged, weights= weights) 
+vcov_cluster <- vcovCR(ols, cluster = matched.merged$clusterID, type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
+if (RI_conf_switch) {
+RI_store <- RI_conf_sc(i,outcomes, baseline_outcomes, matched.merged , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
+conf[3,4:5] <- RI_store$conf_3 
+res[3,5] <- RI_store$pval_3
+}
 
-
-df_matcher[,3,i] <- c(res[7,1],res[7,2],res[7,5], conf[7,4], conf[7,5], nobs(ols))
+### this is the matched data -  we now need to extract these ids from the endline and stack base and endline to do a dif-in-dif
+df_matcher[,3,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4], conf[3,5], nobs(ols))
 
 
 ####matching for interaction
-a26a_cut <- seq(min(baseline_complete$a26a),max(baseline_complete$a26a),by=1)
-a26b_cut <- seq(min(baseline_complete$a26b),max(baseline_complete$a26b),by=1)
-agehead_cut <- seq(min(baseline_complete$agehead),max(baseline_complete$agehead),by=20)
-log_farmsize_cut <- seq(min(baseline_complete$log_farmsize),max(baseline_complete$log_farmsize),by=1)
-
-nearest.match <- matchit(formula = deliberation*information ~ hhsize + femhead + agehead  + head_sec+ log_farmsize + ironroof + improved_wall+has_phone+a26a+a26b,  data =baseline_complete[baseline_complete$district_baraza == 0 & (baseline_complete$information == baseline_complete$deliberation),]  ,method = "cem",distance = "mahalanobis", cutpoints = my.cutpoints )
+nearest.match <- matchit(formula = deliberation*information ~ hhsize + femhead + agehead  + head_sec+ log_farmsize + ironroof + improved_wall+has_phone+a26a+a26b,  data =baseline_complete[baseline_complete$district_baraza == 0 & (baseline_complete$information == baseline_complete$deliberation),]  ,method = "cem", cutpoints = my.cutpoints )
 summary(nearest.match)
 #plot(nearest.match)
 #plot(nearest.match, type="hist")
 #plot(nearest.match, type="jitter")
 
 matched.baseline <- match.data(nearest.match)
+matched.merged <-   merge(matched.baseline, endline[c("hhid","a21","district","subcounty",outcomes[i])], by="hhid")
 
-### this is the matched data -  we now need to extract these ids from the endline and stack base and endline to do a dif-in-dif
-
-matched.endline <- endline[endline$hhid %in% matched.baseline$hhid,]
-matched.baseline$time <- 0
-matched.endline$time <- 1
-
-matched.baseline <- matched.baseline[c("information","deliberation","time","clusterID","clusterID2",baseline_outcomes[i] )]
-names(matched.baseline) <- c("information","deliberation","time","clusterID","clusterID2",outcomes[i] )
-
-
-matched.dta_long <- rbind(matched.endline[c("information","deliberation","time","clusterID","clusterID2", outcomes[i])], matched.baseline[ c("information","deliberation","time","clusterID","clusterID2",outcomes[i] )])
-ols <- lm(as.formula(paste(outcomes[i],"information:deliberation*time",sep="~")), data=matched.dta_long)
-vcov_cluster <- vcovCR(ols, cluster = matched.dta_long$clusterID, type = "CR0")
+####
+ols <- lm(as.formula(paste(paste(outcomes[i],"information:deliberation+a21",sep="~"),baseline_outcomes[i],sep="+")), data=matched.merged, weights= weights) 
+vcov_cluster <- vcovCR(ols, cluster = matched.merged$clusterID, type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
+if (RI_conf_switch) {
+RI_store <- RI_conf_sc_custom(i,outcomes, baseline_outcomes, matched.merged , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
+conf[6,4:5] <- RI_store$conf_1
+res[6,5] <- RI_store$pval_1
+}
+
+df_matcher[,1,i] <- c(res[6,1],res[6,2],res[6,5], conf[6,4],conf[6,5], nobs(ols))
 
 
-df_matcher[,1,i] <- c(res[4,1],res[4,2],res[4,5], conf[4,4], conf[4,5], nobs(ols))
 ####matching for district baraza
-a26a_cut <- seq(min(baseline_complete$a26a),max(baseline_complete$a26a),by=1)
-a26b_cut <- seq(min(baseline_complete$a26b),max(baseline_complete$a26b),by=1)
-agehead_cut <- seq(min(baseline_complete$agehead),max(baseline_complete$agehead),by=20)
-log_farmsize_cut <- seq(min(baseline_complete$log_farmsize),max(baseline_complete$log_farmsize),by=1)
-nearest.match <- matchit(formula = district_baraza ~hhsize + femhead + agehead  + head_sec+ log_farmsize + ironroof + improved_wall+has_phone,  data =baseline_complete[(baseline_complete$information == 1 & baseline_complete$deliberation==1) | baseline_complete$district_baraza == 1 ,]  ,method = "cem",distance = "mahalanobis", cutpoints = my.cutpoints )
+
+nearest.match <- matchit(formula = district_baraza ~hhsize + femhead + agehead  + head_sec+ log_farmsize + ironroof + improved_wall+has_phone,  data =baseline_complete[(baseline_complete$information == 1 & baseline_complete$deliberation==1) | baseline_complete$district_baraza == 1 ,]  ,method = "cem", cutpoints = my.cutpoints )
 summary(nearest.match)
 #plot(nearest.match)
 #plot(nearest.match, type="hist")
 #plot(nearest.match, type="jitter")
 
 matched.baseline <- match.data(nearest.match)
-
-### this is the matched data -  we now need to extract these ids from the endline and stack base and endline to do a dif-in-dif
-
-matched.endline <- endline[endline$hhid %in% matched.baseline$hhid,]
-matched.baseline$time <- 0
-matched.endline$time <- 1
-
-matched.baseline <- matched.baseline[c("district_baraza","time","clusterID","clusterID2",baseline_outcomes[i] )]
-names(matched.baseline) <- c("district_baraza","time","clusterID","clusterID2",outcomes[i] )
+matched.merged <-   merge(matched.baseline, endline[c("hhid","a21","district","subcounty",outcomes[i])], by="hhid")
 
 
-matched.dta_long <- rbind(matched.endline[c("district_baraza","time","clusterID","clusterID2", outcomes[i])], matched.baseline[ c("district_baraza","time","clusterID","clusterID2",outcomes[i] )])
-ols <- lm(as.formula(paste(outcomes[i],"district_baraza*time",sep="~")), data=matched.dta_long)
-vcov_cluster <- vcovCR(ols, cluster = matched.dta_long$clusterID2, type = "CR0")
+ols <- lm(as.formula(paste(paste(outcomes[i],"district_baraza+a21",sep="~"),baseline_outcomes[i],sep="+")), data=matched.merged, weights= weights ) 
+vcov_cluster <- vcovCR(ols, cluster = matched.merged$clusterID2, type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
+if (RI_conf_switch) {
+RI_store <- RI_conf_dist(i,outcomes, baseline_outcomes, matched.merged , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
+conf[2,4:5] <-  RI_store$conf
+res[2,5] <- RI_store$pval
+}
 
-df_matcher[,4,i] <- c(res[4,1],res[4,2],res[4,5], conf[4,4], conf[4,5], nobs(ols))
+df_matcher[,4,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4], conf[2,5], nobs(ols))
 
 }
 
@@ -638,6 +838,8 @@ png(paste(path,"report/figure/impact_summary_matcher.png", sep="/"), units="px",
 print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.5))
 dev.off()
 
+ save(df_matcher, file= paste(path,"report/results/df_matcher.Rd", sep="/"))
+ save(df_averages, file= paste(path,"report/results/df_averages_matcher.Rd", sep="/"))
  # d is a data frame with 4 columns
  # d$x gives variable names
  # d$y gives center point
