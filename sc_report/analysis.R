@@ -357,14 +357,88 @@ sc_merged$sum_maleex.K1_maleex.K2 <- (sc_merged$baraza.maleex.K1 + sc_merged$bar
 sc_merged$sum_maleex.K4_maleex.K5 <- (sc_merged$baraza.maleliv.K4 + sc_merged$baraza.maleliv.K5)
 sc_merged$baraza.malec.K8[sc_merged$baraza.malec.K8==83] <- NA
 #no analysis for baraza.H91 because 124 NA's in endline, 70 NA's in baseline
+sc_merged$improved_livestock_breedsh451_br[sc_merged$improved_livestock_breedsh451_br==0.1] <- 10
+sc_merged$improved_livestock_breedsh451_br[sc_merged$improved_livestock_breedsh451_br==0.5] <- 50
+sc_merged$baraza.K16[sc_merged$baraza.K16==98] <- NA
+sc_merged$baraza.K16_binary <- (sc_merged$baraza.K16 == 1)
+sc_merged$baraza.K17[sc_merged$baraza.K17==98] <- NA
+sc_merged$baraza.K17_binary <- (sc_merged$baraza.K17 == 1)
+sc_merged$h48s_binary <- (sc_merged$h48s == "yes")
+sc_merged$h491_binary <- (sc_merged$h491 == "yes")
+sc_merged$sum_seed1_seed2_seed3 <- (sc_merged$seed_1h4112_ns + sc_merged$seed_2h4112_nc + sc_merged$seed_3h4112_seed3)
+#sc_merged$improved_goat_noteh4112_goat excluded because 235 NA's, 1 answer
+#sc_merged$improved_breed_noteh4112_breed excluded because 228 NA's, 8 answers
+#sc_merged$improved_pig_noteh4112_pig excluded because 228 NA's, 8 answers
+sc_merged$baraza.K24[sc_merged$baraza.K24==98] <- NA
+sc_merged$baraza.K24_binary <- (sc_merged$baraza.K24 == 1)
+sc_merged$baraza.K24b <- as.numeric(as.character(sc_merged$baraza.K24b))
+sc_merged$baraza.K25 <- as.numeric(as.character(sc_merged$baraza.K25))
+sc_merged$h4115_binary <- (sc_merged$h4115 == "yes")
+sc_merged$h4116from_individuals[sc_merged$h4116from_individuals==3000] <- NA
+sc_merged$sum_from_farmersforum_ngos_individuals_other <- (sc_merged$h4116from_farmers_forum + sc_merged$h4116from_ngos + sc_merged$h4116from_individuals + sc_merged$h4116other_complaint)
+sc_merged$h4117[sc_merged$h4117==300] <- NA
 
-summary(sc_merged$h3233b)
-
+#SECTION I:  PRIORITIES/ RANKINGS OF PROBLEMS#
+var_rank <- c("i_2i_2_1","i_2i_2_2","i_2i_2_3","i_2i_2_4","i_2i_2_5","i_2i_2_6","i_2i_2_7","i_2i_2_8","i_2i_2_9","i_2i_2_10","i_2i_2_11","i_2i_2_12","i_2i_2_13","i_2i_2_14")
+sc_merged[var_rank] <- lapply(sc_merged[var_rank],function(x)  as.character(unlist(x)) )
+sc_merged[var_rank] <- lapply(sc_merged[var_rank], function(x) replace(x, x == "0_Not_applicable", NA) )
+sc_merged[var_rank] <- lapply(sc_merged[var_rank], function(x) replace(x, x == "10_An_extreme_problem", 10) )
+sc_merged[var_rank] <- lapply(sc_merged[var_rank], function(x) replace(x, x == "1_Not_a_problem", 1) )
+sc_merged[var_rank] <- lapply(sc_merged[var_rank], function(x) replace(x, x == "2_2", 2) )
+sc_merged[var_rank] <- lapply(sc_merged[var_rank], function(x) replace(x, x == "3_3", 3) )
+sc_merged[var_rank] <- lapply(sc_merged[var_rank], function(x) replace(x, x == "4_4", 4) )
+sc_merged[var_rank] <- lapply(sc_merged[var_rank], function(x) replace(x, x == "5_5", 5) )
+sc_merged[var_rank] <- lapply(sc_merged[var_rank], function(x) replace(x, x == "6_6", 6) )
+sc_merged[var_rank] <- lapply(sc_merged[var_rank], function(x) replace(x, x == "7_7", 7) )
+sc_merged[var_rank] <- lapply(sc_merged[var_rank], function(x) replace(x, x == "8_8", 8) )
+sc_merged[var_rank] <- lapply(sc_merged[var_rank], function(x) replace(x, x == "9_9", 9) )
+sc_merged$i_2i_2_1 <- as.numeric(as.character(sc_merged$i_2i_2_1))
+sc_merged$i_2i_2_2 <- as.numeric(as.character(sc_merged$i_2i_2_2))
+sc_merged$i_2i_2_3 <- as.numeric(as.character(sc_merged$i_2i_2_3))
+sc_merged$i_2i_2_4 <- as.numeric(as.character(sc_merged$i_2i_2_4))
+sc_merged$i_2i_2_5 <- as.numeric(as.character(sc_merged$i_2i_2_5))
+sc_merged$i_2i_2_6 <- as.numeric(as.character(sc_merged$i_2i_2_6))
+sc_merged$i_2i_2_7 <- as.numeric(as.character(sc_merged$i_2i_2_7))
+sc_merged$i_2i_2_8 <- as.numeric(as.character(sc_merged$i_2i_2_8))
+sc_merged$i_2i_2_9 <- as.numeric(as.character(sc_merged$i_2i_2_9))
+sc_merged$i_2i_2_10 <- as.numeric(as.character(sc_merged$i_2i_2_10))
+sc_merged$i_2i_2_11 <- as.numeric(as.character(sc_merged$i_2i_2_11))
+sc_merged$i_2i_2_12 <- as.numeric(as.character(sc_merged$i_2i_2_12))
+sc_merged$i_2i_2_13 <- as.numeric(as.character(sc_merged$i_2i_2_13))
+sc_merged$i_2i_2_14 <- as.numeric(as.character(sc_merged$i_2i_2_14))
+sc_merged$baraza.L1_binary <- (sc_merged$baraza.L1 > 5)
+sc_merged$baraza.L2_binary <- (sc_merged$baraza.L2 > 5)
+sc_merged$baraza.L3_binary <- (sc_merged$baraza.L3 > 5)
+sc_merged$baraza.L4_binary <- (sc_merged$baraza.L4 > 5)
+sc_merged$baraza.L5_binary <- (sc_merged$baraza.L5 > 5)
+sc_merged$baraza.L6_binary <- (sc_merged$baraza.L6 > 5)
+sc_merged$baraza.L7_binary <- (sc_merged$baraza.L7 > 5)
+sc_merged$baraza.L8_binary <- (sc_merged$baraza.L8 > 5)
+sc_merged$baraza.L9_binary <- (sc_merged$baraza.L9 > 5)
+sc_merged$baraza.L10_binary <- (sc_merged$baraza.L10 > 5)
+sc_merged$baraza.L11_binary <- (sc_merged$baraza.L11 > 5)
+sc_merged$baraza.L12_binary <- (sc_merged$baraza.L12 > 5)
+sc_merged$baraza.L13_binary <- (sc_merged$baraza.L13 > 5)
+sc_merged$baraza.L14_binary <- (sc_merged$baraza.L14 > 5)
+sc_merged$i_2i_2_1_binary <- (sc_merged$i_2i_2_1 > 5)
+sc_merged$i_2i_2_2_binary <- (sc_merged$i_2i_2_2 > 5)
+sc_merged$i_2i_2_3_binary <- (sc_merged$i_2i_2_3 > 5)
+sc_merged$i_2i_2_4_binary <- (sc_merged$i_2i_2_4 > 5)
+sc_merged$i_2i_2_5_binary <- (sc_merged$i_2i_2_5 > 5)
+sc_merged$i_2i_2_6_binary <- (sc_merged$i_2i_2_6 > 5)
+sc_merged$i_2i_2_7_binary <- (sc_merged$i_2i_2_7 > 5)
+sc_merged$i_2i_2_8_binary <- (sc_merged$i_2i_2_8 > 5)
+sc_merged$i_2i_2_9_binary <- (sc_merged$i_2i_2_9 > 5)
+sc_merged$i_2i_2_10_binary <- (sc_merged$i_2i_2_10 > 5)
+sc_merged$i_2i_2_11_binary <- (sc_merged$i_2i_2_11 > 5)
+sc_merged$i_2i_2_12_binary <- (sc_merged$i_2i_2_12 > 5)
+sc_merged$i_2i_2_13_binary <- (sc_merged$i_2i_2_13 > 5)
+sc_merged$i_2i_2_14_binary <- (sc_merged$i_2i_2_14 > 5)
 
 ########LOOPS########
 #loop if NA cannot be interpreted as 0
-outcomes <- c("baraza.km.D1","baraza.km.D2","baraza.km.D3","baraza.km.D4a","baraza.km.D4b","baraza.production.E1a_binary","baraza.health.E2a_binary","baraza.gender1.E3a_binary","baraza.works.E4a_binary","baraza.finance1.E5a_binary","baraza.E7_binary","baraza.meeting.F3","baraza.H1","baraza.H2","baraza.H2b","baraza.H12","baraza.H20","baraza.H29","baraza.H32","baraza.H65_binary","baraza.H69_binary","baraza.H86")
-baseline_outcomes <- c("d12","d13","d14","d15a","d15b","e11a_binary","e11b_binary","e11c_binary","e11d_binary","e11e_binary","e13_binary","f14c","h11","h12","h15","h110","h1121c","h1125c","h1126c","h1171_binary","h121_binary","h3233a")
+outcomes <- c("baraza.km.D1","baraza.km.D2","baraza.km.D3","baraza.km.D4a","baraza.km.D4b","baraza.production.E1a_binary","baraza.health.E2a_binary","baraza.gender1.E3a_binary","baraza.works.E4a_binary","baraza.finance1.E5a_binary","baraza.E7_binary","baraza.meeting.F3","baraza.H1","baraza.H2","baraza.H2b","baraza.H12","baraza.H20","baraza.H29","baraza.H32","baraza.H65_binary","baraza.H69_binary","baraza.H86","baraza.L1_binary","baraza.L2_binary","baraza.L3_binary","baraza.L4_binary","baraza.L5_binary","baraza.L6_binary","baraza.L7_binary","baraza.L8_binary","baraza.L9_binary","baraza.L10_binary","baraza.L11_binary","baraza.L12_binary","baraza.L13_binary","baraza.L14_binary")
+baseline_outcomes <- c("d12","d13","d14","d15a","d15b","e11a_binary","e11b_binary","e11c_binary","e11d_binary","e11e_binary","e13_binary","f14c","h11","h12","h15","h110","h1121c","h1125c","h1126c","h1171_binary","h121_binary","h3233a","i_2i_2_1_binary","i_2i_2_2_binary","i_2i_2_3_binary","i_2i_2_4_binary","i_2i_2_5_binary","i_2i_2_6_binary","i_2i_2_7_binary","i_2i_2_8_binary","i_2i_2_9_binary","i_2i_2_10_binary","i_2i_2_11_binary","i_2i_2_12_binary","i_2i_2_13_binary","i_2i_2_14_binary")
 #df_ols <- array(NA,dim=c(6,3,length(outcomes)))
 #df_ols <- array(NA,dim=c(7,3,length(outcomes)))
 df_ols <- array(NA,dim=c(3,3,length(outcomes)))
@@ -426,8 +500,8 @@ res[6,5] <- RI_store$pval_1
 
 
 #loop if NA can be interpreted as 0
-outcomes_NAcouldbe0 <- c("baraza.H3","baraza.H4","baraza.H6","baraza.H7","baraza.H9","baraza.H10","baraza.H13","baraza.H18","baraza.H19","baraza.H21","baraza.H22","baraza.H24","baraza.H25","baraza.H27","baraza.H28","baraza.H30","baraza.H31","baraza.H33","baraza.H34","baraza.H35","baraza.H36","baraza.H37","baraza.H38","baraza.H39","baraza.H40","baraza.H45","baraza.H46","baraza.H49","baraza.H50","baraza.H51","baraza.H52","baraza.H53","baraza.H54","baraza.H55","baraza.H56","baraza.H57","baraza.H58","baraza.H59","baraza.H60","baraza.H61","baraza.H62","baraza.H63","baraza.H64","baraza.H67","baraza.H67","baraza.H68","baraza.H70","baraza.H71","baraza.H72","baraza.H73","baraza.H73","baraza.H74","baraza.H75","baraza.H75","baraza.H77_binary","baraza.H78","baraza.H79","baraza.H67","baraza.H67","baraza.H80","baraza.H81","baraza.H82","baraza.H83","baraza.H84","baraza.H85","baraza.H87","baraza.H88","baraza.H89","baraza.H90","baraza.H92","baraza.H93","baraza.H94","baraza.H95","baraza.H96","baraza.H97","baraza.H98","baraza.H99","baraza.H100","baraza.H101","baraza.H102","baraza.H103","baraza.H104","baraza.H105","baraza.H108","baraza.H109_binary","baraza.H110_binary","baraza.H111","baraza.H112","baraza.H113_binary","baraza.H114_binary","baraza.H116","baraza.H116","baraza.maleex.K1","baraza.maleex.K2","sum_maleex.K1_maleex.K2","baraza.maleliv.K4","baraza.maleliv.K5","sum_maleex.K4_maleex.K5","baraza.K10")
-baseline_outcomes_NAcouldbe0 <- c("h181a","h181b","sum_h182a_h183a","sum_h182b_h183b","h184a","h184b","h111","h1121a","h1121b","h1122a","h1122b","sum_h1123a_h1124a","sum_h1123b_h1124b","h1125a","h1125b","h1126a","h1126b","h1131a","h1131b","h1131c","h1131d","h1131e","h1131f","h1131g","h1131h","h1131m","h1131n","h1132a","h1132b","h1132c","h1132d","h1132e","h1132f","h1132g","h1132h","h1132i","h1132j","h1132k","h1132l","h1132m","h1132n","h1132o","h1132p","h119a","h119b","h1201","sum_h1221_to_h1224","h123","h213a","h213b","h213i","h213c","h213d","h213e","h216_binary","sum_h217a_to_h217d","h218","h119a","h119b","h3111b","h3111a","h321a","h322a","h323a","h3231a","h321b","h322b","h323b","h3231b","h321d","h322d","h321e","h322e","h331a","h331b","h331c","h331e","h331f","h331g","h332a","h332b","h332c","h332e","h341","h342_binary","h345_binary","sum_h346a_to_h346d","h356","h3511_binary","h361_binary","h386a","h386b","h42101a","h42101b","h422a","h42101_1","h42101_2","h422b","h441")
+outcomes_NAcouldbe0 <- c("baraza.H3","baraza.H4","baraza.H6","baraza.H7","baraza.H9","baraza.H10","baraza.H13","baraza.H18","baraza.H19","baraza.H21","baraza.H22","baraza.H24","baraza.H25","baraza.H27","baraza.H28","baraza.H30","baraza.H31","baraza.H33","baraza.H34","baraza.H35","baraza.H36","baraza.H37","baraza.H38","baraza.H39","baraza.H40","baraza.H45","baraza.H46","baraza.H49","baraza.H50","baraza.H51","baraza.H52","baraza.H53","baraza.H54","baraza.H55","baraza.H56","baraza.H57","baraza.H58","baraza.H59","baraza.H60","baraza.H61","baraza.H62","baraza.H63","baraza.H64","baraza.H67","baraza.H67","baraza.H68","baraza.H70","baraza.H71","baraza.H72","baraza.H73","baraza.H73","baraza.H74","baraza.H75","baraza.H75","baraza.H77_binary","baraza.H78","baraza.H79","baraza.H67","baraza.H67","baraza.H80","baraza.H81","baraza.H82","baraza.H83","baraza.H84","baraza.H85","baraza.H87","baraza.H88","baraza.H89","baraza.H90","baraza.H92","baraza.H93","baraza.H94","baraza.H95","baraza.H96","baraza.H97","baraza.H98","baraza.H99","baraza.H100","baraza.H101","baraza.H102","baraza.H103","baraza.H104","baraza.H105","baraza.H108","baraza.H109_binary","baraza.H110_binary","baraza.H111","baraza.H112","baraza.H113_binary","baraza.H114_binary","baraza.H116","baraza.H116","baraza.maleex.K1","baraza.maleex.K2","sum_maleex.K1_maleex.K2","baraza.maleliv.K4","baraza.maleliv.K5","sum_maleex.K4_maleex.K5","baraza.K10","baraza.acc_ag.K11","baraza.acc_ag.K12","baraza.acc_ag.K13","baraza.acc_ag.K14","baraza.K16_binary","baraza.K17_binary","baraza.K19","baraza.K19","baraza.input_dis.K20","baraza.K24_binary","baraza.K24b","baraza.K25")
+baseline_outcomes_NAcouldbe0 <- c("h181a","h181b","sum_h182a_h183a","sum_h182b_h183b","h184a","h184b","h111","h1121a","h1121b","h1122a","h1122b","sum_h1123a_h1124a","sum_h1123b_h1124b","h1125a","h1125b","h1126a","h1126b","h1131a","h1131b","h1131c","h1131d","h1131e","h1131f","h1131g","h1131h","h1131m","h1131n","h1132a","h1132b","h1132c","h1132d","h1132e","h1132f","h1132g","h1132h","h1132i","h1132j","h1132k","h1132l","h1132m","h1132n","h1132o","h1132p","h119a","h119b","h1201","sum_h1221_to_h1224","h123","h213a","h213b","h213i","h213c","h213d","h213e","h216_binary","sum_h217a_to_h217d","h218","h119a","h119b","h3111b","h3111a","h321a","h322a","h323a","h3231a","h321b","h322b","h323b","h3231b","h321d","h322d","h321e","h322e","h331a","h331b","h331c","h331e","h331f","h331g","h332a","h332b","h332c","h332e","h341","h342_binary","h345_binary","sum_h346a_to_h346d","h356","h3511_binary","h361_binary","h386a","h386b","h42101a","h42101b","h422a","h42101_1","h42101_2","h422b","h441","purchased_fertilisersh451_fertil","improved_seedsh451_seeds","pesticides_herbicidesh451_pestci","improved_livestock_breedsh451_br","h48s_binary","h491_binary","h4107h4107_a","h4107h4107_b","sum_seed1_seed2_seed3","h4115_binary","sum_from_farmersforum_ngos_individuals_other","h4117")
 #df_ols_NAcouldbe0 <- array(NA,dim=c(6,10,length(outcomes_NAcouldbe0)))
 df_ols_NAcouldbe0 <- array(NA,dim=c(3,9,length(outcomes_NAcouldbe0)))
 
@@ -551,7 +625,7 @@ res[6,5] <- RI_store$pval_1
 #baraza.H106 and baraza.H107: no corresponding baseline variable
 #baraza.maleex.K3, baraza.maleliv.K6, baraza.malec.K9: h421a, h421b, h421c have too many NAs
 
-outcomes_nobaseline <- c("baraza.H15","baraza.H16","baraza.H17","baraza.H23","baraza.meeting.F1","baraza.meeting.F2","baraza.meeting.F4","baraza.H26","baraza.H76","baraza.H106","baraza.H107","baraza.malec.K7","baraza.malec.K8","baraza.maleex.K3","baraza.maleliv.K6","baraza.malec.K9")
+outcomes_nobaseline <- c("baraza.H15","baraza.H16","baraza.H17","baraza.H23","baraza.meeting.F1","baraza.meeting.F2","baraza.meeting.F4","baraza.H26","baraza.H76","baraza.H106","baraza.H107","baraza.malec.K7","baraza.malec.K8","baraza.maleex.K3","baraza.maleliv.K6","baraza.malec.K9","baraza.input_dis.K21","baraza.input_dis.K22","baraza.input_dis.K23")
 #df_ols_nobaseline <- array(NA,dim=c(6,3,length(outcomes_nobaseline)))
 #df_ols_nobaseline <- array(NA,dim=c(7,3,length(outcomes_nobaseline)))
 df_ols_nobaseline <- array(NA,dim=c(3,3,length(outcomes_nobaseline)))
@@ -582,3 +656,10 @@ for (i in 1:length(outcomes_nobaseline)) {
   #df_ols_nobaseline[,1,i] <- c(res[6,1],res[6,2],res[6,5],conf[6,4],conf[6,5],nobs(ols))
   df_ols_nobaseline[,1,i] <- c(res[6,1],res[6,5],nobs(ols))
 }
+
+#SECTION M: BARAZAS#
+sc_merged$baraza.M2_binary <- (sc_merged$baraza.M2 == 1)
+summary(sc_merged$baraza.M2_binary)
+
+sc_merged$baraza.M4_binary <- (sc_merged$baraza.M4 == 1)
+summary(sc_merged$baraza.M4_binary)
