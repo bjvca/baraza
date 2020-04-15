@@ -120,6 +120,67 @@ RI_conf_sc <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr
 	return(list(conf_1 = quantile(oper[,1],sig),conf_2 = quantile(oper[,2],sig),conf_3 = quantile(oper[,3],sig), pval_1= (sum(oper[,4])/nr_repl)*2, pval_2= (sum(oper[,5])/nr_repl)*2, pval_3= (sum(oper[,6])/nr_repl)*2))
 	}
 
+RI_conf_dist <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr_repl = 1000, sig = c(.025,.975)) {
+#RI_conf_dist(2,outcomes, baseline_outcomes, subset(dta, ((information == 1 & deliberation==1) | district_baraza == 1)) , ctrls = "a21", nr_repl = 1000, sig = c(.025,.975))
+#dta_sim <- subset(dta, ((information == 1 & deliberation==1) | district_baraza == 1))
+#ctrls <- "a21"
+#nr_repl <- 1000
+#sig <-  c(.025,.975)
+
+### a function to esimate confidence intervals using randomization inference following Gerber and Green pages 66-71 and 83.
+	if (is.null(baseline_outcomes)) {
+		formula <- as.formula(paste(outcomes[i],paste("district_baraza",ctrls,sep="+"),sep="~"))
+		
+	} else {
+		formula <- as.formula(paste(paste(outcomes[i],paste("district_baraza",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
+	}
+
+
+	dta_sim <- dta_sim %>%  mutate(clusterID = group_indices(., district))
+	### get ATEs for two different models
+	ols <- lm(formula, data=dta_sim) 
+	
+	dta_sim$dep <- as.numeric(unlist(dta_sim[as.character(formula[[2]])]))
+
+	treat_nrs <- table(data.frame(aggregate(dta_sim["district_baraza"], list(dta_sim$clusterID),mean)[,2]))
+
+	### calculate potential outcomes
+	### for model 1 (sc effect)
+	dta_sim$pot_out_0 <- NA
+	dta_sim$pot_out_0[dta_sim["district_baraza"] == 0 ] <- dta_sim$dep[dta_sim["district_baraza"] == 0 ]
+	dta_sim$pot_out_0[dta_sim["district_baraza"] == 1 ] <- dta_sim$dep[dta_sim["district_baraza"] == 1] - coef(ols)["district_baraza"]
+
+	dta_sim$pot_out_1 <- NA
+	dta_sim$pot_out_1[dta_sim["district_baraza"] == 0 ] <- dta_sim$dep[dta_sim["district_baraza"] == 0 ] + coef(ols)["district_baraza"]
+	dta_sim$pot_out_1[dta_sim["district_baraza"] == 1 ] <- dta_sim$dep[dta_sim["district_baraza"] == 1]	
+
+	
+	oper <- foreach (repl = 1:nr_repl,.combine=rbind) %dopar% {
+		#do the permuations	
+		perm_treat <- data.frame(cbind(sample(c(rep("SC",treat_nrs[1]), rep("D",treat_nrs[2]))),names(table(dta_sim$clusterID))))  
+		names(perm_treat) <- c("perm_treat","clusterID")
+		dta_perm <- merge(dta_sim, perm_treat, by.x="clusterID", by.y="clusterID")
+		dta_perm$district_baraza <- ifelse(dta_perm$perm_treat == "D", 1, 0)
+	
+
+		dta_perm$dep <- NA
+		dta_perm$dep[dta_perm["district_baraza"] ==1 ] <- dta_perm$pot_out_1[dta_perm["district_baraza"] ==1 ]
+		dta_perm$dep[dta_perm["district_baraza"] ==0 ] <- dta_perm$pot_out_0[dta_perm["district_baraza"] ==0 ]
+
+
+		### p-value
+		exceed <- coef(lm(formula, data=dta_perm))["district_baraza"] > abs(coef(ols)["district_baraza"])
+
+		
+
+		dta_perm[outcomes[i]] <- dta_perm$dep
+		res_list <- cbind(coef(lm(formula, data=dta_perm))["district_baraza"],"exceed" = exceed)
+		return(res_list) 
+	}
+	return(list(conf = quantile(oper[,1],sig),pval= (sum(oper[,2])/nr_repl)*2))
+}
+
+
 ########################################################################################### end functions definitions ###############################################################
 
 #load sc endline and baseline data
@@ -501,9 +562,10 @@ res[6,5] <- RI_store$pval_1
   res <- coef_test(ols, vcov_cluster)
   conf <- conf_int(ols, vcov_cluster)
   if (RI_conf_switch) {
-    conf[6,4:5] <- RI_store$conf_4
-    res[6,5] <- RI_store$pval_4
-  }
+RI_store <- RI_conf_dist(i,outcomes, baseline_outcomes, subset(sc_merged, ((information == 1 & deliberation==1) | district_baraza == 1)) , ctrls = "region.x", nr_repl = glob_repli, sig = glob_sig)
+conf[2,4:5] <-  RI_store$conf
+res[2,5] <- RI_store$pval
+}
   #df_ols[,4,i] <- c(res[6,4],res[6,2],res[6,5],res[6,6],conf[6,4],conf[6,5],nobs(ols))
   #df_ols[,4,i] <- c(res[6,4],res[6,2],res[6,5],conf[6,4],conf[6,5],nobs(ols))
   df_ols[,4,i] <- c(res[2,1],res[2,5],nobs(ols))
@@ -571,9 +633,10 @@ for (i in 1:length(outcomes_NAcouldbe0)) {
   res <- coef_test(ols, vcov_cluster)
   conf <- conf_int(ols, vcov_cluster)
   if (RI_conf_switch) {
-    conf[6,4:5] <- RI_store$conf_4
-    res[6,5] <- RI_store$pval_4
-  }
+RI_store <- RI_conf_dist(i,outcomes_NAcouldbe0, baseline_outcomes_NAcouldbe0, subset(sc_merged, ((information == 1 & deliberation==1) | district_baraza == 1)) , ctrls = "region.x", nr_repl = glob_repli, sig = glob_sig)
+conf[2,4:5] <-  RI_store$conf
+res[2,5] <- RI_store$pval
+}
   #df_ols_NAcouldbe0[,4,i] <- c(res[5,1],res[5,2],res[5,5], conf[5,4],conf[5,5],nobs(ols))
   df_ols_NAcouldbe0[,4,i] <- c(res[2,1],res[2,5],nobs(ols))
   
@@ -615,9 +678,10 @@ res[6,5] <- RI_store$pval_1
   res <- coef_test(ols, vcov_cluster)
   conf <- conf_int(ols, vcov_cluster)
   if (RI_conf_switch) {
-    conf[6,4:5] <- RI_store$conf_4
-    res[6,5] <- RI_store$pval_4
-  }
+RI_store <- RI_conf_dist(i,outcomes_NAcouldbe0, baseline_outcomes_NAcouldbe0, subset(sc_merged, ((information == 1 & deliberation==1) | district_baraza == 1)) , ctrls = "region.x", nr_repl = glob_repli, sig = glob_sig)
+conf[2,4:5] <-  RI_store$conf
+res[2,5] <- RI_store$pval
+}
   #df_ols_NAcouldbe0[,4,i] <- c(res[5,1],res[5,2],res[5,5], conf[5,4],conf[5,5],nobs(ols))
   df_ols_NAcouldbe0[,8,i] <- c(res[2,1],res[2,5],nobs(ols))
   
@@ -659,10 +723,11 @@ res[6,5] <- RI_store$pval_1
   vcov_cluster <- vcovCR(ols, cluster = sc_merged$clusterID2[(sc_merged$information == 1 & sc_merged$deliberation==1) | sc_merged$district_baraza == 1 ], type = "CR0")
   res <- coef_test(ols, vcov_cluster)
   conf <- conf_int(ols, vcov_cluster)
-  if (RI_conf_switch) {
-    conf[6,4:5] <- RI_store$conf_4
-    res[6,5] <- RI_store$pval_4
-  }
+if (RI_conf_switch) {
+RI_store <- RI_conf_dist(i,outcomes_NAcouldbe0, baseline_outcomes_NAcouldbe0, subset(sc_merged, ((information == 1 & deliberation==1) | district_baraza == 1)) , ctrls = "region.x", nr_repl = glob_repli, sig = glob_sig)
+conf[2,4:5] <-  RI_store$conf
+res[2,5] <- RI_store$pval
+}
   #df_ols_NAcouldbe0[,4,i] <- c(res[5,1],res[5,2],res[5,5], conf[5,4],conf[5,5],nobs(ols))
   df_ols_NAcouldbe0[,12,i] <- c(res[2,1],res[2,5],nobs(ols))
   
@@ -702,6 +767,13 @@ for (i in 1:length(outcomes_nobaseline)) {
   vcov_cluster <- vcovCR(ols, cluster = sc_merged$clusterID[sc_merged$district_baraza == 0], type = "CR0")
   res <- coef_test(ols, vcov_cluster)
   conf <- conf_int(ols, vcov_cluster)
+if (RI_conf_switch) {
+RI_store <- RI_conf_sc(i,outcomes_nobaseline, NULL, subset(sc_merged, district_baraza == 0) , ctrls = "region.x", nr_repl = glob_repli, sig = glob_sig)
+conf[2,4:5] <- RI_store$conf_2 
+conf[3,4:5] <- RI_store$conf_3
+res[2,5] <- RI_store$pval_2
+res[3,5] <- RI_store$pval_3
+}
   #df_ols_nobaseline[,2,i] <- c(res[2,1],res[2,2],res[2,5],res[2,6],conf[2,4],conf[2,5],nobs(ols))
   #df_ols_nobaseline[,2,i] <- c(res[2,1],res[2,2],res[2,5],conf[2,4],conf[2,5],nobs(ols))
   df_ols_nobaseline[,2,i] <- c(res[2,1],res[2,5],nobs(ols))
@@ -713,6 +785,10 @@ for (i in 1:length(outcomes_nobaseline)) {
   vcov_cluster <- vcovCR(ols, cluster = sc_merged$clusterID[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation)], type = "CR0")
   res <- coef_test(ols, vcov_cluster)
   conf <- conf_int(ols, vcov_cluster)
+if (RI_conf_switch) {
+conf[6,4:5] <- RI_store$conf_1
+res[6,5] <- RI_store$pval_1
+}
   #df_ols_nobaseline[,1,i] <- c(res[6,1],res[6,2],res[6,5],res[6,6],conf[6,4],conf[6,5],nobs(ols))
   #df_ols_nobaseline[,1,i] <- c(res[6,1],res[6,2],res[6,5],conf[6,4],conf[6,5],nobs(ols))
   df_ols_nobaseline[,1,i] <- c(res[6,1],res[6,5],nobs(ols))
@@ -722,6 +798,12 @@ for (i in 1:length(outcomes_nobaseline)) {
   vcov_cluster <- vcovCR(ols, cluster = sc_merged$clusterID2[(sc_merged$information == 1 & sc_merged$deliberation==1) | sc_merged$district_baraza == 1 ], type = "CR0")
   res <- coef_test(ols, vcov_cluster)
   conf <- conf_int(ols, vcov_cluster)
+if (RI_conf_switch) {
+RI_store <- RI_conf_dist(i,outcomes_nobaseline, NULL, subset(sc_merged, ((information == 1 & deliberation==1) | district_baraza == 1)) , ctrls = "region.x", nr_repl = glob_repli, sig = glob_sig)
+conf[2,4:5] <-  RI_store$conf
+res[2,5] <- RI_store$pval
+}
+
   #df_ols_nobaseline[,1,i] <- c(res[6,1],res[6,2],res[6,5],res[6,6],conf[6,4],conf[6,5],nobs(ols))
   #df_ols_nobaseline[,1,i] <- c(res[6,1],res[6,2],res[6,5],conf[6,4],conf[6,5],nobs(ols))
   df_ols_nobaseline[,4,i] <- c(res[2,1],res[2,5],nobs(ols))
