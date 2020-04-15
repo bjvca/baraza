@@ -187,6 +187,7 @@ sc_baseline$subcounty[sc_baseline$subcounty ==  "NTUSI"] <- "NTUUSI"
 sc_merged <- merge(sc_baseline,sc_endline,by.x = c("district","subcounty","actor"), by.y=c("district","subcounty","actor"))
 
 sc_merged <- sc_merged %>%  mutate(clusterID = group_indices(., district, subcounty))
+sc_merged <- sc_merged %>%  mutate(clusterID2 = group_indices(., district))
 
 ########RECODING########
 #SECTION D: SUBCOUNTY'S BASIC INFORMATION#
