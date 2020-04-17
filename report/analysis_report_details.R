@@ -182,8 +182,14 @@ baseline <- trim("dist_school", baseline)
 baseline$e12 <- rowSums(cbind(as.numeric(baseline$e12upe == "Yes") , as.numeric(baseline$e12use == "Yes")), na.rm=T) > 0
 baseline$e12[is.na(baseline$e12upe) & is.na(baseline$e12use)] <- NA
 
+baseline$e13 <- rowSums(cbind(as.numeric(baseline$e13upe == "Yes") , as.numeric(baseline$e13use == "Yes")), na.rm=T) > 0
+baseline$e13[is.na(baseline$e13upe) & is.na(baseline$e13use)] <- NA
+
 baseline$e14 <- rowSums(cbind(as.numeric(baseline$e14upe == "Yes") , as.numeric(baseline$e14use == "Yes")), na.rm=T) > 0
 baseline$e14[is.na(baseline$e14upe) & is.na(baseline$e14use)] <- NA
+
+baseline$e18 <- rowSums(cbind(as.numeric(baseline$e18upe == 1) , as.numeric(baseline$e18use == 1)), na.rm=T) > 0
+baseline$e18[is.na(baseline$e18upe) & is.na(baseline$e18use)] <- NA
 
 baseline$e22 <- rowSums(cbind(as.numeric(baseline$e22upe == "Yes") , as.numeric(baseline$e22use == "Yes")), na.rm=T) > 0
 baseline$e22[is.na(baseline$e22upe) & is.na(baseline$e22use)] <- NA
@@ -372,8 +378,15 @@ endline$baraza.E5 <- log(endline$baraza.E5 + sqrt(endline$baraza.E5 ^ 2 + 1))
 endline$baraza.E12 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.4)) == 1 , as.numeric(as.character(endline$baraza.E2.4))==1), na.rm=T) > 0
 endline$baraza.E12[is.na(as.numeric(as.character(endline$baraza.E1.4)) ) & is.na(as.numeric(as.character(endline$baraza.E2.4)) )] <- NA
 
+endline$baraza.E13 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.5)) == 1 , as.numeric(as.character(endline$baraza.E2.5))==1), na.rm=T) > 0
+endline$baraza.E13[is.na(as.numeric(as.character(endline$baraza.E1.5)) ) & is.na(as.numeric(as.character(endline$baraza.E2.5)) )] <- NA
+
+
 endline$baraza.E14 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.6)) == 1 , as.numeric(as.character(endline$baraza.E2.6))==1), na.rm=T) > 0
 endline$baraza.E14[is.na(as.numeric(as.character(endline$baraza.E1.6)) ) & is.na(as.numeric(as.character(endline$baraza.E2.6)) )] <- NA
+
+endline$baraza.E18 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.9)) == 1 , as.numeric(as.character(endline$baraza.E2.9))==1), na.rm=T) > 0
+endline$baraza.E18[is.na(as.numeric(as.character(endline$baraza.E1.9)) ) & is.na(as.numeric(as.character(endline$baraza.E2.9)) )] <- NA
 
 endline$baraza.E22 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.10)) == 1 , as.numeric(as.character(endline$baraza.E2.10))==1), na.rm=T) > 0
 endline$baraza.E22[is.na(as.numeric(as.character(endline$baraza.E1.10)) ) & is.na(as.numeric(as.character(endline$baraza.E2.10)) )] <- NA
@@ -597,10 +610,22 @@ names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_in_cash_i
 #41 baraza.D4.13	satisfied with services at hospital
 #42"baraza.D4.14"MHU at govt facility d426
 
+##43 "n_children"	    "base_n_children"		Number of children in UPS or USE 
+##44"baraza.E1"		e5				Distance to public school (km)  
+##45"baraza.E1.4" "e12" 				Has complete boundary fence (1=yes) 
+baraza.E1.4
+##46"baraza.E1.5" "e13" 				Has electricity (1=yes) 
+##47"baraza.E1.6" "e14" 				Has water facility (1=yes) 
+##48 baraza.E18 Were any Parent Teacher Association (PTA) meetings held in that primary UPE school during the last 12 months? 
+
+##49"baraza.E1.10 "e22" 				Has School Management Committee (1=yes)  
+##50"baraza.E1.13 "e32" 				Is informed about School Management Committee (1=yes)  
+##51"baraza.E1.18 "e45" 				Inspectors visited schools (1=yes)
 
 
-outcomes <- c("baraza.roof","baraza.wall","baraza.B1","baraza.B1.5","seed_OWC","baraza.B1.9","baraza.B1.13","baraza.B2", "baraza.B3","baraza.B3.4","baraza.B3.5","baraza.B3.20.3","baraza.B4","baraza.B4.1","baraza.B5.2","baraza.B5.3","unprotected", "baraza.C1.2", "baraza.C1.3","baraza.C2.3", "baraza.C1.4", "baraza.C2.1","baraza.C2.4","baraza.C2.5" ,"baraza.D2","baraza.D2.4","baraza.D3","baraza.D3.1","baraza.D3.3","baraza.D4.2","baraza.D1", "baraza.D1.2","baraza.D1.3",  "baraza.D4.6","baraza.D6","doctor","baraza.D4.7","paid_health","baraza.D4.11","baraza.D4.12","baraza.D4.13","baraza.D4.14")
-baseline_outcomes <- c("roof","wall","used_fert","used_seed","seed_NARO","used_chem","used_livestock_tech","b21","b31","b314","b316","b320","b41","b44","b5144","b5146","base_unprotected","c12source", "qc15","c10", "qc16", "c4","c11","c13","pub_health_access","maternal_health_access","d31","d32","d315","d43","d11","tot_sick","not_work_school" ,"wait_time","d61","base_doctor","d411","base_paid_health","d416","d419","d420", "d426")
+
+outcomes <- c("baraza.roof","baraza.wall","baraza.B1","baraza.B1.5","seed_OWC","baraza.B1.9","baraza.B1.13","baraza.B2", "baraza.B3","baraza.B3.4","baraza.B3.5","baraza.B3.20.3","baraza.B4","baraza.B4.1","baraza.B5.2","baraza.B5.3","unprotected", "baraza.C1.2", "baraza.C1.3","baraza.C2.3", "baraza.C1.4", "baraza.C2.1","baraza.C2.4","baraza.C2.5" ,"baraza.D2","baraza.D2.4","baraza.D3","baraza.D3.1","baraza.D3.3","baraza.D4.2","baraza.D1", "baraza.D1.2","baraza.D1.3",  "baraza.D4.6","baraza.D6","doctor","baraza.D4.7","paid_health","baraza.D4.11","baraza.D4.12","baraza.D4.13","baraza.D4.14","n_children","baraza.E5","baraza.E12","baraza.E13","baraza.E14","baraza.E18","baraza.E22","baraza.E32","baraza.E45")
+baseline_outcomes <- c("roof","wall","used_fert","used_seed","seed_NARO","used_chem","used_livestock_tech","b21","b31","b314","b316","b320","b41","b44","b5144","b5146","base_unprotected","c12source", "qc15","c10", "qc16", "c4","c11","c13","pub_health_access","maternal_health_access","d31","d32","d315","d43","d11","tot_sick","not_work_school" ,"wait_time","d61","base_doctor","d411","base_paid_health","d416","d419","d420", "d426","base_n_children","e5","e12", "e13", "e14","e18","e22","e32","e45")
 
 #create unique ID for clustering based on district and subcounty
 endline <- endline %>%  mutate(clusterID = group_indices(., district, subcounty))

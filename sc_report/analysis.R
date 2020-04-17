@@ -502,9 +502,7 @@ sc_merged$i_2i_2_14 <- as.numeric(as.character(sc_merged$i_2i_2_14))
 #loop if NA cannot be interpreted as 0
 outcomes <- c("baraza.km.D1","baraza.km.D2","baraza.km.D3","baraza.km.D4a","baraza.km.D4b","baraza.production.E1a_binary","baraza.health.E2a_binary","baraza.gender1.E3a_binary","baraza.works.E4a_binary","baraza.finance1.E5a_binary","baraza.E7_binary","baraza.meeting.F3","baraza.H1","baraza.H2","baraza.H2b","baraza.H12","baraza.H20","baraza.H29","baraza.H32","baraza.H65_binary","baraza.H69_binary","baraza.H86","baraza.L1","baraza.L2","baraza.L3","baraza.L4","baraza.L5","baraza.L6","baraza.L7","baraza.L8","baraza.L9","baraza.L10","baraza.L11","baraza.L12","baraza.L13","baraza.L14")
 baseline_outcomes <- c("d12","d13","d14","d15a","d15b","e11a_binary","e11b_binary","e11c_binary","e11d_binary","e11e_binary","e13_binary","f14c","h11","h12","h15","h110","h1121c","h1125c","h1126c","h1171_binary","h121_binary","h3233a","i_2i_2_1","i_2i_2_2","i_2i_2_3","i_2i_2_4","i_2i_2_5","i_2i_2_6","i_2i_2_7","i_2i_2_8","i_2i_2_9","i_2i_2_10","i_2i_2_11","i_2i_2_12","i_2i_2_13","i_2i_2_14")
-#df_ols <- array(NA,dim=c(6,3,length(outcomes)))
-#df_ols <- array(NA,dim=c(7,3,length(outcomes)))
-df_ols <- array(NA,dim=c(3,4,length(outcomes)))
+df_ancova <- array("",dim=c(2,9,length(outcomes)))
 
 sc_merged[outcomes[!duplicated(outcomes)]] <- lapply(sc_merged[outcomes[!duplicated(outcomes)]], function(x) replace(x, x == 999, NA) )
 sc_merged[outcomes[!duplicated(outcomes)]] <- lapply(sc_merged[outcomes[!duplicated(outcomes)]], function(x) replace(x, x == "n/a", NA) )
@@ -523,6 +521,12 @@ registerDoParallel(cl)
 
 for (i in 1:length(outcomes)) {
   print(i)
+
+
+df_ancova[1,1,i] <- round(mean(as.matrix(sc_merged[outcomes[i]]), na.rm=T),3)
+df_ancova[2,1,i] <- paste(paste("(",round(sd(as.matrix(sc_merged[outcomes[i]]), na.rm=T),3),sep=""),")",sep="")
+
+
   ols <- lm(as.formula(paste(paste(outcomes[i],"information*deliberation+region.x",sep="~"),baseline_outcomes[i],sep="+")), data=sc_merged[sc_merged$district_baraza == 0,])
   vcov_cluster <- vcovCR(ols, cluster = sc_merged$clusterID[sc_merged$district_baraza == 0], type = "CR0")
   res <- coef_test(ols, vcov_cluster)
@@ -537,11 +541,16 @@ res[3,5] <- RI_store$pval_3
 }
   #df_ols[,2,i] <- c(res[2,1],res[2,2],res[2,5],res[2,6],conf[2,4],conf[2,5],nobs(ols))
   #df_ols[,2,i] <- c(res[2,1],res[2,2],res[2,5],conf[2,4],conf[2,5],nobs(ols))
-  df_ols[,2,i] <- c(res[2,1],res[2,5],nobs(ols))
+  #df_ancova[,2,i] <- c(res[2,1],res[2,5],nobs(ols))
+  df_ancova[,4,i] <- c(round(res[2,1],3),paste(paste("(",round(res[2,2],3), sep=""),")",sep=""))
+df_ancova[1,5,i] <- ifelse(res[2,5]<.01,"**",ifelse(res[2,5]<.05,"*",ifelse(res[2,5]<.1,"+","")))
+
   #df_ols[,3,i] <- c(res[3,1],res[3,2],res[3,5],res[3,6],conf[3,4],conf[3,5],nobs(ols))
   #df_ols[,3,i] <- c(res[3,1],res[3,2],res[3,5],conf[3,4],conf[3,5],nobs(ols))
-  df_ols[,3,i] <- c(res[3,1],res[3,5],nobs(ols))
-  
+  #df_ols[,3,i] <- c(res[3,1],res[3,5],nobs(ols))
+    df_ancova[,6,i] <- c(round(res[3,1],3),paste(paste("(",round(res[3,2],3), sep=""),")",sep=""))
+df_ancova[1,7,i] <- ifelse(res[3,5]<.01,"**",ifelse(res[3,5]<.05,"*",ifelse(res[3,5]<.1,"+","")))
+
   ols <- lm(as.formula(paste(paste(outcomes[i],"information:deliberation+region.x",sep="~"),baseline_outcomes[i],sep="+")), data=sc_merged[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation),])
   vcov_cluster <- vcovCR(ols, cluster = sc_merged$clusterID[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation)], type = "CR0")
   res <- coef_test(ols, vcov_cluster)
@@ -552,7 +561,8 @@ res[6,5] <- RI_store$pval_1
 }
   #df_ols[,1,i] <- c(res[6,1],res[6,2],res[6,5],res[6,6],conf[6,4],conf[6,5],nobs(ols))
   #df_ols[,1,i] <- c(res[6,1],res[6,2],res[6,5],conf[6,4],conf[6,5],nobs(ols))
-  df_ols[,1,i] <- c(res[6,1],res[6,5],nobs(ols))
+  df_ancova[,2,i] <- c(round(res[6,1],3),paste(paste("(",round(res[6,2],3), sep=""),")",sep=""))
+df_ancova[1,3,i] <- ifelse(res[6,5]<.01,"**",ifelse(res[6,5]<.05,"*",ifelse(res[6,5]<.1,"+","")))
   
   
   
@@ -568,11 +578,23 @@ res[2,5] <- RI_store$pval
 }
   #df_ols[,4,i] <- c(res[6,4],res[6,2],res[6,5],res[6,6],conf[6,4],conf[6,5],nobs(ols))
   #df_ols[,4,i] <- c(res[6,4],res[6,2],res[6,5],conf[6,4],conf[6,5],nobs(ols))
-  df_ols[,4,i] <- c(res[2,1],res[2,5],nobs(ols))
+  #df_ols[,4,i] <- c(res[2,1],res[2,5],nobs(ols))
+  df_ancova[,8,i] <- c(round(res[2,1],3),paste(paste("(",round(res[2,2],3), sep=""),")",sep=""))
+df_ancova[1,9,i] <- ifelse(res[2,5]<.01,"**",ifelse(res[2,5]<.05,"*",ifelse(res[2,5]<.1,"+","")))
   
 }
 
 
+sel_list <- c(7,9,10,11)
+
+for (i in sel_list) {
+if (i == sel_list[1]) {
+	exp_res <- df_ancova[,,i]
+} else {
+	exp_res <- rbind(exp_res, df_ancova[,,i])
+}
+}
+write.csv(exp_res, file = "~/test.csv")
 
 
 
