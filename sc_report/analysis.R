@@ -186,9 +186,9 @@ table_maker <- function(res_mat, sel_list = c(7), file_path = "~/test.csv") {
 
 for (i in sel_list) {
 if (i == sel_list[1]) {
-	exp_res <- df_ancova[,,i]
+	exp_res <- res_mat[,,i]
 } else {
-	exp_res <- rbind(exp_res, df_ancova[,,i])
+	exp_res <- rbind(exp_res, res_mat[,,i])
 }
 }
 write.csv(exp_res, file = file_path)
