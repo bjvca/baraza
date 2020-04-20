@@ -862,7 +862,6 @@ df_ols_nobaseline[1,9,i] <- ifelse(res[2,5]<.01,"**",ifelse(res[2,5]<.05,"*",ife
 df_ols_nobaseline[2,9,i] <- nobs(ols) 
   }
 
-
 #SECTION M: BARAZAS#
 sc_merged$baraza.M2_binary <- (sc_merged$baraza.M2 == 1)
 summary(sc_merged$baraza.M2_binary)
