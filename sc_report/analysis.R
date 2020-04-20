@@ -557,13 +557,13 @@ res[3,5] <- RI_store$pval_3
   #df_ancova[,2,i] <- c(res[2,1],res[2,5],nobs(ols))
   df_ancova[,4,i] <- c(round(res[2,1],3),paste(paste("(",round(res[2,2],3), sep=""),")",sep=""))
 df_ancova[1,5,i] <- ifelse(res[2,5]<.01,"**",ifelse(res[2,5]<.05,"*",ifelse(res[2,5]<.1,"+","")))
-
+df_ancova[2,5,i] <- nobs(ols)
   #df_ols[,3,i] <- c(res[3,1],res[3,2],res[3,5],res[3,6],conf[3,4],conf[3,5],nobs(ols))
   #df_ols[,3,i] <- c(res[3,1],res[3,2],res[3,5],conf[3,4],conf[3,5],nobs(ols))
   #df_ols[,3,i] <- c(res[3,1],res[3,5],nobs(ols))
     df_ancova[,6,i] <- c(round(res[3,1],3),paste(paste("(",round(res[3,2],3), sep=""),")",sep=""))
 df_ancova[1,7,i] <- ifelse(res[3,5]<.01,"**",ifelse(res[3,5]<.05,"*",ifelse(res[3,5]<.1,"+","")))
-
+df_ancova[2,7,i] <- nobs(ols)
   ols <- lm(as.formula(paste(paste(outcomes[i],"information:deliberation+region.x",sep="~"),baseline_outcomes[i],sep="+")), data=sc_merged[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation),])
   vcov_cluster <- vcovCR(ols, cluster = sc_merged$clusterID[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation)], type = "CR0")
   res <- coef_test(ols, vcov_cluster)
@@ -576,6 +576,7 @@ res[6,5] <- RI_store$pval_1
   #df_ols[,1,i] <- c(res[6,1],res[6,2],res[6,5],conf[6,4],conf[6,5],nobs(ols))
   df_ancova[,2,i] <- c(round(res[6,1],3),paste(paste("(",round(res[6,2],3), sep=""),")",sep=""))
 df_ancova[1,3,i] <- ifelse(res[6,5]<.01,"**",ifelse(res[6,5]<.05,"*",ifelse(res[6,5]<.1,"+","")))
+df_ancova[2,3,i] <- nobs(ols)
   
   
   
@@ -594,6 +595,7 @@ res[2,5] <- RI_store$pval
   #df_ols[,4,i] <- c(res[2,1],res[2,5],nobs(ols))
   df_ancova[,8,i] <- c(round(res[2,1],3),paste(paste("(",round(res[2,2],3), sep=""),")",sep=""))
 df_ancova[1,9,i] <- ifelse(res[2,5]<.01,"**",ifelse(res[2,5]<.05,"*",ifelse(res[2,5]<.1,"+","")))
+df_ancova[2,9,i] <- nobs(ols)
   
 }
 
@@ -727,11 +729,11 @@ res[3,5] <- RI_store$pval_3
 #  df_ols_NAcouldbe0[,10,i] <- c(res[2,1],res[2,5],nobs(ols))
   df_ols_NAcouldbe0[,4,i] <- c(round(res[2,1],3),paste(paste("(",round(res[2,2],3), sep=""),")",sep=""))
 df_ols_NAcouldbe0[1,5,i] <- ifelse(res[2,5]<.01,"**",ifelse(res[2,5]<.05,"*",ifelse(res[2,5]<.1,"+","")))
-
+df_ols_NAcouldbe0[2,5,i] <- nobs(ols)
 
     df_ols_NAcouldbe0[,6,i] <- c(round(res[3,1],3),paste(paste("(",round(res[3,2],3), sep=""),")",sep=""))
 df_ols_NAcouldbe0[1,7,i] <- ifelse(res[3,5]<.01,"**",ifelse(res[3,5]<.05,"*",ifelse(res[3,5]<.1,"+","")))
-
+df_ols_NAcouldbe0[2,7,i] <- nobs(ols) 
   #df_ols_NAcouldbe0[,9,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5],nobs(ols))
 #  df_ols_NAcouldbe0[,11,i] <- c(res[3,1],res[3,5],nobs(ols))
   
@@ -747,7 +749,8 @@ res[6,5] <- RI_store$pval_1
   #df_ols_NAcouldbe0[,9,i] <- c(res[6,1],res[6,5],nobs(ols))
   df_ols_NAcouldbe0[,2,i] <- c(round(res[6,1],3),paste(paste("(",round(res[6,2],3), sep=""),")",sep=""))
 df_ols_NAcouldbe0[1,3,i] <- ifelse(res[6,5]<.01,"**",ifelse(res[6,5]<.05,"*",ifelse(res[6,5]<.1,"+","")))
-  
+df_ols_NAcouldbe0[2,3,i] <- nobs(ols)   
+
   #district vs. sc
   ols <- lm(as.formula(paste(paste(outcomes_NAcouldbe0[i],"district_baraza+region.x",sep="~"),baseline_outcomes_NAcouldbe0[i],sep="+")), data=sc_merged[(sc_merged$information == 1 & sc_merged$deliberation==1) | sc_merged$district_baraza == 1 ,])
   vcov_cluster <- vcovCR(ols, cluster = sc_merged$clusterID2[(sc_merged$information == 1 & sc_merged$deliberation==1) | sc_merged$district_baraza == 1 ], type = "CR0")
@@ -762,7 +765,7 @@ res[2,5] <- RI_store$pval
   #df_ols_NAcouldbe0[,12,i] <- c(res[2,1],res[2,5],nobs(ols))
   df_ols_NAcouldbe0[,8,i] <- c(round(res[2,1],3),paste(paste("(",round(res[2,2],3), sep=""),")",sep=""))
 df_ols_NAcouldbe0[1,9,i] <- ifelse(res[2,5]<.01,"**",ifelse(res[2,5]<.05,"*",ifelse(res[2,5]<.1,"+","")))
-  
+ df_ols_NAcouldbe0[2,9,i] <- nobs(ols)  
   
 }
 
@@ -818,11 +821,13 @@ res[3,5] <- RI_store$pval_3
 
   df_ols_nobaseline[,4,i] <- c(round(res[2,1],3),paste(paste("(",round(res[2,2],3), sep=""),")",sep=""))
 df_ols_nobaseline[1,5,i] <- ifelse(res[2,5]<.01,"**",ifelse(res[2,5]<.05,"*",ifelse(res[2,5]<.1,"+","")))
-
+df_ols_nobaseline[2,5,i] <- nobs(ols)
 
     df_ols_nobaseline[,6,i] <- c(round(res[3,1],3),paste(paste("(",round(res[3,2],3), sep=""),")",sep=""))
 df_ols_nobaseline[1,7,i] <- ifelse(res[3,5]<.01,"**",ifelse(res[3,5]<.05,"*",ifelse(res[3,5]<.1,"+","")))
-  
+df_ols_nobaseline[2,7,i] <- nobs(ols)  
+
+
   ols <- lm(as.formula(paste(outcomes_nobaseline[i],"information:deliberation+region.x",sep="~")), data=sc_merged[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation),])
   vcov_cluster <- vcovCR(ols, cluster = sc_merged$clusterID[sc_merged$district_baraza == 0 & (sc_merged$information == sc_merged$deliberation)], type = "CR0")
   res <- coef_test(ols, vcov_cluster)
@@ -836,7 +841,7 @@ res[6,5] <- RI_store$pval_1
   #df_ols_nobaseline[,1,i] <- c(res[6,1],res[6,5],nobs(ols))
   df_ols_nobaseline[,2,i] <- c(round(res[5,1],3),paste(paste("(",round(res[5,2],3), sep=""),")",sep=""))
 df_ols_nobaseline[1,3,i] <- ifelse(res[5,5]<.01,"**",ifelse(res[5,5]<.05,"*",ifelse(res[5,5]<.1,"+","")))
-
+df_ols_nobaseline[2,3,i] <- nobs(ols)
 
   #district vs. sc
   ols <- lm(as.formula(paste(outcomes_nobaseline[i],"district_baraza+region.x",sep="~")), data=sc_merged[(sc_merged$information == 1 & sc_merged$deliberation==1) | sc_merged$district_baraza == 1 ,])
@@ -854,6 +859,7 @@ res[2,5] <- RI_store$pval
   #df_ols_nobaseline[,4,i] <- c(res[2,1],res[2,5],nobs(ols))
   df_ols_nobaseline[,8,i] <- c(round(res[2,1],3),paste(paste("(",round(res[2,2],3), sep=""),")",sep=""))
 df_ols_nobaseline[1,9,i] <- ifelse(res[2,5]<.01,"**",ifelse(res[2,5]<.05,"*",ifelse(res[2,5]<.1,"+","")))
+df_ols_nobaseline[2,9,i] <- nobs(ols) 
   }
 
 
