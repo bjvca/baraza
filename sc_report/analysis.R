@@ -853,9 +853,8 @@ res[2,5] <- RI_store$pval
   #df_ols_nobaseline[,1,i] <- c(res[6,1],res[6,2],res[6,5],conf[6,4],conf[6,5],nobs(ols))
   #df_ols_nobaseline[,4,i] <- c(res[2,1],res[2,5],nobs(ols))
   df_ols_nobaseline[,8,i] <- c(round(res[2,1],3),paste(paste("(",round(res[2,2],3), sep=""),")",sep=""))
-df_ols_nobaseline[1,9,i] <- ifelse(res[2,5]<.01,"**",ifelse(res[2,5]<.05,"*",ifelse(res[2,5]<.1,"+","")))
+  df_ols_nobaseline[1,9,i] <- ifelse(res[2,5]<.01,"**",ifelse(res[2,5]<.05,"*",ifelse(res[2,5]<.1,"+","")))
   }
-
 
 #SECTION M: BARAZAS#
 sc_merged$baraza.M2_binary <- (sc_merged$baraza.M2 == 1)
