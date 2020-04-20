@@ -865,6 +865,6 @@ sc_merged$baraza.M4_binary <- (sc_merged$baraza.M4 == 1)
 summary(sc_merged$baraza.M4_binary)
 
 #prepare and export table
-
+table_maker(df_ols_nobaseline, c(3,6,9), "~/test.csv")
 
 
