@@ -598,7 +598,7 @@ df_ancova[1,9,i] <- ifelse(res[2,5]<.01,"**",ifelse(res[2,5]<.05,"*",ifelse(res[
 df_ancova[2,9,i] <- nobs(ols)
   
 }
-table_maker(df_ancova, c(7), "C:/Users/u0127963/Desktop/PhD/baraza/sc_report/table1.csv")
+table_maker(df_ancova, c(11), "C:/Users/u0127963/Desktop/PhD/baraza/sc_report/table1.csv")
 
 
 
@@ -711,6 +711,7 @@ for (i in 1:length(outcomes_NAcouldbe0)) {
   
   #C: recode NAs in baseline and endline data as 0
   sc_merged[outcomes_NAcouldbe0[i]] <- replace(sc_merged[outcomes_NAcouldbe0[i]], is.na(sc_merged[outcomes_NAcouldbe0[i]]), 0)
+  sc_merged[baseline_outcomes_NAcouldbe0[i]] <- replace(sc_merged[baseline_outcomes_NAcouldbe0[i]], is.na(sc_merged[baseline_outcomes_NAcouldbe0[i]]), 0)
   
   print(i)
 
@@ -788,7 +789,7 @@ df_ols_NAcouldbe0[1,9,i] <- ifelse(res[2,5]<.01,"**",ifelse(res[2,5]<.05,"*",ife
 #baraza.H106 and baraza.H107: no corresponding baseline variable
 #baraza.maleex.K3, baraza.maleliv.K6, baraza.malec.K9: h421a, h421b, h421c have too many NAs
 
-outcomes_nobaseline <- c("baraza.H15","baraza.H16","baraza.H17","baraza.H23","baraza.meeting.F1","baraza.meeting.F2","baraza.meeting.F4","baraza.H26","baraza.H76","baraza.H106","baraza.H107","baraza.malec.K7","baraza.malec.K8","baraza.maleex.K3","baraza.maleliv.K6","baraza.malec.K9","baraza.input_dis.K21","baraza.input_dis.K22","baraza.input_dis.K23")
+outcomes_nobaseline <- c("baraza.H15","baraza.H16","baraza.H17","baraza.H23","baraza.meeting.F1","baraza.meeting.F2","baraza.meeting.F4","baraza.H26","baraza.H76","baraza.H106","baraza.H107","baraza.malec.K7","baraza.malec.K8","baraza.maleex.K3","baraza.maleliv.K6","baraza.malec.K9","baraza.input_dis.K21","baraza.input_dis.K22","baraza.input_dis.K23","baraza.E7_binary")
 #df_ols_nobaseline <- array(NA,dim=c(6,3,length(outcomes_nobaseline)))
 #df_ols_nobaseline <- array(NA,dim=c(7,3,length(outcomes_nobaseline)))
 df_ols_nobaseline <- array("",dim=c(2,9,length(outcomes_nobaseline)))
@@ -863,7 +864,9 @@ res[2,5] <- RI_store$pval
   df_ols_nobaseline[,8,i] <- c(round(res[2,1],3),paste(paste("(",round(res[2,2],3), sep=""),")",sep=""))
 df_ols_nobaseline[1,9,i] <- ifelse(res[2,5]<.01,"**",ifelse(res[2,5]<.05,"*",ifelse(res[2,5]<.1,"+","")))
 df_ols_nobaseline[2,9,i] <- nobs(ols) 
-  }
+}
+
+table_maker(df_ols_nobaseline, c(20), "C:/Users/u0127963/Desktop/PhD/baraza/sc_report/table2.csv")
 
 #SECTION M: BARAZAS#
 sc_merged$baraza.M2_binary <- (sc_merged$baraza.M2 == 1)
@@ -873,6 +876,5 @@ sc_merged$baraza.M4_binary <- (sc_merged$baraza.M4 == 1)
 summary(sc_merged$baraza.M4_binary)
 
 #prepare and export table
-table_maker(df_ols_nobaseline, c(3,6,19), "C:/Users/u0127963/Desktop/PhD/baraza/sc_report/test.csv")
 
 
