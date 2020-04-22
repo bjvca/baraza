@@ -16,7 +16,7 @@ path <- "C:/users/u0127963/Desktop/PhD/baraza"
 path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
 }
 
-RI_conf_switch <- TRUE
+RI_conf_switch <- FALSE
 glob_repli <- 1000
 glob_sig <- c(.025,.975) ### 5 percent conf intervals
 
@@ -635,6 +635,19 @@ df_averages <- array(NA,dim=c(2,length(outcomes)))
 cl <- makeCluster(detectCores(all.tests = FALSE, logical = TRUE))
 registerDoParallel(cl)
 
+###
+dta$date <- as.character(paste("15",paste(dta$month, dta$year, sep="/"),sep="/"))
+dta$date <- as.Date(dta$date,format = "%d/%m/%Y")
+dta$today <- as.Date("2020-02-15") ### set this as 15th of feb 2020, which is prob when half of endline data is collected
+dta$time_dif <- as.numeric(as.character(dta$today - dta$date))/30/12
+dta$time_dif[is.na(dta$time_dif)] <- 0 
+dta$time_dif2 <- dta$time_dif * dta$time_dif
+
+### uncomment for heterogeneity re: time
+dta <- subset(dta, (time_dif>1.5) | time_dif == 0)
+####
+
+
 for (i in 1:length(outcomes)) {
 #print(i)
 # i <- 1
@@ -752,6 +765,7 @@ d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","healt
 png(paste(path,"report/figure/impact_summary_ancova.png",sep = "/"), units="px", height=3200, width= 6400, res=600)
 print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3))
 dev.off()
+credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3)
 
 
 ### create data.frame to plot - make sure you get correct i's for the indices; last one is overall index
