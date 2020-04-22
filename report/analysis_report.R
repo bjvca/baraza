@@ -280,7 +280,7 @@ baseline$b5144 <- as.numeric(baseline$b5144=="Yes")
 baseline$b5146 <- as.numeric(baseline$b5146=="Yes")
 ##use of unprotected water sources in dry season
 ###this was changed post registration to follow https://www.who.int/water_sanitation_health/monitoring/jmp2012/key_terms/en/ guidelines on what is considered improved, that also considers rainwater a protected source
-baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Bottled water","Cart with small tank","Unprotected dug well","Unprotected spring","Tanker truck"))    )
+baseline$base_unprotected <- (as.numeric(baseline$c11a) %in%  c(10,13,14))
 ### is there are water committee
 baseline$c10 <- as.numeric(baseline$c10=="Yes")
 
@@ -367,9 +367,10 @@ endline$baraza.B3 <- endline$baraza.B3 ==1 |  endline$baraza.B3.3 ==1
 #endline$inputs <- 0
 endline$inputs <- as.numeric(endline$baraza.B1==1 | endline$baraza.B1.5==1) 
 ###this was changed post registration to follow https://www.who.int/water_sanitation_health/monitoring/jmp2012/key_terms/en/ guidelines on what is considered improved, that also considers rainwater a protected source
-#baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Bottled water","Cart with small tank","Unprotected dug well","Unprotected spring","Tanker truck"))    )
+#baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Unprotected dug well","Unprotected spring"))    )
 ### is there are water committee
-endline$unprotected <- (as.numeric(endline$baraza.C1 %in% c(5,7,9,10,11,12)) )
+
+endline$unprotected <- (as.numeric(endline$baraza.C1 %in% c(5,7,11)) )
 
 ### here we simulate endline variables - remove if endline data is in
 #endline$baraza.B2  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b21 == 1, na.rm=T))

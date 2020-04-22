@@ -121,7 +121,7 @@ baseline$b5144 <- as.numeric(baseline$b5144=="Yes")
 baseline$b5146 <- as.numeric(baseline$b5146=="Yes")
 ##use of unprotected water sources in dry season
 ###this was changed post registration to follow https://www.who.int/water_sanitation_health/monitoring/jmp2012/key_terms/en/ guidelines on what is considered improved, that also considers rainwater a protected source
-baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Bottled water","Cart with small tank","Unprotected dug well","Unprotected spring","Tanker truck"))    )
+baseline$base_unprotected <- (as.numeric(baseline$c11a) %in%  c(10,13,14))
 ### is there are water committee
 baseline$c10 <- as.numeric(baseline$c10=="Yes")
 
@@ -152,7 +152,7 @@ baseline$d11 <- as.numeric(baseline$d11=="Yes")
 
 baseline$tot_sick[baseline$d11==0] <- 0 
 baseline$not_work[baseline$d11==0] <- 0 
-baseline$$not_school[baseline$d11==0] <- 0 
+baseline$not_school[baseline$d11==0] <- 0 
 baseline$not_work_school <- baseline$not_work + baseline$not_school
 
 baseline$tot_sick <- log(baseline$tot_sick + sqrt(baseline$tot_sick ^ 2 + 1))
@@ -208,6 +208,9 @@ baseline$log_farmsize <- log(baseline$farmsize + sqrt(baseline$farmsize ^ 2 + 1)
 baseline$log_farmsize[is.infinite(baseline$log_farmsize)] <- NA
 baseline <- trim("farmsize", baseline)
 
+baseline$d411 <- log(baseline$d411 + sqrt(baseline$d411 ^ 2 + 1))
+baseline <- trim("d411", baseline)
+
 baseline$ironroof <- as.numeric(baseline$a512 =="Corrugated iron sheets")
 baseline$improved_wall <- as.numeric(baseline$a513 %in% c("Mud_bricks_burnt_bricks","Concrete_blocks") )
 baseline$head_sec <- as.numeric(baseline$a36) > 15
@@ -239,7 +242,7 @@ baseline$d419 <- baseline$d419 == "Yes"
 
 baseline$b320 <- baseline$b320 == "Decided by extension agents/forum members without any consultation"
 baseline$qc16 <- (baseline$qc16 == "Satisfied"| baseline$qc16 == "Very satisfied")
-baseline$d420 <- (baseline$d420 == "Satisfied"| baseline$d420 == "Very satisfied")
+baseline$d420 <- (baseline$d420 == "Satisfied" | baseline$d420 == "Very satisfied")
 baseline$c4 <- baseline$c4 %in% c("Boil","Use chlorine/bleach")
 baseline$c11 <- baseline$c11 == "Yes"
 baseline$c11[is.na(baseline$c11 )] <- FALSE 
@@ -257,6 +260,9 @@ baseline$d426 <- (baseline$d426 == "Yes")
 
 endline$baraza.D4.7 <- as.numeric(as.character(endline$baraza.D4.7))
 endline$baraza.D4.7[endline$baraza.D4.7 == 999] <- NA
+endline$baraza.D4.7 <-  log(endline$baraza.D4.7 + sqrt(endline$baraza.D4.7 ^ 2 + 1))
+endline <- trim("baraza.D4.7",endline)
+
 
 baseline_desc <- baseline
 baseline_matching <- merge(baseline,treats, by.x=c("a22","a23"), by.y=c("district","subcounty"))
@@ -276,7 +282,7 @@ endline$baraza.B3.5 <- endline$baraza.B3.5==1
 ###this was changed post registration to follow https://www.who.int/water_sanitation_health/monitoring/jmp2012/key_terms/en/ guidelines on what is considered improved, that also considers rainwater a protected source
 #baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Bottled water","Cart with small tank","Unprotected dug well","Unprotected spring","Tanker truck"))    )
 ### is there are water committee
-endline$unprotected <- (as.numeric(endline$baraza.C1 %in% c(5,7,9,10,11,12)) )
+endline$unprotected <- (as.numeric(endline$baraza.C1 %in% c(5,7,11)) )
 
 ### here we simulate endline variables - remove if endline data is in
 #endline$baraza.B2  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b21 == 1, na.rm=T))
@@ -410,7 +416,7 @@ endline$baraza.D4.11 <- endline$baraza.D4.11=="1"
 endline$baraza.D4.12 <- as.numeric(as.character(endline$baraza.D4.12))
 endline$baraza.D4.12 <- endline$baraza.D4.12=="1"
 endline$baraza.D4.13 <- as.numeric(as.character(endline$baraza.D4.13))
-endline$baraza.D4.13 <- endline$baraza.D4.13 <= 3
+endline$baraza.D4.13 <- endline$baraza.D4.13 <= 2
 endline$baraza.C1.4 <- endline$baraza.C1.4<=2
 endline$baraza.C2.1 <- endline$baraza.C2.1 %in%  c(1:2)
 endline$baraza.C2.4 <- endline$baraza.C2.4 == 1
@@ -578,6 +584,7 @@ names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_in_cash_i
 #14# B4.1 B4.1 Are any of these farmer groups supported by Naads or Operation Wealth Creation?
 #15# B5.2B5.2  Did you receive any help in marketing your produce from the Village procurement committe/Village farmers forum/Village farmers forum executive in the last 12 months? 
 #16# B5.3 B5.3 Did you receive any help in marketing your produce from the Cooperative/Association in the last 12 months?
+
 # Section C: water
 #17# [8,] "unprotected"       "base_unprotected"      	Household uses unprotected water source during dry season (yes/no)
 ##18 ## [9,] "baraza.C1.2"       "c12source"             	Distance to water source
@@ -595,7 +602,6 @@ names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_in_cash_i
 #27#[16,] "baraza.D3"         "d31"                   	Is there a VHT in village? (1=yes) 
 #28# 31 D3.1 Are you or any member of the household part of the VHT? d32
 #29# D3.3 Did the VHT organise any public meetings in your village in the last 12 months? d315
-
 #30#[17,] "baraza.D4.2"       "d43"                   	Distance to nearest govt health facility (km) 
 #31  	baraza.D1 Any members sick?
 #32#[18,] "baraza.D1.2"	"tot_sick"		Number of days ill
@@ -607,25 +613,23 @@ names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_in_cash_i
 #38# paid anything
 #39	baraza.D4.11		received meds d416
 #40 baraza.D4.12 had to buy meds d419
-#41 baraza.D4.13	satisfied with services at hospital
+#41 baraza.D4.13	satisfied with services at hospital d420
 #42"baraza.D4.14"MHU at govt facility d426
 
 ##43 "n_children"	    "base_n_children"		Number of children in UPS or USE 
 ##44"baraza.E1"		e5				Distance to public school (km)  
 ##45"baraza.E1.4" "e12" 				Has complete boundary fence (1=yes) 
-baraza.E1.4
 ##46"baraza.E1.5" "e13" 				Has electricity (1=yes) 
 ##47"baraza.E1.6" "e14" 				Has water facility (1=yes) 
 ##48 baraza.E18 Were any Parent Teacher Association (PTA) meetings held in that primary UPE school during the last 12 months? 
-
 ##49"baraza.E1.10 "e22" 				Has School Management Committee (1=yes)  
 ##50"baraza.E1.13 "e32" 				Is informed about School Management Committee (1=yes)  
 ##51"baraza.E1.18 "e45" 				Inspectors visited schools (1=yes)
+##52 baraza.A6"   Distance to nearest all weather road (km)       "a6
 
 
-
-outcomes <- c("baraza.roof","baraza.wall","baraza.B1","baraza.B1.5","seed_OWC","baraza.B1.9","baraza.B1.13","baraza.B2", "baraza.B3","baraza.B3.4","baraza.B3.5","baraza.B3.20.3","baraza.B4","baraza.B4.1","baraza.B5.2","baraza.B5.3","unprotected", "baraza.C1.2", "baraza.C1.3","baraza.C2.3", "baraza.C1.4", "baraza.C2.1","baraza.C2.4","baraza.C2.5" ,"baraza.D2","baraza.D2.4","baraza.D3","baraza.D3.1","baraza.D3.3","baraza.D4.2","baraza.D1", "baraza.D1.2","baraza.D1.3",  "baraza.D4.6","baraza.D6","doctor","baraza.D4.7","paid_health","baraza.D4.11","baraza.D4.12","baraza.D4.13","baraza.D4.14","n_children","baraza.E5","baraza.E12","baraza.E13","baraza.E14","baraza.E18","baraza.E22","baraza.E32","baraza.E45")
-baseline_outcomes <- c("roof","wall","used_fert","used_seed","seed_NARO","used_chem","used_livestock_tech","b21","b31","b314","b316","b320","b41","b44","b5144","b5146","base_unprotected","c12source", "qc15","c10", "qc16", "c4","c11","c13","pub_health_access","maternal_health_access","d31","d32","d315","d43","d11","tot_sick","not_work_school" ,"wait_time","d61","base_doctor","d411","base_paid_health","d416","d419","d420", "d426","base_n_children","e5","e12", "e13", "e14","e18","e22","e32","e45")
+outcomes <- c("baraza.roof","baraza.wall","baraza.B1","baraza.B1.5","seed_OWC","baraza.B1.9","baraza.B1.13","baraza.B2", "baraza.B3","baraza.B3.4","baraza.B3.5","baraza.B3.20.3","baraza.B4","baraza.B4.1","baraza.B5.2","baraza.B5.3","unprotected", "baraza.C1.2", "baraza.C1.3","baraza.C2.3", "baraza.C1.4", "baraza.C2.1","baraza.C2.4","baraza.C2.5" ,"baraza.D2","baraza.D2.4","baraza.D3","baraza.D3.1","baraza.D3.3","baraza.D4.2","baraza.D1", "baraza.D1.2","baraza.D1.3",  "baraza.D4.6","baraza.D6","doctor","baraza.D4.7","paid_health","baraza.D4.11","baraza.D4.12","baraza.D4.13","baraza.D4.14","n_children","baraza.E5","baraza.E12","baraza.E13","baraza.E14","baraza.E18","baraza.E22","baraza.E32","baraza.E45","baraza.A6")
+baseline_outcomes <- c("roof","wall","used_fert","used_seed","seed_NARO","used_chem","used_livestock_tech","b21","b31","b314","b316","b320","b41","b44","b5144","b5146","base_unprotected","c12source", "qc15","c10", "qc16", "c4","c11","c13","pub_health_access","maternal_health_access","d31","d32","d315","d43","d11","tot_sick","not_work_school" ,"wait_time","d61","base_doctor","d411","base_paid_health","d416","d419","d420", "d426","base_n_children","e5","e12", "e13", "e14","e18","e22","e32","e45", "a6")
 
 #create unique ID for clustering based on district and subcounty
 endline <- endline %>%  mutate(clusterID = group_indices(., district, subcounty))
@@ -756,3 +760,35 @@ d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","healt
 #png(paste(path,"report/figure/impact_summary_dif_in_dif.png", sep="/"), units="px", height=3200, width= 6400, res=600)
 #print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3))
 #dev.off()
+#+++++++++++++++++++++++++++++++++++++++
+
+table_maker <- function(res_mat,averages_mat, sel_list = c(7), file_path = "~/test.csv") {
+
+for (i in sel_list) {
+if (i == sel_list[1]) {
+	exp_res <- cbind(c(round(averages_mat[1,i],3),paste(paste("(",round(averages_mat[2,i],3),sep=""),")",sep="") ) ,c(round(res_mat[1,1,i],3),paste(paste("(",round(res_mat[2,1,i],3),sep=""),")",sep="")), c(ifelse(res_mat[3,1,i]<.01,"**",ifelse(res_mat[3,1,i]<.05,"*",ifelse(res_mat[3,1,i]<.1,"+",""))),""),
+c(round(res_mat[1,2,i],3),paste(paste("(",round(res_mat[2,2,i],3),sep=""),")",sep="")), c(ifelse(res_mat[3,2,i]<.01,"**",ifelse(res_mat[3,2,i]<.05,"*",ifelse(res_mat[3,2,i]<.1,"+",""))),""),
+c(round(res_mat[1,3,i],3),paste(paste("(",round(res_mat[2,3,i],3),sep=""),")",sep="")), c(ifelse(res_mat[3,3,i]<.01,"**",ifelse(res_mat[3,3,i]<.05,"*",ifelse(res_mat[3,3,i]<.1,"+",""))),""),
+c(round(res_mat[1,4,i],3),paste(paste("(",round(res_mat[2,4,i],3),sep=""),")",sep="")), c(ifelse(res_mat[3,4,i]<.01,"**",ifelse(res_mat[3,4,i]<.05,"*",ifelse(res_mat[3,4,i]<.1,"+",""))),""))
+} else {
+	exp_res <- rbind(exp_res, cbind(c(round(averages_mat[1,i],3),paste(paste("(",round(averages_mat[2,i],3),sep=""),")",sep="") ) ,c(round(res_mat[1,1,i],3),paste(paste("(",round(res_mat[2,1,i],3),sep=""),")",sep="")), c(ifelse(res_mat[3,1,i]<.01,"**",ifelse(res_mat[3,1,i]<.05,"*",ifelse(res_mat[3,1,i]<.1,"+",""))),""),
+c(round(res_mat[1,2,i],3),paste(paste("(",round(res_mat[2,2,i],3),sep=""),")",sep="")), c(ifelse(res_mat[3,2,i]<.01,"**",ifelse(res_mat[3,2,i]<.05,"*",ifelse(res_mat[3,2,i]<.1,"+",""))),""),
+c(round(res_mat[1,3,i],3),paste(paste("(",round(res_mat[2,3,i],3),sep=""),")",sep="")), c(ifelse(res_mat[3,3,i]<.01,"**",ifelse(res_mat[3,3,i]<.05,"*",ifelse(res_mat[3,3,i]<.1,"+",""))),""),
+c(round(res_mat[1,4,i],3),paste(paste("(",round(res_mat[2,4,i],3),sep=""),")",sep="")), c(ifelse(res_mat[3,4,i]<.01,"**",ifelse(res_mat[3,4,i]<.05,"*",ifelse(res_mat[3,4,i]<.1,"+",""))),"")))
+}
+write.csv(exp_res, file = file_path)
+}
+}
+
+
+
+table_maker(df_ancova,df_averages, c(3:16)) 
+
+
+
+
+
+
+
+
+

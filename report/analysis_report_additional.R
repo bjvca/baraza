@@ -630,3 +630,30 @@ d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","healt
 #png(paste(path,"report/figure/impact_summary_dif_in_dif.png", sep="/"), units="px", height=3200, width= 6400, res=600)
 #print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3))
 #dev.off()
+
+#+++++++++++++++++++++++++++++++++++++++
+
+table_maker <- function(res_mat,averages_mat, sel_list = c(7), file_path = "~/test.csv") {
+
+for (i in sel_list) {
+if (i == sel_list[1]) {
+	exp_res <- cbind(c(round(averages_mat[1,i],3),paste(paste("(",round(averages_mat[2,i],3),sep=""),")",sep="") ) ,c(round(res_mat[1,1,i],3),paste(paste("(",round(res_mat[2,1,i],3),sep=""),")",sep="")), c(ifelse(res_mat[3,1,i]<.01,"**",ifelse(res_mat[3,1,i]<.05,"*",ifelse(res_mat[3,1,i]<.1,"+",""))),""),
+c(round(res_mat[1,2,i],3),paste(paste("(",round(res_mat[2,2,i],3),sep=""),")",sep="")), c(ifelse(res_mat[3,2,i]<.01,"**",ifelse(res_mat[3,2,i]<.05,"*",ifelse(res_mat[3,2,i]<.1,"+",""))),""),
+c(round(res_mat[1,3,i],3),paste(paste("(",round(res_mat[2,3,i],3),sep=""),")",sep="")), c(ifelse(res_mat[3,3,i]<.01,"**",ifelse(res_mat[3,3,i]<.05,"*",ifelse(res_mat[3,3,i]<.1,"+",""))),""),
+c(round(res_mat[1,4,i],3),paste(paste("(",round(res_mat[2,4,i],3),sep=""),")",sep="")), c(ifelse(res_mat[3,4,i]<.01,"**",ifelse(res_mat[3,4,i]<.05,"*",ifelse(res_mat[3,4,i]<.1,"+",""))),""))
+} else {
+	exp_res <- rbind(exp_res, cbind(c(round(averages_mat[1,i],3),paste(paste("(",round(averages_mat[2,i],3),sep=""),")",sep="") ) ,c(round(res_mat[1,1,i],3),paste(paste("(",round(res_mat[2,1,i],3),sep=""),")",sep="")), c(ifelse(res_mat[3,1,i]<.01,"**",ifelse(res_mat[3,1,i]<.05,"*",ifelse(res_mat[3,1,i]<.1,"+",""))),""),
+c(round(res_mat[1,2,i],3),paste(paste("(",round(res_mat[2,2,i],3),sep=""),")",sep="")), c(ifelse(res_mat[3,2,i]<.01,"**",ifelse(res_mat[3,2,i]<.05,"*",ifelse(res_mat[3,2,i]<.1,"+",""))),""),
+c(round(res_mat[1,3,i],3),paste(paste("(",round(res_mat[2,3,i],3),sep=""),")",sep="")), c(ifelse(res_mat[3,3,i]<.01,"**",ifelse(res_mat[3,3,i]<.05,"*",ifelse(res_mat[3,3,i]<.1,"+",""))),""),
+c(round(res_mat[1,4,i],3),paste(paste("(",round(res_mat[2,4,i],3),sep=""),")",sep="")), c(ifelse(res_mat[3,4,i]<.01,"**",ifelse(res_mat[3,4,i]<.05,"*",ifelse(res_mat[3,4,i]<.1,"+",""))),"")))
+}
+write.csv(exp_res, file = file_path)
+}
+}
+
+
+
+table_maker(df_ancova,df_averages, c(3:16)) 
+
+
+

@@ -109,14 +109,19 @@ baseline$a23[baseline$a23 == "NTUSI"] <- "NTUUSI"
 
 baseline$b21 <-  as.numeric(baseline$b21=="Yes")
 baseline$b31 <-  as.numeric(baseline$b31=="Yes")
+baseline$b41 <-  as.numeric(baseline$b41=="Yes")
+baseline$b41[is.na(baseline$b41)] <- 0
 baseline$b44 <-  as.numeric(baseline$b44=="Yes")
 baseline$b44[is.na(baseline$b44)] <- 0
 baseline$base_inputs <- as.numeric(baseline$used_seed=="Yes" | baseline$used_fert=="Yes")
+baseline$used_seed <- baseline$used_seed=="Yes"
+baseline$used_fert <- baseline$used_fert=="Yes"
+baseline$used_chem <- baseline$used_chem=="Yes"
 baseline$b5144 <- as.numeric(baseline$b5144=="Yes")
 baseline$b5146 <- as.numeric(baseline$b5146=="Yes")
 ##use of unprotected water sources in dry season
 ###this was changed post registration to follow https://www.who.int/water_sanitation_health/monitoring/jmp2012/key_terms/en/ guidelines on what is considered improved, that also considers rainwater a protected source
-baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Bottled water","Cart with small tank","Unprotected dug well","Unprotected spring","Tanker truck"))    )
+baseline$base_unprotected <- (as.numeric(baseline$c11a) %in%  c(10,13,14))
 ### is there are water committee
 baseline$c10 <- as.numeric(baseline$c10=="Yes")
 
@@ -146,9 +151,15 @@ baseline <- trim("d43", baseline)
 baseline$d11 <- as.numeric(baseline$d11=="Yes")
 
 baseline$tot_sick[baseline$d11==0] <- 0 
+baseline$not_work[baseline$d11==0] <- 0 
+baseline$not_school[baseline$d11==0] <- 0 
+baseline$not_work_school <- baseline$not_work + baseline$not_school
 
 baseline$tot_sick <- log(baseline$tot_sick + sqrt(baseline$tot_sick ^ 2 + 1))
 baseline <- trim("tot_sick", baseline)
+
+baseline$not_work_school <- log(baseline$not_work_school + sqrt(baseline$not_work_school ^ 2 + 1))
+baseline <- trim("not_work_school", baseline)
 
 baseline$wait_time <- baseline$d410hh*60+ baseline$d410mm
 baseline$wait_time_min  <- baseline$d410hh*60+ baseline$d410mm
@@ -171,8 +182,14 @@ baseline <- trim("dist_school", baseline)
 baseline$e12 <- rowSums(cbind(as.numeric(baseline$e12upe == "Yes") , as.numeric(baseline$e12use == "Yes")), na.rm=T) > 0
 baseline$e12[is.na(baseline$e12upe) & is.na(baseline$e12use)] <- NA
 
+baseline$e13 <- rowSums(cbind(as.numeric(baseline$e13upe == "Yes") , as.numeric(baseline$e13use == "Yes")), na.rm=T) > 0
+baseline$e13[is.na(baseline$e13upe) & is.na(baseline$e13use)] <- NA
+
 baseline$e14 <- rowSums(cbind(as.numeric(baseline$e14upe == "Yes") , as.numeric(baseline$e14use == "Yes")), na.rm=T) > 0
 baseline$e14[is.na(baseline$e14upe) & is.na(baseline$e14use)] <- NA
+
+baseline$e18 <- rowSums(cbind(as.numeric(baseline$e18upe == 1) , as.numeric(baseline$e18use == 1)), na.rm=T) > 0
+baseline$e18[is.na(baseline$e18upe) & is.na(baseline$e18use)] <- NA
 
 baseline$e22 <- rowSums(cbind(as.numeric(baseline$e22upe == "Yes") , as.numeric(baseline$e22use == "Yes")), na.rm=T) > 0
 baseline$e22[is.na(baseline$e22upe) & is.na(baseline$e22use)] <- NA
@@ -191,9 +208,62 @@ baseline$log_farmsize <- log(baseline$farmsize + sqrt(baseline$farmsize ^ 2 + 1)
 baseline$log_farmsize[is.infinite(baseline$log_farmsize)] <- NA
 baseline <- trim("farmsize", baseline)
 
+baseline$d411 <- log(baseline$d411 + sqrt(baseline$d411 ^ 2 + 1))
+baseline <- trim("d411", baseline)
+
 baseline$ironroof <- as.numeric(baseline$a512 =="Corrugated iron sheets")
 baseline$improved_wall <- as.numeric(baseline$a513 %in% c("Mud_bricks_burnt_bricks","Concrete_blocks") )
 baseline$head_sec <- as.numeric(baseline$a36) > 15
+
+baseline$f241.LC1.election <- baseline$f241.LC1.election == "Yes"   
+baseline$f241.LC3.election <- baseline$f241.LC3.election == "Yes"   
+baseline$f241.LC5.election <- baseline$f241.LC5.election == "Yes"   
+baseline$f241.Pesidential <- baseline$f241.Pesidential == "Yes"   
+baseline$f241.Parliamentary <- baseline$f241.Parliamentary == "Yes"  
+baseline$f241.Party.leader <- baseline$f241.Party.leader == "Yes"
+
+
+baseline$f2301 <- as.numeric(baseline$f2301) %in% c(6,7)
+baseline$f2303 <- as.numeric(baseline$f2303) %in% c(1,2,3,6,7)
+baseline$f2307  <- as.numeric(baseline$f2307) %in% c(1,3,6,7) 
+baseline$f2309 <- as.numeric(baseline$f2309) %in% c(1,2,3,6,7)
+baseline$f2310 <- as.numeric(baseline$f2310) %in% c(1,2,3,6,7)
+
+baseline$f21 <- baseline$f21 == "Yes"
+
+baseline$roof <- baseline$a512 %in% c("Corrugated iron sheets", "Tiles")
+baseline$wall <- baseline$a513 == "Mud_bricks_burnt_bricks"
+baseline$b314 <- baseline$b314 == "Yes"
+baseline$b316 <- baseline$b316 == "Yes"
+baseline$b316[is.na(baseline$b316)] <- FALSE
+baseline$used_livestock_tech <- baseline$used_livestock_tech == "Yes"
+baseline$d416 <- baseline$d416 == "Yes"
+baseline$d419 <- baseline$d419 == "Yes"
+
+baseline$b320 <- baseline$b320 == "Decided by extension agents/forum members without any consultation"
+baseline$qc16 <- (baseline$qc16 == "Satisfied"| baseline$qc16 == "Very satisfied")
+baseline$d420 <- (baseline$d420 == "Satisfied" | baseline$d420 == "Very satisfied")
+baseline$c4 <- baseline$c4 %in% c("Boil","Use chlorine/bleach")
+baseline$c11 <- baseline$c11 == "Yes"
+baseline$c11[is.na(baseline$c11 )] <- FALSE 
+baseline$c13 <- baseline$c13 == "Yes"
+baseline$c13[is.na(baseline$c13 )] <- FALSE
+baseline$d32 <- baseline$d32 == "Yes"
+baseline$d32[is.na(baseline$d32 )] <- FALSE
+baseline$d315 <- baseline$d315 == "Yes"
+baseline$d315[is.na(baseline$d315 )] <- FALSE
+baseline$base_doctor <- baseline$d49 %in% c("Doctor","In-charge")
+baseline$base_doctor[is.na(baseline$d49)] <- NA
+baseline$base_paid_health <- baseline$d413 == "Yes"
+baseline$base_paid_health[is.na(baseline$d413)] <- NA
+baseline$d426 <- (baseline$d426 == "Yes")
+
+endline$baraza.D4.7 <- as.numeric(as.character(endline$baraza.D4.7))
+endline$baraza.D4.7[endline$baraza.D4.7 == 999] <- NA
+endline$baraza.D4.7 <-  log(endline$baraza.D4.7 + sqrt(endline$baraza.D4.7 ^ 2 + 1))
+endline <- trim("baraza.D4.7",endline)
+
+
 baseline_desc <- baseline
 baseline_matching <- merge(baseline,treats, by.x=c("a22","a23"), by.y=c("district","subcounty"))
 
@@ -202,10 +272,17 @@ baseline_matching <- merge(baseline,treats, by.x=c("a22","a23"), by.y=c("distric
 endline$baraza.B3 <- endline$baraza.B3 ==1 |  endline$baraza.B3.3 ==1
 #endline$inputs <- 0
 endline$inputs <- as.numeric(endline$baraza.B1==1 | endline$baraza.B1.5==1) 
+endline$baraza.B1 <- endline$baraza.B1==1
+endline$baraza.B1.5 <- endline$baraza.B1.5==1
+endline$baraza.B1.9 <- endline$baraza.B1.9==1
+endline$baraza.B1.13 <- endline$baraza.B1.13==1
+endline$baraza.B3.4 <- endline$baraza.B3.4==1
+endline$baraza.B3.5 <- endline$baraza.B3.5==1
+
 ###this was changed post registration to follow https://www.who.int/water_sanitation_health/monitoring/jmp2012/key_terms/en/ guidelines on what is considered improved, that also considers rainwater a protected source
 #baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Bottled water","Cart with small tank","Unprotected dug well","Unprotected spring","Tanker truck"))    )
 ### is there are water committee
-endline$unprotected <- (as.numeric(endline$baraza.C1 %in% c(5,7,9,10,11,12)) )
+endline$unprotected <- (as.numeric(endline$baraza.C1 %in% c(5,7,11)) )
 
 ### here we simulate endline variables - remove if endline data is in
 #endline$baraza.B2  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b21 == 1, na.rm=T))
@@ -215,6 +292,7 @@ endline$baraza.B2  <- endline$baraza.B2  == 1
 #endline$baraza.B3 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b31 == 1, na.rm=T))
 ###naads in village
 ### here we simulate endline variables - remove if endline data is in
+endline$baraza.B4 <- endline$baraza.B4 == 1
 #endline$baraza.B4.1  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b44 == 1, na.rm=T))
 endline$baraza.B4.1 <- endline$baraza.B4.1 == 1
 ###simulate an effect on this one
@@ -271,8 +349,18 @@ endline[members] <- lapply(endline[members], function(x) as.numeric(as.character
 endline[members] <- lapply(endline[members], function(x) replace(x, x == 999,NA) )
 endline$baraza.D1.2 <- rowSums(endline[members], na.rm=T)
 
+members <- paste(paste("baraza.labour", 1:15, sep="."),".D1.3", sep=".")
+
+endline[members] <- lapply(endline[members], function(x) as.numeric(as.character(x)) )
+endline[members] <- lapply(endline[members], function(x) replace(x, x == 999,NA) )
+endline$baraza.D1.3 <- rowSums(endline[members], na.rm=T)
+
+
 endline$baraza.D1.2 <- log(endline$baraza.D1.2 + sqrt(endline$baraza.D1.2 ^ 2 + 1))
 endline <- trim("baraza.D1.2", endline)
+
+endline$baraza.D1.3 <- log(endline$baraza.D1.3 + sqrt(endline$baraza.D1.3 ^ 2 + 1))
+endline <- trim("baraza.D1.3", endline)
 
 #endline$baraza.D4.6 <- sample(baseline$wait_time[!is.na(baseline$wait_time)] ,dim(endline)[1]) 
 endline$baraza.D4.6 <-  as.numeric(as.character(endline$baraza.D4.6))
@@ -296,8 +384,15 @@ endline$baraza.E5 <- log(endline$baraza.E5 + sqrt(endline$baraza.E5 ^ 2 + 1))
 endline$baraza.E12 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.4)) == 1 , as.numeric(as.character(endline$baraza.E2.4))==1), na.rm=T) > 0
 endline$baraza.E12[is.na(as.numeric(as.character(endline$baraza.E1.4)) ) & is.na(as.numeric(as.character(endline$baraza.E2.4)) )] <- NA
 
+endline$baraza.E13 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.5)) == 1 , as.numeric(as.character(endline$baraza.E2.5))==1), na.rm=T) > 0
+endline$baraza.E13[is.na(as.numeric(as.character(endline$baraza.E1.5)) ) & is.na(as.numeric(as.character(endline$baraza.E2.5)) )] <- NA
+
+
 endline$baraza.E14 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.6)) == 1 , as.numeric(as.character(endline$baraza.E2.6))==1), na.rm=T) > 0
 endline$baraza.E14[is.na(as.numeric(as.character(endline$baraza.E1.6)) ) & is.na(as.numeric(as.character(endline$baraza.E2.6)) )] <- NA
+
+endline$baraza.E18 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.9)) == 1 , as.numeric(as.character(endline$baraza.E2.9))==1), na.rm=T) > 0
+endline$baraza.E18[is.na(as.numeric(as.character(endline$baraza.E1.9)) ) & is.na(as.numeric(as.character(endline$baraza.E2.9)) )] <- NA
 
 endline$baraza.E22 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.10)) == 1 , as.numeric(as.character(endline$baraza.E2.10))==1), na.rm=T) > 0
 endline$baraza.E22[is.na(as.numeric(as.character(endline$baraza.E1.10)) ) & is.na(as.numeric(as.character(endline$baraza.E2.10)) )] <- NA
@@ -308,12 +403,37 @@ endline$baraza.E32[is.na(as.numeric(as.character(endline$baraza.E1.13)) ) & is.n
 endline$baraza.E45 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.18)) == 1 , as.numeric(as.character(endline$baraza.E2.18))==1), na.rm=T) > 0
 endline$baraza.E45[is.na(as.numeric(as.character(endline$baraza.E1.18)) ) & is.na(as.numeric(as.character(endline$baraza.E2.18)) )] <- NA
 
-##endline$baraza.E1.6 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e14, na.rm=T))
-##endline$baraza.E1.10 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e22, na.rm=T))
-##endline$baraza.E1.13 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e32, na.rm=T))
-##endline$baraza.E1.18 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e45, na.rm=T))
-##ag
+### assorted outcomes
+### type of roof
+endline$baraza.roof <- endline$baraza.roof %in% 1:2
 
+endline$baraza.wall <- endline$baraza.wall == 2
+
+endline$seed_OWC <- endline$baraza.B1.6.1 == "True"
+endline$baraza.B3.20.3 <- endline$baraza.B3.20.3 =="True"
+endline$baraza.D4.11 <- as.numeric(as.character(endline$baraza.D4.11))
+endline$baraza.D4.11 <- endline$baraza.D4.11=="1"
+endline$baraza.D4.12 <- as.numeric(as.character(endline$baraza.D4.12))
+endline$baraza.D4.12 <- endline$baraza.D4.12=="1"
+endline$baraza.D4.13 <- as.numeric(as.character(endline$baraza.D4.13))
+endline$baraza.D4.13 <- endline$baraza.D4.13 <= 2
+endline$baraza.C1.4 <- endline$baraza.C1.4<=2
+endline$baraza.C2.1 <- endline$baraza.C2.1 %in%  c(1:2)
+endline$baraza.C2.4 <- endline$baraza.C2.4 == 1
+endline$baraza.C2.5  <- endline$baraza.C2.5 == 1
+
+endline$baraza.D3.1 <- endline$baraza.D3.1==1
+endline$baraza.D3.3 <- endline$baraza.D3.3==1
+
+endline$doctor <- FALSE
+endline$doctor <- endline$baraza.D4.5.1 == "True" | endline$baraza.D4.5.7 == "True" 
+endline$doctor[endline$baraza.D4.5.1 == "n/a" & endline$baraza.D4.5.7 == "n/a"] <- NA
+
+endline$paid_health <- endline$baraza.D4.10 == 1
+endline$paid_health[endline$baraza.D4.10 == "n/a"] <- NA
+
+endline$baraza.D4.14 <- as.numeric(as.character(endline$baraza.D4.14))
+endline$baraza.D4.14 <- endline$baraza.D4.14 == 1
 
 
 ##ag
@@ -441,7 +561,7 @@ endline <- endline %>%  mutate(clusterID2 = group_indices(., district))
 ###drop all district barazas:
 endline <- subset(endline, district_baraza == 0)
 
-endline <- merge(endline, baseline[c("hhid","treat")], by.x=c("hhid"), by.y=c("hhid"))
+endline <- merge(endline, baseline[, -which(names(baseline)=="a21")], by="hhid")
 endline$information_planned <- 0
 endline$information_planned[endline$treat == "info" | endline$treat == "scbza"] <- 1
 endline$deliberation_planned <- 0
@@ -458,7 +578,7 @@ endline_interact <- subset(endline, (information ==0 & deliberation == 0))
 
 for (i in 1:length(outcomes)) {
 ## simple difference and adjust se for clustered treatment assignment
-ols <- lm(as.formula(paste(outcomes[i],"interaction_planned+a21",sep="~")), data=endline_interact) 
+ols <- lm(as.formula(paste(paste(outcomes[i],"interaction_planned+a21",sep="~"),baseline_outcomes[i],sep="+")), data=endline_interact)
 vcov_cluster <- vcovCR(ols, cluster = endline_interact$clusterID, type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
@@ -474,6 +594,8 @@ endline_info <- subset(endline, information == 0)
 for (i in 1:length(outcomes)) {
 ## simple difference and adjust se for clustered treatment assignment
 ols <- lm(as.formula(paste(outcomes[i],"information_planned+a21",sep="~")), data=endline_info) 
+
+ols <- lm(as.formula(paste(paste(outcomes[i],"information_planned*deliberation_planned+a21",sep="~"),baseline_outcomes[i],sep="+")), data=endline_info)
 vcov_cluster <- vcovCR(ols, cluster = endline_info$clusterID, type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
@@ -490,6 +612,7 @@ endline_delib <- subset(endline, deliberation == 0)
 for (i in 1:length(outcomes)) {
 ### simple difference and adjust se for clustered treatment assignment
 ols <- lm(as.formula(paste(outcomes[i],"deliberation_planned+a21",sep="~")), data=endline_delib) 
+ols <- lm(as.formula(paste(paste(outcomes[i],"information_planned*deliberation_planned+a21",sep="~"),baseline_outcomes[i],sep="+")), data=endline_delib)
 vcov_cluster <- vcovCR(ols, cluster = endline_delib$clusterID, type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
