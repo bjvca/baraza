@@ -20,7 +20,7 @@ glob_repli <- 1000
 glob_sig <- c(.025,.975) ### 5 percent conf intervals
 
 ########################################################## function definitions #########################################################################################
-RI_conf_sc <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr_repl = 1000, sig = c(.025,.975)) {
+RI_conf_sc <- function(i,outcomes, dta_sim , ctrls = NULL, nr_repl = 1000, sig = c(.025,.975)) {
   ### a function to esimate confidence intervals using randomization inference following Gerber and Green pages 66-71 and 83.
   #RI_conf_dist(2,outcomes, baseline_outcomes, subset(dta, ((information == 1 & deliberation==1) | district_baraza == 1)) , ctrls = "a21", nr_repl = 1000, sig = c(.025,.975))
   #dta_sim <- dta[dta$district_baraza == 0 ,]
@@ -202,18 +202,19 @@ sc_baseline$actor <- NA
 sc_baseline$actor[sc_baseline$designation %in% c("LC3_chair","Vice Chairperson LCIII")] <- "politician"
 sc_baseline$actor[sc_baseline$designation %in% c("Subcounty Chief/Town Clerk","Parish Chief","Acting Subcounty Chief/Town Clerk","Deputy subcounty chief/Town Clerk","Community Development Officer")] <- "civil servant"
 
-sc_baseline$subcounty <- as.character(sc_baseline$subcounty)
-sc_baseline$subcounty[sc_baseline$subcounty == "SEMBABULE TC"] <- "SEMBABULE_TC"
-sc_baseline$subcounty[sc_baseline$subcounty ==  "NTUSI"] <- "NTUUSI"
+# sc_baseline$subcounty <- as.character(sc_baseline$subcounty)
+# sc_baseline$subcounty[sc_baseline$subcounty == "SEMBABULE TC"] <- "SEMBABULE_TC"
+# sc_baseline$subcounty[sc_baseline$subcounty ==  "NTUSI"] <- "NTUUSI"
 
 #load treatment assignment
-treats <- read.csv(paste(path,"questionnaire/final_list_5.csv", sep ="/"))
+treats <- read.csv(paste(path,"data/public/treats.csv", sep ="/"))
 #merge in treatments
-sc_baseline <- merge(treats, sc_baseline)
+sc_baseline <- merge(treats, sc_baseline, by.x=c("district","subcounty"), by.y=c("district","subcounty"))
 
-#setdiff(sc_endline$subcounty,sc_baseline$subcounty)
-#[1] "HARUGALI"     "KIGULYA": these two were apparenty not inteviewed during baseline? 
-#    "NTUUSI"       "SEMBABULE_TC":: these two have spelling errors
+
+# setdiff(sc_endline$subcounty,sc_baseline$subcounty)
+# [1] "HARUGALI"     "KIGULYA": these two were apparenty not inteviewed during baseline? 
+#     "NTUUSI"       "SEMBABULE_TC":: these two have spelling errors
 
 # ########RECODING########
 # #SECTION D: SUBCOUNTY'S BASIC INFORMATION#
@@ -481,7 +482,7 @@ for (i in 1:length(outcomes)) {
   df_ancova[2,1,i] <- paste(paste("(",round(sd(as.matrix(sc_baseline[outcomes[i]]), na.rm=T),3),sep=""),")",sep="")
   
   ols <- lm(as.formula(paste(outcomes[i],"information*deliberation+region",sep="~")), data=sc_baseline[sc_baseline$district_baraza == 0,])
-  vcov_cluster <- vcov_CR(ols, cluster = sc_baseline$clusterID[sc_baseline$district_baraza == 0], type = "CR0")
+  vcov_cluster <- vcovCR(ols, cluster = sc_baseline$clusterID[sc_baseline$district_baraza == 0], type = "CR0")
   res <- coef_test(ols, vcov_cluster)
   conf <- conf_int(ols, vcov_cluster)
   
@@ -505,7 +506,7 @@ for (i in 1:length(outcomes)) {
   df_ancova[1,7,i] <- ifelse(res[3,5]<.01,"**",ifelse(res[3,5]<.05,"*",ifelse(res[3,5]<.1,"+","")))
   df_ancova[2,7,i] <- nobs(ols)
   ols <- lm(as.formula(paste(outcomes[i],"information:deliberation+region",sep="~")), data=sc_baseline[sc_baseline$district_baraza == 0 & (sc_baseline$information == sc_baseline$deliberation),])
-  vcov_cluster <- vcov_CR(ols, cluster = sc_baseline$clusterID[sc_baseline$district_baraza == 0 & (sc_baseline$information == sc_baseline$deliberation)], type = "CR0")
+  vcov_cluster <- vcovCR(ols, cluster = sc_baseline$clusterID[sc_baseline$district_baraza == 0 & (sc_baseline$information == sc_baseline$deliberation)], type = "CR0")
   res <- coef_test(ols, vcov_cluster)
   conf <- conf_int(ols, vcov_cluster)
   if (RI_conf_switch) {
@@ -522,7 +523,7 @@ for (i in 1:length(outcomes)) {
   
   #district vs. sc
   ols <- lm(as.formula(paste(outcomes[i],"district_baraza+region",sep="~")), data=sc_baseline[(sc_baseline$information == 1 & sc_baseline$deliberation==1) | sc_baseline$district_baraza == 1 ,])
-  vcov_cluster <- vcov_CR(ols, cluster = sc_baseline$clusterID2[(sc_baseline$information == 1 & sc_baseline$deliberation==1) | sc_baseline$district_baraza == 1 ], type = "CR0")
+  vcov_cluster <- vcovCR(ols, cluster = sc_baseline$clusterID2[(sc_baseline$information == 1 & sc_baseline$deliberation==1) | sc_baseline$district_baraza == 1 ], type = "CR0")
   res <- coef_test(ols, vcov_cluster)
   conf <- conf_int(ols, vcov_cluster)
   if (RI_conf_switch) {
