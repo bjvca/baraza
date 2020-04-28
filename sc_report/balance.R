@@ -15,6 +15,21 @@ if (Sys.info()['sysname'] =="Windows") {
   path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
 }
 
+################## function defs
+table_maker <- function(res_mat, sel_list = c(7), file_path = "~/test.csv") {
+
+for (i in sel_list) {
+if (i == sel_list[1]) {
+	exp_res <- res_mat[,,i]
+} else {
+	exp_res <- rbind(exp_res, res_mat[,,i])
+}
+}
+write.csv(exp_res, file = file_path)
+}
+
+########################
+
 
 #load sc endline and baseline data
 sc_baseline <- read.csv(paste(path,"data/public/sc_level_baseline.csv", sep ="/"))
@@ -291,6 +306,7 @@ df_ancova <- array("",dim=c(2,9,length(outcomes)))
 sc_baseline[outcomes[!duplicated(outcomes)]] <- lapply(sc_baseline[outcomes[!duplicated(outcomes)]], function(x) replace(x, x == 999, NA) )
 sc_baseline[outcomes[!duplicated(outcomes)]] <- lapply(sc_baseline[outcomes[!duplicated(outcomes)]], function(x) replace(x, x == "n/a", NA) )
 sc_baseline <- sc_baseline %>%  mutate(clusterID = group_indices(., district, subcounty))
+sc_baseline <- sc_baseline %>%  mutate(clusterID2 = group_indices(., district))
 
 for (i in 1:length(outcomes)) {
   print(i)
@@ -319,10 +335,6 @@ for (i in 1:length(outcomes)) {
   vcov_cluster <- vcovCR(ols, cluster = sc_baseline$clusterID[sc_baseline$district_baraza == 0 & (sc_baseline$information == sc_baseline$deliberation)], type = "CR0")
   res <- coef_test(ols, vcov_cluster)
   conf <- conf_int(ols, vcov_cluster)
-  if (RI_conf_switch) {
-    conf[6,4:5] <- RI_store$conf_1
-    res[6,5] <- RI_store$pval_1
-  }
   #df_ols[,1,i] <- c(res[6,1],res[6,2],res[6,5],res[6,6],conf[6,4],conf[6,5],nobs(ols))
   #df_ols[,1,i] <- c(res[6,1],res[6,2],res[6,5],conf[6,4],conf[6,5],nobs(ols))
   df_ancova[,2,i] <- c(round(res[6,1],3),paste(paste("(",round(res[6,2],3), sep=""),")",sep=""))
@@ -336,11 +348,7 @@ for (i in 1:length(outcomes)) {
   vcov_cluster <- vcovCR(ols, cluster = sc_baseline$clusterID2[(sc_baseline$information == 1 & sc_baseline$deliberation==1) | sc_baseline$district_baraza == 1 ], type = "CR0")
   res <- coef_test(ols, vcov_cluster)
   conf <- conf_int(ols, vcov_cluster)
-  if (RI_conf_switch) {
-    RI_store <- RI_conf_dist(i,outcomes, subset(sc_baseline, ((information == 1 & deliberation==1) | district_baraza == 1)) , ctrls = "region", nr_repl = glob_repli, sig = glob_sig)
-    conf[2,4:5] <-  RI_store$conf
-    res[2,5] <- RI_store$pval
-  }
+
   #df_ols[,4,i] <- c(res[6,4],res[6,2],res[6,5],res[6,6],conf[6,4],conf[6,5],nobs(ols))
   #df_ols[,4,i] <- c(res[6,4],res[6,2],res[6,5],conf[6,4],conf[6,5],nobs(ols))
   #df_ols[,4,i] <- c(res[2,1],res[2,5],nobs(ols))
