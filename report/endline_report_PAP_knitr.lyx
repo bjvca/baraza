@@ -1149,48 +1149,36 @@ status open
 
 \begin_layout Plain Layout
 
-if (Sys.info()['sysname'] =="Windows") { 
+path <- getwd()
 \end_layout
 
 \begin_layout Plain Layout
 
-path <- "C:/users/u0127963/Desktop/PhD/baraza" } else { 
 \end_layout
 
 \begin_layout Plain Layout
 
-path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
- 
+load(paste(path,"results/df_averages_baseline.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
 
-} 
+load(paste(path,"results/df_ols_baseline.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
 
-load(paste(path,"report/results/df_averages_baseline.Rd", sep="/"))
+load(paste(path,"results/df_balance_baseline.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
 
-load(paste(path,"report/results/df_ols_baseline.Rd", sep="/"))
+load(paste(path,"results/df_ols_end.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
 
-load(paste(path,"report/results/df_balance_baseline.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_ols_end.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_averages_end.Rd", sep="/"))
+load(paste(path,"results/df_averages_end.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -4078,38 +4066,22 @@ status open
 
 \begin_layout Plain Layout
 
-if (Sys.info()['sysname'] =="Windows") { 
+path <- getwd()
 \end_layout
 
 \begin_layout Plain Layout
 
-path <- "C:/users/u0127963/Desktop/PhD/baraza" } else { 
+load(paste(path,"results/df_averages.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
 
-path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
- 
+load(paste(path,"results/df_ancova.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
 
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_averages.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_ancova.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/baseline_desc.Rd", sep="/"))
+load(paste(path,"results/baseline_desc.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -7180,28 +7152,12 @@ status open
 
 \begin_layout Plain Layout
 
-if (Sys.info()['sysname'] =="Windows") { 
+path <- getwd()
 \end_layout
 
 \begin_layout Plain Layout
 
-path <- "C:/users/u0127963/Desktop/PhD/baraza" } else { 
-\end_layout
-
-\begin_layout Plain Layout
-
-path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-} 
-\end_layout
-
-\begin_layout Plain Layout
-
-source(paste(path,"report/analysis_report_interaction_time.R", sep="/"))
+source(paste(path,"analysis_report_interaction_time.R", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -8124,28 +8080,12 @@ status open
 
 \begin_layout Plain Layout
 
-if (Sys.info()['sysname'] =="Windows") { 
+path <- getwd()
 \end_layout
 
 \begin_layout Plain Layout
 
-path <- "C:/users/u0127963/Desktop/PhD/baraza" } else { 
-\end_layout
-
-\begin_layout Plain Layout
-
-path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-} 
-\end_layout
-
-\begin_layout Plain Layout
-
-source(paste(path,"report/endline_threat_to_validity.R", sep="/"))
+source(paste(path,"endline_threat_to_validity.R", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -9665,28 +9605,12 @@ status open
 
 \begin_layout Plain Layout
 
-if (Sys.info()['sysname'] =="Windows") { 
+path <- getwd()
 \end_layout
 
 \begin_layout Plain Layout
 
-path <- "C:/users/u0127963/Desktop/PhD/baraza" } else { 
-\end_layout
-
-\begin_layout Plain Layout
-
-path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-} 
-\end_layout
-
-\begin_layout Plain Layout
-
-source(paste(path,"report/endline_threat_to_validity.R", sep="/"))
+source(paste(path,"endline_threat_to_validity.R", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -11475,33 +11399,17 @@ e'>>=
 
 \begin_layout Plain Layout
 
-if (Sys.info()['sysname'] =="Windows") { 
+path <- getwd()
 \end_layout
 
 \begin_layout Plain Layout
 
-path <- "C:/users/u0127963/Desktop/PhD/baraza" } else { 
+load(paste(path,"results/df_averages_matcher.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
 
-path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-} 
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_averages_matcher.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_matcher.Rd", sep="/"))
+load(paste(path,"results/df_matcher.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout

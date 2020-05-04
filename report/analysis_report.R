@@ -396,12 +396,14 @@ endline$baraza.B5.3 <- endline$baraza.B5.3 == 1
 endline$baraza.C1.2 <-  as.numeric(as.character(endline$baraza.C1.2))
 endline$baraza.C1.2[is.na(endline$baraza.C1.2)] <- 0 ## is na for households with piped water in compound -> distance set to 0
 endline$baraza.C1.2[endline$baraza.C1.2 == 999] <- NA ## code for dont know is 999
+endline$baraza.end.dist <- endline$baraza.C1.2
 endline$baraza.C1.2 <-  log(endline$baraza.C1.2 + sqrt(endline$baraza.C1.2 ^ 2 + 1))
 endline <- trim("baraza.C1.2",endline)
 #endline$baraza.C1.3 <- sample(baseline$qc15[!is.na(baseline$qc15)],dim(endline)[1]) ### this needs to be inverse hypersine transformed and trimmed in final version
 endline$baraza.C1.3 <-  as.numeric(as.character(endline$baraza.C1.3))
 endline$baraza.C1.3[is.na(endline$baraza.C1.3)] <- 0 ## is na for households with piped water in compound -> waiting time set to 0
 endline$baraza.C1.3[endline$baraza.C1.3 == 999] <- NA ## code for dont know is 999
+endline$baraza.end.wait <- endline$baraza.C1.3 
 endline$baraza.C1.3 <-  log(endline$baraza.C1.3 + sqrt(endline$baraza.C1.3 ^ 2 + 1))
 endline <- trim("baraza.C1.3",endline)
 
@@ -640,11 +642,21 @@ dta$date <- as.character(paste("15",paste(dta$month, dta$year, sep="/"),sep="/")
 dta$date <- as.Date(dta$date,format = "%d/%m/%Y")
 dta$today <- as.Date("2020-02-15") ### set this as 15th of feb 2020, which is prob when half of endline data is collected
 dta$time_dif <- as.numeric(as.character(dta$today - dta$date))/30/12
+dta$time_dif[is.na(dta$time_dif) & (dta$deliberation == 1 | dta$information == 1)] <- mean(dta$time_dif) 
 dta$time_dif[is.na(dta$time_dif)] <- 0 
 dta$time_dif2 <- dta$time_dif * dta$time_dif
 
 ### uncomment for heterogeneity re: time
-dta <- subset(dta, (time_dif>1.5) | time_dif == 0)
+#dta <- subset(dta, (time_dif>1.5) | time_dif == 0)
+#dta <- subset(dta, j9 >= 5 )
+#dta <- subset(dta, baraza.J2 == 1 | baraza.J1 == 1)
+##both officials recall that barazas took place in treatment areas - reduces sample size by 25 percent
+#sc_endline <- read.csv(paste(path,"data/public/sc_level_endline.csv", sep ="/"))
+#sc_endline <- aggregate(sc_endline[c("baraza.M2","baraza.M4")]==1, list(sc_endline$district,sc_endline$sub),sum)
+#names(sc_endline) <- c("district","sub","baraza.M2","baraza.M4")
+#dta <-  merge(dta,sc_endline, by.x=c("district","subcounty"),by.y=c("district","sub"))
+#dta <- subset(dta, baraza.M2>=2 | (information == 0 & deliberation == 0))
+#write.csv(subset(dta, subcounty %in% c("BAGEZZA","HAPUYO","BWANSWA")),paste(path,"report/3ie_report/bagezza.csv", sep ="/"))
 ####
 
 
@@ -762,7 +774,7 @@ d_plot$x <- rep(c("agricuture","infrastructure","health","education","","index")
 d_plot$grp <- rep(c("sc baraza","info","delib","level"), times=6)
 d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib","level"))
 d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","health","education","","index"))))
-png(paste(path,"report/figure/impact_summary_ancova.png",sep = "/"), units="px", height=3200, width= 6400, res=600)
+png(paste(path,"report/figure/impact_summary_ancova_hetero4.png",sep = "/"), units="px", height=3200, width= 6400, res=600)
 print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3))
 dev.off()
 credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3)
