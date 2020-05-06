@@ -10,8 +10,12 @@ library(moments)
 library(doParallel)
 set.seed(12345) #not needed for final version?
 
+### this is executed in the /report subdirectory, need to ..
+path <- strsplit(getwd(), "/report")[[1]]
 
-RI_conf_switch <- TRUE
+### set this switch to TRUE if you want to produce a final report - this will save results matrices in a static directory
+final_verion_swith <- FALSE
+RI_conf_switch <- FALSE
 glob_repli <- 1000
 glob_sig <- c(.025,.975) ### 5 percent conf intervals
 
@@ -214,11 +218,6 @@ RI_conf_dist <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, 
 }
 
 ################################################################## end of funtions declarations
-if (Sys.info()['sysname'] =="Windows") {
-path <- "C:/users/u0127963/Desktop/PhD/baraza"
-} else {
-path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
-}
 
 treats <- read.csv(paste(path,"questionnaire/final_list_5.csv", sep ="/"))
 
@@ -238,7 +237,7 @@ baseline$b5144 <- as.numeric(baseline$b5144=="Yes")
 baseline$b5146 <- as.numeric(baseline$b5146=="Yes")
 ##use of unprotected water sources in dry season
 ###this was changed post registration to follow https://www.who.int/water_sanitation_health/monitoring/jmp2012/key_terms/en/ guidelines on what is considered improved, that also considers rainwater a protected source
-baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Bottled water","Cart with small tank","Unprotected dug well","Unprotected spring","Tanker truck"))    )
+baseline$base_unprotected <- (as.numeric(baseline$c11a) %in%  c(10,13,14))
 ### is there are water committee
 baseline$c10 <- as.numeric(baseline$c10=="Yes")
 baseline$c12source <- log(baseline$c12source + sqrt(baseline$c12source ^ 2 + 1))
@@ -316,7 +315,7 @@ baseline <- baseline %>%  mutate(clusterID2 = group_indices(., a22))
 
 
 ###init arrays to store results
-df_ols <- array(NA,dim=c(6,4,length(outcomes)))
+df_ols <- array(NA,dim=c(6,5,length(outcomes)))
 df_averages <- array(NA,dim=c(2,length(outcomes)))
 
 cl <- makeCluster(detectCores(all.tests = FALSE, logical = TRUE))
@@ -356,6 +355,17 @@ res[5,5] <- RI_store$pval_1
 
 df_ols[,1,i] <- c(res[5,1],res[5,2],res[5,5], conf[5,4],conf[5,5], nobs(ols))
 
+ols <- lm(as.formula(paste(outcomes[i],"district_baraza+a21",sep="~")), data=baseline[(baseline$information == 0 & baseline$deliberation==0) | baseline$district_baraza == 1 ,]) 
+vcov_cluster <- vcovCR(ols, cluster = baseline$clusterID2[(baseline$information == 0 & baseline$deliberation==0) | baseline$district_baraza == 1 ], type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+conf <- conf_int(ols, vcov_cluster)
+if (RI_conf_switch) {
+RI_store <- RI_conf_dist(i,outcomes, NULL, subset(baseline, ((information == 0 & deliberation==0) | district_baraza == 1)) , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
+conf[2,4:5] <-  RI_store$conf
+res[2,5] <- RI_store$pval
+}
+df_ols[,4,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
+
 ols <- lm(as.formula(paste(outcomes[i],"district_baraza+a21",sep="~")), data=baseline[(baseline$information == 1 & baseline$deliberation==1) | baseline$district_baraza == 1 ,]) 
 vcov_cluster <- vcovCR(ols, cluster = baseline$clusterID2[(baseline$information == 1 & baseline$deliberation==1) | baseline$district_baraza == 1 ], type = "CR0")
 res <- coef_test(ols, vcov_cluster)
@@ -365,7 +375,7 @@ RI_store <- RI_conf_dist(i,outcomes, NULL, subset(baseline, ((information == 1 &
 conf[2,4:5] <-  RI_store$conf
 res[2,5] <- RI_store$pval
 }
-df_ols[,4,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
+df_ols[,5,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
 }
 
 ### merge in treatments to drop the treated and then compare planned controls and untreated sub-counties
@@ -464,7 +474,7 @@ baseline$district_baraza <- NULL
 baseline <- merge(baseline, treats, all.y=T, by.y=c("district","subcounty"), by.x=c("a22","a23"))
 
 ###init arrays to store results
-df_ols_end <- array(NA,dim=c(6,4,length(outcomes)))
+df_ols_end <- array(NA,dim=c(6,5,length(outcomes)))
 df_averages_end <- array(NA,dim=c(2,length(outcomes)))
 
 
@@ -502,6 +512,18 @@ res[5,5] <- RI_store$pval_1
 
 df_ols_end[,1,i] <- c(res[5,1],res[5,2],res[5,5], conf[5,4],conf[5,5], nobs(ols))
 
+
+ols <- lm(as.formula(paste(outcomes[i],"district_baraza+a21",sep="~")), data=baseline[(baseline$information == 0 & baseline$deliberation==0) | baseline$district_baraza == 1 ,]) 
+vcov_cluster <- vcovCR(ols, cluster = baseline$clusterID2[(baseline$information == 0 & baseline$deliberation==0) | baseline$district_baraza == 1 ], type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+conf <- conf_int(ols, vcov_cluster)
+if (RI_conf_switch) {
+RI_store <- RI_conf_dist(i,outcomes, NULL, subset(baseline, ((information == 0 & deliberation==0) | district_baraza == 1)) , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
+conf[2,4:5] <-  RI_store$conf
+res[2,5] <- RI_store$pval
+}
+df_ols_end[,4,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
+
 ols <- lm(as.formula(paste(outcomes[i],"district_baraza+a21",sep="~")), data=baseline[(baseline$information == 1 & baseline$deliberation==1) | baseline$district_baraza == 1 ,]) 
 vcov_cluster <- vcovCR(ols, cluster = baseline$clusterID2[(baseline$information == 1 & baseline$deliberation==1) | baseline$district_baraza == 1 ], type = "CR0")
 res <- coef_test(ols, vcov_cluster)
@@ -511,7 +533,7 @@ RI_store <- RI_conf_dist(i,outcomes, NULL, subset(baseline, ((information == 1 &
 conf[2,4:5] <-  RI_store$conf
 res[2,5] <- RI_store$pval
 }
-df_ols_end[,4,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
+df_ols_end[,5,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
 }
 
 
@@ -524,5 +546,11 @@ df_ols_end[,4,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols)
  save(df_ols_end, file= paste(path,"report/results/df_ols_end.Rd", sep="/"))
  save(df_averages_end, file= paste(path,"report/results/df_averages_end.Rd", sep="/"))
 
-
+if (final_verion_swith) { 
+ save(df_ols, file= paste(path,"report/results/final/df_ols_baseline.Rd", sep="/"))
+ save(df_averages, file= paste(path,"report/results/final/df_averages_baseline.Rd", sep="/"))
+ save(df_balance, file= paste(path,"report/results/final/df_balance_baseline.Rd", sep="/"))
+ save(df_ols_end, file= paste(path,"report/results/final/df_ols_end.Rd", sep="/"))
+ save(df_averages_end, file= paste(path,"report/results/final/df_averages_end.Rd", sep="/"))
+}
 

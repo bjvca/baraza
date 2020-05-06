@@ -9,11 +9,11 @@ library(clubSandwich)
 library(moments)
 set.seed(54321) #not needed for final version?
 
-if (Sys.info()['sysname'] =="Windows") {
-path <- "C:/users/u0127963/Desktop/PhD/baraza"
-} else {
-path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
-}
+
+### set this switch to TRUE if you want to produce a final report - this will save results matrices in a static directory
+final_verion_swith <- TRUE
+
+path <- strsplit(getwd(), "/report")[[1]]
 
 
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
@@ -620,5 +620,13 @@ conf <- conf_int(ols, vcov_cluster)
 df_balance[,3,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5], nobs(ols))
 }
 
-#
+
+
+### save results
+save_path <- ifelse(final_verion_swith, paste(path,"report/results/final", sep = "/"), paste(path,"report/results/", sep = "/"))
+
+save(df_balance, file= paste(save_path,"df_threat_to_validity.Rd", sep="/"))
+
+
+
 

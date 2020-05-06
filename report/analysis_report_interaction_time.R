@@ -9,11 +9,7 @@ library(clubSandwich)
 library(moments)
 set.seed(123456789) #not needed for final version?
 
-if (Sys.info()['sysname'] =="Windows") {
-path <- "C:/users/u0127963/Desktop/PhD/baraza"
-} else {
-path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
-}
+path <- strsplit(getwd(), "/report")[[1]]
 
 
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
@@ -114,7 +110,7 @@ baseline$b5144 <- as.numeric(baseline$b5144=="Yes")
 baseline$b5146 <- as.numeric(baseline$b5146=="Yes")
 ##use of unprotected water sources in dry season
 ###this was changed post registration to follow https://www.who.int/water_sanitation_health/monitoring/jmp2012/key_terms/en/ guidelines on what is considered improved, that also considers rainwater a protected source
-baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Bottled water","Cart with small tank","Unprotected dug well","Unprotected spring","Tanker truck"))    )
+baseline$base_unprotected <- (as.numeric(baseline$c11a) %in%  c(10,13,14))
 ### is there are water committee
 baseline$c10 <- as.numeric(baseline$c10=="Yes")
 
@@ -203,7 +199,7 @@ endline$inputs <- as.numeric(endline$baraza.B1==1 | endline$baraza.B1.5==1)
 ###this was changed post registration to follow https://www.who.int/water_sanitation_health/monitoring/jmp2012/key_terms/en/ guidelines on what is considered improved, that also considers rainwater a protected source
 #baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Bottled water","Cart with small tank","Unprotected dug well","Unprotected spring","Tanker truck"))    )
 ### is there are water committee
-endline$unprotected <- (as.numeric(endline$baraza.C1 %in% c(5,7,9,10,11,12)) )
+endline$unprotected <- (as.numeric(endline$baraza.C1 %in% c(5,7,11)) )
 
 ### here we simulate endline variables - remove if endline data is in
 #endline$baraza.B2  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b21 == 1, na.rm=T))
@@ -460,7 +456,7 @@ dta_long <- rbind(endline[c("information","deliberation","district_baraza","time
 
 ###init arrays to store results
 
-df_ancova <- array(NA,dim=c(6,12,length(outcomes)))
+df_ancova <- array(NA,dim=c(6,15,length(outcomes)))
 df_averages <- array(NA,dim=c(2,length(outcomes)))
 ################
 
@@ -509,13 +505,22 @@ df_ancova[,8,i] <- c(res[9,1],res[9,2],res[9,5], conf[9,4],conf[9,5], nobs(ols))
 df_ancova[,9,i] <- c(res[10,1],res[10,2],res[10,5], conf[10,4],conf[10,5], nobs(ols))
 
 ###district level baraza
-ols <- lm(as.formula(paste(paste(outcomes[i],"district_baraza+district_baraza:time_dif+district_baraza:time_dif2+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ,]) 
-vcov_cluster <- vcovCR(ols, cluster = dta$clusterID2[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ], type = "CR0")
+ols <- lm(as.formula(paste(paste(outcomes[i],"district_baraza+district_baraza:time_dif+district_baraza:time_dif2+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[(dta$information == 0 & dta$deliberation==0) | dta$district_baraza == 1 ,]) 
+vcov_cluster <- vcovCR(ols, cluster = dta$clusterID2[(dta$information == 0 & dta$deliberation==0) | dta$district_baraza == 1 ], type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 df_ancova[,10,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
 df_ancova[,11,i] <- c(res[7,1],res[7,2],res[7,5], conf[7,4],conf[7,5], nobs(ols))
 df_ancova[,12,i] <- c(res[8,1],res[8,2],res[8,5], conf[8,4],conf[8,5], nobs(ols))
+
+###district level baraza
+ols <- lm(as.formula(paste(paste(outcomes[i],"district_baraza+district_baraza:time_dif+district_baraza:time_dif2+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ,]) 
+vcov_cluster <- vcovCR(ols, cluster = dta$clusterID2[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ], type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+conf <- conf_int(ols, vcov_cluster)
+df_ancova[,13,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
+df_ancova[,14,i] <- c(res[7,1],res[7,2],res[7,5], conf[7,4],conf[7,5], nobs(ols))
+df_ancova[,15,i] <- c(res[8,1],res[8,2],res[8,5], conf[8,4],conf[8,5], nobs(ols))
 
 }
 

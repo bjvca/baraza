@@ -13,8 +13,12 @@ set.seed(123456789) #not needed for final version?
 ### this is executed in the /report subdirectory, need to ..
 path <- strsplit(getwd(), "/report")[[1]]
 
-
-
+### set this switch to TRUE if you want to produce a final report - this will save results matrices in a static directory
+final_verion_swith <- FALSE
+## heterogeneity analysis:
+# 0 no
+# 1 allow for enough time - sc level 
+hetero <- 0
 RI_conf_switch <- FALSE
 glob_repli <- 1000
 glob_sig <- c(.025,.975) ### 5 percent conf intervals
@@ -628,7 +632,7 @@ dta_long <- rbind(endline[c("information","deliberation","district_baraza","time
 
 ###init arrays to store results
 df_ols <- array(NA,dim=c(6,4,length(outcomes)))
-df_ancova <- array(NA,dim=c(6,4,length(outcomes)))
+df_ancova <- array(NA,dim=c(6,5,length(outcomes)))
 df_dif_in_dif <- array(NA,dim=c(6,4,length(outcomes)))
 df_matcher <- array(NA,dim=c(6,4,length(outcomes)))
 df_averages <- array(NA,dim=c(2,length(outcomes)))
@@ -646,8 +650,12 @@ dta$time_dif[is.na(dta$time_dif)] <- 0
 dta$time_dif2 <- dta$time_dif * dta$time_dif
 
 ### uncomment for heterogeneity re: time
-#dta <- subset(dta, (time_dif>1.5) | time_dif == 0)
-#dta <- subset(dta, j9 >= 5 )
+if (hetero == 1) {
+dta <- subset(dta, (time_dif>1.5) | time_dif == 0)
+}
+if (hetero == 2) {
+dta <- subset(dta, j9 >= 5 )
+}
 #dta <- subset(dta, baraza.J2 == 1 | baraza.J1 == 1)
 ##both officials recall that barazas took place in treatment areas - reduces sample size by 25 percent
 #sc_endline <- read.csv(paste(path,"data/public/sc_level_endline.csv", sep ="/"))
@@ -666,7 +674,7 @@ for (i in 1:length(outcomes)) {
 df_averages[1,i] <- mean(as.matrix(endline[outcomes[i]]), na.rm=T)
 df_averages[2,i] <- sd(as.matrix(endline[outcomes[i]]), na.rm=T)
 
-### simple difference and adjust se for clustered treatment assignment
+### simple difference and adjust se for clustered treatment assignment - not used in analysis
 ols <- lm(as.formula(paste(outcomes[i],"information*deliberation+a21",sep="~")), data=endline[endline$district_baraza == 0,]) 
 vcov_cluster <- vcovCR(ols, cluster = endline$clusterID[endline$district_baraza == 0], type = "CR0")
 res <- coef_test(ols, vcov_cluster)
@@ -719,6 +727,17 @@ res[6,5] <- RI_store$pval_1
 
 df_ancova[,1,i] <- c(res[6,1],res[6,2],res[6,5], conf[6,4],conf[6,5], nobs(ols))
 
+ols <- lm(as.formula(paste(paste(outcomes[i],"district_baraza+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[(dta$information == 0 & dta$deliberation==0) | dta$district_baraza == 1 ,]) 
+vcov_cluster <- vcovCR(ols, cluster = dta$clusterID2[(dta$information == 0 & dta$deliberation==0) | dta$district_baraza == 1 ], type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+conf <- conf_int(ols, vcov_cluster)
+if (RI_conf_switch) {
+RI_store <- RI_conf_dist(i,outcomes, baseline_outcomes, subset(dta, ((information == 0 & deliberation==0) | district_baraza == 1)) , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
+conf[2,4:5] <-  RI_store$conf
+res[2,5] <- RI_store$pval
+}
+df_ancova[,4,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
+
 
 ols <- lm(as.formula(paste(paste(outcomes[i],"district_baraza+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ,]) 
 vcov_cluster <- vcovCR(ols, cluster = dta$clusterID2[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ], type = "CR0")
@@ -729,9 +748,9 @@ RI_store <- RI_conf_dist(i,outcomes, baseline_outcomes, subset(dta, ((informatio
 conf[2,4:5] <-  RI_store$conf
 res[2,5] <- RI_store$pval
 }
-df_ancova[,4,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
+df_ancova[,5,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
 
-## dif-in-dif
+## dif-in-dif - not used in analysis
 ols <- lm(as.formula(paste(outcomes[i],"information*deliberation*time",sep="~")), data=dta_long[dta_long$district_baraza == 0,])
 vcov_cluster <- vcovCR(ols, cluster = dta_long$clusterID[dta_long$district_baraza == 0 ], type = "CR0")
 res <- coef_test(ols, vcov_cluster)
@@ -773,33 +792,20 @@ d_plot$x <- rep(c("agricuture","infrastructure","health","education","","index")
 d_plot$grp <- rep(c("sc baraza","info","delib","level"), times=6)
 d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib","level"))
 d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","health","education","","index"))))
-png(paste(path,"report/figure/impact_summary_ancova.png",sep = "/"), units="px", height=3200, width= 6400, res=600)
-print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3))
-dev.off()
-credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3)
 
 
-### create data.frame to plot - make sure you get correct i's for the indices; last one is overall index
-d_plot <- data.frame(rbind(df_dif_in_dif[c(1,4,5),1,7],df_dif_in_dif[c(1,4,5),2,7],df_dif_in_dif[c(1,4,5),3,7],df_dif_in_dif[c(1,4,5),4,7]))
-d_plot <- rbind(d_plot,data.frame(rbind(df_dif_in_dif[c(1,4,5),1,13],df_dif_in_dif[c(1,4,5),2,13],df_dif_in_dif[c(1,4,5),3,13],df_dif_in_dif[c(1,4,5),4,13])))
-d_plot <- rbind(d_plot,data.frame(rbind(df_dif_in_dif[c(1,4,5),1,21],df_dif_in_dif[c(1,4,5),2,21],df_dif_in_dif[c(1,4,5),3,21],df_dif_in_dif[c(1,4,5),4,21])))
-d_plot <- rbind(d_plot,data.frame(rbind(df_dif_in_dif[c(1,4,5),1,29],df_dif_in_dif[c(1,4,5),2,29],df_dif_in_dif[c(1,4,5),3,29],df_dif_in_dif[c(1,4,5),4,29])))
-d_plot <- rbind(d_plot, data.frame(rbind(c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA))))
-d_plot <- rbind(d_plot,data.frame(rbind(df_dif_in_dif[c(1,4,5),1,30],df_dif_in_dif[c(1,4,5),2,30],df_dif_in_dif[c(1,4,5),3,30],df_dif_in_dif[c(1,4,5),4,30])))
 
-
-names(d_plot) <- c("y","ylo","yhi")
-
-d_plot$x <- rep(c("agricuture","infrastructure","health","education","","index"), each=4)
-d_plot$grp <- rep(c("sc baraza","info","delib","level"), times=6)
-d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib","level"))
-d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","health","education","","index"))))
-png(paste(path,"report/figure/impact_summary_dif_in_dif.png", sep="/"), units="px", height=3200, width= 6400, res=600)
-print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3))
-dev.off()
 
 ### save results
+save_path <- ifelse(final_verion_swith, paste(path,"report/results/final", sep = "/"), paste(path,"report/results/", sep = "/"))
+save_path <- ifelse(hetero ==1, paste(save_path,"hetero1", sep = "/"),  ifelse(hetero ==2, paste(save_path,"hetero2", sep = "/"), save_path))
 
- save(df_ancova, file= paste(path,"report/results/df_ancova.Rd", sep="/"))
- save(df_averages, file= paste(path,"report/results/df_averages.Rd", sep="/"))
- save(baseline_desc, file= paste(path,"report/results/baseline_desc.Rd", sep="/"))
+save(df_ancova, file= paste(save_path,"df_ancova.Rd", sep="/"))
+save(df_averages, file= paste(save_path,"df_averages.Rd", sep="/"))
+save(baseline_desc, file= paste(save_path,"baseline_desc.Rd", sep="/"))
+
+png(paste(save_path,"impact_summary_ancova.png",sep = "/"), units="px", height=3200, width= 6400, res=600)
+print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3))
+dev.off()
+
+

@@ -1,9 +1,3 @@
-### This file runs the analysis that accounts for potential introduction of selection bias due to incomplete roll-out.
-### Initially this was proposed as a matched dif-in-dif (and coded like that for the mock report)
-### I have decided to change this to CEM and ancova, for the following reasons:
-### https://blogs.worldbank.org/impactevaluations/why-difference-difference-estimation-still-so-popular-experimental-analysis
-### https://medium.com/@devmotivation/cem-coarsened-exact-matching-explained-7f4d64acc5ef
-
 rm(list=ls())
 library(dplyr)
 library(ggplot2)
@@ -13,19 +7,17 @@ library(plm)
 library(lmtest)
 library(clubSandwich)
 library(moments)
-library(doParallel)
 set.seed(123456789) #not needed for final version?
 
-if (Sys.info()['sysname'] =="Windows") {
-path <- "C:/users/u0127963/Desktop/PhD/baraza"
-} else {
-path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
-}
+### this is executed in the /report subdirectory, need to ..
+path <- strsplit(getwd(), "/report")[[1]]
 
-RI_conf_switch <- TRUE
+### set this switch to TRUE if you want to produce a final report - this will save results matrices in a static directory
+final_verion_swith <- TRUE
+RI_conf_switch <- FALSE
+
 glob_repli <- 1000
 glob_sig <- c(.025,.975) ### 5 percent conf intervals
-
 
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
 #source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/cleaning.R")
@@ -42,8 +34,6 @@ endline$region <- NULL
 endline <- endline[!duplicated(endline$hhid),]
 
 endline$a21 <- as.factor(endline$a21)
-
-
 
 ########################################################### functions declarations #####################################################
 
@@ -96,220 +86,9 @@ credplot.gg <- function(d,units, hypo, axlabs, lim){
  return(p)
 }
 
-## function definitions 
-RI_conf_sc <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr_repl = 1000, sig = c(.025,.975)) {
+################################################################## end of funtions declarations
 
-#dta_sim <- matched.merged
-#ctrls <- "a21"
-#nr_repl <- glob_repli
-#sig <- glob_sig
-	if (is.null(baseline_outcomes)) {
-		formula1 <- as.formula(paste(outcomes[i],paste("information:deliberation",ctrls,sep="+"),sep="~"))
-		formula2 <- as.formula(paste(outcomes[i],paste("information*deliberation",ctrls,sep="+"),sep="~"))
-	} else {
-		formula1 <- as.formula(paste(paste(outcomes[i],paste("information:deliberation",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
-		formula2 <- as.formula(paste(paste(outcomes[i],paste("information*deliberation",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
-	}
-
-
-	dta_sim <- dta_sim %>%  mutate(clusterID = group_indices(., district, subcounty))
-	### get ATEs for two different models
-	ols_1 <- lm(formula1, data=dta_sim[dta_sim$deliberation == dta_sim$information,], weights= weights) 
-	ols_2 <- lm(formula2, data=dta_sim, weights= weights) 
-	dta_sim$dep <- as.numeric(unlist(dta_sim[as.character(formula1[[2]])]))
-
-	treat_nrs <- table(data.frame(aggregate(dta_sim[c("information","deliberation")], list(dta_sim$clusterID),mean))[,2:3])
-
-	### calculate potential outcomes
-	### for model 1 (sc effect)
-	dta_sim$pot_out_0_1 <- NA
-	dta_sim$pot_out_0_1[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0]
-	dta_sim$pot_out_0_1[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] - coef(ols_1)["information:deliberation"]
-
-	dta_sim$pot_out_1_1 <- NA
-	dta_sim$pot_out_1_1[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1]
-	dta_sim$pot_out_1_1[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] + coef(ols_1)["information:deliberation"]
-
-	### for model 2 (factorial design with )
-	### potential outcomes for I=0 D=0
-
-	dta_sim$pot_out_00_2 <- NA
-	dta_sim$pot_out_00_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0]
-	dta_sim$pot_out_00_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] - coef(ols_2)["information"]
-	dta_sim$pot_out_00_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] - coef(ols_2)["information"] - coef(ols_2)["deliberation"] - coef(ols_2)["information:deliberation"]
-	dta_sim$pot_out_00_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] - coef(ols_2)["deliberation"]
-
-	### potential outcomes for I=1 and D-1
-	dta_sim$pot_out_11_2 <- NA
-	dta_sim$pot_out_11_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1]
-	dta_sim$pot_out_11_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] +  coef(ols_2)["information"]
-	dta_sim$pot_out_11_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] + coef(ols_2)["deliberation"]
-	dta_sim$pot_out_11_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] + coef(ols_2)["information"] + coef(ols_2)["deliberation"] + coef(ols_2)["information:deliberation"]
-
-	### potential outcomes for I=1 and D=0
-	dta_sim$pot_out_10_2 <- NA
-	dta_sim$pot_out_10_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0]
-	dta_sim$pot_out_10_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] -  coef(ols_2)["deliberation"] - coef(ols_2)["information:deliberation"]
-	dta_sim$pot_out_10_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] + coef(ols_2)["information"] -  coef(ols_2)["deliberation"]
-	dta_sim$pot_out_10_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] +  coef(ols_2)["information"] 
-
-	### potential outcomes for I=0 and D=1
-	dta_sim$pot_out_01_2 <- NA
-	dta_sim$pot_out_01_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1]
-	dta_sim$pot_out_01_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] -  coef(ols_2)["information"] - coef(ols_2)["information:deliberation"]
-	dta_sim$pot_out_01_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] - coef(ols_2)["information"] +  coef(ols_2)["deliberation"]
-	dta_sim$pot_out_01_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] +  coef(ols_2)["deliberation"] 
-
-	oper <- foreach (repl = 1:nr_repl,.combine=rbind) %dopar% {
-		#do the permuations	
-		perm_treat <- data.frame(cbind(sample(c(rep("C",treat_nrs[1,1]), rep("D",treat_nrs[1,2]), rep("I",treat_nrs[2,1]),rep("B",treat_nrs[2,2]))),names(table(dta_sim$clusterID))))  
-		names(perm_treat) <- c("perm_treat","clusterID")
-		dta_perm <- merge(dta_sim, perm_treat, by.x="clusterID", by.y="clusterID")
-		dta_perm$information <- ifelse(dta_perm$perm_treat %in% c("I","B"), 1, 0)
-		dta_perm$deliberation <- ifelse(dta_perm$perm_treat %in% c("D","B"), 1, 0)
-
-		dta_perm$dep_1 <- NA
-		dta_perm$dep_1[dta_perm["information"] ==1 & dta_perm["deliberation"] ==1] <- dta_perm$pot_out_1_1[dta_perm["information"] ==1 & dta_perm["deliberation"] ==1]
-		dta_perm$dep_1[dta_perm["information"] ==0 & dta_perm["deliberation"] ==0] <- dta_perm$pot_out_0_1[dta_perm["information"] ==0 & dta_perm["deliberation"] ==0]
-
-		dta_perm$dep_2 <- NA
-		dta_perm$dep_2[dta_perm["information"] ==1 & dta_perm["deliberation"] ==1] <- dta_perm$pot_out_11_2[dta_perm["information"] ==1 & dta_perm["deliberation"] ==1]
-		dta_perm$dep_2[dta_perm["information"] ==0 & dta_perm["deliberation"] ==0] <- dta_perm$pot_out_00_2[dta_perm["information"] ==0 & dta_perm["deliberation"] ==0] 
-		dta_perm$dep_2[dta_perm["information"] ==1 & dta_perm["deliberation"] ==0] <- dta_perm$pot_out_10_2[dta_perm["information"] ==1 & dta_perm["deliberation"] ==0] 
-		dta_perm$dep_2[dta_perm["information"] ==0 & dta_perm["deliberation"] ==1] <- dta_perm$pot_out_01_2[dta_perm["information"] ==0 & dta_perm["deliberation"] ==1] 
-
-### p-value
-		exceed1 <- coef(lm(formula1, data=dta_perm, weights= weights))["information:deliberation"] > abs(coef(ols_1)["information:deliberation"])
-		exceed2 <- coef(lm(formula2, data=dta_perm, weights= weights))["information"] > abs(coef(ols_2)["information"])
-		exceed3 <- coef(lm(formula2, data=dta_perm, weights= weights))["deliberation"] > abs(coef(ols_2)["deliberation"])
-
-
-		dta_perm[outcomes[i]] <- dta_perm$dep_1
-		r1 <-coef(lm(formula1, data=dta_perm[dta_perm$deliberation == dta_perm$information,]))["information:deliberation"]
-
-		dta_perm[outcomes[i]] <- dta_perm$dep_2
-		r2 <-coef(lm(formula2, data=dta_perm))["information"]
-		r3 <- coef(lm(formula2, data=dta_perm))["deliberation"]
-		oper <- return(c(r1,r2,r3, exceed1, exceed2, exceed3))
-	}
-	return(list(conf_1 = quantile(oper[,1],sig, na.rm=T),conf_2 = quantile(oper[,2],sig, na.rm=T),conf_3 = quantile(oper[,3],sig, na.rm=T), pval_1= (sum(oper[,4], na.rm=T)/nr_repl)*2, pval_2= (sum(oper[,5], na.rm=T)/nr_repl)*2, pval_3= (sum(oper[,6], na.rm=T)/nr_repl)*2))
-	}
-
-RI_conf_sc_custom <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr_repl = 1000, sig = c(.025,.975)) {
-#RI_conf_sc(i,outcomes, baseline_outcomes, matched.merged , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
-#dta_sim <- matched.merged
-#ctrls <- "a21"
-#nr_repl <- glob_repli
-#sig <- glob_sig
-	if (is.null(baseline_outcomes)) {
-		formula1 <- as.formula(paste(outcomes[i],paste("information:deliberation",ctrls,sep="+"),sep="~"))
-		formula2 <- as.formula(paste(outcomes[i],paste("information*deliberation",ctrls,sep="+"),sep="~"))
-	} else {
-		formula1 <- as.formula(paste(paste(outcomes[i],paste("information:deliberation",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
-		formula2 <- as.formula(paste(paste(outcomes[i],paste("information*deliberation",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
-	}
-
-
-	dta_sim <- dta_sim %>%  mutate(clusterID = group_indices(., district, subcounty))
-	### get ATEs for two different models
-	ols_1 <- lm(formula1, data=dta_sim[dta_sim$deliberation == dta_sim$information,], weights= weights) 
-
-	dta_sim$dep <- as.numeric(unlist(dta_sim[as.character(formula1[[2]])]))
-
-	treat_nrs <- table(data.frame(aggregate(dta_sim[c("information","deliberation")], list(dta_sim$clusterID),mean))[,2:3])
-
-	### calculate potential outcomes
-	### for model 1 (sc effect)
-	dta_sim$pot_out_0_1 <- NA
-	dta_sim$pot_out_0_1[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0]
-	dta_sim$pot_out_0_1[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] - coef(ols_1)["information:deliberation"]
-
-	dta_sim$pot_out_1_1 <- NA
-	dta_sim$pot_out_1_1[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1]
-	dta_sim$pot_out_1_1[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] + coef(ols_1)["information:deliberation"]
-
-	oper <- foreach (repl = 1:nr_repl,.combine=rbind) %dopar% {
-		#do the permuations	
-		perm_treat <- data.frame(cbind(sample(c(rep("C",treat_nrs[1,1]), rep("D",treat_nrs[1,2]), rep("I",treat_nrs[2,1]),rep("B",treat_nrs[2,2]))),names(table(dta_sim$clusterID))))  
-		names(perm_treat) <- c("perm_treat","clusterID")
-		dta_perm <- merge(dta_sim, perm_treat, by.x="clusterID", by.y="clusterID")
-		dta_perm$information <- ifelse(dta_perm$perm_treat %in% c("I","B"), 1, 0)
-		dta_perm$deliberation <- ifelse(dta_perm$perm_treat %in% c("D","B"), 1, 0)
-
-		dta_perm$dep_1 <- NA
-		dta_perm$dep_1[dta_perm["information"] ==1 & dta_perm["deliberation"] ==1] <- dta_perm$pot_out_1_1[dta_perm["information"] ==1 & dta_perm["deliberation"] ==1]
-		dta_perm$dep_1[dta_perm["information"] ==0 & dta_perm["deliberation"] ==0] <- dta_perm$pot_out_0_1[dta_perm["information"] ==0 & dta_perm["deliberation"] ==0]
-
-		
-### p-value
-		exceed1 <- coef(lm(formula1, data=dta_perm, weights= weights))["information:deliberation"] > abs(coef(ols_1)["information:deliberation"])
-	
-		dta_perm[outcomes[i]] <- dta_perm$dep_1
-		r1 <-coef(lm(formula1, data=dta_perm[dta_perm$deliberation == dta_perm$information,]))["information:deliberation"]	
-		oper <- return(c(r1, exceed1))
-	}
-	return(list(conf_1 = quantile(oper[,1],sig), pval_1= (sum(oper[,2])/nr_repl)*2))
-	}
-
-
-RI_conf_dist <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr_repl = 1000, sig = c(.025,.975)) {
-
-
-### a function to esimate confidence intervals using randomization inference following Gerber and Green pages 66-71 and 83.
-	if (is.null(baseline_outcomes)) {
-		formula <- as.formula(paste(outcomes[i],paste("district_baraza",ctrls,sep="+"),sep="~"))
-		
-	} else {
-		formula <- as.formula(paste(paste(outcomes[i],paste("district_baraza",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
-	}
-
-
-	dta_sim <- dta_sim %>%  mutate(clusterID = group_indices(., district))
-	### get ATEs for two different models
-	ols <- lm(formula, data=dta_sim, weights= weights) 
-	
-	dta_sim$dep <- as.numeric(unlist(dta_sim[as.character(formula[[2]])]))
-
-	treat_nrs <- table(data.frame(aggregate(dta_sim["district_baraza"], list(dta_sim$clusterID),mean)[,2]))
-
-	### calculate potential outcomes
-	### for model 1 (sc effect)
-	dta_sim$pot_out_0 <- NA
-	dta_sim$pot_out_0[dta_sim["district_baraza"] == 0 ] <- dta_sim$dep[dta_sim["district_baraza"] == 0 ]
-	dta_sim$pot_out_0[dta_sim["district_baraza"] == 1 ] <- dta_sim$dep[dta_sim["district_baraza"] == 1] - coef(ols)["district_baraza"]
-
-	dta_sim$pot_out_1 <- NA
-	dta_sim$pot_out_1[dta_sim["district_baraza"] == 0 ] <- dta_sim$dep[dta_sim["district_baraza"] == 0 ] + coef(ols)["district_baraza"]
-	dta_sim$pot_out_1[dta_sim["district_baraza"] == 1 ] <- dta_sim$dep[dta_sim["district_baraza"] == 1]	
-
-	
-	oper <- foreach (repl = 1:nr_repl,.combine=rbind) %dopar% {
-		#do the permuations	
-		perm_treat <- data.frame(cbind(sample(c(rep("SC",treat_nrs[1]), rep("D",treat_nrs[2]))),names(table(dta_sim$clusterID))))  
-		names(perm_treat) <- c("perm_treat","clusterID")
-		dta_perm <- merge(dta_sim, perm_treat, by.x="clusterID", by.y="clusterID")
-		dta_perm$district_baraza <- ifelse(dta_perm$perm_treat == "D", 1, 0)
-	
-
-		dta_perm$dep <- NA
-		dta_perm$dep[dta_perm["district_baraza"] ==1 ] <- dta_perm$pot_out_1[dta_perm["district_baraza"] ==1 ]
-		dta_perm$dep[dta_perm["district_baraza"] ==0 ] <- dta_perm$pot_out_0[dta_perm["district_baraza"] ==0 ]
-
-
-		### p-value
-		exceed <- coef(lm(formula, data=dta_perm, weights= weights))["district_baraza"] > abs(coef(ols)["district_baraza"])
-
-		
-
-		dta_perm[outcomes[i]] <- dta_perm$dep
-		res_list <- cbind(coef(lm(formula, data=dta_perm))["district_baraza"],"exceed" = exceed)
-		return(res_list) 
-	}
-	return(list(conf = quantile(oper[,1],sig),pval= (sum(oper[,2])/nr_repl)*2))
-}
-################################################################### end of funtions declarations
-
-### for the mock report, I use a dummy endline - I read in a dummy endline of 3 households just to get the correct variable names
+#### for the mock report, I use a dummy endline - I read in a dummy endline of 3 households just to get the correct variable names
 #endline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/endline.csv")[10:403]
 
 #### I then merge with the sampling list to basically create an empty endline dataset
@@ -332,14 +111,19 @@ baseline$a23[baseline$a23 == "NTUSI"] <- "NTUUSI"
 
 baseline$b21 <-  as.numeric(baseline$b21=="Yes")
 baseline$b31 <-  as.numeric(baseline$b31=="Yes")
+baseline$b41 <-  as.numeric(baseline$b41=="Yes")
+baseline$b41[is.na(baseline$b41)] <- 0
 baseline$b44 <-  as.numeric(baseline$b44=="Yes")
 baseline$b44[is.na(baseline$b44)] <- 0
 baseline$base_inputs <- as.numeric(baseline$used_seed=="Yes" | baseline$used_fert=="Yes")
+baseline$used_seed <- baseline$used_seed=="Yes"
+baseline$used_fert <- baseline$used_fert=="Yes"
+baseline$used_chem <- baseline$used_chem=="Yes"
 baseline$b5144 <- as.numeric(baseline$b5144=="Yes")
 baseline$b5146 <- as.numeric(baseline$b5146=="Yes")
 ##use of unprotected water sources in dry season
 ###this was changed post registration to follow https://www.who.int/water_sanitation_health/monitoring/jmp2012/key_terms/en/ guidelines on what is considered improved, that also considers rainwater a protected source
-baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Bottled water","Cart with small tank","Unprotected dug well","Unprotected spring","Tanker truck"))    )
+baseline$base_unprotected <- (as.numeric(baseline$c11a) %in%  c(10,13,14))
 ### is there are water committee
 baseline$c10 <- as.numeric(baseline$c10=="Yes")
 
@@ -369,9 +153,15 @@ baseline <- trim("d43", baseline)
 baseline$d11 <- as.numeric(baseline$d11=="Yes")
 
 baseline$tot_sick[baseline$d11==0] <- 0 
+baseline$not_work[baseline$d11==0] <- 0 
+baseline$not_school[baseline$d11==0] <- 0 
+baseline$not_work_school <- baseline$not_work + baseline$not_school
 
 baseline$tot_sick <- log(baseline$tot_sick + sqrt(baseline$tot_sick ^ 2 + 1))
 baseline <- trim("tot_sick", baseline)
+
+baseline$not_work_school <- log(baseline$not_work_school + sqrt(baseline$not_work_school ^ 2 + 1))
+baseline <- trim("not_work_school", baseline)
 
 baseline$wait_time <- baseline$d410hh*60+ baseline$d410mm
 baseline$wait_time_min  <- baseline$d410hh*60+ baseline$d410mm
@@ -394,8 +184,14 @@ baseline <- trim("dist_school", baseline)
 baseline$e12 <- rowSums(cbind(as.numeric(baseline$e12upe == "Yes") , as.numeric(baseline$e12use == "Yes")), na.rm=T) > 0
 baseline$e12[is.na(baseline$e12upe) & is.na(baseline$e12use)] <- NA
 
+baseline$e13 <- rowSums(cbind(as.numeric(baseline$e13upe == "Yes") , as.numeric(baseline$e13use == "Yes")), na.rm=T) > 0
+baseline$e13[is.na(baseline$e13upe) & is.na(baseline$e13use)] <- NA
+
 baseline$e14 <- rowSums(cbind(as.numeric(baseline$e14upe == "Yes") , as.numeric(baseline$e14use == "Yes")), na.rm=T) > 0
 baseline$e14[is.na(baseline$e14upe) & is.na(baseline$e14use)] <- NA
+
+baseline$e18 <- rowSums(cbind(as.numeric(baseline$e18upe == 1) , as.numeric(baseline$e18use == 1)), na.rm=T) > 0
+baseline$e18[is.na(baseline$e18upe) & is.na(baseline$e18use)] <- NA
 
 baseline$e22 <- rowSums(cbind(as.numeric(baseline$e22upe == "Yes") , as.numeric(baseline$e22use == "Yes")), na.rm=T) > 0
 baseline$e22[is.na(baseline$e22upe) & is.na(baseline$e22use)] <- NA
@@ -414,9 +210,62 @@ baseline$log_farmsize <- log(baseline$farmsize + sqrt(baseline$farmsize ^ 2 + 1)
 baseline$log_farmsize[is.infinite(baseline$log_farmsize)] <- NA
 baseline <- trim("farmsize", baseline)
 
+baseline$d411 <- log(baseline$d411 + sqrt(baseline$d411 ^ 2 + 1))
+baseline <- trim("d411", baseline)
+
 baseline$ironroof <- as.numeric(baseline$a512 =="Corrugated iron sheets")
 baseline$improved_wall <- as.numeric(baseline$a513 %in% c("Mud_bricks_burnt_bricks","Concrete_blocks") )
 baseline$head_sec <- as.numeric(baseline$a36) > 15
+
+baseline$f241.LC1.election <- baseline$f241.LC1.election == "Yes"   
+baseline$f241.LC3.election <- baseline$f241.LC3.election == "Yes"   
+baseline$f241.LC5.election <- baseline$f241.LC5.election == "Yes"   
+baseline$f241.Pesidential <- baseline$f241.Pesidential == "Yes"   
+baseline$f241.Parliamentary <- baseline$f241.Parliamentary == "Yes"  
+baseline$f241.Party.leader <- baseline$f241.Party.leader == "Yes"
+
+
+baseline$f2301 <- as.numeric(baseline$f2301) %in% c(6,7)
+baseline$f2303 <- as.numeric(baseline$f2303) %in% c(1,2,3,6,7)
+baseline$f2307  <- as.numeric(baseline$f2307) %in% c(1,3,6,7) 
+baseline$f2309 <- as.numeric(baseline$f2309) %in% c(1,2,3,6,7)
+baseline$f2310 <- as.numeric(baseline$f2310) %in% c(1,2,3,6,7)
+
+baseline$f21 <- baseline$f21 == "Yes"
+
+baseline$roof <- baseline$a512 %in% c("Corrugated iron sheets", "Tiles")
+baseline$wall <- baseline$a513 == "Mud_bricks_burnt_bricks"
+baseline$b314 <- baseline$b314 == "Yes"
+baseline$b316 <- baseline$b316 == "Yes"
+baseline$b316[is.na(baseline$b316)] <- FALSE
+baseline$used_livestock_tech <- baseline$used_livestock_tech == "Yes"
+baseline$d416 <- baseline$d416 == "Yes"
+baseline$d419 <- baseline$d419 == "Yes"
+
+baseline$b320 <- baseline$b320 == "Decided by extension agents/forum members without any consultation"
+baseline$qc16 <- (baseline$qc16 == "Satisfied"| baseline$qc16 == "Very satisfied")
+baseline$d420 <- (baseline$d420 == "Satisfied" | baseline$d420 == "Very satisfied")
+baseline$c4 <- baseline$c4 %in% c("Boil","Use chlorine/bleach")
+baseline$c11 <- baseline$c11 == "Yes"
+baseline$c11[is.na(baseline$c11 )] <- FALSE 
+baseline$c13 <- baseline$c13 == "Yes"
+baseline$c13[is.na(baseline$c13 )] <- FALSE
+baseline$d32 <- baseline$d32 == "Yes"
+baseline$d32[is.na(baseline$d32 )] <- FALSE
+baseline$d315 <- baseline$d315 == "Yes"
+baseline$d315[is.na(baseline$d315 )] <- FALSE
+baseline$base_doctor <- baseline$d49 %in% c("Doctor","In-charge")
+baseline$base_doctor[is.na(baseline$d49)] <- NA
+baseline$base_paid_health <- baseline$d413 == "Yes"
+baseline$base_paid_health[is.na(baseline$d413)] <- NA
+baseline$d426 <- (baseline$d426 == "Yes")
+
+endline$baraza.D4.7 <- as.numeric(as.character(endline$baraza.D4.7))
+endline$baraza.D4.7[endline$baraza.D4.7 == 999] <- NA
+endline$baraza.D4.7 <-  log(endline$baraza.D4.7 + sqrt(endline$baraza.D4.7 ^ 2 + 1))
+endline <- trim("baraza.D4.7",endline)
+
+
 baseline_desc <- baseline
 baseline_matching <- merge(baseline,treats, by.x=c("a22","a23"), by.y=c("district","subcounty"))
 
@@ -425,10 +274,17 @@ baseline_matching <- merge(baseline,treats, by.x=c("a22","a23"), by.y=c("distric
 endline$baraza.B3 <- endline$baraza.B3 ==1 |  endline$baraza.B3.3 ==1
 #endline$inputs <- 0
 endline$inputs <- as.numeric(endline$baraza.B1==1 | endline$baraza.B1.5==1) 
+endline$baraza.B1 <- endline$baraza.B1==1
+endline$baraza.B1.5 <- endline$baraza.B1.5==1
+endline$baraza.B1.9 <- endline$baraza.B1.9==1
+endline$baraza.B1.13 <- endline$baraza.B1.13==1
+endline$baraza.B3.4 <- endline$baraza.B3.4==1
+endline$baraza.B3.5 <- endline$baraza.B3.5==1
+
 ###this was changed post registration to follow https://www.who.int/water_sanitation_health/monitoring/jmp2012/key_terms/en/ guidelines on what is considered improved, that also considers rainwater a protected source
 #baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Bottled water","Cart with small tank","Unprotected dug well","Unprotected spring","Tanker truck"))    )
 ### is there are water committee
-endline$unprotected <- (as.numeric(endline$baraza.C1 %in% c(5,7,9,10,11,12)) )
+endline$unprotected <- (as.numeric(endline$baraza.C1 %in% c(5,7,11)) )
 
 ### here we simulate endline variables - remove if endline data is in
 #endline$baraza.B2  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b21 == 1, na.rm=T))
@@ -438,6 +294,7 @@ endline$baraza.B2  <- endline$baraza.B2  == 1
 #endline$baraza.B3 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b31 == 1, na.rm=T))
 ###naads in village
 ### here we simulate endline variables - remove if endline data is in
+endline$baraza.B4 <- endline$baraza.B4 == 1
 #endline$baraza.B4.1  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b44 == 1, na.rm=T))
 endline$baraza.B4.1 <- endline$baraza.B4.1 == 1
 ###simulate an effect on this one
@@ -494,8 +351,18 @@ endline[members] <- lapply(endline[members], function(x) as.numeric(as.character
 endline[members] <- lapply(endline[members], function(x) replace(x, x == 999,NA) )
 endline$baraza.D1.2 <- rowSums(endline[members], na.rm=T)
 
+members <- paste(paste("baraza.labour", 1:15, sep="."),".D1.3", sep=".")
+
+endline[members] <- lapply(endline[members], function(x) as.numeric(as.character(x)) )
+endline[members] <- lapply(endline[members], function(x) replace(x, x == 999,NA) )
+endline$baraza.D1.3 <- rowSums(endline[members], na.rm=T)
+
+
 endline$baraza.D1.2 <- log(endline$baraza.D1.2 + sqrt(endline$baraza.D1.2 ^ 2 + 1))
 endline <- trim("baraza.D1.2", endline)
+
+endline$baraza.D1.3 <- log(endline$baraza.D1.3 + sqrt(endline$baraza.D1.3 ^ 2 + 1))
+endline <- trim("baraza.D1.3", endline)
 
 #endline$baraza.D4.6 <- sample(baseline$wait_time[!is.na(baseline$wait_time)] ,dim(endline)[1]) 
 endline$baraza.D4.6 <-  as.numeric(as.character(endline$baraza.D4.6))
@@ -519,8 +386,15 @@ endline$baraza.E5 <- log(endline$baraza.E5 + sqrt(endline$baraza.E5 ^ 2 + 1))
 endline$baraza.E12 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.4)) == 1 , as.numeric(as.character(endline$baraza.E2.4))==1), na.rm=T) > 0
 endline$baraza.E12[is.na(as.numeric(as.character(endline$baraza.E1.4)) ) & is.na(as.numeric(as.character(endline$baraza.E2.4)) )] <- NA
 
+endline$baraza.E13 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.5)) == 1 , as.numeric(as.character(endline$baraza.E2.5))==1), na.rm=T) > 0
+endline$baraza.E13[is.na(as.numeric(as.character(endline$baraza.E1.5)) ) & is.na(as.numeric(as.character(endline$baraza.E2.5)) )] <- NA
+
+
 endline$baraza.E14 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.6)) == 1 , as.numeric(as.character(endline$baraza.E2.6))==1), na.rm=T) > 0
 endline$baraza.E14[is.na(as.numeric(as.character(endline$baraza.E1.6)) ) & is.na(as.numeric(as.character(endline$baraza.E2.6)) )] <- NA
+
+endline$baraza.E18 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.9)) == 1 , as.numeric(as.character(endline$baraza.E2.9))==1), na.rm=T) > 0
+endline$baraza.E18[is.na(as.numeric(as.character(endline$baraza.E1.9)) ) & is.na(as.numeric(as.character(endline$baraza.E2.9)) )] <- NA
 
 endline$baraza.E22 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.10)) == 1 , as.numeric(as.character(endline$baraza.E2.10))==1), na.rm=T) > 0
 endline$baraza.E22[is.na(as.numeric(as.character(endline$baraza.E1.10)) ) & is.na(as.numeric(as.character(endline$baraza.E2.10)) )] <- NA
@@ -531,21 +405,229 @@ endline$baraza.E32[is.na(as.numeric(as.character(endline$baraza.E1.13)) ) & is.n
 endline$baraza.E45 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.18)) == 1 , as.numeric(as.character(endline$baraza.E2.18))==1), na.rm=T) > 0
 endline$baraza.E45[is.na(as.numeric(as.character(endline$baraza.E1.18)) ) & is.na(as.numeric(as.character(endline$baraza.E2.18)) )] <- NA
 
-##endline$baraza.E1.6 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e14, na.rm=T))
-##endline$baraza.E1.10 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e22, na.rm=T))
-##endline$baraza.E1.13 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e32, na.rm=T))
-##endline$baraza.E1.18 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e45, na.rm=T))
-##ag
+### assorted outcomes
+### type of roof
+endline$baraza.roof <- endline$baraza.roof %in% 1:2
+
+endline$baraza.wall <- endline$baraza.wall == 2
+
+endline$seed_OWC <- endline$baraza.B1.6.1 == "True"
+endline$baraza.B3.20.3 <- endline$baraza.B3.20.3 =="True"
+endline$baraza.D4.11 <- as.numeric(as.character(endline$baraza.D4.11))
+endline$baraza.D4.11 <- endline$baraza.D4.11=="1"
+endline$baraza.D4.12 <- as.numeric(as.character(endline$baraza.D4.12))
+endline$baraza.D4.12 <- endline$baraza.D4.12=="1"
+endline$baraza.D4.13 <- as.numeric(as.character(endline$baraza.D4.13))
+endline$baraza.D4.13 <- endline$baraza.D4.13 <= 2
+endline$baraza.C1.4 <- endline$baraza.C1.4<=2
+endline$baraza.C2.1 <- endline$baraza.C2.1 %in%  c(1:2)
+endline$baraza.C2.4 <- endline$baraza.C2.4 == 1
+endline$baraza.C2.5  <- endline$baraza.C2.5 == 1
+
+endline$baraza.D3.1 <- endline$baraza.D3.1==1
+endline$baraza.D3.3 <- endline$baraza.D3.3==1
+
+endline$doctor <- FALSE
+endline$doctor <- endline$baraza.D4.5.1 == "True" | endline$baraza.D4.5.7 == "True" 
+endline$doctor[endline$baraza.D4.5.1 == "n/a" & endline$baraza.D4.5.7 == "n/a"] <- NA
+
+endline$paid_health <- endline$baraza.D4.10 == 1
+endline$paid_health[endline$baraza.D4.10 == "n/a"] <- NA
+
+endline$baraza.D4.14 <- as.numeric(as.character(endline$baraza.D4.14))
+endline$baraza.D4.14 <- endline$baraza.D4.14 == 1
+
+#PLEASE DESCRIBE YOUR PARTICIPATION IN DIFFERENT TYPES OF ELECTIONS:
+#F1	F1. In this household, are there any members who currently hold any political/traditional positions?
+endline$baraza.F1 <- (endline$baraza.F1 == 1)
+
+
+#F2	F2. In the last elections did you participate in the  LCI elections? 
+#F2.1	F2.1 In the last elections did you participate in the  LC3 elections? 
+#F2.2	F2.2  In the last elections did you participate in the LC5  elections?   
+#F2.3	F2.3 In the last elections did you participate in  the Presidential elections?  
+#F2.4	F2.4  In the last elections did you participate in the Parliamentary election?
+#F2.5	F2.5 In the last elections did you participate in the  Party leaders elections? 
+
+endline$baraza.part.F2 <- endline$baraza.part.F2 == 1 
+endline$baraza.part.F2.1 <- endline$baraza.part.F2.1 == 1 
+endline$baraza.part.F2.2 <- endline$baraza.part.F2.2 == 1
+endline$baraza.part.F2.3 <- endline$baraza.part.F2.3 == 1
+endline$baraza.part.F2.4 <- endline$baraza.part.F2.4 == 1 
+endline$baraza.part.F2.5 <- endline$baraza.part.F2.5 == 1
 
 
 ##ag
 
-#1 access to extension, 
-#2 visit extension officer or demo site, 
-#2 farmer in naads supported group, 
-#4 uses inputs (seed or fert), 
-#5 support in marketing from Village procurement committe/Village farmers forum/Village farmers forum executive; 
-#6 support in marketing from Cooperative
+#1 
+
+
+# 7 #make an pol index
+endline <- FW_index(c("baraza.F1","baraza.part.F2","baraza.part.F2.1","baraza.part.F2.2","baraza.part.F2.3","baraza.part.F2.4","baraza.part.F2.5"),data=endline)
+names(endline)[names(endline) == 'index'] <- 'pol_index'
+baseline <- FW_index(c("f21","f241.LC1.election", "f241.LC3.election","f241.LC5.election", "f241.Pesidential", "f241.Parliamentary", "f241.Party.leader"  ),data=baseline)
+names(baseline)[names(baseline) == 'index'] <- 'base_pol_index'
+baseline_matching <- FW_index(c("f21","f241.LC1.election", "f241.LC3.election","f241.LC5.election", "f241.Pesidential", "f241.Parliamentary", "f241.Party.leader"  ),data=baseline_matching)
+names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_pol_index'
+
+##F1.1 When was the last time that you spoke personally with the LC 1 Chairperson, for a reason relating to service provision in agriculture, health, education, water or roads?
+##F1.2 When was the last time that you spoke personally with the Subcounty Chief, for a reason relating to service provision in agriculture, health, education, water or roads?
+##F1.3 When was the last time that you spoke personally with the Head teacher/ SMC member, for a reason relating to service provision in agriculture, health, education, water or roads?
+##F1.4  When was the last time that you spoke personally with the Health Unit Management Committee (HUMC) Member, for a reason relating to service provision in agriculture, health, education, water or roads?
+##F1.5  When was the last time that you spoke personally with the Water committee member, for a reason relating to service provision in agriculture, health, education, water or roads?
+endline$baraza.F1.1 <- (endline$baraza.F1.1<=2) # last month
+endline$baraza.F1.2 <- (endline$baraza.F1.2<=5) # last year 
+endline$baraza.F1.3 <- (endline$baraza.F1.3<=4) # last 1/2 year 
+endline$baraza.F1.4 <- (endline$baraza.F1.4<=5) # last year 
+endline$baraza.F1.5 <- (endline$baraza.F1.5<=5) # last year 
+
+###make a contact index
+endline <- FW_index(c("baraza.F1.1", "baraza.F1.2", "baraza.F1.3","baraza.F1.4","baraza.F1.5"),data=endline)
+names(endline)[names(endline) == 'index'] <- 'contact_index'
+baseline <- FW_index(c("f2301","f2303", "f2307","f2309","f2310"),data=baseline)
+names(baseline)[names(baseline) == 'index'] <- 'base_contact_index'
+baseline_matching <- FW_index(c("f2301","f2303", "f2307","f2309","f2310"),data=baseline_matching)
+names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_contact_index'
+
+###priority rankings
+#H1	H1.  Access to a drinking water source is a serious problem. (where 1 means you completely disagree and 10 means you completely agree) 
+#H2	H2. Drinking water is usually dirty. (where 1 means you completely disagree and 10 means you completely agree)    
+#H3	H3.  Access to a government health centre or hospital is a serious problem. (where 1 means you completely disagree and 10 means you completely agree)
+#H4	H4  Government health centres or hospitals do not have relevant medicines. (where 1 means you completely disagree and 10 means you completely agree)
+#H5	H5 Staff at government health centres or hospitals are rude to patients. (where 1 means you completely disagree and 10 means you completely agree)
+#H6	H6.  Medical staff at government health centres or hospitals are often absent. (where 1 means you completely disagree and 10 means you completely agree)
+#H7	H7 Access to a government primary school is a serious problem. (where 1 means you completely disagree and 10 means you completely agree)
+#H8	H8 Teachers in government schools are often absent. (where 1 means you completely disagree and 10 means you completely agree)
+#H9	H9 Children’s learning outcomes in government schools are poor. (where 1 means you completely disagree and 10 means you completely agree)  
+#H10	H10.  Availability/ Access to all-weather roads is a serious problem (where 1 means you completely disagree and 10 means you completely agree)
+#H11	H11  Agricultural inputs supplied by the government are of poor quality. (where 1 means you completely disagree and 10 means you completely agree)
+#H11b	H11  Agricultural inputs supplied by the government are delivered in time. (where 1 means you completely disagree and 10 means you completely agree)
+#H12	H12 There is lack of transparency in how farmers are selected to receive agricultural inputs from the government. (where 1 means you completely disagree and 10 means you completely agree)
+#H13	H13  Agricultural extension agents rarely visit. (where 1 means you completely disagree and 10 means you completely agree)
+#H14	H14.  Agricultural extension agents are not aware of enterprises or agricultural inputs relevant to farmers. (where 1 means you completely disagree and 10 means you completely agree)
+
+endline$baraza.H1[endline$baraza.H1 == 11] <- NA
+endline$baraza.H2[endline$baraza.H2 == 11] <- NA
+endline$baraza.H3[endline$baraza.H3 == 11] <- NA
+endline$baraza.H4[endline$baraza.H4 == 11] <- NA
+endline$baraza.H5[endline$baraza.H5 == 11] <- NA
+endline$baraza.H6[endline$baraza.H6 == 11] <- NA
+endline$baraza.H7[endline$baraza.H7 == 11] <- NA
+endline$baraza.H8[endline$baraza.H8 == 11] <- NA
+endline$baraza.H9[endline$baraza.H9 == 11] <- NA
+endline$baraza.H10[endline$baraza.H10 == 11] <- NA
+endline$baraza.H11[endline$baraza.H11 == 11] <- NA
+endline$baraza.H12[endline$baraza.H12 == 11] <- NA
+endline$baraza.H13[endline$baraza.H13 == 11] <- NA
+endline$baraza.H14[endline$baraza.H14 == 11] <- NA 
+
+endline <- FW_index(c("baraza.H1","baraza.H2","baraza.H3","baraza.H4", "baraza.H5",  "baraza.H6", "baraza.H7", "baraza.H8", "baraza.H9", "baraza.H10", "baraza.H11", "baraza.H12", "baraza.H13","baraza.H14"),data=endline)
+names(endline)[names(endline) == 'index'] <- 'priority_index'
+baseline <- FW_index(c("i1","i2","i3","i4","i5","i6","i7","i8","i9","i10","i11","i12","i13","i14"),data=baseline)
+names(baseline)[names(baseline) == 'index'] <- 'base_priority_index'
+baseline_matching <- FW_index(c("i1","i2","i3","i4","i5","i6","i7","i8","i9","i10","i11","i12","i13","i14"),data=baseline_matching)
+names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_priority_index'
+
+### contributions
+#G1	G1: Did you ever make any contributions to the school in the last two years? 
+#G1.1	G1.1 Did you ever make any contributions to the health centre in the last two years? 
+#G1.2	G1.2 Did you ever make any contributions to the road/ bridge in the last two years? 
+#G1.3	G1.3 Did you ever make any contributions to the drinking water facility in the last two years? 
+#G1.4	G1.4 Did you ever make any contributions to the dam/ irrigation facility in the last two years? 
+#G1.5	G1.5 Did you  make any contributions to any other government or community building/ structure in the last two years? 
+endline$baraza.G1k <- endline$baraza.G1 %in% c(1,3)
+endline$baraza.G1c <- endline$baraza.G1 %in% c(2,3)
+
+endline$baraza.G1.1k <- endline$baraza.G1.1 %in% c(1,3)
+endline$baraza.G1.1c <- endline$baraza.G1.1 %in% c(2,3)
+
+endline$baraza.G1.2k <- endline$baraza.G1.2 %in% c(1,3)
+endline$baraza.G1.2c <- endline$baraza.G1.2 %in% c(2,3)
+
+endline$baraza.G1.3k <- endline$baraza.G1.3 %in% c(1,3)
+endline$baraza.G1.3c <- endline$baraza.G1.3 %in% c(2,3)
+
+endline$baraza.G1.4k <- endline$baraza.G1.4 %in% c(1,3)
+endline$baraza.G1.4c <- endline$baraza.G1.4 %in% c(2,3)
+
+endline$baraza.G1.5k <- endline$baraza.G1.5 %in% c(1,3)
+endline$baraza.G1.5c <- endline$baraza.G1.5 %in% c(2,3)
+
+####make a contribution  index
+endline <- FW_index(c("baraza.G1k","baraza.G1.1k","baraza.G1.2k","baraza.G1.3k","baraza.G1.4k","baraza.G1.5k"),data=endline)
+names(endline)[names(endline) == 'index'] <- 'in_kind_index'
+baseline <- FW_index(c("cschoolk", "chealthk","croadk","cwaterk",  "cdamk",    "cbuildk"),data=baseline)
+names(baseline)[names(baseline) == 'index'] <- 'base_in_kind_index'
+baseline_matching <- FW_index(c("cschoolk", "chealthk","croadk","cwaterk",  "cdamk",    "cbuildk"),data=baseline_matching)
+names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_in_kind_index'
+
+endline <- FW_index(c("baraza.G1c","baraza.G1.1c","baraza.G1.2c","baraza.G1.3c","baraza.G1.4c","baraza.G1.5c"),data=endline)
+names(endline)[names(endline) == 'index'] <- 'in_cash_index'
+baseline <- FW_index(c("cschoolc", "chealthc","croadc","cwaterc",  "cdamc",    "cbuildc"),data=baseline)
+names(baseline)[names(baseline) == 'index'] <- 'base_in_cash_index'
+baseline_matching <- FW_index(c("cschoolc", "chealthc","croadc","cwaterc",  "cdamc",    "cbuildc"),data=baseline_matching)
+names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_in_cash_index'
+
+
+#1# roof	A7. Type of roof of the household  "roof"
+#2# wall	A8. Type of wall of household "wall"
+#note5	SECTION B: AGRICULTURE
+#3# B1		B1. Did the household use inorganic fertilizers (DAP, Urea, NPK, Foliar,TSP, SSP, MOP) during the last 12 months?  "used_fert"
+#4# B1.5	B1.5 Did the household use improved seeds during the last 12 months? "used_seed"
+#5# seed_OWC	From whom did you buy or obtain these improved seeds? "seed NARO"
+#6# B1.9	B1.9 Did the household use any agro-chemicals (pesticides/ herbicides/ fungicides/acaricides) during the last 12 months? "used_chem"
+#7 ###B1.13	B1.13 Did the household use improved livestock methods (breeds/feeds/drugs/artificial insemination) during the last 12 months?  "used_livestock_tech" 
+#8#B2	B2. Did an expert (e.g. crop or livestock extension agent, or community based facilitator or another experienced farmer) visit your home in the last 12 months? "b21"
+#9# B3	B3. During the last 12 months, did you or someone in the household visit an extension office or a meeting/training organized by an extension officer? "b31"
+#10# B3.4	B3.4  Are there any agricultural enterprises, improved technologies or inputs you would like to adopt?
+#11# B3.5	B3.5  Are the extension agents/farmer forum members in the village/parish aware of this need?
+#12# B3.20	B3.20 How are new agricultural enterprises that are being promoted by the government decided? (neg: True if decided without consultation)
+#13#B4 B4. Are there any farmer associations/groups in this village?
+#14# B4.1 B4.1 Are any of these farmer groups supported by Naads or Operation Wealth Creation?
+#15# B5.2B5.2  Did you receive any help in marketing your produce from the Village procurement committe/Village farmers forum/Village farmers forum executive in the last 12 months? 
+#16# B5.3 B5.3 Did you receive any help in marketing your produce from the Cooperative/Association in the last 12 months?
+
+# Section C: water
+#17# [8,] "unprotected"       "base_unprotected"      	Household uses unprotected water source during dry season (yes/no)
+##18 ## [9,] "baraza.C1.2"       "c12source"             	Distance to water source
+#19#[10,] "baraza.C1.3"       "qc15"                  	Average waiting time at source (min)
+#20#[11,] "baraza.C2.3"       "c10"             		Is there a Water User Committee in this village? (yes/no)
+#21# C1.4 How satisfied are you with the qualiy of water available at this water source during the dry season? == very satisfied or satisfied "qc16"
+#22#C2.1 How do you treat water before drinking?  (boil or treat) "c4"
+#23#C2.4  Are you or any member of the household a member of the Committee? 1 = yes, nas are 0 "c11"
+#24#C2.5 Does the water committee hold public meetings? 1 = yes, nas are 0 "c13"
+
+### Section D: health
+
+#25#[14,] "baraza.D2"         "pub_health_access"     	Seek treatment for fever in public health facility (1=yes) 
+#26#[15,] "baraza.D2.4"       "maternal_health_access"	Go to public health facility to give birth (1=yes)  
+#27#[16,] "baraza.D3"         "d31"                   	Is there a VHT in village? (1=yes) 
+#28# 31 D3.1 Are you or any member of the household part of the VHT? d32
+#29# D3.3 Did the VHT organise any public meetings in your village in the last 12 months? d315
+#30#[17,] "baraza.D4.2"       "d43"                   	Distance to nearest govt health facility (km) 
+#31  	baraza.D1 Any members sick?
+#32#[18,] "baraza.D1.2"	"tot_sick"		Number of days ill
+#33"baraza.D1.3" number of days school/work missed due to illness
+#34#[19,] "baraza.D4.6"       "wait_time"           	Waiting time before being attended (min)  
+#35	"baraza.D6" 		"d61"			Has visited traditional health practitioner? (1=yes)  
+#36 doctor was examined by in-charge/doctor 
+#37 baraza.D4.7 time for examination d411"
+#38# paid anything
+#39	baraza.D4.11		received meds d416
+#40 baraza.D4.12 had to buy meds d419
+#41 baraza.D4.13	satisfied with services at hospital d420
+#42"baraza.D4.14"MHU at govt facility d426
+
+##43 "n_children"	    "base_n_children"		Number of children in UPS or USE 
+##44"baraza.E1"		e5				Distance to public school (km)  
+##45"baraza.E1.4" "e12" 				Has complete boundary fence (1=yes) 
+##46"baraza.E1.5" "e13" 				Has electricity (1=yes) 
+##47"baraza.E1.6" "e14" 				Has water facility (1=yes) 
+##48 baraza.E18 Were any Parent Teacher Association (PTA) meetings held in that primary UPE school during the last 12 months? 
+##49"baraza.E1.10 "e22" 				Has School Management Committee (1=yes)  
+##50"baraza.E1.13 "e32" 				Is informed about School Management Committee (1=yes)  
+##51"baraza.E1.18 "e45" 				Inspectors visited schools (1=yes)
+##52 baraza.A6"   Distance to nearest all weather road (km)       "a6
 
 # 7 #make an ag index
 endline <- FW_index(c("baraza.B2","baraza.B3","baraza.B4.1","inputs","baraza.B5.2","baraza.B5.3"),data=endline)
@@ -608,53 +690,8 @@ baseline_matching <- FW_index(c("base_ag_index","base_infra_index","base_health_
 names(baseline_matching)[names(baseline_matching) == 'index'] <- 'base_pub_service_index'
 
 
-
 outcomes <- c("baraza.B2","baraza.B3","baraza.B4.1","inputs","baraza.B5.2","baraza.B5.3","ag_index","unprotected", "baraza.C1.2", "baraza.C1.3","baraza.C2.3","baraza.A6","infra_index","baraza.D2","baraza.D2.4","baraza.D3","baraza.D4.2", "baraza.D1.2",  "baraza.D4.6","baraza.D6","health_index","n_children","baraza.E5","baraza.E12","baraza.E14","baraza.E22","baraza.E32","baraza.E45","education_index", "pub_service_index")
 baseline_outcomes <- c("b21","b31","b44","base_inputs","b5144","b5146","base_ag_index","base_unprotected","c12source", "qc15","c10","a6","base_infra_index","pub_health_access","maternal_health_access","d31","d43","tot_sick","wait_time","d61","base_health_index","base_n_children","e5","e12", "e14","e22","e32","e45","base_education_index","base_pub_service_index")
-
-##      outcomes            baseline_outcomes    
-
-## agriculture   
-## [1,] "baraza.B2"         "b21"                   	Was visited by extension officer at home (yes/no)
-## [2,] "baraza.B3"         "b31"                   	Visited training or demonstration site (yes/no)
-## [3,] "baraza.B4.1"       "b44"                   	NAADS or OWC in village (yes/no)
-## [4,] "inputs"            "base_inputs"           	Uses modern inputs (improved seed or fertilizer) (yes/no)
-## [5,] "baraza.B5.2"       "b5144"                 	Support in marketing from village procurement committe (yes/no)
-## [6,] "baraza.B5.3"       "b5146"                 	Support in marketing from cooperative (yes/no)
-## [7,] "ag_index"          "base_ag_index"         
-
-##infrastructure
-## [8,] "unprotected"       "base_unprotected"      	Household uses unprotected water source during dry season (yes/no)
-## [9,] "baraza.C1.2"       "c12source"             	Distance to water source
-##[10,] "baraza.C1.3"       "qc15"                  	Average waiting time at source (min)
-##[11,] "baraza.C2.3"       "c10"             		Is there a Water User Committee in this village? (yes/no)
-##[12,] "baraza.A6"         "a6"			Distance to nearest all weather road (km)             
-##[13,] "infra_index"       "base_infra_index"   
-
-##health   
-##[14,] "baraza.D2"         "pub_health_access"     	Seek treatment for fever in public health facility (1=yes) 
-##[15,] "baraza.D2.4"       "maternal_health_access"	Go to public health facility to give birth (1=yes)  
-##[16,] "baraza.D3"         "d31"                   	Is there a VHT in village? (1=yes) 
-##[17,] "baraza.D4.2"       "d43"                   	Distance to nearest govt health facility (km) 
-##[18,] "baraza.D1.2"	"tot_sick"		Number of days missed school/work due to illness
-##[19,] "baraza.D4.6"       "wait_time"           	Waiting time before being attended (min)  
-#20	"baraza.D6" 		"d61"			Has visited traditional health practitioner? (1=yes)  
-   
-##[21,] "health_index"      "base_health_index"     
-
-##educations
-##[22,] "n_children"	    "base_n_children"		Number of children in UPS or USE 
-##23"baraza.E1"		e5				Distance to public school (km)  
-##24"baraza.E1.4" "e12" 				Has complete boundary fence (1=yes) 
-##25"baraza.E1.6" "e14" 				Has water facility (1=yes) 
-##26"baraza.E1.10 "e22" 				Has School Management Committee (1=yes)  
-##27"baraza.E1.13 "e32" 				Is informed about School Management Committee (1=yes)  
-##28"baraza.E1.18 "e45" 				Inspectors visited schools (1=yes)  
-
-##29 "education_index"      "base_education_index"  
-
-##30 "pub_service_index" "base_pub_service_index"
-
 
 #create unique ID for clustering based on district and subcounty
 endline <- endline %>%  mutate(clusterID = group_indices(., district, subcounty))
@@ -681,22 +718,16 @@ names(baseline) <- c("information","deliberation","district_baraza","time","clus
 
 dta_long <- rbind(endline[c("information","deliberation","district_baraza","time", "clusterID","clusterID2",outcomes)], baseline[ c("information","deliberation","district_baraza","time", "clusterID","clusterID2",outcomes )])
 
-### parallel computing for RI
-cl <- makeCluster(detectCores(all.tests = FALSE, logical = TRUE)-1)
-registerDoParallel(cl)
 
 ###init arrays to store results
-df_ols <- array(NA,dim=c(6,4,length(outcomes)))
-df_ancova <- array(NA,dim=c(6,4,length(outcomes)))
-df_dif_in_dif <- array(NA,dim=c(6,4,length(outcomes)))
-df_matcher <- array(NA,dim=c(6,4,length(outcomes)))
+df_matcher <- array(NA,dim=c(6,5,length(outcomes)))
 df_averages <- array(NA,dim=c(2,length(outcomes)))
 
 for (i in 1:length(outcomes)) {
+print(i)
+# i <- 1
 
 
-df_averages[1,i] <- mean(as.matrix(endline[outcomes[i]]), na.rm=T)
-df_averages[2,i] <- sd(as.matrix(endline[outcomes[i]]), na.rm=T)
 
 ###matched dif-in-dif
 
@@ -792,7 +823,7 @@ df_matcher[,1,i] <- c(res[6,1],res[6,2],res[6,5], conf[6,4],conf[6,5], nobs(ols)
 
 ####matching for district baraza
 
-nearest.match <- matchit(formula = district_baraza ~hhsize + femhead + agehead  + head_sec+ log_farmsize + ironroof + improved_wall+has_phone,  data =baseline_complete[(baseline_complete$information == 1 & baseline_complete$deliberation==1) | baseline_complete$district_baraza == 1 ,]  ,method = "cem", cutpoints = my.cutpoints )
+nearest.match <- matchit(formula = district_baraza ~hhsize + femhead + agehead  + head_sec+ log_farmsize + ironroof + improved_wall+has_phone,  data =baseline_complete[(baseline_complete$information == 0 & baseline_complete$deliberation==0) | baseline_complete$district_baraza == 1 ,]  ,method = "cem", cutpoints = my.cutpoints )
 summary(nearest.match)
 #plot(nearest.match)
 #plot(nearest.match, type="hist")
@@ -814,8 +845,31 @@ res[2,5] <- RI_store$pval
 
 df_matcher[,4,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4], conf[2,5], nobs(ols))
 
+####matching for district baraza (dif with sc baraza)
+
+nearest.match <- matchit(formula = district_baraza ~hhsize + femhead + agehead  + head_sec+ log_farmsize + ironroof + improved_wall+has_phone,  data =baseline_complete[(baseline_complete$information == 1 & baseline_complete$deliberation==1) | baseline_complete$district_baraza == 1 ,]  ,method = "cem", cutpoints = my.cutpoints )
+summary(nearest.match)
+#plot(nearest.match)
+#plot(nearest.match, type="hist")
+#plot(nearest.match, type="jitter")
+
+matched.baseline <- match.data(nearest.match)
+matched.merged <-   merge(matched.baseline, endline[c("hhid","a21","district","subcounty",outcomes[i])], by="hhid")
+
+
+ols <- lm(as.formula(paste(paste(outcomes[i],"district_baraza+a21",sep="~"),baseline_outcomes[i],sep="+")), data=matched.merged, weights= weights ) 
+vcov_cluster <- vcovCR(ols, cluster = matched.merged$clusterID2, type = "CR0")
+res <- coef_test(ols, vcov_cluster)
+conf <- conf_int(ols, vcov_cluster)
+if (RI_conf_switch) {
+RI_store <- RI_conf_dist(i,outcomes, baseline_outcomes, matched.merged , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
+conf[2,4:5] <-  RI_store$conf
+res[2,5] <- RI_store$pval
 }
 
+df_matcher[,5,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4], conf[2,5], nobs(ols))
+
+}
 
 ### create data.frame to plot - make sure you get correct i's for the indices; last one is overall index
 d_plot <- data.frame(rbind(df_matcher[c(1,4,5),1,7],df_matcher[c(1,4,5),2,7],df_matcher[c(1,4,5),3,7],df_matcher[c(1,4,5),4,7]))
@@ -826,24 +880,27 @@ d_plot <- rbind(d_plot, data.frame(rbind(c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA),c(N
 d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,30],df_matcher[c(1,4,5),2,30],df_matcher[c(1,4,5),3,30],df_matcher[c(1,4,5),4,30])))
 
 
-
-
 names(d_plot) <- c("y","ylo","yhi")
 
 d_plot$x <- rep(c("agricuture","infrastructure","health","education","","index"), each=4)
 d_plot$grp <- rep(c("sc baraza","info","delib","level"), times=6)
 d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib","level"))
 d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","health","education","","index"))))
-png(paste(path,"report/figure/impact_summary_matcher.png", sep="/"), units="px", height=3200, width= 6400, res=600)
-print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.5))
+
+
+### save results
+save_path <- ifelse(final_verion_swith, paste(path,"report/results/final", sep = "/"), paste(path,"report/results/", sep = "/"))
+
+
+save(df_matcher, file= paste(save_path,"df_matcher.Rd", sep="/"))
+save(df_averages, file= paste(save_path,"df_averages_matcher.Rd", sep="/"))
+
+
+png(paste(save_path,"impact_summary_matcher.png",sep = "/"), units="px", height=3200, width= 6400, res=600)
+print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3))
 dev.off()
 
- save(df_matcher, file= paste(path,"report/results/df_matcher.Rd", sep="/"))
- save(df_averages, file= paste(path,"report/results/df_averages_matcher.Rd", sep="/"))
- # d is a data frame with 4 columns
- # d$x gives variable names
- # d$y gives center point
- # d$ylo gives lower limits
- # d$yhi gives upper limits
+
+
 
 
