@@ -18,25 +18,25 @@ registerDoParallel(cl)
 ##hyper parameters
 alpha <- 0.05 # Standard significance level 
 sims <- 1000 # Number of simulations to conduct for each N 
-#mde <- seq(from=.01, to=.1, by=.001) # The effect sizes we'll be considering 
-mde <- seq(from=.05, to=.2, by=.0025)
+mde <- seq(from=.01, to=.1, by=.001) # The effect sizes we'll be considering 
+#mde <- seq(from=.05, to=.2, by=.0025)
 
 
-baseline_outcomes <- c("base_unprotected","qc15","c10","a6","pub_health_access","maternal_health_access","d31","d43","d11","wait_time","d61","base_n_children","e5","e12", "e14","e22","e32","e45")
+#baseline_outcomes <- c("base_unprotected","qc15","c10","a6","pub_health_access","maternal_health_access","d31","d43","d11","wait_time","d61","base_n_children","e5","e12", "e14","e22","e32","e45")
 #baseline_outcomes <- c("b31","b44","base_inputs","b5144","b5146","c12source")
 #baseline_outcomes <- c("c12source")
-#baseline_outcomes <- c("b21")
+baseline_outcomes <- c("b21")
 for (outcome_index in 1:length(baseline_outcomes)) {
 #outcome_index <- 1
 print(baseline_outcomes[outcome_index])
 
 
-#baseline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/baseline.csv")
-#treats <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/final_list_5.csv")
+baseline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/baseline.csv")
+treats <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/final_list_5.csv")
 #wget https://www.dropbox.com/s/sakp13112o1to6u/baseline.csv?dl=0
-baseline <- read.csv("baseline.csv")
+#baseline <- read.csv("baseline.csv")
 #wget https://www.dropbox.com/s/bsvv2ggud2g7yrj/final_list_5.csv?dl=0
-treats <- read.csv("final_list_5.csv")
+#treats <- read.csv("final_list_5.csv")
 
 baseline$a23 <- as.character(baseline$a23)
 baseline$a23[baseline$a23 == "LUWERO TC"] <- "LUWERO_TC"
@@ -218,7 +218,7 @@ baseline_orig$base_out <- as.numeric(baseline_orig$outcome +  rnorm(length(basel
 
 ##now compare district to sc baraza
 
-treats <- subset(treats_saved, (information == 1 & deliberation ==1 ) | district_baraza == 1 )
+treats <- subset(treats_saved, (information == 0 & deliberation ==0 ) | district_baraza == 1 )
 baseline <- merge(baseline_saved, treats,  by.x=c("a22","a23"), by.y=c("district","subcounty"))
 treats <- aggregate(treats$district_baraza,list(treats$district), max)
 names(treats) <- c("district","district_baraza")
