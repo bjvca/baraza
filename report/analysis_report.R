@@ -175,9 +175,9 @@ RI_conf_sc <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr
 		dta_perm$dep_2[dta_perm["information"] ==0 & dta_perm["deliberation"] ==1] <- dta_perm$pot_out_01_2[dta_perm["information"] ==0 & dta_perm["deliberation"] ==1] 
 
 ### p-value
-		exceed1 <- coef(lm(formula1, data=dta_perm))["information:deliberation"] > abs(coef(ols_1)["information:deliberation"])
-		exceed2 <- coef(lm(formula2, data=dta_perm))["information"] > abs(coef(ols_2)["information"])
-		exceed3 <- coef(lm(formula2, data=dta_perm))["deliberation"] > abs(coef(ols_2)["deliberation"])
+		exceed1 <- abs(coef(lm(formula1, data=dta_perm))["information:deliberation"]) > abs(coef(ols_1)["information:deliberation"])
+		exceed2 <- abs(coef(lm(formula2, data=dta_perm))["information"]) > abs(coef(ols_2)["information"])
+		exceed3 <- abs(coef(lm(formula2, data=dta_perm))["deliberation"]) > abs(coef(ols_2)["deliberation"])
 
 
 		dta_perm[outcomes[i]] <- dta_perm$dep_1
@@ -188,7 +188,7 @@ RI_conf_sc <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr
 		r3 <- coef(lm(formula2, data=dta_perm))["deliberation"]
 		oper <- return(c(r1,r2,r3, exceed1, exceed2, exceed3))
 	}
-	return(list(conf_1 = quantile(oper[,1],sig),conf_2 = quantile(oper[,2],sig),conf_3 = quantile(oper[,3],sig), pval_1= (sum(oper[,4])/nr_repl)*2, pval_2= (sum(oper[,5])/nr_repl)*2, pval_3= (sum(oper[,6])/nr_repl)*2))
+	return(list(conf_1 = quantile(oper[,1],sig),conf_2 = quantile(oper[,2],sig),conf_3 = quantile(oper[,3],sig), pval_1= (sum(oper[,4])/nr_repl), pval_2= (sum(oper[,5])/nr_repl), pval_3= (sum(oper[,6])/nr_repl)))
 	}
 
 
@@ -241,7 +241,7 @@ RI_conf_dist <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, 
 
 
 		### p-value
-		exceed <- coef(lm(formula, data=dta_perm))["district_baraza"] > abs(coef(ols)["district_baraza"])
+		exceed <- abs(coef(lm(formula, data=dta_perm))["district_baraza"]) > abs(coef(ols)["district_baraza"])
 
 		
 
@@ -249,7 +249,7 @@ RI_conf_dist <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, 
 		res_list <- cbind(coef(lm(formula, data=dta_perm))["district_baraza"],"exceed" = exceed)
 		return(res_list) 
 	}
-	return(list(conf = quantile(oper[,1],sig),pval= (sum(oper[,2])/nr_repl)*2))
+	return(list(conf = quantile(oper[,1],sig),pval= (sum(oper[,2])/nr_repl)))
 }
 ################################################################## end of funtions declarations
 

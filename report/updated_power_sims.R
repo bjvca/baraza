@@ -14,6 +14,8 @@ return(dataset)
 cl <- makeCluster(detectCores(all.tests = FALSE, logical = TRUE))
 registerDoParallel(cl)
 
+path <- strsplit(getwd(), "/report")[[1]]
+
 
 ##hyper parameters
 alpha <- 0.05 # Standard significance level 
@@ -31,8 +33,9 @@ for (outcome_index in 1:length(baseline_outcomes)) {
 print(baseline_outcomes[outcome_index])
 
 
-baseline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/baseline.csv")
-treats <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/final_list_5.csv")
+baseline <- read.csv(paste(path,"data/public/baseline.csv", sep ="/"))
+treats <- read.csv(paste(path,"questionnaire/final_list_5.csv", sep ="/"))
+
 #wget https://www.dropbox.com/s/sakp13112o1to6u/baseline.csv?dl=0
 #baseline <- read.csv("baseline.csv")
 #wget https://www.dropbox.com/s/bsvv2ggud2g7yrj/final_list_5.csv?dl=0

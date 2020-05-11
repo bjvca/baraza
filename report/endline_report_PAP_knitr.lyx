@@ -221,7 +221,7 @@ path <- getwd()
 
 \begin_layout Plain Layout
 
-is_final <- FALSE
+is_final <- TRUE
 \end_layout
 
 \begin_layout Plain Layout
