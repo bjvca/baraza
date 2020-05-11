@@ -14,8 +14,8 @@ set.seed(12345) #not needed for final version?
 path <- strsplit(getwd(), "/report")[[1]]
 
 ### set this switch to TRUE if you want to produce a final report - this will save results matrices in a static directory
-final_verion_swith <- FALSE
-RI_conf_switch <- FALSE
+final_verion_swith <- TRUE
+RI_conf_switch <- TRUE
 glob_repli <- 1000
 glob_sig <- c(.025,.975) ### 5 percent conf intervals
 
@@ -322,7 +322,7 @@ cl <- makeCluster(detectCores(all.tests = FALSE, logical = TRUE))
 registerDoParallel(cl)
 
 for (i in 1:length(outcomes)) {
-#print(i)
+print(i)
 
 df_averages[1,i] <- mean(as.matrix(baseline[outcomes[i]]), na.rm=T)
 df_averages[2,i] <- sd(as.matrix(baseline[outcomes[i]]), na.rm=T)
@@ -479,7 +479,7 @@ df_averages_end <- array(NA,dim=c(2,length(outcomes)))
 
 
 for (i in 1:length(outcomes)) {
-#print(i)
+print(i)
 
 df_averages_end[1,i] <- mean(as.matrix(baseline[outcomes[i]]), na.rm=T)
 df_averages_end[2,i] <- sd(as.matrix(baseline[outcomes[i]]), na.rm=T)

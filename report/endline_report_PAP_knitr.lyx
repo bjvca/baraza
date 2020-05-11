@@ -143,12 +143,46 @@ To improve governance and public service delivery, the Government of Uganda
  level to the effectiveness of barazas organized at the sub-county level,
  as the administrative placement of the barazas is a key determinant of
  the cost-effectiveness of this policy intervention.
+ Using a strictly pre-registered confirmatoyr analysis, we find no impact
+ of the intervention, although there are some indications that sub-county
+ level baraza increase public service delivery in the agricultural sector.
+ A more exploratory part that looks at individual outcomes and also considers
+ heterogeneous treatment effects suggests localized impacts of barazas may
+ be more significant than those measured in aggregate.
+ 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 If you compile this, the figure may not be the correct one because it takes
- time to print to file
+ time to print to file.
+\end_layout
+
+\begin_layout Plain Layout
+Still do to:
+\end_layout
+
+\begin_layout Plain Layout
+- rewrite results section, starting with a confirmatory analysis based on
+ the mock report and then a second part that looks at details of both pre-regist
+ered and other outcomes (similar or the 3ie report).
+ This means we need new knitr tables...
+\end_layout
+
+\begin_layout Plain Layout
+- I am not so happy with the matching analysis anymore.
+ I think it makes more sense to match at the subcounty level, as this is
+ where potential selection bias would occur.
+ At the same time, we already matched before endline data collection, so
+ does it still make sense? Maybe.
+ Try Coarsened Exact Matching at the subcounty level.
+\end_layout
+
+\begin_layout Plain Layout
+- we should look at those indices more closely.
+ I was in a hurry when I did this for the mock report.
+ We are loosing too many observations.
+ Raffler et all drop from their indices variables with too many missings.
 \end_layout
 
 \end_inset
@@ -229,9 +263,8 @@ ss of the policy intervention.
  the impact of (1) providing citizens with information related to budgeting
  and planing, and (2) the impact of letting citizens engage with public
  servants and politicians in a questions-and-answers session.
- The project was funded by the International Institute for Impact Evaluations
- (3ie) after a competitive call for proposals, a baseline survey involving
- more than 12,500 households and 400 government officials was conducted.
+ Towards the end of 2015, a baseline survey involving more than 12,500 household
+s and 400 government officials was conducted.
  After completion of the baseline, we trained local government officials
  to ensure adherence to the intervention protocols, and the interventions
  were rolled out by the OPM, our main implementing partner.
@@ -239,9 +272,9 @@ ss of the policy intervention.
 
 \begin_layout Standard
 While the project was initially assumed to take about 2 years, OPM faced
- various complications that affected the timely roll-out of the barazas,
- including budgetary constraints and disruptions related to the general
- elections of 2016.
+ various challenges that affected the timely roll-out of the barazas, including
+ budgetary constraints and disruptions related to the general elections
+ of 2016.
  Four years after the baseline survey, with about 50 percent of the planned
  barazas implemented, a trade-off needed to be made between waiting for
  the remaining barazas to be completed or conducting the end-line after
@@ -249,78 +282,49 @@ While the project was initially assumed to take about 2 years, OPM faced
  It was decided to proceed with end-line data collection and employ estimation
  and data collection strategies to control for potential selection bias
  that may have been introduced due to the partial roll-out.
- 
+ Early 2020, endline data was collected on 6,700 households and 260 government
+ officials.
 \end_layout
 
 \begin_layout Standard
-In a first part of the paper, we present a strictly confirmatory analysis.
- As the project was designed to affect a range of outcomes in different
- sectors, we strictly adhere to our pre-analysis plan.
- In particular, before endline data collection, we prepared a “mock report”,
- which contains the analysis on simulated end-line data for a core set of
- primary outcomes to test the four primary research questions (impact of
- sub-county barazas, relative importance of information component, relative
- importance of deliberative component, and consequences of administrative
- placement).
- This mock report was registered at the American Economic Association's
- RCT registry with a time stamp
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-https://www.socialscienceregistry.org/versions/60398/docs/version/document
-\end_layout
-
-\end_inset
-
-.
- The outcomes can be categorized into four broad sectors: agriculture, health,
- education, and infrastructure (including drinking water and roads).
- With this report, we thus commit to key outcomes in each sector, and combine
- the outcomes in the four sectors into sector level indices, and in a single
- index following 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "anderson2008multiple"
-
-\end_inset
-
- to account for multiple hypothesis testing.
- Pre-registration and mock reports are effective tools against fishing and
- false-positive science 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "humphreys2013fishing"
-
-\end_inset
-
-.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-This document was prepared using Lyx, an open source Latex front-end.
- All Latex and R code to replicate the analysis is placed under revision
- control using Git.
- The R scripts are automatically executed when the Lyx document is compiled
- (using the R package knitr) and tables are populated.
- The Git repository can be found at 
-\begin_inset CommandInset href
-LatexCommand href
-target "https://github.com/bjvca/baraza/"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- 
+We start with the results of a confirmatory analysis, following a pre-analysis
+ plan that summarizes a range of outcomes into four different families of
+ outcomes corresponding to the main sectors – agriculture, infrastructure,
+ health and education – and one overall index of public service delivery.
+ Judged by these summary indices, we find little evidence that the baraza
+ intervention had an impact on public service delivery.
+ The only exception is agriculture, where we find that sub-county level
+ barazas have a positive impact, and that this impact is clearly superior
+ to the (lack of) impact associated with district level barazas.
 \end_layout
 
 \begin_layout Standard
-In a second part of the paper, we proceed in a more exploratory way 
+We proceed in a more exploratory way, and provide an analysis of individual
+ outcomes.
+ We first look at each of the four sectors in more detail.
+ We then look for changes in behaviour that is explicitly targeted by barazas,
+ such as political participation, information seeking, and contributions
+ to the common good.
+ Finally, we provide results on changes in the perception of citizens on
+ a range of issues that were most mentioned by stakeholders during qualitative
+ fieldwork.
+ We also explore heterogeneity in the treatment effect.
+ We look at heterogeneity arising from differences in timing from the interventi
+ons and look at how remoteness affects impact.
+ The exploratory analysis adds more nuance to this conclusion arrived at
+ in the confirmatory part.
+ For instance, the impact of sub-county barazas in the agricultural sphere
+ seems to be driven by an increase in access to extension.
+ However, only for households that live close to the sub-county headquarter
+ seems to benefit from sub-county level barazas.
+ Looking at outcomes in the area of roads and water infrastructure, we find
+ some evidence that sub-county level barazas reduce waiting time at the
+ water source.
+ Interestingly, this effect seems to be strongest among households that
+ live further away from the sub-county headquarters.
+ For education, we see an increase in enrolment rates, but only if we allow
+ for enough time to pass between the intervention and the collection of
+ the endline data.
 \end_layout
 
 \begin_layout Standard
@@ -491,16 +495,28 @@ key "arkedis2019can,bjorkman2009power,raffler2018weakness"
 \end_layout
 
 \begin_layout Standard
-We find no impact of either of the two components of the baraza.
- There is some evidence that a full baraza at the subcounty level consisting
- of both the information and deliberation component increases public service
- delivery in the education sector, but reduces outcomes for infrastructure.
- We also find that a baraza organized at the district level leads to significant
-ly lower outcomes in agricultural service delivery than when the baraza
- is organized at the sub-county level.
+Finally, we evaluate a high-profile policy intervention that receives broad
+ support within government and among citizens alike in Uganda.
+ Evaluating policy interventions has it challenges, and this one is no exception.
+ As a result, such research has become rare, as present day RCTs often bypass
+ the political resistance to randomization among governments, development
+ workers and beneficiaries, as the nature of the partners has changed (NGOs
+ rather than governments) and the interventions have become “relatively
+ trivial” 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "de2019rise"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 In this report, we start by providing a brief overview of the government
  program we study.
  We motivate the four research questions in a separate section.
@@ -516,6 +532,11 @@ In this report, we start by providing a brief overview of the government
  assess the likelihood that the implementation challenges introduced selection
  bias and explore heterogeneity in impact as a result of variation in the
  timing of the intervention.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -2119,7 +2140,7 @@ District level baraza were very similar to sub-county level barazas, except
 \end_layout
 
 \begin_layout Section
-Implementation challenges and subsequent design adaptations
+Implementation challenges
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Implementation-challenges-and"
@@ -3837,70 +3858,6 @@ Note: First column reports sample means (and standard deviations below);
 \end_layout
 
 \begin_layout Subsection
-Analysis: matched difference-in-difference
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Analysis:-matched-difference-in-"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-A third way in which we may want to account for selection bias introduced
- by the partial roll-out is by adapting the way in which impact is estimated.
- While we will rely on analysis of co-variance (ANCOVA) as the main specificatio
-n to assess impact, we will also report results based on matched difference-in-d
-ifference.
- The decision on which specification is to be preferred in case of diverging
- results will also depend on the conclusions drawn from the comparison between
- planned but not treated sub-counties and planned control sub-counties at
- end-line (see section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Endline-imbalance-and"
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Standard
-For the matched difference-in-difference estimator, we use Mahalanobis distance
- with coarsened exact matching, an extremely powerful method of matching
- 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "iacus2012causal"
-
-\end_inset
-
-.
- We match on household size, sex of the household head, age of the household
- head, whether the household head finished secondary education, the logarithm
- of farm size, housing conditions (iron roof and improved wall), phone ownership
-, latitude, and longitude.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-For the coarsened exact matching, custom cut points were defined to construct
- 3 age categories, six farm size categories and a five-by-five grid based
- on coordinates.
- For the comparison between sub-county level barazas and district level
- barazas, we did not match on latitude and longitude, as this resulted in
- too many observations that could not be matched.
- 
-\end_layout
-
-\end_inset
-
- End-line data is then merged to the matched data-set, and standard difference-i
-n-difference models are then estimated.
-\end_layout
-
-\begin_layout Section
 Updated power calculations
 \end_layout
 
@@ -3956,10 +3913,6 @@ name "fig:Power-curves-for"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -4076,7 +4029,7 @@ reference "subsec:Appendix-one"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -4109,13 +4062,73 @@ name "fig:Power-curves-dist"
 
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
 
 \end_layout
+
+\begin_layout Subsection
+Analysis: matched difference-in-difference
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Analysis:-matched-difference-in-"
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+A third way in which we may want to account for selection bias introduced
+ by the partial roll-out is by adapting the way in which impact is estimated.
+ While we will rely on analysis of co-variance (ANCOVA) as the main specificatio
+n to assess impact, we will also report results based on matched difference-in-d
+ifference.
+ The decision on which specification is to be preferred in case of diverging
+ results will also depend on the conclusions drawn from the comparison between
+ planned but not treated sub-counties and planned control sub-counties at
+ end-line (see section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Endline-imbalance-and"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+For the matched difference-in-difference estimator, we use Mahalanobis distance
+ with coarsened exact matching, an extremely powerful method of matching
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "iacus2012causal"
+
+\end_inset
+
+.
+ We match on household size, sex of the household head, age of the household
+ head, whether the household head finished secondary education, the logarithm
+ of farm size, housing conditions (iron roof and improved wall), phone ownership
+, latitude, and longitude.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+For the coarsened exact matching, custom cut points were defined to construct
+ 3 age categories, six farm size categories and a five-by-five grid based
+ on coordinates.
+ For the comparison between sub-county level barazas and district level
+ barazas, we did not match on latitude and longitude, as this resulted in
+ too many observations that could not be matched.
+ 
+\end_layout
+
+\end_inset
+
+ End-line data is then merged to the matched data-set, and standard difference-i
+n-difference models are then estimated.
 \end_layout
 
 \begin_layout Section
@@ -4197,8 +4210,8 @@ load(paste(path,"results/final/baseline_desc.Rd", sep="/"))
 \end_layout
 
 \begin_layout Standard
-In this section, we provide results for the four main hypotheses outlined
- in Section 
+In this section, we present results of a strictly confirmatory analysis
+ for the four main hypotheses outlined in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Design-features:-administrative"
@@ -4206,28 +4219,66 @@ reference "sec:Design-features:-administrative"
 \end_inset
 
 .
- For now, the tables and graphs are generated by running the code on a simulated
- end-line data set.
+ Before endline data collection, we prepared a “mock report”, which contains
+ the analysis on simulated end-line data for a core set of primary outcomes
+ to test the four research questions (impact of sub-county barazas, relative
+ importance of information component, relative importance of deliberative
+ component, and consequences of administrative placement).
+ This mock report was registered at the American Economic Association's
+ RCT registry with a time stamp
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-The simulated end-line was just a random draw from the baseline data
+https://www.socialscienceregistry.org/versions/60398/docs/version/document
 \end_layout
 
 \end_inset
 
- Once end-line data is collected, we simply replace the simulated end-line
- dataset with the actual end-line.
- Preparing and pre-registering such a 
-\begin_inset Quotes eld
+.
+ The outcomes can be categorized into four broad sectors: agriculture, health,
+ education, and infrastructure (including drinking water and roads).
+ With this report, we thus commit to key outcomes in each sector, and combine
+ the outcomes in the four sectors into sector level indices, and in a single
+ index following 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "anderson2008multiple"
+
 \end_inset
 
-mock report
-\begin_inset Quotes erd
+ to account for multiple hypothesis testing.
+ Pre-registration and mock reports are effective tools against fishing and
+ false-positive science 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "humphreys2013fishing"
+
 \end_inset
 
- reduces the likelihood that results are driven by specification search.
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+This document was prepared using Lyx, an open source Latex front-end.
+ All Latex and R code to replicate the analysis is placed under revision
+ control using Git.
+ The R scripts are automatically executed when the Lyx document is compiled
+ (using the R package knitr) and tables are populated.
+ The Git repository can be found at 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://github.com/bjvca/baraza/"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Standard
