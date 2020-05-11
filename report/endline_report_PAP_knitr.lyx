@@ -924,7 +924,7 @@ Experimental design and balance at baseline
 \end_layout
 
 \begin_layout Standard
-To answer the above question, in 2015, we designed a social experiment covering
+To answer the above questions, we designed a social experiment covering
  districts, sub-counties, and households across the four regional blocks
  (Northern, Western, Central and Eastern) of Uganda.
  Each regional block has somewhat unique characteristics in terms of ethnicity,
@@ -1169,7 +1169,7 @@ To determine the number of districts, sub-counties and households to include
  distributed over 230 sub-counties in 40 districts throughout Uganda, on
  which baseline data was collected.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 We added an additional 3 sub-counties in each of the five treatment groups
@@ -1188,15 +1188,7 @@ target "https://github.com/bjvca/baraza/blob/master/report/appendices/3ie_revise
 \end_inset
 
 .
- In this document, we will run a series of updated power calculations to
- account for the implementation challenges (see Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Implementation-challenges-and"
-
-\end_inset
-
-)
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3000,7 +2992,7 @@ reference "fig:Factorial-design"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -3945,18 +3937,16 @@ reference "fig:Power-curves-for"
  Here, we compare the 2,450 households that live in sub-counties that received
  an information baraza to the 2,900 households that did not receive a sub-county
  information baraza.
- The dark blue dashed line compares effectiveness of barazas conducted at
- different levels, with the MDE defined as the difference in outcome between
- 1,000 households that received the combined information and deliberation
- sub-county level baraza and 2,000 households that were exposed to a district
- level baraza.
- Finally, we also investigate power for the comparison between pure control
- barazas and the sub-county level baraza (black dotted line).
+ We also investigate power for the comparison between pure control barazas
+ and the sub-county level baraza (black dotted line).
  Here we compare 1,000 households that received the combined information
  and deliberation sub-county level baraza to the 2,000 households that did
  not receive any baraza.
  MDEs are estimated using a simple ANCOVA model that controls for the outcome
  at baseline.
+ Finally, the dark blue dashed line plots power for the comparison between
+ pure control barazas and 2,000 households that were exposed to a district
+ level baraza.
  
 \end_layout
 
