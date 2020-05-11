@@ -305,7 +305,7 @@ write.csv(df, file = paste(baseline_outcomes[outcome_index],"csv",sep="."))
 ### could not figure out how to easily automate this so do this manually:
 
 ##to copy entire folder from AWS to local machine, use:
-scp -i "bjornkey.pem" ubuntu@ec2-3-249-40-192.eu-west-1.compute.amazonaws.com:/home/ubuntu/* "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/"
+#scp -i "bjornkey.pem" ubuntu@ec2-3-249-40-192.eu-west-1.compute.amazonaws.com:/home/ubuntu/* "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/"
 ## in a local terminal
 
 ###f***ing R: want to save this as png but for some reason I can not use dynamic names with he png command
