@@ -17,13 +17,13 @@ set.seed(123456789) #not needed for final version?
 path <- strsplit(getwd(), "/report")[[1]]
 
 ### set this switch to TRUE if you want to produce a final report - this will save results matrices in a static directory
-final_verion_swith <- TRUE
+final_verion_swith <- FALSE
 ## heterogeneity analysis:
 # 0 no
 # 1 allow for enough time - sc level 
-hetero <- 0
+hetero <- 1
 RI_conf_switch <- TRUE
-glob_repli <- 1000
+glob_repli <- 5000
 glob_sig <- c(.025,.975) ### 5 percent conf intervals
 
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
@@ -191,7 +191,7 @@ RI_conf_sc <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr
 		r3 <- coef(lm(formula2, data=dta_perm))["deliberation"]
 		oper <- return(c(r1,r2,r3, exceed1, exceed2, exceed3))
 	}
-	return(list(conf_1 = quantile(oper[,1],sig),conf_2 = quantile(oper[,2],sig),conf_3 = quantile(oper[,3],sig), pval_1= (sum(oper[,4])/nr_repl), pval_2= (sum(oper[,5])/nr_repl), pval_3= (sum(oper[,6])/nr_repl)))
+	return(list(conf_1 = quantile(oper[,1],sig, na.rm=T),conf_2 = quantile(oper[,2],sig, na.rm=T),conf_3 = quantile(oper[,3],sig, na.rm=T), pval_1= (sum(oper[,4])/nr_repl), pval_2= (sum(oper[,5])/nr_repl), pval_3= (sum(oper[,6])/nr_repl)))
 	}
 
 
@@ -252,7 +252,7 @@ RI_conf_dist <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, 
 		res_list <- cbind(coef(lm(formula, data=dta_perm))["district_baraza"],"exceed" = exceed)
 		return(res_list) 
 	}
-	return(list(conf = quantile(oper[,1],sig),pval= (sum(oper[,2])/nr_repl)))
+	return(list(conf = quantile(oper[,1],sig, na.rm=T),pval= (sum(oper[,2])/nr_repl)))
 }
 ################################################################## end of funtions declarations
 
