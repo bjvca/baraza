@@ -2143,17 +2143,29 @@ name "sec:Implementation-challenges-and"
 \end_layout
 
 \begin_layout Standard
-One of the main challenges was a slow roll-out of the Baraza intervention
- by the implementing partner.
+One of the main challenges was a slow roll-out of the intervention by the
+ implementing partner, the sub-county level barazas in particular
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+All district level barazas were implemented, so we only focus on sub-counties
+ here and in the following sections.
+\end_layout
+
+\end_inset
+
+.
  At the start of 2018, and almost two and a half years after baseline data
- was collected, only about 25 percent of the planned interventions had happened,
- and we needed to balance the costs and benefits of waiting until OPM finished
- all barazas or collecting baseline information after incomplete roll-out.
+ was collected, only about 25 percent of the planned sub-county level interventi
+ons had happened, and we needed to balance the costs and benefits of waiting
+ until OPM finished all sub-county barazas or collecting baseline information
+ after incomplete roll-out.
  At that time, we developed various scenarios, each with an adapted research
  design.
- After an additional six months, with still only 56 out of the 155 Barazas
- implemented, it appeared that the best scenario would be one whereby end-line
- data would be collected before all sub-counties were treated.
+ After an additional six months, with still only 56 out of the 155 sub-county
+ barazas implemented, it appeared that the best scenario would be one whereby
+ end-line data would be collected before all sub-counties were treated.
 \end_layout
 
 \begin_layout Standard
@@ -2163,7 +2175,7 @@ However, end-line data collection after partial roll-out may introduce selection
 s were selected to be treated first and others postponed.
  For instance, the implementing partner may have started with sub-counties
  that are close to the capital due to logistical reasons.
- Below are three strategies we will follow to address the issue of potential
+ Below are various strategies we will follow to address the issue of potential
  selection bias.
 \end_layout
 
@@ -2176,16 +2188,6 @@ Balance between planned-to-treat-but-not-treated sub-counties, and control
 First, we can investigate if selection bias was introduced by comparing
  outcomes in control sub-counties to outcomes in sub-counties that were
  allocated to receive treatment but did not end up receiving treatment.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-All district level barazas were implemented, so we only focus on sub-counties
- here and in the following sections.
-\end_layout
-
-\end_inset
-
  The idea is that if the roll-out was random, sub-counties that were allocated
  randomly to a particular treatment at the design stage but did not end
  up receiving treatment can be interchanged with sub-counties that were
@@ -4147,17 +4149,17 @@ status open
 
 \begin_layout Plain Layout
 
-load(paste(path,"results/df_averages.Rd", sep="/"))
+load(paste(path,"results/df_averages_details.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
 
-load(paste(path,"results/df_ancova.Rd", sep="/"))
+load(paste(path,"results/df_ancova_details.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
 
-load(paste(path,"results/baseline_desc.Rd", sep="/"))
+load(paste(path,"results/baseline_desc_details.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -4171,17 +4173,17 @@ if (is_final) {
 
 \begin_layout Plain Layout
 
-load(paste(path,"results/final/df_averages.Rd", sep="/"))
+load(paste(path,"results/final/df_averages_details.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
 
-load(paste(path,"results/final/df_ancova.Rd", sep="/"))
+load(paste(path,"results/final/df_ancova_details.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
 
-load(paste(path,"results/final/baseline_desc.Rd", sep="/"))
+load(paste(path,"results/final/baseline_desc_details.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout

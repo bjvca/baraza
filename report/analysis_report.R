@@ -1,3 +1,6 @@
+#### run this file for the pre-registered (confirmatory) analysis
+#### main output are the graphs
+
 rm(list=ls())
 library(dplyr)
 library(ggplot2)
@@ -20,7 +23,7 @@ final_verion_swith <- TRUE
 # 1 allow for enough time - sc level 
 hetero <- 0
 RI_conf_switch <- TRUE
-glob_repli <- 100
+glob_repli <- 1000
 glob_sig <- c(.025,.975) ### 5 percent conf intervals
 
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
