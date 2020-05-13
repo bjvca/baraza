@@ -221,7 +221,7 @@ path <- getwd()
 
 \begin_layout Plain Layout
 
-is_final <- FALSE
+is_final <- TRUE
 \end_layout
 
 \begin_layout Plain Layout
@@ -7580,7 +7580,7 @@ reference "tab:anova_edu"
 \begin_inset Float table
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -7667,7 +7667,9 @@ cline{2-6}
 
 \begin_layout Plain Layout
 
-Number of children in UPS or USE &	
+Number of children in UPS or USE$^
+\backslash
+dag$ &	
 \backslash
 Sexpr{format(round(df_averages[1,43],digits=3),nsmall=3)}		&	
 \backslash
@@ -7716,7 +7718,9 @@ Sexpr{format(round(df_ancova[2,4,43],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Distance to public school (km)  &	
+Distance to public school (km)$^
+\backslash
+dag$  &	
 \backslash
 Sexpr{format(round(df_averages[1,44],digits=3),nsmall=3)}		&	
 \backslash
@@ -7765,7 +7769,9 @@ Sexpr{format(round(df_ancova[2,4,44],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Has complete boundary fence (1=yes) &	
+Has complete boundary fence (1=yes)$^
+\backslash
+dag$ &	
 \backslash
 Sexpr{format(round(df_averages[1,45],digits=3),nsmall=3)}		&	
 \backslash
@@ -7855,7 +7861,9 @@ Sexpr{format(round(df_ancova[2,4,46],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Has water facility (1=yes) &	
+Has water facility (1=yes)$^
+\backslash
+dag$ &	
 \backslash
 Sexpr{format(round(df_averages[1,47],digits=3),nsmall=3)}		&	
 \backslash
@@ -7945,7 +7953,9 @@ Sexpr{format(round(df_ancova[2,4,48],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Has SMC (1=yes)  &	
+Has SMC (1=yes)$^
+\backslash
+dag$  &	
 \backslash
 Sexpr{format(round(df_averages[1,49],digits=3),nsmall=3)}		&	
 \backslash
@@ -7994,7 +8004,9 @@ Sexpr{format(round(df_ancova[2,4,49],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Is informed about SMC (1=yes)  &	
+Is informed about SMC (1=yes)$^
+\backslash
+dag$  &	
 \backslash
 Sexpr{format(round(df_averages[1,50],digits=3),nsmall=3)}		&	
 \backslash
@@ -8043,7 +8055,9 @@ Sexpr{format(round(df_ancova[2,4,50],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Inspectors visited schools (1=yes)  &	
+Inspectors visited schools (1=yes)$^
+\backslash
+dag$  &	
 \backslash
 Sexpr{format(round(df_averages[1,51],digits=3),nsmall=3)}		&	
 \backslash
@@ -8084,23 +8098,6 @@ Sexpr{format(round(df_ancova[2,4,51],digits=3),nsmall=3)})
 
 \backslash
  
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -8172,12 +8169,368 @@ Note: First column reports sample means (and standard deviations below);
  the effect (and standard errors below) of the deliberation component of
  the baraza intervention; Column 5 reports the effect (and standard errors
  below) of the administrative placement of the baraza intervention.
- **, * and + denotes significance at the 1, 5 and 10 percent levels.
-   
+ **, * and + denotes significance at the 1, 5 and 10 percent levels as assessed
+ using randomization inference.
+ Reported standard errors are clustered at the level of randomization.
+ $^
+\backslash
+dag$ indicates that the outcome was in included in the index for the confirmator
+y analysis.
+    
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Mechanisms
+\end_layout
+
+\begin_layout Standard
+In this section, we look at some of the mechanisms thought which the baraza
+ intervention is assumed to impact outcomes.
+ We also explore if the baraza program affected various aspects that are
+ at the core of community-based monitoring, such as interfacing with politicians
+ and civil servants, participation in election of local leaders, perceptions
+ of service quality and prioritization, and contributions to public goods
+ (both cash and in-kind).
+\end_layout
+
+\begin_layout Standard
+One of the primary aims of the community forums is to increase communication
+ between politicians, civil servants and the citizens.
+ We thus try to assess if citizens interact more with politicians and service
+ providers as a result of the meetings.
+ In particular, we ask how long it has been since the respondent spoke personall
+y to various officials for reasons related to service provision in agriculture,
+ health, education, water or roads.
+ Based on the answer, we construct an indicator variable that denotes if
+ the household had a meeting or not.
+ The time frame changes depending on the official.
+ For instance, for the LC1 chairperson, the indicator takes the value of
+ one if the respondent spoke to him within the last month.
+ For the head teacher, the reference period is 6 months.
+ For the other officials (sub-county chief, health management unit member
+ and water committee member), the indicator is true if contact was sought
+ in the past year.
+ Results are in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:meetings"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Impact of baraza on meetings
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:meetings"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We find that about XX percent of households in our sample have met with
+ the LC1 chair in the month before the endline data was collected.
+ The baraza intervention did not affect the likelihood that citizens meet
+ with the LC 1 using this definition.
+ About 20 percent of respondents report that they met with the sub-county
+ chief in the last year.
+ There are some indications that sub-county level barazas increase the likelihoo
+d of such meetings.
+ When comparing outcomes for district level barazas directly to outcomes
+ of sub-county level barazas, the difference becomes significant at the
+ 10 percent level.
+ Furthermore, we see that the information component of the baraza increases
+ the likelihood that citizens interface with the head teacher or with members
+ of the school management unit.
+ We also see that the information component of the sub-county level baraza
+ increases the likelihood of meetings with water committee members.
+ Finally, and similar to meetings with sub-county chiefs, few citizens report
+ meeting with health unit management committee members.
+ But all coefficients on sub-county level interventions are positive and
+ the difference between sub- county level barazas and district level barazas
+ is significant.
+ The index also shows that the largest effect on meetings is due to the
+ information component, but the effect is not significant.
+\end_layout
+
+\begin_layout Standard
+A second key aim of the baraza programme is to increase citizen empowerment.
+ One way in which citizens can influence policy is through political participati
+on.
+ We thus expect that the baraza intervention will affect the likelihood
+ that citizens participate in elections at various levels.
+ We also ask if any of the household members hold any political or traditional
+ position.
+ Results are in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:elections"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Impact of baraza on political participation
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:elections"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Results show fairly high overall participation in elections at various levels,
+ and no impact of barazas.
+ About 30 percent of households report that at least one member holds a
+ political or traditional position.
+ When comparing outcomes for areas that were exposed to a sub-county level
+ baraza to areas that received a district level baraza, we see that political
+ participation is significantly higher in the former.
+\end_layout
+
+\begin_layout Standard
+The baraza programme also attempts to increase a sense of community engagement.
+ One way in which citizens can participate is though contributing to common
+ goods such as public infrastructure, education of health services.
+ We differentiate between cash contributions and in- kind contributions.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:contributions"
+
+\end_inset
+
+ shows that about 32 percent of households indicate that they made in-kind
+ contributions to public schools in their community in the last two years.
+ Overall, most in-kind contributions are targeted towards drinking water
+ facilities, and least in-kind contributions were going to a dam or irrigation
+ facility, which is consistent with the difference in public nature of these
+ two facilities.
+ Cash contributions are distributed similarly, except for the fact that
+ contributions to bridges and roads generally take the form of labour contributi
+ons.
+ 
+\end_layout
+
+\begin_layout Standard
+We find that the information component of the sub-county baraza reduces
+ in-kind contributions but increases cash contributions.
+ We further find that cash contributions are significantly higher in areas
+ that were exposed to a district level baraza than in areas that were subjected
+ to a sub- county level baraza.
+ For in-kind contributions, these reductions in contributions are especially
+ for schools and for government or community buildings.
+ The increase in cash contributions as a result of the baraza intervention
+ is especially for drinking water infrastructure.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Impact of baraza on contributions
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:contributions"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, we investigate if barazas result in changes in the perception of
+ citizens on a range of problems.
+ Respondents were given a statement, and using a 10 point likert scale,
+ had to indicate how much they disagreed (1) or agreed (10) with the statement.
+ The statements were based on extensive qualitative work where various stakehold
+ers were interviewed and asked about the key problems surrounding public
+ service provision in the different sectors.
+ 
+\end_layout
+
+\begin_layout Standard
+Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:perceptions"
+
+\end_inset
+
+ shows that households tend to agree more that access to drinking water
+ sources is a serious problem as a result of the information component of
+ a sub-county baraza.
+ We also find a positive effect (that is, agreeing more that it is a serious
+ problem) of the deliberation component for this outcome.
+ Interestingly, when information and deliberation is combined in a full
+ baraza, the effect disappears.
+ Households that received a deliberation focussed sub-county level baraza
+ are also more likely to agree that drinking water is usually dirty.
+ In the area of public health provision, households that were exposed to
+ a sub-county level information baraza are more likely to agree that access
+ to a health centre or hospital is a serious problem.
+ Households that were exposed to a district level baraza are also more likely
+ to indicate access to a health facility as a problem relative to households
+ that were exposed to a sub-county level baraza.
+ 
+\end_layout
+
+\begin_layout Standard
+We further find that households that were exposed to a sub-county level
+ baraza indicate that lack of medicines at health centers or hospitals is
+ less of a problem than in control areas.
+ A direct comparison for this outcome between sub-county level barazas and
+ district level barazas also yields a significant difference.
+ We also ask about perceptions related to friendliness of staff and absenteeism.
+ We find that households that live in areas that received the district level
+ treatment are more inclined to say that absenteeism is a problem then household
+s that live in an area that received the sub-county level treatment.
+\end_layout
+
+\begin_layout Standard
+We then look at perceptions in the area of education.
+ We see that households are generally most concerned about poor quality
+ learning outcomes, but think absenteeism is less of a problem.
+ For none of the school related perceptions, we find a significant difference
+ between the various groups.
+ We also do not find that the perception of access to roads as a serious
+ problem changes as a result of the barazas.
+\end_layout
+
+\begin_layout Standard
+Respondents seem to perceive agricultural service delivery as the most problemat
+ic area.
+ Averages on the likert scales are fairly high when asked if farmers agree
+ extension officers visit rarely, and that there is a lack of transparency
+ in how farmers are selected to receive inputs from government.
+ We see that the issue of transparency reduces somewhat after a sub-county
+ level baraza, but the effect is not significant.
+ A perception index that combines all outcome indicates only a significant
+ difference between sub-county level barazas and district level barazas.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Impact of baraza on perceptions
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:perceptions"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
