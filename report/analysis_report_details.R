@@ -5,7 +5,7 @@ rm(list=ls())
 library(dplyr)
 library(ggplot2)
 library(MatchIt) 
-library(multiwayvcov)
+#library(multiwayvcov)
 library(plm)
 library(lmtest)
 library(clubSandwich)
@@ -17,13 +17,13 @@ set.seed(123456789) #not needed for final version?
 path <- strsplit(getwd(), "/report")[[1]]
 
 ### set this switch to TRUE if you want to produce a final report - this will save results matrices in a static directory
-final_verion_swith <- FALSE
+final_verion_swith <- TRUE
 ## heterogeneity analysis:
 # 0 no
 # 1 allow for enough time - sc level 
 hetero <- 0
-RI_conf_switch <- FALSE
-glob_repli <- 100
+RI_conf_switch <- TRUE
+glob_repli <- 5000
 glob_sig <- c(.025,.975) ### 5 percent conf intervals
 
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
@@ -840,7 +840,7 @@ df_ancova <- array(NA,dim=c(6,5,length(outcomes)))
 df_averages <- array(NA,dim=c(2,length(outcomes)))
 
 for (i in 1:length(outcomes)) {
-#print(i)
+print(i)
 # i <- 1
 
 df_averages[1,i] <- mean(as.matrix(endline[outcomes[i]]), na.rm=T)
