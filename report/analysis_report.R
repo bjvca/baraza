@@ -21,14 +21,15 @@ final_verion_swith <- TRUE
 ## heterogeneity analysis:
 # 0 no
 # 1 allow for enough time - sc level 
-hetero <- 3
-RI_conf_switch <- FALSE
-glob_repli <- 5000
+RI_conf_switch <- TRUE
+glob_repli <- 2500
 glob_sig <- c(.025,.975) ### 5 percent conf intervals
 
+for (hetero in 1:4) {
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
 #source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/cleaning.R")
 #source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/anonyize.R")
+endline <- read.csv(paste(path,"data/public/endline.csv", sep="/"))
 endline <- read.csv(paste(path,"data/public/endline.csv", sep="/"))
 endline$a21 <- as.character(endline$region)
 endline$region <- NULL
@@ -657,14 +658,40 @@ if (hetero == 1) {
 dta <- subset(dta, (time_dif>1.5) | time_dif == 0)
 }
 if (hetero == 2) {
-dta <- subset(dta, j9 >= 5 )
+dta <- subset(dta, j9 >= 4 )
 }
 if (hetero == 3) {
-dta <- subset(dta, (baraza.J2 == 1 | baraza.J1 == 1) | (information == 0 & deliberation ==0 & district_baraza==0 ) )
+sc_baseline <- read.csv(paste(path,"data/public/sc_level_baseline.csv", sep ="/"))
+sc_baseline$subcounty <- as.character(sc_baseline$subcounty)
+sc_baseline$subcounty[sc_baseline$subcounty == "LUWERO"] <- "LUWERO_TC"
+sc_baseline$subcounty[sc_baseline$subcounty == "SEMBABULE TC"] <- "SEMBABULE_TC"
+sc_baseline$subcounty[sc_baseline$subcounty == "RAKAI TC"] <- "RAKAI_TC"
+sc_baseline$subcounty[sc_baseline$subcounty == "NTUSI"] <- "NTUUSI"
+
+sc_baseline <- aggregate(rowMeans(sc_baseline[c("h41b","h386b","h119b")], na.rm=T), list(sc_baseline$district,sc_baseline$sub),mean)
+
+names(sc_baseline) <- c("district","sub","share")
+dta <-  merge(dta,sc_baseline, by.x=c("district","subcounty"),by.y=c("district","sub"))
+dta <- subset(dta, share > 15 )
 }
+if (hetero == 4) {
+sc_baseline <- read.csv(paste(path,"data/public/sc_level_baseline.csv", sep ="/"))
+sc_baseline$subcounty <- as.character(sc_baseline$subcounty)
+sc_baseline$subcounty[sc_baseline$subcounty == "LUWERO"] <- "LUWERO_TC"
+sc_baseline$subcounty[sc_baseline$subcounty == "SEMBABULE TC"] <- "SEMBABULE_TC"
+sc_baseline$subcounty[sc_baseline$subcounty == "RAKAI TC"] <- "RAKAI_TC"
+sc_baseline$subcounty[sc_baseline$subcounty == "NTUSI"] <- "NTUUSI"
+sc_baseline$connected <- (sc_baseline$j11j_minister=="Yes" | sc_baseline$j11j_mp=="Yes" | sc_baseline$j11j_head_govt=="Yes" | sc_baseline$j11j_rdc=="Yes" | sc_baseline$j11j_chairman_lc5=="Yes")
+#sc_baseline$connected <- (sc_baseline$j11j_minister=="Yes" | sc_baseline$j11j_mp=="Yes"  )
+sc_baseline <- aggregate(sc_baseline[c("connected")], list(sc_baseline$district,sc_baseline$sub),max)
+names(sc_baseline) <- c("district","sub","connected")
+dta <-  merge(dta,sc_baseline, by.x=c("district","subcounty"),by.y=c("district","sub"))
+dta <- subset(dta, connected==1 )
+}
+
 #dta <- subset(dta, baraza.J2 == 1 | baraza.J1 == 1)
 ##both officials recall that barazas took place in treatment areas - reduces sample size by 25 percent
-#sc_endline <- read.csv(paste(path,"data/public/sc_level_endline.csv", sep ="/"))
+#)
 #sc_endline <- aggregate(sc_endline[c("baraza.M2","baraza.M4")]==1, list(sc_endline$district,sc_endline$sub),sum)
 #names(sc_endline) <- c("district","sub","baraza.M2","baraza.M4")
 #dta <-  merge(dta,sc_endline, by.x=c("district","subcounty"),by.y=c("district","sub"))
@@ -804,7 +831,7 @@ d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","healt
 
 ### save results
 save_path <- ifelse(final_verion_swith, paste(path,"report/results/final", sep = "/"), paste(path,"report/results/", sep = "/"))
-save_path <- ifelse(hetero ==1, paste(save_path,"hetero1", sep = "/"),  ifelse(hetero ==2, paste(save_path,"hetero2", sep = "/"), ,  ifelse(hetero ==3, paste(save_path,"hetero3", sep = "/"), save_path)))
+save_path <- ifelse(hetero ==1, paste(save_path,"hetero1", sep = "/"),  ifelse(hetero ==2, paste(save_path,"hetero2", sep = "/"),   ifelse(hetero ==3, paste(save_path,"hetero3", sep = "/"),  ifelse(hetero ==4, paste(save_path,"hetero4", sep = "/"), save_path))))
 
 save(df_ancova, file= paste(save_path,"df_ancova.Rd", sep="/"))
 save(df_averages, file= paste(save_path,"df_averages.Rd", sep="/"))
@@ -813,5 +840,5 @@ save(baseline_desc, file= paste(save_path,"baseline_desc.Rd", sep="/"))
 png(paste(save_path,"impact_summary_ancova.png",sep = "/"), units="px", height=3200, width= 6400, res=600)
 print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3))
 dev.off()
-
+}
 
