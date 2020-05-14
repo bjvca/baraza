@@ -7,6 +7,7 @@ library(plm)
 library(lmtest)
 library(clubSandwich)
 library(moments)
+library(doParallel)
 set.seed(123456789) #not needed for final version?
 
 ### this is executed in the /report subdirectory, need to ..

@@ -17,7 +17,7 @@ set.seed(123456789) #not needed for final version?
 path <- strsplit(getwd(), "/report")[[1]]
 
 ### set this switch to TRUE if you want to produce a final report - this will save results matrices in a static directory
-final_verion_swith <- FALSE
+final_verion_swith <- TRUE
 ## heterogeneity analysis:
 # 0 no
 # 1 allow for enough time - sc level 
