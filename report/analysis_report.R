@@ -21,8 +21,8 @@ final_verion_swith <- FALSE
 ## heterogeneity analysis:
 # 0 no
 # 1 allow for enough time - sc level 
-hetero <- 1
-RI_conf_switch <- TRUE
+hetero <- 3
+RI_conf_switch <- FALSE
 glob_repli <- 5000
 glob_sig <- c(.025,.975) ### 5 percent conf intervals
 
@@ -659,6 +659,9 @@ dta <- subset(dta, (time_dif>1.5) | time_dif == 0)
 if (hetero == 2) {
 dta <- subset(dta, j9 >= 5 )
 }
+if (hetero == 3) {
+dta <- subset(dta, (baraza.J2 == 1 | baraza.J1 == 1) | (information == 0 & deliberation ==0 & district_baraza==0 ) )
+}
 #dta <- subset(dta, baraza.J2 == 1 | baraza.J1 == 1)
 ##both officials recall that barazas took place in treatment areas - reduces sample size by 25 percent
 #sc_endline <- read.csv(paste(path,"data/public/sc_level_endline.csv", sep ="/"))
@@ -801,7 +804,7 @@ d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","healt
 
 ### save results
 save_path <- ifelse(final_verion_swith, paste(path,"report/results/final", sep = "/"), paste(path,"report/results/", sep = "/"))
-save_path <- ifelse(hetero ==1, paste(save_path,"hetero1", sep = "/"),  ifelse(hetero ==2, paste(save_path,"hetero2", sep = "/"), save_path))
+save_path <- ifelse(hetero ==1, paste(save_path,"hetero1", sep = "/"),  ifelse(hetero ==2, paste(save_path,"hetero2", sep = "/"), ,  ifelse(hetero ==3, paste(save_path,"hetero3", sep = "/"), save_path)))
 
 save(df_ancova, file= paste(save_path,"df_ancova.Rd", sep="/"))
 save(df_averages, file= paste(save_path,"df_averages.Rd", sep="/"))
