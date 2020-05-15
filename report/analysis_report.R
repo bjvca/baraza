@@ -21,11 +21,12 @@ final_verion_swith <- TRUE
 ## heterogeneity analysis:
 # 0 no
 # 1 allow for enough time - sc level 
+hetero <- 0
 RI_conf_switch <- TRUE
 glob_repli <- 2500
 glob_sig <- c(.025,.975) ### 5 percent conf intervals
 
-for (hetero in 1:4) {
+for (hetero in 3:4) {
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
 #source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/cleaning.R")
 #source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/anonyize.R")
@@ -649,7 +650,7 @@ dta$date <- as.character(paste("15",paste(dta$month, dta$year, sep="/"),sep="/")
 dta$date <- as.Date(dta$date,format = "%d/%m/%Y")
 dta$today <- as.Date("2020-02-15") ### set this as 15th of feb 2020, which is prob when half of endline data is collected
 dta$time_dif <- as.numeric(as.character(dta$today - dta$date))/30/12
-dta$time_dif[is.na(dta$time_dif) & (dta$deliberation == 1 | dta$information == 1)] <- mean(dta$time_dif) 
+#dta$time_dif[is.na(dta$time_dif) & (dta$deliberation == 1 | dta$information == 1)] <- mean(dta$time_dif) 
 dta$time_dif[is.na(dta$time_dif)] <- 0 
 dta$time_dif2 <- dta$time_dif * dta$time_dif
 
