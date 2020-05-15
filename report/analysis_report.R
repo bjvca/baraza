@@ -26,7 +26,7 @@ RI_conf_switch <- TRUE
 glob_repli <- 2500
 glob_sig <- c(.025,.975) ### 5 percent conf intervals
 
-for (hetero in 3:4) {
+#for (hetero in 3:4) {
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
 #source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/cleaning.R")
 #source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/anonyize.R")
@@ -841,5 +841,5 @@ save(baseline_desc, file= paste(save_path,"baseline_desc.Rd", sep="/"))
 png(paste(save_path,"impact_summary_ancova.png",sep = "/"), units="px", height=3200, width= 6400, res=600)
 print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3))
 dev.off()
-}
+
 
