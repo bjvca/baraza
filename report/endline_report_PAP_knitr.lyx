@@ -1417,7 +1417,7 @@ on treatment, but the difference is only significant at the 10 percent level.
 \begin_inset Float table
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -4036,7 +4036,7 @@ status open
 \begin_inset Graphics
 	filename figure/power_extension.png
 	lyxscale 20
-	scale 50
+	scale 60
 
 \end_inset
 
@@ -4107,7 +4107,7 @@ status open
 \begin_inset Graphics
 	filename figure/power_dist_water.png
 	lyxscale 20
-	scale 45
+	scale 60
 
 \end_inset
 
@@ -4126,6 +4126,191 @@ name "fig:Power-curves-dist"
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Attrition
+\end_layout
+
+\begin_layout Standard
+As more than 4 years have passed between between baseline and endline data
+ collection, some level of attrition was to be expected.
+ Overall, attrition amounted to 8.6 percent.
+ Reports from the field indicated that this attrition was due to some villages
+ close to the lake shores that were flooded due to heavy rains.
+ Two villages in areas populated with land insecure settlers were dropped
+ due to security concerns.
+ Finally, attrition was generally higher in urban areas, as households that
+ were residing in rented properties returned to their villages.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Attrition"
+
+\end_inset
+
+ shows that attrition is independent of the various interventions of the
+ study.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Attrition
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Attrition"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{rccccc} 
+\backslash
+hline 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+	& mean & sc baraza & information & deliberation	& level 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cline{2-6} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Attrition & 0.086 & 0.010  &  0.0139 & 0.003 & -0.004 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ & (0.280)  &  (0.020)   & (0.017) & (0.019) &  (0.014) 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Number of observations & 7340 & 2996 & 5341 &  5341  &  3996  
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline  
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+scriptsize
+\end_layout
+
+\begin_layout Plain Layout
+
+Note: First column reports mean attrition rate (and standard deviations
+ below); Column 2 reports correlation of attrition (and standard errors
+ below) to the sub-county level baraza treatment; Column 3 reports correlation
+ of attrition to the information baraza treatment; Column 4 reports correlation
+ of attrition to the deliberation baraza treatment; Column 5 reports correlation
+ of attrtion to the district level baraza treatment.
+ Reported standard errors are clustered at the level of randomization.
+ 
 \end_layout
 
 \end_inset
@@ -14810,7 +14995,7 @@ Note: First column reports differences (and standard errors below) of the
 \begin_inset Float table
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
