@@ -17,12 +17,12 @@ set.seed(123456789) #not needed for final version?
 path <- strsplit(getwd(), "/report")[[1]]
 
 ### set this switch to TRUE if you want to produce a final report - this will save results matrices in a static directory
-final_verion_swith <- TRUE
+final_verion_swith <- FALSE
 ## heterogeneity analysis:
 # 0 no
 # 1 allow for enough time - sc level 
-hetero <- 0
-RI_conf_switch <- TRUE
+hetero <- 3
+RI_conf_switch <- FALSE
 glob_repli <- 5000
 glob_sig <- c(.025,.975) ### 5 percent conf intervals
 
@@ -831,8 +831,37 @@ if (hetero == 1) {
 dta <- subset(dta, (time_dif>1.5) | time_dif == 0)
 }
 if (hetero == 2) {
-dta <- subset(dta, j9 >= 5 )
+dta <- subset(dta, j9 >= 4 )
 }
+if (hetero == 3) {
+sc_baseline <- read.csv(paste(path,"data/public/sc_level_baseline.csv", sep ="/"))
+sc_baseline$subcounty <- as.character(sc_baseline$subcounty)
+sc_baseline$subcounty[sc_baseline$subcounty == "LUWERO"] <- "LUWERO_TC"
+sc_baseline$subcounty[sc_baseline$subcounty == "SEMBABULE TC"] <- "SEMBABULE_TC"
+sc_baseline$subcounty[sc_baseline$subcounty == "RAKAI TC"] <- "RAKAI_TC"
+sc_baseline$subcounty[sc_baseline$subcounty == "NTUSI"] <- "NTUUSI"
+
+sc_baseline <- aggregate(rowMeans(sc_baseline[c("h41b","h386b","h119b")], na.rm=T), list(sc_baseline$district,sc_baseline$sub),mean)
+
+names(sc_baseline) <- c("district","sub","share")
+dta <-  merge(dta,sc_baseline, by.x=c("district","subcounty"),by.y=c("district","sub"))
+dta <- subset(dta, share > 15 )
+}
+if (hetero == 4) {
+sc_baseline <- read.csv(paste(path,"data/public/sc_level_baseline.csv", sep ="/"))
+sc_baseline$subcounty <- as.character(sc_baseline$subcounty)
+sc_baseline$subcounty[sc_baseline$subcounty == "LUWERO"] <- "LUWERO_TC"
+sc_baseline$subcounty[sc_baseline$subcounty == "SEMBABULE TC"] <- "SEMBABULE_TC"
+sc_baseline$subcounty[sc_baseline$subcounty == "RAKAI TC"] <- "RAKAI_TC"
+sc_baseline$subcounty[sc_baseline$subcounty == "NTUSI"] <- "NTUUSI"
+sc_baseline$connected <- (sc_baseline$j11j_minister=="Yes" | sc_baseline$j11j_mp=="Yes" | sc_baseline$j11j_head_govt=="Yes" | sc_baseline$j11j_rdc=="Yes" | sc_baseline$j11j_chairman_lc5=="Yes")
+#sc_baseline$connected <- (sc_baseline$j11j_minister=="Yes" | sc_baseline$j11j_mp=="Yes"  )
+sc_baseline <- aggregate(sc_baseline[c("connected")], list(sc_baseline$district,sc_baseline$sub),max)
+names(sc_baseline) <- c("district","sub","connected")
+dta <-  merge(dta,sc_baseline, by.x=c("district","subcounty"),by.y=c("district","sub"))
+dta <- subset(dta, connected==1 )
+}
+
 
 
 ###init arrays to store results
