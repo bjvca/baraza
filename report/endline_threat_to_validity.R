@@ -7,18 +7,24 @@ library(plm)
 library(lmtest)
 library(clubSandwich)
 library(moments)
+library(doParallel)
 set.seed(54321) #not needed for final version?
 
+### this is executed in the /report subdirectory, need to ..
+path <- strsplit(getwd(), "/report")[[1]]
 
 ### set this switch to TRUE if you want to produce a final report - this will save results matrices in a static directory
 final_verion_swith <- TRUE
 
-path <- strsplit(getwd(), "/report")[[1]]
+RI_conf_switch <- TRUE
+glob_repli <- 5000
+glob_sig <- c(.025,.975) ### 5 percent conf intervals
 
-
+#for (hetero in 3:4) {
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
 #source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/cleaning.R")
 #source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/anonyize.R")
+endline <- read.csv(paste(path,"data/public/endline.csv", sep="/"))
 endline <- read.csv(paste(path,"data/public/endline.csv", sep="/"))
 endline$a21 <- as.character(endline$region)
 endline$region <- NULL
@@ -29,7 +35,6 @@ endline$region <- NULL
 ### - number of days sick can only be determined if all data is in, as we need to establish the max number of sick household members
 ### there should be no duplicates in this dataset
 endline <- endline[!duplicated(endline$hhid),]
-
 
 endline$a21 <- as.factor(endline$a21)
 
@@ -84,6 +89,191 @@ credplot.gg <- function(d,units, hypo, axlabs, lim){
  return(p)
 }
 
+
+
+RI_conf_1 <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr_repl = 1000, sig = c(.025,.975)) {
+#i <- 1
+#dta_sim <- endline_interacted
+#ctrls <- "a21"
+
+### a function to esimate confidence intervals using randomization inference following Gerber and Green pages 66-71 and 83.
+	if (is.null(baseline_outcomes)) {
+		formula <- as.formula(paste(outcomes[i],paste("interaction_planned",ctrls,sep="+"),sep="~"))
+		
+	} else {
+		formula <- as.formula(paste(paste(outcomes[i],paste("interaction_planned",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
+	}
+
+
+	dta_sim <- dta_sim %>%  mutate(clusterID = group_indices(., district, subcounty))
+	### get ATEs for two different models
+	ols <- lm(formula, data=dta_sim) 
+	
+	dta_sim$dep <- as.numeric(unlist(dta_sim[as.character(formula[[2]])]))
+
+	treat_nrs <- table(data.frame(aggregate(dta_sim["interaction_planned"], list(dta_sim$clusterID),mean)[,2]))
+
+	### calculate potential outcomes
+	### for model 1 (sc effect)
+	dta_sim$pot_out_0 <- NA
+	dta_sim$pot_out_0[dta_sim["interaction_planned"] == 0 ] <- dta_sim$dep[dta_sim["interaction_planned"] == 0 ]
+	dta_sim$pot_out_0[dta_sim["interaction_planned"] == 1 ] <- dta_sim$dep[dta_sim["interaction_planned"] == 1] - coef(ols)["interaction_planned"]
+
+	dta_sim$pot_out_1 <- NA
+	dta_sim$pot_out_1[dta_sim["interaction_planned"] == 0 ] <- dta_sim$dep[dta_sim["interaction_planned"] == 0 ] + coef(ols)["interaction_planned"]
+	dta_sim$pot_out_1[dta_sim["interaction_planned"] == 1 ] <- dta_sim$dep[dta_sim["interaction_planned"] == 1]	
+
+	
+	oper <- foreach (repl = 1:nr_repl,.combine=rbind) %dopar% {
+		#do the permuations	
+		perm_treat <- data.frame(cbind(sample(c(rep("SC",treat_nrs[1]), rep("D",treat_nrs[2]))),names(table(dta_sim$clusterID))))  
+		names(perm_treat) <- c("perm_treat","clusterID")
+		dta_perm <- merge(dta_sim, perm_treat, by.x="clusterID", by.y="clusterID")
+		dta_perm$interaction_planned <- ifelse(dta_perm$perm_treat == "D", 1, 0)
+	
+
+		dta_perm$dep <- NA
+		dta_perm$dep[dta_perm["interaction_planned"] ==1 ] <- dta_perm$pot_out_1[dta_perm["interaction_planned"] ==1 ]
+		dta_perm$dep[dta_perm["interaction_planned"] ==0 ] <- dta_perm$pot_out_0[dta_perm["interaction_planned"] ==0 ]
+
+
+		### p-value
+		exceed <- abs(coef(lm(formula, data=dta_perm))["interaction_planned"]) > abs(coef(ols)["interaction_planned"])
+
+		
+
+		dta_perm[outcomes[i]] <- dta_perm$dep
+		res_list <- cbind(coef(lm(formula, data=dta_perm))["interaction_planned"],"exceed" = exceed)
+		return(res_list) 
+	}
+	return(list(conf = quantile(oper[,1],sig, na.rm=T),pval= (sum(oper[,2])/nr_repl)))
+}
+
+
+
+RI_conf_2 <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr_repl = 1000, sig = c(.025,.975)) {
+#RI_conf_dist(2,outcomes, baseline_outcomes, subset(dta, ((information == 1 & deliberation==1) | district_baraza == 1)) , ctrls = "a21", nr_repl = 1000, sig = c(.025,.975))
+#dta_sim <- subset(dta, ((information == 1 & deliberation==1) | district_baraza == 1))
+#ctrls <- "a21"
+#nr_repl <- 1000
+#sig <-  c(.025,.975)
+
+### a function to esimate confidence intervals using randomization inference following Gerber and Green pages 66-71 and 83.
+	if (is.null(baseline_outcomes)) {
+		formula <- as.formula(paste(outcomes[i],paste("information_planned",ctrls,sep="+"),sep="~"))
+		
+	} else {
+		formula <- as.formula(paste(paste(outcomes[i],paste("information_planned",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
+	}
+
+
+	dta_sim <- dta_sim %>%  mutate(clusterID = group_indices(., district, subcounty))
+	### get ATEs for two different models
+	ols <- lm(formula, data=dta_sim) 
+	
+	dta_sim$dep <- as.numeric(unlist(dta_sim[as.character(formula[[2]])]))
+
+	treat_nrs <- table(data.frame(aggregate(dta_sim["information_planned"], list(dta_sim$clusterID),mean)[,2]))
+
+	### calculate potential outcomes
+	### for model 1 (sc effect)
+	dta_sim$pot_out_0 <- NA
+	dta_sim$pot_out_0[dta_sim["information_planned"] == 0 ] <- dta_sim$dep[dta_sim["information_planned"] == 0 ]
+	dta_sim$pot_out_0[dta_sim["information_planned"] == 1 ] <- dta_sim$dep[dta_sim["information_planned"] == 1] - coef(ols)["information_planned"]
+
+	dta_sim$pot_out_1 <- NA
+	dta_sim$pot_out_1[dta_sim["information_planned"] == 0 ] <- dta_sim$dep[dta_sim["information_planned"] == 0 ] + coef(ols)["information_planned"]
+	dta_sim$pot_out_1[dta_sim["information_planned"] == 1 ] <- dta_sim$dep[dta_sim["information_planned"] == 1]	
+
+	
+	oper <- foreach (repl = 1:nr_repl,.combine=rbind) %dopar% {
+		#do the permuations	
+		perm_treat <- data.frame(cbind(sample(c(rep("SC",treat_nrs[1]), rep("D",treat_nrs[2]))),names(table(dta_sim$clusterID))))  
+		names(perm_treat) <- c("perm_treat","clusterID")
+		dta_perm <- merge(dta_sim, perm_treat, by.x="clusterID", by.y="clusterID")
+		dta_perm$information_planned <- ifelse(dta_perm$perm_treat == "D", 1, 0)
+	
+
+		dta_perm$dep <- NA
+		dta_perm$dep[dta_perm["information_planned"] ==1 ] <- dta_perm$pot_out_1[dta_perm["information_planned"] ==1 ]
+		dta_perm$dep[dta_perm["information_planned"] ==0 ] <- dta_perm$pot_out_0[dta_perm["information_planned"] ==0 ]
+
+
+		### p-value
+		exceed <- abs(coef(lm(formula, data=dta_perm))["information_planned"]) > abs(coef(ols)["information_planned"])
+
+		
+
+		dta_perm[outcomes[i]] <- dta_perm$dep
+		res_list <- cbind(coef(lm(formula, data=dta_perm))["information_planned"],"exceed" = exceed)
+		return(res_list) 
+	}
+	return(list(conf = quantile(oper[,1],sig, na.rm=T),pval= (sum(oper[,2])/nr_repl)))
+}
+
+
+
+RI_conf_3 <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr_repl = 1000, sig = c(.025,.975)) {
+#RI_conf_dist(2,outcomes, baseline_outcomes, subset(dta, ((information == 1 & deliberation==1) | district_baraza == 1)) , ctrls = "a21", nr_repl = 1000, sig = c(.025,.975))
+#dta_sim <- subset(dta, ((information == 1 & deliberation==1) | district_baraza == 1))
+#ctrls <- "a21"
+#nr_repl <- 1000
+#sig <-  c(.025,.975)
+
+### a function to esimate confidence intervals using randomization inference following Gerber and Green pages 66-71 and 83.
+	if (is.null(baseline_outcomes)) {
+		formula <- as.formula(paste(outcomes[i],paste("deliberation_planned",ctrls,sep="+"),sep="~"))
+		
+	} else {
+		formula <- as.formula(paste(paste(outcomes[i],paste("deliberation_planned",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
+	}
+
+
+		dta_sim <- dta_sim %>%  mutate(clusterID = group_indices(., district, subcounty))
+	### get ATEs for two different models
+	ols <- lm(formula, data=dta_sim) 
+	
+	dta_sim$dep <- as.numeric(unlist(dta_sim[as.character(formula[[2]])]))
+
+	treat_nrs <- table(data.frame(aggregate(dta_sim["deliberation_planned"], list(dta_sim$clusterID),mean)[,2]))
+
+	### calculate potential outcomes
+	### for model 1 (sc effect)
+	dta_sim$pot_out_0 <- NA
+	dta_sim$pot_out_0[dta_sim["deliberation_planned"] == 0 ] <- dta_sim$dep[dta_sim["deliberation_planned"] == 0 ]
+	dta_sim$pot_out_0[dta_sim["deliberation_planned"] == 1 ] <- dta_sim$dep[dta_sim["deliberation_planned"] == 1] - coef(ols)["deliberation_planned"]
+
+	dta_sim$pot_out_1 <- NA
+	dta_sim$pot_out_1[dta_sim["deliberation_planned"] == 0 ] <- dta_sim$dep[dta_sim["deliberation_planned"] == 0 ] + coef(ols)["deliberation_planned"]
+	dta_sim$pot_out_1[dta_sim["deliberation_planned"] == 1 ] <- dta_sim$dep[dta_sim["deliberation_planned"] == 1]	
+
+	
+	oper <- foreach (repl = 1:nr_repl,.combine=rbind) %dopar% {
+		#do the permuations	
+		perm_treat <- data.frame(cbind(sample(c(rep("SC",treat_nrs[1]), rep("D",treat_nrs[2]))),names(table(dta_sim$clusterID))))  
+		names(perm_treat) <- c("perm_treat","clusterID")
+		dta_perm <- merge(dta_sim, perm_treat, by.x="clusterID", by.y="clusterID")
+		dta_perm$deliberation_planned <- ifelse(dta_perm$perm_treat == "D", 1, 0)
+	
+
+		dta_perm$dep <- NA
+		dta_perm$dep[dta_perm["deliberation_planned"] ==1 ] <- dta_perm$pot_out_1[dta_perm["deliberation_planned"] ==1 ]
+		dta_perm$dep[dta_perm["deliberation_planned"] ==0 ] <- dta_perm$pot_out_0[dta_perm["deliberation_planned"] ==0 ]
+
+
+		### p-value
+		exceed <- abs(coef(lm(formula, data=dta_perm))["deliberation_planned"]) > abs(coef(ols)["deliberation_planned"])
+
+		
+
+		dta_perm[outcomes[i]] <- dta_perm$dep
+		res_list <- cbind(coef(lm(formula, data=dta_perm))["deliberation_planned"],"exceed" = exceed)
+		return(res_list) 
+	}
+	return(list(conf = quantile(oper[,1],sig, na.rm=T),pval= (sum(oper[,2])/nr_repl)))
+}
+
+
 ################################################################## end of funtions declarations
 
 #### for the mock report, I use a dummy endline - I read in a dummy endline of 3 households just to get the correct variable names
@@ -109,14 +299,9 @@ baseline$a23[baseline$a23 == "NTUSI"] <- "NTUUSI"
 
 baseline$b21 <-  as.numeric(baseline$b21=="Yes")
 baseline$b31 <-  as.numeric(baseline$b31=="Yes")
-baseline$b41 <-  as.numeric(baseline$b41=="Yes")
-baseline$b41[is.na(baseline$b41)] <- 0
 baseline$b44 <-  as.numeric(baseline$b44=="Yes")
 baseline$b44[is.na(baseline$b44)] <- 0
 baseline$base_inputs <- as.numeric(baseline$used_seed=="Yes" | baseline$used_fert=="Yes")
-baseline$used_seed <- baseline$used_seed=="Yes"
-baseline$used_fert <- baseline$used_fert=="Yes"
-baseline$used_chem <- baseline$used_chem=="Yes"
 baseline$b5144 <- as.numeric(baseline$b5144=="Yes")
 baseline$b5146 <- as.numeric(baseline$b5146=="Yes")
 ##use of unprotected water sources in dry season
@@ -151,15 +336,9 @@ baseline <- trim("d43", baseline)
 baseline$d11 <- as.numeric(baseline$d11=="Yes")
 
 baseline$tot_sick[baseline$d11==0] <- 0 
-baseline$not_work[baseline$d11==0] <- 0 
-baseline$not_school[baseline$d11==0] <- 0 
-baseline$not_work_school <- baseline$not_work + baseline$not_school
 
 baseline$tot_sick <- log(baseline$tot_sick + sqrt(baseline$tot_sick ^ 2 + 1))
 baseline <- trim("tot_sick", baseline)
-
-baseline$not_work_school <- log(baseline$not_work_school + sqrt(baseline$not_work_school ^ 2 + 1))
-baseline <- trim("not_work_school", baseline)
 
 baseline$wait_time <- baseline$d410hh*60+ baseline$d410mm
 baseline$wait_time_min  <- baseline$d410hh*60+ baseline$d410mm
@@ -182,14 +361,8 @@ baseline <- trim("dist_school", baseline)
 baseline$e12 <- rowSums(cbind(as.numeric(baseline$e12upe == "Yes") , as.numeric(baseline$e12use == "Yes")), na.rm=T) > 0
 baseline$e12[is.na(baseline$e12upe) & is.na(baseline$e12use)] <- NA
 
-baseline$e13 <- rowSums(cbind(as.numeric(baseline$e13upe == "Yes") , as.numeric(baseline$e13use == "Yes")), na.rm=T) > 0
-baseline$e13[is.na(baseline$e13upe) & is.na(baseline$e13use)] <- NA
-
 baseline$e14 <- rowSums(cbind(as.numeric(baseline$e14upe == "Yes") , as.numeric(baseline$e14use == "Yes")), na.rm=T) > 0
 baseline$e14[is.na(baseline$e14upe) & is.na(baseline$e14use)] <- NA
-
-baseline$e18 <- rowSums(cbind(as.numeric(baseline$e18upe == 1) , as.numeric(baseline$e18use == 1)), na.rm=T) > 0
-baseline$e18[is.na(baseline$e18upe) & is.na(baseline$e18use)] <- NA
 
 baseline$e22 <- rowSums(cbind(as.numeric(baseline$e22upe == "Yes") , as.numeric(baseline$e22use == "Yes")), na.rm=T) > 0
 baseline$e22[is.na(baseline$e22upe) & is.na(baseline$e22use)] <- NA
@@ -208,62 +381,9 @@ baseline$log_farmsize <- log(baseline$farmsize + sqrt(baseline$farmsize ^ 2 + 1)
 baseline$log_farmsize[is.infinite(baseline$log_farmsize)] <- NA
 baseline <- trim("farmsize", baseline)
 
-baseline$d411 <- log(baseline$d411 + sqrt(baseline$d411 ^ 2 + 1))
-baseline <- trim("d411", baseline)
-
 baseline$ironroof <- as.numeric(baseline$a512 =="Corrugated iron sheets")
 baseline$improved_wall <- as.numeric(baseline$a513 %in% c("Mud_bricks_burnt_bricks","Concrete_blocks") )
 baseline$head_sec <- as.numeric(baseline$a36) > 15
-
-baseline$f241.LC1.election <- baseline$f241.LC1.election == "Yes"   
-baseline$f241.LC3.election <- baseline$f241.LC3.election == "Yes"   
-baseline$f241.LC5.election <- baseline$f241.LC5.election == "Yes"   
-baseline$f241.Pesidential <- baseline$f241.Pesidential == "Yes"   
-baseline$f241.Parliamentary <- baseline$f241.Parliamentary == "Yes"  
-baseline$f241.Party.leader <- baseline$f241.Party.leader == "Yes"
-
-
-baseline$f2301 <- as.numeric(baseline$f2301) %in% c(6,7)
-baseline$f2303 <- as.numeric(baseline$f2303) %in% c(1,2,3,6,7)
-baseline$f2307  <- as.numeric(baseline$f2307) %in% c(1,3,6,7) 
-baseline$f2309 <- as.numeric(baseline$f2309) %in% c(1,2,3,6,7)
-baseline$f2310 <- as.numeric(baseline$f2310) %in% c(1,2,3,6,7)
-
-baseline$f21 <- baseline$f21 == "Yes"
-
-baseline$roof <- baseline$a512 %in% c("Corrugated iron sheets", "Tiles")
-baseline$wall <- baseline$a513 == "Mud_bricks_burnt_bricks"
-baseline$b314 <- baseline$b314 == "Yes"
-baseline$b316 <- baseline$b316 == "Yes"
-baseline$b316[is.na(baseline$b316)] <- FALSE
-baseline$used_livestock_tech <- baseline$used_livestock_tech == "Yes"
-baseline$d416 <- baseline$d416 == "Yes"
-baseline$d419 <- baseline$d419 == "Yes"
-
-baseline$b320 <- baseline$b320 == "Decided by extension agents/forum members without any consultation"
-baseline$qc16 <- (baseline$qc16 == "Satisfied"| baseline$qc16 == "Very satisfied")
-baseline$d420 <- (baseline$d420 == "Satisfied" | baseline$d420 == "Very satisfied")
-baseline$c4 <- baseline$c4 %in% c("Boil","Use chlorine/bleach")
-baseline$c11 <- baseline$c11 == "Yes"
-baseline$c11[is.na(baseline$c11 )] <- FALSE 
-baseline$c13 <- baseline$c13 == "Yes"
-baseline$c13[is.na(baseline$c13 )] <- FALSE
-baseline$d32 <- baseline$d32 == "Yes"
-baseline$d32[is.na(baseline$d32 )] <- FALSE
-baseline$d315 <- baseline$d315 == "Yes"
-baseline$d315[is.na(baseline$d315 )] <- FALSE
-baseline$base_doctor <- baseline$d49 %in% c("Doctor","In-charge")
-baseline$base_doctor[is.na(baseline$d49)] <- NA
-baseline$base_paid_health <- baseline$d413 == "Yes"
-baseline$base_paid_health[is.na(baseline$d413)] <- NA
-baseline$d426 <- (baseline$d426 == "Yes")
-
-endline$baraza.D4.7 <- as.numeric(as.character(endline$baraza.D4.7))
-endline$baraza.D4.7[endline$baraza.D4.7 == 999] <- NA
-endline$baraza.D4.7 <-  log(endline$baraza.D4.7 + sqrt(endline$baraza.D4.7 ^ 2 + 1))
-endline <- trim("baraza.D4.7",endline)
-
-
 baseline_desc <- baseline
 baseline_matching <- merge(baseline,treats, by.x=c("a22","a23"), by.y=c("district","subcounty"))
 
@@ -272,16 +392,10 @@ baseline_matching <- merge(baseline,treats, by.x=c("a22","a23"), by.y=c("distric
 endline$baraza.B3 <- endline$baraza.B3 ==1 |  endline$baraza.B3.3 ==1
 #endline$inputs <- 0
 endline$inputs <- as.numeric(endline$baraza.B1==1 | endline$baraza.B1.5==1) 
-endline$baraza.B1 <- endline$baraza.B1==1
-endline$baraza.B1.5 <- endline$baraza.B1.5==1
-endline$baraza.B1.9 <- endline$baraza.B1.9==1
-endline$baraza.B1.13 <- endline$baraza.B1.13==1
-endline$baraza.B3.4 <- endline$baraza.B3.4==1
-endline$baraza.B3.5 <- endline$baraza.B3.5==1
-
 ###this was changed post registration to follow https://www.who.int/water_sanitation_health/monitoring/jmp2012/key_terms/en/ guidelines on what is considered improved, that also considers rainwater a protected source
-#baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Bottled water","Cart with small tank","Unprotected dug well","Unprotected spring","Tanker truck"))    )
+#baseline$base_unprotected <- as.numeric(( baseline$c11a %in%  c("Surface water","Unprotected dug well","Unprotected spring"))    )
 ### is there are water committee
+
 endline$unprotected <- (as.numeric(endline$baraza.C1 %in% c(5,7,11)) )
 
 ### here we simulate endline variables - remove if endline data is in
@@ -292,7 +406,6 @@ endline$baraza.B2  <- endline$baraza.B2  == 1
 #endline$baraza.B3 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b31 == 1, na.rm=T))
 ###naads in village
 ### here we simulate endline variables - remove if endline data is in
-endline$baraza.B4 <- endline$baraza.B4 == 1
 #endline$baraza.B4.1  <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$b44 == 1, na.rm=T))
 endline$baraza.B4.1 <- endline$baraza.B4.1 == 1
 ###simulate an effect on this one
@@ -309,12 +422,14 @@ endline$baraza.B5.3 <- endline$baraza.B5.3 == 1
 endline$baraza.C1.2 <-  as.numeric(as.character(endline$baraza.C1.2))
 endline$baraza.C1.2[is.na(endline$baraza.C1.2)] <- 0 ## is na for households with piped water in compound -> distance set to 0
 endline$baraza.C1.2[endline$baraza.C1.2 == 999] <- NA ## code for dont know is 999
+endline$baraza.end.dist <- endline$baraza.C1.2
 endline$baraza.C1.2 <-  log(endline$baraza.C1.2 + sqrt(endline$baraza.C1.2 ^ 2 + 1))
 endline <- trim("baraza.C1.2",endline)
 #endline$baraza.C1.3 <- sample(baseline$qc15[!is.na(baseline$qc15)],dim(endline)[1]) ### this needs to be inverse hypersine transformed and trimmed in final version
 endline$baraza.C1.3 <-  as.numeric(as.character(endline$baraza.C1.3))
 endline$baraza.C1.3[is.na(endline$baraza.C1.3)] <- 0 ## is na for households with piped water in compound -> waiting time set to 0
 endline$baraza.C1.3[endline$baraza.C1.3 == 999] <- NA ## code for dont know is 999
+endline$baraza.end.wait <- endline$baraza.C1.3 
 endline$baraza.C1.3 <-  log(endline$baraza.C1.3 + sqrt(endline$baraza.C1.3 ^ 2 + 1))
 endline <- trim("baraza.C1.3",endline)
 
@@ -349,18 +464,8 @@ endline[members] <- lapply(endline[members], function(x) as.numeric(as.character
 endline[members] <- lapply(endline[members], function(x) replace(x, x == 999,NA) )
 endline$baraza.D1.2 <- rowSums(endline[members], na.rm=T)
 
-members <- paste(paste("baraza.labour", 1:15, sep="."),".D1.3", sep=".")
-
-endline[members] <- lapply(endline[members], function(x) as.numeric(as.character(x)) )
-endline[members] <- lapply(endline[members], function(x) replace(x, x == 999,NA) )
-endline$baraza.D1.3 <- rowSums(endline[members], na.rm=T)
-
-
 endline$baraza.D1.2 <- log(endline$baraza.D1.2 + sqrt(endline$baraza.D1.2 ^ 2 + 1))
 endline <- trim("baraza.D1.2", endline)
-
-endline$baraza.D1.3 <- log(endline$baraza.D1.3 + sqrt(endline$baraza.D1.3 ^ 2 + 1))
-endline <- trim("baraza.D1.3", endline)
 
 #endline$baraza.D4.6 <- sample(baseline$wait_time[!is.na(baseline$wait_time)] ,dim(endline)[1]) 
 endline$baraza.D4.6 <-  as.numeric(as.character(endline$baraza.D4.6))
@@ -384,15 +489,8 @@ endline$baraza.E5 <- log(endline$baraza.E5 + sqrt(endline$baraza.E5 ^ 2 + 1))
 endline$baraza.E12 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.4)) == 1 , as.numeric(as.character(endline$baraza.E2.4))==1), na.rm=T) > 0
 endline$baraza.E12[is.na(as.numeric(as.character(endline$baraza.E1.4)) ) & is.na(as.numeric(as.character(endline$baraza.E2.4)) )] <- NA
 
-endline$baraza.E13 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.5)) == 1 , as.numeric(as.character(endline$baraza.E2.5))==1), na.rm=T) > 0
-endline$baraza.E13[is.na(as.numeric(as.character(endline$baraza.E1.5)) ) & is.na(as.numeric(as.character(endline$baraza.E2.5)) )] <- NA
-
-
 endline$baraza.E14 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.6)) == 1 , as.numeric(as.character(endline$baraza.E2.6))==1), na.rm=T) > 0
 endline$baraza.E14[is.na(as.numeric(as.character(endline$baraza.E1.6)) ) & is.na(as.numeric(as.character(endline$baraza.E2.6)) )] <- NA
-
-endline$baraza.E18 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.9)) == 1 , as.numeric(as.character(endline$baraza.E2.9))==1), na.rm=T) > 0
-endline$baraza.E18[is.na(as.numeric(as.character(endline$baraza.E1.9)) ) & is.na(as.numeric(as.character(endline$baraza.E2.9)) )] <- NA
 
 endline$baraza.E22 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.10)) == 1 , as.numeric(as.character(endline$baraza.E2.10))==1), na.rm=T) > 0
 endline$baraza.E22[is.na(as.numeric(as.character(endline$baraza.E1.10)) ) & is.na(as.numeric(as.character(endline$baraza.E2.10)) )] <- NA
@@ -403,37 +501,12 @@ endline$baraza.E32[is.na(as.numeric(as.character(endline$baraza.E1.13)) ) & is.n
 endline$baraza.E45 <- rowSums(cbind(as.numeric(as.character(endline$baraza.E1.18)) == 1 , as.numeric(as.character(endline$baraza.E2.18))==1), na.rm=T) > 0
 endline$baraza.E45[is.na(as.numeric(as.character(endline$baraza.E1.18)) ) & is.na(as.numeric(as.character(endline$baraza.E2.18)) )] <- NA
 
-### assorted outcomes
-### type of roof
-endline$baraza.roof <- endline$baraza.roof %in% 1:2
+##endline$baraza.E1.6 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e14, na.rm=T))
+##endline$baraza.E1.10 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e22, na.rm=T))
+##endline$baraza.E1.13 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e32, na.rm=T))
+##endline$baraza.E1.18 <- rbinom(n=dim(endline)[1],size=1,prob=mean(baseline$e45, na.rm=T))
+##ag
 
-endline$baraza.wall <- endline$baraza.wall == 2
-
-endline$seed_OWC <- endline$baraza.B1.6.1 == "True"
-endline$baraza.B3.20.3 <- endline$baraza.B3.20.3 =="True"
-endline$baraza.D4.11 <- as.numeric(as.character(endline$baraza.D4.11))
-endline$baraza.D4.11 <- endline$baraza.D4.11=="1"
-endline$baraza.D4.12 <- as.numeric(as.character(endline$baraza.D4.12))
-endline$baraza.D4.12 <- endline$baraza.D4.12=="1"
-endline$baraza.D4.13 <- as.numeric(as.character(endline$baraza.D4.13))
-endline$baraza.D4.13 <- endline$baraza.D4.13 <= 2
-endline$baraza.C1.4 <- endline$baraza.C1.4<=2
-endline$baraza.C2.1 <- endline$baraza.C2.1 %in%  c(1:2)
-endline$baraza.C2.4 <- endline$baraza.C2.4 == 1
-endline$baraza.C2.5  <- endline$baraza.C2.5 == 1
-
-endline$baraza.D3.1 <- endline$baraza.D3.1==1
-endline$baraza.D3.3 <- endline$baraza.D3.3==1
-
-endline$doctor <- FALSE
-endline$doctor <- endline$baraza.D4.5.1 == "True" | endline$baraza.D4.5.7 == "True" 
-endline$doctor[endline$baraza.D4.5.1 == "n/a" & endline$baraza.D4.5.7 == "n/a"] <- NA
-
-endline$paid_health <- endline$baraza.D4.10 == 1
-endline$paid_health[endline$baraza.D4.10 == "n/a"] <- NA
-
-endline$baraza.D4.14 <- as.numeric(as.character(endline$baraza.D4.14))
-endline$baraza.D4.14 <- endline$baraza.D4.14 == 1
 
 
 ##ag
@@ -582,6 +655,13 @@ ols <- lm(as.formula(paste(paste(outcomes[i],"interaction_planned+a21",sep="~"),
 vcov_cluster <- vcovCR(ols, cluster = endline_interact$clusterID, type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
+if (RI_conf_switch) {
+RI_store <- RI_conf_1(i,outcomes, baseline_outcomes, endline_interact , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
+conf[2,4:5] <- RI_store$conf
+
+res[2,5] <- RI_store$pval
+
+}
 
 df_balance[,1,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
 
@@ -595,10 +675,16 @@ for (i in 1:length(outcomes)) {
 ## simple difference and adjust se for clustered treatment assignment
 ols <- lm(as.formula(paste(outcomes[i],"information_planned+a21",sep="~")), data=endline_info) 
 
-ols <- lm(as.formula(paste(paste(outcomes[i],"information_planned*deliberation_planned+a21",sep="~"),baseline_outcomes[i],sep="+")), data=endline_info)
 vcov_cluster <- vcovCR(ols, cluster = endline_info$clusterID, type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
+if (RI_conf_switch) {
+RI_store <- RI_conf_2(i,outcomes, baseline_outcomes, endline_interact , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
+conf[2,4:5] <- RI_store$conf
+
+res[2,5] <- RI_store$pval
+
+}
 
 df_balance[,2,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
 
@@ -612,12 +698,19 @@ endline_delib <- subset(endline, deliberation == 0)
 for (i in 1:length(outcomes)) {
 ### simple difference and adjust se for clustered treatment assignment
 ols <- lm(as.formula(paste(outcomes[i],"deliberation_planned+a21",sep="~")), data=endline_delib) 
-ols <- lm(as.formula(paste(paste(outcomes[i],"information_planned*deliberation_planned+a21",sep="~"),baseline_outcomes[i],sep="+")), data=endline_delib)
+
 vcov_cluster <- vcovCR(ols, cluster = endline_delib$clusterID, type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
+if (RI_conf_switch) {
+RI_store <- RI_conf_2(i,outcomes, baseline_outcomes, endline_interact , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
+conf[2,4:5] <- RI_store$conf
 
-df_balance[,3,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5], nobs(ols))
+res[2,5] <- RI_store$pval
+
+}
+
+df_balance[,3,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
 }
 
 
