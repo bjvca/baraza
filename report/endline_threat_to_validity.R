@@ -1,8 +1,8 @@
 rm(list=ls())
 library(dplyr)
 library(ggplot2)
-library(MatchIt) 
-library(multiwayvcov)
+#library(MatchIt) 
+#library(multiwayvcov)
 library(plm)
 library(lmtest)
 library(clubSandwich)
@@ -651,6 +651,7 @@ endline_interact <- subset(endline, (information ==0 & deliberation == 0))
 
 for (i in 1:length(outcomes)) {
 ## simple difference and adjust se for clustered treatment assignment
+print(i)
 ols <- lm(as.formula(paste(paste(outcomes[i],"interaction_planned+a21",sep="~"),baseline_outcomes[i],sep="+")), data=endline_interact)
 vcov_cluster <- vcovCR(ols, cluster = endline_interact$clusterID, type = "CR0")
 res <- coef_test(ols, vcov_cluster)
@@ -673,8 +674,8 @@ endline_info <- subset(endline, information == 0)
 
 for (i in 1:length(outcomes)) {
 ## simple difference and adjust se for clustered treatment assignment
+print(i)
 ols <- lm(as.formula(paste(outcomes[i],"information_planned+a21",sep="~")), data=endline_info) 
-
 vcov_cluster <- vcovCR(ols, cluster = endline_info$clusterID, type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
@@ -697,8 +698,8 @@ endline_delib <- subset(endline, deliberation == 0)
 
 for (i in 1:length(outcomes)) {
 ### simple difference and adjust se for clustered treatment assignment
+print(i)
 ols <- lm(as.formula(paste(outcomes[i],"deliberation_planned+a21",sep="~")), data=endline_delib) 
-
 vcov_cluster <- vcovCR(ols, cluster = endline_delib$clusterID, type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
