@@ -11968,7 +11968,7 @@ reference "fig:Summary-of-baraza"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -12284,14 +12284,6 @@ Sexpr{format(round(df_balance[6,3,7],digits=3),nsmall=0)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
 
 \backslash
 hline  
@@ -12322,11 +12314,20 @@ scriptsize
 
 \begin_layout Plain Layout
 
-Note: First column reports differences (and standard errors below) of the
- information component of the baraza intervention; Column 3 reports differences
- (and standard errors below) of the deliberation component of the baraza
- intervention;  standard errors are clustered at the sub-county level; **,
- * and + denotes significance at the 1, 5 and 10 percent levels.
+Note: First column reports differences (and standard errors below) between
+ baseline characteristics of households that were planned to receive a sub-count
+y level combined information and deliberation baraza but did not receive
+ one, and those that were planned not receive any baraza; Column 2 (and
+ standard errors below) reports differences between baseline characteristics
+ of households that were planned to receive a sub-county level information
+ baraza but did not receive one, and those that were planned to not receive
+ a sub-county level information baraza; Column 3 reports differences (and
+ standard errors below) between baseline characteristics of households that
+ were panned to receive a sub-county level deliberation baraza but did not
+ get one, and those that were planned to not receive a sub-county level
+ deliberation baraza; **, * and + denotes significance at the 1, 5 and 10
+ percent levels.
+ Reported standard errors are clustered at the level of randomization.
  
 \end_layout
 
@@ -12342,21 +12343,18 @@ Note: First column reports differences (and standard errors below) of the
 
 \begin_layout Standard
 While results need to be interpreted with caution due to small sample size,
- we do see some substantial and significant differences between planned
- but not treated sub-counties and sub-counties that were allocated to the
- control condition for the agricultural sector.
+ we do a and significant differences between planned but not treated sub-countie
+s and sub-counties that were allocated to the control condition for the
+ agricultural sector.
  For instance, we find that households that were supposed to receive a sub-count
 y level baraza treatment but did not get one are 10 percentage points more
  likely to indicate that they visited an extension office, demonstration
  site or a model farmers.
- Furthermore, we find that the significant difference for the information
- component is driven by a larger share of non-treated households that indicate
- that they were supported in marketing than households in the planned control
- areas.
- However, as these differences are positive, it could be argued that OPM
- seemed to have prioritized sub-counties with poorer service delivery.
+ However, as this difference is positive, it could be argued that OPM seemed
+ to have prioritized sub-counties with poorer service delivery in the agricultur
+al sector.
  As a result, positive results obtained from comparing treated and control
- groups is likely to underestimate the true impact of the treatment.
+ groups are likely to underestimate the true impacts of the treatment.
 \end_layout
 
 \begin_layout Section
@@ -12377,8 +12375,8 @@ To improve governance and public service delivery in Uganda, the Office
  should a baraza be organized at the district level or at the sub-county
  level.
  Baseline data on more than 12,500 households spread over almost 250 sub-countie
-s in about 40 districts throughout Uganda was collected and OPM stared implement
-ing barazas following our protocol.
+s in about 40 districts throughout Uganda was collected and OPM started
+ implementing barazas following our experimental design and protocols.
 \end_layout
 
 \begin_layout Standard
@@ -12396,22 +12394,23 @@ OPM faced various complications that affected the timely roll-out of the
 Overall, following the pre-analysis plan we find that the baraza program
  did not have a significant impact on public service delivery or its associated
  outcomes.
- There are some indications that sub-county level barazas have a positive
- impact in the area of agriculture, and that this impact is significantly
- larger than to the impact associated with district level barazas.
+ There are some indications that sub-county level barazas had a positive
+ impact on service delivery in the agricultural sector, and that this impact
+ is significantly larger than the impact associated with district level
+ barazas.
  
 \end_layout
 
 \begin_layout Standard
-Looking at the individual outcomes, we find that households report increased
+Looking at individual outcomes, we find that households reported increased
  access to agricultural extension in areas that were exposed to a sub-county
  level baraza.
- Furthermore, the deliberation component is responsible for an increase
- in the share of households that report that they received improved seed
+ Furthermore, the deliberation component appeared responsible for an increase
+ in the share of households that reported that they received improved seed
  from the government extension system.
- We also find that sub-county level barazas increase the likelihood that
- farmer cooperatives or groups are formed in the villages in Uganda.
- Interestingly, it seems that the deliberative component is the main driver
+ We also found that sub-county level barazas increased the likelihood that
+ farmer cooperatives or groups were formed in the villages in Uganda.
+ Interestingly, it seems that the deliberative component was the main driver
  behind this result, suggesting deliberation may be important to increase
  involvement in community affairs.
  It is also consistent with the previous result, as cooperatives are important
@@ -12423,64 +12422,65 @@ Looking at the individual outcomes, we find that households report increased
 For individual outcomes included in the infrastructure index, we find that
  the time that one must wait at the water source reduced by about 25 percent
  after a sub-county level baraza took place.
- The deliberation component seems to be mostly responsible for this reduction.
- Furthermore, we again find that the deliberation component seems to increase
- community participation, as more households report the be part of the water
- user committee.
- Impact in the health sector seems limited.
- The baraza intervention does seem to be somewhat successful in encouraging
- sharing of information, as households state that VHTs are more likely to
- organized a public meeting after a sub-county level baraza was organized.
- Finally, we find that sub-county level baraza seem to improve school infrastruc
-ture.
+ The deliberation component seemed to be mostly responsible for this reduction.
+ Furthermore, we again find that the deliberation component seemed to increase
+ community participation, as more households reported to be part of the
+ water user committee.
+ Impact on the health sector was limited.
+ The baraza intervention did seem to be somewhat successful in encouraging
+ sharing of information, as households stated that VHTs were more likely
+ to organized a public meeting after a sub-county level baraza was organized.
+ Finally, we find that sub-county level baraza seemed to improve school
+ infrastructure.
 \end_layout
 
 \begin_layout Standard
-We also explore if the baraza program affected various aspects that are
+We also explored if the baraza program affected various aspects that are
  at the core of community-based monitoring, such as interfacing with politicians
  and civil servants, perceptions of service quality and prioritization,
  and contributions to public goods (both cash and in-kind).
- There is some evidence that the information component of the baraza increases
+ There is some evidence that the information component of the baraza increased
  meetings with officials or service providers: even though only a significant
- effect is found on meetings with the head teacher, coefficients on all
- other indicators are positive and often substantial.
- We further find that the information component of the sub-county baraza
- reduces in-kind contributions, but increases cash contributions.
+ effect was found on meetings with the head teacher or members of the school
+ management committee, coefficients on all other indicators were positive
+ and often substantial.
+ We further found that the information component of the sub-county baraza
+ reduced in-kind contributions, but increased cash contributions.
  This may indicate that barazas increase trust in officials and strengthens
  the social contract.
- We further find that cash contributions are higher in areas that were exposed
- to a district level baraza than in areas that were subjected to a sub-county
- level baraza.
- Finally, we find that barazas changed citizens’ perception of a range of
- problems.
- In general, district level barazas lead to more disagreement and district
- level barazas to more agreement that issues are problematic.
+ We further found that cash contributions were higher in areas that were
+ exposed to a district level baraza than in areas that were subjected to
+ a sub-county level baraza.
+ Finally, we found that barazas changed citizens’ perception of a range
+ of problems.
+ In general, district level barazas led to more disagreement and district
+ level barazas to more agreement that a range of issues in public service
+ delivery were problematic.
 \end_layout
 
 \begin_layout Standard
-When looking at heterogeneity in treatment effects, we find somewhat stronger
+When looking at heterogeneity in treatment effects, we found somewhat stronger
  effects on infrastructure when restricting our sample to cases where sufficient
- time has passed between the baraza and endline data collection.
- There are also indications that it takes some time for the impact of the
+ time had passed between the baraza event and end-line data collection.
+ There were also indications that it takes some time for the impact of the
  deliberation component on outcomes in the health sector to materialize.
  The same holds for the education sector, were we see an increase of enrollment
  due to sub-county level barazas in the longer run.
- Connections to people in power reduces distance to roads, health centers
- and water sources, and leads to improvements in infrastructure more in
- general.
- Finally, we find that the positive effect of sub-county level barazas on
- access to extension does not extent to more remote areas of the sub-county.
- However, households in remote areas seem to benefit more from the deliberative
- aspect of barazas when judge by infrastructure.
- Sub-county level barazas also seem to increase public service delivery
- and outcomes in education in more remote parts of the sub-county.
+ Connections to people in power reduced distance to roads, health centers
+ and water sources, and led to improvements in infrastructure more in general.
+ Finally, we found that the positive effect of sub-county level barazas
+ on access to extension did not extend to more remote areas of the sub-county.
+ However, households in remote areas seemed to benefit more from the deliberativ
+e aspect of barazas when judge by infrastructure.
+ Sub-county level barazas also seemed to increase public service delivery
+ and improve outcomes in education in more remote parts of the sub-county.
  
 \end_layout
 
 \begin_layout Standard
-While we do not find that the baraza impacts public service delivery in
- general, we do find a variety of interesting effects when we look at individual
- outcomes and consider heterogeneity in the treatment effects.
+While we did not find that the baraza impacts public service delivery in
+ general, we did find a variety of interesting effects when we looked at
+ individual outcomes and considered heterogeneity in the treatment effects.
  In light of this, our results confirm some of the likely explanations why
  
 \begin_inset CommandInset citation
@@ -12489,10 +12489,10 @@ key "raffler2018weakness"
 
 \end_inset
 
- fail to find significant results on health outcomes in their study.
- For instance, we find indications that it may take some time for effects
+ failed to find significant results on health outcomes in their study.
+ For instance, we found indications that it may take some time for effects
  to materialize.
- The endline data in
+ The end-line data in
 \begin_inset CommandInset citation
 LatexCommand citet
 key "raffler2018weakness"
@@ -12520,17 +12520,25 @@ key "raffler2018weakness"
 
  find indications that presence of sub-county officials during the programming
  boosted the impact of the intervention on treatment quality in health centers.
- In line with this, community-based monitoring interventions organized by
- government may be more effective.
- This confirms that top-down monitoring may be more important in changing
- behaviour of civil servants than bottom-up monitoring by citizens.
+ Our analysis thus confirms that top-down monitoring may be more important
+ in changing behavior of civil servants, but that community involvement
+ may be an effective way to pressure officials into increased top-down monitorin
+g.
 \end_layout
 
 \begin_layout Standard
-This report focuses most on the analysis of the endline data of the quantitative
- component of the impact evaluation.
- A previous report also provides a less ambitious qualitative exploration
- of the likely impact of the baraza 
+More in general, our analysis suggests that impact from barazas may be highly
+ localized and context specific.
+ Barazas are fairly broad interventions that attempt to address a range
+ of issues in a heterogeneous setting, resulting in treatments that are
+ unlikely to be very standardized across treatment units, at least compared
+ to typical treatments in bio-medical sciences.
+ A baraza in one sub-county may evolve in a very different direction than
+ a baraza in another sub-county.
+ Both barazas may be effective in their own right, yet outcomes are averaged
+ over treatment units and impact diluted.
+ This also helps explain diverging findings from a less ambitious qualitative
+ exploration of the likely impact of the baraza programme 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "van2018impact"
@@ -12538,37 +12546,14 @@ key "van2018impact"
 \end_inset
 
 .
- In that report, we find that stakeholders think barazas are useful at improving
- public service delivery across all sectors, especially if the barazas took
- place at the sub-county level.
- Stakeholders had no difficulty providing examples of changes they felt
- were the direct result of the baraza being held: projects that were previously
- dragging were finished or taken up afresh; sub-standard work was redone;
- and in some instances, priorities were changed to better align with citizens’
- needs.
- A substantial part of these outcomes seemed to derive from the baraza’s
- potential to fix information asymmetries.
- Focus group discussions suggested civil servants responded to the consequences
- of the increased likelihood of sub-standard work being exposed, and politicians
- responded to electoral considerations, suggesting barazas increased bottom-up
- pressure.
- There were also indications that barazas increased community involvement,
- as well as top- down monitoring.
-\end_layout
-
-\begin_layout Standard
-The diverging results from the qualitative and quantitative analysis may
- be due to the fact that the baraza intervention is a broad intervention
- that attempts to address a range of issues in a heterogeneous setting.
- It may be that the baraza is effective for some, but not for others.
- However, if a simple average treatment effect is estimated, the effect
- may turn out insignificant because it averages over subgroups.
- For instance, access to water is likely to be more of a problem in remote
- areas.
- Even if a baraza increases access to water and reduces waiting times, this
- may not show up if there is a large group close to the sub-county center
- that already has access to water and no additional boreholes were constructed
- in these areas.
+ There, we got the impression that barazas were useful at improving public
+ service delivery across sectors, with stakeholders having no difficulty
+ providing examples of changes they felt were the direct result of the baraza
+ being held: projects that were previously dragging were finished or taken
+ up afresh; sub-standard work was redone; and in some instances, priorities
+ were changed to better align with citizens’ needs.
+ Taken together, we would thus argue that the baraza project is a useful
+ intervention to increase public service delivery and associated outcomes.
 \end_layout
 
 \begin_layout Section
@@ -12580,8 +12565,15 @@ This project received funding from the International Institute for Impact
  Evaluations (3ie) under grant number RFQ PW2.18.UG.PG.
  This research was partly funded by the CGIAR Research Program on Policies,
  Institutions, and Markets (PIM), led by the International Food Policy Research
- Institute (IFPRI) and carried out with support from the CGIAR Fund contributors
- (https://www.cgiar.org/funders/) under grant number PIM 203002.002.221.
+ Institute (IFPRI) and carried out with support from the 
+\begin_inset CommandInset href
+LatexCommand href
+name "CGIAR Fund contributors"
+target "https://www.cgiar.org/funders/"
+
+\end_inset
+
+ under grant number PIM 203002.002.221.
  This research was cleared by the Uganda National Council for Science and
  Technology (UNCST SS 5179), Makerere University School of Social Sciences
  Research Ethics Committee (MAKSS REC 05.19.291), as well as IPFRI's Institutional
