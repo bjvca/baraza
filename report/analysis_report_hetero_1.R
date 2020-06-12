@@ -17,14 +17,14 @@ set.seed(123456789) #not needed for final version?
 path <- strsplit(getwd(), "/report")[[1]]
 
 ### set this switch to TRUE if you want to produce a final report - this will save results matrices in a static directory
-final_verion_swith <- FALSE
+final_verion_swith <- TRUE
 ## heterogeneity analysis:
 # 0 no
 # 1 allow for enough time - sc level 
 # 5 ethnic homogeneity
-hetero <- 5
+hetero <- 1
 RI_conf_switch <- FALSE
-glob_repli <- 500
+glob_repli <- 100
 glob_sig <- c(.025,.975) ### 5 percent conf intervals
 
 #for (hetero in 3:4) {
@@ -106,11 +106,11 @@ RI_conf_sc <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr
 #sig <-  c(.025,.975)
 
 	if (is.null(baseline_outcomes)) {
-		formula1 <- as.formula(paste(outcomes[i],paste("information:deliberation",ctrls,sep="+"),sep="~"))
-		formula2 <- as.formula(paste(outcomes[i],paste("information*deliberation",ctrls,sep="+"),sep="~"))
+		formula1 <- as.formula(paste(outcomes[i],paste("information:deliberation*hetero_ind",ctrls,sep="+"),sep="~"))
+		formula2 <- as.formula(paste(outcomes[i],paste("information*deliberation+information:hetero_ind+deliberation:hetero_ind",ctrls,sep="+"),sep="~"))
 	} else {
-		formula1 <- as.formula(paste(paste(outcomes[i],paste("information:deliberation",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
-		formula2 <- as.formula(paste(paste(outcomes[i],paste("information*deliberation",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
+		formula1 <- as.formula(paste(paste(outcomes[i],paste("information:deliberation*hetero_ind",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
+		formula2 <- as.formula(paste(paste(outcomes[i],paste("information*deliberation+information:hetero_ind+deliberation:hetero_ind",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
 	}
 
 
@@ -126,42 +126,41 @@ RI_conf_sc <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr
 	### for model 1 (sc effect)
 	dta_sim$pot_out_0_1 <- NA
 	dta_sim$pot_out_0_1[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0]
-	dta_sim$pot_out_0_1[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] - coef(ols_1)["information:deliberation"]
+	dta_sim$pot_out_0_1[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] - coef(ols_1)["information:deliberation"] - coef(ols_1)["hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1]
 
 	dta_sim$pot_out_1_1 <- NA
 	dta_sim$pot_out_1_1[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1]
-	dta_sim$pot_out_1_1[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] + coef(ols_1)["information:deliberation"]
+	dta_sim$pot_out_1_1[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] + coef(ols_1)["information:deliberation"] + coef(ols_1)["hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0]
 
 	### for model 2 (factorial design with )
 	### potential outcomes for I=0 D=0
 
 	dta_sim$pot_out_00_2 <- NA
 	dta_sim$pot_out_00_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0]
-	dta_sim$pot_out_00_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] - coef(ols_2)["information"]
-	dta_sim$pot_out_00_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] - coef(ols_2)["information"] - coef(ols_2)["deliberation"] - coef(ols_2)["information:deliberation"]
-	dta_sim$pot_out_00_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] - coef(ols_2)["deliberation"]
+	dta_sim$pot_out_00_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] - coef(ols_2)["information"] - coef(ols_2)["information:hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] 
+	dta_sim$pot_out_00_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] - coef(ols_2)["information"] - coef(ols_2)["deliberation"] - coef(ols_2)["information:deliberation"] - coef(ols_2)["information:hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] - coef(ols_2)["deliberation:hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] 
+	dta_sim$pot_out_00_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] - coef(ols_2)["deliberation"] - coef(ols_2)["deliberation:hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] 
 
 	### potential outcomes for I=1 and D-1
 	dta_sim$pot_out_11_2 <- NA
 	dta_sim$pot_out_11_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1]
-	dta_sim$pot_out_11_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] +  coef(ols_2)["information"]
-	dta_sim$pot_out_11_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] + coef(ols_2)["deliberation"]
-	dta_sim$pot_out_11_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] + coef(ols_2)["information"] + coef(ols_2)["deliberation"] + coef(ols_2)["information:deliberation"]
+	dta_sim$pot_out_11_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] + coef(ols_2)["information"] + coef(ols_2)["information:hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] 
+	dta_sim$pot_out_11_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] + coef(ols_2)["deliberation"] + coef(ols_2)["deliberation:hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] 
+	dta_sim$pot_out_11_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] + coef(ols_2)["information"] + coef(ols_2)["deliberation"] + coef(ols_2)["information:deliberation"] + coef(ols_2)["information:hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] + coef(ols_2)["deliberation:hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] 
 
 	### potential outcomes for I=1 and D=0
 	dta_sim$pot_out_10_2 <- NA
 	dta_sim$pot_out_10_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0]
-	dta_sim$pot_out_10_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] -  coef(ols_2)["deliberation"] - coef(ols_2)["information:deliberation"]
-	dta_sim$pot_out_10_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] + coef(ols_2)["information"] -  coef(ols_2)["deliberation"]
-	dta_sim$pot_out_10_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] +  coef(ols_2)["information"] 
+	dta_sim$pot_out_10_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] - coef(ols_2)["deliberation"] - coef(ols_2)["information:deliberation"] -  coef(ols_2)["deliberation:hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] 
+	dta_sim$pot_out_10_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] + coef(ols_2)["information"] + coef(ols_2)["information:hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] - coef(ols_2)["deliberation"] - coef(ols_2)["deliberation:hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] 
+	dta_sim$pot_out_10_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] + coef(ols_2)["information"] + coef(ols_2)["information:hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] 
 
 	### potential outcomes for I=0 and D=1
 	dta_sim$pot_out_01_2 <- NA
 	dta_sim$pot_out_01_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 1]
-	dta_sim$pot_out_01_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] -  coef(ols_2)["information"] - coef(ols_2)["information:deliberation"]
-	dta_sim$pot_out_01_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] - coef(ols_2)["information"] +  coef(ols_2)["deliberation"]
-	dta_sim$pot_out_01_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] +  coef(ols_2)["deliberation"] 
-
+	dta_sim$pot_out_01_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] - coef(ols_2)["information"] - coef(ols_2)["information:deliberation"] -  coef(ols_2)["information:hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["information"] == 1 & dta_sim["deliberation"] == 1] 
+	dta_sim$pot_out_01_2[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] - coef(ols_2)["information"] - coef(ols_2)["information:hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] + coef(ols_2)["deliberation"] + coef(ols_2)["deliberation:hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["information"] == 1 & dta_sim["deliberation"] == 0] 
+	dta_sim$pot_out_01_2[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] <- dta_sim$dep[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] + coef(ols_2)["deliberation"] + coef(ols_2)["deliberation:hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["information"] == 0 & dta_sim["deliberation"] == 0] 
 	oper <- foreach (repl = 1:nr_repl,.combine=rbind) %dopar% {
 		#do the permuations	
 		perm_treat <- data.frame(cbind(sample(c(rep("C",treat_nrs[1,1]), rep("D",treat_nrs[1,2]), rep("I",treat_nrs[2,1]),rep("B",treat_nrs[2,2]))),names(table(dta_sim$clusterID))))  
@@ -181,17 +180,17 @@ RI_conf_sc <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, nr
 		dta_perm$dep_2[dta_perm["information"] ==0 & dta_perm["deliberation"] ==1] <- dta_perm$pot_out_01_2[dta_perm["information"] ==0 & dta_perm["deliberation"] ==1] 
 
 ### p-value
-		exceed1 <- abs(coef(lm(formula1, data=dta_perm))["information:deliberation"]) > abs(coef(ols_1)["information:deliberation"])
-		exceed2 <- abs(coef(lm(formula2, data=dta_perm))["information"]) > abs(coef(ols_2)["information"])
-		exceed3 <- abs(coef(lm(formula2, data=dta_perm))["deliberation"]) > abs(coef(ols_2)["deliberation"])
+		exceed1 <- abs(coef(lm(formula1, data=dta_perm))["hetero_indTRUE"]) > abs(coef(ols_1)["hetero_indTRUE"])
+		exceed2 <- abs(coef(lm(formula2, data=dta_perm))["information:hetero_indTRUE"]) > abs(coef(ols_2)["information:hetero_indTRUE"])
+		exceed3 <- abs(coef(lm(formula2, data=dta_perm))["deliberation:hetero_indTRUE"]) > abs(coef(ols_2)["deliberation:hetero_indTRUE"])
 
 
 		dta_perm[outcomes[i]] <- dta_perm$dep_1
-		r1 <-coef(lm(formula1, data=dta_perm[dta_perm$deliberation == dta_perm$information,]))["information:deliberation"]
+		r1 <-coef(lm(formula1, data=dta_perm[dta_perm$deliberation == dta_perm$information,]))["hetero_indTRUE"]
 
 		dta_perm[outcomes[i]] <- dta_perm$dep_2
-		r2 <-coef(lm(formula2, data=dta_perm))["information"]
-		r3 <- coef(lm(formula2, data=dta_perm))["deliberation"]
+		r2 <-coef(lm(formula2, data=dta_perm))["information:hetero_indTRUE"]
+		r3 <- coef(lm(formula2, data=dta_perm))["deliberation:hetero_indTRUE"]
 		oper <- return(c(r1,r2,r3, exceed1, exceed2, exceed3))
 	}
 	return(list(conf_1 = quantile(oper[,1],sig, na.rm=T),conf_2 = quantile(oper[,2],sig, na.rm=T),conf_3 = quantile(oper[,3],sig, na.rm=T), pval_1= (sum(oper[,4])/nr_repl), pval_2= (sum(oper[,5])/nr_repl), pval_3= (sum(oper[,6])/nr_repl)))
@@ -207,10 +206,10 @@ RI_conf_dist <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, 
 
 ### a function to esimate confidence intervals using randomization inference following Gerber and Green pages 66-71 and 83.
 	if (is.null(baseline_outcomes)) {
-		formula <- as.formula(paste(outcomes[i],paste("district_baraza",ctrls,sep="+"),sep="~"))
+		formula <- as.formula(paste(outcomes[i],paste("district_baraza*hetero_ind",ctrls,sep="+"),sep="~"))
 		
 	} else {
-		formula <- as.formula(paste(paste(outcomes[i],paste("district_baraza",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
+		formula <- as.formula(paste(paste(outcomes[i],paste("district_baraza*hetero_ind",ctrls,sep="+"),sep="~"),baseline_outcomes[i],sep="+"))
 	}
 
 
@@ -226,10 +225,10 @@ RI_conf_dist <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, 
 	### for model 1 (sc effect)
 	dta_sim$pot_out_0 <- NA
 	dta_sim$pot_out_0[dta_sim["district_baraza"] == 0 ] <- dta_sim$dep[dta_sim["district_baraza"] == 0 ]
-	dta_sim$pot_out_0[dta_sim["district_baraza"] == 1 ] <- dta_sim$dep[dta_sim["district_baraza"] == 1] - coef(ols)["district_baraza"]
+	dta_sim$pot_out_0[dta_sim["district_baraza"] == 1 ] <- dta_sim$dep[dta_sim["district_baraza"] == 1] - coef(ols)["district_baraza"]- coef(ols)["hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["district_baraza"] == 1 ]
 
 	dta_sim$pot_out_1 <- NA
-	dta_sim$pot_out_1[dta_sim["district_baraza"] == 0 ] <- dta_sim$dep[dta_sim["district_baraza"] == 0 ] + coef(ols)["district_baraza"]
+	dta_sim$pot_out_1[dta_sim["district_baraza"] == 0 ] <- dta_sim$dep[dta_sim["district_baraza"] == 0 ] + coef(ols)["district_baraza"] + coef(ols)["hetero_indTRUE"]*dta_sim$hetero_ind[dta_sim["district_baraza"] == 0 ]
 	dta_sim$pot_out_1[dta_sim["district_baraza"] == 1 ] <- dta_sim$dep[dta_sim["district_baraza"] == 1]	
 
 	
@@ -247,12 +246,12 @@ RI_conf_dist <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, 
 
 
 		### p-value
-		exceed <- abs(coef(lm(formula, data=dta_perm))["district_baraza"]) > abs(coef(ols)["district_baraza"])
+		exceed <- abs(coef(lm(formula, data=dta_perm))["hetero_indTRUE"]) > abs(coef(ols)["hetero_indTRUE"])
 
 		
 
 		dta_perm[outcomes[i]] <- dta_perm$dep
-		res_list <- cbind(coef(lm(formula, data=dta_perm))["district_baraza"],"exceed" = exceed)
+		res_list <- cbind(coef(lm(formula, data=dta_perm))["hetero_indTRUE"],"exceed" = exceed)
 		return(res_list) 
 	}
 	return(list(conf = quantile(oper[,1],sig, na.rm=T),pval= (sum(oper[,2])/nr_repl)))
@@ -657,58 +656,9 @@ dta$time_dif2 <- dta$time_dif * dta$time_dif
 
 
 
-### uncomment for heterogeneity re: time - this is not correct!!! subsetting should  be dependent on what hypothesis is tested
-if (hetero == 1) {
-dta <- subset(dta, (time_dif>1.5) | time_dif == 0)
-#dta$hetero_ind <- dta$time_dif>1.5
-}
-if (hetero == 2) {
-dta <- subset(dta, j9 >= 4 )
-}
-if (hetero == 3) {
-sc_baseline <- read.csv(paste(path,"data/public/sc_level_baseline.csv", sep ="/"))
-sc_baseline$subcounty <- as.character(sc_baseline$subcounty)
-sc_baseline$subcounty[sc_baseline$subcounty == "LUWERO"] <- "LUWERO_TC"
-sc_baseline$subcounty[sc_baseline$subcounty == "SEMBABULE TC"] <- "SEMBABULE_TC"
-sc_baseline$subcounty[sc_baseline$subcounty == "RAKAI TC"] <- "RAKAI_TC"
-sc_baseline$subcounty[sc_baseline$subcounty == "NTUSI"] <- "NTUUSI"
+#dta <- subset(dta, (time_dif>1.5) | time_dif == 0)
+dta$hetero_ind <- dta$time_dif > 1.5
 
-sc_baseline <- aggregate(rowMeans(sc_baseline[c("h41b","h386b","h119b")], na.rm=T), list(sc_baseline$district,sc_baseline$sub),mean)
-
-names(sc_baseline) <- c("district","sub","share")
-dta <-  merge(dta,sc_baseline, by.x=c("district","subcounty"),by.y=c("district","sub"))
-dta <- subset(dta, share > 15 )
-}
-if (hetero == 4) {
-sc_baseline <- read.csv(paste(path,"data/public/sc_level_baseline.csv", sep ="/"))
-sc_baseline$subcounty <- as.character(sc_baseline$subcounty)
-sc_baseline$subcounty[sc_baseline$subcounty == "LUWERO"] <- "LUWERO_TC"
-sc_baseline$subcounty[sc_baseline$subcounty == "SEMBABULE TC"] <- "SEMBABULE_TC"
-sc_baseline$subcounty[sc_baseline$subcounty == "RAKAI TC"] <- "RAKAI_TC"
-sc_baseline$subcounty[sc_baseline$subcounty == "NTUSI"] <- "NTUUSI"
-sc_baseline$connected <- (sc_baseline$j11j_minister=="Yes" | sc_baseline$j11j_mp=="Yes" | sc_baseline$j11j_head_govt=="Yes" | sc_baseline$j11j_rdc=="Yes" | sc_baseline$j11j_chairman_lc5=="Yes")
-#sc_baseline$connected <- (sc_baseline$j11j_minister=="Yes" | sc_baseline$j11j_mp=="Yes"  )
-sc_baseline <- aggregate(sc_baseline[c("connected")], list(sc_baseline$district,sc_baseline$sub),max)
-names(sc_baseline) <- c("district","sub","connected")
-dta <-  merge(dta,sc_baseline, by.x=c("district","subcounty"),by.y=c("district","sub"))
-dta <- subset(dta, connected==1 )
-}
-if (hetero == 5) {
-frct <- data.frame(unclass(by(dta,list(dta$clusterID) ,function( x) {1-sum((table(x$a34)/sum(table(x$a34)))^2)})))
-frct$clusterID <- rownames(frct)
-names(frct) <- c("eth_fract","clusterID")
-dta <- merge(dta,frct, by="clusterID")
-dta <- subset(dta, eth_fract < .4 )
-}
-#dta <- subset(dta, baraza.J2 == 1 | baraza.J1 == 1)
-##both officials recall that barazas took place in treatment areas - reduces sample size by 25 percent
-#)
-#sc_endline <- aggregate(sc_endline[c("baraza.M2","baraza.M4")]==1, list(sc_endline$district,sc_endline$sub),sum)
-#names(sc_endline) <- c("district","sub","baraza.M2","baraza.M4")
-#dta <-  merge(dta,sc_endline, by.x=c("district","subcounty"),by.y=c("district","sub"))
-#dta <- subset(dta, baraza.M2>=2 | (information == 0 & deliberation == 0))
-#write.csv(subset(dta, subcounty %in% c("BAGEZZA","HAPUYO","BWANSWA")),paste(path,"report/3ie_report/bagezza.csv", sep ="/"))
-####
 
 
 for (i in 1:length(outcomes)) {
@@ -718,106 +668,58 @@ for (i in 1:length(outcomes)) {
 df_averages[1,i] <- mean(as.matrix(endline[outcomes[i]]), na.rm=T)
 df_averages[2,i] <- sd(as.matrix(endline[outcomes[i]]), na.rm=T)
 
-### simple difference and adjust se for clustered treatment assignment - not used in analysis
-ols <- lm(as.formula(paste(outcomes[i],"information*deliberation+a21",sep="~")), data=endline[endline$district_baraza == 0,]) 
-vcov_cluster <- vcovCR(ols, cluster = endline$clusterID[endline$district_baraza == 0], type = "CR0")
-res <- coef_test(ols, vcov_cluster)
-conf <- conf_int(ols, vcov_cluster)
-
-df_ols[,2,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
-df_ols[,3,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5], nobs(ols))
-
-ols <- lm(as.formula(paste(outcomes[i],"information:deliberation+a21",sep="~")), data=endline[endline$district_baraza == 0 & (endline$information == endline$deliberation),]) 
-vcov_cluster <- vcovCR(ols, cluster = endline$clusterID[endline$district_baraza == 0 & (endline$information == endline$deliberation)], type = "CR0")
-res <- coef_test(ols, vcov_cluster)
-conf <- conf_int(ols, vcov_cluster)
-
-
-df_ols[,1,i] <- c(res[5,1],res[5,2],res[5,5], conf[5,4],conf[5,5], nobs(ols))
-
-ols <- lm(as.formula(paste(outcomes[i],"district_baraza+a21",sep="~")), data=endline[(endline$information == 1 & endline$deliberation==1) | endline$district_baraza == 1 ,]) 
-vcov_cluster <- vcovCR(ols, cluster = endline$clusterID2[(endline$information == 1 & endline$deliberation==1) | endline$district_baraza == 1 ], type = "CR0")
-res <- coef_test(ols, vcov_cluster)
-conf <- conf_int(ols, vcov_cluster)
-df_ols[,4,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
-
 ##ancova
 ## merge in baseline
 
-ols <- lm(as.formula(paste(paste(outcomes[i],"information*deliberation+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[dta$district_baraza == 0,]) 
+ols <- lm(as.formula(paste(paste(outcomes[i],"information*deliberation+information:hetero_ind+deliberation:hetero_ind+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[dta$district_baraza == 0,]) 
 vcov_cluster <- vcovCR(ols, cluster = dta$clusterID[dta$district_baraza == 0], type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 if (RI_conf_switch) {
 RI_store <- RI_conf_sc(i,outcomes, baseline_outcomes, subset(dta, district_baraza == 0) , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
-conf[2,4:5] <- RI_store$conf_2 
-conf[3,4:5] <- RI_store$conf_3
-res[2,5] <- RI_store$pval_2
-res[3,5] <- RI_store$pval_3
+conf[9,4:5] <- RI_store$conf_2 
+conf[10,4:5] <- RI_store$conf_3
+res[9,5] <- RI_store$pval_2
+res[10,5] <- RI_store$pval_3
 }
 
-df_ancova[,2,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
-df_ancova[,3,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5], nobs(ols))
+df_ancova[,2,i] <- c(res[9,1],res[9,2],res[9,5], conf[9,4],conf[9,5], nobs(ols))
+df_ancova[,3,i] <- c(res[10,1],res[10,2],res[10,5], conf[10,4],conf[10,5], nobs(ols))
 
 
-ols <- lm(as.formula(paste(paste(outcomes[i],"information:deliberation+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[dta$district_baraza == 0 & (dta$information == dta$deliberation),]) 
+ols <- lm(as.formula(paste(paste(outcomes[i],"information:deliberation*hetero_ind+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[dta$district_baraza == 0 & (dta$information == dta$deliberation),]) 
 vcov_cluster <- vcovCR(ols, cluster = dta$clusterID[dta$district_baraza == 0 & (dta$information == dta$deliberation)], type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 if (RI_conf_switch) {
-conf[6,4:5] <- RI_store$conf_1
-res[6,5] <- RI_store$pval_1
+conf[2,4:5] <- RI_store$conf_1
+res[2,5] <- RI_store$pval_1
 }
 
-df_ancova[,1,i] <- c(res[6,1],res[6,2],res[6,5], conf[6,4],conf[6,5], nobs(ols))
+df_ancova[,1,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
 
-ols <- lm(as.formula(paste(paste(outcomes[i],"district_baraza+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[(dta$information == 0 & dta$deliberation==0) | dta$district_baraza == 1 ,]) 
+ols <- lm(as.formula(paste(paste(outcomes[i],"district_baraza*hetero_ind+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[(dta$information == 0 & dta$deliberation==0) | dta$district_baraza == 1 ,]) 
 vcov_cluster <- vcovCR(ols, cluster = dta$clusterID2[(dta$information == 0 & dta$deliberation==0) | dta$district_baraza == 1 ], type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 if (RI_conf_switch) {
 RI_store <- RI_conf_dist(i,outcomes, baseline_outcomes, subset(dta, ((information == 0 & deliberation==0) | district_baraza == 1)) , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
-conf[2,4:5] <-  RI_store$conf
-res[2,5] <- RI_store$pval
+conf[3,4:5] <-  RI_store$conf
+res[3,5] <- RI_store$pval
 }
-df_ancova[,4,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
+df_ancova[,4,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5], nobs(ols))
 
 
-ols <- lm(as.formula(paste(paste(outcomes[i],"district_baraza+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ,]) 
+ols <- lm(as.formula(paste(paste(outcomes[i],"district_baraza*hetero_ind+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ,]) 
 vcov_cluster <- vcovCR(ols, cluster = dta$clusterID2[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ], type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 if (RI_conf_switch) {
 RI_store <- RI_conf_dist(i,outcomes, baseline_outcomes, subset(dta, ((information == 1 & deliberation==1) | district_baraza == 1)) , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
-conf[2,4:5] <-  RI_store$conf
-res[2,5] <- RI_store$pval
+conf[3,4:5] <-  RI_store$conf
+res[3,5] <- RI_store$pval
 }
-df_ancova[,5,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
-
-## dif-in-dif - not used in analysis
-ols <- lm(as.formula(paste(outcomes[i],"information*deliberation*time",sep="~")), data=dta_long[dta_long$district_baraza == 0,])
-vcov_cluster <- vcovCR(ols, cluster = dta_long$clusterID[dta_long$district_baraza == 0 ], type = "CR0")
-res <- coef_test(ols, vcov_cluster)
-conf <- conf_int(ols, vcov_cluster)
-
-df_dif_in_dif[,2,i] <- c(res[6,1],res[6,2],res[6,5], conf[6,4], conf[6,5], nobs(ols))
-df_dif_in_dif[,3,i] <- c(res[7,1],res[7,2],res[7,5], conf[7,4], conf[7,5], nobs(ols))
-
-
-ols <- lm(as.formula(paste(outcomes[i],"information:deliberation*time",sep="~")), data=dta_long[dta_long$district_baraza == 0 & (dta_long$information == dta_long$deliberation),])
-vcov_cluster <- vcovCR(ols, cluster = dta_long$clusterID[dta_long$district_baraza == 0 & (dta_long$information == dta_long$deliberation)], type = "CR0")
-res <- coef_test(ols, vcov_cluster)
-conf <- conf_int(ols, vcov_cluster)
-
-df_dif_in_dif[,1,i] <- c(res[4,1],res[4,2],res[4,5], conf[4,4], conf[4,5], nobs(ols))
-
-
-ols <- lm(as.formula(paste(outcomes[i],"district_baraza*time",sep="~")), data=dta_long[(dta_long$information == 1 & dta_long$deliberation==1) | dta_long$district_baraza == 1 ,]) 
-vcov_cluster <- vcovCR(ols, cluster = dta_long$clusterID2[(dta_long$information == 1 & dta_long$deliberation==1) | dta_long$district_baraza == 1 ], type = "CR0")
-res <- coef_test(ols, vcov_cluster)
-conf <- conf_int(ols, vcov_cluster)
-df_dif_in_dif[,4,i] <- c(res[4,1],res[4,2],res[4,5], conf[4,4], conf[4,5], nobs(ols))
-
+df_ancova[,5,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5], nobs(ols))
 
 }
 
