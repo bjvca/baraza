@@ -312,7 +312,9 @@ outcomes <- c("hhsize","agehead","femhead","head_sec","thatched","trad_wall","a6
 baseline <- baseline %>%  mutate(clusterID = group_indices(., a22, a23))
 baseline <- baseline %>%  mutate(clusterID2 = group_indices(., a22))
 
-
+#### this reproduces the first table in the report
+#### df_averages is a 2*10 data frame collecting baseline averages and standard deviations (col 1 in the table)
+#### df_ols collects results
 
 
 ###init arrays to store results
