@@ -9,11 +9,9 @@ library(clubSandwich)
 library(moments)
 set.seed(123456789) #not needed for final version?
 
-if (Sys.info()['sysname'] =="Windows") {
-path <- "C:/users/u0127963/Desktop/PhD/baraza"
-} else {
-path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
-}
+### this is executed in the /report subdirectory, need to ..
+path <- strsplit(getwd(), "/report")[[1]]
+
 
 
 

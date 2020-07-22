@@ -656,15 +656,19 @@ dta <- subset(dta, (time_dif>1.5) | time_dif == 0)
 if (hetero == 2) {
 dta <- subset(dta, j9 >= 5 )
 }
-#dta <- subset(dta, baraza.J2 == 1 | baraza.J1 == 1)
-##both officials recall that barazas took place in treatment areas - reduces sample size by 25 percent
-#sc_endline <- read.csv(paste(path,"data/public/sc_level_endline.csv", sep ="/"))
-#sc_endline <- aggregate(sc_endline[c("baraza.M2","baraza.M4")]==1, list(sc_endline$district,sc_endline$sub),sum)
-#names(sc_endline) <- c("district","sub","baraza.M2","baraza.M4")
-#dta <-  merge(dta,sc_endline, by.x=c("district","subcounty"),by.y=c("district","sub"))
-#dta <- subset(dta, baraza.M2>=2 | (information == 0 & deliberation == 0))
-#write.csv(subset(dta, subcounty %in% c("BAGEZZA","HAPUYO","BWANSWA")),paste(path,"report/3ie_report/bagezza.csv", sep ="/"))
-####
+
+if (hetero == 3) {
+dta <- subset(dta, baraza.J2 == 1 | baraza.J1 == 1)
+}
+if (hetero == 4) {
+
+#both officials recall that barazas took place in treatment areas - reduces sample size by 25 percent
+sc_endline <- read.csv(paste(path,"data/public/sc_level_endline.csv", sep ="/"))
+sc_endline <- aggregate(sc_endline[c("baraza.M2","baraza.M4")]==1, list(sc_endline$district,sc_endline$sub),sum)
+names(sc_endline) <- c("district","sub","baraza.M2","baraza.M4")
+dta <-  merge(dta,sc_endline, by.x=c("district","subcounty"),by.y=c("district","sub"))
+dta <- subset(dta, baraza.M2>=2 | (information == 0 & deliberation == 0))
+}
 
 
 for (i in 1:length(outcomes)) {
@@ -778,12 +782,12 @@ df_dif_in_dif[,4,i] <- c(res[4,1],res[4,2],res[4,5], conf[4,4], conf[4,5], nobs(
 }
 
 ### create data.frame to plot - make sure you get correct i's for the indices; last one is overall index
-d_plot <- data.frame(rbind(df_ancova[c(1,4,5),1,7],df_ancova[c(1,4,5),2,7],df_ancova[c(1,4,5),3,7],df_ancova[c(1,4,5),4,7]))
-d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,13],df_ancova[c(1,4,5),2,13],df_ancova[c(1,4,5),3,13],df_ancova[c(1,4,5),4,13])))
-d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,21],df_ancova[c(1,4,5),2,21],df_ancova[c(1,4,5),3,21],df_ancova[c(1,4,5),4,21])))
-d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,29],df_ancova[c(1,4,5),2,29],df_ancova[c(1,4,5),3,29],df_ancova[c(1,4,5),4,29])))
+d_plot <- data.frame(rbind(df_ancova[c(1,4,5),1,7],df_ancova[c(1,4,5),2,7],df_ancova[c(1,4,5),3,7],df_ancova[c(1,4,5),5,7]))
+d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,13],df_ancova[c(1,4,5),2,13],df_ancova[c(1,4,5),3,13],df_ancova[c(1,4,5),5,13])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,21],df_ancova[c(1,4,5),2,21],df_ancova[c(1,4,5),3,21],df_ancova[c(1,4,5),5,21])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,29],df_ancova[c(1,4,5),2,29],df_ancova[c(1,4,5),3,29],df_ancova[c(1,4,5),5,29])))
 d_plot <- rbind(d_plot, data.frame(rbind(c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA))))
-d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,30],df_ancova[c(1,4,5),2,30],df_ancova[c(1,4,5),3,30],df_ancova[c(1,4,5),4,30])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,30],df_ancova[c(1,4,5),2,30],df_ancova[c(1,4,5),3,30],df_ancova[c(1,4,5),5,30])))
 
 
 names(d_plot) <- c("y","ylo","yhi")

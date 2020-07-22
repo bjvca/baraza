@@ -872,12 +872,12 @@ df_matcher[,5,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4], conf[2,5], nobs(ols
 }
 
 ### create data.frame to plot - make sure you get correct i's for the indices; last one is overall index
-d_plot <- data.frame(rbind(df_matcher[c(1,4,5),1,7],df_matcher[c(1,4,5),2,7],df_matcher[c(1,4,5),3,7],df_matcher[c(1,4,5),4,7]))
-d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,13],df_matcher[c(1,4,5),2,13],df_matcher[c(1,4,5),3,13],df_matcher[c(1,4,5),4,13])))
-d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,21],df_matcher[c(1,4,5),2,21],df_matcher[c(1,4,5),3,21],df_matcher[c(1,4,5),4,21])))
-d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,29],df_matcher[c(1,4,5),2,29],df_matcher[c(1,4,5),3,29],df_matcher[c(1,4,5),4,29])))
+d_plot <- data.frame(rbind(df_matcher[c(1,4,5),1,7],df_matcher[c(1,4,5),2,7],df_matcher[c(1,4,5),3,7],df_matcher[c(1,4,5),5,7]))
+d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,13],df_matcher[c(1,4,5),2,13],df_matcher[c(1,4,5),3,13],df_matcher[c(1,4,5),5,13])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,21],df_matcher[c(1,4,5),2,21],df_matcher[c(1,4,5),3,21],df_matcher[c(1,4,5),5,21])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,29],df_matcher[c(1,4,5),2,29],df_matcher[c(1,4,5),3,29],df_matcher[c(1,4,5),5,29])))
 d_plot <- rbind(d_plot, data.frame(rbind(c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA))))
-d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,30],df_matcher[c(1,4,5),2,30],df_matcher[c(1,4,5),3,30],df_matcher[c(1,4,5),4,30])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_matcher[c(1,4,5),1,30],df_matcher[c(1,4,5),2,30],df_matcher[c(1,4,5),3,30],df_matcher[c(1,4,5),5,30])))
 
 
 names(d_plot) <- c("y","ylo","yhi")

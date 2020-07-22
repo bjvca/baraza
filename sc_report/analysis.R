@@ -9,11 +9,8 @@ library(clubSandwich)
 library(moments)
 library(doParallel)
 
-if (Sys.info()['sysname'] =="Windows") {
-path <- "C:/users/u0127963/Desktop/PhD/baraza"
-} else {
-path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
-}
+### this is executed in the /report subdirectory, need to ..
+path <- strsplit(getwd(), "/sc_report")[[1]]
 
 RI_conf_switch <- FALSE
 glob_repli <- 1000
