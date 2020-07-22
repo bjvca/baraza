@@ -9,11 +9,9 @@ library(clubSandwich)
 library(moments)
 library(doParallel)
 
-if (Sys.info()['sysname'] =="Windows") {
-  path <- "C:/users/u0127963/Desktop/PhD/baraza"
-} else {
-  path <- "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline"
-}
+
+### this is executed in the /report subdirectory, need to ..
+path <- strsplit(getwd(), "/sc_report")[[1]]
 
 ################## function defs
 table_maker <- function(res_mat, sel_list = c(7), file_path = "~/test.csv") {
@@ -337,8 +335,8 @@ for (i in 1:length(outcomes)) {
   conf <- conf_int(ols, vcov_cluster)
   #df_ols[,1,i] <- c(res[6,1],res[6,2],res[6,5],res[6,6],conf[6,4],conf[6,5],nobs(ols))
   #df_ols[,1,i] <- c(res[6,1],res[6,2],res[6,5],conf[6,4],conf[6,5],nobs(ols))
-  df_ancova[,2,i] <- c(round(res[6,1],3),paste(paste("(",round(res[6,2],3), sep=""),")",sep=""))
-  df_ancova[1,3,i] <- ifelse(res[6,5]<.01,"**",ifelse(res[6,5]<.05,"*",ifelse(res[6,5]<.1,"+","")))
+  df_ancova[,2,i] <- c(round(res[5,1],3),paste(paste("(",round(res[5,2],3), sep=""),")",sep=""))
+  df_ancova[1,3,i] <- ifelse(res[5,5]<.01,"**",ifelse(res[5,5]<.05,"*",ifelse(res[5,5]<.1,"+","")))
   df_ancova[2,3,i] <- nobs(ols)
   
   
@@ -357,4 +355,7 @@ for (i in 1:length(outcomes)) {
   df_ancova[2,9,i] <- nobs(ols)
   
 }
-table_maker(df_ancova, c(11), "C:/Users/u0127963/Desktop/PhD/baraza/sc_report/table1.csv")
+
+df_ancova <- df_ancova[,,c(1,2,4,5,6,7,8,9,11)]
+# use table_maker function to put this in a nice table 
+#table_maker(df_ancova, c(11), "C:/Users/u0127963/Desktop/PhD/baraza/sc_report/table1.csv")
