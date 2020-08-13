@@ -194,8 +194,8 @@ write.csv(exp_res, file = file_path)
 ########################################################################################### end functions definitions ###############################################################
 
 #load sc endline and baseline data
-sc_endline <- read.csv(paste(path,"data/public/sc_level_endline.csv", sep ="/"))
-sc_baseline <- read.csv(paste(path,"data/public/sc_level_baseline.csv", sep ="/"))
+sc_endline <- read.csv(paste(path,"data/public/sc_level_endline.csv", sep ="/"), stringsAsFactors = TRUE)
+sc_baseline <- read.csv(paste(path,"data/public/sc_level_baseline.csv", sep ="/"), stringsAsFactors = TRUE)
 sc_baseline$actor <- NA
 sc_baseline$actor[sc_baseline$designation %in% c("LC3_chair","Vice Chairperson LCIII")] <- "politician"
 sc_baseline$actor[sc_baseline$designation %in% c("Subcounty Chief/Town Clerk","Parish Chief","Acting Subcounty Chief/Town Clerk","Deputy subcounty chief/Town Clerk","Community Development Officer")] <- "civil servant"
@@ -243,7 +243,7 @@ sc_endline$actor[sc_endline$scID == 256] <- "politician" #                      
 sc_endline$actor[sc_endline$scID == 258] <- "civil servant" #                                    Town clerk  258
 
 #load treatment assignment
-treats <- read.csv(paste(path,"questionnaire/final_list_5.csv", sep ="/"))
+treats <- read.csv(paste(path,"questionnaire/final_list_5.csv", sep ="/"), stringsAsFactors = TRUE)
 #merge in treatments
 sc_endline <- merge(treats, sc_endline, by.x=c("district","subcounty"), by.y=c("district","sub"))
 

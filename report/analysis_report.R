@@ -26,7 +26,7 @@ glob_sig <- c(.025,.975) ### 5 percent conf intervals
 # takes raw data (baseline and endline), makes it anonymous and puts in into the data/public folder, ready to be analysed by the code chucks below
 #source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/cleaning.R")
 #source("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/raw/anonyize.R")
-endline <- read.csv(paste(path,"data/public/endline.csv", sep="/"))
+endline <- read.csv(paste(path,"data/public/endline.csv", sep="/"), stringsAsFactors = TRUE)
 endline$a21 <- as.character(endline$region)
 endline$region <- NULL
 ### EDITS SHOULD BE MADE HERE FOR FINAL VERSION###########################################################################################
@@ -254,19 +254,19 @@ RI_conf_dist <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, 
 ################################################################## end of funtions declarations
 
 #### for the mock report, I use a dummy endline - I read in a dummy endline of 3 households just to get the correct variable names
-#endline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/endline.csv")[10:403]
+#endline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/endline.csv", stringsAsFactors = TRUE)[10:403]
 
 #### I then merge with the sampling list to basically create an empty endline dataset
 #### and merge in the treatments
-#list <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/sampling_list_hh.csv")[c("hhid","a21","a22","a23")]
+#list <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/questionnaire/sampling_list_hh.csv", stringsAsFactors = TRUE)[c("hhid","a21","a22","a23")]
 #endline <- merge(list, endline, by="hhid", all.x=T)
-treats <- read.csv(paste(path,"questionnaire/final_list_5.csv", sep ="/"))
+treats <- read.csv(paste(path,"questionnaire/final_list_5.csv", sep ="/"), stringsAsFactors = TRUE)
 #endline <- merge(treats, endline, by.x=c("district","subcounty"), by.y=c("a22","a23"))
 
 
 
 ## baseline not needed in this first section, but used to generate fake data
-baseline <- read.csv(paste(path,"data/public/baseline.csv",sep="/"))
+baseline <- read.csv(paste(path,"data/public/baseline.csv",sep="/"), stringsAsFactors = TRUE)
 baseline$a23 <- as.character(baseline$a23)
 baseline$a23[baseline$a23 == "LUWERO TC"] <- "LUWERO_TC"
 baseline$a23[baseline$a23 == "SEMBABULE TC"] <- "SEMBABULE_TC"
@@ -663,7 +663,7 @@ dta <- subset(dta, baraza.J2 == 1 | baraza.J1 == 1)
 if (hetero == 4) {
 
 #both officials recall that barazas took place in treatment areas - reduces sample size by 25 percent
-sc_endline <- read.csv(paste(path,"data/public/sc_level_endline.csv", sep ="/"))
+sc_endline <- read.csv(paste(path,"data/public/sc_level_endline.csv", sep ="/"), stringsAsFactors = TRUE)
 sc_endline <- aggregate(sc_endline[c("baraza.M2","baraza.M4")]==1, list(sc_endline$district,sc_endline$sub),sum)
 names(sc_endline) <- c("district","sub","baraza.M2","baraza.M4")
 dta <-  merge(dta,sc_endline, by.x=c("district","subcounty"),by.y=c("district","sub"))

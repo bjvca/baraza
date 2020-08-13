@@ -30,7 +30,7 @@ write.csv(exp_res, file = file_path)
 
 
 #load sc endline and baseline data
-sc_baseline <- read.csv(paste(path,"data/public/sc_level_baseline.csv", sep ="/"))
+sc_baseline <- read.csv(paste(path,"data/public/sc_level_baseline.csv", sep ="/"), stringsAsFactors = TRUE)
 sc_baseline$actor <- NA
 sc_baseline$actor[sc_baseline$designation %in% c("LC3_chair","Vice Chairperson LCIII")] <- "politician"
 sc_baseline$actor[sc_baseline$designation %in% c("Subcounty Chief/Town Clerk","Parish Chief","Acting Subcounty Chief/Town Clerk","Deputy subcounty chief/Town Clerk","Community Development Officer")] <- "civil servant"
@@ -40,7 +40,7 @@ sc_baseline$actor[sc_baseline$designation %in% c("Subcounty Chief/Town Clerk","P
 # sc_baseline$subcounty[sc_baseline$subcounty ==  "NTUSI"] <- "NTUUSI"
 
 #load treatment assignment
-treats <- read.csv(paste(path,"data/public/treats.csv", sep ="/"))
+treats <- read.csv(paste(path,"data/public/treats.csv", sep ="/"), stringsAsFactors = TRUE)
 #merge in treatments
 sc_baseline <- merge(treats, sc_baseline, by.x=c("district","subcounty"), by.y=c("district","subcounty"))
 

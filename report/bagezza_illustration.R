@@ -8,7 +8,7 @@ siglev <-  1.96
 path <- strsplit(getwd(), "/report")[[1]]
 
 
-dta <- read.csv(paste(path,"data/public/bagezza.csv", sep ="/"))
+dta <- read.csv(paste(path,"data/public/bagezza.csv", sep ="/"), stringsAsFactors = TRUE)
 dta <- subset(dta, subcounty != "HAPUYO")
 
 dta$treat <- dta$subcounty =="BAGEZZA"
