@@ -219,10 +219,10 @@ RI_conf_dist <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, 
 
 ################################################################## end of funtions declarations
 
-treats <- read.csv(paste(path,"questionnaire/final_list_5.csv", sep ="/"))
+treats <- read.csv(paste(path,"questionnaire/final_list_5.csv", sep ="/"), stringsAsFactors = TRUE)
 
 ## baseline not needed in this first section, but used to generate fake data
-baseline <- read.csv(paste(path,"data/public/baseline.csv", sep ="/"))
+baseline <- read.csv(paste(path,"data/public/baseline.csv", sep ="/"), stringsAsFactors = TRUE)
 baseline$a23[baseline$a23 == "LUWERO TC"] <- "LUWERO_TC"
 baseline$a23[baseline$a23 == "SEMBABULE TC"] <- "SEMBABULE_TC"
 baseline$a23[baseline$a23 == "RAKAI TC"] <- "RAKAI_TC"

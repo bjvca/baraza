@@ -24,11 +24,11 @@ glob_sig <- c(.025,.975) ### 5 percent conf intervals
 
 
 path <- strsplit(getwd(), "/report")[[1]]
-endline <- read.csv(paste(path,"data/public/endline.csv", sep="/"))
+endline <- read.csv(paste(path,"data/public/endline.csv", sep="/"), stringsAsFactors = TRUE)
 endline$a21 <- as.character(endline$region)
 endline$region <- NULL
 endline$interviewed <- TRUE
-dta_plan <- read.csv(paste(path,"questionnaire/sampling_list_hh.csv", sep="/"))
+dta_plan <- read.csv(paste(path,"questionnaire/sampling_list_hh.csv", sep="/"), stringsAsFactors = TRUE)
 endline <- merge(dta_plan, endline, by="hhid", all.x=T)
 endline$interviewed[is.na(endline$interviewed)] <- FALSE
 endline$a21 <- endline$a21.x
@@ -256,9 +256,9 @@ RI_conf_dist <- function(i,outcomes, baseline_outcomes, dta_sim , ctrls = NULL, 
 ################################################################## end of funtions declarations
 
 #### for the mock report, I use a dummy endline - I read in a dummy endline of 3 households just to get the correct variable names
-#endline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/endline.csv")[10:403]
+#endline <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/data/public/endline.csv", stringsAsFactors = TRUE)[10:403]
 
-treats <- read.csv(paste(path,"questionnaire/final_list_5.csv", sep ="/"))
+treats <- read.csv(paste(path,"questionnaire/final_list_5.csv", sep ="/"), stringsAsFactors = TRUE)
 endline <- merge(treats, endline, by.x=c("district","subcounty"), by.y=c("a22","a23"))
 
 #create unique ID for clustering based on district and subcounty
