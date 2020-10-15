@@ -3209,6 +3209,13 @@ y level barazas should be traded off against an increase in potential bias
 
 \begin_layout Subsection
 Minimal Detectable Effects (MDEs)
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Minimal-Detectable-Effects"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3225,8 +3232,9 @@ reference "sec:Results"
 
 ) associated with the reduced sample (after partial roll-out and matching
  40 control sub-counties to treated sub-counties).
- In other words, instead of fixing MDE simulating power for different sample
- sizes, we fix sample size and simulate power for different MDEs.
+ In other words, instead of fixing MDEs and simulating power for different
+ sample sizes as is usually done in power calculations, we fix sample size
+ and simulate power for different MDEs.
  We use a standard significance level of 0.05 (double sided).
  MDEs are estimated using a simple analysis of covariance (ANCOVA) model
  that controls for the outcome at baseline and accounts for the clustered
@@ -3245,8 +3253,29 @@ Note that the level of clustering depends on the comparison.
 \end_inset
 
  The simulated MDEs can be a useful guide in deciding whether the intervention
- really had no effect, or an effect that was too small to detect given the
- (realized) research design.
+ really had no effect, or an effect that may have been too small to detect
+ given the (realized) research design.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+It is important to note that these are not ex-post power calculations, the
+ dangers of which are well-known to us 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "doi:10.1198/000313001300339897"
+literal "false"
+
+\end_inset
+
+.
+ The simulations were done before endline data was collected.
+ The only additional information we had at that stage was the realized sample
+ size.
+\end_layout
+
+\end_inset
+
  
 \end_layout
 
@@ -3740,10 +3769,20 @@ reference "fig:Summary-of-baraza"
 
  provides a summary of the results.
  It shows the impact of the four main hypotheses—the impact of the sub-county
- baraza, the relative effectiveness of the information component, the relative
- effectiveness of the deliberation component, and the impact of district
- level barazas—on four sectors we consider—agriculture, infrastructure,
- health, and education.
+ baraza (
+\begin_inset Formula $\beta_{I*D}$
+\end_inset
+
+), the relative effectiveness of the information component (
+\begin_inset Formula $\beta_{I}$
+\end_inset
+
+), the relative effectiveness of the deliberation component (
+\begin_inset Formula $\beta_{D}$
+\end_inset
+
+), and the impact of district level barazas—on four sectors we consider—agricult
+ure, infrastructure, health, and education.
  The graphs are based on indices that are composed of individual outcomes
  in each sector and aggregated following 
 \begin_inset CommandInset citation
@@ -3764,7 +3803,7 @@ literal "true"
 
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 This method first reconstructs a complete schedule of potential outcomes
@@ -3848,7 +3887,7 @@ name "fig:Summary-of-baraza"
 The indices combine various outcomes, some of which the expected direction
  of the effect is unclear a-priori.
  For instance, an information baraza may increase the quality of services
- in a hospital or health centre when judged by an objective measure such
+ in a hospital or health center when judged by an objective measure such
  as waiting time.
  However, the information may also result in higher expectations from the
  part of the user.
@@ -3876,7 +3915,8 @@ reference "tab:anova_ag"
  We start by looking if the baraza programme affected the use of modern
  inputs in agriculture.
  A first outcome looks at whether the household used inorganic fertilizers
- (DAP, Urea, NPK, Foliar, TSP, SSP, MOP) during the last 12 months.
+ (DAP, Urea, NPK, Foliar, TSP, SSP, MOP) during the last 12 months, an important
+ yield increasing technology.
  The first column reports sample averages, with standard deviation in brackets
  below.
  We find that about 
@@ -3892,29 +3932,17 @@ Sexpr{format(round(df_averages[1,3],digits=2)*100,nsmall=0)}
 
 \end_inset
 
- percent of households in the sample give an affirmative answer to this
+ percent of households in the sample gave an affirmative answer to this
  question.
  In the second column, we report differences in outcomes between households
- that received a sub-county level baraza (i.e.
- the crossed treatment of a sub-county information baraza and a sub-county
- deliberation baraza; the bottom right in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Factorial-design"
-
-\end_inset
-
-) and households that did not receive any baraza (pure control; the top
- left in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Factorial-design"
-
+ that received a sub-county level baraza and households that did not receive
+ any baraza (
+\begin_inset Formula $\beta_{I*D}$
 \end_inset
 
 ).
- We see that the proportion of households that reports using inorganic fertilize
-r is 
+ We see that the proportion of households that reported using inorganic
+ fertilizer is 
 \begin_inset ERT
 status open
 
@@ -3930,29 +3958,29 @@ Sexpr{format(abs(round(df_ancova[1,1,3],digits=3)*100),nsmall=1)}
  percentage points lower among the sub-group of households that were exposed
  to a sub-county level baraza that consists of both the information and
  the deliberation component than among households that did not receive any
- baraza (second column).
+ baraza.
  However, this difference is not statistically significant.
  In the third column, we report differences between outcomes of households
  that live in areas where an information baraza was organized (either only
- an information baraza or a crossed information and deliberation baraza;
- top and bottom right of Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Factorial-design"
-
+ an information baraza or a crossed information and deliberation baraza)
+ and outcomes of households that live in areas that were not exposed to
+ an information baraza (either pure control or only a deliberation baraza),
+ corresponding to (
+\begin_inset Formula $\beta_{I}$
 \end_inset
 
-) and outcomes of households that live in areas that were not exposed to
- an information baraza (either pure control or only a deliberation baraza;
- top and bottom left of Figure 
+ in equation 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Factorial-design"
+reference "eq:impact_1"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
 ).
- We see that adoption of inorganic fertilizer is 
+ We see that adoption of inorganic fertilizer was 
 \begin_inset ERT
 status open
 
@@ -3970,20 +3998,20 @@ Sexpr{format(abs(round(df_ancova[1,2,3],digits=3)*100),nsmall=1)}
  However, also here, the difference is not significant.
  In the fourth column, we report differences between outcomes of households
  that live in areas where a deliberation baraza was organized (either only
- a deliberation baraza or a crossed information and deliberation baraza;
- bottom left and right of Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Factorial-design"
-
+ a deliberation baraza or a crossed information and deliberation baraza)
+ and outcomes of households that live in areas that were not exposed to
+ a deliberation baraza (either pure control or information only baraza),
+ corresponding to (
+\begin_inset Formula $\beta_{D}$
 \end_inset
 
-) and outcomes of households that live in areas that were not exposed to
- a deliberation baraza (either pure control or information only baraza;
- top left and right of Figure 
+ in equation 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Factorial-design"
+reference "eq:impact_1"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
@@ -3992,12 +4020,25 @@ reference "fig:Factorial-design"
  Finally, in the fifth column, we compare households that were exposed to
  a district level baraza to pure control households.
  Again, no impact of the district level baraza is found on this outcome.
- 
+ For all of these comparisons, estimated coefficients are (in absolute values)
+ below the 80 percent MDEs (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Minimal-Detectable-Effects"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ where we plot power against MDEs for an outcome that combines seed use
+ and fertilizer use) and so insignificance may be due to low power.
 \end_layout
 
 \begin_layout Standard
-The second outcome is related the use of improved seed.
- This input seems to be used more widely than inorganic fertilizer: 
+The second outcome is related the use of improved seed, a second important
+ yield improving technology promoted by the government.
+ This input seemed to be used more widely than inorganic fertilizer: 
 \begin_inset ERT
 status open
 
@@ -4010,8 +4051,8 @@ Sexpr{format(round(df_averages[1,4],digits=2)*100,nsmall=0)}
 
 \end_inset
 
- percent of households report that they have been using improved seed during
- the last year.
+ percent of households reported that they had been using improved seed during
+ the preceding year.
  This percentage is 
 \begin_inset ERT
 status open
@@ -4030,11 +4071,13 @@ Sexpr{format(abs(round(df_ancova[1,1,4],digits=3)*100),nsmall=1)}
  was conducted, but the difference is not significant.
  We find negative point estimates for the relative effects of both the informati
 on and the deliberation component, but effects are imprecisely estimated.
- Finally, we find adoption of improved seed to be lower in areas where a
- district level baraza was conducted, but the difference with areas that
- did not receive a baraza is not significant.
+ Finally, we find adoption of improved seed was lower in areas where a district
+ level baraza was conducted, but the difference with areas that did not
+ receive a baraza is not significant.
  Adoption of improved seed and inorganic fertilizer was included in the
- index that is used for the confirmatory analysis.
+ index that was used for the confirmatory analysis.
+ Also here, the lack of power may be the reason why we find no significant
+ results.
 \end_layout
 
 \begin_layout Standard
@@ -4922,7 +4965,7 @@ Sexpr{format(round(df_averages[1,5],digits=2)*100,nsmall=0)}
 
 \end_inset
 
- percent of households report that they received improved seed from the
+ percent of households reported that they received improved seed from the
  government extension system (through an extension agent, from the National
  Agricultural Advisory Services (NAADS) or through Operation Wealth Creation
  (OWC) that replaced NAADS).
@@ -4961,15 +5004,15 @@ Sexpr{format(abs(round(df_ancova[1,3,5],digits=3)*100),nsmall=1)}
  We find no such effects from district level barazas.
  Direct comparison of district and sub-county level barazas indicate that
  sub-county level barazas are significantly more effective in increasing
- the likelihood that households report to have received these inputs from
+ the likelihood that households reported to have received these inputs from
  government.
 \end_layout
 
 \begin_layout Standard
 We then check if household changed with respect to the use of agro-chemicals.
  This includes the use of pesticides, herbicides, fungicides and acaricides
- during the last 12 months.
- Overall, almost half of all households in the sample report using some
+ during the 12 months prior to endline data collection.
+ Overall, almost half of all households in the sample reported using some
  form of agro-chemicals.
  We do not find evidence that the baraza intervention affected the use of
  these inputs.
@@ -4998,10 +5041,10 @@ Sexpr{format(round(df_averages[1,7],digits=2)*100,nsmall=0)}
 We then turn to agricultural advisory services.
  We first investigate if the barazas have affected access to extension at
  home.
- We estimate the percentage of households in our sample who report that
+ We estimate the percentage of households in our sample who reported that
  they were visited by an expert (e.g.
  crop or livestock extension agent, or community-based facilitator or another
- experienced farmer) at the home in the last 12 months.
+ experienced farmer) at home in the last 12 months.
  We find that access to extension, although higher than at baseline, is
  still low, with only about 
 \begin_inset ERT
@@ -5040,8 +5083,8 @@ Sexpr{format(abs(round(df_ancova[1,1,8],digits=3)*100),nsmall=1)}
 ies that received a the district level baraza.
  A direct comparison of extension at home between households that were exposed
  to a district level baraza and households that were exposed to a sub-county
- level baraza confirms that sub-county level barazas are significantly more
- effective.
+ level baraza confirms that sub-county level barazas were significantly
+ more effective.
  
 \end_layout
 
@@ -5054,7 +5097,8 @@ Home visits by extension officers are not the only way in which households
  component that can be consulted by farmers when the need arises became
  more important than the more supply-driven component of training and visit.
  We thus also inquire if anyone in the household visited an extension office,
- demonstration site, or model farmer in the past year.
+ demonstration site, or model farmer in the year preceding endline data
+ collection.
  We find that about 
 \begin_inset ERT
 status open
@@ -5068,21 +5112,21 @@ Sexpr{format(round(df_averages[1,9],digits=2)*100,nsmall=0)}
 
 \end_inset
 
- percent of households in our sample report access to extension in this
+ percent of households in our sample reported access to extension in this
  way.
  While the results are in line with extension visits at home, differences
  are not significant.
  Access to extension, both at home or though extension offices and demonstration
- sites, was also included as key outcomes to assess impact using in the
+ sites, was also included as a key outcome to assess impact using in the
  agriculture and overall index.
 \end_layout
 
 \begin_layout Standard
 We find that three quarters of households in our sample mention that there
- are agricultural enterprises, improved technologies or inputs you would
+ were agricultural enterprises, improved technologies or inputs they would
  like to adopt, indicating significant demand for advisory services.
  We also find that, according to citizens, service providers and policy
- makers are not always aware of the needs of farmers.
+ makers were not always aware of the needs of farmers.
  The table shows that only 
 \begin_inset ERT
 status open
@@ -5096,18 +5140,18 @@ Sexpr{format(round(df_averages[1,11],digits=2)*100,nsmall=0)}
 
 \end_inset
 
- percent of households is of the opinion that officials are aware of which
+ percent of households was of the opinion that officials were aware of which
  services farmers need.
  While we do not see that this percentage differs between treatment and
  control for sub-county level barazas, we do see that a district level baraza
  reduced this percentage.
- This may indicate that a district level baraza makes the mismatch between
+ This may indicate that a district level baraza made the mismatch between
  what farmers need and what officials think farmers need more salient.
 \end_layout
 
 \begin_layout Standard
-Related to the previous outcome, we ask how decisions related to what topics
- to cover in agricultural extension are made.
+Related to the previous outcome, we asked how decisions related to what
+ topics to cover in agricultural extension are made.
  We define this outcome in a negative way, that is, the indicator is true
  if decisions are made without consultation.
  We see that about 
@@ -5123,7 +5167,7 @@ Sexpr{format(round(df_averages[1,12],digits=2)*100,nsmall=0)}
 
 \end_inset
 
- percent of households indicate that no consultation happens, and the content
+ percent of households indicated that no consultation happens, and the content
  of extension advisory services is decided upon by experts at the central
  level.
  We do not find that the baraza intervention increased participation in
@@ -5144,17 +5188,17 @@ Sexpr{format(round(df_averages[1,13],digits=2)*100,nsmall=0)}
 
 \end_inset
 
- percent of households report the presence of farmer groups or cooperatives
+ percent of households reported the presence of farmer groups or cooperatives
  in their village.
  In the agricultural sector in Uganda, such groups are very important.
  They are actively promoted by the government.
  In fact, to be able to receive inputs from the government extension system,
  farmers are strongly encouraged to form such groups.
- We find that sub-county level barazas increase the likelihood that farmer
- cooperatives or groups are formed in the villages in Uganda.
+ We find that sub-county level barazas increased the likelihood that farmer
+ cooperatives or groups were formed in the villages in Uganda.
  It seems that the deliberative component is the main driver behind this
  result.
- We also find that this effect is specific to interventions at the sub-county
+ We also find that this effect was specific to interventions at the sub-county
  level.
  We further find that a higher share of farmer groups in areas that received
  a sub-county level baraza received support from government.
@@ -5164,7 +5208,7 @@ Sexpr{format(round(df_averages[1,13],digits=2)*100,nsmall=0)}
 The final two questions focus more on marketing.
  Connecting farmers to markets is also an important strategy outlined in
  the Agriculture Sector Strategic Plan (ASSP).
- The first outcome relates to the likelihood that farmers are supported
+ The first outcome relates to the likelihood that farmers were supported
  by government through a village procurement committee.
  In the sample, about 
 \begin_inset ERT
@@ -5180,7 +5224,7 @@ Sexpr{format(round(df_averages[1,15],digits=2)*100,nsmall=0)}
 \end_inset
 
  percent of households report that they were assisted by government.
- A second questions is similar but looks at the role of cooperatives in
+ A second questions is similar but looked at the role of cooperatives in
  marketing support.
  We generally find no effects of the baraza intervention, except perhaps
  for an increase of almost 
@@ -5196,7 +5240,7 @@ Sexpr{format(abs(round(df_ancova[1,1,16],digits=3)*100),nsmall=1)}
 
 \end_inset
 
- percentage points in the likelihood that cooperatives assist with marketing
+ percentage points in the likelihood that cooperatives assisted with marketing
  in areas that received a sub-county baraza.
  Both of these outcomes were also included in the index to assess overall
  impact.
@@ -5228,11 +5272,11 @@ reference "tab:anova_ag"
 \end_layout
 
 \begin_layout Standard
-A first outcome we consider is whether the household uses an unprotected
+A first outcome we consider is whether the household used an unprotected
  water source during dry season.
- This is measured as the share of households that report that the main source
- of drinking water during the dry season is surface water, an unprotected
- dug well or an unprotected spring.
+ This is measured as the share of households that reported that the main
+ source of drinking water during the dry season was surface water, an unprotecte
+d dug well or an unprotected spring.
  We find that about 
 \begin_inset ERT
 status open
@@ -5246,9 +5290,9 @@ Sexpr{format(round(df_averages[1,17]*100,digits=0),nsmall=0)}
 
 \end_inset
 
- percent of households in the sample report that they are using an unprotected
- water source.
- The baraza intervention does not seem to affect this proportion.
+ percent of households in the sample reported that they were using an unprotecte
+d water source.
+ The baraza intervention did not seem to affect this proportion.
  This outcome is included in the infrastructure index.
 \end_layout
 
@@ -5256,8 +5300,8 @@ Sexpr{format(round(df_averages[1,17]*100,digits=0),nsmall=0)}
 A second outcome we look at (and is also included in the index) is the distance
  to the primary water source during the dry season.
  This was measured in km, but trimmed and transformed using the inverse
- hyperbolic transformation.
- We find that, on average, households have to walk about 
+ hyperbolic sine transformation.
+ We find that, on average, households had to walk about 
 \begin_inset ERT
 status open
 
@@ -5271,10 +5315,21 @@ Sexpr{format(round(mean(baseline_desc$dist_source,na.rm=T),digits=2),nsmall=1)}
 \end_inset
 
  km.
- While this distance seems to reduce in all comparisons, and especially
+ While this distance seemed to reduce in all comparisons, and especially
  for barazas held at the district level where we find a reduction of approximate
 ly 9 percent, it is never significantly different from zero.
- 
+ However, MDEs simulated in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Minimal-Detectable-Effects"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ indicate that only the district level effect may be a null effect; other
+ insignificant differences may be due to limited power.
 \end_layout
 
 \begin_layout Standard
@@ -5317,7 +5372,7 @@ Sexpr{format(round(df_averages[1,20]*100,digits=0),nsmall=0)}
 
 \end_inset
 
- percent of households report that such a committee is present in their
+ percent of households reported that such a committee was present in their
  village.
  We do not find that this share varies between the different experimental
  groups.
@@ -5330,15 +5385,15 @@ literal "true"
 
 \end_inset
 
-, we see that the deliberation component leads to an increase in the likelihood
- that a household member is a member of a water user committee.
- We do not find that the baraza intervention increases the likelihood that
+, we see that the deliberation component led to an increase in the likelihood
+ that a household member was a member of a water user committee.
+ We do not find that the baraza intervention increased the likelihood that
  these committees hold public meetings.
 \end_layout
 
 \begin_layout Standard
 Households were also asked if they were satisfied with the quality of the
- water that is available at the source during the dry season.
+ water that was available at the source during the dry season.
  About 
 \begin_inset ERT
 status open
@@ -5352,17 +5407,17 @@ Sexpr{format(round(df_averages[1,21]*100,digits=0),nsmall=0)}
 
 \end_inset
 
- percent respond that they are satisfied or very satisfied with the drinking
+ percent responded that they were satisfied or very satisfied with the drinking
  water.
  We do not find that households that were exposed to the baraza intervention
- are more or less likely to report that they are (very) satisfied with the
- quality of drinking water during the dry season.
- Half of the households report that they treat drinking water before drinking
- it, either by boiling it or treating it with chlorine.
- The likelihood that households treat water reduces somewhat for the information
- treatment.
+ were more or less likely to report that they were (very) satisfied with
+ the quality of drinking water during the dry season.
+ Half of the households reported that they treated drinking water before
+ drinking it, either by boiling it or treating it with chlorine.
+ The likelihood that households treated water reduced somewhat for the informati
+on treatment.
  This may be due to the belief held in many households that water from a
- safe sources does not need additional treatment.
+ safe source does not need additional treatment.
 \end_layout
 
 \begin_layout Standard
@@ -5995,11 +6050,12 @@ y analysis.
 \end_layout
 
 \begin_layout Standard
-We include one question related to road infrastructure.
- We ask how far the household is located from the nearest all weather road.
- We find that in the full sample a household lives on average 26 km from
+We included one question related to road infrastructure.
+ We asked how far the household is located from the nearest all weather
+ road.
+ We find that in the full sample a household lived on average 26 km from
  a road.
- We do not find that the baraza programme reduces the distance to the nearest
+ We do not find that the baraza programme reduced the distance to the nearest
  all weather road.
 \end_layout
 
@@ -6017,7 +6073,7 @@ reference "tab:anova_health"
 
 ).
  One problem with public health related outcomes is that some outcomes related
- to quality of service delivery in health centres will only be available
+ to quality of service delivery in health centers will only be available
  for households that have visited government health facilities, reducing
  sample size too much to maintain acceptable power.
  Furthermore, the intervention may also affect the likelihood that households
@@ -6030,8 +6086,8 @@ The first two outcomes we consider attempt to assess changes in access or
  use of public health facilities.
  A first indicator measures demand for public health services for illness.
  In particular, we construct an indicator that is true if the household
- head responds that treatment would be sought in a health center 2, 3, 4
- or in a regional referral hospital if a member of his/her household had
+ head responded that treatment would be sought in a health center 2, 3,
+ 4 or in a regional referral hospital if a member of his/her household had
  fever.
  We find that 
 \begin_inset ERT
@@ -6046,7 +6102,7 @@ Sexpr{format(round(df_averages[1,25]*100,digits=0),nsmall=0)}
 
 \end_inset
 
- percent of households respond that they would seek treatment in a government
+ percent of households responded that they would seek treatment in a government
  health facility.
  This proportion is independent of the treatment groups.
 \end_layout
@@ -6056,7 +6112,7 @@ A similar indicator attempts to assess demand for public health services
  for maternal health care, and asks if treatment would be sought in a health
  center 2, 3, 4 or in a regional referral hospital if a member of the household
  was to give birth.
- This percentage is even higher: about 
+ This percentage was even higher: about 
 \begin_inset ERT
 status open
 
@@ -6070,12 +6126,12 @@ Sexpr{format(round(df_averages[1,26]*100,digits=0),nsmall=0)}
 \end_inset
 
  percent would go to a government health facility to give birth.
- Again, this proportion is not affected by the baraza programme.
+ Again, this proportion was not affected by the baraza program.
  Both outcomes are included in the health index.
 \end_layout
 
 \begin_layout Standard
-Next, we ask if a Village Health Team (VHT) is present in the village.
+Next, we asked if a Village Health Team (VHT) was present in the village.
  VHTs are very important in front-line health care provision in Uganda.
  They also have prominent roles in government health interventions, such
  as immunization campaigns or the distribution of bed nets.
@@ -6092,13 +6148,13 @@ Sexpr{format(round(df_averages[1,27]*100,digits=0),nsmall=0)}
 
 \end_inset
 
- percent of households report that a VHT is present in their village.
- The presence of a VHT is not impacted by the baraza intervention.
+ percent of households reported that a VHT was present in their village.
+ The presence of a VHT was not impacted by the baraza intervention.
 \end_layout
 
 \begin_layout Standard
-As the baraza tries to increase citizen engagement, we also check if households
- that were exposed to a baraza are more likely to participate in VHTs.
+As the baraza tries to increase citizen engagement, we also checked if household
+s that were exposed to a baraza are more likely to participate in VHTs.
  We thus asked if any member of the household was a member of a VHT.
  We see that in about 
 \begin_inset ERT
@@ -6113,11 +6169,11 @@ Sexpr{format(round(df_averages[1,28]*100,digits=0),nsmall=0)}
 
 \end_inset
 
- percent of our sample, at least one household member is part of a VHT.
- The baraza intervention does not increase the likelihood that individuals
- participate as VHT members.
- Furthermore, the baraza intervention attempts to encourages sharing of
- information.
+ percent of our sample, at least one household member was part of a VHT.
+ The baraza intervention did not increase the likelihood that individuals
+ participated as VHT members.
+ Furthermore, the baraza intervention attempts to encourage sharing of informati
+on.
  As such, we expect that being exposed to a baraza may encourage VHTs to
  organize more public meetings.
  We find that overall, 
@@ -6133,11 +6189,11 @@ Sexpr{format(round(df_averages[1,29]*100,digits=0),nsmall=0)}
 
 \end_inset
 
- percent of households state that VHTs have organized a public meeting in
- the last year.
- We find that this proportion is significantly higher in areas that were
+ percent of households stated that VHTs organized a public meeting in the
+ preceding year.
+ We find that this proportion was significantly higher in areas that were
  exposed to a sub-county level baraza.
- This effect seems driven by the deliberative component of a sub-county
+ This effect seemed to be driven by the deliberative component of a sub-county
  baraza.
 \end_layout
 
@@ -6145,20 +6201,20 @@ Sexpr{format(round(df_averages[1,29]*100,digits=0),nsmall=0)}
 We also consider distance to the nearest government health facility, measured
  in km (trimmed and transformed using the inverse hyperbolic sine transformation
 ).
- Overall, average distance to the nearest government health facility is
+ Overall, average distance to the nearest government health facility was
  almost 50 km.
- We do not find that barazas reduce this distance.
+ We do not find that barazas reduced this distance.
 \end_layout
 
 \begin_layout Standard
 We then turn to health outcomes.
- We start by asking if any member of the household has been sick during
- the last year.
+ We started by asking if any member of the household fell sick during the
+ year prior to endline data collection.
  This was the case in two thirds of the households in our sample.
  The intervention did not reduce morbidity in our sample.
- We then ask for each sick person in the household to record how many days
- he or she was ill, and use this to calculate the total number of sick days
- at the household level in the last year.
+ We then asked for each sick person in the household to record how many
+ days he or she was ill, and use this to calculate the total number of sick
+ days at the household level in the last year.
  The average household recorded almost 50 sick days according to this definition.
  We also do not find that the intervention affected the (trimmed and transformed
 ) number of sick days.
@@ -6166,36 +6222,42 @@ We then turn to health outcomes.
  to school or to work, which provides an indication of the severity of illness.
  Calculated similarly to the previous outcome, we find that in the average
  household about 35 school- or workdays were missed due to illness.
- Again, there is no significant reduction in this (trimmed and transformed)
+ Again, there was no significant reduction in this (trimmed and transformed)
  number.
- This last health outcome measure was included in the health index.
+ This last health outcome measure is included in the health index.
 \end_layout
 
 \begin_layout Standard
-We then ask how long one had to wait before being attended to (in minutes,
+We then asked how long one had to wait before being attended to (in minutes,
  trimmed and transformed).
  We find that the sample mean for this outcome is about 90 minutes.
- While we see that waiting time reduces for most comparisons, the differences
+ While we see that waiting time reduced for most comparisons, the differences
  are never significant.
- Potentially, the reduced sample size resulted in too little power to detect
- a difference.
  This outcome was also included in the health index.
 \end_layout
 
 \begin_layout Standard
 The next question that was included in the index was again asked to all
  households.
- In particular, we inquire if a traditional health practitioner was consulted
+ In particular, we inquired if a traditional health practitioner was consulted
  in the last year.
  In one in four households in our sample, this was the case.
  The baraza intervention did not affect this percentage.
 \end_layout
 
 \begin_layout Standard
-One problem that often crops up in the health sector is absenteeism.
- To assess this, we ask who examined the patient in the health center.
+One problem that often crops up in the health sector is absenteeism 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "10.1257/089533006776526139"
+literal "false"
+
+\end_inset
+
+.
+ To assess this, we asked who examined the patient in the health center.
  Ideally this should be the doctor or in-charge.
- If this person is absent, patients are generally examined by nurses or
+ If this person was absent, patients were generally examined by nurses or
  lab technicians.
  We thus construct an indicator that is one if the household responds that
  the patient was investigated by the doctor or the in-charge, and zero otherwise.
@@ -6212,7 +6274,7 @@ Sexpr{format(round(df_averages[1,36]*100,digits=0),nsmall=0)}
 
 \end_inset
 
- percent of the cases, a qualified person appears to do the examination.
+ percent of the cases, a qualified person appeared to do the examination.
  Surprisingly, the deliberation component of the baraza seems to reduce
  this likelihood somewhat.
  We also look at the time that the examination takes.
@@ -6237,10 +6299,10 @@ Sexpr{format(round(df_averages[1,38]*100,digits=0),nsmall=0)}
 
 \end_inset
 
- percent of households report that payment was required the last time they
- visited a government health facility.
- There is no impact of the intervention.
- Related, users often complain about a lack of drugs in government health
+ percent of households reported that payment was required the last time
+ they visited a government health facility.
+ There was no impact of the intervention.
+ Related, users often complained about a lack of drugs in government health
  facilities.
  We asked if, during the last visit to a government health centre, drugs
  were received (indicating that drugs were available).
@@ -6259,7 +6321,7 @@ Sexpr{format(round(df_averages[1,39]*100,digits=0),nsmall=0)}
 
 \end_inset
 
- percent of households report that they received medicines in the health
+ percent of households reported that they received medicines in the health
  centre, almost all of them also mentioned that they had to also buy drugs
  outside of the hospital.
  For neither indicator, the intervention seems to make a difference.
@@ -6268,9 +6330,9 @@ Sexpr{format(round(df_averages[1,39]*100,digits=0),nsmall=0)}
 \begin_layout Standard
 We further probe for a subjective assessment of the overall quality of care
  at the health facility.
- Most households report that they are satisfied or very satisfied with services
- received at the government health facility.
- This seems to increase in areas where a sub-county level baraza took place
+ Most households reported that they were satisfied or very satisfied with
+ services received at the government health facility.
+ This seemed to increase in areas where a sub-county level baraza took place
  and there is also a sizable difference in outcomes when comparing sub-county
  level baraza outcomes to district level baraza outcomes.
  However, none of the differences are significant.
@@ -7310,8 +7372,8 @@ Education
 \begin_layout Standard
 Education outcomes to assess impact of the intervention suffers from a similar
  problem as the one encountered with health outcomes: not all households
- in the sample have children in school, and so for many of the outcomes
- related to education, sample size becomes small.
+ in the sample had children in school, and so for many of the outcomes related
+ to education, sample size becomes small.
  This also affects the indices.
  Results are presented in Table 
 \begin_inset CommandInset ref
@@ -7327,11 +7389,13 @@ reference "tab:anova_edu"
 If the quality of public education is poor, households will be less likely
  to send their children to public schools.
  A first obvious outcome is thus to simply compare the number of children
- within the households that attend public school (either Universal Primary
+ within the household that attended public schools (either Universal Primary
  Education or Universal Secondary Education).
  We find that the average household in our sample had almost two children
- in government schools, but that enrollment rates are not affected by the
- baraza intervention.
+ in government schools, but that enrollment rates were not affected by the
+ baraza intervention, although for all but the information component, we
+ can not differentiate between null effects and insignificant results due
+ to low statistical power.
 \end_layout
 
 \begin_layout Standard
@@ -7339,15 +7403,17 @@ Access to public education is also influenced by the distance to a public
  school.
  We thus recorded distance to primary or secondary school (or the average
  if both are reported; trimmed and transformed).
- We find that on average, households live about 3 km from a government operated
- school.
- Also for this outcome, the baraza program did not make an impact.
+ We find that on average, households lived about 3 km from a government
+ operated school.
+ Also for this outcome, the baraza program did not make an impact, but estimated
+ coefficients are below MDEs and so insignificance may be due to small sample
+ size.
 \end_layout
 
 \begin_layout Standard
 We also look at school infrastructure.
- First, we ask households if the primary or secondary school attended by
- any of their children has a complete boundary fence.
+ First, we asked households if the primary or secondary school attended
+ by any of their children had a complete boundary fence.
  In the complete sample, it was reported that only about 
 \begin_inset ERT
 status open
@@ -7364,7 +7430,7 @@ Sexpr{format(round(df_averages[1,45]*100,digits=0),nsmall=0)}
  percent of schools have such a fence.
  The lack of a fence was a frequent complaints from parents during qualitative
  work.
- We also ask if the school has electricity and if there is a water source
+ We also asked if the school had electricity and if there was a water source
  available in the school.
  We find that overall, about 
 \begin_inset ERT
@@ -7379,7 +7445,7 @@ Sexpr{format(round(df_averages[1,46]*100,digits=0),nsmall=0)}
 
 \end_inset
 
- percent of schools have electricity and about 
+ percent of schools had electricity and about 
 \begin_inset ERT
 status open
 
@@ -7392,7 +7458,7 @@ Sexpr{format(round(df_averages[1,47]*100,digits=0),nsmall=0)}
 
 \end_inset
 
- percent have a water source.
+ percent had a water source.
  We find that sub-county level baraza seem to improve school infrastructure.
  We considered many other infrastructure related outcomes, such as the number
  of classrooms and availability of functioning toilets for both girls and
@@ -7401,10 +7467,10 @@ Sexpr{format(round(df_averages[1,47]*100,digits=0),nsmall=0)}
 \end_layout
 
 \begin_layout Standard
-We also look at how the school is managed, and how parents are involved.
- For instance, we look at whether the school has a Parent Teacher Association
+We also look at how the schools were managed, and how parents were involved.
+ For instance, we look at whether the school had a Parent Teacher Association
  (PTA) and a School Management Committee (SMC).
- Almost all schools have a PTA.
+ Almost all schools had a PTA.
  We further find that 
 \begin_inset ERT
 status open
@@ -7419,12 +7485,24 @@ Sexpr{format(round(df_averages[1,49]*100,digits=0),nsmall=0)}
 \end_inset
 
  percent of households state the primary or secondary school attended by
- any of their children has a SMC.
- However, not all households are informed about SMC meetings.
- The baraza intervention does not seem to affect how schools are managed,
- how parents can participate, or how information is shared.
- Finally, we ask households if an inspector had visited the school in the
- year before the survey.
+ any of their children had a SMC.
+ However, not all households were informed about SMC meetings.
+ The baraza intervention did not seem to affect how schools were managed,
+ how parents could participate, or how information was shared.
+ Again, statistical power may be an issue in many of these comparisons,
+ as illustrated by the large MDEs (Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Minimal-Detectable-Effects"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Finally, we asked households if an inspector had visited the school in
+ the year before the survey.
  We find that about 
 \begin_inset ERT
 status open
@@ -7438,8 +7516,8 @@ Sexpr{format(round(df_averages[1,51]*100,digits=0),nsmall=0)}
 
 \end_inset
 
- percent of households indicate that schools were inspected.
- Surprisingly, this proportion reduces as a result of the information component
+ percent of households indicated that schools were inspected.
+ Surprisingly, this proportion reduced as a result of the information component
  of a baraza.
 \end_layout
 
@@ -8147,13 +8225,13 @@ s through which the baraza intervention is assumed to impact outcomes.
 \begin_layout Standard
 One of the primary aims of the community forums is to increase communication
  between politicians, civil servants and the citizens.
- We thus try to assess if citizens interact more with politicians and service
- providers as a result of the interventions.
- We ask how long it has been since the respondent spoke personally to various
- officials for reasons related to service provision in agriculture, health,
- education, water or roads.
- Based on the answer, we construct an indicator variable that denotes if
- the household had a meeting or not.
+ We thus try to assess if citizens interacted more with politicians and
+ service providers as a result of the interventions.
+ We asked how long it has been since the respondent spoke personally to
+ various officials for reasons related to service provision in agriculture,
+ health, education, water or roads.
+ Based on the answer, we constructed an indicator variable that denotes
+ if the household had a meeting or not.
  The time frame changes depending on the official.
  For instance, for the LC1 chairperson, the indicator takes the value of
  one if the respondent spoke to him or her within the last month.
@@ -8663,23 +8741,23 @@ Sexpr{format(round(df_averages[1,10]*100,digits=0),nsmall=0)}
 
 \end_inset
 
- percent of respondents report that they met with the sub-county chief in
- the last year.
- We do not find that the baraza intervention changes this likelihood.
- We do see that the information component of the baraza increases the likelihood
+ percent of respondents reported that they met with the sub-county chief
+ in the last year.
+ We do not find that the baraza intervention changed this likelihood.
+ We do see that the information component of the baraza increased the likelihood
  that citizens interface with the head teacher or with members of the school
  management unit.
  We also see that the information component of the sub-county level baraza
- increases the likelihood of meetings with water committee members, but
+ increased the likelihood of meetings with water committee members, but
  the difference is not significant.
- Finally, and similar to meetings with sub-county chiefs, few citizens report
+ Finally, and similar to meetings with sub-county chiefs, few citizens reported
  meeting with health unit management committee members.
- The index also shows that the largest effect on meetings is due to the
+ The index also shows that the largest effect on meetings was due to the
  information component, but the effect is not significant.
  While the indices do not suggest an impact on contacts between citizens
  and officials, we do find that virtually all coefficients on sub-county
  level intervention are positive.
- We also find that a sub-county level barazas are significantly more effective
+ We also find that sub-county level barazas were significantly more effective
  in increasing interactions between citizens and health unit management
  committee members.
  
@@ -8710,30 +8788,31 @@ Sexpr{format(round(df_averages[1,30]*100,digits=0),nsmall=0)}
 
 \end_inset
 
- percent of households indicate that they made in-kind contributions to
+ percent of households indicated that they made in-kind contributions to
  public schools in their community in the last two years.
- Overall, most in-kind contributions are targeted towards drinking water
+ Overall, most in-kind contributions were targeted towards drinking water
  facilities, and least in-kind contributions were going to dams or irrigation
- facilities, which is consistent with the difference in public nature of
- these facilities.
- Cash contributions are distributed similarly, except for the fact that
- contributions to bridges and roads generally take the form of labor contributio
+ facilities, which is consistent with the difference in public goods nature
+ of these facilities.
+ Cash contributions were distributed similarly, except for the fact that
+ contributions to bridges and roads generally took the form of labor contributio
 ns.
  
 \end_layout
 
 \begin_layout Standard
-We find that the information component of the sub-county baraza reduces
- in-kind contributions but increases cash contributions.
- We further find that cash contributions are significantly higher in areas
+We find that the information component of the sub-county baraza reduced
+ in-kind contributions but increased cash contributions.
+ We further find that cash contributions were significantly higher in areas
  that were exposed to a district level baraza than in areas that were subjected
  to a sub-county level baraza.
  This is driven by significantly higher cash contributions towards schools
  (and to a lesser extent to drinking water infrastructure).
- For in-kind contributions, reductions in contributions are especially for
- schools and for government or community buildings.
+ For in-kind contributions, reductions in contributions were especially
+ large for schools and for government or community buildings.
  The increase in cash contributions as a result of the information component
- of the baraza intervention is especially for drinking water infrastructure.
+ of the baraza intervention was especially large for drinking water infrastructu
+re.
 \end_layout
 
 \begin_layout Standard
@@ -9605,8 +9684,8 @@ Note: First column reports sample means (and standard deviations below);
 \end_layout
 
 \begin_layout Standard
-Finally, we investigate if barazas result in changes in the perception of
- citizens on a range of problems.
+Finally, we investigate if barazas resulted in changes in the perception
+ of citizens on a range of problems.
  Respondents were given a statement, and using a 10 point likert scale,
  had to indicate how much they disagreed (1) or agreed (10) with the statement.
  The statements were based on extensive qualitative work where various stakehold
@@ -9623,41 +9702,43 @@ reference "tab:perceptions"
 
 \end_inset
 
- shows that households tend to agree more that access to drinking water
- sources is a serious problem as a result of the information component of
- a sub-county baraza.
+ shows that households tended to agree more that access to drinking water
+ sources was a serious problem as a result of the information component
+ of a sub-county baraza.
  Households that received a deliberation focused sub-county level baraza
- are also more likely to agree that drinking water is usually dirty.
+ were also more likely to agree that drinking water was usually dirty.
  In the area of public health provision, households that were exposed to
- a sub-county level information baraza are more likely to agree that access
- to a health centre or hospital is a serious problem than areas that were
- exposed to a district level baraza.
+ a sub-county level information baraza were more likely to agree that access
+ to a health center or hospital was a serious problem than households in
+ areas that were not exposed to an information baraza.
  We further find that households that were exposed to a sub-county level
- baraza indicate that lack of medicines at health centers or hospitals is
+ baraza indicate that lack of medicines at health centers or hospitals was
  less of a problem than in control areas.
  A direct comparison for this outcome between sub-county level barazas and
  district level barazas also yields a significant difference.
- We also ask about perceptions related to friendliness of staff and absenteeism.
- We find that households that live in areas that received the district level
- treatment are more inclined to say that absenteeism is a problem, but the
- difference is not significant.
+ We also asked about perceptions related to friendliness of staff and absenteeis
+m.
+ We find that households that lived in areas that received the district
+ level treatment were more inclined to say that absenteeism was a problem,
+ but the difference is not significant.
 \end_layout
 
 \begin_layout Standard
 We then look at perceptions in the area of education.
- We see that households are generally most concerned about poor quality
- learning outcomes, but think absenteeism is less of a problem.
+ We see that households were generally most concerned about poor quality
+ learning outcomes, but thought absenteeism was less of a problem.
  For none of the school related perceptions, we find a significant difference
  between the various groups.
  We also do not find that the perception of access to roads as a serious
- problem changes as a result of the barazas.
+ problem changed as a result of the barazas.
 \end_layout
 
 \begin_layout Standard
-Respondents seem to perceive agricultural service delivery as the most problemat
-ic area: Averages on the likert scales are fairly high when asked if farmers
- agree extension officers visit rarely, and that there is a lack of transparency
- in how farmers are selected to receive inputs from government.
+Respondents seemed to perceive agricultural service delivery as the most
+ problematic area: Averages on the likert scales were fairly high when asked
+ if farmers agree extension officers rarely visited, and that there was
+ a lack of transparency in how farmers were selected to receive inputs from
+ government.
  A perception index that combines all outcome indicates only a significant
  difference between sub-county level barazas and district level barazas,
  as sub-county level barazas lead to more disagreement and district level
@@ -10572,8 +10653,8 @@ The slow roll-out of the intervention over an extended period of time also
  effects on a range of outcomes for these sub-counties or districts than
  areas that only recently received treatment.
  At the same time, for some outcomes, effects of the baraza intervention
- may dissipate (or even reverse) over time as plans are abandoned and promises
- are not kept.
+ may dissipate (or even reverse) over time as enthusiasm fades, plans are
+ abandoned and promises forgotten.
 \end_layout
 
 \begin_layout Standard
@@ -12181,7 +12262,7 @@ on treatment.
 placement H
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
