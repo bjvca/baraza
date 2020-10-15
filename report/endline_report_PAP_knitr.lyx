@@ -137,22 +137,14 @@ Community based monitoring and public service delivery - Impact, and the
 To improve public service delivery, the Government of Uganda organizes community
  forums—popularly known as barazas—where citizens receive information from
  government officials, and get the opportunity to directly engage with them.
- We run a cluster randomized control trial to assess the impact of this
- policy intervention on public service delivery in agriculture, health,
+ We designed a cluster randomized control trial to assess the impact of
+ this policy intervention on public service delivery in agriculture, health,
  education, and infrastructure.
- Using a factorial design, we further test the relative importance of the
- two main components of the intervention—information provision and citizen
- engagement.
- we also compare the effectiveness of barazas organized at the district
- level to the effectiveness of barazas organized at the sub-county level.
- Using a strictly pre-registered confirmatory analysis, we find no impact
- of the intervention on general public service delivery, but there are some
- indications that sub-county level barazas increase outcomes in the agricultural
- sector.
- A more exploratory part that looks at individual outcomes, potential mechanisms
-, and heterogeneous treatment effects suggests a range of localized impacts
- of barazas.
- 
+ we find no impact of the intervention on general public service delivery,
+ but there are some indications that sub-county level barazas increase outcomes
+ in the agricultural sector.
+ A more exploratory analysis of heterogeneous treatment effects suggests
+ a range of localized impacts of barazas.
 \end_layout
 
 \begin_layout Standard
@@ -209,11 +201,7 @@ is_final <- TRUE
 
 \begin_layout Standard
 In 2015, we designed a study aimed at evaluating the effectiveness of community
- based monitoring and accountability fora, also known as barazas
-\emph on
-,
-\emph default
- in Uganda
+ based monitoring and accountability fora in Uganda
 \emph on
 .
 
@@ -230,18 +218,17 @@ literal "true"
 \end_inset
 
 .
- The study had several objectives.
- First, it wanted to establish, in a rigorous way, if the program had an
- impact on public service delivery and associated outcomes.
- A second objective of the study was to compare the effectiveness of barazas
- organized at lower administrative levels (the sub-county) to that of barazas
- that are organized at a more aggregate level (the district).
- Third, the project also set out to assess the relative importance of the
- two main components of a generic baraza event: using a two-by-two factorial
- design, it differentiates between the impact of (1) providing citizens
- with information related to budgeting and spending and planning, and (2)
- the impact of allowing citizens to engage with public servants and politicians
- in moderated questions-and-answers sessions.
+ In addition to establishing, in a rigorous way, if the program had an impact
+ on public service delivery and associated outcomes, the study also sought
+ to inform policy makers about the relative effectiveness of barazas organized
+ at lower administrative levels (the sub-county) to that of barazas organized
+ at a more aggregate level (the district).
+ A third objective of the study was to assess the relative importance of
+ the two main components of a generic baraza event: using a two-by-two factorial
+ design, it differentiated between, on the one hand, the impact of providing
+ citizens with information related to budgeting and spending and planning,
+ and, on the other hand, the impact of allowing citizens to engage with
+ public servants and politicians in moderated questions-and-answers sessions.
  Towards the end of 2015, a baseline survey involving more than 12,500 household
 s and 400 government officials was conducted.
  After completion of the baseline, we trained local government officials
@@ -259,37 +246,37 @@ While the study was initially assumed to take about 2 years, OPM faced various
  for the remaining barazas to be completed or conducting the end-line after
  partial roll-out.
  It was decided to proceed with end-line data collection and employ various
- strategies to diagnose and control for potential selection bias that may
- have been introduced by the partial roll-out.
+ strategies to diagnose, and control for, potential selection bias that
+ may have been introduced by the partial roll-out.
  Early 2020, endline data was collected on 6,700 households and 260 government
  officials.
 \end_layout
 
 \begin_layout Standard
-A confirmatory analysis, strictly adhering to a pre-registered pre-analysis
+A confirmatory analysis strictly adhering to a pre-registered pre-analysis
  plan that summarizes a range of outcomes into four different families of
  outcomes corresponding to the main sectors—agriculture, infrastructure,
  health and education—and one overall index shows little evidence that the
  baraza intervention had an impact on public service delivery or its associated
  outcomes.
  The only exception is service delivery in the agricultural sector, where
- we find that sub-county level barazas have a positive impact, and that
- this impact is clearly superior to the (lack of) impact associated with
- district level barazas.
+ we find that sub-county level barazas had a positive impact, and that this
+ impact is clearly larger than the (lack of) impact associated with district
+ level barazas.
 \end_layout
 
 \begin_layout Standard
-In a more exploratory analysis, we first look at individual outcomes in
- each of the four sectors in more detail.
- We then look for changes in behavior that is explicitly targeted by the
+In a more exploratory analysis, we first look at various outcomes in each
+ of the four sectors in more detail.
+ We then look for changes in behavior that was explicitly targeted by the
  intervention, such as information seeking behavior and contributions to
  the common good.
  Finally, we provide results on changes in the perception of citizens on
  a range of problems that came up in discussions with stakeholders during
  qualitative fieldwork.
  We also explore heterogeneity in the treatment effects arising from differences
- in: timing of the interventions; political connections of the sub-counties;
- baseline levels of elite capture; ethnic fractionalization; and distance
+ in timing of the intervention, political connections of the sub-counties,
+ baseline levels of elite capture, ethnic fractionalization, and distance
  of the household to the sub-county headquarters.
 \end_layout
 
@@ -300,17 +287,17 @@ The exploratory analysis adds nuance to the conclusion arrived at in the
  to drinking water and schooling infrastructure.
  But there are also signs that the aggregate treatment effects mask significant
  heterogeneity.
- For instance, the impact of sub-county barazas on access to extension seems
+ For instance, the impact of sub-county barazas on access to extension seemed
  to be driven particularly by households that live close to the sub-county
  headquarters.
- The deliberative component of the baraza seems to increase service delivery
- in the area of infrastructure and reduces distance to the nearest public
- health facility, particularly if the sub-county has political connections.
+ The deliberative component of the baraza seemed to increase service delivery
+ in the area of infrastructure and reduced distance to the nearest public
+ health facility, particularly if the sub-county had political connections.
 \end_layout
 
 \begin_layout Standard
-There have been several studies that look at the impact of community involvement
- on public service delivery, many of them using Uganda as a case.
+There are several studies that looked at the impact of community based monitorin
+g on public service delivery, many of them using Uganda as a case.
  A landmark study is 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -319,11 +306,12 @@ literal "true"
 
 \end_inset
 
-, who analyse the impact of a community driven local accountability project
+, who analyzed the impact of a community driven local accountability project
  in primary health care provision in Uganda.
- They find that the intervention resulted in significant improvements in
+ They found that the intervention resulted in significant improvements in
  health care delivery, utilization, and health outcomes (most notably child
- mortality and weight-for-age z-scores) after one year, and confirm in 
+ mortality and weight-for-age z-scores) after one year, and confirmed in
+ 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "bjorkman2017experimental"
@@ -340,7 +328,7 @@ literal "true"
 
 \end_inset
 
- come to more nuanced conclusions when testing an intervention closely modeled
+ came to different conclusions when testing an intervention closely modeled
  on the one of 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -352,24 +340,24 @@ literal "true"
  and in a similar setting.
  The study, involving a three wave panel of more than 14,000 households
  and a factorial design to break down the intervention into its two most
- important components similar to what we use, shows that the intervention
+ important components similar to what we used, showed that the intervention
  was able to change the behavior of public service providers.
- However, it does not find that the intervention directly increased community
- monitoring nor generated improvements in health outcomes in the short run.
+ However, it did not find that the intervention directly increased community
+ monitoring, nor generated improvements in health outcomes, at least in
+ the short run.
 \end_layout
 
 \begin_layout Standard
 Our study contributes to this literature in various ways.
- First, this study is one of few that considers the role of administrative
- placement on the effectiveness of community monitoring.
- The level at which the intervention occurs may affect its effectiveness
- in opposing ways.
+ First, this study is one of few that considers the role of jurisdictional
+ tier on the effectiveness of community based monitoring.
+ The level at which the meetings are organized may affect its effectiveness
+ in potentially opposing directions.
  Interventions at a more local level may result in more relevant issues
  being scrutinized.
- However, qualitative explorations suggest that often, issues raised in
- lower level barazas fall under the responsibility of higher levels of governmen
-t or other institutions that are beyond the operational jurisdiction of
- the officials that are present at the baraza 
+ However, qualitative explorations suggest that, often, issues raised in
+ lower level barazas were beyond the operational jurisdiction of the officials
+ that were present at the baraza 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "van2018impact"
@@ -379,8 +367,8 @@ literal "true"
 
 .
  This may be less of a problem when barazas are organized at district level.
- Most other studies consider interventions that are placed at fairly local
- levels.
+ Most other studies consider interventions that were placed at fairly local
+ jurisdictional levels.
  For instance, the intervention in 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -389,18 +377,35 @@ literal "true"
 
 \end_inset
 
- is implemented in health centers and their associated catchment areas,
+ was implemented in health centers and their associated catchment areas,
  defined as the three villages closest to the health center.
 \end_layout
 
 \begin_layout Standard
-Second, our study evaluates the impact of a government initiative, which
- may instigate an entirely different set of dynamics than interventions
- that are organized by local bodies or international NGO's.
+Second, our study evaluated the impact of a large scale, high profile policy
+ intervention that receives broad support within government, among opinion
+ leaders and among citizens in Uganda.
+ Such interventions may instigate an entirely different set of dynamics
+ than interventions that are organized by local or international NGOs (as
+ is the case in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bjorkman2009power"
+literal "true"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "raffler2018weakness"
+literal "false"
+
+\end_inset
+
+).
  For instance, many of the actors involved may find that NGOs are not mandated
  when it comes to public services such as health and education.
- Furthermore, it is likely to be easier to re-allocate resources to problems
- identified during barazas when they are organized by the government.
  This is also consistent with suggestive evidence in 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -409,7 +414,7 @@ literal "true"
 
 \end_inset
 
-, who find that the presence of sub-county officials during their community
+, who found that the presence of sub-county officials during their community
  based monitoring intervention boosted the impact of the intervention.
  However, effects may also work in the opposite direction.
  For example, an intervention to reduce absenteeism in government public
@@ -425,23 +430,14 @@ literal "true"
 
 .
  Most of the other studies that are closest to our study use NGOs as implementin
-g partners 
-\begin_inset CommandInset citation
-LatexCommand citep
-before "eg."
-key "bjorkman2009power,raffler2018weakness"
-literal "true"
-
-\end_inset
-
-.
+g partners .
  
 \end_layout
 
 \begin_layout Standard
 Third, baraza's take a comprehensive, multi-sector approach, enabling cross-sect
 oral planning and potentially allowing for re-allocation of resources across
- sectors.
+ sectors to better align problems that were identified during barazas.
  Some of the problems most mentioned by users, such hygiene in health centers
  or accessibility, involve cooperation between heads of different sectors
  (eg.
@@ -463,41 +459,23 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
-Finally, we evaluate a high-profile policy intervention that receives broad
- support within government and civil society, and among opinion leaders
- and citizens in Uganda.
- Evaluating policy interventions has it challenges, and this one is no exception.
- As a result, such research has become rare and present day rigorous impact
- evaluations often bypass the political resistance to randomization among
- governments, implementing agencies, and beneficiaries.
- As a result, the nature of the partners has changed (NGOs rather than governmen
-ts) and interventions have become “relatively trivial” 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "de2019rise"
-literal "true"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
 The paper starts with providing some background on the baraza intervention,
- followed by the research questions.
+ followed by a section that sets out the objectives of the study.
  We then present the experimental design and describe the treatments.
- Next is a section on the implementation challenges that prompted some changes
- to the original design and updated power calculations.
- The following section presents results, starting with an aggregate analysis
- that closely adheres to a pre-registered report.
- This is followed by an in-depth analysis of individual outcomes.
+ Next is a section on the implementation challenges, the implications of
+ this for the study, and the strategies used to test and deal with it.
+ The following section presents results, starting with the overall and sector
+ level impact based in outcome indices that closely follows the pre-analysis
+ plan and a pre-registered report.
+ This is followed by a section the provides a more detailed analysis for
+ outcomes within each sector.
  We also explore some of the assumed impact pathways, and investigate treatment
  heterogeneity in a separate section.
  The last section concludes.
 \end_layout
 
 \begin_layout Section
-Background of the baraza impact evaluation
+Background of the baraza program
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Background-of-the"
@@ -524,20 +502,25 @@ literal "true"
  It was assumed it would lead to the formulation of services that are more
  aligned to citizens' needs and bring representative governance closer to
  citizens.
- However, in order to work, decentralization requires a certain level of
- citizen empowerment, with citizens actively participating in planning,
- implementation, monitoring and evaluation of development interventions
- in their locations, so as to improve accountability and responsiveness
- of local leaders and service providers.
+ However, in order to work, decentralization requires citizens to actively
+ participate in planning, implementation, monitoring and evaluation of developme
+nt interventions in their locations.
+ 
 \end_layout
 
 \begin_layout Standard
-Until recently, this empowerment component was lacking in Uganda’s decentralizat
-ion process.
+Until recently, this 
+\begin_inset Quotes eld
+\end_inset
+
+citizen empowerment
+\begin_inset Quotes erd
+\end_inset
+
+ component was lacking in Uganda’s decentralization process.
  As a result, the realization of benefits of decentralization in Uganda
- has been greatly affected by ineffective monitoring and weak accountability
- mechanisms, especially with respect to beneficiaries holding the service
- providers accountable 
+ has been greatly affected by misaligned priorities, substandard services,
+ elite capture, ineffective monitoring and weak accountability 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "bjorkman2009power,reinikka2004local"
@@ -568,13 +551,13 @@ s of public goods and services (the users).
  In addition, barazas were designed to provide the opportunity to users
  to ask questions to the policy makers and public service providers, and
  deliberate among themselves.
- It is expected that, ultimately, barazas will contribute to effective monitorin
-g, and increase accountability and transparency among all stakeholders.
+ It is expected that, ultimately, barazas will contribute to participatory
+ planning and effective monitoring, and increase accountability and transparency
+ among all stakeholders.
 \end_layout
 
 \begin_layout Standard
-Barazas have been implemented in Uganda for about 10 years.
- They were first piloted in the financial year 2009/10.
+Barazas were first piloted in the financial year 2009/10.
  Since then, efforts have been underway to roll out barazas in all sub-counties
  in the country.
  During the full-scale implementation phase in the financial year 2010/2011,
@@ -583,8 +566,8 @@ Barazas have been implemented in Uganda for about 10 years.
  1,340 sub-counties, spread over 112 districts, had held a baraza meeting.
  At the beginning of the 2012/2013 financial year, however, changes in implement
 ation were suggested: subsequent barazas would target districts instead
- of sub-counties to increase participation at a higher level and reduce
- costs.
+ of sub-counties to increase participation at a higher jurisdictional levels
+ and reduce costs.
  
 \end_layout
 
@@ -597,14 +580,13 @@ A typical baraza is initiated from the center, with the OPM mobilizing district
  Chairperson (LC5) as the representative of political leadership at the
  district level, and the various sector heads responsible for public services
  in each sector (agriculture, education, infrastructure and health).
- Especially for barazas organized at the sub-county level, the sub-county
- level equivalents of the CAO (the sub-county chief) and the LC5 (the sub-county
- chairperson, or LC3) also have important roles.
+ For sub-county level barazas, the sub-county level equivalents of the CAO
+ (the sub-county chief) and the LC5 (the sub-county chairperson, or LC3)
+ also have important roles.
  OPM, in consultation with the district leaders (RDC, CAO and the LC5) and
  other stakeholders, agree on the date and a neutral location.
- Again, in consultation with the district leaders, a viable moderator and
- an interpreter into the local language (where applicable) are identified
- to guide the baraza forum.
+ Again, in consultation with the district leaders, viable moderators are
+ identified to guide the baraza forum.
  Village mobilizers and community resource persons are used to publicize
  the event.
  These community mobilization efforts are further reinforced by adverts
@@ -615,20 +597,20 @@ A typical baraza is initiated from the center, with the OPM mobilizing district
 \end_layout
 
 \begin_layout Standard
-A baraza meeting is chaired by the Office of the RDC in each district.
+The baraza meeting itself is chaired by the Office of the RDC in each district.
  In front of the audience, including local citizens, invited opinion leaders,
- elders, and journalists, the RDC seeks feedback from each head of major
- sectors.
+ elders, and journalists, the moderators seek feedback from each head of
+ major sectors.
  Sector heads are required to present what services were planned to be delivered
  in the sub-county, what was actually delivered and in what quantity and
  quality, and what issues and challenges have emerged and what is the way
  forward.
- The RDC then seeks feedback from citizens on whether what has been presented
- is what they understand was planned for and actually implemented in different
- locations.
- Sector heads are then given another opportunity to clarify on or react
- to any issues raised by the citizens.
- At the end of the process, the RDC makes a report to the OPM, indicating
+ The moderators then seek feedback from citizens on whether what has been
+ presented is what they understand was planned for and actually implemented
+ in different locations.
+ Sector heads are then given another opportunity to clarify on, or react
+ to, any issues raised by the citizens.
+ At the end of the process, a report to the OPM is prepared, indicating
  issues that arose in the baraza meeting.
  This report particularly points out policy and program implementation weaknesse
 s and challenges, which is then expected to further feed into the general
@@ -640,8 +622,7 @@ s and challenges, which is then expected to further feed into the general
 \end_layout
 
 \begin_layout Section
-Research questions: impact, information versus deliberation component, and
- administrative placement
+Impact, information versus deliberation component, and jurisdictional tier
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Design-features:-administrative"
@@ -656,9 +637,7 @@ The impact of (sub-county level) barazas
 \end_layout
 
 \begin_layout Standard
-The baraza intervention fundamentally seeks to improve public services through
- improving accountability of local public decision makers and service providers.
- The baraza intervention as conceived by the OPM is a fairly standard community
+The baraza intervention as conceived by the OPM is a fairly standard community
  based monitoring intervention that combines the provision of information
  with the possibility of citizens to engage with each other and with decision
  makers at a fairly local level.
@@ -681,26 +660,42 @@ literal "true"
 \end_layout
 
 \begin_layout Subsection
-The Information Mechanism
+The information mechanism
 \end_layout
 
 \begin_layout Standard
-In situation characterized by incomplete and asymmetric information, targeted
- efforts to fill knowledge gaps can make a big difference.
- Indeed, the relationship between citizens and elected officials is a classic
- example of the principal–agent problem.
- Hence, providing citizens with information about the performance of the
- agent is assumed to be an effective way to increase the quality of public
- service delivery by allowing citizens to monitor and apply pressure on
- under-performing politicians and civil servants 
+The relationship between citizens and government officials is reminiscent
+ of the principal–agent problem.
+ In essence, there are three players (elected politicians, civil servants
+ and citizens) with only partly overlapping information sets and potentially
+ competing interests
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+As the public servant must be responsive to the needs of both the client
+ and the community at the same time, the problem can be characterized as
+ a multiple or common agency problem, which adds a collective action component
+ to the standard principle-agent problem 
 \begin_inset CommandInset citation
 LatexCommand citep
-key "raffler2018weakness"
-literal "true"
+key "RePEc:ecm:emetrp:v:54:y:1986:i:4:p:923-42"
+literal "false"
 
 \end_inset
 
 .
+\end_layout
+
+\end_inset
+
+.
+ Bringing stakeholders together in town hall type meetings is assumed to
+ reduce information asymmetries, and may be an effective way to increase
+ the quality of public service delivery by (1) allowing citizens to monitor
+ and apply bottom-up pressure on under-performing civil servants and (2)
+ increase top-down pressure on under-performing civil servants by revealing
+ to politicians the discrepancy between what was promised and actual performance.
  A second central question in this study therefore relates to the relative
  importance of the information provision component within the broader baraza
  intervention.
@@ -721,7 +716,7 @@ literal "true"
 
 \end_inset
 
- establish, using a field experiment in India, that community information
+ established, using a field experiment in India, that community information
  campaigns about states’ school management obligations had a positive impact
  on school performance.
  
@@ -732,10 +727,10 @@ literal "true"
 
 \end_inset
 
- disseminate information about job performance for randomly selected Ugandan
+ disseminated information about job performance for randomly selected Ugandan
  politicians.
- While this increases job performance for the politicians on a range of
- criteria, they find no impact on public service provision.
+ While this increased job performance for the politicians on a range of
+ criteria, they found no impact on public service provision.
  
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -744,14 +739,14 @@ literal "false"
 
 \end_inset
 
- find that targeted information reduces elite capture in Indonesia: mailing
- cards with program information to targeted beneficiaries increases the
- subsidy they receive from a subsidized rice program.
+ found that targeted information reduced elite capture in Indonesia: mailing
+ cards with program information to targeted beneficiaries increased the
+ subsidy they received from a subsidized rice program.
  A recent review of 48 empirical studies on the impacts of information on
  governance and service delivery also suggests that the availability of
  information alone may not suffice.
  Information must be deemed relevant to its recipient, and individuals must
- have both the power and incentives to act on the information 
+ have both power and incentives to act on the information 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "KOSEC2020104376"
@@ -767,7 +762,7 @@ The information component may also be important in managing expectations
  of the client.
  Citizens may have exaggerated beliefs about the resources at the disposal
  of decision makers and service providers, or they may not fully appreciate
- the challenges they face when doing their job.
+ the challenges civil service providers face when doing their job.
  For instance, during focus group discussions, service providers mentioned
  that citizens sometime blame officials for things they have no control
  over.
@@ -775,14 +770,14 @@ The information component may also be important in managing expectations
  of public service provision (for example, making sure boreholes are present)
  but that there are also limits to what citizens can expect (for instance,
  citizens are still required to boil water).
- Where information can rectify expectations, we may not find changes in
- the quantity or quality of public services, but we may still find changes
+ When information can rectify inflated expectations, we may not find changes
+ in the quantity or quality of public services, but we may still find changes
  in citizens' perceptions about the quality of these services.
  
 \end_layout
 
 \begin_layout Subsection
-The Deliberation Mechanism
+The deliberation mechanism
 \end_layout
 
 \begin_layout Standard
@@ -850,14 +845,24 @@ literal "true"
 \end_layout
 
 \begin_layout Subsection
-Administrative placement
+Jurisdictional tier
 \end_layout
 
 \begin_layout Standard
 The baraza intervention can also be distinguished by the administrative
  level at which it is implemented.
  Barazas were originally implemented at the sub-county level but from 2012
- onward, more and more barazas were implemented at the district level.
+ onward, more and more barazas were implemented at the district level
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+An average district consists of about 15 to 20 sub-counties.
+\end_layout
+
+\end_inset
+
+.
  This administrative placement dimension immediately points to a potential
  trade-off between attempting to achieve breadth of coverage (through district-l
 evel barazas), and depth of coverage (through sub-county-level barazas).
@@ -865,14 +870,14 @@ evel barazas), and depth of coverage (through sub-county-level barazas).
  sub-county-level barazas in all sub-counties of that district, it is not
  clear a-priori how these cost savings justify potential reduction in effectiven
 ess of district-level barazas in any given sub-county of the concerned district.
- Therefore, another vital aspect of this study is to assess the impact of
- district level barazas, and compare this to the effectiveness of barazas
- organized that the lower sub-county level.
+ Therefore, a final objective of this study is to assess the impact of district
+ level barazas, and compare this to the effectiveness of barazas organized
+ that the lower sub-county level.
 \end_layout
 
 \begin_layout Standard
 Which is more effective, placement at a higher or lower level, will likely
- depend on the outcome and the situation.
+ depend on the outcome and context.
  For instance, it has been argued that engaging small groups can be more
  effective because they can be coordinated more easily, but large groups
  may make more sense if the desired outcome would be enjoyed by a broader
@@ -901,7 +906,7 @@ literal "true"
 \end_layout
 
 \begin_layout Section
-Experimental design and balance at baseline
+Experimental design
 \end_layout
 
 \begin_layout Standard
@@ -917,21 +922,21 @@ reference "sec:Background-of-the"
 
 \end_inset
 
-, a small share of all sub-counties, albeit located throughout all of Uganda’s
+, a small share of sub-counties, albeit located throughout all of Uganda’s
  112 districts across the four regions, had already received a sub-county
  level baraza intervention prior to the study.
- We thus selected our sample of districts from among ‘eligible districts’,
- and our sample of sub-counties from ‘eligible sub-counties’.
+ We thus selected our sample of districts from ‘eligible districts’, and
+ our sample of sub-counties from ‘eligible sub-counties’.
  An ‘eligible district’ was defined as a district in which a district level
  baraza was not already implemented prior to the start of the study.
  An ‘eligible sub-county’ was defined as a sub-county to which two conditions
  applied: (i) a sub-county level baraza had not yet taken place, and (ii)
  the sub-county was in an ‘eligible district’.
  Preliminary analysis of the baraza implementation data at the time of the
- start of the study indicated that there were 20 or more eligible districts
- per region, amounting to a total of 94 eligible districts.
+ start of the study indicated that there were minimum 20 eligible districts
+ per region, and a total of 94 eligible districts.
  In each region, there were at least 147 sub-counties that had never been
- treated and were in eligible districts; the total of such eligible sub-counties
+ treated and were in eligible districts; the total of eligible sub-counties
  was about 720
 \begin_inset Foot
 status collapsed
@@ -990,18 +995,14 @@ name "fig:Experimental-Design"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-This study employed a nested, or two-step, randomization design, illustrated
- in Figure 
+This study employed a two-step randomization design, illustrated in Figure
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Experimental-Design"
@@ -1027,10 +1028,9 @@ status collapsed
 \begin_layout Plain Layout
 As will be explained in detail below, we do not differentiate between the
  information component and the deliberation component of barazas organized
- at this level.
- In other words, district level barazas have both an information and deliberatio
-n component, and are thus the district level equivalent of sub-county level
- barazas that combines both information and deliberation treatment.
+ at the district level.
+ As such, they are the district level equivalent of sub-county level barazas
+ that combines both information and deliberation treatment.
 \end_layout
 
 \end_inset
@@ -1168,7 +1168,7 @@ ed by the government of Uganda, one can compare outcomes of households that
 \begin_inset Formula $S_{0}^{ID}$
 \end_inset
 
- to outcomes of household that were sample from 
+ to outcomes of household that were sampled from 
 \begin_inset Formula $S_{ID}^{0}$
 \end_inset
 
@@ -1178,9 +1178,8 @@ status collapsed
 
 \begin_layout Plain Layout
 From a policy perspective, in light of the shift from sub-county level barazas
- to district level barazas, the last comparison is the most interesting
- one, and this comparison was indeed also the one that was in the pre-analysis
- plan.
+ to district level barazas from 2012 onward, the last comparison is the
+ most interesting one, and this comparison was pre-registered.
  However, the partial roll-out of the intervention means that for this compariso
 n we are constrained by the number of sub-counties in 
 \begin_inset Formula $S_{ID}^{0}$
@@ -1188,7 +1187,7 @@ n we are constrained by the number of sub-counties in
 
  that ended up being treated.
  Comparisons of outcomes in areas that received a district level baraza
- treatment to areas that did not receive a baraza have higher statistical
+ treatment to areas that did not receive a baraza have more statistical
  power because more observations can be used.
 \end_layout
 
@@ -1235,6 +1234,20 @@ literal "false"
 \end_inset
 
 .
+ In Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Appendix_A"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, we show summary statistics for a range of household characteristics that
+ was collected on 12,545 households between June and September 2015.
+ We also test for balance between the different treatment groups at baseline
+ for the original design.
  
 \end_layout
 
@@ -1325,787 +1338,13 @@ load(paste(path,"results/final/df_averages_end.Rd", sep="/"))
 
 \end_layout
 
-\begin_layout Standard
-In Table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:balance_orig"
-
-\end_inset
-
-, we test for balance between the treatment groups at baseline.
- Baseline data on 12,545 households was collected between June and September
- 2015.
- Sample averages are reported in the first column (with standard errors
- in brackets below).
- For example, we see that the average household consists of about 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-Sexpr{format(round(df_averages[1,1],digits=0),nsmall=0)}
-\end_layout
-
-\end_inset
-
- household members and that only about 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-Sexpr{format(round(df_averages[1,8],digits=2)*100,nsmall=0)}
-\end_layout
-
-\end_inset
-
- percent of households report that they have access to agricultural extension.
- In the second column, we report differences between baseline characteristics
- of households that were planned to receive a sub-county level combined
- information and deliberation baraza, and those that would not be exposed
- to any baraza.
- We find that distance to the nearest road is slightly though statistically
- significantly higher in areas that were planned to receive a sub-county
- level baraza.
- When comparing households that were planned to be exposed to a sub-county
- level information baraza to households that would not receive a sub-county
- level information baraza (column 3), we see that that households are slightly
- larger in the former group, and the difference is significant.
- The average household has two to three children attending a public school.
- We also find a slight pre-treatment imbalance on this outcome for the informati
-on treatment.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways true
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Orthogonality tests
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:balance_orig"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{center}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{tabular}{rccccc} 
-\backslash
-hline 
-\backslash
-hline
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-	& mean & sc baraza & information & deliberation	& level 
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-cline{2-6} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Household size &	
-\backslash
-Sexpr{format(round(df_averages[1,1],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ols[1,1,1],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,1,1]<.01,"**",ifelse(df_ols[3,1,1]<.05,"*",ifelse(df_ols[3,1
-,1]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ols[1,2,1],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,2,1]<.01,"**",ifelse(df_ols[3,2,1]<.05,"*",ifelse(df_ols[3,2
-,1]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ols[1,3,1],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,3,1]<.01,"**",ifelse(df_ols[3,3,1]<.05,"*",ifelse(df_ols[3,3
-,1]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ols[1,4,1],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,4,1]<.01,"**",ifelse(df_ols[3,4,1]<.05,"*",ifelse(df_ols[3,4
-,1]<.1,"+","")))}}$	
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,1],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ols[2,1,1],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ols[2,2,1],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ols[2,3,1],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ols[2,4,1],digits=3),nsmall=3)})			
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Age of the household head (years)  &	
-\backslash
-Sexpr{format(round(df_averages[1,2],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ols[1,1,2],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,1,2]<.01,"**",ifelse(df_ols[3,1,2]<.05,"*",ifelse(df_ols[3,1
-,2]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ols[1,2,2],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,2,2]<.01,"**",ifelse(df_ols[3,2,2]<.05,"*",ifelse(df_ols[3,2
-,2]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ols[1,3,2],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,3,2]<.01,"**",ifelse(df_ols[3,3,2]<.05,"*",ifelse(df_ols[3,3
-,2]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ols[1,4,2],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,4,2]<.01,"**",ifelse(df_ols[3,4,2]<.05,"*",ifelse(df_ols[3,4
-,2]<.1,"+","")))}}$	
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,2],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ols[2,1,2],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ols[2,2,2],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ols[2,3,2],digits=3),nsmall=3)}) &		(
-\backslash
-Sexpr{format(round(df_ols[2,4,2],digits=3),nsmall=3)})				
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Head of household is woman (1=yes) &	
-\backslash
-Sexpr{format(round(df_averages[1,3],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ols[1,1,3],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,1,3]<.01,"**",ifelse(df_ols[3,1,3]<.05,"*",ifelse(df_ols[3,1
-,3]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ols[1,2,3],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,2,3]<.01,"**",ifelse(df_ols[3,2,3]<.05,"*",ifelse(df_ols[3,2
-,3]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ols[1,3,3],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,3,3]<.01,"**",ifelse(df_ols[3,3,3]<.05,"*",ifelse(df_ols[3,3
-,3]<.1,"+","")))}}$	 &	
-\backslash
-Sexpr{format(round(df_ols[1,4,3],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,4,3]<.01,"**",ifelse(df_ols[3,4,3]<.05,"*",ifelse(df_ols[3,4
-,3]<.1,"+","")))}}$ 
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,3],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ols[2,1,3],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ols[2,2,3],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ols[2,3,3],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ols[2,4,3],digits=3),nsmall=3)})			
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Head finished primary education (1=yes) &	
-\backslash
-Sexpr{format(round(df_averages[1,4],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ols[1,1,4],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,1,4]<.01,"**",ifelse(df_ols[3,1,4]<.05,"*",ifelse(df_ols[3,1
-,4]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ols[1,2,4],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,2,4]<.01,"**",ifelse(df_ols[3,2,4]<.05,"*",ifelse(df_ols[3,2
-,4]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ols[1,3,4],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,3,4]<.01,"**",ifelse(df_ols[3,3,4]<.05,"*",ifelse(df_ols[3,3
-,4]<.1,"+","")))}}$	 &	
-\backslash
-Sexpr{format(round(df_ols[1,4,4],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,4,4]<.01,"**",ifelse(df_ols[3,4,4]<.05,"*",ifelse(df_ols[3,4
-,4]<.1,"+","")))}}$	
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,4],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ols[2,1,4],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ols[2,2,4],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ols[2,3,4],digits=3),nsmall=3)})		&		(
-\backslash
-Sexpr{format(round(df_ols[2,4,4],digits=3),nsmall=3)})		
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Thatched grass roof (1=yes) &	
-\backslash
-Sexpr{format(round(df_averages[1,5],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ols[1,1,5],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,1,5]<.01,"**",ifelse(df_ols[3,1,5]<.05,"*",ifelse(df_ols[3,1
-,5]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ols[1,2,5],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,2,5]<.01,"**",ifelse(df_ols[3,2,5]<.05,"*",ifelse(df_ols[3,2
-,5]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ols[1,3,5],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,3,5]<.01,"**",ifelse(df_ols[3,3,5]<.05,"*",ifelse(df_ols[3,3
-,5]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ols[1,4,5],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,4,5]<.01,"**",ifelse(df_ols[3,4,5]<.05,"*",ifelse(df_ols[3,4
-,5]<.1,"+","")))}}$		
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,5],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ols[2,1,5],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ols[2,2,5],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ols[2,3,5],digits=3),nsmall=3)})		&		(
-\backslash
-Sexpr{format(round(df_ols[2,4,5],digits=3),nsmall=3)})			
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Traditional mud wall (1=yes) &	
-\backslash
-Sexpr{format(round(df_averages[1,6],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ols[1,1,6],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,1,6]<.01,"**",ifelse(df_ols[3,1,6]<.05,"*",ifelse(df_ols[3,1
-,6]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ols[1,2,6],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,2,6]<.01,"**",ifelse(df_ols[3,2,6]<.05,"*",ifelse(df_ols[3,2
-,6]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ols[1,3,6],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,3,6]<.01,"**",ifelse(df_ols[3,3,6]<.05,"*",ifelse(df_ols[3,3
-,6]<.1,"+","")))}}$	 &	
-\backslash
-Sexpr{format(round(df_ols[1,4,6],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,4,6]<.01,"**",ifelse(df_ols[3,4,6]<.05,"*",ifelse(df_ols[3,4
-,6]<.1,"+","")))}}$	
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,6],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ols[2,1,6],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ols[2,2,6],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ols[2,3,6],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ols[2,4,6],digits=3),nsmall=3)})		
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Distance to nearest all weather road (km)  &	
-\backslash
-Sexpr{format(round(df_averages[1,7],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ols[1,1,7],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,1,7]<.01,"**",ifelse(df_ols[3,1,7]<.05,"*",ifelse(df_ols[3,1
-,7]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ols[1,2,7],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,2,7]<.01,"**",ifelse(df_ols[3,2,7]<.05,"*",ifelse(df_ols[3,2
-,7]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ols[1,3,7],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,3,7]<.01,"**",ifelse(df_ols[3,3,7]<.05,"*",ifelse(df_ols[3,3
-,7]<.1,"+","")))}}$	 &	
-\backslash
-Sexpr{format(round(df_ols[1,4,7],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,4,7]<.01,"**",ifelse(df_ols[3,4,7]<.05,"*",ifelse(df_ols[3,4
-,7]<.1,"+","")))}}$ 
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,7],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ols[2,1,7],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ols[2,2,7],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ols[2,3,7],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ols[2,4,7],digits=3),nsmall=3)})		
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Access to extension (1=yes)  &	
-\backslash
-Sexpr{format(round(df_averages[1,8],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ols[1,1,8],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,1,8]<.01,"**",ifelse(df_ols[3,1,8]<.05,"*",ifelse(df_ols[3,1
-,8]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ols[1,2,8],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,2,8]<.01,"**",ifelse(df_ols[3,2,8]<.05,"*",ifelse(df_ols[3,2
-,8]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ols[1,3,8],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,3,8]<.01,"**",ifelse(df_ols[3,3,8]<.05,"*",ifelse(df_ols[3,3
-,8]<.1,"+","")))}}$	 &	
-\backslash
-Sexpr{format(round(df_ols[1,4,8],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,4,8]<.01,"**",ifelse(df_ols[3,4,8]<.05,"*",ifelse(df_ols[3,4
-,8]<.1,"+","")))}}$ 
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,8],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ols[2,1,8],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ols[2,2,8],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ols[2,3,8],digits=3),nsmall=3)}) &		(
-\backslash
-Sexpr{format(round(df_ols[2,4,8],digits=3),nsmall=3)})			
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Village Health Team in village (1=yes)  &	
-\backslash
-Sexpr{format(round(df_averages[1,9],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ols[1,1,9],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,1,9]<.01,"**",ifelse(df_ols[3,1,9]<.05,"*",ifelse(df_ols[3,1
-,9]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ols[1,2,9],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,2,9]<.01,"**",ifelse(df_ols[3,2,9]<.05,"*",ifelse(df_ols[3,2
-,9]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ols[1,3,9],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,3,9]<.01,"**",ifelse(df_ols[3,3,9]<.05,"*",ifelse(df_ols[3,3
-,9]<.1,"+","")))}}$	 &	
-\backslash
-Sexpr{format(round(df_ols[1,4,9],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,4,9]<.01,"**",ifelse(df_ols[3,4,9]<.05,"*",ifelse(df_ols[3,4
-,9]<.1,"+","")))}}$ 
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,9],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ols[2,1,9],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ols[2,2,9],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ols[2,3,9],digits=3),nsmall=3)}) &		(
-\backslash
-Sexpr{format(round(df_ols[2,4,9],digits=3),nsmall=3)})			
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Number of children in public schools  &	
-\backslash
-Sexpr{format(round(df_averages[1,10],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ols[1,1,10],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,1,10]<.01,"**",ifelse(df_ols[3,1,10]<.05,"*",ifelse(df_ols[3
-,1,10]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ols[1,2,10],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,2,10]<.01,"**",ifelse(df_ols[3,2,10]<.05,"*",ifelse(df_ols[3
-,2,10]<.1,"+","")))}}$ & 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-Sexpr{format(round(df_ols[1,3,10],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,3,10]<.01,"**",ifelse(df_ols[3,3,10]<.05,"*",ifelse(df_ols[3
-,3,10]<.1,"+","")))}}$ & 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-Sexpr{format(round(df_ols[1,4,10],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ols[3,4,10]<.01,"**",ifelse(df_ols[3,4,10]<.05,"*",ifelse(df_ols[3
-,4,10]<.1,"+","")))}}$	
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,10],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ols[2,1,10],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ols[2,2,10],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ols[2,3,10],digits=3),nsmall=3)})		&		(
-\backslash
-Sexpr{format(round(df_ols[2,4,10],digits=3),nsmall=3)})			
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Number of observations & 12545 & 
-\backslash
-Sexpr{format(round(df_ols[6,1,1],digits=3),nsmall=0)} & 
-\backslash
-Sexpr{format(round(df_ols[6,2,1],digits=3),nsmall=0)} &  
-\backslash
-Sexpr{format(round(df_ols[6,3,1],digits=3),nsmall=0)} &  
-\backslash
-Sexpr{format(round(df_ols[6,4,1],digits=3),nsmall=0)} 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline  
-\backslash
-hline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{tabular}
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\backslash
-end{center}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-scriptsize
-\end_layout
-
-\begin_layout Plain Layout
-
-Note: First column reports sample means (and standard deviations below);
- Column 2 reports differences (and standard errors below) between baseline
- characteristics of households that were planned to receive a sub-county
- level combined information and deliberation baraza, and those that would
- not be exposed to any baraza; Column 3 reports differences (and standard
- errors below) between baseline characteristics of households that would
- receive a sub-county level information baraza, and those that would not
- receive a sub-county level information baraza; Column 4 reports differences
- (and standard errors below) between baseline characteristics of households
- that were allocted to receive a sub-county level deliberation baraza, and
- those that would not receive a sub-county level deliberation baraza; Column
- 5 (and standard errors below) reports differences between baseline characterist
-ics of households that were planned to receive a district level combined
- information and deliberation baraza, and those that would not be exposed
- to any baraza;  **, * and + denotes significance at the 1, 5 and 10 percent
- levels.
- Reported standard errors are clustered at the level of randomization.
- Distance to all weather road is trimmed at 5 percent and transformed using
- the inverse hyperbolic sine transformation.
-  
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In the fourth column of Table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:balance_orig"
-
-\end_inset
-
-, we report differences between households that would be exposed to a sub-county
- deliberation baraza and households that would not.
- For this treatment, we cannot reject balance on any of the variables.
- In the last column, we report differences in outcomes between households
- that would be exposed to a district level baraza and households that would
- not be exposed to any baraza.
- Also here, we do not find any significant difference.
- Overall, out of 40 comparisons, we find that two differences are significant,
- which is what one would expect to find due to chance alone.
- As such, we conclude that the randomization of the original design was
- successful.
-\end_layout
-
 \begin_layout Section
 Treatments
 \end_layout
 
 \begin_layout Standard
-We tried to stay as close as possible to the baraza intervention as designed
- and implemented by the government before the start of the study.
+The treatments were based on the baraza intervention as designed and implemented
+ by the government before the start of the study.
  A description of a generic sub-county level baraza was already given in
  Section 
 \begin_inset CommandInset ref
@@ -2115,15 +1354,15 @@ reference "sec:Background-of-the"
 \end_inset
 
 .
- We used this baraza as a starting point and, either removed the information
- component or the deliberation component to test the relative importance
- of these components.
+ From such a generic baraza, we either removed the information component
+ or the deliberation component to test the relative importance of these
+ components.
  To standardize the treatments, we developed detailed scripts that RDCs
  and facilitators were expected to follow.
  Furthermore, manuals for RDCs and facilitators were developed, and all
  were invited for a training.
  We will summarize the main differences between an information baraza and
- a deliberation baraza.
+ a deliberation baraza here.
  Detailed information can be found in 
 \begin_inset CommandInset href
 LatexCommand href
@@ -2140,13 +1379,14 @@ literal "false"
 For information (and combined information and deliberation) barazas, templates
  to gather information were developed to be filled by officials and mounted
  at a central location in each parish of the sub-county (or the district
- in case of a district level baraza) two weeks before the baraza.
+ in case of a district level baraza) two weeks before the baraza event was
+ scheduled to take place.
  The template was designed to inform citizens about planned and actual public
  expenditures for the previous fiscal year, about achievements and challenges
  encountered during that year, and about planned expenditures and targets
  for the next fiscal year.
- This needed to be filled for each of the four sectors (agriculture, infrastruct
-ure, health and education) by the sub-county chief.
+ This information needed to be provided for each of the four sectors (agricultur
+e, infrastructure, health and education) by the sub-county chief.
 \begin_inset Foot
 status collapsed
 
@@ -2154,35 +1394,34 @@ status collapsed
 While the preparation and distribution of these posters were the responsibility
  of the RDC, we had research assistants that closely monitored the implementatio
 n of this.
- We also assisted in printing of the templates.
+ We also assisted in printing of the template posters.
 \end_layout
 
 \end_inset
 
- On the day of the baraza, the CAO provides a brief presentation on the
- overall budget for the fiscal year, the main achievements and challenges
- in service delivery, and introduces local officials.
- After a brief intervention by the OPM, local officials responsible for
- each sector then present more or less the same as what was required for
- the templates.
+ On the day of the baraza event, the CAO was expected to give a brief presentati
+on on the overall budget for the fiscal year, the main achievements and
+ challenges in service delivery, and to introduce sector heads.
+ After a brief intervention by the OPM, officials responsible for each sector
+ then present more or less the same as what was required for the templates.
  An information-focused baraza allowed for only 10 clarifying questions
  to be asked, to be collected and asked by the facilitator.
 \end_layout
 
 \begin_layout Standard
-For the deliberation barazas, posters are also mounted in each parish of
- the sub-county, but only to announce that a baraza will be held at a particular
- date and place.
- At the baraza itself, after a brief introduction by the OPM, citizens are
- guided to break into 4 groups by sector, discuss problems they face and
- draw up a list of priority issues that need to be addressed.
- Facilitators in each group are required to anonymously collect these issues
+For the deliberation barazas, posters were also mounted in each parish of
+ the sub-county, but only to announce that a baraza was going to be held
+ at a particular date and place.
+ At the baraza itself, after a brief introduction by the OPM, citizens were
+ instructed to break into 4 groups by sector, discuss problems they faced
+ and draw up a list of priority issues that needed to be addressed.
+ Facilitators in each group were required to anonymously collect these issues
  and concerns.
- Facilitators are expected to focus the discussion on what was done well,
+ Facilitators were expected to focus the discussion on what was done well,
  and on problems encountered during the past year.
  The discussions should also result in agreement on what should be done
  in the next fiscal year.
- After the break-out sessions, officials are asked to react to the specific
+ After the break-out sessions, officials were asked to react to the specific
  comments and requests.
 \end_layout
 
@@ -2190,10 +1429,10 @@ For the deliberation barazas, posters are also mounted in each parish of
 A sub-county level baraza in the crossed treatment group simply combined
  both elements.
  District level baraza were very similar to sub-county level barazas, except
- for the fact that district level barazas are organized at the district
- headquarters, all sub-county chiefs and LC3's of each sub-county are expected
+ for the fact that district level barazas were organized at the district
+ headquarters, all sub-county chiefs and LC3's of each sub-county were expected
  to attend in case questions arise related to their sub-county, and all
- citizens within the entire district are invited.
+ citizens within the entire district were invited.
 \end_layout
 
 \begin_layout Section
@@ -2242,34 +1481,56 @@ One such strategy was a staggered endline data collections strategy, whereby
  After an additional six months, with still only 56 out of the 155 sub-county
  barazas implemented, it appeared that the best scenario would be one whereby
  end-line data would be collected before all sub-counties were treated,
- given that the governments financial constraints made it likely that complete
- roll-out would take place only very slowly if at all.
+ given that the governments financial constraints made it unlikely that
+ complete roll-out would take place any time soon.
 \end_layout
 
 \begin_layout Standard
 End-line data collection after partial roll-out may introduce selection
- bias.
+ bias in the sub-sample of sub-counties that were assigned to the treatment.
  It may be that, from the randomly assigned treatment sub-counties, particular
  sub-counties were selected to be treated first and others postponed.
  For instance, for logistical reasons, the implementing partner may have
  started with sub-counties that were close to the capital, resulting in
- a treatment group that differs from the control group.
- 
+ a treatment group that would not be directly comparable to the control
+ group.
+ Or the OPM may decide to prioritize sub-counties that perform worse on
+ certain indicators they have access to, such as number of boreholes or
+ student enrollment rates.
 \end_layout
 
 \begin_layout Standard
-In this section, we reflect on various aspects related to this partial roll-out
- and report on analyses run and decisions made prior to endline data collection
- (and included in the pre-registered report, see below) to diagnose and
- accommodate potential selection bias.
- We start with a diagnosis of the problem through the comparison of baseline
- characteristics between treatment sub-counties that ended up not being
- treated and control sub-counties.
- We then explain an endline data collection strategy that is likely to reduce
- selection bias in the event that the partial roll-out introduced selection
- bias.
- We also provide updated power calculations, as the reduced sample size
- will have altered the size of the effects we can confidently detect.
+We acknowledge that the partial roll-out is a threat to internal validity
+ that should not be ignored.
+ At the same time, the fact that we started from a cluster randomized control
+ design still provides a substantial advantage over studies that are based
+ on observational data.
+ For instance, potential selection emanating from partial roll-out is restricted
+ to the sub-sample of sub-counties that were assigned to be treated group
+ only, significantly reducing the scope for bias.
+ In addition, the list of sub-counties to be treated that we shared with
+ the implementing partner was organized by treatment group (information,
+ deliberation and combined treatment), and in each treatment group, sub-counties
+ were listed alphabetically.
+ Looking at the list in light of the partial roll-out, we get the impression
+ that the OPM started at the top of the list and worked their way down.
+ As a result, relatively more sub-counties that were assigned the information
+ treatment were treated, and sub-counties toward the top of the list are
+ also more likely to be treated.
+ This pattern is confirmed when regressing the likelihood of being treated
+ on the rank of the sub-county.
+ This also suggests that OPM officials did not deliberately select certain
+ sub-counties.
+\end_layout
+
+\begin_layout Standard
+Below, we report on additional strategies used to diagnose potential selection
+ bias and explain our endline data collection strategy aimed at reducing
+ potential selection bias resulting from the partial roll-out.
+ We also reflect on the fact that the partial roll-out also affects statistical
+ power and simulate minimal detectable effect sizes at different power levels
+ for the new reduces sample size associated with the partial roll-out.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -2285,8 +1546,8 @@ name "subsec:Balance-between-planned-to-treat"
 \end_layout
 
 \begin_layout Standard
-We can investigate if selection bias was introduced by the partial roll-out
- by comparing outcomes in control sub-counties to outcomes in sub-counties
+One way to test if selection bias was introduced by the partial roll-out
+ is by comparing outcomes in control sub-counties to outcomes in sub-counties
  that were allocated to receive treatment but did not end up receiving treatment.
  The idea is that if the roll-out was random, sub-counties that were allocated
  randomly to a particular treatment at the design stage but did not end
@@ -2300,6 +1561,19 @@ We can investigate if selection bias was introduced by the partial roll-out
  the bias.
  Note that such comparisons can be done using baseline data, but may be
  particularly informative after endline data collection.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+An alternative comparison would be to restrict attention to the treatment
+ group and look at differences between baseline characteristics of sub-counties
+ that ended up being treatment and those that did not.
+ However, such a comparison will have fewer observations and can not be
+ done at endline.
+\end_layout
+
+\end_inset
+
  
 \end_layout
 
@@ -2311,7 +1585,12 @@ reference "tab:Balance_planed_ctrl"
 
 \end_inset
 
- presents the original balance table (Table 
+ presents a table with, for each of the three treatment arms affected by
+ the partial roll-out, differences in average outcomes of planned but not
+ treated sub-counties and planned control sub-counties (the first column
+ also reports sample means).
+ It is essentially the same table as the the original balance table (Table
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:balance_orig"
@@ -2327,8 +1606,7 @@ reference "tab:balance_orig"
 
 \end_inset
 
- becomes even more pronounced after dropping sub-counties that ended up
- being treated.
+ becomes even more pronounced.
  This may indicate that OPM prioritized treatment of less remote areas.
  Similarly, for the information baraza, the imbalance for the number of
  children in school becomes stronger, suggesting information barazas were
@@ -2336,15 +1614,20 @@ reference "tab:balance_orig"
  At the same time, it should be noted that significant differences are only
  found for comparison on which balance was rejected in the original balance
  table.
- As such, the incomplete roll-out may have actually improved baseline balance.
- Similar comparisons using endline data are reported in Section 
+ Judged by the baseline characteristics used in the original balance table,
+ the incomplete roll-out did not increase imbalance; in fact, it may have
+ actually improved balance (see also Table 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Endline-imbalance-and"
+reference "tab:balance_final"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
-.
+ below).
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3047,7 +2330,7 @@ reference "fig:Factorial-design"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3103,23 +2386,15 @@ As only part of the intervention was implemented, it may not be cost effective
  data collection? One reasonable suggestion would be to pick them randomly.
  However, if the roll-out was not random, such a strategy may lead to a
  biased estimate of the causal impact of the intervention.
- For instance, in section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Balance-between-planned-to-treat"
-
-\end_inset
-
- we find indications that OPM may have prioritized treatment of less remote
- areas.
- Randomly selecting control sub-counties may result in a sample in which
- sub-counties closer to roads are relatively under-represented and sub-counties
+ For instance, if the OPM prioritized treatment of less remote areas, randomly
+ selecting control sub-counties may result in a sample in which sub-counties
+ in less remote locations are relatively under-represented and sub-counties
  that are in more remote areas relatively over-represented in the control
  group.
- A better strategy may be to match, ex-ante, each treated sub-county to
- a control sub-county that is similar in a range of observable pre-treatment
- characteristics that the planner had access to when rolling out the interventio
-n and are likely to have affected his or her decision 
+ A better strategy may be to match each treated sub-county to a control
+ sub-county that is similar in a range of observable pre-treatment characteristi
+cs that the planner had access to when rolling out the intervention and
+ are likely to have affected his or her decision 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kasy2016experimenters,bertsimas2015power"
@@ -3129,7 +2404,8 @@ literal "true"
 
 .
  For instance, a sub-county that has been treated may be matched to a candidate
- untreated sub-county on the basis of road network density.
+ untreated sub-county that is in the same area (based on GPS coordinates
+ of the sub-county headquarters).
  
 \end_layout
 
@@ -3140,19 +2416,20 @@ We used a range of sub-county characteristics that were likely to be known
  in terms of these characteristics.
  More in particular, we match on the following characteristics that were
  obtained at baseline from a survey of village chairs and chief administrative
- officers (CAO) of each sub-county: GPS coordinates of the sub-county, road
- infrastructure within the sub-county (km tarmac road and km all-weather
- (gravel) road), share of households with electricity, share of households
- with an iron roof or tiles, number of health centers in the sub-county,
- female primary school dropout rate, number of Universal Primary Education
- (UPE) schools in the sub-county, percent of farmers that use improved seed,
- and political connections of the sub-county (defined by having a minister
- or member of parliament coming from the sub-county).
+ officers (CAO) of each sub-county: geographic location of the sub-county
+ using GPS coordinates of the headquarters, road infrastructure within the
+ sub-county (km tarmac road and km all-weather (gravel) road), share of
+ households with electricity, share of households with an iron roof or tiles,
+ number of health centers in the sub-county, female primary school dropout
+ rate, number of Universal Primary Education (UPE) schools in the sub-county,
+ percent of farmers that use improved seed, and political connections of
+ the sub-county (defined by having a minister or member of parliament coming
+ from the sub-county).
  These characteristics are used in a probit regression to predict the probabilit
 y that a sub-county would be treated.
  The probabilities are then used to match the each treated sub-county to
- a candidate control sub-county that is closest in terms of the probability
- of being treated.
+ a candidate control sub-county that is closest in terms of the predicted
+ probability of being treated.
 \begin_inset Foot
 status collapsed
 
@@ -3164,7 +2441,7 @@ reference "subsec:Balance-between-planned-to-treat"
 
 \end_inset
 
-, we diagnose potential selection bias introduced by the partial roll-out
+, we diagnosed potential selection bias introduced by the partial roll-out
  by comparing baseline characteristics of planned treatment sub-counties
  that ended up not being treated to that of control sub-counties.
  To enable similar comparisons using endline data, we need to make sure
@@ -3212,13 +2489,23 @@ reference "tab:balance_orig"
 
  for the information treatment on household size and the number of children
  in school has disappeared.
- Consistent with the suspicion that OPM may have prioritized treatment of
- less remote areas, we now find that distance to nearest all weather roads
- is on average slightly higher in control sub-counties.
+ Consistent with the indication that OPM may have prioritized treatment
+ of less remote areas (Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Balance_planed_ctrl"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), we now find that distance to nearest all-weather roads is on average
+ slightly higher in control sub-counties.
  Two significant results out of 40 comparison is again what can be expected
  from pure chance alone and so we conclude that also with this new sample
  we maintain balance between treatment and control on a range of baseline
- characteristics for the various hypotheses we will test.
+ characteristics for the various comparisons.
 \end_layout
 
 \begin_layout Standard
@@ -3903,8 +3190,8 @@ on baraza; Column 4 reports differences (and standard errors below) between
 \end_layout
 
 \begin_layout Standard
-While matching treatment and control sub-counties ex-ante may reduce bias
- resulting from incomplete roll-out, there are also costs involved.
+While the ex-ante matching strategy may reduce bias resulting from incomplete
+ roll-out, there are also costs involved.
  First, if sample selection is introduced by the roll-out, matching may
  further reduce external validity of the study, as now also the control
  sub-counties are not a random sample of the study population anymore.
@@ -3917,34 +3204,49 @@ y level barazas should be traded off against an increase in potential bias
  However, it should be kept in mind that both of these issues only become
  relevant if significant selection bias was introduced through the partial
  roll-out.
- Judged from the different balance tables using baseline data, this does
- not appear to be the case.
  
 \end_layout
 
 \begin_layout Subsection
-Updated power calculations
+Minimal Detectable Effects (MDEs)
 \end_layout
 
 \begin_layout Standard
-The original power calculations assumed full roll-out of the intervention.
- The partial roll-out necessitated an update to these power calculations
- to obtain a new set of minimal detectable effects (MDEs) associated with
- the sample that would be collected at endline (after partial roll-out and
- matching 40 control sub-counties to treated sub-counties).
- Below, we use baseline data to simulate MDEs for a selection of the outcomes
- we will use to judge effectiveness of the intervention (and are described
- in detail in section 
+The partial roll-out means a reduction in statistical power.
+ In this section, we use baseline data to simulate an updated set of minimal
+ detectable effects (MDEs) for a selection of the outcomes we will use to
+ judge effectiveness of the intervention (the outcomes are described in
+ detail in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Results"
 
 \end_inset
 
-).
+) associated with the reduced sample (after partial roll-out and matching
+ 40 control sub-counties to treated sub-counties).
+ In other words, instead of fixing MDE simulating power for different sample
+ sizes, we fix sample size and simulate power for different MDEs.
  We use a standard significance level of 0.05 (double sided).
  MDEs are estimated using a simple analysis of covariance (ANCOVA) model
- that controls for the outcome at baseline.
+ that controls for the outcome at baseline and accounts for the clustered
+ nature of the intervention.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Note that the level of clustering depends on the comparison.
+ When we look at sub-county level barazas, clustering is at the sub-county
+ level.
+ For the comparison between district level barazas ans control, clustering
+ is at the district level.
+\end_layout
+
+\end_inset
+
+ The simulated MDEs can be a useful guide in deciding whether the intervention
+ really had no effect, or an effect that was too small to detect given the
+ (realized) research design.
  
 \end_layout
 
@@ -3977,39 +3279,25 @@ Sexpr{format(round(df_averages[1,8],digits=2)*100,nsmall=0)}
  percent of households in our sample reported that they were visited by
  an extension officer in the year before baseline data collection.
  The gray solid line shows the power curve associated with the deliberation
- treatment, comparing about 1,900 households that received the information
- treatment to about 3,450 households that did not receive a deliberation
- focused baraza.
+ treatment, comparing 38 sub-counties that received the deliberation treatment
+ (18 deliberation only sub-counties plus 20 information+deliberation sub-countie
+s corresponding to a total of about 1,900 households) to 69 sub-counties
+ that did not receive the deliberation treatment (40 pure control sub-counties
+ plus 29 information only barazas, or about 3,450 households).
  The light blue dashed line closely tracks the gray line, and shows power
  for different MDEs for the information component of the baraza intervention.
- Here, we compare about 2,450 households that live in sub-counties that
- received an information baraza to about 2,900 households that did not receive
- a sub-county information baraza.
+ Here, we compare about 2,450 households that live in (29+20) sub-counties
+ that received an information baraza to about 2,900 households (in 40+18
+ sub-counties) that did not receive a sub-county information baraza.
  We also investigate power for the comparison between pure control barazas
  and sub-county level barazas (black dotted line).
- Here we compare about 1,000 households that received the combined information
- and deliberation sub-county level baraza to about 2,000 households that
- did not receive any baraza.
+ Here we compare about 1,000 households in the 20 sub-counties that received
+ the combined information and deliberation treatment to about 2,000 households
+ that did not receive any baraza (in the 40 pure control sub-counties).
  Finally, the dark blue dashed line plots power for the comparison between
- about 2,000 pure control barazas and about 2,000 households that were exposed
- to a district level baraza.
- 
-\end_layout
-
-\begin_layout Standard
-Not surprisingly, we have most power for testing the information treatment.
- We see that the power curve hits the 80 percent threshold for the first
- time at an MDE of about 2.5 percentage points.
- The deliberation experiment is similarly powered, and at 80 percent we
- can expect to identify effects of 3 percentage points or more.
- Due to the smaller sample size, it is harder to compare pure control sub-counti
-es to sub-county barazas that received the interacted treatment.
- Still, we are able to comfortably identify an increase of 4 percentage
- points.
- Despite a larger sample size available to test the impact of district level
- barazas, we find power to be comparable to that of the sub-county level
- baraza.
- This is due to the clustering at a much more aggregated level.
+ about 2,000 households in 40 pure control sub-counties and about 2,000
+ households that were exposed to a district level baraza (sampled from 40
+ sub-counties in these districts).
  
 \end_layout
 
@@ -4056,28 +3344,23 @@ name "fig:Power-curves-for"
 \end_layout
 
 \begin_layout Standard
-In figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Power-curves-dist"
-
-\end_inset
-
-, we plot MDEs for an infrastructure related outcome: distance (in km, trimmed
- at 5 percent and transformed using the inverse hyperbolic sine transformation)
- to the primary water source during the dry season.
- We find that for the information treatment and the deliberation treatment,
- we can detect a 4 percent difference at the standard 80 percent power level.
- As the average household lives about 900 meters from the primary water
- source, this translates in an average treatment effect of about 36 meters.
- Also here, the MDEs are higher when assessing the impact of the sub-county
- level barazas or the district level barazas.
- Then, MDEs correspond to about 60 meters for the average household in our
- sample.
- In an 
+Not surprisingly, we have most power for testing the information treatment.
+ We see that the power curve hits the 80 percent threshold for the first
+ time at an MDE of about 2.5 percentage points.
+ The deliberation experiment is similarly powered, and at 80 percent we
+ can expect to identify effects of 3 percentage points or more.
+ Due to the smaller sample size, it is harder to compare pure control sub-counti
+es to sub-county barazas that received the interacted treatment.
+ Still, we are able to comfortably identify an increase of 4 percentage
+ points.
+ Despite a larger sample size available to test the impact of district level
+ barazas, we find power to be comparable to that of the sub-county level
+ baraza.
+ This is due to the clustering at a much more aggregated level.
+ In 
 \begin_inset CommandInset href
 LatexCommand href
-name "online appendix"
+name "an online appendix"
 target "https://github.com/bjvca/baraza/blob/master/report/appendices/Appendix_updates_power_calcs.pdf"
 literal "false"
 
@@ -4085,48 +3368,6 @@ literal "false"
 
 , we show results for similar analyses for all pre-registered variables
  that we will use to judge impact of the baraza intervention.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename figure/power_dist_water.png
-	lyxscale 20
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Power curves for distance to water source
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Power-curves-dist"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -4150,168 +3391,8 @@ reference "tab:Attrition"
 
 \end_inset
 
- shows that attrition is independent of the various interventions of the
- study.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Attrition
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:Attrition"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{center}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{tabular}{rccccc} 
-\backslash
-hline 
-\backslash
-hline
-\end_layout
-
-\begin_layout Plain Layout
-
-	& mean & sc baraza & information & deliberation	& level 
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-cline{2-6} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Attrition & 0.086 & 0.010  &  0.0139 & 0.003 & -0.004 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
- & (0.280)  &  (0.020)   & (0.017) & (0.019) &  (0.014) 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Number of observations & 7340 & 2996 & 5341 &  5341  &  3996  
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline  
-\backslash
-hline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{tabular}
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\backslash
-end{center}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-scriptsize
-\end_layout
-
-\begin_layout Plain Layout
-
-Note: First column reports mean attrition rate (and standard deviations
- below); Column 2 reports correlation of attrition (and standard errors
- below) to the sub-county level baraza treatment; Column 3 reports correlation
- of attrition to the information baraza treatment; Column 4 reports correlation
- of attrition to the deliberation baraza treatment; Column 5 reports correlation
- of attrtion to the district level baraza treatment.
- Reported standard errors are clustered at the level of randomization.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+ in the Appendix shows that attrition is independent of the various intervention
+s of the study.
 \end_layout
 
 \begin_layout Section
@@ -4480,7 +3561,7 @@ literal "true"
 status collapsed
 
 \begin_layout Plain Layout
-To further increase transparency and allow for easy replication, the document
+To further increase transparency and allow for easy replication, this article
  was prepared using Lyx, an open source Latex front-end and all Latex and
  R code to replicate the analysis is placed under revision control using
  Git.
@@ -4504,8 +3585,98 @@ literal "false"
 Impact is assessed as a simple treatment-control comparison, implemented
  using an ANCOVA model that also controls for the region (as this was used
  for stratification) and the baseline outcome.
- In each specification, we also include all interaction terms of the factorial
- design 
+ In particular, to estimate the impact of the sub-county level baraza with
+ both information and deliberation components, we restrict the sample to
+ pure control sub-counties and sub-counties that received the combined informati
+on+deliberation baraza (diagonals in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Factorial-design"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) and estimate:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y_{hsr}=\alpha+\beta_{I*D}T_{sr}^{I}*T_{sr}^{D}+\gamma\bar{y}_{hsr}+\tau_{r}+\varepsilon_{hsr}\label{eq:impact_1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here, 
+\begin_inset Formula $Y_{hsr}$
+\end_inset
+
+ is the outcome (or outcome index) of interest for household 
+\emph on
+h 
+\emph default
+in sub-county 
+\emph on
+s
+\emph default
+ in region 
+\emph on
+r
+\emph default
+, 
+\begin_inset Formula $\bar{y}_{hsr}$
+\end_inset
+
+ the corresponding outcome at baseline, 
+\begin_inset Formula $T_{sr}^{I}$
+\end_inset
+
+ is a binary indicator indicating if the sub-county received a baraza with
+ an information component, 
+\begin_inset Formula $T_{sr}^{D}$
+\end_inset
+
+is a binary indicator indicating if the sub-county received a baraza with
+ an information component, 
+\begin_inset Formula $\tau_{r}$
+\end_inset
+
+ are region fixed effects and 
+\begin_inset Formula $\varepsilon_{hsr}$
+\end_inset
+
+ is an error term.
+ In this equation, the parameter of interest is 
+\begin_inset Formula $\beta_{I*D}$
+\end_inset
+
+ which gives us the difference in the average outcome for households that
+ live in a sub-county that received a sub-county level baraza and those
+ that live in a sub-county that did not receive a baraza.
+\end_layout
+
+\begin_layout Standard
+When the interest is in the main effects of the factorial design depicted
+ in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Factorial-design"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ (the relative effectiveness of the information component and the relative
+ effectiveness of the deliberation component), we use all sub-county level
+ data and estimate an equation that also includes all interaction terms
+ of the factorial design 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "muralidharan2019factorial"
@@ -4513,10 +3684,50 @@ literal "true"
 
 \end_inset
 
-.
- Standard errors are clustered at the level of randomization: at the sub-county
- level for the first three hypotheses and at the district level for the
- last hypothesis.
+: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y_{hsr}=\alpha+\beta_{I}T_{sr}^{I}+\beta_{D}T_{sr}^{D}+\beta_{I*D}T_{sr}^{I}*T_{sr}^{D}+\gamma\bar{y}_{hsr}+\tau_{r}+\varepsilon_{hsr}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The parameters of interest in this equation are now (1) 
+\begin_inset Formula $\beta_{I}$
+\end_inset
+
+ that gives an estimate of the difference in average outcomes for households
+ that were exposed to a baraza that had an information component and those
+ that were not exposed to the information component, and (2) 
+\begin_inset Formula $\beta_{D}$
+\end_inset
+
+ that gives an estimate of the difference in average outcomes for households
+ that were exposed to a baraza that had an deliberation component and those
+ that were not exposed to the deliberation component.
+ Finally, an equation similar to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:impact_1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is estimated to assess the impact of district level barazas, but in that
+ case, 
+\emph on
+s
+\emph default
+ refers to districts instead of sub-counties.
 \end_layout
 
 \begin_layout Standard
@@ -4553,7 +3764,7 @@ literal "true"
 
 .
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 This method first reconstructs a complete schedule of potential outcomes
@@ -12721,6 +11932,1134 @@ literal "false"
 LatexCommand bibtex
 bibfiles "endline_report_bib"
 options "IFPRI_Style"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage % ensure all floats are processed 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+processdelayedfloats 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\start_of_appendix
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{table}{0} 
+\backslash
+renewcommand{
+\backslash
+thetable}{A.
+\backslash
+arabic{table}} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{section}{0}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatletter 
+\backslash
+efloat@restorefloats 
+\backslash
+makeatother
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+Appendix
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Appendix_A"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<balance_orig_append,  echo=FALSE, warning = FALSE, message=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+load(paste(path,"results/df_averages_baseline.Rd", sep="/"))
+\end_layout
+
+\begin_layout Plain Layout
+
+load(paste(path,"results/df_ols_baseline.Rd", sep="/"))
+\end_layout
+
+\begin_layout Plain Layout
+
+load(paste(path,"results/df_balance_baseline.Rd", sep="/"))
+\end_layout
+
+\begin_layout Plain Layout
+
+load(paste(path,"results/df_ols_end.Rd", sep="/"))
+\end_layout
+
+\begin_layout Plain Layout
+
+load(paste(path,"results/df_averages_end.Rd", sep="/"))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+if (is_final) {
+\end_layout
+
+\begin_layout Plain Layout
+
+load(paste(path,"results/final/df_averages_baseline.Rd", sep="/"))
+\end_layout
+
+\begin_layout Plain Layout
+
+load(paste(path,"results/final/df_ols_baseline.Rd", sep="/"))
+\end_layout
+
+\begin_layout Plain Layout
+
+load(paste(path,"results/final/df_balance_baseline.Rd", sep="/"))
+\end_layout
+
+\begin_layout Plain Layout
+
+load(paste(path,"results/final/df_ols_end.Rd", sep="/"))
+\end_layout
+
+\begin_layout Plain Layout
+
+load(paste(path,"results/final/df_averages_end.Rd", sep="/"))
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:balance_orig"
+
+\end_inset
+
+, we test for balance between the treatment groups at baseline.
+ Baseline data on 12,545 households was collected between June and September
+ 2015.
+ Sample averages are reported in the first column (with standard errors
+ in brackets below).
+ For example, we see that the average household consists of about 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_averages[1,1],digits=0),nsmall=0)}
+\end_layout
+
+\end_inset
+
+ household members and that only about 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_averages[1,8],digits=2)*100,nsmall=0)}
+\end_layout
+
+\end_inset
+
+ percent of households report that they have access to agricultural extension.
+ In the second column, we report differences between baseline characteristics
+ of households that were planned to receive a sub-county level combined
+ information and deliberation baraza, and those that would not be exposed
+ to any baraza.
+ We find that distance to the nearest road is slightly though statistically
+ significantly higher in areas that were planned to receive a sub-county
+ level baraza.
+ When comparing households that were planned to be exposed to a sub-county
+ level information baraza to households that would not receive a sub-county
+ level information baraza (column 3), we see that that households are slightly
+ larger in the former group, and the difference is significant.
+ The average household has two to three children attending a public school.
+ We also find a slight pre-treatment imbalance on this outcome for the informati
+on treatment.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways true
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Orthogonality tests
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:balance_orig"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{rccccc} 
+\backslash
+hline 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+	& mean & sc baraza & information & deliberation	& level 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cline{2-6} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Household size &	
+\backslash
+Sexpr{format(round(df_averages[1,1],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ols[1,1,1],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,1,1]<.01,"**",ifelse(df_ols[3,1,1]<.05,"*",ifelse(df_ols[3,1
+,1]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ols[1,2,1],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,2,1]<.01,"**",ifelse(df_ols[3,2,1]<.05,"*",ifelse(df_ols[3,2
+,1]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ols[1,3,1],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,3,1]<.01,"**",ifelse(df_ols[3,3,1]<.05,"*",ifelse(df_ols[3,3
+,1]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ols[1,4,1],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,4,1]<.01,"**",ifelse(df_ols[3,4,1]<.05,"*",ifelse(df_ols[3,4
+,1]<.1,"+","")))}}$	
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,1],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ols[2,1,1],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ols[2,2,1],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ols[2,3,1],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ols[2,4,1],digits=3),nsmall=3)})			
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Age of the household head (years)  &	
+\backslash
+Sexpr{format(round(df_averages[1,2],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ols[1,1,2],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,1,2]<.01,"**",ifelse(df_ols[3,1,2]<.05,"*",ifelse(df_ols[3,1
+,2]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ols[1,2,2],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,2,2]<.01,"**",ifelse(df_ols[3,2,2]<.05,"*",ifelse(df_ols[3,2
+,2]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ols[1,3,2],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,3,2]<.01,"**",ifelse(df_ols[3,3,2]<.05,"*",ifelse(df_ols[3,3
+,2]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ols[1,4,2],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,4,2]<.01,"**",ifelse(df_ols[3,4,2]<.05,"*",ifelse(df_ols[3,4
+,2]<.1,"+","")))}}$	
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,2],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ols[2,1,2],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ols[2,2,2],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ols[2,3,2],digits=3),nsmall=3)}) &		(
+\backslash
+Sexpr{format(round(df_ols[2,4,2],digits=3),nsmall=3)})				
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Head of household is woman (1=yes) &	
+\backslash
+Sexpr{format(round(df_averages[1,3],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ols[1,1,3],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,1,3]<.01,"**",ifelse(df_ols[3,1,3]<.05,"*",ifelse(df_ols[3,1
+,3]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ols[1,2,3],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,2,3]<.01,"**",ifelse(df_ols[3,2,3]<.05,"*",ifelse(df_ols[3,2
+,3]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ols[1,3,3],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,3,3]<.01,"**",ifelse(df_ols[3,3,3]<.05,"*",ifelse(df_ols[3,3
+,3]<.1,"+","")))}}$	 &	
+\backslash
+Sexpr{format(round(df_ols[1,4,3],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,4,3]<.01,"**",ifelse(df_ols[3,4,3]<.05,"*",ifelse(df_ols[3,4
+,3]<.1,"+","")))}}$ 
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,3],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ols[2,1,3],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ols[2,2,3],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ols[2,3,3],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ols[2,4,3],digits=3),nsmall=3)})			
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Head finished primary education (1=yes) &	
+\backslash
+Sexpr{format(round(df_averages[1,4],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ols[1,1,4],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,1,4]<.01,"**",ifelse(df_ols[3,1,4]<.05,"*",ifelse(df_ols[3,1
+,4]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ols[1,2,4],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,2,4]<.01,"**",ifelse(df_ols[3,2,4]<.05,"*",ifelse(df_ols[3,2
+,4]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ols[1,3,4],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,3,4]<.01,"**",ifelse(df_ols[3,3,4]<.05,"*",ifelse(df_ols[3,3
+,4]<.1,"+","")))}}$	 &	
+\backslash
+Sexpr{format(round(df_ols[1,4,4],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,4,4]<.01,"**",ifelse(df_ols[3,4,4]<.05,"*",ifelse(df_ols[3,4
+,4]<.1,"+","")))}}$	
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,4],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ols[2,1,4],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ols[2,2,4],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ols[2,3,4],digits=3),nsmall=3)})		&		(
+\backslash
+Sexpr{format(round(df_ols[2,4,4],digits=3),nsmall=3)})		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Thatched grass roof (1=yes) &	
+\backslash
+Sexpr{format(round(df_averages[1,5],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ols[1,1,5],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,1,5]<.01,"**",ifelse(df_ols[3,1,5]<.05,"*",ifelse(df_ols[3,1
+,5]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ols[1,2,5],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,2,5]<.01,"**",ifelse(df_ols[3,2,5]<.05,"*",ifelse(df_ols[3,2
+,5]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ols[1,3,5],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,3,5]<.01,"**",ifelse(df_ols[3,3,5]<.05,"*",ifelse(df_ols[3,3
+,5]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ols[1,4,5],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,4,5]<.01,"**",ifelse(df_ols[3,4,5]<.05,"*",ifelse(df_ols[3,4
+,5]<.1,"+","")))}}$		
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,5],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ols[2,1,5],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ols[2,2,5],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ols[2,3,5],digits=3),nsmall=3)})		&		(
+\backslash
+Sexpr{format(round(df_ols[2,4,5],digits=3),nsmall=3)})			
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Traditional mud wall (1=yes) &	
+\backslash
+Sexpr{format(round(df_averages[1,6],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ols[1,1,6],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,1,6]<.01,"**",ifelse(df_ols[3,1,6]<.05,"*",ifelse(df_ols[3,1
+,6]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ols[1,2,6],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,2,6]<.01,"**",ifelse(df_ols[3,2,6]<.05,"*",ifelse(df_ols[3,2
+,6]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ols[1,3,6],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,3,6]<.01,"**",ifelse(df_ols[3,3,6]<.05,"*",ifelse(df_ols[3,3
+,6]<.1,"+","")))}}$	 &	
+\backslash
+Sexpr{format(round(df_ols[1,4,6],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,4,6]<.01,"**",ifelse(df_ols[3,4,6]<.05,"*",ifelse(df_ols[3,4
+,6]<.1,"+","")))}}$	
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,6],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ols[2,1,6],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ols[2,2,6],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ols[2,3,6],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ols[2,4,6],digits=3),nsmall=3)})		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Distance to nearest all weather road (km)  &	
+\backslash
+Sexpr{format(round(df_averages[1,7],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ols[1,1,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,1,7]<.01,"**",ifelse(df_ols[3,1,7]<.05,"*",ifelse(df_ols[3,1
+,7]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ols[1,2,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,2,7]<.01,"**",ifelse(df_ols[3,2,7]<.05,"*",ifelse(df_ols[3,2
+,7]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ols[1,3,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,3,7]<.01,"**",ifelse(df_ols[3,3,7]<.05,"*",ifelse(df_ols[3,3
+,7]<.1,"+","")))}}$	 &	
+\backslash
+Sexpr{format(round(df_ols[1,4,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,4,7]<.01,"**",ifelse(df_ols[3,4,7]<.05,"*",ifelse(df_ols[3,4
+,7]<.1,"+","")))}}$ 
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,7],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ols[2,1,7],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ols[2,2,7],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ols[2,3,7],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ols[2,4,7],digits=3),nsmall=3)})		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Access to extension (1=yes)  &	
+\backslash
+Sexpr{format(round(df_averages[1,8],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ols[1,1,8],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,1,8]<.01,"**",ifelse(df_ols[3,1,8]<.05,"*",ifelse(df_ols[3,1
+,8]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ols[1,2,8],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,2,8]<.01,"**",ifelse(df_ols[3,2,8]<.05,"*",ifelse(df_ols[3,2
+,8]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ols[1,3,8],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,3,8]<.01,"**",ifelse(df_ols[3,3,8]<.05,"*",ifelse(df_ols[3,3
+,8]<.1,"+","")))}}$	 &	
+\backslash
+Sexpr{format(round(df_ols[1,4,8],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,4,8]<.01,"**",ifelse(df_ols[3,4,8]<.05,"*",ifelse(df_ols[3,4
+,8]<.1,"+","")))}}$ 
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,8],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ols[2,1,8],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ols[2,2,8],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ols[2,3,8],digits=3),nsmall=3)}) &		(
+\backslash
+Sexpr{format(round(df_ols[2,4,8],digits=3),nsmall=3)})			
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Village Health Team in village (1=yes)  &	
+\backslash
+Sexpr{format(round(df_averages[1,9],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ols[1,1,9],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,1,9]<.01,"**",ifelse(df_ols[3,1,9]<.05,"*",ifelse(df_ols[3,1
+,9]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ols[1,2,9],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,2,9]<.01,"**",ifelse(df_ols[3,2,9]<.05,"*",ifelse(df_ols[3,2
+,9]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ols[1,3,9],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,3,9]<.01,"**",ifelse(df_ols[3,3,9]<.05,"*",ifelse(df_ols[3,3
+,9]<.1,"+","")))}}$	 &	
+\backslash
+Sexpr{format(round(df_ols[1,4,9],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,4,9]<.01,"**",ifelse(df_ols[3,4,9]<.05,"*",ifelse(df_ols[3,4
+,9]<.1,"+","")))}}$ 
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,9],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ols[2,1,9],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ols[2,2,9],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ols[2,3,9],digits=3),nsmall=3)}) &		(
+\backslash
+Sexpr{format(round(df_ols[2,4,9],digits=3),nsmall=3)})			
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Number of children in public schools  &	
+\backslash
+Sexpr{format(round(df_averages[1,10],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ols[1,1,10],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,1,10]<.01,"**",ifelse(df_ols[3,1,10]<.05,"*",ifelse(df_ols[3
+,1,10]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ols[1,2,10],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,2,10]<.01,"**",ifelse(df_ols[3,2,10]<.05,"*",ifelse(df_ols[3
+,2,10]<.1,"+","")))}}$ & 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ols[1,3,10],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,3,10]<.01,"**",ifelse(df_ols[3,3,10]<.05,"*",ifelse(df_ols[3
+,3,10]<.1,"+","")))}}$ & 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(round(df_ols[1,4,10],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ols[3,4,10]<.01,"**",ifelse(df_ols[3,4,10]<.05,"*",ifelse(df_ols[3
+,4,10]<.1,"+","")))}}$	
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,10],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ols[2,1,10],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ols[2,2,10],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ols[2,3,10],digits=3),nsmall=3)})		&		(
+\backslash
+Sexpr{format(round(df_ols[2,4,10],digits=3),nsmall=3)})			
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Number of observations & 12545 & 
+\backslash
+Sexpr{format(round(df_ols[6,1,1],digits=3),nsmall=0)} & 
+\backslash
+Sexpr{format(round(df_ols[6,2,1],digits=3),nsmall=0)} &  
+\backslash
+Sexpr{format(round(df_ols[6,3,1],digits=3),nsmall=0)} &  
+\backslash
+Sexpr{format(round(df_ols[6,4,1],digits=3),nsmall=0)} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline  
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+scriptsize
+\end_layout
+
+\begin_layout Plain Layout
+
+Note: First column reports sample means (and standard deviations below);
+ Column 2 reports differences (and standard errors below) between baseline
+ characteristics of households that were planned to receive a sub-county
+ level combined information and deliberation baraza, and those that would
+ not be exposed to any baraza; Column 3 reports differences (and standard
+ errors below) between baseline characteristics of households that would
+ receive a sub-county level information baraza, and those that would not
+ receive a sub-county level information baraza; Column 4 reports differences
+ (and standard errors below) between baseline characteristics of households
+ that were allocted to receive a sub-county level deliberation baraza, and
+ those that would not receive a sub-county level deliberation baraza; Column
+ 5 (and standard errors below) reports differences between baseline characterist
+ics of households that were planned to receive a district level combined
+ information and deliberation baraza, and those that would not be exposed
+ to any baraza;  **, * and + denotes significance at the 1, 5 and 10 percent
+ levels.
+ Reported standard errors are clustered at the level of randomization.
+ Distance to all weather road is trimmed at 5 percent and transformed using
+ the inverse hyperbolic sine transformation.
+  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the fourth column of Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:balance_orig"
+
+\end_inset
+
+, we report differences between households that would be exposed to a sub-county
+ deliberation baraza and households that would not.
+ For this treatment, we cannot reject balance on any of the variables.
+ In the last column, we report differences in outcomes between households
+ that would be exposed to a district level baraza and households that would
+ not be exposed to any baraza.
+ Also here, we do not find any significant difference.
+ Overall, out of 40 comparisons, we find that two differences are significant,
+ which is what one would expect to find due to chance alone.
+ As such, we conclude that the randomization of the original design was
+ successful.
+\end_layout
+
+\begin_layout Section
+Appendix
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:AppendixB"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Attrition
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Attrition"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{rccccc} 
+\backslash
+hline 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+	& mean & sc baraza & information & deliberation	& level 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cline{2-6} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Attrition & 0.086 & 0.010  &  0.0139 & 0.003 & -0.004 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ & (0.280)  &  (0.020)   & (0.017) & (0.019) &  (0.014) 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Number of observations & 7340 & 2996 & 5341 &  5341  &  3996  
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline  
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+scriptsize
+\end_layout
+
+\begin_layout Plain Layout
+
+Note: First column reports mean attrition rate (and standard deviations
+ below); Column 2 reports correlation of attrition (and standard errors
+ below) to the sub-county level baraza treatment; Column 3 reports correlation
+ of attrition to the information baraza treatment; Column 4 reports correlation
+ of attrition to the deliberation baraza treatment; Column 5 reports correlation
+ of attrtion to the district level baraza treatment.
+ Reported standard errors are clustered at the level of randomization.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
