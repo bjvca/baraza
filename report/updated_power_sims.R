@@ -21,13 +21,13 @@ path <- strsplit(getwd(), "/report")[[1]]
 alpha <- 0.05 # Standard significance level 
 sims <- 1000 # Number of simulations to conduct for each N 
 #mde <- seq(from=.01, to=.1, by=.001) # The effect sizes we'll be considering 
-mde <- seq(from=.05, to=.2, by=.0025)
+mde <- seq(from=.15, to=.3, by=.0025)
 
 ### best visualized with mde <- seq(from=.05, to=.2, by=.0025)
-baseline_outcomes <- c("base_unprotected","qc15","c10","a6","pub_health_access","maternal_health_access","d31","d43","d11","wait_time","d61","base_n_children","e5","e12", "e14","e22","e32","e45"))
+#baseline_outcomes <- c("base_unprotected","qc15","c10","a6","pub_health_access","maternal_health_access","d31","d43","d11","wait_time","d61","base_n_children","e5","e12", "e14","e22","e32","e45"))
 #best visualized with mde <- seq(from=.01, to=.1, by=.001) 
 #baseline_outcomes <- c("b21","b31","b44","base_inputs","b5144","b5146","c12source")
-
+baseline_outcomes <- c("qc15")
 for (outcome_index in 1:length(baseline_outcomes)) {
 #outcome_index <- 1
 print(baseline_outcomes[outcome_index])
@@ -362,6 +362,12 @@ ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, l
 dev.off()
 
 
+df <- read.csv("qc15.csv", stringsAsFactors = TRUE)
+png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_wait_water.png", units="px", height=3200, width= 3200, res=600)
+ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
+dev.off()
+
+
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/c10.csv", stringsAsFactors = TRUE)
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_water_user_com.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
@@ -443,6 +449,17 @@ dev.off()
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/e45.csv", stringsAsFactors = TRUE)
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_inspection_school.png", units="px", height=3200, width= 3200, res=600)
+ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
+dev.off()
+
+
+df <- read.csv("base_fert.csv", stringsAsFactors = TRUE)
+png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/base_fert.png", units="px", height=3200, width= 3200, res=600)
+ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
+dev.off()
+
+df <- read.csv("base_seed.csv", stringsAsFactors = TRUE)
+png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/base_seed.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
