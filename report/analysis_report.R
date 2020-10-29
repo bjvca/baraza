@@ -18,7 +18,7 @@ final_verion_swith <- FALSE
 ## heterogeneity analysis:
 # 0 no
 # 1 allow for enough time - sc level 
-hetero <- 0
+hetero <- 4
 RI_conf_switch <- FALSE
 glob_repli <- 1000
 glob_sig <- c(.025,.975) ### 5 percent conf intervals
@@ -782,12 +782,12 @@ df_dif_in_dif[,4,i] <- c(res[4,1],res[4,2],res[4,5], conf[4,4], conf[4,5], nobs(
 }
 
 ### create data.frame to plot - make sure you get correct i's for the indices; last one is overall index
-d_plot <- data.frame(rbind(df_ancova[c(1,4,5),1,7],df_ancova[c(1,4,5),2,7],df_ancova[c(1,4,5),3,7],df_ancova[c(1,4,5),5,7]))
-d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,13],df_ancova[c(1,4,5),2,13],df_ancova[c(1,4,5),3,13],df_ancova[c(1,4,5),5,13])))
-d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,21],df_ancova[c(1,4,5),2,21],df_ancova[c(1,4,5),3,21],df_ancova[c(1,4,5),5,21])))
-d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,29],df_ancova[c(1,4,5),2,29],df_ancova[c(1,4,5),3,29],df_ancova[c(1,4,5),5,29])))
+d_plot <- data.frame(rbind(df_ancova[c(1,4,5),1,7],df_ancova[c(1,4,5),2,7],df_ancova[c(1,4,5),3,7],df_ancova[c(1,4,5),4,7]))
+d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,13],df_ancova[c(1,4,5),2,13],df_ancova[c(1,4,5),3,13],df_ancova[c(1,4,5),4,13])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,21],df_ancova[c(1,4,5),2,21],df_ancova[c(1,4,5),3,21],df_ancova[c(1,4,5),4,21])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,29],df_ancova[c(1,4,5),2,29],df_ancova[c(1,4,5),3,29],df_ancova[c(1,4,5),4,29])))
 d_plot <- rbind(d_plot, data.frame(rbind(c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA))))
-d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,30],df_ancova[c(1,4,5),2,30],df_ancova[c(1,4,5),3,30],df_ancova[c(1,4,5),5,30])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,30],df_ancova[c(1,4,5),2,30],df_ancova[c(1,4,5),3,30],df_ancova[c(1,4,5),4,30])))
 
 
 names(d_plot) <- c("y","ylo","yhi")
@@ -808,7 +808,7 @@ save(df_ancova, file= paste(save_path,"df_ancova.Rd", sep="/"))
 save(df_averages, file= paste(save_path,"df_averages.Rd", sep="/"))
 save(baseline_desc, file= paste(save_path,"baseline_desc.Rd", sep="/"))
 
-png(paste(save_path,"impact_summary_ancova.png",sep = "/"), units="px", height=3200, width= 6400, res=600)
+png(paste(save_path,"impact_summary_ancova_update_het1.png",sep = "/"), units="px", height=3200, width= 6400, res=600)
 print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3))
 dev.off()
 
