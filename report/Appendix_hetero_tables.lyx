@@ -246,11 +246,11 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & sc baraza & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -781,11 +781,11 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & sc baraza & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -1271,7 +1271,7 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & sc baraza & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
@@ -1859,7 +1859,7 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & sc baraza & information & deliberation	& level 
+		& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
@@ -2502,11 +2502,11 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & sc baraza & information & deliberation	& level 
+		& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -3032,16 +3032,11 @@ hline
 
 \begin_layout Plain Layout
 
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-	& mean & sc baraza & information & deliberation	& level 
+ 	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -3522,16 +3517,11 @@ hline
 
 \begin_layout Plain Layout
 
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-	& mean & sc baraza & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -4110,12 +4100,7 @@ hline
 
 \begin_layout Plain Layout
 
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-	& mean & sc baraza & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
@@ -4753,16 +4738,11 @@ hline
 
 \begin_layout Plain Layout
 
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-	& mean & sc baraza & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -5288,12 +5268,7 @@ hline
 
 \begin_layout Plain Layout
 
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-	& mean & sc baraza & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
@@ -5778,12 +5753,7 @@ hline
 
 \begin_layout Plain Layout
 
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-	& mean & sc baraza & information & deliberation	& level 
+ 	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
@@ -6366,12 +6336,7 @@ hline
 
 \begin_layout Plain Layout
 
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-	& mean & sc baraza & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
@@ -7009,16 +6974,11 @@ hline
 
 \begin_layout Plain Layout
 
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-	& mean & sc baraza & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -7544,12 +7504,7 @@ hline
 
 \begin_layout Plain Layout
 
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-	& mean & sc baraza & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
@@ -8034,16 +7989,11 @@ hline
 
 \begin_layout Plain Layout
 
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-	& mean & sc baraza & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -8622,16 +8572,11 @@ hline
 
 \begin_layout Plain Layout
 
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-	& mean & sc baraza & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -9265,16 +9210,11 @@ hline
 
 \begin_layout Plain Layout
 
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-	& mean & sc baraza & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -9800,12 +9740,7 @@ hline
 
 \begin_layout Plain Layout
 
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-	& mean & sc baraza & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
@@ -10290,12 +10225,7 @@ hline
 
 \begin_layout Plain Layout
 
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-	& mean & sc baraza & information & deliberation	& level 
+ 	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
@@ -10878,12 +10808,7 @@ hline
 
 \begin_layout Plain Layout
 
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-	& mean & sc baraza & information & deliberation	& level 
+ 	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash

@@ -1652,7 +1652,7 @@ noprefix "false"
 \begin_inset Float table
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -2530,7 +2530,7 @@ noprefix "false"
 \begin_inset Float table
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -3352,7 +3352,7 @@ s corresponding to a total of about 1,900 households) to 69 sub-counties
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -4183,11 +4183,11 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & sc baraza & information & deliberation	& level  
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -5574,11 +5574,11 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & sc baraza & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -6495,11 +6495,11 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & sc baraza & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -7678,11 +7678,11 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & sc baraza & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -8402,11 +8402,11 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & sc baraza & information & deliberation	& level  
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -8968,11 +8968,11 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & sc baraza & information & deliberation	& level  
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -9898,11 +9898,11 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & sc baraza & information & deliberation	& level  
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -12416,11 +12416,11 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & sc baraza & information & deliberation	& level 
+		& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -13132,11 +13132,11 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & sc baraza & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
- 
+
 \end_layout
 
 \begin_layout Plain Layout
