@@ -2530,7 +2530,7 @@ noprefix "false"
 \begin_inset Float table
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -2592,7 +2592,7 @@ hline
 
 \begin_layout Plain Layout
 
-	& mean & sc baraza  & information & deliberation	& level 
+	& mean & sc baraza  & information & deliberation	& dist baraza 
 \backslash
 
 \backslash
