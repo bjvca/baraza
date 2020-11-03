@@ -848,8 +848,45 @@ save(df_ancova, file= paste(save_path,"df_ancova.Rd", sep="/"))
 save(df_averages, file= paste(save_path,"df_averages.Rd", sep="/"))
 save(baseline_desc, file= paste(save_path,"baseline_desc.Rd", sep="/"))
 
+library(plyr)
+
 png(paste(save_path,"impact_summary_ancova.png",sep = "/"), units="px", height=3200, width= 6400, res=600)
+d_plot$grp <- mapvalues(d_plot$grp , from = c("sc baraza", "info", "delib", "level"), to = c("subcounty","information", "deliberation","district"))
+
 print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3))
+dev.off()
+
+### redo graphs
+hetero <- 0
+final_verion_swith <- TRUE
+
+save_path <- ifelse(final_verion_swith, paste(path,"report/results/final", sep = "/"), paste(path,"report/results/", sep = "/"))
+save_path <- ifelse(hetero ==1, paste(save_path,"hetero1", sep = "/"),  ifelse(hetero ==2, paste(save_path,"hetero2", sep = "/"),   ifelse(hetero ==3, paste(save_path,"hetero3", sep = "/"),  ifelse(hetero ==4, paste(save_path,"hetero4", sep = "/"),ifelse(hetero ==5, paste(save_path,"hetero5", sep = "/"),  save_path)))))
+
+### laod results matrices that were generated on AWS
+load(paste(save_path,"df_ancova.Rd", sep="/"))
+library(plyr)
+## create data.frame to plot - make sure you get correct i's for the indices; last one is overall index
+d_plot <- data.frame(rbind(df_ancova[c(1,4,5),1,7],df_ancova[c(1,4,5),2,7],df_ancova[c(1,4,5),3,7],df_ancova[c(1,4,5),4,7]))
+d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,13],df_ancova[c(1,4,5),2,13],df_ancova[c(1,4,5),3,13],df_ancova[c(1,4,5),4,13])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,21],df_ancova[c(1,4,5),2,21],df_ancova[c(1,4,5),3,21],df_ancova[c(1,4,5),4,21])))
+d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,29],df_ancova[c(1,4,5),2,29],df_ancova[c(1,4,5),3,29],df_ancova[c(1,4,5),4,29])))
+d_plot <- rbind(d_plot, data.frame(rbind(c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA),c(NA,NA,NA))))
+d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,30],df_ancova[c(1,4,5),2,30],df_ancova[c(1,4,5),3,30],df_ancova[c(1,4,5),4,30])))
+
+
+names(d_plot) <- c("y","ylo","yhi")
+
+d_plot$x <- rep(c("agricuture","infrastructure","health","education","","index"), each=4)
+d_plot$grp <- rep(c("sc baraza","info","delib","level"), times=6)
+d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib","level"))
+d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","health","education","","index"))))
+
+
+png(paste(save_path,"impact_summary_ancova.png",sep = "/"), units="px", height=3200, width= 6400, res=600)
+d_plot$grp <- mapvalues(d_plot$grp , from = c("sc baraza", "info", "delib", "level"), to = c("subcounty","information", "deliberation","district"))
+
+print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.6))
 dev.off()
 
 

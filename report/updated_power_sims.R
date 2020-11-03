@@ -313,32 +313,40 @@ write.csv(df, file = paste(baseline_outcomes[outcome_index],"csv",sep="."))
 
 ###f***ing R: want to save this as png but for some reason I can not use dynamic names with he png command
 library(ggplot2)
+library(plyr)
+
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/b21.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_extension.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/b31.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_field_visits.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/b44.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_NAADS_in_village.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/base_inputs.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_inputs.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/b5144.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_advice_market_comm.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/b5146.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_advice_market_coop.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
@@ -346,69 +354,81 @@ dev.off()
 ### infra
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/base_unprotected.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_unprotected.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/c12source.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_dist_water.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/qc15.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_wait_water.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 
-df <- read.csv("qc15.csv", stringsAsFactors = TRUE)
+df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/qc15.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_wait_water.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/c10.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_water_user_com.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/a6.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_dist_road.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/d31.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_vht.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/d43.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_dist_gov.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/pub_health_access.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_pub_health_access.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/maternal_health_access.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_maternal_health_access.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/d11.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_school_work_missed.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/wait_time.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_wait_time.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
@@ -416,49 +436,59 @@ dev.off()
 
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/base_n_children.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_base_n_children.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/e12.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_complete_fence.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/e5.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_dist_school.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/e14.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_water_school.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/e22.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_SMC_school.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/e32.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_info_SMC_school.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/e45.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_inspection_school.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
 
-df <- read.csv("base_fert.csv", stringsAsFactors = TRUE)
+df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/base_fert.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/base_fert.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
 
-df <- read.csv("base_seed.csv", stringsAsFactors = TRUE)
+df <- read.csv("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/base_seed.csv", stringsAsFactors = TRUE)
+df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc_baraza"), to = c("deliberation", "information","district","subcounty"))
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/base_seed.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
