@@ -8852,11 +8852,21 @@ Sexpr{format(round(df_averages[1,10]*100,digits=0),nsmall=0)}
  in increasing interactions between citizens and health unit management
  committee members.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+I can't see that in the table.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 The baraza programme also attempts to increase a sense of community engagement.
- One way in which citizens can participate is though contributing to common
+ One way in which citizens can participate is through contributing to common
  goods such as public infrastructure, education of health services.
  We differentiate between cash contributions and in-kind contributions.
  Table 
@@ -10864,6 +10874,16 @@ noprefix "false"
 
 \end_inset
 
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+but the impact on agriculture disappears?
+\end_layout
+
+\end_inset
+
 .
  We find a significant negative interaction effect from sub-county level
  barazas for the infrastructure index.
@@ -11840,7 +11860,7 @@ ral sector.
  For instance, we find that households that were supposed to receive a sub-count
 y level baraza treatment but did not get one are 10 percentage points more
  likely to indicate that they visited an extension office, demonstration
- site or a model farmers.
+ site or a model farmer.
  However, as this difference is positive, it could be argued that OPM seemed
  to have prioritized sub-counties with poorer service delivery in the agricultur
 al sector.
