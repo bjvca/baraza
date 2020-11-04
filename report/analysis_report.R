@@ -807,8 +807,9 @@ save_path <- ifelse(hetero ==1, paste(save_path,"hetero1", sep = "/"),  ifelse(h
 save(df_ancova, file= paste(save_path,"df_ancova.Rd", sep="/"))
 save(df_averages, file= paste(save_path,"df_averages.Rd", sep="/"))
 save(baseline_desc, file= paste(save_path,"baseline_desc.Rd", sep="/"))
-
-png(paste(save_path,"impact_summary_ancova_update_het1.png",sep = "/"), units="px", height=3200, width= 6400, res=600)
+library(plyr)
+png(paste(save_path,"impact_summary_ancova_update_het4.png",sep = "/"), units="px", height=3200, width= 6400, res=600)
+d_plot$grp <- mapvalues(d_plot$grp , from = c("sc baraza", "info", "delib", "level"), to = c("subcounty","information", "deliberation","district"))
 print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3))
 dev.off()
 

@@ -895,8 +895,9 @@ save_path <- ifelse(final_verion_swith, paste(path,"report/results/final", sep =
 save(df_matcher, file= paste(save_path,"df_matcher.Rd", sep="/"))
 save(df_averages, file= paste(save_path,"df_averages_matcher.Rd", sep="/"))
 
-
+library(plyr)
 png(paste(save_path,"impact_summary_matcher.png",sep = "/"), units="px", height=3200, width= 6400, res=600)
+d_plot$grp <- mapvalues(d_plot$grp , from = c("sc baraza", "info", "delib", "level"), to = c("subcounty","information", "deliberation","district"))
 print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3))
 dev.off()
 
