@@ -124,6 +124,13 @@ Community based monitoring and public service delivery - Impact, and the
  full results for heterogeneity analysis
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Heterogeneity in the timing of the intervention
 \begin_inset Newpage newpage
@@ -719,7 +726,7 @@ Note: First column reports sample means (and standard deviations below);
 placement H
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
