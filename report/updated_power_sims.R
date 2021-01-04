@@ -20,14 +20,14 @@ path <- strsplit(getwd(), "/report")[[1]]
 ##hyper parameters
 alpha <- 0.05 # Standard significance level 
 sims <- 1000 # Number of simulations to conduct for each N 
-#mde <- seq(from=.01, to=.1, by=.001) # The effect sizes we'll be considering 
-mde <- seq(from=.15, to=.3, by=.0025)
+mde <- seq(from=.01, to=.1, by=.001) # The effect sizes we'll be considering 
+#mde <- seq(from=.05, to=.2, by=.0025)
 
 ### best visualized with mde <- seq(from=.05, to=.2, by=.0025)
-#baseline_outcomes <- c("base_unprotected","qc15","c10","a6","pub_health_access","maternal_health_access","d31","d43","d11","wait_time","d61","base_n_children","e5","e12", "e14","e22","e32","e45"))
+#baseline_outcomes <- c("base_unprotected","qc15","c10","a6","pub_health_access","maternal_health_access","d31","d43","d11","wait_time","d61","base_n_children","e5","e12", "e14","e22","e32","e45")
 #best visualized with mde <- seq(from=.01, to=.1, by=.001) 
 #baseline_outcomes <- c("b21","b31","b44","base_inputs","b5144","b5146","c12source")
-baseline_outcomes <- c("qc15")
+baseline_outcomes <- c("base_fert","base_seed")
 for (outcome_index in 1:length(baseline_outcomes)) {
 #outcome_index <- 1
 print(baseline_outcomes[outcome_index])
@@ -52,6 +52,9 @@ baseline$b31 <- as.numeric(baseline$b31=="Yes")
 baseline$b44 <-  as.numeric(baseline$b44=="Yes")
 baseline$b44[is.na(baseline$b44)] <- 0
 baseline$base_inputs <- as.numeric(baseline$used_seed=="Yes" | baseline$used_fert=="Yes")
+baseline$base_seed <- as.numeric(baseline$used_seed=="Yes")
+baseline$base_fert <- as.numeric(baseline$used_fert=="Yes")
+
 baseline$b5144 <- as.numeric(baseline$b5144=="Yes")
 baseline$b5146 <- as.numeric(baseline$b5146=="Yes")
 ###this was changed post registration to follow https://www.who.int/water_sanitation_health/monitoring/jmp2012/key_terms/en/ guidelines on what is considered improved, that also considers rainwater a protected source
@@ -180,9 +183,10 @@ baseline_orig$base_out <- as.numeric(baseline_orig$outcome +  rnorm(length(basel
   #### Inner loop to conduct experiments "sims" times over for each N #### 
   oper <- foreach (i = 1:sims,.combine=cbind) %dopar% {
  	treats$information <- sample(treats$information)
+	treats$deliberation <- sample(treats$deliberation)
  	baseline_sim <- merge(baseline_orig,treats, by.x=c("a22","a23"), by.y=c("district","subcounty"))
        	baseline_sim$Y.sim <- baseline_sim$Y1*baseline_sim$information + baseline_sim$outcome*(1-baseline_sim$information) # Reveal 
-        fit.sim <- lm(Y.sim ~ information +base_out, data=baseline_sim) # Do analysis (Simple regression) 
+        fit.sim <- lm(Y.sim ~ information*deliberation +base_out, data=baseline_sim) # Do analysis (Simple regression) 
         p.value <- summary(fit.sim)$coefficients[2,4] # Extract p-values 
         return(p.value <= alpha) # Determine significance according to p <= 0.05
         }
@@ -208,11 +212,11 @@ baseline_orig$base_out <- as.numeric(baseline_orig$outcome +  rnorm(length(basel
                               
   #### Inner loop to conduct experiments "sims" times over for each N #### 
   oper <- foreach (i = 1:sims,.combine=cbind) %dopar% {
-
- 		treats$deliberation <- sample(treats$deliberation)
+ 	treats$information <- sample(treats$information)
+	treats$deliberation <- sample(treats$deliberation)
  	baseline_sim <- merge(baseline_orig,treats, by.x=c("a22","a23"), by.y=c("district","subcounty"))
        	baseline_sim$Y.sim <- baseline_sim$Y1*baseline_sim$deliberation + baseline_sim$outcome*(1-baseline_sim$deliberation) # Reveal 
-        fit.sim <- lm(Y.sim ~ deliberation +base_out, data=baseline_sim) # Do analysis (Simple regression) 
+        fit.sim <- lm(Y.sim ~ deliberation*information +base_out, data=baseline_sim) # Do analysis (Simple regression) 
         p.value <- summary(fit.sim)$coefficients[2,4] # Extract p-values 
         return(p.value <= alpha)
         }
@@ -492,6 +496,9 @@ df$hypo <- mapvalues(df$hypo, from = c("deliberation", "information","level","sc
 png("/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/base_seed.png", units="px", height=3200, width= 3200, res=600)
 ggplot(df, aes(x = mde, y = power, group = hypo)) +  geom_line(aes(color=hypo, linetype=hypo), size=1)  + scale_color_manual(values=c("#CCCCCC", "#6E8DAB", "#104E8B","#000000"))  + scale_linetype_manual(values=c("solid","dashed", "twodash","dotted"))+ geom_hline(yintercept = .8, colour =  "red", size=1)
 dev.off()
+
+
+
 
    
 

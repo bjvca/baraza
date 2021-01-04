@@ -22,7 +22,7 @@ final_verion_swith <- FALSE
 # 0 no
 # 1 allow for enough time - sc level 
 # 5 ethnic homogeneity
-hetero <- 5
+hetero <- 0
 RI_conf_switch <- FALSE
 glob_repli <- 500
 glob_sig <- c(.025,.975) ### 5 percent conf intervals
