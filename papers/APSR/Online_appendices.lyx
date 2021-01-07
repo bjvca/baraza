@@ -46,9 +46,9 @@ knitr
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
-\biblio_style plain
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -80,11 +80,10 @@ knitr
 
 \begin_body
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
+\begin_layout Title
+Online Appendix for: Community based monitoring and public service delivery
+ - Impact, and the role of information, deliberation, and jurisdictional
+ tier
 \end_layout
 
 \begin_layout Standard
@@ -191,7 +190,26 @@ arabic{table}}
 
 
 \backslash
-setcounter{section}{0}
+setcounter{figure}{0} 
+\backslash
+renewcommand{
+\backslash
+thefigure}{A.
+\backslash
+arabic{figure}} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{section}{0}  
+\backslash
+renewcommand{
+\backslash
+thesection}{A.
+\backslash
+arabic{section}} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -204,18 +222,6 @@ efloat@restorefloats
 \backslash
 makeatother
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-\start_of_appendix
-Appendix
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Appendix_A"
 
 \end_inset
 
@@ -309,7 +315,7 @@ load(paste(path,"report/results/final/df_averages_end.Rd", sep="/"))
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Balance in original design
 \begin_inset CommandInset label
 LatexCommand label
@@ -328,7 +334,8 @@ reference "tab:balance_orig"
 
 \end_inset
 
-, we test for balance between the treatment groups at baseline.
+, we test for balance between the treatment groups at baseline following
+ the original design of the experiment.
  Baseline data on 12,545 households was collected between June and September
  2015.
  Sample averages are reported in the first column (with standard errors
@@ -359,13 +366,13 @@ Sexpr{format(round(df_averages[1,8],digits=2)*100,nsmall=0)}
 
 \end_inset
 
- percent of households report that they have access to agricultural extension.
+ percent of households report that they had access to agricultural extension.
  In the second column, we report differences between baseline characteristics
- of households that were planned to receive a sub-county level combined
- information and deliberation baraza, and those that would not be exposed
- to any baraza.
- We find that distance to the nearest road is slightly though statistically
- significantly higher in areas that were planned to receive a sub-county
+ of households that were, according to the original design, planned to receive
+ a sub-county level combined information and deliberation baraza, and those
+ that would not be exposed to any baraza.
+ We find that distance to the nearest road is slightly—though statistically
+ significantly—higher in areas that were planned to receive a sub-county
  level baraza.
  When comparing households that were planned to be exposed to a sub-county
  level information baraza to households that would not receive a sub-county
@@ -1095,7 +1102,7 @@ reference "tab:balance_orig"
  successful.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Minimal Detectable Effects (MDEs)
 \begin_inset CommandInset label
 LatexCommand label
@@ -1109,20 +1116,12 @@ name "subsec:Minimal-Detectable-Effects"
 \begin_layout Standard
 The partial roll-out means a reduction in statistical power.
  In this section, we use baseline data to simulate an updated set of minimal
- detectable effects (MDEs) for a selection of the outcomes we will use to
- judge effectiveness of the intervention (the outcomes are described in
- detail in section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Results"
-
-\end_inset
-
-) associated with the reduced sample (after partial roll-out and matching
- 40 control sub-counties to treated sub-counties).
- In other words, instead of fixing MDEs and simulating power for different
- sample sizes as is usually done in power calculations, we fix sample size
- and simulate power for different MDEs.
+ detectable effects (MDEs) for the outcomes that were pre-registered to
+ be used to judge effectiveness of the intervention.
+ Instead of fixing MDEs and simulating power for different sample sizes
+ as is usually done in power calculations, we fix sample size to what we
+ ended up with after partial roll-out, and simulate power for different
+ MDEs.
  We use a standard significance level of 0.05 (double sided).
  MDEs are estimated using a simple analysis of covariance (ANCOVA) model
  that controls for the outcome at baseline and accounts for the clustered
@@ -1147,8 +1146,8 @@ Note that the level of clustering depends on the comparison.
 status collapsed
 
 \begin_layout Plain Layout
-It is important to note that these are not ex-post power calculations, the
- dangers of which are well-known to us 
+These new simulated MDEs should not be confused with ex-post power calculations,
+ the dangers of which are well-known to us 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "doi:10.1198/000313001300339897"
@@ -1156,8 +1155,7 @@ literal "false"
 
 \end_inset
 
-.
- The simulations were done before endline data was collected.
+: The simulations were done before endline data was collected.
  The only additional information we had at that stage was the realized sample
  size.
 \end_layout
@@ -1175,11 +1173,11 @@ reference "fig:Power-curves-for"
 
 \end_inset
 
- plots MDEs against power for the first outcome variable that will be used
- to assess the impact of barazas on public service delivery in the agricultural
- sector (extension at home, measured as the percentage of households in
- our sample who report that they were visited by an expert in the previous
- year).
+ plots MDEs against power for the first pre-registered outcome variable
+ that will be used to assess the impact of barazas on public service delivery
+ in the agricultural sector (extension at home, measured as the percentage
+ of households in our sample who report that they were visited by an expert
+ in the previous year).
  On average, about 
 \begin_inset ERT
 status open
@@ -1196,16 +1194,13 @@ Sexpr{format(round(df_averages[1,8],digits=2)*100,nsmall=0)}
  percent of households in our sample reported that they were visited by
  an extension officer in the year before baseline data collection.
  The gray solid line shows the power curve associated with the deliberation
- treatment, comparing 38 sub-counties that received the deliberation treatment
- (18 deliberation only sub-counties plus 20 information+deliberation sub-countie
-s corresponding to a total of about 1,900 households) to 69 sub-counties
- that did not receive the deliberation treatment (40 pure control sub-counties
- plus 29 information only barazas, or about 3,450 households).
- The light blue dashed line closely tracks the gray line, and shows power
- for different MDEs for the information component of the baraza intervention.
- Here, we compare about 2,450 households that live in (29+20) sub-counties
- that received an information baraza to about 2,900 households (in 40+18
- sub-counties) that did not receive a sub-county information baraza.
+ treatment, comparing 18 sub-counties that received the deliberation only
+ treatment to 40 pure control sub-counties, which corresponds to a sample
+ of about 2,900 households.
+ The light blue dashed line shows power for different MDEs for the information
+ component of the baraza intervention.
+ Here, we compare 29 sub-counties that received an information focused baraza
+ to 40 control sub-counties, corresponding to about 3,450 households.
  We also investigate power for the comparison between pure control barazas
  and sub-county level barazas (black dotted line).
  Here we compare about 1,000 households in the 20 sub-counties that received
@@ -1261,11 +1256,12 @@ name "fig:Power-curves-for"
 \end_layout
 
 \begin_layout Standard
-Not surprisingly, we have most power for testing the information treatment.
+While power curves are generally not too different, we seem to have most
+ power for testing the information treatment.
  We see that the power curve hits the 80 percent threshold for the first
- time at an MDE of about 2.5 percentage points.
+ time at an MDE of about 3.7 percentage points.
  The deliberation experiment is similarly powered, and at 80 percent we
- can expect to identify effects of 3 percentage points or more.
+ can expect to identify effects of 3.75 percentage points or more.
  Due to the smaller sample size, it is harder to compare pure control sub-counti
 es to sub-county barazas that received the interacted treatment.
  Still, we are able to comfortably identify an increase of 4 percentage
@@ -1274,7 +1270,11 @@ es to sub-county barazas that received the interacted treatment.
  barazas, we find power to be comparable to that of the sub-county level
  baraza.
  This is due to the clustering at a much more aggregated level.
- In 
+ In an online repository [placeholder to online repository
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset CommandInset href
 LatexCommand href
 name "an online appendix"
@@ -1283,11 +1283,16 @@ literal "false"
 
 \end_inset
 
-, we show results for similar analyses for all pre-registered variables
+
+\end_layout
+
+\end_inset
+
+], we show results for similar analyses for all pre-registered variables
  that we will use to judge impact of the baraza intervention.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Attrition
 \begin_inset CommandInset label
 LatexCommand label
@@ -1302,10 +1307,11 @@ name "subsec:Attrition"
 As more than four years passed between baseline and endline data collection,
  some level of attrition was to be expected.
  Overall, attrition amounted to 8.6 percent.
- Reports from the field indicated that this attrition was due to some villages
- close to the lake shores that were flooded due to heavy rains.
+ Reports from the field indicated that this attrition was due to the fact
+ that some villages that were close to lake Victoria had been evacuated
+ due to rising levels of the lake.
  Two villages in areas populated with land insecure settlers were dropped
- due to security concerns.
+ due to security issues.
  Finally, attrition was generally higher in urban areas, as households that
  were residing in rented properties returned to their villages.
  Table 
@@ -1315,8 +1321,8 @@ reference "tab:Attrition"
 
 \end_inset
 
- in the Appendix shows that attrition is independent of the various intervention
-s of the study.
+ shows that attrition is independent of the various interventions of the
+ study.
 \end_layout
 
 \begin_layout Standard
@@ -1480,7 +1486,7 @@ Note: First column reports mean attrition rate (and standard deviations
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Detailed analysis
 \end_layout
 
@@ -1555,7 +1561,7 @@ load(paste(path,"report/results/final/baseline_desc_details.Rd", sep="/"))
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Agriculture
 \end_layout
 
@@ -1595,10 +1601,10 @@ Sexpr{format(round(df_averages[1,3],digits=2)*100,nsmall=0)}
  In the second column, we report differences in outcomes between households
  that received a sub-county level baraza and households that did not receive
  any baraza (
-\begin_inset Formula $\beta_{I*D}$
+\begin_inset Formula $\beta$
 \end_inset
 
-).
+ as estimated using the OLS model in Equation (1) in the paper).
  We see that the proportion of households that reported using inorganic
  fertilizer is 
 \begin_inset ERT
@@ -1619,25 +1625,8 @@ Sexpr{format(abs(round(df_ancova[1,1,3],digits=3)*100),nsmall=1)}
  baraza.
  However, this difference is not statistically significant.
  In the third column, we report differences between outcomes of households
- that live in areas where an information baraza was organized (either only
- an information baraza or a crossed information and deliberation baraza)
- and outcomes of households that live in areas that were not exposed to
- an information baraza (either pure control or only a deliberation baraza),
- corresponding to (
-\begin_inset Formula $\beta_{I}$
-\end_inset
-
- in equation 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:impact_1"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-).
+ that live in areas where an information baraza was organized and outcomes
+ of households that live in areas that were not exposed to a baraza.
  We see that adoption of inorganic fertilizer was 
 \begin_inset ERT
 status open
@@ -1652,39 +1641,11 @@ Sexpr{format(abs(round(df_ancova[1,2,3],digits=3)*100),nsmall=1)}
 \end_inset
 
  percentage points higher among households that were exposed to an information
- baraza.
+ focused baraza.
  However, also here, the difference is not significant.
- As the estimate is close to the 80 percent MDE in Figure 2 in 
-\begin_inset CommandInset href
-LatexCommand href
-name "the online appendix"
-target "https://github.com/bjvca/baraza/blob/master/report/appendices/Appendix_updates_power_calcs.pdf"
-literal "false"
-
-\end_inset
-
- of simulated MDEs, this null effect is unlikely to result from a lack of
- statistical power.
  In the fourth column, we report differences between outcomes of households
- that live in areas where a deliberation baraza was organized (either only
- a deliberation baraza or a crossed information and deliberation baraza)
- and outcomes of households that live in areas that were not exposed to
- a deliberation baraza (either pure control or information only baraza),
- corresponding to (
-\begin_inset Formula $\beta_{D}$
-\end_inset
-
- in equation 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:impact_1"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-).
+ that live in areas where a deliberation baraza was organized and outcomes
+ of households that live in areas that were not exposed to a baraza.
  We also do not find differences in terms of inorganic fertilizer use.
  Finally, in the fifth column, we compare households that were exposed to
  a district level baraza to pure control households.
@@ -1726,8 +1687,12 @@ Sexpr{format(abs(round(df_ancova[1,1,4],digits=3)*100),nsmall=1)}
  percentage points higher among households that reside in areas where a
  sub-county level baraza took place as opposed to in areas where no baraza
  was conducted, but the difference is not significant.
- In this case, the coefficient estimate is much smaller than the 80 percent
- MDE reported in Figure 2 in 
+ The coefficient estimate is much smaller than the 80 percent MDE reported
+ in Figure 2 in [placeholder for link to online repository 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset CommandInset href
 LatexCommand href
 name "the online appendix"
@@ -1736,25 +1701,20 @@ literal "false"
 
 \end_inset
 
-, so it is unclear if this null result really signifies the absence of an
- effect, or if it is due to small sample size.
+
+\end_layout
+
+\end_inset
+
+], so it is unclear if this null result really signifies the absence of
+ an effect, or if it is due to small sample size.
  We find negative point estimates for the relative effects of both the informati
 on and the deliberation component, but effects are imprecisely estimated.
  Finally, we find adoption of improved seed was lower in areas where a district
  level baraza was conducted, but the difference with areas that did not
  receive a baraza is not significant.
  Adoption of improved seed and inorganic fertilizer was included in the
- index to judge impact on the agricultural sector in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Summary-of-baraza"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
+ index to judge impact on the agricultural sector in Figure 3 of the paper.
  
 \end_layout
 
@@ -2969,7 +2929,7 @@ Sexpr{format(abs(round(df_ancova[1,1,16],digits=3)*100),nsmall=1)}
  
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Infrastructure
 \end_layout
 
@@ -2984,7 +2944,7 @@ reference "tab:anova_infra"
 
 \end_inset
 
-, which is organized similar to Table 
+, which is organized similarly to Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:anova_ag"
@@ -2996,10 +2956,10 @@ reference "tab:anova_ag"
 
 \begin_layout Standard
 A first outcome we consider is whether the household used an unprotected
- water source during dry season.
+ water source during the dry season.
  This is measured as the share of households that reported that the main
  source of drinking water during the dry season was surface water, an unprotecte
-d dug well or an unprotected spring.
+d dug well, or an unprotected spring.
  We find that about 
 \begin_inset ERT
 status open
@@ -3016,7 +2976,8 @@ Sexpr{format(round(df_averages[1,17]*100,digits=0),nsmall=0)}
  percent of households in the sample reported that they were using an unprotecte
 d water source.
  The baraza intervention did not seem to affect this proportion.
- This outcome is included in the infrastructure index.
+ This outcome is included in the infrastructure index shown in Figure 3
+ of the article.
 \end_layout
 
 \begin_layout Standard
@@ -3041,18 +3002,26 @@ Sexpr{format(round(mean(baseline_desc$dist_source,na.rm=T),digits=2),nsmall=1)}
  While this distance seemed to reduce in all comparisons, and especially
  for barazas held at the district level where we find a reduction of approximate
 ly 9 percent, it is never significantly different from zero.
- MDEs simulated (see Appendix 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Minimal-Detectable-Effects"
-plural "false"
-caps "false"
-noprefix "false"
+ Simulated MDEs [placeholder for link to online repository 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "the online appendix"
+target "https://github.com/bjvca/baraza/blob/master/report/appendices/Appendix_updates_power_calcs.pdf"
+literal "false"
 
 \end_inset
 
-) indicate that, except for the sub-county level baraza, these null effects
- are not due to limited power.
+
+\end_layout
+
+\end_inset
+
+] indicate that, except for the sub-county level baraza, these null effects
+ are probably not due to limited power.
 \end_layout
 
 \begin_layout Standard
@@ -3786,7 +3755,7 @@ We included one question related to road infrastructure.
  all weather road.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Health
 \end_layout
 
@@ -3804,7 +3773,7 @@ reference "tab:anova_health"
  for households that have visited government health facilities, reducing
  sample size too much to maintain acceptable power.
  Furthermore, the intervention may also affect the likelihood that households
- visit a government health facilities, introducing selection bias.
+ visit a government health facility, potentially introducing selection bias.
  
 \end_layout
 
@@ -5095,7 +5064,7 @@ literal "true"
  
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Education
 \end_layout
 
@@ -5220,17 +5189,26 @@ Sexpr{format(round(df_averages[1,49]*100,digits=0),nsmall=0)}
  The baraza intervention did not seem to affect how schools were managed,
  how parents could participate, or how information was shared.
  Again, statistical power may be an issue in many of these comparisons,
- as illustrated by the large MDEs (see Appendix 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Minimal-Detectable-Effects"
-plural "false"
-caps "false"
-noprefix "false"
+ as illustrated by the large MDEs [placeholder for link to online repository
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "the online appendix"
+target "https://github.com/bjvca/baraza/blob/master/report/appendices/Appendix_updates_power_calcs.pdf"
+literal "false"
 
 \end_inset
 
-).
+
+\end_layout
+
+\end_inset
+
+].
  Finally, we asked households if an inspector had visited the school in
  the year before the survey.
  We find that about 
@@ -5875,7 +5853,7 @@ y analysis.
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Heterogeneity
 \begin_inset CommandInset label
 LatexCommand label
@@ -5886,7 +5864,7 @@ name "subsec:Heterogeneity"
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Heterogeneity related to elite capture
 \end_layout
 
@@ -5988,17 +5966,7 @@ We find that the information component of sub-county level baraza increases
  overall service delivery in areas characterized by relatively high levels
  of elite capture.
  For the agricultural sector, we find that the impact of sub-county level
- baraza we found in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Summary-of-baraza"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- is not subject to heterogeneity.
+ baraza we found in Figure 3 of the article is not subject to heterogeneity.
  However, we find that the information component of sub-county level barazas
  becomes significant in areas characterized by lower disbursement rates.
  For infrastructure, we do not find significant interaction effects, although
@@ -6014,7 +5982,7 @@ noprefix "false"
  
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Heterogeneity related to connections to persons in power
 \end_layout
 
@@ -6103,6 +6071,22 @@ literal "false"
  a fence after a deliberation focused baraza.
  We also find a reduction in the use of unprotected water sources after
  a sub-county level baraza.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/endline_report_bib"
+options "chicago"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
