@@ -1,0 +1,214 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing double
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "linkcolor=black, urlcolor=blue, citecolor=blue, pdfstartview={FitH}, hyperfootnotes=false, unicode=true"
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style apsr
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+author{Tewodaj Mogues
+\backslash
+thanks{International Monetary Fund, Expenditure Policy Division, Fiscal
+ Affairs Department, Washington DC, USA} ,  Bjorn Van Campenhout
+\backslash
+thanks{Development Strategy and Governance Division, International Food
+ Policy Research Institute, Leuven, Belgium - corresponding author: b.vancampenho
+ut@cgiar.org} 
+\backslash
+footnotemark[3] ,  Caroline Miehe
+\backslash
+thanks{LICOS Centre for Institutions and Economic Performance, KULeuven,
+ Leuven, Belgium} 
+\backslash
+
+\backslash
+ Nassul Kabunga
+\backslash
+thanks{Uganda Bureau of Statistics, Kampala, Uganda} }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Community based monitoring and public service delivery - Impact, and the
+ role of information, deliberation, and jurisdictional tier
+\end_layout
+
+\begin_layout Abstract
+Abstract In many developing countries, poor delivery of public services
+ remains an important problem.
+ Through community based monitoring, beneficiaries of public services can
+ apply bottom-up pressure to under-performing service providers and their
+ political leadership.
+ In this spirit, the Government of Uganda organizes community forums—popularly
+ known as barazas—where citizens receive information from government officials,
+ and get the opportunity to challenge them.
+ We designed a cluster randomized control trial to assess the impact of
+ this policy intervention on public service delivery in agriculture, health,
+ education, and infrastructure.
+ We further test the relative importance of the two main components of the
+ intervention—information provision and citizen engagement.
+ We also compare the effectiveness of barazas organized at the district
+ level to the effectiveness of barazas organized at the sub-county level.
+ Following a pre-specified confirmatory analysis, we do not find that the
+ intervention had significant effects on general public service delivery,
+ though there are signs of improvement in agricultural sector public services.
+ We also find that the provision of information increases in-kind contributions
+ and reduces cash contributions.
+ A more exploratory analysis suggests that sub-county level barazas lead
+ to improved drinking water and schooling infrastructure.
+ Furthermore, barazas seem particularly effective for households in remote
+ areas and may be an important catalyst to organize communities around public
+ infrastructure in the absence of social cohesion.
+ These mixed results are in line with other studies, suggesting that impact
+ from barazas may be highly localized and context specific, making it hard
+ to detect impact through large scale cluster randomized control trials.
+ The fact that results are slightly more encouraging than similar community
+ monitoring initiatives by non-governmental organizations may indicate that
+ top-down monitoring may be more important in changing behavior of civil
+ servants, but that community involvement may be an effective way to pressure
+ officials into increased top-down monitoring.
+\end_layout
+
+\begin_layout Standard
+Keywords: public services, community-based monitoring, information, deliberation
+\end_layout
+
+\begin_layout Standard
+JEL-codes: H41, H72, H75
+\end_layout
+
+\begin_layout Section*
+Acknowledgment
+\end_layout
+
+\begin_layout Standard
+Research discussed in this publication has been funded by the International
+ Initiative for Impact Evaluation, Inc.
+ (3ie) through the Global Development Network (GDN) under grant number RFQ
+ PW2.18.UG.PG.
+ This research was partly funded by the CGIAR Research Program on Policies,
+ Institutions, and Markets (PIM), led by the International Food Policy Research
+ Institute (IFPRI) and carried out with support from the 
+\begin_inset CommandInset href
+LatexCommand href
+name "CGIAR Fund contributors"
+target "https://www.cgiar.org/funders/"
+literal "false"
+
+\end_inset
+
+ under grant number PIM 203002.002.221.
+ This research was cleared by the Uganda National Council for Science and
+ Technology (UNCST SS 5179), Makerere University School of Social Sciences
+ Research Ethics Committee (MAKSS REC 05.19.291), as well as IFPRI's Institutional
+ Review Board (DSG-19-1053).
+ We would like to thank Alvina Erman, Jennifer Smart, Marc Charles Wanume,
+ Wilberforce Walukano, Fiona Nattembo, Emmanuel Bizimungu, Leocardia Nabwire,
+ Richard Ariong and people at the Office of the Prime Minister, Joseph Muserero
+ in particular.
+ The views expressed in this article are not necessarily those of 3ie or
+ its members, or of GDN.
+\end_layout
+
+\end_body
+\end_document
