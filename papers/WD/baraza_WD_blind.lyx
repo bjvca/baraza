@@ -201,7 +201,7 @@ literal "false"
 \end_inset
 
 .
- In response to this, the baraza programme, an initiative of the president
+ In response to this, the baraza program, an initiative of the president
  of Uganda and implemented by the Office of the Prime Minister (OPM), was
  designed to improve public service delivery by enhancing public involvement
  in holding the government accountable for service delivery in relation
@@ -229,7 +229,7 @@ Since 2009, barazas have been organized in sub-counties throughout Uganda.
  at higher administrative levels (district) instead of the sub-county level,
  mainly to reduce cost and speed up roll out.
  A second mayor objective of this study was to inform policy makers on the
- consequences of this change in terms of effectiveness of the programme.
+ consequences of this change in terms of effectiveness of the program.
  A third objective of the study was to assess the relative importance of
  the two main components of a generic baraza event and differentiate between,
  on the one hand, the impact of arming citizens with information related
@@ -483,6 +483,103 @@ name "sec:Background-of-the"
 
 \end_layout
 
+\begin_layout Subsection
+Nature of the baraza institution
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Baraza
+\shape default
+ is a term in Swahili and refers to a set of places where people meet (for
+ example, a verandah in front of a house or some benches under a simple
+ shelter near the local mosque), and to clubs, unions, and associations,
+ but the word also describes all kinds of meetings and gatherings of people,
+ from simple informal assemblies to formal councils 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Loimeier2005"
+literal "false"
+
+\end_inset
+
+.
+ In East Africa, barazas are traditional forms of community assemblies 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Naanyu2011"
+literal "false"
+
+\end_inset
+
+.
+ In Zanzibar, they are essential features of the social discourse and have
+ facilitated discussions ranging from local deliberations and disputes to
+ international matters.
+ Here, barazas facilitate negotiations of all kinds and serve to share informati
+on and knowledge.
+ They can be public or private, formal or informal but often follow a distinct
+ set of rules and a particular code of behaviour 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Loimeier2005"
+literal "false"
+
+\end_inset
+
+.
+ In Burundi, barazas have traditionally been used to settle differences
+ and discuss community issues.
+ In Tanzania, barazas include formal councils and corporations like the
+ National Swahili Council "Baraza la Kiswahili la Taifa" or the Tanzania
+ News Broadcast Corporation "Baraza la Habari Tanzania".
+ In Kenya, barazas refer to assemblies where politicians and bureaucrats
+ present themselves to citizens on a public stage.
+ These meetings are usually held outdoors, individually licensed by the
+ state, and range in size from smaller gatherings to large assemblies with
+ several thousand participants who are addressed by the president 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Haugerud1995"
+literal "false"
+
+\end_inset
+
+.
+ Kenyan barazas used to be the main meeting ground between "the ruled" ordinary
+ citizens on the one hand, and state officials and bureaucrats as "the rulers"
+ on the other hand.
+ While some barazas only serve to legitimize a provincial political ideology
+ or aim at pro forma popular consensus, others lead to honest and real debate
+ between citizens and politicians 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Haugerud1995"
+literal "false"
+
+\end_inset
+
+.
+ Until today, all Kenyan chiefs are required by law to convene at least
+ two barazas per month.
+ One of them used the micro-blogging platform Twitter and introduced online
+ barazas to transform the interaction between members of his locale and
+ himself for better community policing 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Omanga2015"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Ugandan baraza program
+\end_layout
+
 \begin_layout Standard
 In the mid-1980s, after attaining relative stability, the Government of
  Uganda, supported by development partners, initiated far reaching liberalizatio
@@ -497,9 +594,9 @@ literal "true"
 \end_inset
 
 .
- It was assumed that this process would lead to the formulation of public
- services that were more aligned to citizens' needs and bring representative
- governance closer to citizens.
+ It was assumed that this process woulthe nature of the baraza institutiond
+ lead to the formulation of public services that were more aligned to citizens'
+ needs and bring representative governance closer to citizens.
  However, two decades after these ambitious reforms, public services in
  Uganda continued to be characterized by misaligned priorities, substandard
  services, elite capture, ineffective monitoring, and weak accountability
@@ -517,10 +614,10 @@ literal "true"
 
 \begin_layout Standard
 In response to this, the Government of Uganda, under the stewardship of
- the Office of the Prime Minister (OPM), initiated community based monitoring
- and accountability fora (or citizen barazas) in 2009 with the general objective
- of “enhancing public involvement in holding the government accountable
- for service delivery in relation to the resources spent” 
+ the OPM, initiated community based monitoring and accountability fora (or
+ citizen barazas) in 2009 with the general objective of “enhancing public
+ involvement in holding the government accountable for service delivery
+ in relation to the resources spent” 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "New1"
@@ -564,8 +661,8 @@ A typical baraza meeting is initiated from the center, with the OPM mobilizing
  For sub-county level barazas, the sub-county level equivalents of the CAO
  (the sub-county chief) and the LC5 (the sub-county chairperson, or LC3)
  also have important roles.
- OPM, in consultation with the district leaders (RDC, CAO and the LC5) and
- other stakeholders, agree on the date and a neutral location.
+ The OPM, in consultation with the district leaders (RDC, CAO and the LC5)
+ and other stakeholders, agrees on the date and a neutral location.
  Again, in consultation with the district leaders, viable moderators are
  identified to guide the baraza forum.
  Village mobilizers and community resource persons are used to publicize
@@ -614,7 +711,7 @@ name "sec:Design-features:-administrative"
 \end_layout
 
 \begin_layout Subsection
-The impact of (sub-county level) barazas
+Impact of (sub-county level) barazas
 \end_layout
 
 \begin_layout Standard
@@ -634,7 +731,7 @@ literal "true"
 
 .
  A key question is therefore simply related to the impact of a typical baraza
- intervention as originally conceived and organized by OPM.
+ intervention as originally conceived and organized by the OPM.
  We thus first test the impact of sub-county level barazas that combine
  information provision with a deliberation component on public service delivery
  and associated outcomes.
@@ -656,7 +753,7 @@ nt the facts.
 \end_layout
 
 \begin_layout Subsection
-The information mechanism
+Information mechanism
 \end_layout
 
 \begin_layout Standard
@@ -753,7 +850,7 @@ literal "true"
 \end_layout
 
 \begin_layout Subsection
-The deliberation mechanism
+Deliberation mechanism
 \end_layout
 
 \begin_layout Standard
@@ -1256,9 +1353,9 @@ All district level barazas were implemented as planned, so we mainly focus
  At the start of 2018, and almost two and a half years after baseline data
  was collected, only about 25 percent of the planned sub-county level interventi
 ons had happened.
- At that point, costs and benefits of waiting until OPM finished all sub-county
- barazas or collecting baseline information after incomplete roll-out were
- assessed and various scenarios and strategies were evaluated.
+ At that point, costs and benefits of waiting until the OPM finished all
+ sub-county barazas or collecting baseline information after incomplete
+ roll-out were assessed and various scenarios and strategies were evaluated.
  After an additional six months, with still only 56 out of the 155 sub-county
  barazas implemented, it appeared that the best scenario would be one whereby
  end-line data would be collected before all sub-counties were treated,
@@ -1380,7 +1477,7 @@ reference "tab:Balance_planed_ctrl"
  A.1 in the Online Appendix), but after dropping sub-counties that were treated.
  We find that the imbalance related to distance to nearest all weather road
  found in Online Appendix Table A.1 becomes even more pronounced.
- This may indicate that OPM prioritized treatment of less remote areas.
+ This may indicate that the OPM prioritized treatment of less remote areas.
  Similarly, for the information baraza, the imbalance for the number of
  children in school becomes stronger, suggesting information barazas were
  organized in areas where fewer children went to school to begin with.
@@ -2521,14 +2618,39 @@ literal "false"
 \end_layout
 
 \begin_layout Section
+Discussion
+\end_layout
+
+\begin_layout Standard
+"To address this comment and to make the paper less “dry”, to focus less
+ on methods and more on the context and the debate, we add: a) a broader
+ contribution to debates about local governance and community based monitoring
+ in the new section 9.
+ Discussion where we discuss in detail why the barazas did not have a (measurabl
+e) impact."
+\end_layout
+
+\begin_layout Standard
+"We do believe that a quantitative assessment is valuable in addition to
+ the already published qualitative one, and happy to elaborate why we believe
+ so in the newly added section 9.
+ Discussion."
+\end_layout
+
+\begin_layout Standard
+Haugerud, 1995: In short, these assemblies are by no means utterly predictable
+ rituals.
+\end_layout
+
+\begin_layout Section
 Conclusion
 \end_layout
 
 \begin_layout Standard
-To improve governance and public service delivery in Uganda, the Office
- of the Prime Minister (OPM) organizes town-hall type meetings—popularly
- known as barazas—where citizens receive information from government officials,
- and get the opportunity to directly engage with them.
+To improve governance and public service delivery in Uganda, the OPM organizes
+ town-hall type meetings—popularly known as barazas—where citizens receive
+ information from government officials, and get the opportunity to directly
+ engage with them.
  In 2015, we designed a cluster randomized control trial aimed at evaluating
  the effectiveness of this policy intervention.
  The study set out to answer four research questions: (1) what is the impact
@@ -2538,14 +2660,14 @@ To improve governance and public service delivery in Uganda, the Office
  a baraza? And: (4) Should a baraza be organized at the district level or
  at the sub-county level.
  Baseline data on more than 12,500 households spread over almost 250 sub-countie
-s in about 40 districts throughout Uganda was collected and OPM started
+s in about 40 districts throughout Uganda was collected and the OPM started
  implementing barazas following our experimental design and protocols.
 \end_layout
 
 \begin_layout Standard
-OPM faced various complications that affected the timely roll-out of the
- barazas, including budgetary constraints and disruptions related to the
- general elections of 2016.
+The OPM faced various complications that affected the timely roll-out of
+ the barazas, including budgetary constraints and disruptions related to
+ the general elections of 2016.
  This resulted in the decision to collect end-line information after partial
  roll-out, more than 4 years after baseline data was collected.
  Various strategies were followed to test, and reduce the consequences of,
@@ -2685,7 +2807,7 @@ literal "true"
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 btprint "btPrintCited"
-bibfiles "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/endline_report_bib"
+bibfiles "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/endline_report_bib,C:/Users/u0127963/Dropbox/baraza/Impact Evaluation Surveys/endline/report/endline_report_bib"
 options "apsr"
 
 \end_inset
