@@ -12,7 +12,7 @@ knitr
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding auto
+\inputencoding utf8
 \fontencoding global
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -2627,6 +2627,348 @@ Discussion
 \end_layout
 
 \begin_layout Standard
+In this section, we explore some of the reasons why we do not find effects.
+ 
+\end_layout
+
+\begin_layout Standard
+A first reason may be that barazas do not lead to changes in public service
+ delivery, but that there still is a change in use and appreciation by the
+ citizens.
+ During qualitative research, we found that government officials, and particular
+ly civil servants, often complained that barazas should also contain an
+ element of “civic education”.
+ Providing information about that nature of public services and the limitations
+ of what public servants can do may help manage expectations of the citizens,
+ in turn increasing their use.
+ One example given was that citizens complain that they still become sick
+ after drinking water from boreholes that were installed by government.
+ The officials responsible for water and infrastructure objected that citizens
+ still need to treat water (for example by boiling or using chlorine), even
+ when it comes from a borehole.
+ If this information would be available to citizens, perhaps their expectations
+ would be more aligned with what public servants deliver.
+\end_layout
+
+\begin_layout Standard
+To explore if this hypothesis, we test if the baraza intervention affected
+ perceptions by citizens.
+ In particular, we asked citizens to rate, on a likert scale, how satisfied
+ they were with public service delivery in the four sectors.
+ We find some indications that a combined information+deliberation baraza
+ improved citizens satisfaction related to access to water.
+ Satisfaction about schooling also improved, but is just not significant.
+ This seems to suggest that in areas where civic information is feasible,
+ there could be an impact.
+ For instance, during barazas, if often came up that children were not in
+ school and officials responded to that that they can only build schools
+ but it is up to parents to send their children to school.
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+civic education
+\begin_inset Quotes erd
+\end_inset
+
+ function of baraza may also be at play in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "raffler2018weakness"
+literal "false"
+
+\end_inset
+
+ who similarly finds their health focused community monitoring intervention
+ increased satisfaction without affecting outcomes.
+\end_layout
+
+\begin_layout Standard
+A second link we explore is related to the question if what is discussed
+ during barazas is also what is prioritized by the broader community.
+ Indeed, group dynamics may mean that the most vocal individuals dominate
+ the discussion and attempt to skew decisions arrived at during the meeting
+ in their favor.
+ Reports also indicate that barazas sometimes turn into political rallies.
+\end_layout
+
+\begin_layout Standard
+To explore the alignment between what citizens deem important and what transpire
+s at the baraza event, we would need detailed information about what was
+ discussed and concluded during the baraza meetings in addition to the baseline
+ information of what citizens feel important.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Alignment"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ uses information obtained from reports redacted by the OPM for 10 random
+ sub-county level baraza events.
+ Using these reports, we determine for each baraza which sector was most
+ discussed (column 5).
+ This is then compared to baseline data from citizens living in that subcounty
+ (column 4).
+ We find that what is prioritized by citizens is also discussed in the baraza
+ events in four out of the 10 subcounties.
+\end_layout
+
+\begin_layout Standard
+The next link in the causal impact chain is whether what is discussed in
+ the baraza is also implemented and leads to changes in outcomes.
+ To do so, we added to Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Alignment"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ a column where for each of these 10 subcounties we report in what sector
+ most positive changes were recorded during endline.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+We do this based on the indices that we created earlier to measure impact
+ at sector level (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Results"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+ We find that in only two out of 10 subcounties, the sector that was discussed
+ most during the baraza event was also the sector where most positive change
+ was recorded.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways true
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{llccccc} 
+\backslash
+hline 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+District	&	Subcounty	&			community preference	&	at baraza	&	most change	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Hoima	&	Kyabigambire	&			Health	&	Health	&	Education	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Kibaale	&	Kasambya	&		Health	&	Agriculture	&	Infrastructure	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Masaka	&	Mukungwe	&			Health	&	Agriculture	&	Agriculture	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Hoima	&	Kiziranfumbi	&			Health	&	Health	&	Health	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Ssembabule	&	Lwemiyaga	&			Health	&	Education	&	Agriculture	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Hoima	&	Buseruka	&		Education	&	Education	&	Health	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Luwero	&	Katikamu	&		Health	&	Health	&	Infrastructure	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Ntoroko	&	Kanara 	&		Infrastructure	&	Education	&	Health	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Pader	&	Puranga	&		Health	&	Infrastructure	&	Health	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Kanungu	&	Kanungu TC	&		Health	&	Infrastructure	&	Education	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline  
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+scriptsize
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Alignment
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Alignment"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status collapsed
 
@@ -2992,7 +3334,7 @@ name "fig:Factorial-design"
 
 \end_inset
 
-https://github.com/bjvca/baraza.git
+
 \end_layout
 
 \begin_layout Standard
@@ -3176,7 +3518,7 @@ Tables
 placement H
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
