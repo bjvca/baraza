@@ -91,8 +91,8 @@ knitr
 \begin_body
 
 \begin_layout Title
-Community based monitoring and public service delivery - Impact, and the
- role of information, deliberation, and jurisdictional tier
+The impact of community based monitoring on public service delivery: A randomize
+d controlled trial in Uganda
 \end_layout
 
 \begin_layout Abstract
@@ -233,7 +233,7 @@ Since 2009, barazas have been organized in sub-counties throughout Uganda.
  A third objective of the study was to assess the relative importance of
  the two main components of a generic baraza event and differentiate between,
  on the one hand, the impact of arming citizens with information related
- to budgeting & spending, and, on the other hand, the impact of allowing
+ to budgeting and spending, and, on the other hand, the impact of allowing
  citizens to engage with public servants and politicians in moderated questions-
 and-answers sessions.
  
@@ -244,11 +244,11 @@ Our study also serves as an illustration of the challenges of evaluating
  real world policy interventions and how to deal with this.
  While we feel that field experiments of large policy interventions provide
  greater external validity than the carefully designed experiments implemented
- by closely monitored non-governmental organizations we see in the literature
- these days, real-world policy experimentation is challenging: Political
- resistance to randomization needs to be overcome and researchers need to
- commit to an off-hands approach, even if things go not entirely as planned
- 
+ by closely monitored non-governmental organizations (NGOs) we see in the
+ literature these days, real-world policy experimentation is challenging:
+ Political resistance to randomization needs to be overcome and researchers
+ need to commit to an off-hands approach, even if things go not entirely
+ as planned 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "de2019rise"
@@ -389,8 +389,8 @@ Second, our study evaluates the impact of a large scale, high profile policy
  intervention that receives broad support within government, among opinion
  leaders and among citizens in Uganda.
  Such interventions may instigate an entirely different set of dynamics
- than interventions that are organized by local or international non-governmenta
-l organizations (NGOs) (as is the case in 
+ than interventions that are organized by local or international NGOs (as
+ is the case in 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "bjorkman2009power"
@@ -436,13 +436,13 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
-Third, baraza's take a comprehensive, multi-sector approach, enabling cross-sect
-oral planning and potentially allowing for re-allocation of resources across
+Third, barazas take a comprehensive, multi-sector approach, enabling cross-secto
+ral planning and potentially allowing for re-allocation of resources across
  sectors to better align with problems that were identified during barazas.
  Some of the problems most mentioned by users, such hygiene in health centers
  or accessibility, involve cooperation between heads of different sectors
- (eg.
- health and infrastructure to get access to water in health centers).
+ (for example, health and infrastructure to get access to water in health
+ centers).
  Bringing civil servants from different sectors together and confronting
  them with the priorities of citizens may increase information sharing and
  cooperation between them.
@@ -533,7 +533,15 @@ literal "false"
  and discuss community issues.
  In Tanzania, barazas include formal councils and corporations like the
  National Swahili Council "Baraza la Kiswahili la Taifa" or the Tanzania
- News Broadcast Corporation "Baraza la Habari Tanzania".
+ News Broadcast Corporation "Baraza la Habari Tanzania" 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Naanyu2011"
+literal "false"
+
+\end_inset
+
+.
  In Kenya, barazas refer to assemblies where politicians and bureaucrats
  present themselves to citizens on a public stage.
  These meetings are usually held outdoors, individually licensed by the
@@ -551,7 +559,7 @@ literal "false"
  citizens on the one hand, and state officials and bureaucrats as "the rulers"
  on the other hand.
  While some barazas only serve to legitimize a provincial political ideology
- or aim at pro forma popular consensus, others lead to honest and real debate
+ or aim at pro forma popular consensus, others lead to honest and real debates
  between citizens and politicians 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -761,7 +769,7 @@ The relationship between citizens and government officials is reminiscent
  of the principal–agent problem.
  In essence, there are three players (elected politicians, civil servants
  and citizens) with only partly overlapping information sets and potentially
- competing interests
+ competing interests.
 \begin_inset Foot
 status collapsed
 
@@ -782,7 +790,6 @@ literal "false"
 
 \end_inset
 
-.
  Bringing stakeholders together in town-hall type meetings is assumed to
  reduce information asymmetries, and may be an effective way to increase
  the quality of public service delivery by (1) allowing citizens to monitor
@@ -929,7 +936,7 @@ Jurisdictional tier
 The baraza intervention can also be distinguished by the administrative
  level at which it is implemented.
  Barazas were originally implemented at the sub-county level, but from 2012
- onward, more and more barazas were implemented at the district level
+ onward, more and more barazas were implemented at the district level.
 \begin_inset Foot
 status collapsed
 
@@ -939,7 +946,6 @@ An average district in Uganda consists of about 15 to 20 sub-counties.
 
 \end_inset
 
-.
  This administrative placement dimension immediately points to a potential
  trade-off between attempting to achieve breadth of coverage (through district-l
 evel barazas), and depth of coverage (through sub-county-level barazas).
@@ -1064,7 +1070,7 @@ We do not differentiate between the information component and the deliberation
 \end_inset
 
  In a second step, we proceeded with all eligible sub-counties and randomly
- allocated each sub-county to one of four conditions
+ allocated each sub-county to one of four conditions:
 \begin_inset Foot
 status collapsed
 
@@ -1085,7 +1091,7 @@ The experiment at the sub-county level was set up as a
 
 \end_inset
 
-: about one quarter of all eligible sub-counties sampled from 
+ about one quarter of all eligible sub-counties sampled from 
 \begin_inset Formula $D^{0}$
 \end_inset
 
@@ -1801,7 +1807,7 @@ literal "true"
 
  to account for multiple hypothesis testing.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 The indices are aggregated through inverse covariance weighting, producing
@@ -1826,7 +1832,7 @@ literal "true"
 
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 To further increase transparency and allow for easy replication, this article
@@ -1910,7 +1916,7 @@ y_{hsr}=\alpha+\beta T_{sr}+\gamma\bar{y}_{hsr}+\tau_{r}+\varepsilon_{hsr}\label
 
 \begin_layout Standard
 Here, 
-\begin_inset Formula $Y_{hsr}$
+\begin_inset Formula $y_{hsr}$
 \end_inset
 
  is the outcome (or outcome index) of interest for household 
@@ -2093,7 +2099,7 @@ literal "true"
 
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 This method first reconstructs a complete schedule of potential outcomes
@@ -2353,7 +2359,7 @@ The slow roll-out of the intervention over an extended period of time also
 To capture this, we reran the analysis and added an interaction term between
  the treatment indicator and an indicator variable that takes the value
  of one if the baraza that the household was exposed to happened more than
- one and a half years before the endline data collection
+ one and a half years before the endline data collection.
 \begin_inset Foot
 status collapsed
 
@@ -2363,7 +2369,6 @@ The indicator is coded as zero for the control group.
 
 \end_inset
 
-.
  Results for the coefficient estimates of the interaction terms are summarized
  in Figure 
 \begin_inset CommandInset ref
@@ -2382,7 +2387,7 @@ reference "fig:Summary-of-baraza"
 
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 We focus on summary indices but also discuss results for individual outcomes
@@ -2622,24 +2627,295 @@ Discussion
 \end_layout
 
 \begin_layout Standard
-"To address this comment and to make the paper less “dry”, to focus less
- on methods and more on the context and the debate, we add: a) a broader
- contribution to debates about local governance and community based monitoring
- in the new section 9.
- Discussion where we discuss in detail why the barazas did not have a (measurabl
-e) impact."
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+deleted: Suitability of the RCT approach
+\end_layout
+
+\begin_layout Plain Layout
+Barazas are rather broad interventions that attempt to address a range of
+ issues in fairly heterogeneous settings, resulting in treatments that are
+ unlikely to be entirely standardized across treatment units, at least compared
+ to typical treatments in bio-medical sciences.
+ Different sub-counties face different challenges, so that a baraza in one
+ sub-county may evolve in a different direction than a baraza in another
+ sub-county.
+ For example, in Bagezza sub-county in Mubende District, drinking water
+ used to be a serious problem and was discussed extensively during the baraza.
+ Endline data shows that the government in this sub-county provided better
+ access to drinking water after the meeting.
+ For instance, the average distance to the nearest water source was reduced
+ from 1.75 to 1.35 km.
+ However, in another sub-county, agriculture could have been the most pressing
+ problem at baseline, so that this issue could have been discussed in detail
+ during this sub-county's baraza.
+ Consequently, the government could have mainly invested in extension services
+ in response to the meeting.
+ Both barazas may be effective in their own right, yet outcomes are averaged
+ over treatment units, and impact may be diluted.
+\end_layout
+
+\begin_layout Plain Layout
+In other words, our analysis suggests that the effects of the baraza meetings
+ are highly localized and context specific.
+ As a result, a focus on average treatment effects may make it difficult
+ to identify any significant impact.
+ The effect is attenuated because it is averaged over many sub-counties
+ that in reality received “different” types of barazas.
+ Heterogeneous treatment effects have been documented in similar community-based
+ monitoring interventions, complicating estimation of average treatment
+ effects 
+\begin_inset CommandInset citation
+LatexCommand citep
+before "eg."
+key "bjorkman2010community"
+literal "true"
+
+\end_inset
+
+.
+ Hence the RCT approach and its focus on average treatment effects may not
+ be ideal for this treatment which is hardly standardizable.
+\end_layout
+
+\begin_layout Plain Layout
+On the other hand, measuring average treatment effects of this high profile
+ policy intervention is exactly what distinguishes this work from previous
+ studies.
+ Instead of carefully designing, implementing and closely monitoring an
+ experiment ourselves or with the help of an NGO, evaluating the impact
+ of a large scale and
+\begin_inset space ~
+\end_inset
+
+real world policy intervention provides greater external validity.
+ And even though the fact that barazas tend to focus on and potentially
+ affect areas that are most problematic does complicate the estimation,
+ this is exactly the benefit of these real world multi-sector barazas which
+ allow cross-sectoral planning and resource allocation.
+ After all, even though the baraza treatments that are unlikely to be entirely
+ standardized, we should be able to measure an impact if there is one because
+ our large sample leads to sufficient statistical power to detect even relativel
+y small effects.
+ So, even if only a fraction of barazas focussed on drinking water and only
+ a fraction of sub-county and district governments invested in this sector
+ in response to the meeting, we should still ...
+\end_layout
+
+\begin_layout Plain Layout
+(deleted because these are only anecdotes)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-"We do believe that a quantitative assessment is valuable in addition to
- the already published qualitative one, and happy to elaborate why we believe
- so in the newly added section 9.
- Discussion."
+"a broader contribution to debates about local governance and community
+ based monitoring where we discuss in detail why the barazas did not have
+ an impact."
 \end_layout
 
 \begin_layout Standard
-Haugerud, 1995: In short, these assemblies are by no means utterly predictable
- rituals.
+.
+\end_layout
+
+\begin_layout Standard
+Even though our analysis suggests that barazas may work in highly localized
+ and context specific settings, we cannot conclude that community based
+ monitoring has a large and significant impact on public service delivery.
+ This is in line with 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "raffler2018weakness"
+literal "true"
+
+\end_inset
+
+ who find that their intervention did not improve community monitoring or
+ health outcomes.
+ As we cannot provide any strong empirical evidence of barazas being beneficial,
+ we try to disentangle was it going on and shed some light on the question
+ why community based monitoring is not more effective.
+\end_layout
+
+\begin_layout Standard
+Baraza meetings can only improve public service delivery if two conditions
+ hold.
+ Firstly, the current quality of public services in Uganda cannot be superior,
+ so that there is little or no room for improvement, and secondly, there
+ have to be resources available to improve public services, so that the
+ program can make a difference.
+ There is no doubt that public service delivery is Uganda is not perfect
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "reinikka2004local"
+literal "false"
+
+\end_inset
+
+.
+ We asked officials in all sub-counties of our sample at baseline about
+ the proportion of their public service budget that they actually received
+ for the fiscal year 2013/2014.
+ They report to have received on average 83 percent of their health and
+ education budgets, implying that there were at least some resources available.
+ However, future studies should collect budget information from participating
+ sub-counties 
+\end_layout
+
+\begin_layout Standard
+Under this premise, the problem with public services then is that either
+ 1) the resources are not effectively used to improve the public services,
+ i.e.
+ are used to on "issues" that are not of primary concern to the community,
+ or 2) the implemented public services are not sufficiently used by the
+ community due to a lack of information, and understanding, of what resources
+ are available and how they can be addressed.
+\end_layout
+
+\begin_layout Standard
+b) holds, we can use sc level data to give some idea of the budgets involved.
+\end_layout
+
+\begin_layout Standard
+If the problem is 1), then additional information that would help to understand
+ why the public services have not been improved is a) what concrete decision
+ have been made a the different barazas, b) whether these decision indeed
+ reflect what is of primary concern to the community, and c) whether policy
+ makers and public servants followed through on these decisions, and implemented
+ them.
+ Would it be possible to obtain this information as part of the study, and/or
+ provide some understanding whether one of these issues are the reason why
+ the barazas are not more effective, i.e.
+ whether a) no decision were reached at the baraza, or whether b) the decisions
+ did not reflect what the community wanted or c) the decisions were not
+ implemented?
+\end_layout
+
+\begin_layout Standard
+Maybe we should do this in a very non-scientific way, for something like
+ 10 barazas for which we have nice reports (that include clearly what issues
+ came up and what activities were planned).
+ And these can then be connected to a) baseline info to see what is prioritized
+ (we had some questions there).
+ c) endline data to see if there is indeed more progress in the areas that
+ were prioritized during the baraza.
+\end_layout
+
+\begin_layout Standard
+See the table.
+ The table suggests that it is especially c) (the decisions were not implemented
+)
+\end_layout
+
+\begin_layout Standard
+If the problem is 2), then additional information that would help to understand
+ why the public services have not improved is whether the community felt
+ that the information that was provided was relevant in allowing them to
+ more effectively use the public services, or whether the existing public
+ services are not used because they do not address the primary needs of
+ the community.
+\end_layout
+
+\begin_layout Standard
+The question whether (particularly the information component of) the baraza
+ leads citizens to use public services more effectively is very relevant.
+ As a matter of fact, during qualitative research, we found that government
+ officials, and particularly civil servants, often complained that barazas
+ should also contain an element of “civic education”.
+ Providing information about that nature of public services and the limitations
+ of what public servants can do may help manage expectations of the citizens.
+ One example that is given in (ref to other study) refers to a situation
+ where citizens complain that they still become sick after drinking water
+ from boreholes were installed by government.
+ The officials responsible for water and infrastructure objected that citizens
+ still need to treat water (eg by boiling or using chlorine), even when
+ it comes from a borehole.
+ If this information would be available to citizens, perhaps their expectations
+ would be more aligned with what public servants deliver.
+ 
+\end_layout
+
+\begin_layout Standard
+With the above impact pathway in mind, we added some questions to elicit
+ perceptions of citizens about the quality of services (as opposed to the
+ more objective outcomes such as waiting time in health centers or distance
+ to the nearest clean water source).
+ These were generally broad questions (eg whether education is a problem)
+ and measured using likert scales.
+ The idea was that, even though we may not see a change from the baraza
+ intervention on objective measures, we may still see that citizen start
+ to appreciate existing services more after an (information focused) baraza.
+ This would be an indication of how information allows citizens to more
+ effectively use the public services.
+\end_layout
+
+\begin_layout Standard
+Changes made to the text: We run simple comparison (treatment vs control
+ with for treatment the information focused baraza) on four 
+\end_layout
+
+\begin_layout Standard
+The first part of this question could be used by seeing if, even if objective
+ measures did not improve (waiting time), community members did become more
+ positive.
+ The second can be answered by comparing what community members think is
+ important (farmer level data) versus what officials think is important
+ (SC level data)
+\end_layout
+
+\begin_layout Standard
+Overall, would it possible to provide information from community members
+ on whether a) they judge the baraza to be effective or not, b) why in their
+ opinion are the key factors for why they are effective/not effective, and
+ c) if they are not effective what is the reason for it? While this information
+ is more challenging to process and analyze, it seems important to assess
+ what factors may contribute to the barazas not being more effective, and
+ what measure could be taken to address these factors, This information
+ could also be helpful to identify how a follow-up study needs to be set
+ up in order to study, and understand, these factors in more detail, and
+ obtain a better understanding why barazas are not more effective.
+ For this, we could refer to the qualitative exploration again, where we
+ have some threads to effectiveness of barazas as articulated by community
+ members.
+ For instance, the fact that braza should be held regularly to keep the
+ pressure on politicians and service providers.
+ Comments from the reviewer
+\end_layout
+
+\begin_layout Standard
+In addition to reviewer comments, I would like you to address three issues
+ in your revisions that we are asking all authors to address to promote
+ consistency across the research papers along a given theme for which World
+ Development is a vehicle.
+ One, this is a subject on which there has been some significant research,
+ reported in interdisciplinary development journals.
+ It would be useful for you to engage with available findings in the interests
+ of engaging with the relevant audience to ensure both that your paper is
+ speaking to the literature and demonstrating its additional contributions
+ clearly.
+ World Development is committed to the principle of fair intellectual acknowledg
+ment without bias or discrimination on the basis of gender, ethnicity, race,
+ class, professional standing, or other similar attributes.
+ As such, we encourage all our authors to be vigilant in attribution of
+ intellectual debt and citations, attending in particular to acknowledging
+ authors, scholarship, and literatures often overlooked as a result of above
+ biases.
+\end_layout
+
+\begin_layout Standard
+Two, please provide a set of 3-5 highlights that convey the message and
+ findings of your paper succinctly and clearly to the general reader.
+\end_layout
+
+\begin_layout Standard
+Finally, please avoid references to gray literature to the greatest possible
+ extent.
 \end_layout
 
 \begin_layout Section
@@ -2771,32 +3047,6 @@ g.
 \end_layout
 
 \begin_layout Standard
-More generally, our analysis suggests that impact from barazas may be highly
- localized and context specific.
- Heterogeneous treatment effects have been documented in similar community-based
- monitoring interventions, complicating estimation of average treatment
- effects 
-\begin_inset CommandInset citation
-LatexCommand citep
-before "eg."
-key "bjorkman2010community"
-literal "true"
-
-\end_inset
-
-.
- Barazas are fairly broad interventions that attempt to address a range
- of issues in a heterogeneous setting, resulting in treatments that are
- unlikely to be standardized across treatment units, at least compared to
- typical treatments in bio-medical sciences.
- A baraza in one sub-county may evolve in a very different direction than
- a baraza in another sub-county.
- Both barazas may be effective in their own right, yet outcomes are averaged
- over treatment units, and impact diluted.
- 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -2807,7 +3057,7 @@ literal "true"
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 btprint "btPrintCited"
-bibfiles "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/endline_report_bib,C:/Users/u0127963/Dropbox/baraza/Impact Evaluation Surveys/endline/report/endline_report_bib"
+bibfiles "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/endline_report_bib,../../report/endline_report_bib"
 options "apsr"
 
 \end_inset
