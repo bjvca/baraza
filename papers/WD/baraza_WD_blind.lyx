@@ -1674,21 +1674,6 @@ status open
 
 \begin_layout Plain Layout
 
-load(paste(path,"report/results/df_averages_details.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_ancova_details.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/baseline_desc_details.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -2197,12 +2182,6 @@ status open
 
 \begin_layout Plain Layout
 
-load(paste(path,"report/results/df_averages_additional.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_ancova_additional.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
