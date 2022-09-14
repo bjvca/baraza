@@ -121,14 +121,15 @@ In many developing countries, poor delivery of public services remains an
  Furthermore, barazas seem particularly effective for households in remote
  areas and may be an important catalyst to organize communities around public
  infrastructure in the absence of social cohesion.
- These mixed results are in line with other studies, suggesting that impact
- from barazas may be highly localized and context specific, making it hard
- to detect impact through large scale cluster randomized control trials.
  The fact that results are slightly more encouraging than similar community
  monitoring initiatives by non-governmental organizations may indicate that
  top-down monitoring may be more important in changing behavior of civil
- servants, but that community involvement may be an effective way to pressure
- officials into increased top-down monitoring.
+ servants, but that bottom-up pressure from the community may be an effective
+ way to pressure officials into increased top-down monitoring.
+ At the same time, additional exploratory analysis suggests that, even though
+ what transpires during a baraza reflects concerns of the citizens, what
+ is decided at the event is often not executed.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2607,7 +2608,34 @@ Discussion
 
 \begin_layout Standard
 In this section, we explore some of the reasons why we do not find effects.
+ Baraza meetings can only improve public service delivery if two conditions
+ hold.
+ Firstly, there needs to be room for improvement.
+ If politicians are already responsive to the needs of citizens and civil
+ servants are delivering the services, a baraza intervention is unlikely
+ to have a significant marginal effect on objectively verifyable outcome
+ measure like waiting time in health centers or the student-teacher ratio
+ (however, a baraza could still instill change in the level of satisfaction
+ of citizens — see below).
+ Secondly, there have to be resources available to improve public services,
+ so that the program can make a difference.
+ There is no doubt that public service delivery is Uganda is not perfect
  
+\begin_inset CommandInset citation
+LatexCommand citep
+key "reinikka2004local"
+literal "false"
+
+\end_inset
+
+.
+ We asked officials in all sub-counties of our sample at baseline about
+ the proportion of their public service budget that they actually received
+ for the fiscal year 2013/2014.
+ They report to have received on average 83 percent of their health and
+ education budgets, implying that there were at least some resources available.
+ However, future studies should collect budget information from participating
+ sub-counties to [I wrote until here].
 \end_layout
 
 \begin_layout Standard
@@ -2945,138 +2973,6 @@ name "tab:Alignment"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-deleted: Suitability of the RCT approach
-\end_layout
-
-\begin_layout Plain Layout
-Barazas are rather broad interventions that attempt to address a range of
- issues in fairly heterogeneous settings, resulting in treatments that are
- unlikely to be entirely standardized across treatment units, at least compared
- to typical treatments in bio-medical sciences.
- Different sub-counties face different challenges, so that a baraza in one
- sub-county may evolve in a different direction than a baraza in another
- sub-county.
- For example, in Bagezza sub-county in Mubende District, drinking water
- used to be a serious problem and was discussed extensively during the baraza.
- Endline data shows that the government in this sub-county provided better
- access to drinking water after the meeting.
- For instance, the average distance to the nearest water source was reduced
- from 1.75 to 1.35 km.
- However, in another sub-county, agriculture could have been the most pressing
- problem at baseline, so that this issue could have been discussed in detail
- during this sub-county's baraza.
- Consequently, the government could have mainly invested in extension services
- in response to the meeting.
- Both barazas may be effective in their own right, yet outcomes are averaged
- over treatment units, and impact may be diluted.
-\end_layout
-
-\begin_layout Plain Layout
-In other words, our analysis suggests that the effects of the baraza meetings
- are highly localized and context specific.
- As a result, a focus on average treatment effects may make it difficult
- to identify any significant impact.
- The effect is attenuated because it is averaged over many sub-counties
- that in reality received “different” types of barazas.
- Heterogeneous treatment effects have been documented in similar community-based
- monitoring interventions, complicating estimation of average treatment
- effects 
-\begin_inset CommandInset citation
-LatexCommand citep
-before "eg."
-key "bjorkman2010community"
-literal "true"
-
-\end_inset
-
-.
- Hence the RCT approach and its focus on average treatment effects may not
- be ideal for this treatment which is hardly standardizable.
-\end_layout
-
-\begin_layout Plain Layout
-On the other hand, measuring average treatment effects of this high profile
- policy intervention is exactly what distinguishes this work from previous
- studies.
- Instead of carefully designing, implementing and closely monitoring an
- experiment ourselves or with the help of an NGO, evaluating the impact
- of a large scale and
-\begin_inset space ~
-\end_inset
-
-real world policy intervention provides greater external validity.
- And even though the fact that barazas tend to focus on and potentially
- affect areas that are most problematic does complicate the estimation,
- this is exactly the benefit of these real world multi-sector barazas which
- allow cross-sectoral planning and resource allocation.
- After all, even though the baraza treatments that are unlikely to be entirely
- standardized, we should be able to measure an impact if there is one because
- our large sample leads to sufficient statistical power to detect even relativel
-y small effects.
- So, even if only a fraction of barazas focussed on drinking water and only
- a fraction of sub-county and district governments invested in this sector
- in response to the meeting, we should still ...
-\end_layout
-
-\begin_layout Plain Layout
-(deleted because these are only anecdotes)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Even though our analysis suggests that barazas may work in highly localized
- and context specific settings, we cannot conclude that community based
- monitoring has a large and significant impact on public service delivery.
- This is in line with 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "raffler2018weakness"
-literal "true"
-
-\end_inset
-
- who find that their intervention did not improve community monitoring or
- health outcomes.
- As we cannot provide any strong empirical evidence of barazas being beneficial,
- we try to disentangle was it going on and shed some light on the question
- why community based monitoring is not more effective.
-\end_layout
-
-\begin_layout Standard
-Baraza meetings can only improve public service delivery if two conditions
- hold.
- Firstly, the current quality of public services in Uganda cannot be superior,
- so that there is little or no room for improvement, and secondly, there
- have to be resources available to improve public services, so that the
- program can make a difference.
- There is no doubt that public service delivery is Uganda is not perfect
- 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "reinikka2004local"
-literal "false"
-
-\end_inset
-
-.
- We asked officials in all sub-counties of our sample at baseline about
- the proportion of their public service budget that they actually received
- for the fiscal year 2013/2014.
- They report to have received on average 83 percent of their health and
- education budgets, implying that there were at least some resources available.
- However, future studies should collect budget information from participating
- sub-counties to [I wrote until here].
 \end_layout
 
 \begin_layout Section
