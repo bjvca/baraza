@@ -3057,7 +3057,7 @@ g.
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 btprint "btPrintCited"
-bibfiles "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/endline_report_bib,../../report/endline_report_bib"
+bibfiles "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/endline_report_bib"
 options "apsr"
 
 \end_inset
@@ -3152,7 +3152,7 @@ name "fig:Factorial-design"
 
 \end_inset
 
-
+https://github.com/bjvca/baraza.git
 \end_layout
 
 \begin_layout Standard
