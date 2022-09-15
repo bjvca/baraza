@@ -2607,20 +2607,57 @@ Discussion
 \end_layout
 
 \begin_layout Standard
-In this section, we explore some of the reasons why we do not find effects.
- Baraza meetings can only improve public service delivery if two conditions
- hold.
- Firstly, there needs to be room for improvement.
- If politicians are already responsive to the needs of citizens and civil
- servants are delivering the services, a baraza intervention is unlikely
- to have a significant marginal effect on objectively verifyable outcome
- measure like waiting time in health centers or the student-teacher ratio
- (however, a baraza could still instill change in the level of satisfaction
- of citizens — see below).
- Secondly, there have to be resources available to improve public services,
- so that the program can make a difference.
- There is no doubt that public service delivery is Uganda is not perfect
+In this section, we explore some of the potential reasons why barazas do
+ not seem to translate into large overall or sector-wide improvements in
+ public service delivery.
  
+\end_layout
+
+\begin_layout Standard
+Community based monitoring intervention such as the baraza program can only
+ improve public service delivery if two conditions are met.
+ Firstly, there needs to be room for improvement: If politicians are already
+ responsive to the needs of citizens and civil servants are delivering the
+ services, a baraza intervention is unlikely to have a significant additional
+ effect on objectively verifiable outcomes such as waiting time in health
+ centers or the student-teacher ratios (however, a baraza could still instill
+ change in citizens' perceptions about public service delivery — see below).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The fact that child mortality reduced significantly to the community based
+ monitoring intervention in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bjorkman2009power"
+literal "false"
+
+\end_inset
+
+ but not in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "raffler2018weakness"
+literal "false"
+
+\end_inset
+
+ is attributed to the fact that child mortality improved substantially over
+ the last few decades, leaving little room for further adjustment.
+ 
+\end_layout
+
+\end_inset
+
+ Secondly, resources need to be available to improve public services, otherwise
+ barazas remain just talk shops.
+ 
+\end_layout
+
+\begin_layout Standard
+With respect to the first precondition, it is hard to argue that service
+ delivery in Uganda can not be improved 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "reinikka2004local"
@@ -2629,9 +2666,22 @@ literal "false"
 \end_inset
 
 .
- We asked officials in all sub-counties of our sample at baseline about
- the proportion of their public service budget that they actually received
- for the fiscal year 2013/2014.
+ While progress had been made in some areas such as child mortality, other
+ areas have seen less progress.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+[add some examples here? like only 10 percent of households have access
+ to extension (refer to balance table, etc etc)]
+\end_layout
+
+\end_inset
+
+ With respect to the second pre-condition, we asked officials in all sub-countie
+s of our sample at baseline about the proportion of their public service
+ budget that they actually received for the fiscal year 2013/2014.
  They report to have received on average 83 percent of their health and
  education budgets, implying that there were at least some resources available.
  However, future studies should collect budget information from participating
