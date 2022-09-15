@@ -482,10 +482,10 @@ Nature of the baraza institution
 Baraza
 \shape default
  is a term in Swahili and refers to a set of places where people meet (for
- example, a verandah in front of a house or some benches under a simple
- shelter near the local mosque), and to clubs, unions, and associations,
- but the word also describes all kinds of meetings and gatherings of people,
- from simple informal assemblies to formal councils 
+ example, a veranda in front of a house or some benches under a simple shelter
+ near the local mosque), and to clubs, unions, and associations, but the
+ word also describes all kinds of meetings and gatherings of people, from
+ simple informal assemblies to formal councils 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Loimeier2005"
@@ -494,7 +494,8 @@ literal "false"
 \end_inset
 
 .
- In East Africa, barazas are traditional forms of community assemblies 
+ Throughout East Africa, barazas are traditional forms of community assemblies
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Naanyu2011"
@@ -548,7 +549,7 @@ literal "false"
  citizens on the one hand, and state officials and bureaucrats as "the rulers"
  on the other hand.
  While some barazas only serve to legitimize a provincial political ideology
- or aim at pro forma popular consensus, others lead to honest and real debates
+ or aim at pro-forma popular consensus, others lead to honest and real debates
  between citizens and politicians 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -2420,8 +2421,8 @@ In this section, we explore some of the potential reasons why barazas do
 \end_layout
 
 \begin_layout Standard
-Community based monitoring intervention such as the baraza program can only
- improve public service delivery if two conditions are met.
+Community based monitoring interventions such as the baraza program can
+ only improve public service delivery if two conditions are met.
  Firstly, there needs to be room for improvement: If politicians are already
  responsive to the needs of citizens and civil servants are delivering the
  services, a baraza intervention is unlikely to have a significant additional
@@ -2485,13 +2486,17 @@ status open
 
 \end_inset
 
- With respect to the second pre-condition, we asked officials in all sub-countie
-s of our sample at baseline about the proportion of their public service
- budget that they actually received for the fiscal year 2013/2014.
+ 
+\end_layout
+
+\begin_layout Standard
+With respect to the second pre-condition, modest funds are generally available.
+ The decentralization process in Uganda is generally though to be successful.
+ During our baseline survey, we asked government officials in all sub-counties
+ of our sample about the proportion of their public service budget that
+ they actually received for the fiscal year 2013/2014.
  They report to have received on average 83 percent of their health and
- education budgets, implying that there were at least some resources available.
- However, future studies should collect budget information from participating
- sub-counties to [I wrote until here].
+ education budgets.
 \end_layout
 
 \begin_layout Standard
@@ -3974,7 +3979,7 @@ Note: First column reports sample means (and standard deviations below);
 placement H
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -4693,7 +4698,7 @@ load(paste(path,"report/results/final/df_ancova_additional.Rd", sep="/"))
 placement H
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -5155,7 +5160,7 @@ Note: First column reports sample means (and standard deviations below);
 placement H
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
