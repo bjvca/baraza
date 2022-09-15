@@ -3180,11 +3180,21 @@ hline
 
 \begin_layout Plain Layout
 
-District	&	Subcounty	&			community preference	&	at baraza	&	most change	
+District & Sub-county & Community's priority & Prioritized sector & Largest
+ change
 \backslash
 
 \backslash
  
+\end_layout
+
+\begin_layout Plain Layout
+
+& & at baseline & during baraza & at endline 
+\backslash
+
+\backslash
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -3983,20 +3993,18 @@ scriptsize
 
 \begin_layout Plain Layout
 
-Note: First column reports sample means (and standard deviations below);
- Column 2 reports differences (and standard errors below) between baseline
- characteristics of households that were planned to receive a sub-county
- level combined information and deliberation baraza but did not receive
- one, and those that were planned not receive any baraza; Column 3 (and
- standard errors below) reports differences between baseline characteristics
- of households that were planned to receive a sub-county level information
- baraza but did not receive one, and those that were planned to not receive
- a sub-county level information baraza; Column 4 reports differences (and
- standard errors below) between baseline characteristics of households that
- were panned to receive a sub-county level deliberation baraza but did not
- get one, and those that were planned to not receive a sub-county level
- deliberation baraza; **, * and + denotes significance at the 1, 5 and 10
- percent levels.
+Note: Column 1 reports sample means (and standard deviations below); Column
+ 2 reports differences  between baseline characteristics of households that
+ were planned to receive a sub-county level combined information and deliberatio
+n baraza but did not receive any baraza, and those that were planned to
+ not receive one (and standard errors below); Column 3 reports differences
+  between baseline characteristics of households that were planned to receive
+ a sub-county level information baraza but did not receive one, and those
+ that were planned to not receive one (and standard errors below); Column
+ 4 reports differences  between baseline characteristics of households that
+ were planned to receive a sub-county level deliberation baraza but did
+ not receive one, and those that were planned to not receive one (and standard
+ errors below); **, * and + denote significance at 1, 5 and 10 percent levels.
  Reported standard errors are clustered at the level of randomization.
  Distance to all weather road is trimmed at 5 percent and transformed using
  the inverse hyperbolic sine transformation.
@@ -4664,21 +4672,19 @@ scriptsize
 
 \begin_layout Plain Layout
 
-Note: First column reports sample means (and standard deviations below);
- Column 2 reports differences (and standard errors below) between baseline
- characteristics of households that received a sub-county level combined
- information and deliberation baraza, and those that did not receive any
- baraza; Column 3 reports differences (and standard errors below) between
- baseline characteristics of households that received a sub-county level
- information baraza, and those that did not receive a sub-county level informati
-on baraza; Column 4 reports differences (and standard errors below) between
- baseline characteristics of households that received a sub-county level
- deliberation baraza, and those that did not receive a sub-county level
- deliberation baraza; Column 5 reports differences (and standard errors
- below) between baseline characteristics of households that received a district
- level combined information and deliberation baraza, and those that did
- not receive any baraza;  **, * and + denotes significance at the 1, 5 and
- 10 percent levels.
+Note: Column 1 reports sample means (and standard deviations below); Column
+ 2 reports differences  between baseline characteristics of households that
+ received a sub-county level combined information and deliberation baraza,
+ and those that did not receive any baraza (and standard errors below);
+ Column 3 reports differences  between baseline characteristics of households
+ that received a sub-county level information baraza, and those that did
+ not receive one (and standard errors below); Column 4 reports differences
+  between baseline characteristics of households that received a sub-county
+ level deliberation baraza, and those that did not receive one (and standard
+ errors below); Column 5 reports differences  between baseline characteristics
+ of households that received a district level combined information and deliberat
+ion baraza, and those that did not receive any baraza (and standard errors
+ below);  **, * and + denote significance at the 1, 5 and 10 percent levels.
  Reported standard errors are clustered at the level of randomization.
  Distance to all weather road is trimmed at 5 percent and transformed using
  the inverse hyperbolic sine transformation.
@@ -5171,14 +5177,14 @@ scriptsize
 
 \begin_layout Plain Layout
 
-Note: First column reports sample means (and standard deviations below);
- Column 2 reports effect (and standard errors below) of the sub-county level
- baraza intervention; Column 3 reports the effect (and standard errors below)
- of the information component of the baraza intervention; Column 4 reports
- the effect (and standard errors below) of the deliberation component of
- the baraza intervention; Column 5 reports the effect (and standard errors
- below) of the administrative placement of the baraza intervention.
- **, * and + denotes significance at the 1, 5 and 10 percent levels as assessed
+Note: Column 1 reports sample means (and standard deviations below); Column
+ 2 reports the effect of the sub-county level baraza intervention (and standard
+ errors below); Column 3 reports the effect of the information component
+ of the baraza intervention (and standard errors below); Column 4 reports
+ the effect  of the deliberation component of the baraza intervention (and
+ standard errors below); Column 5 reports the effect of the administrative
+ placement of the baraza intervention (and standard errors below).
+ **, * and + denote significance at the 1, 5 and 10 percent levels as assessed
  using randomization inference.
  Reported standard errors are clustered at the level of randomization.
  
@@ -6041,14 +6047,14 @@ scriptsize
 
 \begin_layout Plain Layout
 
-Note: First column reports sample means (and standard deviations below);
- Column 2 reports effect (and standard errors below) of the sub-county level
- baraza intervention; Column 3 reports the effect (and standard errors below)
- of the information component of the baraza intervention; Column 4 reports
- the effect (and standard errors below) of the deliberation component of
- the baraza intervention; Column 5 reports the effect (and standard errors
- below) of the administrative placement of the baraza intervention.
- **, * and + denotes significance at the 1, 5 and 10 percent levels as assessed
+Note: Column 1 reports sample means (and standard deviations below); Column
+ 2 reports the effect of the sub-county level baraza intervention (and standard
+ errors below); Column 3 reports the effect of the information component
+ of the baraza intervention (and standard errors below); Column 4 reports
+ the effect  of the deliberation component of the baraza intervention (and
+ standard errors below); Column 5 reports the effect of the administrative
+ placement of the baraza intervention (and standard errors below).
+ **, * and + denote significance at the 1, 5 and 10 percent levels as assessed
  using randomization inference.
  Reported standard errors are clustered at the level of randomization.
 \end_layout
