@@ -3134,7 +3134,7 @@ load(paste(path,"report/results/final/df_averages_end.Rd", sep="/"))
 \begin_inset Float table
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -3173,11 +3173,21 @@ hline
 
 \begin_layout Plain Layout
 
-District	&	Subcounty	&			community preference	&	at baraza	&	most change	
+District & Sub-county & Community's priority & Prioritized sector & Largest
+ change
 \backslash
 
 \backslash
  
+\end_layout
+
+\begin_layout Plain Layout
+
+& & at baseline & during baraza & at endline 
+\backslash
+
+\backslash
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -4730,7 +4740,7 @@ load(paste(path,"report/results/final/df_ancova_additional.Rd", sep="/"))
 placement H
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -5192,7 +5202,7 @@ Note: First column reports sample means (and standard deviations below);
 placement H
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
