@@ -494,7 +494,8 @@ literal "false"
 \end_inset
 
 .
- In East Africa, barazas are traditional forms of community assemblies 
+ Throughout East Africa, barazas are traditional forms of community assemblies
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Naanyu2011"
@@ -548,7 +549,7 @@ literal "false"
  citizens on the one hand, and state officials and bureaucrats as "the rulers"
  on the other hand.
  While some barazas only serve to legitimize a provincial political ideology
- or aim at pro forma popular consensus, others lead to honest and real debates
+ or aim at pro-forma popular consensus, others lead to honest and real debates
  between citizens and politicians 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -2419,8 +2420,8 @@ In this section, we explore some of the potential reasons why barazas do
 \end_layout
 
 \begin_layout Standard
-Community based monitoring intervention such as the baraza program can only
- improve public service delivery if two conditions are met.
+Community based monitoring interventions such as the baraza program can
+ only improve public service delivery if two conditions are met.
  Firstly, there needs to be room for improvement: If politicians are already
  responsive to the needs of citizens and civil servants are delivering the
  services, a baraza intervention is unlikely to have a significant additional
@@ -2462,7 +2463,35 @@ literal "false"
 
 \begin_layout Standard
 With respect to the first precondition, it is hard to argue that service
- delivery in Uganda can not be improved 
+ delivery in Uganda can not be improved.
+ While progress had been made in some areas such as child mortality, other
+ areas have seen less progress.
+ For instance, only about 10 percent of households report that they have
+ access to agricultural extension (see Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Balance_planed_ctrl"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Data obtained from our baseline survey shows patients have to wait on average
+ almost two hours for medical examination at government health centers and
+ in the vast majority of cases are examined by a nurse instead of a doctor.
+ Access to water remains problematic, especially in the dry season when
+ 36 percent of households use potentially unsafe drinking water.
+ 
+\end_layout
+
+\begin_layout Standard
+With respect to the second pre-condition, modest funds are generally available.
+ The far reaching liberalization and decentralization process started in
+ the mid 1980s in Uganda seduced donors across the globe to poor money into
+ public services.
+ While there were some studies reporting rampant elite capture 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "reinikka2004local"
@@ -2470,33 +2499,123 @@ literal "false"
 
 \end_inset
 
-.
- While progress had been made in some areas such as child mortality, other
- areas have seen less progress.
- 
-\begin_inset Note Note
-status open
+, during our baseline survey, we asked government officials in all sub-counties
+ of our sample about the proportion of their public service budget that
+ they actually received for the fiscal year 2013/2014, and they report to
+ have received on average 83 percent of their health and education budgets.
+\end_layout
+
+\begin_layout Standard
+Provided that there is room for improvement and funds are available, a first
+ reason why barazas do not have impact is because citizen priorities do
+ not get discussed during baraza events.
+ Indeed, group dynamics may mean that the most vocal individuals dominate
+ the discussion and attempt to skew decisions arrived at during the meeting
+ in their favor.
+ Reports also indicate that barazas sometimes turn into political rallies.
+ To explore the alignment between what citizens deem important and what
+ transpires at the baraza event, we would need detailed information about
+ what was discussed and concluded during the baraza meetings in addition
+ to the baseline information of what citizens feel important.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Alignment"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ uses information obtained from reports redacted by the OPM for 10 random
+ sub-county level baraza events.
+ Using these reports, we determine for each baraza which sector was most
+ discussed (column 5).
+ This is then compared to baseline data from citizens living in that sub-county
+ (column 4).
+ We find that what is prioritized by citizens is also discussed in the baraza
+ events in four out of the 10 sub-counties.
+\end_layout
+
+\begin_layout Standard
+Even though what transpires in a baraza reflects the priorities of the citizens,
+ there will be no impact if officials subsequently do not act on this.
+ To explore this link in the causal impact chain, we added to Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Alignment"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+=======
+ a column where for each of the 10 sub-counties we report in what sector
+ most positive changes were recorded during endline.
+\begin_inset Foot
+status collapsed
 
 \begin_layout Plain Layout
-[add some examples here? like only 10 percent of households have access
- to extension (refer to balance table, etc etc)]
+We do this based on the indices that we created earlier to measure impact
+ at sector level (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Results"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
 \end_layout
 
 \end_inset
 
- With respect to the second pre-condition, we asked officials in all sub-countie
-s of our sample at baseline about the proportion of their public service
- budget that they actually received for the fiscal year 2013/2014.
- They report to have received on average 83 percent of their health and
- education budgets, implying that there were at least some resources available.
- However, future studies should collect budget information from participating
- sub-counties to [I wrote until here].
+ We find that in only two out of 10 sub-counties, the sector that was discussed
+ most during the baraza event was also the sector where most positive change
+ was recorded.
+ 
 \end_layout
 
 \begin_layout Standard
-A first reason may be that barazas do not lead to changes in public service
- delivery, but that there still is a change in use and appreciation by the
- citizens.
+To explore why decisions made at baraza events did not lead to implementations
+ and ultimately better public service delivery, use qualitative data obtained
+ from focus group discussions in selected subcounties 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "van2018impact"
+literal "false"
+
+\end_inset
+
+.
+ Firstly, failure to follow up on issues raised during the barazas can be
+ a threat to their effectiveness.
+ Subsequent barazas in the same area should be organized after a relatively
+ short period, so that officials can update citizens on the steps taken
+ to resolve the problems identified at previous barazas.
+ The optimism among citizens and other stakeholders can quickly turn into
+ disappointment if none of the issues raised is addressed.
+ Secondly, poor relationships between politicians and technical personnel
+ can hinder the effectiveness of barazas.
+ For example, a poor relation or communication between a CAO and a LC V
+ Chairperson can impede public service delivery.
+ Thirdly, if barazas mainly expose issues beyond the accountability of the
+ officials and service providers present, they will not be conducive for
+ service provision.
+ Some issues fall under the responsibility of higher levels of government
+ or other institutions that are beyond the operational jurisdiction of people
+ present at the barazas.
+ The barazas can help citizens understand that some of their concerns are
+ beyond the control of the present officials, but that does not solve these
+ problems.
+\end_layout
+
+\begin_layout Standard
+It may also be that barazas do not lead to changes in public service delivery,
+ but that there still is a change in use and appreciation by the citizens.
  During qualitative research, we found that government officials, and particular
 ly civil servants, often complained that barazas should also contain an
  element of “civic education”.
@@ -2543,117 +2662,6 @@ literal "false"
 
  who similarly finds their health focused community monitoring intervention
  increased satisfaction without affecting outcomes.
-\end_layout
-
-\begin_layout Standard
-A second link we explore is related to the question if what is discussed
- during barazas is also what is prioritized by the broader community.
- Indeed, group dynamics may mean that the most vocal individuals dominate
- the discussion and attempt to skew decisions arrived at during the meeting
- in their favor.
- Reports also indicate that barazas sometimes turn into political rallies.
-\end_layout
-
-\begin_layout Standard
-To explore the alignment between what citizens deem important and what transpire
-s at the baraza event, we would need detailed information about what was
- discussed and concluded during the baraza meetings in addition to the baseline
- information of what citizens feel important.
- Table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Alignment"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- uses information obtained from reports redacted by the OPM for 10 random
- sub-county level baraza events.
- Using these reports, we determine for each baraza which sector was most
- discussed (column 5).
- This is then compared to baseline data from citizens living in that sub-county
- (column 4).
- We find that what is prioritized by citizens is also discussed in the baraza
- events in four out of the 10 sub-counties.
-\end_layout
-
-\begin_layout Standard
-The next link in the causal impact chain is whether what is discussed in
- the baraza is also implemented and leads to changes in outcomes.
- To do so, we added to Table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Alignment"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- a column where for each of these 10 sub-counties we report in what sector
- most positive changes were recorded during endline.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-We do this based on the indices that we created earlier to measure impact
- at sector level (see Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Results"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-)
-\end_layout
-
-\end_inset
-
- We find that in only two out of 10 sub-counties, the sector that was discussed
- most during the baraza event was also the sector where most positive change
- was recorded.
-\end_layout
-
-\begin_layout Standard
-To explore why discussing relevant issues and reaching important decisions
- during baraza meetings did not lead to implementations and ultimately to
- better public service delivery, we refer to an earlier qualitative exploration,
- in which we outlined the limits to barazas based on focus group discussions
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-add citation but I can't as I cannot open Bib
-\end_layout
-
-\end_inset
-
-.
- Firstly, failure to follow up on issues raised during the barazas can be
- a threat to their effectiveness.
- Subsequent barazas in the same area should be organized after a relatively
- short period, so that officials can update citizens on the steps taken
- to resolve the problems identified at previous barazas.
- The optimism among citizens and other stakeholders can quickly turn into
- disappointment if none of the issues raised is addressed.
- Secondly, poor relationships between politicians and technical personnel
- can hinder the effectiveness of barazas.
- For example, a poor relation or communication between a CAO and a LC V
- Chairperson can impede public service delivery.
- Thirdly, if barazas mainly expose issues beyond the accountability of the
- officials and service providers present, they will not be conducive for
- service provision.
- Some issues fall under the responsibility of higher levels of government
- or other institutions that are beyond the operational jurisdiction of people
- present at the barazas.
- The barazas can help citizens understand that some of their concerns are
- beyond the control of the present officials, but that does not solve these
- problems.
 \end_layout
 
 \begin_layout Section
@@ -3351,7 +3359,7 @@ name "tab:Alignment"
 placement H
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
