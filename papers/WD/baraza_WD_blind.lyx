@@ -482,10 +482,10 @@ Nature of the baraza institution
 Baraza
 \shape default
  is a term in Swahili and refers to a set of places where people meet (for
- example, a verandah in front of a house or some benches under a simple
- shelter near the local mosque), and to clubs, unions, and associations,
- but the word also describes all kinds of meetings and gatherings of people,
- from simple informal assemblies to formal councils 
+ example, a veranda in front of a house or some benches under a simple shelter
+ near the local mosque), and to clubs, unions, and associations, but the
+ word also describes all kinds of meetings and gatherings of people, from
+ simple informal assemblies to formal councils 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Loimeier2005"
@@ -509,7 +509,7 @@ literal "false"
  Here, barazas facilitate negotiations of all kinds and serve to share informati
 on and knowledge.
  They can be public or private, formal or informal but often follow a distinct
- set of rules and a particular code of behaviour 
+ set of rules and a particular code of behavior 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Loimeier2005"
@@ -591,9 +591,9 @@ literal "true"
 \end_inset
 
 .
- It was assumed that this process woulthe nature of the baraza institutiond
- lead to the formulation of public services that were more aligned to citizens'
- needs and bring representative governance closer to citizens.
+ It was assumed that this process would lead to the formulation of public
+ services that were more aligned to citizens' needs and bring representative
+ governance closer to citizens.
  However, two decades after these ambitious reforms, public services in
  Uganda continued to be characterized by misaligned priorities, substandard
  services, elite capture, ineffective monitoring, and weak accountability
@@ -940,7 +940,7 @@ An average district in Uganda consists of about 15 to 20 sub-counties.
 evel barazas), and depth of coverage (through sub-county-level barazas).
  While conducting a district-level baraza may be cheaper than conducting
  sub-county-level barazas in all sub-counties of that district, it is not
- clear a-priori how these cost savings justify potential reduction in effectiven
+ clear a priori how these cost savings justify potential reduction in effectiven
 ess of district-level barazas in any given sub-county of the concerned district.
  Therefore, a final objective of this study is to assess the impact of district
  level barazas, and compare this to the effectiveness of barazas organized
@@ -1487,16 +1487,15 @@ We used a range of sub-county characteristics that were likely to be known
  to match each treated sub-county to a control sub-county that was similar
  in terms of these characteristics.
  More in particular, we match on the following characteristics that were
- obtained at baseline from a survey of village chairs and chief administrative
- officers (CAO) of each sub-county: geographic location of the sub-county
- using GPS coordinates of the headquarters, road infrastructure within the
- sub-county (km tarmac road and km all-weather (gravel) road), share of
- households with electricity, share of households with an iron roof or tiles,
- number of health centers in the sub-county, female primary school dropout
- rate, number of Universal Primary Education (UPE) schools in the sub-county,
- percent of farmers that used improved seed, and political connections of
- the sub-county (defined by having a minister or member of parliament coming
- from the sub-county).
+ obtained at baseline from a survey of village chairs and CAO of each sub-county
+: geographic location of the sub-county using GPS coordinates of the headquarter
+s, road infrastructure within the sub-county (km tarmac road and km all-weather
+ (gravel) road), share of households with electricity, share of households
+ with an iron roof or tiles, number of health centers in the sub-county,
+ female primary school dropout rate, number of Universal Primary Education
+ (UPE) schools in the sub-county, percent of farmers that used improved
+ seed, and political connections of the sub-county (defined by having a
+ minister or member of parliament coming from the sub-county).
  These characteristics are used in a probit regression to predict the probabilit
 y that a sub-county would be treated.
  The probabilities are then used to match each treated sub-county to a candidate
@@ -1517,7 +1516,7 @@ reference "tab:balance_final"
  It is important to note that this matching was done before endline data
  was collected and the result of this ex-ante matching was also pre-registered
  to reduce specification search [placeholder for link to timestamped pre-registe
-red report on github 
+red report on GitHub 
 \begin_inset Note Note
 status collapsed
 
@@ -1671,7 +1670,7 @@ status collapsed
 
 \begin_layout Plain Layout
 To further increase transparency and allow for easy replication, this article
- was prepared using Lyx, an open source Latex front-end and all Latex and
+ was prepared using LyX, an open source Latex front-end and all Latex and
  R code to replicate the analysis is placed under revision control using
  Git.
  The Git repository can be found at [placeholder for link to repository]
@@ -1962,8 +1961,8 @@ name "fn:This-method-first"
 
  We also combine the four indices into one overall index that assesses the
  impact on public service delivery in general.
- We find no significant impact of the baraza programme on overall public
- service delivery.
+ We find no significant impact of the baraza program on overall public service
+ delivery.
  There are some indications that sub-county level baraza did make a difference
  in the agricultural sector, though only at the 10 percent significance
  level.
@@ -2081,7 +2080,7 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-The baraza programme also attempts to increase a sense of community engagement.
+The baraza program also attempts to increase a sense of community engagement.
  One way in which citizens can participate is through contributing to common
  goods such as public infrastructure, education, or health services.
  We differentiate between cash contributions and in-kind contributions and
@@ -2574,10 +2573,10 @@ noprefix "false"
  sub-county level baraza events.
  Using these reports, we determine for each baraza which sector was most
  discussed (column 5).
- This is then compared to baseline data from citizens living in that subcounty
+ This is then compared to baseline data from citizens living in that sub-county
  (column 4).
  We find that what is prioritized by citizens is also discussed in the baraza
- events in four out of the 10 subcounties.
+ events in four out of the 10 sub-counties.
 \end_layout
 
 \begin_layout Standard
@@ -2593,7 +2592,7 @@ noprefix "false"
 
 \end_inset
 
- a column where for each of these 10 subcounties we report in what sector
+ a column where for each of these 10 sub-counties we report in what sector
  most positive changes were recorded during endline.
 \begin_inset Foot
 status collapsed
@@ -2615,7 +2614,7 @@ noprefix "false"
 
 \end_inset
 
- We find that in only two out of 10 subcounties, the sector that was discussed
+ We find that in only two out of 10 sub-counties, the sector that was discussed
  most during the baraza event was also the sector where most positive change
  was recorded.
 \end_layout
@@ -2697,7 +2696,7 @@ The OPM faced various complications that affected the timely roll-out of
 
 \begin_layout Standard
 Judged by on index of overall public service delivery, we find no significant
- impact of the programme.
+ impact of the program.
  There are some indications that sub-county level barazas had a positive
  impact on service delivery in the agricultural sector.
  Looking at outcomes in more detail, we found that households reported increased
@@ -3358,7 +3357,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Balance between planned but not treated subcounties and planned controls
+Balance between planned but not treated sub-counties and planned controls
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Balance_planed_ctrl"
