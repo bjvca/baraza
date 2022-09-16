@@ -101,7 +101,7 @@ status open
 
 \begin_layout Plain Layout
 
-path <- strsplit(getwd(), "/papers/APSR")[[1]]
+path <- strsplit(getwd(), "/papers/WD")[[1]]
 \end_layout
 
 \begin_layout Plain Layout
@@ -239,31 +239,6 @@ status open
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_averages_baseline.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_ols_baseline.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_balance_baseline.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_ols_end.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_averages_end.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -1501,21 +1476,6 @@ status open
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_averages_details.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_ancova_details.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/baseline_desc_details.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
