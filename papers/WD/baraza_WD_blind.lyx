@@ -91,18 +91,18 @@ knitr
 \begin_body
 
 \begin_layout Title
-The impact of community based monitoring on public service delivery: A randomize
+The impact of community-based monitoring on public service delivery: A randomize
 d controlled trial in Uganda
 \end_layout
 
 \begin_layout Abstract
 In many developing countries, poor delivery of public services remains an
  important problem.
- Through community based monitoring, beneficiaries of public services can
+ Through community-based monitoring, beneficiaries of public services can
  apply bottom-up pressure to under-performing service providers and their
  political leadership.
  In this spirit, the Government of Uganda organizes community forums—popularly
- known as barazas—where citizens receive information from government officials,
+ known as barazas—where citizens receive information from government officials
  and get the opportunity to challenge them.
  We designed a cluster randomized control trial to assess the impact of
  this policy intervention on public service delivery in agriculture, health,
@@ -281,8 +281,8 @@ ions, which suggests that barazas increase trust in officials and strengthen
  the social contract.
  There are also signs that the aggregate treatment effects mask significant
  heterogeneity.
- In particular, exploiting variation in the timing of the interventions,
- we find that the effectiveness of barazas seems to dissipate over time.
+ In particular, we find that the effectiveness of barazas seems to dissipate
+ over time if we exploit the variation in the timing of the interventions.
  We also find that barazas may be an important catalyst to organize communities
  around public infrastructure in the absence of social cohesion due to ethnic
  fractionalization, and that barazas may be particularly effective for household
@@ -290,7 +290,7 @@ s that live in remote areas.
 \end_layout
 
 \begin_layout Standard
-There are several studies that look at the impact of community based monitoring
+There are several studies that look at the impact of community-based monitoring
  on public service delivery, many of them using Uganda as a case.
  A landmark study is 
 \begin_inset CommandInset citation
@@ -302,7 +302,7 @@ literal "true"
 
 , who analyze the impact of a community driven local accountability project
  in primary health care provision in Uganda.
- They find that community based monitoring resulted in significant improvements
+ They find that community-based monitoring resulted in significant improvements
  in health care delivery, utilization, and health outcomes (most notably
  child mortality and weight-for-age z-scores) after one year, and confirm
  in 
@@ -332,7 +332,7 @@ literal "true"
 \end_inset
 
  and in a similar setting.
- The study, involving a three wave panel of more than 14,000 households,
+ The study, involving a three-wave panel of more than 14,000 households,
  shows that the intervention was able to change the behavior of public service
  providers.
  However, it did not find that the intervention directly increased community
@@ -343,7 +343,7 @@ literal "true"
 \begin_layout Standard
 Our study contributes to this literature in various ways.
  First, it is one of few studies that considers the role of jurisdictional
- tier on the effectiveness of community based monitoring.
+ tier on the effectiveness of community-based monitoring.
  The level at which the town-hall meetings are organized may affect its
  effectiveness in potentially opposing ways: Interventions at a more local
  level may result in more relevant issues being scrutinized.
@@ -374,7 +374,7 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
-Second, our study evaluates the impact of a large scale, high profile policy
+Second, our study evaluates the impact of a large-scale, high-profile policy
  intervention that receives broad support within government, among opinion
  leaders and among citizens in Uganda.
  Such interventions may instigate an entirely different set of dynamics
@@ -406,8 +406,8 @@ literal "true"
 
 \end_inset
 
-, who found that the presence of sub-county officials during their community
- based monitoring intervention boosted the impact of the intervention.
+, who found that the presence of sub-county officials during their community-bas
+ed monitoring intervention boosted the impact of the intervention.
  However, effects may also work in the opposite direction.
  For example, an intervention to reduce absenteeism in government public
  health facilities in India was initially very successful, but ceased to
@@ -450,7 +450,7 @@ literal "true"
 
 \begin_layout Standard
 The paper is organized as follows.
- We starts with providing some background on the baraza intervention, followed
+ We start with providing some background on the baraza intervention, followed
  by a section that sets out the objectives of the study.
  We then present the experimental design and describe the treatments.
  Next is a section on the implementation challenges, the implications of
@@ -612,7 +612,7 @@ literal "true"
 
 \begin_layout Standard
 In response to this, the Government of Uganda, under the stewardship of
- the OPM, initiated community based monitoring and accountability fora (or
+ the OPM, initiated community-based monitoring and accountability fora (or
  citizen barazas) in 2009 with the general objective of “enhancing public
  involvement in holding the government accountable for service delivery
  in relation to the resources spent” 
@@ -628,7 +628,7 @@ literal "true"
  policy makers (the client), public servants (the implementer), and beneficiarie
 s of public goods and services (the users).
  In addition, barazas were designed to provide the opportunity to users
- to ask questions to the policy makers and public service providers, and
+ to ask questions to the policy makers and public service providers and
  deliberate among themselves.
  
 \end_layout
@@ -643,7 +643,7 @@ Barazas were first piloted in the financial year 2009/10.
  At the beginning of 2012/2013, however, changes in implementation were
  suggested: subsequent barazas would target districts instead of sub-counties
  to accelerate roll-out, increase participation at a higher jurisdictional
- levels, and reduce costs.
+ level, and reduce costs.
  
 \end_layout
 
@@ -692,7 +692,7 @@ A baraza meeting is chaired by the Office of the RDC in each district.
 s and challenges, which is then expected to further feed into the general
  government performance management system.
  Usually, a minister of state is also present at the baraza.
- Baraza events often become very emotional and the events attract considerable
+ Baraza events often become very emotional, and the events attract considerable
  media attention, also from national newspapers.
  
 \end_layout
@@ -713,11 +713,11 @@ Impact of (sub-county level) barazas
 \end_layout
 
 \begin_layout Standard
-The baraza intervention as conceived by the OPM is a fairly standard community
- based monitoring intervention that combines the provision of information
- with the opportunity for citizens to engage with each other and with decision
- makers at a fairly local level.
- Such community based monitoring has become a popular tool to improve service
+The baraza intervention as conceived by the OPM is a standard community-based
+ monitoring intervention that combines the provision of information with
+ the opportunity for citizens to engage with each other and with decision
+ makers at a local level.
+ Such community-based monitoring has become a popular tool to improve service
  delivery.
  However, not all such interventions appear to be successful 
 \begin_inset CommandInset citation
@@ -743,8 +743,8 @@ There are reasons to expect meaningful interactions between the information
  To some extent, citizens are passive recipients of this information, and
  officials report what they consider relevant, or may even attempt to misreprese
 nt the facts.
- If citizens are able to also engage with policy makers and civil servants,
- they may request particular information that is relevant to them.
+ If citizens can also engage with policy makers and civil servants, they
+ may request information that is relevant to them.
  It may also result in information flows in the opposite direction as government
  officials learn about priorities and concerns of the citizens.
  
@@ -781,7 +781,7 @@ literal "false"
 \end_inset
 
  Bringing stakeholders together in town-hall type meetings is assumed to
- reduce information asymmetries, and may be an effective way to increase
+ reduce information asymmetries and may be an effective way to increase
  the quality of public service delivery by (1) allowing citizens to monitor
  and apply bottom-up pressure on under-performing civil servants and (2)
  increase top-down pressure on under-performing civil servants by revealing
@@ -911,7 +911,7 @@ literal "false"
 
 \end_inset
 
- show that town-hall style meetings similar to barazas during election campaigns
+ show that town-hall style meetings like barazas during election campaigns
  increased voters' awareness on the issues parties campaigned on.
  The third key question is thus about the relative importance of the deliberativ
 e component of a typical baraza.
@@ -944,7 +944,7 @@ evel barazas), and depth of coverage (through sub-county-level barazas).
  clear a priori how these cost savings justify potential reduction in effectiven
 ess of district-level barazas in any given sub-county of the concerned district.
  Therefore, a final objective of this study is to assess the impact of district
- level barazas, and compare this to the effectiveness of barazas organized
+ level barazas and compare this to the effectiveness of barazas organized
  that the lower sub-county level.
 \end_layout
 
@@ -975,7 +975,7 @@ literal "true"
 
 .
  It may also be that issues highlighted at a local level fall under the
- responsibility of higher level authorities and vice versa.
+ responsibility of higher-level authorities and vice versa.
 \end_layout
 
 \begin_layout Section
@@ -1037,8 +1037,8 @@ reference "fig:Experimental-Design"
 .
  In a first step, we randomly allocated eligible districts to treatment
  and control conditions.
- In particular, some of the eligible districts were selected to start receiving
- district level barazas 
+ Some of the eligible districts were selected to start receiving district
+ level barazas 
 \begin_inset Formula $\left(D^{ID}\right)$
 \end_inset
 
@@ -1116,7 +1116,7 @@ on provision
 \end_inset
 
 .
- Within each sub-county, we randomly sampled 5 village and in each village
+ Within each sub-county, we randomly sampled 5 village and in each village,
  we randomly selected 10 households.
  
 \end_layout
@@ -1162,9 +1162,9 @@ reference "sec:Background-of-the"
  We will summarize the main differences between an information baraza and
  a deliberation baraza here.
  Detailed information can be found in [placeholder for link to timestamped
- online appendix on github 
+ online appendix on GitHub
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 https://github.com/bjvca/baraza/blob/master/report/appendices/Training%20Manual%2
@@ -1203,7 +1203,7 @@ n of this.
 on on the overall budget for the fiscal year, the main achievements and
  challenges in service delivery, and to introduce sector heads.
  After a brief intervention by the OPM, officials responsible for each sector
- then present more or less the same as what was required for the templates.
+ then present the same as what was required for the templates.
  An information-focused baraza allowed for only 10 clarifying questions
  to be asked, to be collected and asked by the facilitator.
 \end_layout
@@ -1227,11 +1227,12 @@ For the deliberation barazas, posters were also mounted in each parish of
 
 \begin_layout Standard
 A sub-county level baraza in the crossed treatment group combined both elements.
- District level baraza were very similar to (information+deliberation) sub-count
-y level barazas, except for the fact that district level barazas were organized
- at the district headquarters, all sub-county chiefs and LC3's of each sub-count
-y were expected to attend in case questions arise related to their sub-county,
- and all citizens within the entire district were invited.
+ District level baraza were very similar to (information and deliberation)
+ sub-county level barazas, except for the fact that district level barazas
+ were organized at the district headquarters, all sub-county chiefs and
+ LC3's of each sub-county were expected to attend in case questions arise
+ related to their sub-county, and all citizens within the entire district
+ were invited.
 \end_layout
 
 \begin_layout Section
@@ -1302,7 +1303,7 @@ We acknowledge that the partial roll-out is a threat to internal validity
  the implementing partner was organized by treatment group (information,
  deliberation and combined treatment), and in each treatment group, sub-counties
  were listed alphabetically.
- Looking at the list in light of the partial roll-out, we get the impression
+ Looking at the list considering the partial roll-out, we get the impression
  that the OPM started at the top of the list and worked their way down.
  As a result, relatively more sub-counties that were assigned the information
  treatment were treated, and sub-counties toward the top of the list for
@@ -1382,8 +1383,8 @@ reference "tab:Balance_planed_ctrl"
  the partial roll-out, differences in average outcomes of planned but not
  treated sub-counties and planned control sub-counties (the first column
  also reports sample means).
- It is essentially the same table as the the original balance table (Table
- A.1 in the Online Appendix), but after dropping sub-counties that were treated.
+ It is essentially the same table as the original balance table (Table A.1
+ in the Online Appendix), but after dropping sub-counties that were treated.
  We find that the imbalance related to distance to nearest all weather road
  found in Online Appendix Table A.1 becomes even more pronounced.
  This may indicate that the OPM prioritized treatment of less remote areas.
@@ -1430,8 +1431,8 @@ reference "fig:Factorial-design"
  18 sub-counties of the 51 that were supposed to receive the deliberation-only
  treatment were treated, and 20 sub-counties of the 53 that were supposed
  to receive the crossed (information + deliberation) treatment were treated.
- All of the 8 districts that were supposed to be treated were treated, from
- which 40 sub-counties were sampled.
+ All 8 districts that were supposed to be treated were treated, from which
+ 40 sub-counties were sampled.
  Overall, this means that about 55 percent of the sub-counties that needed
  to receive any form of baraza were treated, corresponding to about 5,350
  households.
@@ -1440,8 +1441,8 @@ reference "fig:Factorial-design"
 \begin_layout Standard
 Statistical power is optimal when the number of treatment units is equal
  to the number of control units, and while adding more control sub-counties
- will increase power, the gains in power have to be weighed against the
- cost of collecting additional data.
+ will increase power, the gains in power must be weighed against the cost
+ of collecting additional data.
  As only part of the sub-county level intervention was implemented, it may
  thus not be cost effective to collect end-line data on all sub-counties
  that did not receive a treatment (either because they were allocated to
@@ -1510,14 +1511,14 @@ reference "tab:balance_final"
 \end_inset
 
  shows baseline balance for the resulting sample.
- Two significant results out of 40 comparison is again what can be expected
+ Two significant results out of 40 comparisons are again what can be expected
  from pure chance alone and so we conclude that also with this new sample
  we maintain balance between treatment and control on a range of baseline
  characteristics for the various comparisons.
  It is important to note that this matching was done before endline data
  was collected and the result of this ex-ante matching was also pre-registered
  to reduce specification search [placeholder for link to timestamped pre-registe
-red report on GitHub 
+red report on GitHub
 \begin_inset Note Note
 status collapsed
 
@@ -1544,9 +1545,8 @@ y level barazas should be traded off against an increase in potential bias
  As the sub-county level analysis weighed higher in terms of research objectives
 , we decided to prioritize the reduction of bias resulting from incomplete
  roll-out at this level.
- However, it should be kept in mind that both of these issues only become
- relevant if significant selection bias was introduced through the partial
- roll-out.
+ However, it should be kept in mind that both issues only become relevant
+ if significant selection bias was introduced through the partial roll-out.
  
 \end_layout
 
@@ -1566,9 +1566,9 @@ Before end-line data collection, we prepared a “mock report”, which contains
  the complete analysis on simulated end-line data for a core set of primary
  outcomes.
  This report was registered at the [placeholder for link to pre-registered
- report 
+ report
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 https://www.socialscienceregistry.org/versions/60398/docs/version/document
@@ -1720,8 +1720,8 @@ noprefix "false"
 
 \end_inset
 
-) and sub-counties that received the combined information+deliberation baraza
- (
+) and sub-counties that received the combined information and deliberation
+ baraza (
 \begin_inset Formula $S_{ID}^{0}$
 \end_inset
 
@@ -1775,7 +1775,7 @@ r
 \end_inset
 
  is a binary indicator indicating if the sub-county received a combined
- information+deliberation sub-county level baraza, 
+ information and deliberation sub-county level baraza, 
 \begin_inset Formula $\tau_{r}$
 \end_inset
 
@@ -2124,9 +2124,9 @@ Heterogeneity in the timing of the intervention
 \end_layout
 
 \begin_layout Standard
-The slow roll-out of the intervention over an extended period of time also
- introduced variation in the time that passed between treatment administration
- and end-line data collection.
+The slow roll-out of the intervention over an extended period also introduced
+ variation in the time that passed between treatment administration and
+ end-line data collection.
  For instance, the first barazas were held around June 2016 (about one year
  after the baseline) and so more than 3 years will have passed between treatment
  administration and end-line data collection.
@@ -2179,9 +2179,9 @@ status collapsed
 We focus on summary indices but also discuss results for individual outcomes
  where relevant.
  These results are not reported here for brevity, but are available on the
- [placeholder for link to online repository] 
+ [placeholder for link to online repository]
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset CommandInset href
@@ -2306,9 +2306,9 @@ ies.
  outcomes in infrastructure and the health sector.
  For the infrastructure sector we find particularly strong interaction effects
  for distance to water source and distance to all-weather roads (see [placeholde
-r for link to online repository] 
+r for link to online repository]
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset CommandInset href
@@ -2379,9 +2379,9 @@ There are some indications that district level barazas are more effective
  by extension officers at home, the likelihood that they visit an extension
  office, demonstration plot or model farmers, the likelihood of being assisted
  by NAADS, and the likelihood of being supported by a marketing cooperative
- (see [placeholder for link to online repository] 
+ (see [placeholder for link to online repository]
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset CommandInset href
@@ -2420,7 +2420,7 @@ In this section, we explore some of the potential reasons why barazas do
 \end_layout
 
 \begin_layout Standard
-Community based monitoring interventions such as the baraza program can
+Community-based monitoring interventions such as the baraza program can
  only improve public service delivery if two conditions are met.
  Firstly, there needs to be room for improvement: If politicians are already
  responsive to the needs of citizens and civil servants are delivering the
@@ -2432,7 +2432,7 @@ Community based monitoring interventions such as the baraza program can
 status collapsed
 
 \begin_layout Plain Layout
-The fact that child mortality reduced significantly to the community based
+The fact that child mortality reduced significantly to the community-based
  monitoring intervention in 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -2463,7 +2463,7 @@ literal "false"
 
 \begin_layout Standard
 With respect to the first precondition, it is hard to argue that service
- delivery in Uganda can not be improved.
+ delivery in Uganda cannot be improved.
  While progress had been made in some areas such as child mortality, other
  areas have seen less progress.
  For instance, only about 10 percent of households report that they have
@@ -2478,9 +2478,9 @@ noprefix "false"
 \end_inset
 
 ).
- Data obtained from our baseline survey shows patients have to wait on average
+ Data obtained from our baseline survey shows patients must wait on average
  almost two hours for medical examination at government health centers and
- in the vast majority of cases are examined by a nurse instead of a doctor.
+ in many cases are examined by a nurse instead of a doctor.
  Access to water remains problematic, especially in the dry season when
  36 percent of households use potentially unsafe drinking water.
  
@@ -2488,8 +2488,8 @@ noprefix "false"
 
 \begin_layout Standard
 With respect to the second pre-condition, modest funds are generally available.
- The far reaching liberalization and decentralization process started in
- the mid 1980s in Uganda seduced donors across the globe to poor money into
+ The far-reaching liberalization and decentralization process started in
+ the mid-1980s in Uganda seduced donors across the globe to poor money into
  public services.
  While there were some studies reporting rampant elite capture 
 \begin_inset CommandInset citation
@@ -2550,9 +2550,8 @@ noprefix "false"
 
 \end_inset
 
-=======
- a column where for each of the 10 sub-counties we report in what sector
- most positive changes were recorded during endline.
+======= a column where for each of the 10 sub-counties we report in what
+ sector most positive changes were recorded during endline.
 \begin_inset Foot
 status collapsed
 
@@ -2582,7 +2581,7 @@ noprefix "false"
 \begin_layout Standard
 To explore why decisions made at baraza events did not lead to implementations
  and ultimately better public service delivery, use qualitative data obtained
- from focus group discussions in selected subcounties 
+ from focus group discussions in selected sub-counties 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "van2018impact"
@@ -2634,15 +2633,15 @@ ly civil servants, often complained that barazas should also contain an
 \begin_layout Standard
 To explore if this hypothesis, we test if the baraza intervention affected
  perceptions by citizens.
- In particular, we asked citizens to rate, on a likert scale, how satisfied
+ In particular, we asked citizens to rate, on a Likert scale, how satisfied
  they were with public service delivery in the four sectors.
- We find some indications that a combined information+deliberation baraza
+ We find some indications that a combined information and deliberation baraza
  improved citizens satisfaction related to access to water.
- Satisfaction about schooling also improved, but is just not significant.
+ Satisfaction about schooling also improved but is just not significant.
  This seems to suggest that in areas where civic information is feasible,
  there could be an impact.
  For instance, during barazas, if often came up that children were not in
- school and officials responded to that that they can only build schools
+ school and officials responded to that that they can only build schools,
  but it is up to parents to send their children to school.
  The 
 \begin_inset Quotes eld
@@ -2671,7 +2670,7 @@ Conclusion
 \begin_layout Standard
 To improve governance and public service delivery in Uganda, the OPM organizes
  town-hall type meetings—popularly known as barazas—where citizens receive
- information from government officials, and get the opportunity to directly
+ information from government officials and get the opportunity to directly
  engage with them.
  In 2015, we designed a cluster randomized control trial aimed at evaluating
  the effectiveness of this policy intervention.
@@ -2803,7 +2802,7 @@ g.
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 btprint "btPrintCited"
-bibfiles "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/endline_report_bib"
+bibfiles "C:/Users/u0127963/Desktop/PhD/baraza new/baraza/report/endline_report_bib"
 options "apsr"
 
 \end_inset
