@@ -637,11 +637,11 @@ A typical baraza meeting is initiated from the center, with the OPM mobilizing
  These include the Chief Administrative Officer (CAO) as the head of public
  service providers at the district level, the Resident District Commissioner
  (RDC) as a direct representative of the president, the District Local Council
- Chairperson (LC5) as the representative of political leadership at the
+ chairperson (LC5) as the representative of political leadership at the
  district level, and the various sector heads responsible for public services
  in each sector (agriculture, education, infrastructure, and health).
  For sub-county level barazas, the sub-county level equivalents of the CAO
- (the sub-county chief) and the LC5 (the sub-county chairperson, or LC3)
+ (the sub-county chief) and the Sub-county Local Council chairperson (LC3)
  also have important roles.
  The OPM, in consultation with the district leaders (RDC, CAO and the LC5)
  and other stakeholders, agrees on the date and a neutral location.
@@ -2021,8 +2021,9 @@ status collapsed
 
 \begin_layout Plain Layout
 The time frame changes depending on the official.
- For instance, for the LC1 chairperson, the indicator takes the value of
- one if the respondent spoke to him or her within the last month.
+ For instance, for the Village Local Council chairperson (LC1), the indicator
+ takes the value of one if the respondent spoke to him or her within the
+ last month.
  For the head teacher, the reference period is 6 months.
  For the other officials (sub-county chief, health management unit member
  and water committee member), the indicator is true if contact was sought
@@ -2043,7 +2044,7 @@ reference "tab:meetings"
 
 \begin_layout Standard
 The baraza intervention did not affect the likelihood that citizens meet
- with the LC 1 or sub-county chiefs.
+ with the LC1 or sub-county chiefs.
  We do see that the information component of the baraza increased the likelihood
  that citizens interface with the head teacher or with members of the school
  management unit.
@@ -2623,8 +2624,8 @@ noprefix "false"
  disappointment if none of the issues raised is addressed.
  Secondly, poor relationships between politicians and technical personnel
  can hinder the effectiveness of barazas.
- For example, a poor relation or communication between a CAO and a LC 5
- Chairperson can impede public service delivery.
+ For example, a poor relation or communication between a CAO and a LC5 Chairpers
+on can impede public service delivery.
  Thirdly, if barazas mainly expose issues beyond the accountability of the
  officials and service providers present, they will not be conducive for
  service provision.
@@ -3358,7 +3359,7 @@ scriptsize
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Alignment
+Alignment of priorities
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Alignment"
@@ -4050,7 +4051,7 @@ n baraza but did not receive any baraza, and those that were planned to
 placement H
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
