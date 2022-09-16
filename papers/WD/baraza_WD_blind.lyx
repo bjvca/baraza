@@ -3347,7 +3347,7 @@ scriptsize
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Alignment
+Alignment of priorities
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Alignment"
@@ -4039,7 +4039,7 @@ n baraza but did not receive any baraza, and those that were planned to
 placement H
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
