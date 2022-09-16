@@ -364,7 +364,7 @@ on treatment.
 placement H
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -956,7 +956,8 @@ Sexpr{format(round(df_ols[2,4,10],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Number of observations & 12545 & 
+Number of obs.
+ & 12545 & 
 \backslash
 Sexpr{format(round(df_ols[6,1,1],digits=3),nsmall=0)} & 
 \backslash
@@ -1024,25 +1025,23 @@ scriptsize
 
 \begin_layout Plain Layout
 
-Note: First column reports sample means (and standard deviations below);
- Column 2 reports differences (and standard errors below) between baseline
- characteristics of households that were planned to receive a sub-county
- level combined information and deliberation baraza, and those that would
- not be exposed to any baraza; Column 3 reports differences (and standard
- errors below) between baseline characteristics of households that would
- receive a sub-county level information baraza, and those that would not
- receive a sub-county level information baraza; Column 4 reports differences
- (and standard errors below) between baseline characteristics of households
- that were allocted to receive a sub-county level deliberation baraza, and
- those that would not receive a sub-county level deliberation baraza; Column
- 5 (and standard errors below) reports differences between baseline characterist
-ics of households that were planned to receive a district level combined
- information and deliberation baraza, and those that would not be exposed
- to any baraza;  **, * and + denotes significance at the 1, 5 and 10 percent
- levels.
+Note: Column 1 reports sample means (and standard deviations below); Column
+ 2 reports differences between baseline characteristics of households that
+ were planned to receive a sub-county level combined information and deliberatio
+n baraza and those that would not receive any baraza (and standard errors
+ below); Column 3 reports differences between baseline characteristics of
+ households that would receive a sub-county level information baraza and
+ those that would not receive one (and standard errors below); Column 4
+ reports differences between baseline characteristics of households that
+ would receive a sub-county level deliberation baraza and those that would
+ not receive one (and standard errors below); Column 5 reports differences
+ between baseline characteristics of households that were planned to receive
+ a district level combined information and deliberation baraza and those
+ that would not receive any baraza (and standard errors below);  **, * and
+ + denote significance at the 1, 5 and 10 percent levels.
  Reported standard errors are clustered at the level of randomization.
- Distance to all weather road is trimmed at 5 percent and transformed using
- the inverse hyperbolic sine transformation.
+ Distance to nearest all weather road is trimmed at 5 percent and transformed
+ using the inverse hyperbolic sine transformation.
   
 \end_layout
 
@@ -1078,7 +1077,7 @@ reference "tab:balance_orig"
 \end_layout
 
 \begin_layout Section
-Minimal Detectable Effects (MDEs)
+Minimal Detectable Effects
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Minimal-Detectable-Effects"
@@ -1197,7 +1196,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_extension.png
+	filename C:/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/figure/power_extension.png
 	lyxscale 20
 	scale 60
 
@@ -1402,7 +1401,8 @@ Attrition & 0.086 & 0.010  &  0.0139 & 0.003 & -0.004
 
 \begin_layout Plain Layout
 
-Number of observations & 7340 & 2996 & 5341 &  5341  &  3996  
+Number of obs.
+ & 7340 & 2996 & 5341 &  5341  &  3996  
 \backslash
 
 \backslash
@@ -1441,12 +1441,13 @@ scriptsize
 
 \begin_layout Plain Layout
 
-Note: First column reports mean attrition rate (and standard deviations
- below); Column 2 reports correlation of attrition (and standard errors
- below) to the sub-county level baraza treatment; Column 3 reports correlation
- of attrition to the information baraza treatment; Column 4 reports correlation
- of attrition to the deliberation baraza treatment; Column 5 reports correlation
- of attrtion to the district level baraza treatment.
+Note: Column 1 reports the mean attrition rate (and standard deviations
+ below); Column 2 reports the correlation between attrition and sub-county
+ level baraza treatment (and standard errors below); Column 3 reports the
+ correlation between attrition and information baraza treatment; Column
+ 4 reports the correlation between attrition and deliberation baraza treatment;
+ Column 5 reports the correlation between attrition and district level baraza
+ treatment.
  Reported standard errors are clustered at the level of randomization.
  
 \end_layout
@@ -2458,7 +2459,8 @@ Sexpr{format(round(df_ancova[2,4,16],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Number of observations & 6704 & 
+Number of obs.
+ & 6704 & 
 \backslash
 Sexpr{format(round(df_ancova[6,1,1],digits=3),nsmall=0)} & 
 \backslash
@@ -2522,20 +2524,20 @@ scriptsize
 
 \begin_layout Plain Layout
 
-Note: First column reports sample means (and standard deviations below);
- Column 2 reports effect (and standard errors below) of the sub-county level
- baraza intervention; Column 3 reports the effect (and standard errors below)
- of the information component of the baraza intervention; Column 4 reports
- the effect (and standard errors below) of the deliberation component of
- the baraza intervention; Column 5 reports the effect (and standard errors
- below) of the administrative placement of the baraza intervention.
- **, * and + denotes significance at the 1, 5 and 10 percent levels as assessed
+Note: Column 1 reports sample means (and standard deviations below); Column
+ 2 reports effects of the sub-county level baraza intervention (and standard
+ errors below); Column 3 reports effects of the information component of
+ the baraza intervention (and standard errors below); Column 4 reports effects
+ of the deliberation component of the baraza intervention (and standard
+ errors below); Column 5 reports effects  of the administrative placement
+ of the baraza intervention (and standard errors below).
+ **, * and + denote significance at the 1, 5 and 10 percent levels as assessed
  using randomization inference.
  Reported standard errors are clustered at the level of randomization.
  $^
 \backslash
-dag$ indicates that the outcome was in included in the index for the confirmator
-y analysis.
+dag$ indicates that the outcome was included in the index for the confirmatory
+ analysis.
    
 \end_layout
 
@@ -3615,7 +3617,8 @@ Sexpr{format(round(df_ancova[2,4,52],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Number of observations & 6704 & 
+Number of obs.
+ & 6704 & 
 \backslash
 Sexpr{format(round(df_ancova[6,1,17],digits=3),nsmall=0)} & 
 \backslash
@@ -3675,23 +3678,23 @@ scriptsize
 
 \begin_layout Plain Layout
 
-Note: First column reports sample means (and standard deviations below);
- Column 2 reports effect (and standard errors below) of the sub-county level
- baraza intervention; Column 3 reports the effect (and standard errors below)
- of the information component of the baraza intervention; Column 4 reports
- the effect (and standard errors below) of the deliberation component of
- the baraza intervention; Column 5 reports the effect (and standard errors
- below) of the administrative placement of the baraza intervention.
- **, * and + denotes significance at the 1, 5 and 10 percent levels as assessed
+Note: Column 1 reports sample means (and standard deviations below); Column
+ 2 reports effects of the sub-county level baraza intervention (and standard
+ errors below); Column 3 reports effects of the information component of
+ the baraza intervention (and standard errors below); Column 4 reports effects
+ of the deliberation component of the baraza intervention (and standard
+ errors below); Column 5 reports effects  of the administrative placement
+ of the baraza intervention (and standard errors below).
+ **, * and + denote significance at the 1, 5 and 10 percent levels as assessed
  using randomization inference.
  Reported standard errors are clustered at the level of randomization.
  $^
 \backslash
-dag$ indicates that the outcome was in included in the index for the confirmator
-y analysis.
+dag$ indicates that the outcome was included in the index for the confirmatory
+ analysis.
  Distance to water source, average waiting time at source, and distance
- to nearest all weather road are all trimmed at 5 percent and transformed
- using the inverse hyperbolic sine transformation.
+ to nearest all weather road are trimmed at 5 percent and transformed using
+ the inverse hyperbolic sine transformation.
      
 \end_layout
 
@@ -4886,7 +4889,8 @@ Sexpr{format(round(df_ancova[2,4,41],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Number of observations & 6704 & 
+Number of obs.
+ & 6704 & 
 \backslash
 Sexpr{format(round(df_ancova[6,1,25],digits=3),nsmall=0)} & 
 \backslash
@@ -4946,23 +4950,23 @@ scriptsize
 
 \begin_layout Plain Layout
 
-Note: First column reports sample means (and standard deviations below);
- Column 2 reports effect (and standard errors below) of the sub-county level
- baraza intervention; Column 3 reports the effect (and standard errors below)
- of the information component of the baraza intervention; Column 4 reports
- the effect (and standard errors below) of the deliberation component of
- the baraza intervention; Column 5 reports the effect (and standard errors
- below) of the administrative placement of the baraza intervention.
- **, * and + denotes significance at the 1, 5 and 10 percent levels as assessed
+Note: Column 1 reports sample means (and standard deviations below); Column
+ 2 reports effects of the sub-county level baraza intervention (and standard
+ errors below); Column 3 reports effects of the information component of
+ the baraza intervention (and standard errors below); Column 4 reports effects
+ of the deliberation component of the baraza intervention (and standard
+ errors below); Column 5 reports effects  of the administrative placement
+ of the baraza intervention (and standard errors below).
+ **, * and + denote significance at the 1, 5 and 10 percent levels as assessed
  using randomization inference.
  Reported standard errors are clustered at the level of randomization.
  $^
 \backslash
-dag$ indicates that the outcome was in included in the index for the confirmator
-y analysis.
+dag$ indicates that the outcome was included in the index for the confirmatory
+ analysis.
  Distance to nearest govt health facility, number of days sick, number of
  days work/school missed due to illness, waiting time before being attended,
- and time of examination are all trimmed at 5 percent and transformed using
+ and time of examination are trimmed at 5 percent and transformed using
  the inverse hyperbolic sine transformation.
        
 \end_layout
@@ -5193,7 +5197,7 @@ Sexpr{format(round(df_averages[1,51]*100,digits=0),nsmall=0)}
 \begin_inset Float table
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -5724,7 +5728,8 @@ Sexpr{format(round(df_ancova[2,4,51],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Number of observations & 6704 & 
+Number of obs.
+ & 6704 & 
 \backslash
 Sexpr{format(round(df_ancova[6,1,43],digits=3),nsmall=0)} & 
 \backslash
@@ -5784,20 +5789,20 @@ scriptsize
 
 \begin_layout Plain Layout
 
-Note: First column reports sample means (and standard deviations below);
- Column 2 reports effect (and standard errors below) of the sub-county level
- baraza intervention; Column 3 reports the effect (and standard errors below)
- of the information component of the baraza intervention; Column 4 reports
- the effect (and standard errors below) of the deliberation component of
- the baraza intervention; Column 5 reports the effect (and standard errors
- below) of the administrative placement of the baraza intervention.
- **, * and + denotes significance at the 1, 5 and 10 percent levels as assessed
+Note: Column 1 reports sample means (and standard deviations below); Column
+ 2 reports effects of the sub-county level baraza intervention (and standard
+ errors below); Column 3 reports effects of the information component of
+ the baraza intervention (and standard errors below); Column 4 reports effects
+ of the deliberation component of the baraza intervention (and standard
+ errors below); Column 5 reports effects  of the administrative placement
+ of the baraza intervention (and standard errors below).
+ **, * and + denote significance at the 1, 5 and 10 percent levels as assessed
  using randomization inference.
  Reported standard errors are clustered at the level of randomization.
  $^
 \backslash
-dag$ indicates that the outcome was in included in the index for the confirmator
-y analysis.
+dag$ indicates that the outcome was included in the index for the confirmatory
+ analysis.
  Distance to public school was trimmed at 5 percent and transformed using
  the inverse hyperbolic sine transformation.
           
