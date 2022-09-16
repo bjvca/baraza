@@ -2828,7 +2828,7 @@ g.
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 btprint "btPrintCited"
-bibfiles "/home/bjvca/data/projects/baraza/report/endline_report_bib"
+bibfiles "C:/Users/u0127963/Desktop/PhD/baraza new/baraza/report/endline_report_bib"
 options "apsr"
 
 \end_inset
