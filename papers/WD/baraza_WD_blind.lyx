@@ -126,10 +126,8 @@ In many developing countries, poor delivery of public services remains an
  top-down monitoring may be more important in changing behavior of civil
  servants, but that bottom-up pressure from the community may be an effective
  way to pressure officials into increased top-down monitoring.
- At the same time, additional exploratory analysis suggests that, even though
- what transpires during a baraza reflects concerns of the citizens, what
- is decided at the event is often not executed.
- 
+ We conclude that organizing barazas more frequently may increase the likelihood
+ that officials implement what was concluded during baraza events.
 \end_layout
 
 \begin_layout Standard
@@ -204,8 +202,8 @@ literal "true"
 
 .
  The program brings politicians, civil servants and citizens together in
- town-hall type meetings (baraza—the Swahili word for council) to share
- information and engage with each other.
+ town-hall type meetings (barazas) to share information and engage with
+ each other.
  
 \end_layout
 
@@ -216,7 +214,7 @@ Since 2009, barazas have been organized in sub-counties throughout Uganda.
  impact on public service delivery and associated outcomes.
  Furthermore, in 2012, the decision was made to organize subsequent barazas
  at higher administrative levels (district) instead of the sub-county level,
- mainly to reduce cost and speed up roll out.
+ mainly to reduce cost and speed up roll-out.
  A second mayor objective of this study was to inform policy makers on the
  consequences of this change in terms of effectiveness of the program.
  A third objective of the study was to assess the relative importance of
@@ -408,20 +406,6 @@ literal "true"
 
 , who found that the presence of sub-county officials during their community-bas
 ed monitoring intervention boosted the impact of the intervention.
- However, effects may also work in the opposite direction.
- For example, an intervention to reduce absenteeism in government public
- health facilities in India was initially very successful, but ceased to
- have any impact after the local bureaucracy started providing official
- excuses for most of the nurses’ absences 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "10.1162/JEEA.2008.6.2-3.487"
-literal "true"
-
-\end_inset
-
-.
- 
 \end_layout
 
 \begin_layout Standard
@@ -458,6 +442,8 @@ The paper is organized as follows.
  This is followed by a section presents results, starting with a summary
  of the primary outcomes and exploring some of the impact pathways.
  We investigate treatment heterogeneity in a separate section.
+ We also provide a discussion on potential reasons why we do not see more
+ impact.
  The last section concludes.
 \end_layout
 
@@ -481,7 +467,7 @@ Nature of the baraza institution
 \shape italic
 Baraza
 \shape default
- is a term in Swahili and refers to a set of places where people meet (for
+ is a Swahili word that refers to a set of places where people meet (for
  example, a veranda in front of a house or some benches under a simple shelter
  near the local mosque), and to clubs, unions, and associations, but the
  word also describes all kinds of meetings and gatherings of people, from
@@ -561,17 +547,15 @@ literal "false"
 .
  Until today, all Kenyan chiefs are required by law to convene at least
  two barazas per month.
- One of them used the micro-blogging platform Twitter and introduced online
- barazas to transform the interaction between members of his locale and
- himself for better community policing 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "Omanga2015"
-literal "false"
+\end_layout
 
-\end_inset
-
-.
+\begin_layout Standard
+The above shows that the baraza as an institution has a long history in
+ the region.
+ The attempt of the government of Uganda to leverage such an important instituti
+on to increase effectiveness of its own functioning is interesting, and
+ may lead to quite different outcomes than other community monitoring interventi
+ons.
 \end_layout
 
 \begin_layout Subsection
@@ -1578,11 +1562,11 @@ https://www.socialscienceregistry.org/versions/60398/docs/version/document
 
 ].
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 The document 
@@ -2122,6 +2106,13 @@ In this section, we look at heterogeneous treatment effects related to the
 
 \begin_layout Subsection
 Heterogeneity in the timing of the intervention
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Heterogeneity-in-the"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2414,7 +2405,19 @@ Discussion
 \end_layout
 
 \begin_layout Standard
-In this section, we explore some of the potential reasons why barazas do
+While we do find a range of interesting effects when using a more exploratory
+ analysis, the main conclusion from our confirmatory analysis is in line
+ with what most other studies find: that there is no significant impact
+ of the policy program on public service delivery as a whole 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "raffler2018weakness,olken2007monitoring,waddington2019citizen"
+literal "false"
+
+\end_inset
+
+.
+ In this section, we explore some of the potential reasons why barazas do
  not seem to translate into large overall or sector-wide improvements in
  public service delivery.
  
@@ -2427,14 +2430,14 @@ Community-based monitoring interventions such as the baraza program can
  servants are delivering the services, a baraza intervention is unlikely
  to have a significant additional effect on objectively verifiable outcomes
  such as waiting time in health centers or the student-teacher ratios (however,
- a baraza could still change in citizens' perceptions about public service
- delivery — see below).
+ a baraza could still change citizens' perceptions about public service
+ delivery—see below).
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 The fact that child mortality reduced significantly in response to the community
--based monitoring intervention in
+-based monitoring intervention in 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "bjorkman2009power"
@@ -2457,13 +2460,10 @@ literal "false"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-We think it is hard to argue that service delivery in Uganda cannot be improved.
- While progress had been made in some areas such as child mortality, other
- areas have seen less progress.
+ We think it is hard to argue that service delivery in Uganda cannot be
+ improved.
+ While progress has been made in some areas such as child mortality, other
+ areas have seen less improvement.
  For instance, only about 10 percent of households report that they have
  access to agricultural extension (see Table 
 \begin_inset CommandInset ref
@@ -2480,20 +2480,20 @@ noprefix "false"
  almost two hours for medical examination at government health centers and
  in many cases are examined by a nurse instead of a doctor.
  Access to water remains problematic, especially in the dry season when
- 36 percent of households use potentially unsafe drinking water.
+ 36 percent of households turn to potentially unsafe drinking water.
  
 \end_layout
 
 \begin_layout Standard
-Furthermore, if there are no funds available for public service delivery,
- community-based monitoring will most likely also not lead to the desired
- outcomes.
+If there are no funds available for public service delivery, community-based
+ monitoring will most likely also not lead to the desired outcomes.
  Also here, we think that lack of funding is not the main issue.
- Far reaching liberalization and decentralization started in the mid 1980s
- seduced donors across the globe to poor money into public services in Uganda.
- While there have been some studies reporting rampant elite capture
+ The liberalization and decentralization drive in the mid eighties seduced
+ donors across the globe to poor money into public services in Uganda.
+ While there have been some studies reporting rampant elite capture 
 \begin_inset CommandInset citation
 LatexCommand citep
+before "eg."
 key "reinikka2004local"
 literal "false"
 
@@ -2545,10 +2545,12 @@ noprefix "false"
  sub-county level baraza events.
  Using these reports, we determine for each baraza which sector was most
  discussed (column 4).
- This is then compared to baseline data from citizens living in that sub-county
- (column 3).
+ This is then compared to baseline data on priorities obtained from citizens
+ living in that sub-county (column 3).
  We find that what is prioritized by citizens is also discussed in the baraza
  events in four out of the 10 sub-counties.
+ This suggests some degree of alignment between priorities of citizens and
+ what is discussed during the baraza event.
 \end_layout
 
 \begin_layout Standard
@@ -2589,7 +2591,6 @@ noprefix "false"
  We find that in only two out of 10 sub-counties, the sector that was discussed
  most during the baraza event was also the sector where most positive change
  was recorded.
- 
 \end_layout
 
 \begin_layout Standard
@@ -2605,22 +2606,24 @@ noprefix "false"
 
  thus suggests that while priorities of citizens do seem to get discussed
  during barazas, it is less common that what was decided also gets implemented.
- Using focus group discussions, we gauged reasons why this link breaks down
-\begin_inset CommandInset citation
-LatexCommand citep
-key "van2018impact"
-literal "false"
+ Using focus group discussions, we gauged reasons why this link breaks down.
+ Firstly, if barazas are seen as a one off event, officials are less likely
+ to act on it.
+ We have seen is section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Heterogeneity-in-the"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
-.
- Firstly, failure to follow up on issues raised during the barazas can be
- a threat to their effectiveness.
- The optimism among citizens and other stakeholders can quickly turn into
+ that optimism among citizens and other stakeholders can quickly turn into
  disappointment if none of the issues raised is addressed.
  Secondly, poor relationships between politicians and technical personnel
  can hinder the effectiveness of barazas.
- For example, a poor relation or communication between a CAO and a LC V
+ For example, a poor relation or communication between a CAO and a LC 5
  Chairperson can impede public service delivery.
  Thirdly, if barazas mainly expose issues beyond the accountability of the
  officials and service providers present, they will not be conducive for
@@ -2650,8 +2653,9 @@ ly civil servants, often complained that barazas should also contain an
 \end_layout
 
 \begin_layout Standard
-To explore this civic education function of barazas, we test if the baraza
- intervention affected perceptions by citizens.
+To explore this civic education function of barazas, we test if, even though
+ there is no impact on objectively verifiable outcomes, the baraza intervention
+ affected perceptions by citizens.
  In particular, we asked citizens to rate, on a Likert scale, how satisfied
  they were with public service delivery in the four sectors.
  We find some indications that a combined information and deliberation baraza
@@ -2675,6 +2679,8 @@ literal "false"
 
  finds that their health focused community monitoring intervention significantly
  increased satisfaction without affecting outcomes.
+ As such, town-hall style meetings may still be beneficial even if they
+ do not lead to real changes in public service delivery.
 \end_layout
 
 \begin_layout Section
@@ -2683,7 +2689,7 @@ Conclusion
 
 \begin_layout Standard
 To improve governance and public service delivery in Uganda, the OPM organizes
- town-hall type meetings—popularly known as barazas—where citizens receive
+ town-hall style meetings—popularly known as barazas—where citizens receive
  information from government officials and get the opportunity to directly
  engage with them.
  In 2015, we designed a cluster randomized control trial aimed at evaluating
@@ -2700,9 +2706,9 @@ s in about 40 districts throughout Uganda was collected and the OPM started
 \end_layout
 
 \begin_layout Standard
-The OPM faced various complications that affected the timely roll-out of
- the barazas, including budgetary constraints and disruptions related to
- the general elections of 2016.
+The OPM faced various challenges that affected the timely roll-out of the
+ barazas, including budgetary constraints and disruptions related to the
+ general elections of 2016.
  This resulted in the decision to collect end-line information after partial
  roll-out, more than 4 years after baseline data was collected.
  Various strategies were followed to test, and reduce the consequences of,
@@ -2803,6 +2809,11 @@ ng boosted the impact of the intervention on treatment quality in health
  in changing behavior of civil servants, but that community involvement
  may be an effective way to pressure officials into increased top-down monitorin
 g.
+ Baraza may also be effective vehicles for civic education.
+ We further find that what is discussed during baraza events reflects what
+ citizens prioritize, but that often officials fail to act on this.
+ Focus group discussions suggest that officials would be more forthcoming
+ if baraza meetings would be organized more frequently.
 \end_layout
 
 \begin_layout Standard
@@ -2816,7 +2827,7 @@ g.
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 btprint "btPrintCited"
-bibfiles "C:/Users/u0127963/Desktop/PhD/baraza new/baraza/report/endline_report_bib"
+bibfiles "/home/bjvca/data/projects/baraza/report/endline_report_bib"
 options "apsr"
 
 \end_inset
