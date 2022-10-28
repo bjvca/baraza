@@ -104,7 +104,8 @@ status open
 author{Tewodaj Mogues
 \backslash
 thanks{International Monetary Fund, Expenditure Policy Division, Fiscal
- Affairs Department, Washington DC, USA} ,  Bjorn Van Campenhout
+ Affairs Department, Washington DC, USA - TMogues@imf.org} ,  Bjorn Van Campenhou
+t
 \backslash
 thanks{Development Strategy and Governance Division, International Food
  Policy Research Institute, Leuven, Belgium - corresponding author: b.vancampenho
@@ -113,13 +114,14 @@ ut@cgiar.org}
 footnotemark[3] ,  Caroline Miehe
 \backslash
 thanks{LICOS Centre for Institutions and Economic Performance, KULeuven,
- Leuven, Belgium} 
+ Leuven, Belgium - caroline.miehe@kuleuven.be} 
 \backslash
 
 \backslash
  Nassul Kabunga
 \backslash
-thanks{Uganda Bureau of Statistics, Kampala, Uganda} }
+thanks{Uganda Bureau of Statistics, Kampala, Uganda - nassulk@googlemail.com}
+ }
 \end_layout
 
 \end_inset
@@ -208,6 +210,17 @@ literal "false"
  in particular.
  The views expressed in this article are not necessarily those of 3ie or
  its members, or of GDN.
+ Authors order is 
+\begin_inset CommandInset href
+LatexCommand href
+name "randomized"
+target "https://www.aeaweb.org/journals/policies/random-author-order/search?RandomAuthorsSearch%5Bsearch%5D=GPj02I3FJ4O0"
+literal "false"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \end_body
