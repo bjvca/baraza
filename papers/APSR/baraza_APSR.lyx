@@ -58,7 +58,7 @@ knitr
 \use_package undertilde 1
 \cite_engine natbib
 \cite_engine_type authoryear
-\biblio_style chicago
+\biblio_style apsr
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -5612,7 +5612,7 @@ literal "true"
 LatexCommand bibtex
 btprint "btPrintCited"
 bibfiles "/home/bjvca/Dropbox (IFPRI)/baraza/Impact Evaluation Surveys/endline/report/endline_report_bib"
-options "chicago"
+options "apsr"
 
 \end_inset
 
