@@ -81,9 +81,9 @@ knitr
 \begin_body
 
 \begin_layout Title
-Online Appendix for: Community based monitoring and public service delivery
- - Impact, and the role of information, deliberation, and jurisdictional
- tier
+
+Online Appendix for: The impact of community-based monitoring on public
+ service delivery: A randomized control trial in Uganda
 \end_layout
 
 \begin_layout Standard
@@ -101,7 +101,8 @@ status open
 
 \begin_layout Plain Layout
 
-path <- strsplit(getwd(), "/papers/APSR")[[1]]
+
+path <- strsplit(getwd(), "/papers/WD")[[1]]
 \end_layout
 
 \begin_layout Plain Layout
@@ -239,31 +240,6 @@ status open
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_averages_baseline.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_ols_baseline.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_balance_baseline.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_ols_end.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_averages_end.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -981,7 +957,9 @@ Sexpr{format(round(df_ols[2,4,10],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Number of observations & 12545 & 
+
+Number of obs.
+ & 12545 & 
 \backslash
 Sexpr{format(round(df_ols[6,1,1],digits=3),nsmall=0)} & 
 \backslash
@@ -1049,25 +1027,25 @@ scriptsize
 
 \begin_layout Plain Layout
 
-Note: First column reports sample means (and standard deviations below);
- Column 2 reports differences (and standard errors below) between baseline
- characteristics of households that were planned to receive a sub-county
- level combined information and deliberation baraza, and those that would
- not be exposed to any baraza; Column 3 reports differences (and standard
- errors below) between baseline characteristics of households that would
- receive a sub-county level information baraza, and those that would not
- receive a sub-county level information baraza; Column 4 reports differences
- (and standard errors below) between baseline characteristics of households
- that were allocted to receive a sub-county level deliberation baraza, and
- those that would not receive a sub-county level deliberation baraza; Column
- 5 (and standard errors below) reports differences between baseline characterist
-ics of households that were planned to receive a district level combined
- information and deliberation baraza, and those that would not be exposed
- to any baraza;  **, * and + denotes significance at the 1, 5 and 10 percent
- levels.
+
+Note: Column 1 reports sample means (and standard deviations below); Column
+ 2 reports differences between baseline characteristics of households that
+ were planned to receive a sub-county level combined information and deliberatio
+n baraza and those that would not receive any baraza (and standard errors
+ below); Column 3 reports differences between baseline characteristics of
+ households that would receive a sub-county level information baraza and
+ those that would not receive one (and standard errors below); Column 4
+ reports differences between baseline characteristics of households that
+ would receive a sub-county level deliberation baraza and those that would
+ not receive one (and standard errors below); Column 5 reports differences
+ between baseline characteristics of households that were planned to receive
+ a district level combined information and deliberation baraza and those
+ that would not receive any baraza (and standard errors below);  **, * and
+ + denote significance at the 1, 5 and 10 percent levels.
  Reported standard errors are clustered at the level of randomization.
- Distance to all weather road is trimmed at 5 percent and transformed using
- the inverse hyperbolic sine transformation.
+ Distance to nearest all weather road is trimmed at 5 percent and transformed
+ using the inverse hyperbolic sine transformation.
+
   
 \end_layout
 
@@ -1103,7 +1081,8 @@ reference "tab:balance_orig"
 \end_layout
 
 \begin_layout Section
-Minimal Detectable Effects (MDEs)
+
+Minimal Detectable Effects
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Minimal-Detectable-Effects"
@@ -1120,8 +1099,8 @@ The partial roll-out means a reduction in statistical power.
  be used to judge effectiveness of the intervention.
  Instead of fixing MDEs and simulating power for different sample sizes
  as is usually done in power calculations, we fix sample size to what we
- ended up with after partial roll-out, and simulate power for different
- MDEs.
+
+ ended up with after partial roll-out and simulate power for different MDEs.
  We use a standard significance level of 0.05 (double sided).
  MDEs are estimated using a simple analysis of covariance (ANCOVA) model
  that controls for the outcome at baseline and accounts for the clustered
@@ -1264,8 +1243,8 @@ While power curves are generally not too different, we seem to have most
  can expect to identify effects of 3.75 percentage points or more.
  Due to the smaller sample size, it is harder to compare pure control sub-counti
 es to sub-county barazas that received the interacted treatment.
- Still, we are able to comfortably identify an increase of 4 percentage
- points.
+
+ Still, we can comfortably identify an increase of 4 percentage points.
  Despite a larger sample size available to test the impact of district level
  barazas, we find power to be comparable to that of the sub-county level
  baraza.
@@ -1308,7 +1287,8 @@ As more than four years passed between baseline and endline data collection,
  some level of attrition was to be expected.
  Overall, attrition amounted to 8.6 percent.
  Reports from the field indicated that this attrition was due to the fact
- that some villages that were close to lake Victoria had been evacuated
+
+ that some villages that were close to Lake Victoria had been evacuated
  due to rising levels of the lake.
  Two villages in areas populated with land insecure settlers were dropped
  due to security issues.
@@ -1427,7 +1407,9 @@ Attrition & 0.086 & 0.010  &  0.0139 & 0.003 & -0.004
 
 \begin_layout Plain Layout
 
-Number of observations & 7340 & 2996 & 5341 &  5341  &  3996  
+
+Number of obs.
+ & 7340 & 2996 & 5341 &  5341  &  3996  
 \backslash
 
 \backslash
@@ -1466,12 +1448,14 @@ scriptsize
 
 \begin_layout Plain Layout
 
-Note: First column reports mean attrition rate (and standard deviations
- below); Column 2 reports correlation of attrition (and standard errors
- below) to the sub-county level baraza treatment; Column 3 reports correlation
- of attrition to the information baraza treatment; Column 4 reports correlation
- of attrition to the deliberation baraza treatment; Column 5 reports correlation
- of attrtion to the district level baraza treatment.
+
+Note: Column 1 reports the mean attrition rate (and standard deviations
+ below); Column 2 reports the correlation between attrition and sub-county
+ level baraza treatment (and standard errors below); Column 3 reports the
+ correlation between attrition and information baraza treatment; Column
+ 4 reports the correlation between attrition and deliberation baraza treatment;
+ Column 5 reports the correlation between attrition and district level baraza
+ treatment.
  Reported standard errors are clustered at the level of randomization.
  
 \end_layout
@@ -1501,21 +1485,6 @@ status open
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_averages_details.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/df_ancova_details.Rd", sep="/"))
-\end_layout
-
-\begin_layout Plain Layout
-
-load(paste(path,"report/results/baseline_desc_details.Rd", sep="/"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -1576,8 +1545,9 @@ reference "tab:anova_ag"
 \end_inset
 
 .
- We start by looking if the baraza programme affected the use of modern
- inputs in agriculture.
+
+ We start by looking if the baraza program affected the use of modern inputs
+ in agriculture.
  A first outcome looks at whether the household used inorganic fertilizers
  (DAP, Urea, NPK, Foliar, TSP, SSP, MOP) during the last 12 months, an important
  yield increasing technology.
@@ -1604,7 +1574,9 @@ Sexpr{format(round(df_averages[1,3],digits=2)*100,nsmall=0)}
 \begin_inset Formula $\beta$
 \end_inset
 
- as estimated using the OLS model in Equation (1) in the paper).
+
+ as estimated using the Ordinary Least Squares model in Equation (1) in
+ the paper).
  We see that the proportion of households that reported using inorganic
  fertilizer is 
 \begin_inset ERT
@@ -1688,9 +1660,9 @@ Sexpr{format(abs(round(df_ancova[1,1,4],digits=3)*100),nsmall=1)}
  sub-county level baraza took place as opposed to in areas where no baraza
  was conducted, but the difference is not significant.
  The coefficient estimate is much smaller than the 80 percent MDE reported
- in Figure 2 in [placeholder for link to online repository 
+ in Figure 2 in [placeholder for link to online repository
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset CommandInset href
@@ -2498,7 +2470,9 @@ Sexpr{format(round(df_ancova[2,4,16],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Number of observations & 6704 & 
+
+Number of obs.
+ & 6704 & 
 \backslash
 Sexpr{format(round(df_ancova[6,1,1],digits=3),nsmall=0)} & 
 \backslash
@@ -2562,20 +2536,21 @@ scriptsize
 
 \begin_layout Plain Layout
 
-Note: First column reports sample means (and standard deviations below);
- Column 2 reports effect (and standard errors below) of the sub-county level
- baraza intervention; Column 3 reports the effect (and standard errors below)
- of the information component of the baraza intervention; Column 4 reports
- the effect (and standard errors below) of the deliberation component of
- the baraza intervention; Column 5 reports the effect (and standard errors
- below) of the administrative placement of the baraza intervention.
- **, * and + denotes significance at the 1, 5 and 10 percent levels as assessed
+
+Note: Column 1 reports sample means (and standard deviations below); Column
+ 2 reports effects of the sub-county level baraza intervention (and standard
+ errors below); Column 3 reports effects of the information component of
+ the baraza intervention (and standard errors below); Column 4 reports effects
+ of the deliberation component of the baraza intervention (and standard
+ errors below); Column 5 reports effects  of the administrative placement
+ of the baraza intervention (and standard errors below).
+ **, * and + denote significance at the 1, 5 and 10 percent levels as assessed
  using randomization inference.
  Reported standard errors are clustered at the level of randomization.
  $^
 \backslash
-dag$ indicates that the outcome was in included in the index for the confirmator
-y analysis.
+dag$ indicates that the outcome was included in the index for the confirmatory
+ analysis.
    
 \end_layout
 
@@ -2637,7 +2612,8 @@ Sexpr{format(abs(round(df_ancova[1,3,5],digits=3)*100),nsmall=1)}
 
 \end_inset
 
- percentage points higher than in areas were citizens were not given the
+
+ percentage points higher than in areas where citizens were not given the
  opportunity to engage with their leaders.
  We find no such effects from district level barazas.
  Direct comparison of district and sub-county level barazas indicate that
@@ -2647,11 +2623,11 @@ Sexpr{format(abs(round(df_ancova[1,3,5],digits=3)*100),nsmall=1)}
 \end_layout
 
 \begin_layout Standard
-We then check if household changed with respect to the use of agro-chemicals.
+We then check if household changed with respect to the use of agrochemicals.
  This includes the use of pesticides, herbicides, fungicides and acaricides
  during the 12 months prior to endline data collection.
  Overall, almost half of all households in the sample reported using some
- form of agro-chemicals.
+ form of agrochemicals.
  We do not find evidence that the baraza intervention affected the use of
  these inputs.
  Finally, we consider the use of modern inputs and methods in livestock
@@ -2671,7 +2647,7 @@ Sexpr{format(round(df_averages[1,7],digits=2)*100,nsmall=0)}
 
 \end_inset
 
- percent of households report that they used such inputs and this proportion
+ percent of households report that they used such inputs, and this proportion
  is similar across different experimental groups.
 \end_layout
 
@@ -2679,9 +2655,9 @@ Sexpr{format(round(df_averages[1,7],digits=2)*100,nsmall=0)}
 We then turn to agricultural advisory services.
  We first investigate if barazas affected access to extension at home.
  We estimate the percentage of households in our sample who reported that
- they were visited by an expert (e.g.
- crop or livestock extension agent, or community-based facilitator or another
- experienced farmer) at home in the last 12 months.
+ they were visited by an expert (for example, crop or livestock extension
+ agent, or community-based facilitator or another experienced farmer) at
+ home in the last 12 months.
  We find that access to extension, although higher than at baseline, is
  still low, with only about 
 \begin_inset ERT
@@ -2714,10 +2690,10 @@ Sexpr{format(abs(round(df_ancova[1,1,8],digits=3)*100),nsmall=1)}
 
  percentage points.
  The effect seems to come from a combination of the information and deliberation
- components; the components in itself do not seem to affect the outcome
+ components; the components themselves do not seem to affect the outcome
  enough to render if significant.
  We also find that this effect is absent among households that live in sub-count
-ies that received a the district level baraza.
+ies that received the district level baraza.
  A direct comparison of extension at home between households that were exposed
  to a district level baraza and households that were exposed to a sub-county
  level baraza confirms that sub-county level barazas were significantly
@@ -2777,8 +2753,8 @@ Sexpr{format(round(df_averages[1,11],digits=2)*100,nsmall=0)}
 
 \end_inset
 
- percent of households was of the opinion that officials were aware of which
- services farmers need.
+ percent of households believed that officials were aware of which services
+ farmers need.
  While we do not see that this percentage differs between treatment and
  control for sub-county level barazas, we do see that a district level baraza
  reduced this percentage.
@@ -2845,10 +2821,11 @@ We further find that a higher share of farmer groups in areas that received
  a sub-county level baraza received support from government.
  NAADS, and more recently OWC, are responsible for the distribution of subsidize
 d agricultural inputs.
- The OPM reports from the baraza meetings indicate that there are often
- many complaints related to the absence of NAADS/OWC in sub-counties and
- the non-transparent way in which decisions are made on who gets to benefit
- from NAADS/OWC and who does not get inputs.
+
+ The Office of the Prime Minister (OPM) reports from the baraza meetings
+ indicate that there are often many complaints related to the absence of
+ NAADS/OWC in sub-counties and the non-transparent way in which decisions
+ are made on who gets to benefit from NAADS/OWC and who does not get inputs.
  We see that 
 \begin_inset ERT
 status open
@@ -2924,8 +2901,9 @@ Sexpr{format(abs(round(df_ancova[1,1,16],digits=3)*100),nsmall=1)}
  in areas that received a sub-county baraza.
  However, simulated MDEs suggest these results may suffer from a lack of
  statistical power.
- Both of these outcomes were also included in the index to assess agricultural
- sector impact.
+
+ Both outcomes were also included in the index to assess agricultural sector
+ impact.
  
 \end_layout
 
@@ -2935,7 +2913,7 @@ Infrastructure
 
 \begin_layout Standard
 A second important area in which we expect to see an impact of the baraza
- programme is infrastructure.
+ program is infrastructure.
  We primarily focus on drinking water infrastructure.
  Results are in Table 
 \begin_inset CommandInset ref
@@ -2983,8 +2961,9 @@ d water source.
 \begin_layout Standard
 A second outcome we look at (and is also included in the index) is the distance
  to the primary water source during the dry season.
- This was measured in km, but trimmed and transformed using the inverse
- hyperbolic sine transformation.
+
+ This was measured in km but trimmed and transformed using the inverse hyperboli
+c sine transformation.
  We find that, on average, households had to walk about 
 \begin_inset ERT
 status open
@@ -3002,9 +2981,11 @@ Sexpr{format(round(mean(baseline_desc$dist_source,na.rm=T),digits=2),nsmall=1)}
  While this distance seemed to reduce in all comparisons, and especially
  for barazas held at the district level where we find a reduction of approximate
 ly 9 percent, it is never significantly different from zero.
+<<<<<<< HEAD
  Simulated MDEs [placeholder for link to online repository 
+ Simulated MDEs [placeholder for link to online repository
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset CommandInset href
@@ -3655,7 +3636,9 @@ Sexpr{format(round(df_ancova[2,4,52],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Number of observations & 6704 & 
+
+Number of obs.
+ & 6704 & 
 \backslash
 Sexpr{format(round(df_ancova[6,1,17],digits=3),nsmall=0)} & 
 \backslash
@@ -3715,23 +3698,24 @@ scriptsize
 
 \begin_layout Plain Layout
 
-Note: First column reports sample means (and standard deviations below);
- Column 2 reports effect (and standard errors below) of the sub-county level
- baraza intervention; Column 3 reports the effect (and standard errors below)
- of the information component of the baraza intervention; Column 4 reports
- the effect (and standard errors below) of the deliberation component of
- the baraza intervention; Column 5 reports the effect (and standard errors
- below) of the administrative placement of the baraza intervention.
- **, * and + denotes significance at the 1, 5 and 10 percent levels as assessed
+
+Note: Column 1 reports sample means (and standard deviations below); Column
+ 2 reports effects of the sub-county level baraza intervention (and standard
+ errors below); Column 3 reports effects of the information component of
+ the baraza intervention (and standard errors below); Column 4 reports effects
+ of the deliberation component of the baraza intervention (and standard
+ errors below); Column 5 reports effects  of the administrative placement
+ of the baraza intervention (and standard errors below).
+ **, * and + denote significance at the 1, 5 and 10 percent levels as assessed
  using randomization inference.
  Reported standard errors are clustered at the level of randomization.
  $^
 \backslash
-dag$ indicates that the outcome was in included in the index for the confirmator
-y analysis.
+dag$ indicates that the outcome was included in the index for the confirmatory
+ analysis.
  Distance to water source, average waiting time at source, and distance
- to nearest all weather road are all trimmed at 5 percent and transformed
- using the inverse hyperbolic sine transformation.
+ to nearest all weather road are trimmed at 5 percent and transformed using
+ the inverse hyperbolic sine transformation.
      
 \end_layout
 
@@ -3751,7 +3735,7 @@ We included one question related to road infrastructure.
  road.
  We find that in the full sample a household lived on average 26 km from
  a road.
- We do not find that the baraza programme reduced the distance to the nearest
+ We do not find that the baraza program reduced the distance to the nearest
  all weather road.
 \end_layout
 
@@ -3769,7 +3753,7 @@ reference "tab:anova_health"
 
 ).
  One problem with public health related outcomes is that some outcomes related
- to quality of service delivery in health centers will only be available
+ to quality-of-service delivery in health centers will only be available
  for households that have visited government health facilities, reducing
  sample size too much to maintain acceptable power.
  Furthermore, the intervention may also affect the likelihood that households
@@ -3909,7 +3893,7 @@ We then turn to health outcomes.
  This was the case in two thirds of the households in our sample.
  The intervention did not reduce morbidity in our sample.
  We then asked for each sick person in the household to record how many
- days he or she was ill, and use this to calculate the total number of sick
+ days he or she was ill and use this to calculate the total number of sick
  days at the household level in the last year.
  The average household recorded almost 50 sick days according to this definition.
  We also do not find that the intervention affected the (trimmed and transformed
@@ -4003,7 +3987,7 @@ Sexpr{format(round(df_averages[1,38]*100,digits=0),nsmall=0)}
  There was no impact of the intervention.
  Related, users often complained about a lack of drugs in government health
  facilities.
- We asked if, during the last visit to a government health centre, drugs
+ We asked if, during the last visit to a government health center, drugs
  were received (indicating that drugs were available).
  We also asked if drugs had to be purchased from outside of the hospital
  (indicating that at least some drugs were missing).
@@ -4021,7 +4005,7 @@ Sexpr{format(round(df_averages[1,39]*100,digits=0),nsmall=0)}
 \end_inset
 
  percent of households reported that they received medicines in the health
- centre, almost all of them also mentioned that they had to also buy drugs
+ center, almost all of them also mentioned that they had to also buy drugs
  outside of the hospital.
  For neither indicator, the intervention seems to make a difference.
 \end_layout
@@ -4926,7 +4910,8 @@ Sexpr{format(round(df_ancova[2,4,41],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Number of observations & 6704 & 
+Number of obs.
+ & 6704 & 
 \backslash
 Sexpr{format(round(df_ancova[6,1,25],digits=3),nsmall=0)} & 
 \backslash
@@ -4986,23 +4971,23 @@ scriptsize
 
 \begin_layout Plain Layout
 
-Note: First column reports sample means (and standard deviations below);
- Column 2 reports effect (and standard errors below) of the sub-county level
- baraza intervention; Column 3 reports the effect (and standard errors below)
- of the information component of the baraza intervention; Column 4 reports
- the effect (and standard errors below) of the deliberation component of
- the baraza intervention; Column 5 reports the effect (and standard errors
- below) of the administrative placement of the baraza intervention.
- **, * and + denotes significance at the 1, 5 and 10 percent levels as assessed
+Note: Column 1 reports sample means (and standard deviations below); Column
+ 2 reports effects of the sub-county level baraza intervention (and standard
+ errors below); Column 3 reports effects of the information component of
+ the baraza intervention (and standard errors below); Column 4 reports effects
+ of the deliberation component of the baraza intervention (and standard
+ errors below); Column 5 reports effects  of the administrative placement
+ of the baraza intervention (and standard errors below).
+ **, * and + denote significance at the 1, 5 and 10 percent levels as assessed
  using randomization inference.
  Reported standard errors are clustered at the level of randomization.
  $^
 \backslash
-dag$ indicates that the outcome was in included in the index for the confirmator
-y analysis.
+dag$ indicates that the outcome was included in the index for the confirmatory
+ analysis.
  Distance to nearest govt health facility, number of days sick, number of
  days work/school missed due to illness, waiting time before being attended,
- and time of examination are all trimmed at 5 percent and transformed using
+ and time of examination are trimmed at 5 percent and transformed using
  the inverse hyperbolic sine transformation.
        
 \end_layout
@@ -5093,7 +5078,7 @@ If the quality of public education is poor, households will be less likely
  We find that the average household in our sample had almost two children
  in government schools, but that enrollment rates were not affected by the
  baraza intervention, although for all but the information component, we
- can not differentiate between null effects and insignificant results due
+ cannot differentiate between null effects and insignificant results due
  to low statistical power.
 \end_layout
 
@@ -5127,7 +5112,7 @@ Sexpr{format(round(df_averages[1,45]*100,digits=0),nsmall=0)}
 \end_inset
 
  percent of schools have such a fence.
- The lack of a fence was a frequent complaints from parents during qualitative
+ The lack of a fence was a frequent complaint from parents during qualitative
  work.
  We also asked if the school had electricity and if there was a water source
  available in the school.
@@ -5190,9 +5175,8 @@ Sexpr{format(round(df_averages[1,49]*100,digits=0),nsmall=0)}
  how parents could participate, or how information was shared.
  Again, statistical power may be an issue in many of these comparisons,
  as illustrated by the large MDEs [placeholder for link to online repository
- 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset CommandInset href
@@ -5233,7 +5217,7 @@ Sexpr{format(round(df_averages[1,51]*100,digits=0),nsmall=0)}
 \begin_inset Float table
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -5764,7 +5748,9 @@ Sexpr{format(round(df_ancova[2,4,51],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Number of observations & 6704 & 
+
+Number of obs.
+ & 6704 & 
 \backslash
 Sexpr{format(round(df_ancova[6,1,43],digits=3),nsmall=0)} & 
 \backslash
@@ -5824,20 +5810,20 @@ scriptsize
 
 \begin_layout Plain Layout
 
-Note: First column reports sample means (and standard deviations below);
- Column 2 reports effect (and standard errors below) of the sub-county level
- baraza intervention; Column 3 reports the effect (and standard errors below)
- of the information component of the baraza intervention; Column 4 reports
- the effect (and standard errors below) of the deliberation component of
- the baraza intervention; Column 5 reports the effect (and standard errors
- below) of the administrative placement of the baraza intervention.
- **, * and + denotes significance at the 1, 5 and 10 percent levels as assessed
+Note: Column 1 reports sample means (and standard deviations below); Column
+ 2 reports effects of the sub-county level baraza intervention (and standard
+ errors below); Column 3 reports effects of the information component of
+ the baraza intervention (and standard errors below); Column 4 reports effects
+ of the deliberation component of the baraza intervention (and standard
+ errors below); Column 5 reports effects  of the administrative placement
+ of the baraza intervention (and standard errors below).
+ **, * and + denote significance at the 1, 5 and 10 percent levels as assessed
  using randomization inference.
  Reported standard errors are clustered at the level of randomization.
  $^
 \backslash
-dag$ indicates that the outcome was in included in the index for the confirmator
-y analysis.
+dag$ indicates that the outcome was included in the index for the confirmatory
+ analysis.
  Distance to public school was trimmed at 5 percent and transformed using
  the inverse hyperbolic sine transformation.
           
@@ -6006,8 +5992,9 @@ reference "fig:connections"
  thus reports interaction effects of the different interventions with an
  indicator for sub-counties where officials report if the sub-county has
  residents that occupy leadership positions such as minister, member of
- parliament, heads of government agencies, RDCs, and other district level
- officials.
+
+ parliament, heads of government agencies, Resident District Commissioners
+ (RDCs), and other district level officials.
 \end_layout
 
 \begin_layout Standard
@@ -6078,9 +6065,10 @@ Adherence to Principles and Guidance for Human Subjects Research
 \end_layout
 
 \begin_layout Standard
-We took great care in assuring that, at all times, we respected autonomy
- of research subjects (citizens, politicians and civil servants), protected
- them from harm, ensured their privacy, and treated them fairly.
+
+We took great care in assuring that we always respected autonomy of research
+ subjects (citizens, politicians and civil servants), protected them from
+ harm, ensured their privacy, and treated them fairly.
  Research protocols and all tools such as consent forms and survey instruments
  were cleared by the Uganda National Council for Science and Technology,
  Makerere University School of Social Sciences Research Ethics Committee,
@@ -6133,16 +6121,16 @@ s in rural areas, to understand the constraints households face, and to
 \end_layout
 
 \begin_layout Standard
-We also explicitly assured participants that all information will be kept
- confidential at all times and that answers will be used only in the form
- of averages collected across the country to gauge public service delivery
- in Uganda, such that individual responses can not be traced back to particular
- respondents.
+
+We also explicitly assured participants that all information will always
+ be kept confidential and that answers will be used only in the form of
+ averages collected across the country to gauge public service delivery
+ in Uganda, such that individual responses cannot be traced back to respondents.
  We also say that the information will not be used in any way other than
  for the purpose of conducting research on improving access to public services.
  We give an estimate of the time the interview will take and proved contact
- details of local research staff, the Principal Investigator and IRB for
- more information.
+ details of local research staff, the Principal Investigator and Institutional
+ Review Board (IRB) for more information.
  We then ask for consent in writing.
 \end_layout
 
@@ -6187,11 +6175,12 @@ As such, while we do agree that there are potential risks related to the
  intervention as implemented by the government of Uganda, we think these
  risks are reasonable.
  Citizens can manage the amount of risk they expose themselves to.
- For politicians and civil servants, the risk are part of the job and should
+
+ For politicians and civil servants, the risks are part of the job and should
  be known to them in advance.
- More importantly, our study is fairly passive in that it investigates on
- ongoing policy intervention.
- In other words, our study in itself does not add to the risk already present.
+ More importantly, our study is passive in that it investigates on ongoing
+ policy intervention.
+ In other words, our study does not add to the risk already present.
  Therefore, we adhere to the principle of 
 \begin_inset Quotes eld
 \end_inset
@@ -6208,14 +6197,14 @@ Nature of the partnership with OPM:
 \end_layout
 
 \begin_layout Standard
-For this study, we partnered with the office of the prime minister (OPM)
- as the implementer of a program to increase transparency and accountability
- in public service delivery.
+
+For this study, we partnered with the OPM as the implementer of a program
+ to increase transparency and accountability in public service delivery.
  We were connected to OPM through a call by the International Initiative
  for Impact Evaluations (3ie).
- 3ie was looking for a independent evaluator with a solid reputation for
+ 3ie was looking for an independent evaluator with a solid reputation for
  the ongoing policy program to increase public service delivery though community
- based monitoring.
+-based monitoring.
  The evaluations would help identify what works best and what can be improved
  upon.
  Demonstrated impact could help OPM to secure more funding.
@@ -6241,7 +6230,7 @@ We also agreed on adapting the design to differentiate between an information
  focused baraza and a deliberation focused baraza.
  To do so, we organized a series of trainings for baraza meeting facilitators.
  We also designed training materials to makes sure the treatments were executed
- according plan.
+ according to plan.
  Finally, we assisted OPM with the posters needed to collect information
  and we made sure a research assistant was present at each baraza event
  to make sure research protocols were followed.
