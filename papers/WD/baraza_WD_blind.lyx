@@ -1,4 +1,3 @@
-
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 544
 \begin_document
@@ -2900,7 +2899,7 @@ g.
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 btprint "btPrintCited"
-bibfiles "/home/bjvca/data/projects/baraza/report/endline_report_bib"
+bibfiles "../../report/endline_report_bib"
 options "apsr"
 
 \end_inset
@@ -6168,4 +6167,3 @@ Note: Column 1 reports sample means (and standard deviations below); Column
 
 \end_body
 \end_document
-
