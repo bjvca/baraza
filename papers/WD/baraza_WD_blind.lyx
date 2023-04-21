@@ -244,7 +244,10 @@ literal "false"
 \end_inset
 
 .
- Our study was no exception, as the OPM faced various challenges that affected
+\end_layout
+
+\begin_layout Standard
+Our study was no exception, as the OPM faced various challenges that affected
  the roll-out of the intervention, including budgetary constraints and disruptio
 ns related to the general elections of 2016.
  Four years after the baseline survey, with about 50 percent of the planned
@@ -277,7 +280,10 @@ cture.
  component of barazas reduces in-kind contributions and increases cash contribut
 ions, which suggests that barazas increase trust in officials and strengthen
  the social contract.
- There are also signs that the aggregate treatment effects mask significant
+\end_layout
+
+\begin_layout Standard
+There are also signs that the aggregate treatment effects mask significant
  heterogeneity.
  In particular, if we exploit the variation in the timing of the interventions,
  we find that the effectiveness of barazas seems to dissipate over time.
@@ -423,7 +429,7 @@ ral planning and potentially allowing for re-allocation of resources across
  to be a popular sector for community monitoring interventions 
 \begin_inset CommandInset citation
 LatexCommand citep
-before "eg."
+before "for example,"
 key "arkedis2019can,bjorkman2009power,raffler2018weakness"
 literal "true"
 
@@ -439,7 +445,7 @@ The paper is organized as follows.
  We then present the experimental design and describe the treatments.
  Next is a section on the implementation challenges, the implications of
  this for the study, and the strategies used to test and deal with it.
- This is followed by a section presents results, starting with a summary
+ This is followed by a section that presents results, starting with a summary
  of the primary outcomes and exploring some of the impact pathways.
  We investigate treatment heterogeneity in a separate section.
  We also provide a discussion on potential reasons why we do not see more
@@ -508,8 +514,23 @@ literal "false"
  In Burundi, barazas have traditionally been used to settle differences
  and discuss community issues.
  In Tanzania, barazas include formal councils and corporations like the
- National Swahili Council "Baraza la Kiswahili la Taifa" or the Tanzania
- News Broadcast Corporation "Baraza la Habari Tanzania" 
+ National Swahili Council 
+\begin_inset Quotes eld
+\end_inset
+
+Baraza la Kiswahili la Taifa
+\begin_inset Quotes erd
+\end_inset
+
+ or the Tanzania News Broadcast Corporation 
+\begin_inset Quotes eld
+\end_inset
+
+Baraza la Habari Tanzania
+\begin_inset Quotes erd
+\end_inset
+
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Naanyu2011"
@@ -531,8 +552,23 @@ literal "false"
 \end_inset
 
 .
- Kenyan barazas used to be the main meeting ground between "the ruled" ordinary
- citizens on the one hand, and state officials and bureaucrats as "the rulers"
+ Kenyan barazas used to be the main meeting ground between 
+\begin_inset Quotes eld
+\end_inset
+
+the ruled
+\begin_inset Quotes erd
+\end_inset
+
+ ordinary citizens on the one hand, and state officials and bureaucrats
+ as 
+\begin_inset Quotes eld
+\end_inset
+
+the rulers
+\begin_inset Quotes erd
+\end_inset
+
  on the other hand.
  While some barazas only serve to legitimize a provincial political ideology
  or aim at pro forma popular consensus, others lead to honest and real debates
@@ -612,16 +648,16 @@ literal "true"
  policy makers (the client), public servants (the implementer), and beneficiarie
 s of public goods and services (the users).
  In addition, barazas were designed to provide the opportunity to users
- to ask questions to the policy makers and public service providers and
- deliberate among themselves.
+ to ask questions to policy makers and public service providers and deliberate
+ among themselves.
  
 \end_layout
 
 \begin_layout Standard
-Barazas were first piloted in the financial year 2009/10.
+Barazas were first piloted in the financial year 2009/2010.
  Since then, efforts have been underway to roll out barazas in all sub-counties
  in the country.
- By the last quarter of the 2011/2012 financial year, 267 out of the country’s
+ By the last quarter of the 2011/2012 financial year, 267 out of the country's
  total of 1,340 sub-counties, spread over 112 districts, had held a baraza
  meeting.
  At the beginning of 2012/2013, however, changes in implementation were
@@ -643,7 +679,7 @@ A typical baraza meeting is initiated from the center, with the OPM mobilizing
  For sub-county level barazas, the sub-county level equivalents of the CAO
  (the sub-county chief) and the Sub-county Local Council chairperson (LC3)
  also have important roles.
- The OPM, in consultation with the district leaders (RDC, CAO and the LC5)
+ The OPM, in consultation with the district leaders (RDC, CAO, and LC5)
  and other stakeholders, agrees on the date and a neutral location.
  Again, in consultation with the district leaders, viable moderators are
  identified to guide the baraza forum.
@@ -703,7 +739,7 @@ The baraza intervention as conceived by the OPM is a standard community-based
  makers at a local level.
  Such community-based monitoring has become a popular tool to improve service
  delivery.
- However, not all such interventions appear to be successful 
+ However, not all interventions appear to be successful 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "waddington2019citizen,olken2007monitoring"
@@ -721,7 +757,7 @@ literal "true"
 
 \begin_layout Standard
 There are reasons to expect meaningful interactions between the information
- and the deliberation components of a baraza.
+ and deliberation components of a baraza.
  For example, in a generic baraza, the information component is primarily
  designed to inform citizens about the activities of the service providers.
  To some extent, citizens are passive recipients of this information, and
@@ -740,8 +776,8 @@ Information mechanism
 
 \begin_layout Standard
 The relationship between citizens and government officials is reminiscent
- of the principal–agent problem.
- In essence, there are three players (elected politicians, civil servants
+ of the principal-agent problem.
+ In essence, there are three players (elected politicians, civil servants,
  and citizens) with only partly overlapping information sets and potentially
  competing interests.
 \begin_inset Foot
@@ -776,7 +812,7 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-There is some evidence that channeling of information to citizens about
+There is some evidence that the channeling of information to citizens about
  the quantity, modality, and quality of public services, as well as about
  the investments and policy decisions made by politicians, bureaucrats,
  and service providers, can increase the ability of the users to hold the
@@ -790,7 +826,7 @@ literal "true"
 \end_inset
 
  establish, using a field experiment in India, that community information
- campaigns about states’ school management obligations had a positive impact
+ campaigns about states' school management obligations had a positive impact
  on school performance.
  
 \begin_inset CommandInset citation
@@ -812,7 +848,7 @@ literal "false"
 
 \end_inset
 
- find that targeted information reduced elite capture in Indonesia: mailing
+ find that targeted information reduced elite capture in Indonesia: Mailing
  cards with program information to targeted beneficiaries increased the
  subsidy they received from a subsidized rice program.
  A recent review of 48 empirical studies on the impacts of information on
@@ -877,8 +913,8 @@ literal "true"
 Impacts of deliberative processes have also been the subject of empirical
  analysis.
  For example, in addition to increasing community participation mentioned
- above, experimental evidence also shows that deliberative processes may
- reduce the prevalence of clientelism 
+ above, experimental evidence shows that deliberative processes may reduce
+ the prevalence of clientelism 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "fujiwara2013can"
@@ -933,8 +969,8 @@ ess of district-level barazas in any given sub-county of the concerned district.
 \end_layout
 
 \begin_layout Standard
-Which is more effective, placement at a higher or lower level, will likely
- depend on the outcome and context.
+Whether placement at a higher or lower level is more effective, is likely
+ to depend on the outcome and the context.
  For instance, it has been argued that engaging small groups can be more
  effective because they can be coordinated more easily, but large groups
  may make more sense if the desired outcome would be enjoyed by a broader
@@ -969,7 +1005,7 @@ Experimental design
 \begin_layout Standard
 To answer the above questions, we designed a social experiment covering
  districts, sub-counties, and households across the four regional blocks
- (Northern, Western, Central and Eastern) of Uganda.
+ of Uganda (Northern, Western, Central, and Eastern).
  Each regional block has somewhat unique characteristics in terms of ethnicity,
  geographical and agro-ecological conditions, as well as cultural history.
  As noted in Section 
@@ -979,29 +1015,68 @@ reference "sec:Background-of-the"
 
 \end_inset
 
-, a small share of sub-counties, albeit located throughout all of Uganda’s
+, a small share of sub-counties, albeit located throughout all of Uganda's
  112 districts across the four regions, had already received a sub-county
  level baraza intervention prior to the study.
- We thus selected our sample of districts from ‘eligible districts’, and
- our sample of sub-counties from ‘eligible sub-counties’.
- An ‘eligible district’ was defined as a district in which a district level
- baraza was not already implemented prior to the start of the study.
- An ‘eligible sub-county’ was defined as a sub-county to which two conditions
- applied: (i) a sub-county level baraza had not yet taken place, and (ii)
- the sub-county was in an ‘eligible district’.
+ We thus selected our sample of districts from 
+\begin_inset Quotes eld
+\end_inset
+
+eligible districts
+\begin_inset Quotes erd
+\end_inset
+
+, and our sample of sub-counties from 
+\begin_inset Quotes eld
+\end_inset
+
+eligible sub-counties
+\begin_inset Quotes erd
+\end_inset
+
+.
+ An 
+\begin_inset Quotes eld
+\end_inset
+
+eligible district
+\begin_inset Quotes erd
+\end_inset
+
+ was defined as a district in which a district level baraza was not already
+ implemented prior to the start of the study.
+ An 
+\begin_inset Quotes eld
+\end_inset
+
+eligible sub-county
+\begin_inset Quotes erd
+\end_inset
+
+ was defined as a sub-county to which two conditions applied: (i) a sub-county
+ level baraza had not yet taken place, and (ii) the sub-county was in an
+ 
+\begin_inset Quotes eld
+\end_inset
+
+eligible district
+\begin_inset Quotes erd
+\end_inset
+
+.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-The fact we restrict ourselves to eligible districts and sub-counties in
- this way has obvious consequences for the study population.
+The fact that we restrict ourselves to eligible districts and sub-counties
+ in this way has obvious consequences for the study population.
  For instance, the three districts that together constitute Karamoja, one
  of the poorest and most remote areas located in the northeast of Uganda,
  had already received district level barazas.
  As a result, this area was excluded from the analysis.
- While the impact evaluation had national coverage, this fact that we were
- evaluating and ongoing policy project needs to be kept in mind when interpretin
-g results and extrapolating conclusions.
+ While the impact evaluation had national coverage, the fact that we evaluate
+ an ongoing policy project needs to be kept in mind when interpreting results
+ and extrapolating conclusions.
 \end_layout
 
 \end_inset
@@ -1065,7 +1140,7 @@ The experiment at the sub-county level was set up as a
 
 \end_inset
 
- about one quarter of all eligible sub-counties sampled from 
+ About one quarter of all eligible sub-counties sampled from 
 \begin_inset Formula $D^{0}$
 \end_inset
 
@@ -1107,8 +1182,8 @@ on provision
 
 \begin_layout Standard
 To determine the number of districts, sub-counties and households to include
- in the study, we ran an extensive series of power calculations that used
- data from the Uganda National Household Survey of 2009/10 and the Demographic
+ in the study, we ran extensive series of power calculations that used data
+ from the Uganda National Household Survey of 2009/2010 and the Demographic
  and Health Survey of 2011 to estimate standard errors of the outcomes and
  inter-class correlations.
  In Online Appendix A.1, we show summary statistics for a range of household
@@ -1170,7 +1245,7 @@ For information barazas, templates to gather information were developed
  encountered during that year, and about planned expenditures and targets
  for the next fiscal year.
  This information needed to be provided for each of the four sectors (agricultur
-e, infrastructure, health and education) by the sub-county chief.
+e, infrastructure, health, and education) by the sub-county chief.
 \begin_inset Foot
 status collapsed
 
@@ -1211,7 +1286,7 @@ For the deliberation barazas, posters were also mounted in each parish of
 
 \begin_layout Standard
 A sub-county level baraza in the crossed treatment group combined both elements.
- District level baraza were very similar to (information and deliberation)
+ District level barazas were very similar to (information and deliberation)
  sub-county level barazas, except for the fact that district level barazas
  were organized at the district headquarters, all sub-county chiefs and
  LC3's of each sub-county were expected to attend in case questions arise
@@ -1250,11 +1325,11 @@ ons had happened.
  At that point, costs and benefits of waiting until the OPM finished all
  sub-county barazas or collecting baseline information after incomplete
  roll-out were assessed and various scenarios and strategies were evaluated.
- After an additional six months, with still only 56 out of the 155 sub-county
+ After additional six months, with still only 56 out of the 155 sub-county
  barazas implemented, it appeared that the best scenario would be one whereby
  end-line data would be collected before all sub-counties were treated,
- given that the governments financial constraints made it unlikely that
- all barazas would be held any time soon.
+ given that the government's financial constraints made it unlikely that
+ all barazas would be held anytime soon.
 \end_layout
 
 \begin_layout Standard
@@ -1281,15 +1356,15 @@ We acknowledge that the partial roll-out is a threat to internal validity
  Trial (RCT) still provides a substantial advantage over studies that are
  based on observational data.
  For instance, potential selection emanating from partial roll-out is restricted
- to the sub-sample of sub-counties that were assigned to be treated group
- only, significantly reducing the scope for bias.
+ to the sub-sample of sub-counties that were assigned to be treated only,
+ significantly reducing the scope for bias.
  In addition, the list of sub-counties to be treated that we shared with
  the implementing partner was organized by treatment group (information,
- deliberation and combined treatment), and in each treatment group, sub-counties
- were listed alphabetically.
+ deliberation, and combined treatment), and in each treatment group, sub-countie
+s were listed alphabetically.
  Looking at the list considering the partial roll-out, we get the impression
  that the OPM started at the top of the list and worked their way down.
- As a result, relatively more sub-counties that were assigned the information
+ As a result, relatively more sub-counties that were assigned to the information
  treatment were treated, and sub-counties toward the top of the list for
  each treatment are also more likely to be treated.
  This pattern is confirmed when regressing the likelihood of being treated
@@ -1302,9 +1377,9 @@ We acknowledge that the partial roll-out is a threat to internal validity
 In this section, we diagnose potential selection bias by assessing baseline
  balance between the planned-to-treat-but-not-treated sub-counties and control
  sub-counties.
- We then explain the endline data collection strategy to further reduce
+ We then explain the end-line data collection strategy to further reduce
  any remaining potential selection bias resulting from the partial roll-out:
- selection of control units by matching treatment and control units on range
+ Selection of control units by matching treatment and control units on range
  of sub-county characteristics that were likely to be known to the planner
  and may have affected how the intervention was rolled out.
  In Online Appendix A.2., we reflect on the fact that the partial roll-out
@@ -1345,8 +1420,8 @@ One way to test if selection bias was introduced by the partial roll-out
 status collapsed
 
 \begin_layout Plain Layout
-Alternative, one could restrict attention to the treatment group and compare
- sub-counties that ended up being treatment those that did not.
+Alternatively, one could restrict attention to the treatment group and compare
+ sub-counties that ended up being treatment to those that did not.
  However, such a comparison will be based on fewer observations.
 \end_layout
 
@@ -1363,10 +1438,10 @@ reference "tab:Balance_planed_ctrl"
 
 \end_inset
 
- presents a table with, for each of the three treatment arms affected by
- the partial roll-out, differences in average outcomes of planned but not
- treated sub-counties and planned control sub-counties (the first column
- also reports sample means).
+ presents, for each of the three treatment arms affected by the partial
+ roll-out, differences in average outcomes of planned but not treated sub-counti
+es and planned control sub-counties (the first column also reports sample
+ means).
  It is essentially the same table as the original balance table (Table A.1
  in the Online Appendix), but after dropping sub-counties that were treated.
  We find that the imbalance related to distance to nearest all weather road
@@ -1410,7 +1485,7 @@ reference "fig:Factorial-design"
  It shows that, based on the original power calculations, we planned to
  have between 51 and 53 sub-counties in each treatment cell (corresponding
  to about 2,550 to 2,650 households).
- At the start of the endline data collection, 29 sub-counties of the 51
+ At the start of the end-line data collection, 29 sub-counties of the 51
  that were supposed to receive the information-only treatment were treated,
  18 sub-counties of the 51 that were supposed to receive the deliberation-only
  treatment were treated, and 20 sub-counties of the 53 that were supposed
@@ -1435,17 +1510,17 @@ Statistical power is optimal when the number of treatment units is equal
 status collapsed
 
 \begin_layout Plain Layout
-We decided to collect endline data on 40 control sub-counties, which is
+We decided to collect end-line data on 40 control sub-counties, which is
  equal to the number of sub-counties that was treated with a district level
  baraza (the largest number of sub-counties among the different treatments).
 \end_layout
 
 \end_inset
 
- This raises the question: from the potential control sub-counties (either
+ This raises the question: From the potential control sub-counties (either
  those that were allocated to the control or because they ended up not being
- treated), which sub-counties should be included in the endline data collection?
- One reasonable suggestion would be to pick them randomly.
+ treated), which sub-counties should be included in the end-line data collection
+? One reasonable suggestion would be to pick them randomly.
  However, if the roll-out was not random, such a strategy may lead to a
  biased estimate of the causal impact of the intervention.
  For instance, if the OPM prioritized treatment of less remote areas, randomly
@@ -1473,9 +1548,9 @@ We used a range of sub-county characteristics that were likely to be known
  to match each treated sub-county to a control sub-county that was similar
  in terms of these characteristics.
  More in particular, we match on the following characteristics that were
- obtained at baseline from a survey of village chairs and CAO of each sub-county
-: geographic location of the sub-county using GPS coordinates of the headquarter
-s, road infrastructure within the sub-county (km tarmac road and km all-weather
+ obtained at baseline from a survey of village chairs and CAOs of each sub-count
+y: Geographic location of the sub-county using GPS coordinates of the headquarte
+rs, road infrastructure within the sub-county (km tarmac road and km all-weather
  (gravel) road), share of households with electricity, share of households
  with an iron roof or tiles, number of health centers in the sub-county,
  female primary school dropout rate, number of Universal Primary Education
@@ -1499,7 +1574,7 @@ reference "tab:balance_final"
  from pure chance alone and so we conclude that also with this new sample
  we maintain balance between treatment and control on a range of baseline
  characteristics for the various comparisons.
- It is important to note that this matching was done before endline data
+ It is important to note that this matching was done before end-line data
  was collected and the result of this ex-ante matching was also pre-registered
  to reduce specification search [placeholder for link to timestamped pre-registe
 red report on GitHub
@@ -1640,7 +1715,7 @@ The indices are aggregated through inverse covariance weighting, producing
 
  Pre-registration and mock reports have been suggested to reduce intentional
  or unintentional selection of specifications and outcome measures that
- yield positive findings, leading to an unreliable body of published research.
+ yield positive findings, leading to an unreliable body of published research
  
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -1891,7 +1966,7 @@ reference "fig:Summary-of-baraza"
 \end_inset
 
  provides a summary of the results.
- It shows the impact of the four main hypotheses—the impact of the sub-county
+ It shows results for the four main hypotheses—the impact of the sub-county
  baraza, the relative effectiveness of the information component, the relative
  effectiveness of the deliberation component, and the impact of district
  level barazas—on four sectors we consider—agriculture, infrastructure,
@@ -1948,15 +2023,15 @@ name "fn:This-method-first"
  impact on public service delivery in general.
  We find no significant impact of the baraza program on overall public service
  delivery.
- There are some indications that sub-county level baraza did make a difference
+ There are some indications that sub-county level barazas did make a difference
  in the agricultural sector, though only at the 10 percent significance
  level.
  
 \end_layout
 
 \begin_layout Standard
-The indices combine various outcomes, some of which the expected direction
- of the effect is unclear a-priori.
+The indices combine various outcomes, and for some of them the expected
+ direction of the effect is unclear a-priori.
  For instance, an information baraza may increase the quality of services
  in a hospital or health center when judged by an objective measure such
  as waiting time.
@@ -1978,12 +2053,12 @@ From that analysis, we learn that the positive effect of sub-county level
  driven by an increased likelihood that there are farmer groups or associations
  in the village (Online Appendix Table A.3).
  In Uganda, farmer groups and associations are important vehicles for receiving
- assistance from government, and we indeed see that the intervention also
- increased the likelihood that National Agriculture Advisory Services (NAADS)
- or Operation Wealth Creation (OWC) is present in the village.
+ assistance from the government, and we indeed see that the intervention
+ also increased the likelihood that National Agriculture Advisory Services
+ (NAADS) or Operation Wealth Creation (OWC) is present in the village.
  This, in turn, seems to have led to better access to agricultural extension
  and an increased likelihood that farmers have received improved seed varieties
- from government.
+ from the government.
  We also see that the deliberation component is particularly important for
  the increases in farmer groups and associations, which is in line with
  the finding in 
@@ -2008,7 +2083,7 @@ Mechanisms
 
 \begin_layout Standard
 One of the primary aims of the community forums is to increase communication
- between politicians, civil servants and the citizens.
+ between politicians, civil servants, and citizens.
  We test if citizens interacted more with politicians and service providers
  as a result of the interventions.
  To do so, we asked how long it has been since the respondent spoke personally
@@ -2025,7 +2100,7 @@ The time frame changes depending on the official.
  takes the value of one if the respondent spoke to him or her within the
  last month.
  For the head teacher, the reference period is six months.
- For the other officials (sub-county chief, health management unit member
+ For the other officials (sub-county chief, health management unit member,
  and water committee member), the indicator is true if contact was sought
  in the past year.
 \end_layout
@@ -2059,10 +2134,10 @@ literal "false"
 
 \end_inset
 
-, show that the largest effect on meetings was due to the information component,
+ show that the largest effect on meetings was due to the information component,
  but the effect is not significant.
  While the indices do not suggest an impact on contacts between citizens
- and officials, we do find that virtually all coefficients on sub-county
+ and officials, we do find that virtually all coefficients for the sub-county
  level intervention are positive.
 \end_layout
 
@@ -2101,8 +2176,8 @@ In this section, we look at heterogeneous treatment effects related to the
  timing of the interventions, ethnic homogeneity of the community and remoteness
  of the households.
  In Online Appendix A.5, we also look at heterogeneity related to levels
- of elite capture at baseline and differences in effects related to connections
- to people in powerful governance positions.
+ of elite capture and differences in effects related to connections to people
+ in powerful governance positions.
 \end_layout
 
 \begin_layout Subsection
@@ -2138,7 +2213,7 @@ The slow roll-out of the intervention over an extended period also introduced
 To capture this, we reran the analysis and added an interaction term between
  the treatment indicator and an indicator variable that takes the value
  of one if the baraza that the household was exposed to happened more than
- one and a half years before the endline data collection.
+ one and a half years before the end-line data collection.
 \begin_inset Foot
 status collapsed
 
@@ -2200,7 +2275,7 @@ literal "false"
 
 \begin_layout Standard
 For the agricultural sector, we do not find that the time elapsed between
- the intervention and endline data collection affects the impact of sub-county
+ the intervention and end-line data collection affects the impact of sub-county
  level barazas we found in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2294,7 +2369,7 @@ literal "false"
 
 , we find that barazas appear to be most effective in less homogeneous sub-count
 ies.
- This seems to be particularly the case for district level baraza and combined
+ This seems to be particularly the case for district level barazas and combined
  information and deliberation sub-county level barazas, and especially for
  outcomes in infrastructure and the health sector.
  For the infrastructure sector we find particularly strong interaction effects
@@ -2329,11 +2404,11 @@ literal "false"
 It may be that barazas facilitate the organization of communities in the
  absence of the social cohesion necessary to engage them in infrastructural
  works.
- Consistent with this explanation, we find that distance to the nearest
- water source, distance to the nearest road, distance to the nearest government
- health facility and distance to the nearest public school are all significantly
- higher in control areas with high baseline levels of ethnic fractionalization
- than in control areas that are more homogeneous.
+ Consistent with this explanation, we find that the distance to the nearest
+ water source, the distance to the nearest road, the distance to the nearest
+ government health facility and the distance to the nearest public school
+ are significantly higher in control areas with high baseline levels of
+ ethnic fractionalization than in control areas that are more homogeneous.
  
 \end_layout
 
@@ -2343,7 +2418,7 @@ Heterogeneity related to remoteness
 
 \begin_layout Standard
 Heterogeneity related to the timing of the intervention and ethnic fractionaliza
-tion have its source at the sub-county level.
+tion has its source at the sub-county level.
  Heterogeneity may also be related to household level characteristics.
  During discussions with stakeholders, it was often argued that barazas
  may have different effects on households that live close to the sub-county
@@ -2368,11 +2443,11 @@ There are some indications that district level barazas are more effective
  for households that live further away from the sub-county headquarters.
  This is particularly the case for outcomes in the agricultural sector.
  For households in remote areas, we find that a district level baraza leads
- to a significant increase in the likelihood that households are visited
- by extension officers at home, the likelihood that they visit an extension
- office, demonstration plot or model farmers, the likelihood of being assisted
- by NAADS, and the likelihood of being supported by a marketing cooperative
- (see [placeholder for link to online repository]
+ to a significant increase in the likelihood that they are visited by extension
+ officers at home, the likelihood that they visit an extension office, demonstra
+tion plot or model farmers, the likelihood of being assisted by NAADS, and
+ the likelihood of being supported by a marketing cooperative (see [placeholder
+ for link to online repository]
 \begin_inset Note Note
 status collapsed
 
@@ -2408,7 +2483,7 @@ Discussion
 \begin_layout Standard
 While we do find a range of interesting effects when using a more exploratory
  analysis, the main conclusion from our confirmatory analysis is in line
- with what most other studies find: there is no significant impact of the
+ with what most other studies find: There is no significant impact of the
  policy program on public service delivery as a whole 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -2486,7 +2561,7 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-Furthermore, if there are no funds available for public service delivery,
+Alternatively, if there are no funds available for public service delivery,
  community-based monitoring will most likely not lead to the desired outcomes.
  Also here, we think that lack of funding is not the main issue.
  The liberalization and decentralization drive in the mid-eighties seduced
@@ -2494,7 +2569,7 @@ Furthermore, if there are no funds available for public service delivery,
  While there have been some studies reporting rampant elite capture 
 \begin_inset CommandInset citation
 LatexCommand citep
-before "eg."
+before "for example,"
 key "reinikka2004local"
 literal "false"
 
@@ -2568,7 +2643,7 @@ noprefix "false"
 \end_inset
 
  a column where for each of the 10 sub-counties we report in what sector
- most positive changes were recorded during endline.
+ most positive changes were recorded during end-line.
 \begin_inset Foot
 status open
 
@@ -2610,7 +2685,7 @@ noprefix "false"
  Using focus group discussions, we gauged reasons why this link breaks down.
  Firstly, if a baraza is seen as a one off event, officials are less likely
  to act on it.
- We have seen in section 
+ We have seen in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Heterogeneity-in-the"
@@ -2647,7 +2722,7 @@ ly civil servants, often complained that barazas should also contain an
  One example given was that citizens complain that they still become sick
  after drinking water from boreholes that were installed by government.
  The officials responsible for water and infrastructure objected that citizens
- need to treat water (for example by boiling or using chlorine), even if
+ need to treat water (for example, by boiling or using chlorine), even if
  it comes from a borehole.
  If this information would be available to citizens, perhaps their expectations
  would be more aligned with what public servants deliver.
@@ -2715,7 +2790,7 @@ The OPM faced various challenges that affected the timely roll-out of the
  Various strategies were followed to test, and reduce the consequences of,
  potential selection bias and sample size reduction introduced by this partial
  roll out.
- Early 2020, endline data was collected on 6,700 households.
+ Early 2020, end-line data was collected on 6,700 households.
  We find that the partial roll-out did not introduce significant bias and,
  judged by a series of Minimal Detectable Effect simulations, we conclude
  that we maintain reasonable statistical power.
@@ -3380,7 +3455,7 @@ name "tab:Alignment"
 placement H
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
