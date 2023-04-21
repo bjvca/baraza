@@ -81,6 +81,7 @@ knitr
 \begin_body
 
 \begin_layout Title
+
 Online Appendix for: The impact of community-based monitoring on public
  service delivery: A randomized control trial in Uganda
 \end_layout
@@ -99,6 +100,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+
 
 path <- strsplit(getwd(), "/papers/WD")[[1]]
 \end_layout
@@ -955,6 +957,7 @@ Sexpr{format(round(df_ols[2,4,10],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
+
 Number of obs.
  & 12545 & 
 \backslash
@@ -1024,6 +1027,7 @@ scriptsize
 
 \begin_layout Plain Layout
 
+
 Note: Column 1 reports sample means (and standard deviations below); Column
  2 reports differences between baseline characteristics of households that
  were planned to receive a sub-county level combined information and deliberatio
@@ -1041,6 +1045,7 @@ n baraza and those that would not receive any baraza (and standard errors
  Reported standard errors are clustered at the level of randomization.
  Distance to nearest all weather road is trimmed at 5 percent and transformed
  using the inverse hyperbolic sine transformation.
+
   
 \end_layout
 
@@ -1076,6 +1081,7 @@ reference "tab:balance_orig"
 \end_layout
 
 \begin_layout Section
+
 Minimal Detectable Effects
 \begin_inset CommandInset label
 LatexCommand label
@@ -1093,6 +1099,7 @@ The partial roll-out means a reduction in statistical power.
  be used to judge effectiveness of the intervention.
  Instead of fixing MDEs and simulating power for different sample sizes
  as is usually done in power calculations, we fix sample size to what we
+
  ended up with after partial roll-out and simulate power for different MDEs.
  We use a standard significance level of 0.05 (double sided).
  MDEs are estimated using a simple analysis of covariance (ANCOVA) model
@@ -1236,6 +1243,7 @@ While power curves are generally not too different, we seem to have most
  can expect to identify effects of 3.75 percentage points or more.
  Due to the smaller sample size, it is harder to compare pure control sub-counti
 es to sub-county barazas that received the interacted treatment.
+
  Still, we can comfortably identify an increase of 4 percentage points.
  Despite a larger sample size available to test the impact of district level
  barazas, we find power to be comparable to that of the sub-county level
@@ -1279,6 +1287,7 @@ As more than four years passed between baseline and endline data collection,
  some level of attrition was to be expected.
  Overall, attrition amounted to 8.6 percent.
  Reports from the field indicated that this attrition was due to the fact
+
  that some villages that were close to Lake Victoria had been evacuated
  due to rising levels of the lake.
  Two villages in areas populated with land insecure settlers were dropped
@@ -1398,6 +1407,7 @@ Attrition & 0.086 & 0.010  &  0.0139 & 0.003 & -0.004
 
 \begin_layout Plain Layout
 
+
 Number of obs.
  & 7340 & 2996 & 5341 &  5341  &  3996  
 \backslash
@@ -1437,6 +1447,7 @@ scriptsize
 \end_layout
 
 \begin_layout Plain Layout
+
 
 Note: Column 1 reports the mean attrition rate (and standard deviations
  below); Column 2 reports the correlation between attrition and sub-county
@@ -1534,6 +1545,7 @@ reference "tab:anova_ag"
 \end_inset
 
 .
+
  We start by looking if the baraza program affected the use of modern inputs
  in agriculture.
  A first outcome looks at whether the household used inorganic fertilizers
@@ -1561,6 +1573,7 @@ Sexpr{format(round(df_averages[1,3],digits=2)*100,nsmall=0)}
  any baraza (
 \begin_inset Formula $\beta$
 \end_inset
+
 
  as estimated using the Ordinary Least Squares model in Equation (1) in
  the paper).
@@ -2457,6 +2470,7 @@ Sexpr{format(round(df_ancova[2,4,16],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
+
 Number of obs.
  & 6704 & 
 \backslash
@@ -2521,6 +2535,7 @@ scriptsize
 \end_layout
 
 \begin_layout Plain Layout
+
 
 Note: Column 1 reports sample means (and standard deviations below); Column
  2 reports effects of the sub-county level baraza intervention (and standard
@@ -2596,6 +2611,7 @@ Sexpr{format(abs(round(df_ancova[1,3,5],digits=3)*100),nsmall=1)}
 \end_layout
 
 \end_inset
+
 
  percentage points higher than in areas where citizens were not given the
  opportunity to engage with their leaders.
@@ -2805,6 +2821,7 @@ We further find that a higher share of farmer groups in areas that received
  a sub-county level baraza received support from government.
  NAADS, and more recently OWC, are responsible for the distribution of subsidize
 d agricultural inputs.
+
  The Office of the Prime Minister (OPM) reports from the baraza meetings
  indicate that there are often many complaints related to the absence of
  NAADS/OWC in sub-counties and the non-transparent way in which decisions
@@ -2884,6 +2901,7 @@ Sexpr{format(abs(round(df_ancova[1,1,16],digits=3)*100),nsmall=1)}
  in areas that received a sub-county baraza.
  However, simulated MDEs suggest these results may suffer from a lack of
  statistical power.
+
  Both outcomes were also included in the index to assess agricultural sector
  impact.
  
@@ -2943,6 +2961,7 @@ d water source.
 \begin_layout Standard
 A second outcome we look at (and is also included in the index) is the distance
  to the primary water source during the dry season.
+
  This was measured in km but trimmed and transformed using the inverse hyperboli
 c sine transformation.
  We find that, on average, households had to walk about 
@@ -2962,6 +2981,8 @@ Sexpr{format(round(mean(baseline_desc$dist_source,na.rm=T),digits=2),nsmall=1)}
  While this distance seemed to reduce in all comparisons, and especially
  for barazas held at the district level where we find a reduction of approximate
 ly 9 percent, it is never significantly different from zero.
+<<<<<<< HEAD
+ Simulated MDEs [placeholder for link to online repository 
  Simulated MDEs [placeholder for link to online repository
 \begin_inset Note Note
 status collapsed
@@ -3615,6 +3636,7 @@ Sexpr{format(round(df_ancova[2,4,52],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
+
 Number of obs.
  & 6704 & 
 \backslash
@@ -3675,6 +3697,7 @@ scriptsize
 \end_layout
 
 \begin_layout Plain Layout
+
 
 Note: Column 1 reports sample means (and standard deviations below); Column
  2 reports effects of the sub-county level baraza intervention (and standard
@@ -5725,6 +5748,7 @@ Sexpr{format(round(df_ancova[2,4,51],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
+
 Number of obs.
  & 6704 & 
 \backslash
@@ -5968,6 +5992,7 @@ reference "fig:connections"
  thus reports interaction effects of the different interventions with an
  indicator for sub-counties where officials report if the sub-county has
  residents that occupy leadership positions such as minister, member of
+
  parliament, heads of government agencies, Resident District Commissioners
  (RDCs), and other district level officials.
 \end_layout
@@ -6040,6 +6065,7 @@ Adherence to Principles and Guidance for Human Subjects Research
 \end_layout
 
 \begin_layout Standard
+
 We took great care in assuring that we always respected autonomy of research
  subjects (citizens, politicians and civil servants), protected them from
  harm, ensured their privacy, and treated them fairly.
@@ -6095,6 +6121,7 @@ s in rural areas, to understand the constraints households face, and to
 \end_layout
 
 \begin_layout Standard
+
 We also explicitly assured participants that all information will always
  be kept confidential and that answers will be used only in the form of
  averages collected across the country to gauge public service delivery
@@ -6148,6 +6175,7 @@ As such, while we do agree that there are potential risks related to the
  intervention as implemented by the government of Uganda, we think these
  risks are reasonable.
  Citizens can manage the amount of risk they expose themselves to.
+
  For politicians and civil servants, the risks are part of the job and should
  be known to them in advance.
  More importantly, our study is passive in that it investigates on ongoing
@@ -6169,6 +6197,7 @@ Nature of the partnership with OPM:
 \end_layout
 
 \begin_layout Standard
+
 For this study, we partnered with the OPM as the implementer of a program
  to increase transparency and accountability in public service delivery.
  We were connected to OPM through a call by the International Initiative
