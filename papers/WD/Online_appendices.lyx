@@ -1241,25 +1241,16 @@ es to sub-county barazas that received the interacted treatment.
  barazas, we find power to be comparable to that of the sub-county level
  baraza.
  This is due to the clustering at a much more aggregated level.
- In an online repository [placeholder to online repository
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
+ In the 
 \begin_inset CommandInset href
 LatexCommand href
-name "an online appendix"
+name "online repository"
 target "https://github.com/bjvca/baraza/blob/master/report/appendices/Appendix_updates_power_calcs.pdf"
 literal "false"
 
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-], we show results for similar analyses for all pre-registered variables
+, we show results for similar analyses for all pre-registered variables
  that we will use to judge impact of the baraza intervention.
 \end_layout
 
@@ -1647,26 +1638,17 @@ Sexpr{format(abs(round(df_ancova[1,1,4],digits=3)*100),nsmall=1)}
  sub-county level baraza took place as opposed to in areas where no baraza
  was conducted, but the difference is not significant.
  The coefficient estimate is much smaller than the 80 percent MDE reported
- in Figure 2 in [placeholder for link to online repository
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
+ in Figure 2 in the 
 \begin_inset CommandInset href
 LatexCommand href
-name "the online appendix"
+name "online repository"
 target "https://github.com/bjvca/baraza/blob/master/report/appendices/Appendix_updates_power_calcs.pdf"
 literal "false"
 
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-], so it is unclear if this null result really signifies the absence of
- an effect, or if it is due to small sample size.
+, so it is unclear if this null result really signifies the absence of an
+ effect, or if it is due to small sample size.
  We find negative point estimates for the relative effects of both the informati
 on and the deliberation component, but effects are imprecisely estimated.
  Finally, we find adoption of improved seed was lower in areas where a district
@@ -2962,21 +2944,12 @@ Sexpr{format(round(mean(baseline_desc$dist_source,na.rm=T),digits=2),nsmall=1)}
  While this distance seemed to reduce in all comparisons, and especially
  for barazas held at the district level where we find a reduction of approximate
 ly 9 percent, it is never significantly different from zero.
- Simulated MDEs [placeholder for link to online repository
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
+ Simulated MDEs in the 
 \begin_inset CommandInset href
 LatexCommand href
-name "the online appendix"
+name "online repository"
 target "https://github.com/bjvca/baraza/blob/master/report/appendices/Appendix_updates_power_calcs.pdf"
 literal "false"
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
@@ -5151,25 +5124,16 @@ Sexpr{format(round(df_averages[1,49]*100,digits=0),nsmall=0)}
  The baraza intervention did not seem to affect how schools were managed,
  how parents could participate, or how information was shared.
  Again, statistical power may be an issue in many of these comparisons,
- as illustrated by the large MDEs [placeholder for link to online repository
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
+ as illustrated by the large MDEs in the 
 \begin_inset CommandInset href
 LatexCommand href
-name "the online appendix"
+name "online repository"
 target "https://github.com/bjvca/baraza/blob/master/report/appendices/Appendix_updates_power_calcs.pdf"
 literal "false"
 
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-].
+.
  Finally, we asked households if an inspector had visited the school in
  the year before the survey.
  We find that about 
