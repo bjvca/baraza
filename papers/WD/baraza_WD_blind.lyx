@@ -2095,94 +2095,9 @@ literal "false"
  In this section, we explore some of the potential reasons why barazas do
  not seem to translate into large overall or sector-wide improvements in
  public service delivery.
-\end_layout
-
-\begin_layout Subsection
-Desingn/impact evaluation related issues
-\end_layout
-
-\begin_layout Standard
-A first potential explanation is related to the staggered roll out.
- The slow roll-out of the intervention over an extended period introduced
- substantial variation in the time that passed between treatment administration
- and end-line data collection.
- For instance, the first barazas were held around June 2016 (about one year
- after the baseline) and so more than three years will have passed between
- treatment administration and end-line data collection.
- For the most recent barazas, there will only be a few months between treatment
- administration and end-line data collection.
- One may argue that sub-counties or districts that were treated early on
- have been exposed to the program much longer and hence one may expect larger
- effects on a range of outcomes for these sub-counties or districts than
- areas that only recently received treatment.
- At the same time, for some outcomes, effects of the baraza intervention
- may dissipate (or even reverse) over time as enthusiasm fades, plans are
- abandoned and promises forgotten.
- This may lead to a diluted average treatment effect compared to a situation
- where all barazas were held in a reasonable time frame (eg.
- during the course of one financial year) and endline data was collected
- after a fixed time interval (eg.
- two years after the intervention).
-\end_layout
-
-\begin_layout Standard
-To get a sense of the importance to this problem, we reran the analysis
- and added an interaction term between the treatment indicator and an indicator
- variable that takes the value of one if the baraza that the household was
- exposed to happened more than one and a half years before the end-line
- data collection.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-The indicator is coded as zero for the control group.
-\end_layout
-
-\end_inset
-
- Results for the coefficient estimates of the interaction terms are summarized
- in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Heterogeneity-time"
-
-\end_inset
-
-, focusing again on the four hypotheses and the four families of outcomes,
- and one overall index, similar to the summary in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Summary-of-baraza"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-For the agricultural sector, we do not find that the time elapsed between
- the intervention and end-line data collection affects the impact of sub-county
- level barazas we found in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Summary-of-baraza"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
- We find a significant negative interaction effect from sub-county level
- barazas for the infrastructure index.
- For outcomes in the health sector, we find negative interaction effects
- for sub-county level barazas and for district level barazas.
- These results may point to disappointment in the lack of progress made
- especially in public health facilities.
- For education, we do not find significant interaction effects based for
- the index.
- Overall, results suggest that the effectiveness of barazas seems to dissipate
- over time.
+ We categorize potential reasons under three headings: problems with the
+ theory of change, issues related to the implementation, and the political
+ context in which the program was implemented.
 \end_layout
 
 \begin_layout Subsection
@@ -2222,7 +2137,6 @@ literal "false"
  but not in their study is likely due to the fact that child mortality improved
  substantially over the last few decades, leaving little room for further
  improvement.
- 
 \end_layout
 
 \end_inset
@@ -2293,7 +2207,6 @@ Note that unaligned priorities do not fully explain why barazas have no
  This may not automatically be the case, as the most vocal individuals may
  dominate the discussion due to group dynamics and attempt to skew decisions
  during the meeting in their favor.
- Reports also indicate that barazas sometimes turn into political rallies.
  To explore the alignment between what citizens deem important and what
  transpires at the baraza event, we would need detailed information about
  what was discussed and concluded during the meetings in addition to the
@@ -2439,6 +2352,95 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection
+Implementation related issues
+\end_layout
+
+\begin_layout Standard
+The staggered roll out of the intervention may also explain the lack of
+ an overall impact.
+ The slow roll-out of the intervention over an extended period introduced
+ substantial variation in the time that passed between treatment administration
+ and end-line data collection.
+ For instance, the first barazas were held around June 2016 (about one year
+ after the baseline) and so more than three years will have passed between
+ treatment administration and end-line data collection.
+ For the most recent barazas, there will only be a few months between treatment
+ administration and end-line data collection.
+ One may argue that sub-counties or districts that were treated early on
+ have been exposed to the program much longer and hence one may expect larger
+ effects on a range of outcomes for these sub-counties or districts than
+ areas that only recently received treatment.
+ At the same time, for some outcomes, effects of the baraza intervention
+ may dissipate (or even reverse) over time as enthusiasm fades, plans are
+ abandoned and promises forgotten.
+ This may lead to a diluted average treatment effect compared to a situation
+ where all barazas were held in a reasonable time frame (eg.
+ during the course of one financial year) and endline data was collected
+ after a fixed time interval (eg.
+ two years after the intervention).
+\end_layout
+
+\begin_layout Standard
+To get a sense of the importance to this problem, we reran the analysis
+ and added an interaction term between the treatment indicator and an indicator
+ variable that takes the value of one if the baraza that the household was
+ exposed to happened more than one and a half years before the end-line
+ data collection.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The indicator is coded as zero for the control group.
+\end_layout
+
+\end_inset
+
+ Results for the coefficient estimates of the interaction terms are summarized
+ in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Heterogeneity-time"
+
+\end_inset
+
+, focusing again on the four hypotheses and the four families of outcomes,
+ and one overall index, similar to the summary in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Summary-of-baraza"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For the agricultural sector, we do not find that the time elapsed between
+ the intervention and end-line data collection affects the impact of sub-county
+ level barazas we found in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Summary-of-baraza"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ We find a significant negative interaction effect from sub-county level
+ barazas for the infrastructure index.
+ For outcomes in the health sector, we find negative interaction effects
+ for sub-county level barazas and for district level barazas.
+ These results may point to disappointment in the lack of progress made
+ especially in public health facilities.
+ For education, we do not find significant interaction effects based for
+ the index.
+ Overall, results suggest that the effectiveness of barazas seems to dissipate
+ over time.
+\end_layout
+
+\begin_layout Subsection
 Political context
 \end_layout
 
@@ -2459,6 +2461,15 @@ noprefix "false"
 \end_inset
 
 , we saw that the meetings are chaired by the RDC.
+ 
+\end_layout
+
+\begin_layout Standard
+As mentioned above, it may not always be the case that what is discussed
+ during barazas reflects the priorities of citizens.
+ This may be particularly the case if baraza's are heavily politicized and
+ reports indicate that barazas sometimes turn into political rallies.
+ 
 \end_layout
 
 \begin_layout Standard
