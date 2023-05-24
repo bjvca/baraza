@@ -588,7 +588,7 @@ ons.
  or even replace alternative community fora that are potentially more inclusive
  and more critical of the ruling elite.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 For instance, in Uganda, there used to be meetings called ebimeeza which
@@ -2060,12 +2060,8 @@ name "fn:This-method-first"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-keep at least this? The indices combine various outcomes, and for some of
- them the expected direction of the effect is unclear a-priori.
+The indices combine various outcomes, and for some of them the expected
+ direction of the effect is unclear a-priori.
  For instance, an information baraza may increase the quality of services
  in a hospital or health center when judged by an objective measure such
  as waiting time.
@@ -2078,12 +2074,6 @@ keep at least this? The indices combine various outcomes, and for some of
  In Online Appendix A.4, we thus provide a detailed and more exploratory
  analysis of the individual outcomes behind these indices, and some other
  outcomes that were not pre-registered.
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -2105,7 +2095,10 @@ literal "false"
  In this section, we explore some of the potential reasons why barazas do
  not seem to translate into large overall or sector-wide improvements in
  public service delivery.
- 
+\end_layout
+
+\begin_layout Subsection
+Desingn/impact evaluation related issues
 \end_layout
 
 \begin_layout Standard
@@ -2190,6 +2183,10 @@ noprefix "false"
  the index.
  Overall, results suggest that the effectiveness of barazas seems to dissipate
  over time.
+\end_layout
+
+\begin_layout Subsection
+Problems with the theory of change
 \end_layout
 
 \begin_layout Standard
@@ -2379,18 +2376,6 @@ noprefix "false"
  Using focus group discussions, we gauged reasons why this link breaks down.
  Firstly, if a baraza is seen as a one off event, officials are less likely
  to act on it.
- We have seen in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Heterogeneity-in-the"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- that optimism among citizens and other stakeholders can quickly turn into
- disappointment if none of the issues raised is addressed.
  Secondly, poor relationships between politicians and technical personnel
  can hinder the effectiveness of barazas.
  For example, a poor relation or communication between a CAO and a LC5 Chairpers
@@ -2401,82 +2386,6 @@ on can impede public service delivery.
  Some issues fall under the responsibility of higher levels of government
  or other institutions that are beyond the operational jurisdiction of people
  present at the barazas.
-\end_layout
-
-\begin_layout Standard
-The structure of the baraza and the political environment in which it is
- oraganized, may also affect its effectiveness.
- In Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Ugandan-baraza-program"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-, we saw that the meetings are chaired by the RDC.
-\end_layout
-
-\begin_layout Standard
-Barazas are also organized by the OPM.
- However, several officials of OPM have appeared in the news in the context
- of large corruption scandals.
- This may affect perceptions
-\end_layout
-
-\begin_layout Subsection
-Heterogeneity related to connections to persons in power
-\end_layout
-
-\begin_layout Standard
-Related to the previous, we suspect that connections to people in power
- can make barazas more effective.
- There are several reasons why this is the case.
- For instance, barazas attract a lot of attention, and politicians that
- hail from a sub-county where a baraza was held may face greater electoral
- punishment if they are not sensitive to the issues raised.
- Connections to people in powerful positions may make it easier to direct
- money from the center to the district or sub-county to respond to some
- of the concerns raised during baraza events.
- Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:connections"
-
-\end_inset
-
- thus reports interaction effects of the different interventions with an
- indicator for sub-counties where officials report if the sub-county has
- residents that occupy leadership positions such as minister, member of
- parliament, heads of government agencies, Resident District Commissioners
- (RDCs), and other district level officials.
-\end_layout
-
-\begin_layout Standard
-We do not find significant interaction effects based on the indices.
- However, coefficients are generally positive, especially for interactions
- with the deliberation focused sub-county baraza and district level barazas.
- Examples of positive interaction effects for individual outcomes reported
- in available in the 
-\begin_inset CommandInset href
-LatexCommand href
-name "online appendix"
-target "https://github.com/bjvca/baraza/blob/master/report/appendices/Appendix_hetero_tables.pdf"
-literal "false"
-
-\end_inset
-
- include an increased likelihood of visiting extension offices, demonstration
- sites or model farmers and an increase in the likelihood that schools have
- a fence after a deliberation focused baraza.
- We also find a reduction in the use of unprotected water sources after
- a sub-county level baraza.
-\end_layout
-
-\begin_layout Standard
-XXXXXXXXXXXXXXXXXX
 \end_layout
 
 \begin_layout Standard
@@ -2527,6 +2436,94 @@ literal "false"
  increased satisfaction without affecting outcomes.
  As such, town-hall style meetings may still be beneficial even if they
  do not lead to real changes in public service delivery.
+\end_layout
+
+\begin_layout Subsection
+Political context
+\end_layout
+
+\begin_layout Standard
+The structure of the baraza and the political environment in which it is
+ organized, may also affect its effectiveness.
+\end_layout
+
+\begin_layout Standard
+In Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Ugandan-baraza-program"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, we saw that the meetings are chaired by the RDC.
+\end_layout
+
+\begin_layout Standard
+Barazas are also organized by the OPM.
+ However, several officials of OPM have appeared in the news in the context
+ of large corruption scandals.
+ This may affect perceptions
+\end_layout
+
+\begin_layout Standard
+Indications of the impact of political context connections to people in
+ power can make barazas more effective.
+ There are several reasons why this is the case.
+ For instance, barazas attract a lot of attention, and politicians that
+ hail from a sub-county where a baraza was held may face greater electoral
+ punishment if they are not sensitive to the issues raised.
+ Connections to people in powerful positions may make it easier to direct
+ money from the center to the district or sub-county to respond to some
+ of the concerns raised during baraza events.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:connections"
+
+\end_inset
+
+ thus reports interaction effects of the different interventions with an
+ indicator for sub-counties where officials report if the sub-county has
+ residents that occupy leadership positions such as minister, member of
+ parliament, heads of government agencies, Resident District Commissioners
+ (RDCs), and other district level officials.
+\end_layout
+
+\begin_layout Standard
+We do not find significant interaction effects based on the indices.
+ However, coefficients are generally positive, especially for interactions
+ with the deliberation focused sub-county baraza and district level barazas.
+ Examples of positive interaction effects for individual outcomes reported
+ in available in the 
+\begin_inset CommandInset href
+LatexCommand href
+name "online appendix"
+target "https://github.com/bjvca/baraza/blob/master/report/appendices/Appendix_hetero_tables.pdf"
+literal "false"
+
+\end_inset
+
+ include an increased likelihood of visiting extension offices, demonstration
+ sites or model farmers and an increase in the likelihood that schools have
+ a fence after a deliberation focused baraza.
+ We also find a reduction in the use of unprotected water sources after
+ a sub-county level baraza.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Add something here also on whether 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
