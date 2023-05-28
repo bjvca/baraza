@@ -2135,8 +2135,8 @@ literal "false"
  not seem to translate into large overall or sector-wide improvements in
  public service delivery.
  We categorize potential reasons under three headings: problems with the
- theory of change, issues related to the implementation, and the political
- context in which the program was implemented.
+ theory of change, the political context in which the program was implemented,
+ and methodological challenges in evaluating real world policy interventions.
 \end_layout
 
 \begin_layout Subsection
@@ -2395,8 +2395,8 @@ Political context
 \begin_layout Standard
 The structure of the baraza and the political environment in which it is
  organized, may also affect its effectiveness.
- Drawing on a systematic review of over 90 social accountability interventions,
- 
+ Indeed, drawing on a systematic review of over 90 social accountability
+ interventions, 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "doi:10.1080/00220388.2015.1134778"
@@ -2420,51 +2420,38 @@ noprefix "false"
  Barazas are also organized by the OPM, an office of which several officials
  have appeared in the news in the context of large corruption scandals over
  the last decade.
- This may perceptions
-\end_layout
-
-\begin_layout Standard
-This requires a reconceptualisation of social accountability and social
- protection in terms of the broader development of ‘social contracts’, and
- that the current emphasis on promoting bottom-up forms of accountability
- needs to be balanced by efforts to strengthen and legitimise public authority
- in developing countries.
-\end_layout
-
-\begin_layout Standard
-As mentioned above, it may not always be the case that what is discussed
- during barazas reflects the priorities of citizens.
- This may be particularly the case if baraza's are heavily politicized and
- reports indicate that barazas sometimes turn into political rallies.
+ These facts may mean that certain groups in society (such as people who
+ vote for the opposition) perceive barazas very differently.
+ Furthermore, government officials may abuse these fora to pursue their
+ own agenda and reports indeed indicate that barazas sometimes turn into
+ political rallies, especially when elections are approaching.
  
 \end_layout
 
 \begin_layout Standard
-Indications of the impact of political context connections to people in
- power can make barazas more effective.
- There are several reasons why this is the case.
- For instance, barazas attract a lot of attention, and politicians that
- hail from a sub-county where a baraza was held may face greater electoral
- punishment if they are not sensitive to the issues raised.
- Connections to people in powerful positions may make it easier to direct
- money from the center to the district or sub-county to respond to some
- of the concerns raised during baraza events.
- Figure 
+We explore the impact of political context by looking at treatment heterogeneity
+ related to connections to people in power.
+ The assumption is that support for government is likely to be higher in
+ sub-counties that deliver higher level (district of central level) politicians,
+ such as minister, member of parliament, heads of government agencies, Resident
+ District Commissioners (RDCs), and other district level officials.
+ We would expect that in these areas, barazas are more effective, since
+ citizens can use their connections to the center to attract funding to
+ issues raised, and politicians may want to reward their constituents.
+\end_layout
+
+\begin_layout Standard
+Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:connections"
 
 \end_inset
 
- thus reports interaction effects of the different interventions with an
- indicator for sub-counties where officials report if the sub-county has
- residents that occupy leadership positions such as minister, member of
- parliament, heads of government agencies, Resident District Commissioners
- (RDCs), and other district level officials.
-\end_layout
-
-\begin_layout Standard
-We do not find significant interaction effects based on the indices.
+ reports interaction effects of the different interventions with an indicator
+ for sub-counties that are more connected to the center and likely to be
+ more pro-government.
+ We do not find significant interaction effects based on the indices.
  However, coefficients are generally positive, especially for interactions
  with the deliberation focused sub-county baraza and district level barazas.
  Examples of positive interaction effects for individual outcomes reported
@@ -2485,104 +2472,39 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection
-Implementation related issues
+Methodological issues
 \end_layout
 
 \begin_layout Standard
-The staggered roll out of the intervention may also explain the lack of
- an overall impact.
- The slow roll-out of the intervention over an extended period introduced
- substantial variation in the time that passed between treatment administration
- and end-line data collection.
- For instance, the first barazas were held around June 2016 (about one year
- after the baseline) and so more than three years will have passed between
- treatment administration and end-line data collection.
- For the most recent barazas, there will only be a few months between treatment
- administration and end-line data collection.
- One may argue that sub-counties or districts that were treated early on
- have been exposed to the program much longer and hence one may expect larger
- effects on a range of outcomes for these sub-counties or districts than
- areas that only recently received treatment.
- At the same time, for some outcomes, effects of the baraza intervention
- may dissipate (or even reverse) over time as enthusiasm fades, plans are
- abandoned and promises forgotten.
- This may lead to a diluted average treatment effect compared to a situation
- where all barazas were held in a reasonable time frame (eg.
- during the course of one financial year) and endline data was collected
- after a fixed time interval (eg.
- two years after the intervention).
-\end_layout
-
-\begin_layout Standard
-To get a sense of the importance to this problem, we reran the analysis
- and added an interaction term between the treatment indicator and an indicator
- variable that takes the value of one if the baraza that the household was
- exposed to happened more than one and a half years before the end-line
- data collection.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-The indicator is coded as zero for the control group.
-\end_layout
-
-\end_inset
-
- Results for the coefficient estimates of the interaction terms are summarized
- in Figure 
+In section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Heterogeneity-time"
-
-\end_inset
-
-, focusing again on the four hypotheses and the four families of outcomes,
- and one overall index, similar to the summary in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Summary-of-baraza"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-For the agricultural sector, we do not find that the time elapsed between
- the intervention and end-line data collection affects the impact of sub-county
- level barazas we found in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Summary-of-baraza"
+reference "sec:Implementation-challenges-and"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
-.
- We find a significant negative interaction effect from sub-county level
- barazas for the infrastructure index.
- For outcomes in the health sector, we find negative interaction effects
- for sub-county level barazas and for district level barazas.
- These results may point to disappointment in the lack of progress made
- especially in public health facilities.
- For education, we do not find significant interaction effects based for
- the index.
- Overall, results suggest that the effectiveness of barazas seems to dissipate
- over time.
+, we already provided a detailed account of the implementation challenges
+ surrounding the baraza program.
+ We also argued that the primary concerns of the partial roll-out, namely
+ non-random roll-out and reduced sample size, are unlikely to affect our
+ conclusions.
+ 
 \end_layout
 
 \begin_layout Standard
-While the analysis suggests there is no overall impact, there is some evidence
- that sub-county level barazas did affect public service delivery in the
- agricultural sector.
- Furthermore, looking at the more detailed analysis of the individual outcome
- behind the indices in Online Appendix A.4, we do find impact in some areas.
+In this sub-section, we focus on treatment heterogeneity as a potential
+ reason why we do not find more convincing impact.
+ This is inspired by the observation, even though we do not find an overall
+ impact on public service delivery, effects often go in the right direction,
+ and we do find some significant effects if we consider individual outcomes
+ in Online Appendix A.4.
  Focus group discussions with citizens in a few subcounties where barazas
- were held also indicated barazas were effective; they provided various
- examples of changes in public service delivary that they thought were due
- to, or accelerated by, the baraza event.
+ were held also indicated barazas were perceived as highly effective; they
+ provided various examples of changes in public service delivery that they
+ thought were due to, or accelerated by, the baraza event.
  All this suggests that impact from a barazas may be highly localized and
  context specific.
  
@@ -2616,8 +2538,9 @@ literal "false"
  A baraza in one sub-county (where drinking water infrastructure is a problem)
  may evolve in a very different direction than a baraza in another sub-county
  (where problems may be more in health care).
- Both barazas may be effective in their own right, yet outcomes are averaged
- over treatment units, and impact diluted.
+ Both barazas may be effective in their own right (fixing water issues in
+ one case and fixing health cares issues in the second case), yet outcomes
+ are averaged over treatment units, and impact is diluted.
 \end_layout
 
 \begin_layout Section
@@ -2654,7 +2577,7 @@ The OPM faced various challenges that affected the timely roll-out of the
  Early 2020, end-line data was collected on 6,700 households.
  We find that the partial roll-out did not introduce significant bias and,
  judged by a series of Minimal Detectable Effect simulations, we conclude
- that we maintain reasonable statistical power.
+ that we retain reasonable statistical power.
  
 \end_layout
 
@@ -2693,9 +2616,23 @@ literal "false"
 t to improve public service delivery seems to have been reduced as more
  empirical evidence becomes available.
  In a recent mixed-methods systematic review of participation, inclusion,
- transparency and accountability (PITA) initiatives, Except when you look
- at a particular level, a particular outcome, or a particular sub-group/heteroge
-neous effect.
+ transparency and accountability (PITA) initiatives, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "waddington2019citizen"
+literal "false"
+
+\end_inset
+
+ suggest that citizen engagement may have positive effects on improving
+ intermediate user engagement outcomes such as meeting attendance and improve
+ access to and quality of certain public services.
+ At the same time, effects on public service outcomes such as education
+ levels or child health are limited.
+ Citizen participation often also did not lead to changes in service provider
+ action outcomes such as public spending, staff motivation and corruption.
+ More research is needed to identify pre-conditions and complementary interventi
+ons needed to leverage the voices of citizens.
 \end_layout
 
 \begin_layout Standard
