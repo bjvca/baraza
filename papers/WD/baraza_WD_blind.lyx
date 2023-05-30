@@ -628,13 +628,19 @@ ons.
 status open
 
 \begin_layout Plain Layout
-For instance, in Uganda, there used to be meetings called ebimeeza which
- allowed people to discuss and raise issues in a public or quasi-public
+For instance, in Uganda, there used to be meetings called 
+\emph on
+ebimeeza
+\emph default
+ which allowed people to discuss and raise issues in a public or quasi-public
  forum.
  This kind of meeting has been going on for a long time to greater or lesser
  degrees of institutionalization.
- The government banned these ebimeeza around the same time that the baraza
- program was rolled out.
+ The government banned these 
+\emph on
+ebimeeza
+\emph default
+ around the same time that the baraza program was rolled out.
  We are grateful to an anonymous referee for point this out.
 \end_layout
 
@@ -2153,7 +2159,7 @@ Community-based monitoring interventions such as the baraza program can
  (however, a baraza could still change citizens' perceptions of public service
  delivery—see below).
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Indeed, 
@@ -2229,7 +2235,7 @@ literal "false"
 The impact of the baraza program will also likely be muted if priorities
  of officials are not aligned with priorities of citizens.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Note that unaligned priorities do not fully explain why barazas have no
@@ -2455,7 +2461,7 @@ reference "fig:connections"
  However, coefficients are generally positive, especially for interactions
  with the deliberation focused sub-county baraza and district level barazas.
  Examples of positive interaction effects for individual outcomes reported
- in available in the 
+ in the 
 \begin_inset CommandInset href
 LatexCommand href
 name "online appendix"
@@ -2587,11 +2593,14 @@ Judged by an index of overall public service delivery, we find no significant
  There are some indications that sub-county level barazas had a positive
  impact on service delivery in the agricultural sector.
  We then consider various potential reasons why barazas did not have the
- expected benefits.
- There include problems in the theory of change, the political context in
- which barazas are organized, and the challenges in implementing and evaluating
- large scale policy interventions with heterogeneous treatments and associated
- effects.
+ expected sector-wide benefits.
+ We find indications of problems in the theory of change: while priorities
+ of citizens do seem to get discussed during barazas, solutions are not
+ always implemented.
+ Furthermore the political context in which barazas are organized seemed
+ to have mattered to some extent.
+ We also reflect on challenges in implementing and evaluating large scale
+ policy interventions with heterogeneous treatments and associated effects.
 \end_layout
 
 \begin_layout Standard
@@ -2771,49 +2780,6 @@ Summary of baraza impact
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Summary-of-baraza"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ../../report/results/final/hetero1/impact_summary_ancova.png
-	lyxscale 10
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Heterogeneity related to time of intervention
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Heterogeneity-time"
 
 \end_inset
 
