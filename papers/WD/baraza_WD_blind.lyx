@@ -112,7 +112,7 @@ In many developing countries, poor delivery of public services remains an
  We also compare the effectiveness of barazas organized at the district
  level to the effectiveness of barazas organized at the sub-county level.
  Following a pre-specified confirmatory analysis, we do not find that the
- intervention had significant effects on general public service delivery,
+ intervention has significant effects on general public service delivery,
  though there are signs of improvement in agricultural sector public services.
  We discuss some of the potential reasons for this finding, including assumption
 s underlying the impact pathways, the political context in which the program
@@ -171,7 +171,7 @@ path <- strsplit(getwd(), "/papers/WD")[[1]]
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Note: now that we have removed all individual outcomes, will people not
@@ -181,15 +181,15 @@ Note: now that we have removed all individual outcomes, will people not
 
 \end_inset
 
-In many developing countries, poor delivery of public services remains problemat
-ic.
+In many developing countries, the delivery of public services remains problemati
+c.
  Public infrastructure, such as roads or boreholes for drinking water, is
  poor.
  The quality of service provided in hospitals and schools is low.
  Absenteeism and corruption are endemic.
  This is also the case in Uganda, where the public service sector suffers
- from high levels of elite capture, ineffective monitoring and weak accountabili
-ty 
+ from high levels of elite capture, ineffective monitoring, and weak accountabil
+ity 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "reinikka2004local"
@@ -198,11 +198,11 @@ literal "false"
 \end_inset
 
 .
- In response to this, the baraza program, an initiative of the president
- of Uganda and implemented by the Office of the Prime Minister (OPM), was
- designed to improve public service delivery by enhancing public involvement
- in holding the government accountable for service delivery in relation
- to resources spent 
+ In response to this, the Office of the Prime Minister (OPM) implemented
+ the baraza program, an initiative of the president of Uganda, to improve
+ public service delivery by enhancing public involvement in holding the
+ government accountable for service delivery in relation to resources spent
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "New1"
@@ -211,28 +211,27 @@ literal "true"
 \end_inset
 
 .
- The program brings politicians, civil servants and citizens together in
- town-hall type meetings (barazas) to share information and engage with
+ The program brings politicians, civil servants, and citizens together in
+ town hall-type meetings (barazas) to share information and engage with
  each other.
- 
 \end_layout
 
 \begin_layout Standard
 Since 2009, barazas have been organized in sub-counties throughout Uganda.
- However, up to now, no rigorous impact evaluation was undertaken.
+ However, no rigorous impact evaluation was undertaken until now.
  A first objective of this paper is thus to assess if the program had an
  impact on public service delivery and associated outcomes.
- Furthermore, in 2012, the decision was made to organize subsequent barazas
- at higher administrative levels (district) instead of the sub-county level,
+ Furthermore, in 2012, the OPM decided to organize subsequent barazas at
+ a higher administrative level (district) instead of at the sub-county level,
  mainly to reduce cost and speed up roll-out.
- A second mayor objective of this study is to inform policy makers on the
+ A second major objective of this study is to inform policy makers on the
  consequences of this change in terms of effectiveness of the program.
  A third objective of the study is to assess the relative importance of
  the two main components of a generic baraza event and differentiate between,
  on the one hand, the impact of arming citizens with information related
  to budgeting and spending, and, on the other hand, the impact of allowing
- citizens to engage with public servants and politicians in moderated questions-
-and-answers sessions.
+ citizens to engage with public servants and politicians in moderated question-a
+nd-answer sessions.
 \end_layout
 
 \begin_layout Standard
@@ -246,7 +245,7 @@ literal "true"
 
 \end_inset
 
-, who analyze the impact of a community driven local accountability project
+, who analyze the impact of a community-driven local accountability project
  in primary health care provision in Uganda.
  They find that community-based monitoring resulted in significant improvements
  in health care delivery, utilization, and health outcomes (most notably
@@ -277,25 +276,24 @@ literal "true"
 
 \end_inset
 
- and in a similar setting.
+ in a similar setting.
  The study, involving a three-wave panel of more than 14,000 households,
  shows that the intervention was able to change the behavior of public service
  providers.
- However, it did not find that the intervention directly increased community
- monitoring, nor generated improvements in health outcomes, at least in
- the short run.
+ However, it did not find that it directly increased community monitoring,
+ nor generated improvements in health outcomes, at least in the short run.
 \end_layout
 
 \begin_layout Standard
 Our study contributes to this literature in various ways.
- First, it is one of few studies that considers the role of jurisdictional
- tier on the effectiveness of community-based monitoring.
- The level at which the town-hall meetings are organized may affect its
- effectiveness in potentially opposing ways: Interventions at a more local
- level may result in more relevant issues being scrutinized.
+ First, it is one of the few studies that consider the role of the jurisdictiona
+l tier on the effectiveness of community-based monitoring.
+ The level at which the town-hall meetings are organized may affect their
+ effectiveness in opposing ways: interventions at a more local level may
+ result in more relevant issues being scrutinized.
  However, qualitative explorations suggest that, often, issues raised in
- lower level barazas were beyond the operational jurisdiction of the officials
- that were present at the baraza 
+ lower level barazas are beyond the operational jurisdiction of the officials
+ that are present 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "van2018impact"
@@ -304,9 +302,9 @@ literal "true"
 \end_inset
 
 .
- This may be less of a problem when barazas are organized at district level.
- Most other studies considered interventions that were placed at local jurisdict
-ional levels.
+ This may be less of a problem if barazas are organized at district level.
+ Most other studies consider interventions that were placed at local jurisdictio
+nal levels.
  For instance, the intervention in 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -321,11 +319,11 @@ literal "true"
 
 \begin_layout Standard
 Second, our study evaluates the impact of a large-scale, high-profile policy
- intervention that receives broad support within government, among opinion
+ intervention that receives broad support within the government, among opinion
  leaders and among citizens in Uganda.
- Such interventions may instigate an entirely different set of dynamics
- than interventions that are organized by local or international NGOs (as
- is the case in 
+ Such interventions may trigger an entirely different set of dynamics than
+ interventions that are organized by local or international Non-governmental
+ organizations (NGOs), as in 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "bjorkman2009power"
@@ -341,7 +339,7 @@ literal "false"
 
 \end_inset
 
-).
+.
  For instance, many of the actors involved may find that NGOs are not mandated
  when it comes to public services such as health and education.
  This is also consistent with suggestive evidence in 
@@ -352,18 +350,18 @@ literal "true"
 
 \end_inset
 
-, who found that the presence of sub-county officials during their community-bas
-ed monitoring intervention boosted the impact of the intervention.
+, who find that the presence of sub-county officials during their community-base
+d monitoring intervention boosted its impact.
 \end_layout
 
 \begin_layout Standard
 Third, barazas take a comprehensive, multi-sector approach, enabling cross-secto
 ral planning and potentially allowing for re-allocation of resources across
- sectors to better align with problems that were identified during barazas.
- Some of the problems most mentioned by users, such hygiene in health centers
- or accessibility, involve cooperation between heads of different sectors
- (for example, health and infrastructure to get access to water in health
- centers).
+ sectors to solve problems that were identified during these meetings.
+ Some of the problems most mentioned by users, such as hygiene in health
+ centers or accessibility, involve cooperation between heads of different
+ sectors (for example, health and infrastructure to get access to water
+ in health centers).
  Bringing civil servants from different sectors together and confronting
  them with the priorities of citizens may increase information sharing and
  cooperation between them.
@@ -372,24 +370,23 @@ ral planning and potentially allowing for re-allocation of resources across
 \begin_inset CommandInset citation
 LatexCommand citep
 before "for example,"
-key "arkedis2019can,bjorkman2009power,raffler2018weakness"
+key "bjorkman2009power,raffler2018weakness,arkedis2019can"
 literal "true"
 
 \end_inset
 
- 
+.
 \end_layout
 
 \begin_layout Standard
-Our study also serves as an illustration of the challenges of evaluating
- real world policy interventions and how to deal with them.
- While we feel that field experiments of large policy interventions provide
+This paper also serves as an illustration of the challenges of evaluating
+ real-world policy interventions and how to deal with them.
+ While we feel that field experiments with policy interventions provide
  greater external validity than the carefully designed and closely monitored
- field experiments implemented by non-governmental organizations (NGOs)
- that are common in academia, real-world policy experimentation is challenging:
- Political resistance to randomization needs to be overcome and researchers
- need to commit to a off-hands approach, even if things do not go entirely
- as planned 
+ ones implemented by NGOs that are commonly published, real-world policy
+ experimentation is challenging: researchers need to overcome political
+ resistance to randomization and commit to an hands-off approach, even if
+ things do not go as planned 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "de2019rise"
@@ -398,26 +395,25 @@ literal "false"
 \end_inset
 
 .
- In our study, the OPM faced various challenges that affected the roll-out
- of the intervention, including budgetary constraints and disruptions related
- to the general elections of 2016.
+ Our study is no exception, as the OPM faced various challenges that affected
+ the roll-out of the intervention, including budgetary constraints and disruptio
+ns related to the general elections of 2016.
  Four years after the baseline survey, with about 50 percent of the planned
- interventions completed, a trade-off needed to be made between waiting
- for the remaining barazas to be completed or conducting the end-line after
- partial roll-out.
- It was decided to proceed with end-line data collection and employ various
+ interventions completed, we needed to trade-off waiting for the remaining
+ barazas to be implemented and conducting the end-line after partial roll-out.
+ We decided to proceed with end-line data collection and employ various
  strategies to diagnose and mitigate problems that may have been introduced
  by the partial roll-out.
 \end_layout
 
 \begin_layout Standard
-We find that barazas did not impact public service delivery as measured
- by a pre-registered summary index of various outcomes in four key sectors.
- If we zoom in on the sectors itself, there is are some signs that sub-county
- level barazas did make a difference in the agricultural sector.
- This finding is in line with with what is reported in recent overview articles,
- meta-analyses, and replications of influential studies on the benefits
- of community-based monitoring such as the one by 
+We find that barazas do not impact public service delivery as measured by
+ a pre-registered summary index of various outcomes in four key sectors.
+ If we zoom into these sectors, there are signs that sub-county level barazas
+ are effective in the agricultural sector.
+ This is in line with recent overview articles, meta-analyses, and replications
+ of influential studies on the benefits of community-based monitoring such
+ as the one by 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "raffler2018weakness"
@@ -425,12 +421,12 @@ literal "false"
 
 \end_inset
 
- referred to above.
+.
  The emerging consensus is that community-based monitoring can be effective,
- but only if certain pre-conditions are met, and effects may differ for
+ but only if certain conditions are met, and that effects may differ for
  different groups and outcomes.
- For instance, citizen perceptions related to the intentions and legitimacy
- of the organizing entity may affect impact 
+ For instance, the perceptions of citizens related to the intentions and
+ legitimacy of the organizing entity may affect impact 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "doi:10.1080/00220388.2015.1134778"
@@ -450,9 +446,9 @@ literal "false"
 
 .
  Effects on some outcomes (such as citizen engagement) may be stronger than
- on other outcomes (such child mortality), depending on where in the causal
- impact chain impact is measured and the scope for further improvement in
- the outcome 
+ effects on other outcomes (such as child mortality), depending on where
+ in the causal chain impact is measured and on the scope for further improvement
+ in the outcome 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "raffler2018weakness"
@@ -461,25 +457,23 @@ literal "false"
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Standard
-Building on this literature, we look at potential reasons why baraza events
- are not more effective in our specific case.
- We we start by exploring several elements of the theory of change behind
- the baraza programme, such as alignment of priorities between citizens
- and officials, and subsequent translation of priorities into strategies
- and actions.
- We then discuss how the political context in which community based monitoring
- is embedded can affect effectiveness, and point to various red flags in
- the ugandan case.
+Building on this literature, we look at potential reasons why barazas are
+ not more effective in our specific case.
+ We start by exploring the theory of change behind the baraza program, such
+ as the alignment of priorities between citizens and officials, and the
+ subsequent translation of priorities into strategies and actions.
+ We then discuss how the political context in which community-based monitoring
+ is embedded can affect effectiveness and point to various red flags in
+ the Ugandan case.
  Finally, we point out methodological challenges inherent to the evaluation
- of interventions where interaction between citizens and government officials
- leads to treatment heterogeneity (as opposed to the theoretical ideal where
+ of interventions where interactions between citizens and government officials
+ lead to treatment heterogeneity (as opposed to the theoretical ideal where
  experimental units are assumed to be passive recipients of a uniform and
- homogeneous treatment); we argue that this treatment heterogeneity is likely
- to dilute average treatment effects.
+ homogeneous treatment) and argue that this heterogeneity is likely to dilute
+ average treatment effects.
 \end_layout
 
 \begin_layout Section
@@ -2805,7 +2799,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /home/bjvca/data/projects/baraza/report/results/final/hetero4/impact_summary_ancova.png
+	filename C:/home/bjvca/data/projects/baraza/report/results/final/hetero4/impact_summary_ancova.png
 	lyxscale 10
 	scale 50
 
