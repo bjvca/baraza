@@ -101,7 +101,7 @@ In many developing countries, poor delivery of public services remains an
  Through community-based monitoring, beneficiaries of public services can
  apply bottom-up pressure to under-performing service providers and their
  political leadership.
- In this spirit, the Government of Uganda organizes community forums—popularly
+ In this spirit, the Government of Uganda organizes community fora—popularly
  known as barazas—where citizens receive information from government officials
  and get the opportunity to challenge them.
  We designed a cluster randomized control trial to assess the impact of
@@ -232,6 +232,8 @@ Since 2009, barazas have been organized in sub-counties throughout Uganda.
  to budgeting and spending, and, on the other hand, the impact of allowing
  citizens to engage with public servants and politicians in moderated question-a
 nd-answer sessions.
+ We answer these research questions using a cluster randomized control trial
+ (RCT).
 \end_layout
 
 \begin_layout Standard
@@ -302,7 +304,7 @@ literal "true"
 \end_inset
 
 .
- This may be less of a problem if barazas are organized at district level.
+ This may be less of a problem if barazas are organized at district-level.
  Most other studies consider interventions that were placed at local jurisdictio
 nal levels.
  For instance, the intervention in 
@@ -409,7 +411,7 @@ ns related to the general elections of 2016.
 \begin_layout Standard
 We find that barazas do not impact public service delivery as measured by
  a pre-registered summary index of various outcomes in four key sectors.
- If we zoom into these sectors, there are signs that sub-county level barazas
+ If we zoom into these sectors, there are signs that sub-county-level barazas
  are effective in the agricultural sector.
  This is in line with recent overview articles, meta-analyses, and replications
  of influential studies on the benefits of community-based monitoring such
@@ -727,7 +729,7 @@ A typical baraza meeting is initiated from the center, with the OPM mobilizing
  chairperson (LC5) as the representative of political leadership at the
  district level, and the sector heads responsible for public services in
  each sector (agriculture, education, infrastructure, and health).
- For sub-county level barazas, the equivalent of the CAO at the sub-county
+ For sub-county-level barazas, the equivalent of the CAO at the sub-county
  level (the sub-county chief) and the Sub-county Local Council chairperson
  (LC3) also have important roles.
  The OPM, in consultation with the district leaders (RDC, CAO, and LC5)
@@ -776,7 +778,7 @@ name "sec:Design-features:-administrative"
 \end_layout
 
 \begin_layout Subsection
-Impact of (sub-county level) barazas
+Impact of (sub-county-level) barazas
 \end_layout
 
 \begin_layout Standard
@@ -796,7 +798,7 @@ literal "true"
 .
  A key question is therefore related to the effectiveness of a typical baraza
  intervention as originally conceived and organized by the OPM.
- We thus first test the impact of sub-county level barazas that combine
+ We thus first test the impact of sub-county-level barazas that combine
  information provision with a deliberation component on public service delivery
  and associated outcomes.
 \end_layout
@@ -871,8 +873,7 @@ literal "true"
 \end_inset
 
  establish that a community-based information campaign has a positive impact
- on school performance, using from a cluster randomized control trial in
- India.
+ on school performance, using from a cluster RCT in India.
  
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -1044,11 +1045,11 @@ Experimental design
 \end_layout
 
 \begin_layout Standard
-To answer the above questions, we designed a field experiment covering districts
-, sub-counties, and households across the four regional blocks of Uganda
- (Northern, Western, Central, and Eastern).
- Each regional block has somewhat unique characteristics in terms of ethnicity,
- geographical and agro-ecological conditions, as well as cultural history.
+To answer the above research questions, we designed a field experiment that
+ covers districts, sub-counties, and households across the four regional
+ blocks of Uganda (Northern, Western, Central, and Eastern).
+ Each regional block has unique characteristics in terms of ethnicity, geographi
+cal and agro-ecological conditions, as well as cultural history.
  As noted in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1057,37 +1058,36 @@ reference "sec:Background-of-the"
 \end_inset
 
 , a small share of sub-counties, albeit located throughout all of Uganda's
- 112 districts across the four regions, had already received a sub-county
- level baraza intervention prior to the study.
+ 112 districts across the four regions, had already received a baraza prior
+ to the study.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Since the start of our study, the number of districts has increase to about
- 140, generally by splitting larger districts in to smaller ones.
- For the sake of our study, we worked with the districts and subcounty boundarie
-s as they were defined at the start of the study.
+Since the beginning of our study, the number of districts has increased
+ to about 140, primarily by splitting larger districts into smaller ones.
+ We worked with the districts and sub-county boundaries as they were defined
+ at the start of the study.
 \end_layout
 
 \end_inset
 
- We thus selected our sample of districts from 
+ We selected our sample of districts from 
 \begin_inset Quotes eld
 \end_inset
 
-eligible districts
+eligible districts,
 \begin_inset Quotes erd
 \end_inset
 
-, and our sample of sub-counties from 
+ and our sample of sub-counties from 
 \begin_inset Quotes eld
 \end_inset
 
-eligible sub-counties
+eligible sub-counties.
 \begin_inset Quotes erd
 \end_inset
 
-.
  An 
 \begin_inset Quotes eld
 \end_inset
@@ -1096,8 +1096,8 @@ eligible district
 \begin_inset Quotes erd
 \end_inset
 
- was defined as a district in which a district-level baraza was not already
- implemented prior to the start of the study.
+ is defined as a district in which no district-level baraza had been implemented
+ prior to the start of the study.
  An 
 \begin_inset Quotes eld
 \end_inset
@@ -1106,9 +1106,8 @@ eligible sub-county
 \begin_inset Quotes erd
 \end_inset
 
- was defined as a sub-county to which two conditions applied: (i) a sub-county
- level baraza had not yet taken place, and (ii) the sub-county was in an
- 
+ is defined as a sub-county to which two conditions applied: (i) no sub-county-l
+evel baraza had been conducted yet, and (ii) the sub-county is in an 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1121,11 +1120,11 @@ eligible district
 status collapsed
 
 \begin_layout Plain Layout
-The fact that we restrict ourselves to eligible districts and sub-counties
- in this way has obvious consequences for the study population.
- For instance, the three districts that together constitute Karamoja, one
- of the poorest and most remote areas located in the northeast of Uganda,
- had already received district-level barazas.
+Restricting ourselves to eligible districts and sub-counties has obvious
+ consequences for the study population.
+ For instance, the three districts that constitute Karamoja, one of the
+ poorest and most remote areas located in the northeast of Uganda, had already
+ received district-level barazas.
  As a result, this area was excluded from the analysis.
  While the impact evaluation had national coverage, the fact that we evaluate
  an ongoing policy project needs to be kept in mind when interpreting results
@@ -1149,8 +1148,8 @@ reference "fig:Experimental-Design"
 .
  In a first step, we randomly allocated eligible districts to treatment
  and control conditions.
- Some of the eligible districts were selected to start receiving district-level
- barazas 
+ Some eligible districts were selected to receive district-level barazas
+ 
 \begin_inset Formula $\left(D^{ID}\right)$
 \end_inset
 
@@ -1163,16 +1162,42 @@ reference "fig:Experimental-Design"
 status collapsed
 
 \begin_layout Plain Layout
-We do not differentiate between the information component and the deliberation
- component of barazas organized at the district level.
- As such, they are the district level equivalent of sub-county level barazas
- that combines both information and deliberation treatment.
+We do not differentiate between the information and deliberation components
+ of barazas organized at the district level.
+ As such, they are the district-level equivalents of sub-county-level barazas
+ that combine both information and deliberation treatment.
 \end_layout
 
 \end_inset
 
- In a second step, we proceeded with all eligible sub-counties and randomly
- allocated each sub-county to one of four conditions:
+ In a second step, we randomly allocated each eligible sub-county to one
+ of four conditions: about one quarter of all eligible sub-counties sampled
+ from 
+\begin_inset Formula $D^{0}$
+\end_inset
+
+ serves as a pure control and would not receive a baraza at any level 
+\begin_inset Formula $\left(S_{0}^{0}\right)$
+\end_inset
+
+; about one quarter would receive a sub-county-level baraza that combines
+ both information and deliberation treatment 
+\begin_inset Formula $\left(S_{ID}^{0}\right)$
+\end_inset
+
+; about one quarter would receive a sub-county-level baraza that consists
+ of officials providing information but limited opportunity for citizens
+ to engage 
+\begin_inset Formula $\left(S_{I}^{0}\right)$
+\end_inset
+
+; and about one quarter would receive a sub-county-level baraza with a focus
+ on citizens engaging with each other and with officials but with limited
+ information provision 
+\begin_inset Formula $\left(S_{D}^{0}\right)$
+\end_inset
+
+.
 \begin_inset Foot
 status collapsed
 
@@ -1181,11 +1206,10 @@ The experiment at the sub-county level was set up as a
 \begin_inset Formula $2^{2}$
 \end_inset
 
- factorial design.
- This was done such that power could be boosted by pooling treatment cells.
- However, as we find that often, interaction effects between the information
- and deliberation treatments are important, we ended up estimating fully
- saturated models as explained in the results section.
+ factorial design, so that pooling treatment cells would boost power.
+ However, as we find that the interaction effects between the information
+ and deliberation treatments are often important, we estimate fully saturated
+ models as explained in the results section.
  As a result, the design at the sub-county level is equivalent to a parallel
  design with a control group, an information only group, a deliberation
  only group and an information+deliberation group.
@@ -1193,61 +1217,32 @@ The experiment at the sub-county level was set up as a
 
 \end_inset
 
- About one quarter of all eligible sub-counties sampled from 
-\begin_inset Formula $D^{0}$
-\end_inset
-
- serves as pure control and would not receive any baraza at any level 
-\begin_inset Formula $\left(S_{0}^{0}\right)$
-\end_inset
-
-; about one quarter would receive a sub-county level baraza that combines
- both information and deliberation treatment 
-\begin_inset Formula $\left(S_{ID}^{0}\right)$
-\end_inset
-
-; about one quarter would receive a sub-county level baraza that consists
- of officials providing information and limited opportunity for citizens
- to engage 
-\begin_inset Formula $\left(S_{I}^{0}\right)$
-\end_inset
-
-; and about one quarter would receive a sub-county level baraza with a focus
- on citizens engaging with each other and with officials, with limited informati
-on provision 
-\begin_inset Formula $\left(S_{D}^{0}\right)$
-\end_inset
-
-.
  We also took a random sample of sub-counties from the 
 \begin_inset Formula $D^{ID}$
 \end_inset
 
- districts that would receive the district-level baraza 
+ districts that would receive a district-level baraza 
 \begin_inset Formula $\left(S_{0}^{ID}\right)$
 \end_inset
 
 .
  Within each sub-county, we randomly sampled five villages, and in each
  village, we randomly selected 10 households.
- 
 \end_layout
 
 \begin_layout Standard
-To determine the number of districts, sub-counties and households to include
- in the study, we ran an extensive series of power calculations that used
- data from the Uganda National Household Survey of 2009/2010 and the Demographic
- and Health Survey of 2011 to estimate standard errors of the outcomes and
- inter-class correlations.
- In Online Appendix A.1, we show summary statistics for a range of household
- characteristics that were collected between June and September 2015 on
- about 12,500 households that were included in the study.
- We also test for balance between the different treatment groups at baseline
- for the original design.
- While we find that distance to the nearest road is slightly though statisticall
-y significantly higher in areas that were planned to receive a sub-county
- level baraza, we do not think this points to structural imbalance.
- 
+To determine the number of districts, sub-counties, and households to include
+ in the study, we ran an extensive series of power calculations using data
+ from the Uganda National Household Survey of 2009/2010 and the Demographic
+ and Health Survey of 2011 to estimate standard errors of and correlations
+ between the outcome variables.
+ In Online Appendix A.1, we show summary statistics for a range of characteristic
+s of about 12,500 households that were included in the study, collected
+ between June and September 2015.
+ We also test for baseline balance between the different treatment groups
+ in the original design.
+ While we find significant differences for three out of 40 comparisons,
+ we do not think that this indicates structural imbalance.
 \end_layout
 
 \begin_layout Section
@@ -1255,10 +1250,9 @@ Treatments
 \end_layout
 
 \begin_layout Standard
-The treatments were based on the baraza intervention as designed and implemented
- by the government before the start of the study.
- A description of a generic sub-county level baraza was already given in
- Section 
+The treatments are based on barazas as designed and implemented by the governmen
+t before this study.
+ A generic sub-county-level baraza was already described in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Background-of-the"
@@ -1267,14 +1261,12 @@ reference "sec:Background-of-the"
 
 .
  From such a generic baraza, we either removed the information component
- or the deliberation component to test the relative importance of these
- components.
+ or the deliberation component to test their relative importance.
  To standardize the treatments, we developed detailed scripts that RDCs
- and facilitators were expected to follow, and all were invited for a training.
+ and facilitators were expected to follow, and invited them for training.
  We will summarize the main differences between an information baraza and
- a deliberation baraza here.
- Detailed information can be found in [placeholder for link to timestamped
- online appendix on GitHub
+ a deliberation baraza in this section.
+ The training manuals can be found here
 \begin_inset Note Note
 status collapsed
 
@@ -1285,66 +1277,63 @@ https://github.com/bjvca/baraza/blob/master/report/appendices/Training%20Manual%
 
 \end_inset
 
-].
+.
 \end_layout
 
 \begin_layout Standard
-For information barazas, templates to gather information were developed
- to be filled by officials and mounted at a central location in each parish
- of the sub-county (or the district in case of a district-level baraza)
- two weeks before the baraza event was scheduled to take place.
+For information barazas, templates to gather information were filled by
+ officials and posted in central locations in each parish of the sub-county
+ (or district for district-level barazas) two weeks before the baraza event
+ took place.
  The template was designed to inform citizens about planned and actual public
- expenditures for the previous fiscal year, about achievements and challenges
- encountered during that year, and about planned expenditures and targets
- for the next fiscal year.
- This information needed to be provided for each of the four sectors (agricultur
-e, infrastructure, health, and education) by the sub-county chief.
+ expenditures in the previous fiscal year, about achievements and challenges
+ during that year, and about planned expenditures and targets for the next
+ fiscal year.
+ This information was provided by the sub-county chief for each of the four
+ sectors (agriculture, infrastructure, health, and education).
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 While the preparation and distribution of these posters were the responsibility
- of the RDC, we had research assistants that closely monitored the implementatio
-n of this.
- We also assisted in printing of the template posters.
+ of the RDC, there were research assistants that closely monitored the implement
+ation.
+ We also assisted in printing the template posters.
 \end_layout
 
 \end_inset
 
- On the day of the baraza event, the CAO was expected to give a brief presentati
-on on the overall budget for the fiscal year, the main achievements and
- challenges in service delivery, and to introduce sector heads.
+ On the day of the baraza event, the CAO introduced the sector heads and
+ gave a brief presentation on the overall budget for the fiscal year, and
+ the main achievements and challenges in service delivery.
  After a brief intervention by the OPM, officials responsible for each sector
- then present the same as what was required for the templates.
- An information-focused baraza allowed for only 10 clarifying questions
- to be asked, to be collected and asked by the facilitator.
+ presented the information on the templates.
+ An information-focused baraza allowed for only 10 clarifying questions,
+ to be collected and asked by the facilitator.
 \end_layout
 
 \begin_layout Standard
-For the deliberation barazas, posters were also mounted in each parish of
- the sub-county, but only to announce that a baraza was going to be held
- at a particular date and place.
- At the baraza itself, after a brief introduction by the OPM, citizens were
- instructed to break into four groups by sector, discuss problems they faced
- and draw up a list of priority issues that needed to be addressed.
- Facilitators in each group were required to anonymously collect these issues
- and concerns.
- Facilitators were expected to focus the discussion on what was done well,
- and on problems encountered during the past year.
- The discussions should also result in agreement on what should be done
- in the next fiscal year.
- After the break-out sessions, officials were asked to react to the specific
- comments and requests.
+For deliberation barazas, posters were also mounted in each parish of the
+ sub-county (or district for district-level barazas), but only announced
+ that a baraza was going to be held at a particular date and place.
+ At the baraza, after a brief introduction by the OPM, citizens were instructed
+ to break into four groups by sector, discuss problems they faced and draw
+ up a list of priority issues that needed to be addressed.
+ Facilitators in each group were expected to focus the discussion on what
+ was done well, on the problems citizens encountered during the past year,
+ and on what needs to be done in the next fiscal year.
+ They were also required to anonymously collect the resulting information.
+ After the break-out sessions, officials reacted to the specific comments
+ and requests.
 \end_layout
 
 \begin_layout Standard
-A sub-county level baraza in the crossed treatment group combined both elements.
- District level barazas were very similar to (information and deliberation)
- sub-county level barazas, except for the fact that district-level barazas
- were organized at the district headquarters, all sub-county chiefs and
- LC3's of each sub-county were expected to attend in case questions arise
- related to their sub-county, and all citizens within the entire district
- were invited.
+A sub-county-level baraza in the crossed treatment group combined both elements.
+ District-level barazas were similar to (information and deliberation) sub-count
+y-level barazas, except for the fact that they were organized at the district
+ headquarters, that the chiefs and LC3's of each sub-county were expected
+ to attend in case questions related to their sub-county arose, and that
+ all citizens in the district were invited.
 \end_layout
 
 \begin_layout Section
@@ -1359,94 +1348,87 @@ name "sec:Implementation-challenges-and"
 \end_layout
 
 \begin_layout Standard
-The implementer of the baraza project, the OPM, experienced significant
- challenges in the roll-out of the intervention, affecting sub-county level
- barazas in particular.
+Our implementing partner OPM faced substantial challenges in the roll-out
+ of sub-county-level barazas.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-All district-level barazas were implemented as planned, so we mainly focus
- on sub-county level barazas here.
+All district-level barazas were implemented as planned, therefore this section
+ focuses on sub-county-level barazas.
 \end_layout
 
 \end_inset
 
  At the start of 2018, and almost two and a half years after baseline data
- was collected, only about 25 percent of the planned sub-county level interventi
+ was collected, only about 25 percent of the planned sub-county-level interventi
 ons had happened.
  At that point, costs and benefits of waiting until the OPM finished all
- sub-county barazas or collecting baseline information after incomplete
- roll-out were assessed and various scenarios and strategies were evaluated.
- After an additional six months, with still only 56 out of the 155 sub-county
- barazas done, it appeared that the best scenario would be one whereby end-line
- data would be collected before all sub-counties were treated, given that
- the government's financial constraints made it unlikely that all barazas
- would be held anytime soon.
+ barazas or collecting baseline information despite incomplete roll-out
+ were assessed.
+ After an additional six months, with still only 56 of 155 sub-county barazas
+ done, we decided to collect end-line data before all sub-counties were
+ treated, given that the government's financial constraints made it unlikely
+ that all barazas would be held anytime soon.
 \end_layout
 
 \begin_layout Standard
-Partial roll-out will have an impact on statistical power.
- More worryingly, end-line data collection after partial roll-out may introduce
- selection bias in the sub-sample of sub-counties that were assigned to
- the treatment.
- It may be that, from the randomly assigned treatment sub-counties, particular
- sub-counties were selected to be treated first and others postponed.
- For instance, for logistical reasons, the implementing partner may have
- started with sub-counties that were close to the capital, resulting in
- a treatment group that would not be directly comparable to the control
- group.
- Or the OPM may decide to prioritize sub-counties that perform worse on
- certain planning indicators, such as number of boreholes or student enrollment
- rates.
- 
+End-line data collection after partial roll-out will affect statistical
+ power.
+ More worryingly, it may introduce selection bias in the sub-sample of sub-count
+ies that were assigned to the treatment.
+ It may be that, from the sub-counties randomly assigned to treatment, particula
+r sub-counties were treated first, and others postponed.
+ For instance, the implementing partner may have started with sub-counties
+ near the capital for logistical reasons, resulting in a treatment group
+ that is not directly comparable to the control group.
+ Or the OPM may have decided to prioritize sub-counties that perform the
+ worst on certain indicators, such as the number of boreholes or student
+ enrollment rates.
 \end_layout
 
 \begin_layout Standard
-We acknowledge that the partial roll-out is a threat to internal validity
- that should not be ignored.
- At the same time, the fact that we started from a cluster Randomized Control
- Trial (RCT) still provides a substantial advantage over studies that are
- based on observational data.
+We acknowledge the partial roll-out as a threat to internal validity that
+ should not be ignored.
+ At the same time, the fact that we started from a cluster RCT still provides
+ substantial advantages over studies that are based on observational data.
  For instance, potential selection emanating from partial roll-out is restricted
- to the sub-sample of sub-counties that were assigned to be treated only,
- significantly reducing the scope for bias.
+ to the sub-sample of sub-counties that was assigned to be treated, substantiall
+y reducing the scope for bias.
  In addition, the list of sub-counties to be treated that we shared with
  the implementing partner was organized by treatment group (information,
  deliberation, and combined treatment), and in each treatment group, sub-countie
 s were listed alphabetically.
- Looking at the list considering the partial roll-out, we get the impression
- that the OPM started at the top of the list and worked their way down.
- As a result, relatively more sub-counties that were assigned to the information
- treatment were treated, and sub-counties toward the top of the list for
- each treatment are also more likely to be treated.
- This pattern is confirmed when regressing the likelihood of being treated
- on the rank of the sub-county in the list.
- This is already a first indication that OPM officials did not deliberately
- select certain sub-counties.
+ Looking at this list, we get the impression that the OPM started at the
+ top and worked its way down: relatively more sub-counties that were assigned
+ to the information baraza were treated, and relatively more sub-counties
+ at the top of each treatment group were treated.
+ This pattern is confirmed when we regress the likelihood of a sub-county
+ being treated on its rank in the list.
+ This is a first indication that OPM officials did not deliberately select
+ certain sub-counties.
 \end_layout
 
 \begin_layout Standard
 In this section, we diagnose potential selection bias by assessing baseline
- balance between the planned-to-treat-but-not-treated sub-counties and control
- sub-counties.
- We then explain the end-line data collection strategy to further reduce
- any remaining potential selection bias resulting from the partial roll-out:
- Selection of control units by matching treatment and control units on range
- of sub-county characteristics that were likely to be known to the planner
- and may have affected how the intervention was rolled out.
- In Online Appendix A.2., we diagnose the impact of partial roll-out on statistica
-l power.
- To do so, we use simulation methods to estimate minimal detectable effect
- sizes at different power levels for the new reduced sample sizes associated
- with the partial roll-out, and conclude we maintain reasonable power.
- Online Appendix A.3.
- further shows attrition is low and unrelated to treatment assignment.
+ balance between assigned-to-be-treated-but-not-treated sub-counties and
+ control sub-counties.
+ We then explain the end-line data collection strategy that further reduces
+ potential selection bias: selecting control units by matching them to treatment
+ units on a range of sub-county characteristics that may have affected how
+ the intervention was rolled out.
+ In Online Appendix A.2, we investigate the impact of the partial roll-out
+ on statistical power.
+ To do so, we use simulation methods to estimate minimum detectable effect
+ sizes at different power levels for the reduced sample size associated
+ with the partial roll-out and conclude that we maintain reasonable power.
+ Online Appendix A.3 further shows that attrition is low and independent
+ of the treatment assignment.
 \end_layout
 
 \begin_layout Subsection
-Balance between planned-to-treat-but-not-treated sub-counties, and control
- sub-counties
+Balance between assigned-to-be-treated-but-not-treated sub-counties and
+ control sub-counties
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Balance-between-planned-to-treat"
@@ -1458,30 +1440,29 @@ name "subsec:Balance-between-planned-to-treat"
 
 \begin_layout Standard
 One way to test if selection bias was introduced by the partial roll-out
- is by comparing outcomes in control sub-counties to outcomes in sub-counties
- that were allocated to receive treatment but did not end up receiving treatment.
- If the roll-out was random, sub-counties that were allocated randomly to
- a particular treatment at the design stage but did not end up receiving
- treatment can be interchanged with sub-counties that were randomly selected
- at design stage to function as control sub-counties.
- Finding no significant differences in outcomes between these two groups
- would support the hypothesis that the partial roll-out did not introduce
- selection bias.
- If the incomplete roll-out introduced selection bias, comparing these two
- groups may also be informative to assess the direction and magnitude of
+ is to compare outcomes in sub-counties that were randomly allocated to
+ function as controls to outcomes in sub-counties that were randomly allocated
+ to receive treatment but did not end up receiving treatment.
+ If the roll-out was random, these sub-counties could be interchanged.
+ Finding no significant differences between these two groups would therefore
+ support the hypothesis that the partial roll-out has not introduced selection
+ bias.
+ If the incomplete roll-out has introduced selection bias, comparing these
+ groups will also be informative to assess the direction and magnitude of
  the bias.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Alternatively, one could restrict attention to the treatment group and compare
- sub-counties that ended up being treatment to those that did not.
- However, in our case, such a comparison will be based on fewer observations.
+Alternatively, one could restrict attention to sub-counties that were randomly
+ allocated to receive treatment and compare the ones that ended up being
+ treated to the ones that did not.
+ However, in our case, this comparison would be based on fewer observations.
 \end_layout
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
@@ -1492,38 +1473,24 @@ reference "tab:Balance_planed_ctrl"
 
 \end_inset
 
- presents, for each of the three treatment arms affected by the partial
- roll-out, differences in average outcomes of planned-to-treat-but-not-treated
- sub-counties and planned control sub-counties (the first column also reports
- sample means).
- It is essentially the same table as the original balance table (Table A.1
- in the Online Appendix), but after dropping sub-counties that were treated.
- We find that the imbalance related to distance to nearest all weather road
- found in Online Appendix Table A.1 becomes even more pronounced.
- This may indicate that the OPM prioritized treatment of less remote areas.
- Similarly, for the information baraza, the imbalance for the number of
- children in school becomes stronger, suggesting information barazas were
- organized in areas where fewer children went to school to begin with.
- At the same time, it should be noted that significant differences are only
- found for comparison on which balance was also rejected in the original
- balance table.
- This suggests that the initial imbalance was likely caused by chance and
- balance may have been improved as a result of the (random) partial roll-out
- (see Table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:balance_final"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- below).
+ presents differences between assigned-to-be-treated-but-not-treated sub-countie
+s and control sub-counties for each of the three treatment arms affected
+ by the partial roll-out.
+ It is equivalent to the original balance table (Table A.1 in the Online
+ Appendix), but after dropping sub-counties that were actually treated.
+ We find that the imbalance related to the distance to the nearest all-weather
+ road as shown in Online Appendix Table A.1 becomes more pronounced.
+ This may indicate that the OPM prioritized the treatment of areas that
+ are less remote.
+ Similarly, the imbalance for the number of children in public schools is
+ further accentuated, suggesting that information barazas were first organized
+ in areas with fewer children in public schools prior to the study.
+ At the same time, it should be noted that we only find significant differences
+ for comparisons that rejected balance also in the original balance table.
 \end_layout
 
 \begin_layout Subsection
-Selection of control sub-counties to be included in end-line survey
+HERESelection of control sub-counties to be included in end-line survey
 \end_layout
 
 \begin_layout Standard
@@ -1534,7 +1501,7 @@ reference "fig:Factorial-design"
 
 \end_inset
 
- summarizes the factorial design that underlies the sub-county level baraza
+ summarizes the factorial design that underlies the sub-county-level baraza
  impact evaluation.
  It shows that, based on the original power calculations, we planned to
  have between 51 and 53 sub-counties in each treatment cell (corresponding
@@ -1556,7 +1523,7 @@ Statistical power is optimal when the number of treatment units is equal
  to the number of control units, and while adding more control sub-counties
  will increase power, the gains in power must be weighed against the cost
  of collecting additional data.
- As only part of the sub-county level intervention was implemented, it may
+ As only part of the sub-county-level intervention was implemented, it may
  thus not be cost effective to collect end-line data on all sub-counties
  that did not receive a treatment (either because they were allocated to
  the control or because they ended up not being treated).
@@ -1652,9 +1619,9 @@ While the ex-ante matching strategy may reduce bias resulting from incomplete
  further reduce external validity of the study, as now also the control
  sub-counties are not a random sample of the study population anymore.
  Second, the reduction in potential bias for hypotheses related to the sub-count
-y level barazas should be traded off against an increase in potential bias
+y-level barazas should be traded off against an increase in potential bias
  when testing differences between control and district-level barazas.
- As the sub-county level analysis weighed higher in terms of research objectives
+ As the sub-county-level analysis weighed higher in terms of research objectives
 , we decided to prioritize the reduction of bias resulting from incomplete
  roll-out at this level.
  However, it should be kept in mind that both issues only become relevant
@@ -1718,7 +1685,7 @@ literal "false"
 
 .
  However, later a coding mistake was found and corrected: For the comparison
- of outcomes between households that received a sub-county level barazas
+ of outcomes between households that received a sub-county-level barazas
  and households in the control group, we were reporting the interaction
  effect between information and deliberation instead of the combined information
  and deliberation effect.
@@ -1818,7 +1785,7 @@ literal "false"
 Impact is assessed as a simple treatment-control comparison, implemented
  using an ANCOVA model that also controls for the region (as this was used
  for stratification) and the baseline outcome.
- In particular, to estimate the impact of the sub-county level baraza with
+ In particular, to estimate the impact of the sub-county-level baraza with
  both information and deliberation components, we restrict the sample to
  pure control sub-counties (
 \begin_inset Formula $S_{0}^{0}$
@@ -1889,7 +1856,7 @@ r
 \end_inset
 
  is a binary indicator indicating if the sub-county received a combined
- information and deliberation sub-county level baraza, 
+ information and deliberation sub-county-level baraza, 
 \begin_inset Formula $\tau_{r}$
 \end_inset
 
@@ -1903,7 +1870,7 @@ r
 \end_inset
 
  which gives us the difference in the average outcome for households that
- live in a sub-county that received a sub-county level baraza and those
+ live in a sub-county that received a sub-county-level baraza and those
  that live in a sub-county that did not receive a baraza, after controlling
  for baseline outcome and regional fixed effects.
  Similar comparisons are made between control sub-counties and sub-counties
@@ -1926,7 +1893,7 @@ noprefix "false"
 \end_inset
 
  now a binary indicator indicating if the sub-county received an information
- focused sub-county level baraza) to estimate the effect of the information
+ focused sub-county-level baraza) to estimate the effect of the information
  component; and between control sub-counties and sub-counties that received
  the deliberation focused baraza (
 \begin_inset Formula $S_{D}^{0}$
@@ -1947,7 +1914,7 @@ noprefix "false"
 \end_inset
 
  now a binary indicator indicating if the sub-county received an deliberation
- focused sub-county level baraza) to get to the deliberation effect.
+ focused sub-county-level baraza) to get to the deliberation effect.
  Finally, an equation similar to 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1968,7 +1935,7 @@ s
 status collapsed
 
 \begin_layout Plain Layout
-We also directly compare district-level barazas to sub-county level barazas
+We also directly compare district-level barazas to sub-county-level barazas
  by comparing outcomes of households that were sampled from 
 \begin_inset Formula $S_{0}^{ID}$
 \end_inset
@@ -1978,7 +1945,7 @@ We also directly compare district-level barazas to sub-county level barazas
 \end_inset
 
 .
- From a policy perspective, in light of the shift from sub-county level
+ From a policy perspective, in light of the shift from sub-county-level
  barazas to district-level barazas from 2012 onward, the last comparison
  is the most interesting one, and this comparison was pre-registered.
  However, the partial roll-out of the intervention (see section 
@@ -2074,7 +2041,7 @@ name "fn:This-method-first"
  impact on public service delivery in general.
  We find no significant impact of the baraza program on overall public service
  delivery.
- There are some indications that sub-county level barazas did make a difference
+ There are some indications that sub-county-level barazas did make a difference
  in the agricultural sector, though only at the 10 percent significance
  level.
 \end_layout
@@ -2094,7 +2061,7 @@ The indices combine various outcomes, and for some of them the expected
  In Online Appendix A.4, we thus provide a detailed and more exploratory
  analysis of the individual outcomes behind these indices, and some other
  outcomes that were not pre-registered.
- This analysis suggests some additional impact from subcounty-level barazas
+ This analysis suggests some additional impact from sub-county-level barazas
  in some areas (such as schooling infrastructure or waiting time at boreholes).
 \end_layout
 
@@ -2244,7 +2211,7 @@ noprefix "false"
 \end_inset
 
  uses information obtained from reports redacted by the OPM for 10 random
- sub-county level baraza events.
+ sub-county-level baraza events.
  Using these reports, we determine for each baraza which sector was most
  discussed (column 4).
  This is then compared to baseline data on priorities obtained from citizens
@@ -2416,8 +2383,8 @@ We explore the impact of political context by looking at treatment heterogeneity
  related to connections to people in power.
  The assumption is that support for government is likely to be higher in
  sub-counties that deliver higher level (district of central level) politicians,
- such as minister, member of parliament, heads of government agencies, Resident
- District Commissioners (RDCs), and other district level officials.
+ such as minister, member of parliament, heads of government agencies, RDCs,
+ and other district-level officials.
  We would expect that in these areas, barazas are more effective, since
  citizens can use their connections to the center to attract funding to
  issues raised, and politicians may want to reward their constituents.
@@ -2451,7 +2418,7 @@ literal "false"
  sites or model farmers and an increase in the likelihood that schools have
  a fence after a deliberation focused baraza.
  We also find a reduction in the use of unprotected water sources after
- a sub-county level baraza.
+ a sub-county-level baraza.
 \end_layout
 
 \begin_layout Subsection
@@ -2484,7 +2451,7 @@ In this sub-section, we focus on treatment heterogeneity as a potential
  impact on public service delivery, effects often go in the right direction,
  and we do find some significant effects if we consider individual outcomes
  in Online Appendix A.4.
- Focus group discussions with citizens in a few subcounties where barazas
+ Focus group discussions with citizens in a few sub-counties where barazas
  were held also indicated barazas were perceived as highly effective; they
  provided various examples of changes in public service delivery that they
  thought were due to, or accelerated by, the baraza event.
@@ -2567,7 +2534,7 @@ The OPM faced various challenges that affected the timely roll-out of the
 \begin_layout Standard
 Judged by an index of overall public service delivery, we find no significant
  impact of the program.
- There are some indications that sub-county level barazas had a positive
+ There are some indications that sub-county-level barazas had a positive
  impact on service delivery in the agricultural sector.
  We then consider various potential reasons why barazas did not have the
  expected sector-wide benefits.
@@ -2881,223 +2848,6 @@ load(paste(path,"report/results/final/df_averages_end.Rd", sep="/"))
 
 \begin_layout Standard
 \begin_inset Float table
-wide false
-sideways true
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{center}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{tabular}{llccccc} 
-\backslash
-hline 
-\backslash
-hline
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-District & Sub-county & Community's priority & Prioritized sector & Largest
- change
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-& & at baseline & during baraza & at endline 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline
-\end_layout
-
-\begin_layout Plain Layout
-
-Hoima	&	Kyabigambire	&			Health	&	Health	&	Education	
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-Kibaale	&	Kasambya	&		Health	&	Agriculture	&	Infrastructure	
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-Masaka	&	Mukungwe	&			Health	&	Agriculture	&	Agriculture	
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-Hoima	&	Kiziranfumbi	&			Health	&	Health	&	Health	
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-Ssembabule	&	Lwemiyaga	&			Health	&	Education	&	Agriculture	
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-Hoima	&	Buseruka	&		Education	&	Education	&	Health	
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-Luwero	&	Katikamu	&		Health	&	Health	&	Infrastructure	
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-Ntoroko	&	Kanara 	&		Infrastructure	&	Education	&	Health	
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-Pader	&	Puranga	&		Health	&	Infrastructure	&	Health	
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-Kanungu	&	Kanungu TC	&		Health	&	Infrastructure	&	Education	
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline  
-\backslash
-hline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{tabular}
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\backslash
-end{center}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-scriptsize
-\end_layout
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Alignment of priorities
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:Alignment"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
 placement H
 wide false
 sideways true
@@ -3107,7 +2857,8 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Balance between planned but not treated sub-counties and planned controls
+Balance between assigned-to-be-treated-but-not-treated sub-counties and
+ control sub-counties
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Balance_planed_ctrl"
@@ -3737,14 +3488,14 @@ scriptsize
 
 Note: Column 1 reports sample means (and standard deviations below); Column
  2 reports differences  between baseline characteristics of households that
- were planned to receive a sub-county level combined information and deliberatio
+ were planned to receive a sub-county-level combined information and deliberatio
 n baraza but did not receive any baraza, and those that were planned to
  not receive one (and standard errors below); Column 3 reports differences
   between baseline characteristics of households that were planned to receive
- a sub-county level information baraza but did not receive one, and those
+ a sub-county-level information baraza but did not receive one, and those
  that were planned to not receive one (and standard errors below); Column
  4 reports differences  between baseline characteristics of households that
- were planned to receive a sub-county level deliberation baraza but did
+ were planned to receive a sub-county-level deliberation baraza but did
  not receive one, and those that were planned to not receive one (and standard
  errors below); **, * and + denote significance at 1, 5 and 10 percent levels.
  Reported standard errors are clustered at the level of randomization.
@@ -4416,15 +4167,15 @@ scriptsize
 
 Note: Column 1 reports sample means (and standard deviations below); Column
  2 reports differences  between baseline characteristics of households that
- received a sub-county level combined information and deliberation baraza,
+ received a sub-county-level combined information and deliberation baraza,
  and those that did not receive any baraza (and standard errors below);
  Column 3 reports differences  between baseline characteristics of households
- that received a sub-county level information baraza, and those that did
+ that received a sub-county-level information baraza, and those that did
  not receive one (and standard errors below); Column 4 reports differences
-  between baseline characteristics of households that received a sub-county
- level deliberation baraza, and those that did not receive one (and standard
+  between baseline characteristics of households that received a sub-county-leve
+l deliberation baraza, and those that did not receive one (and standard
  errors below); Column 5 reports differences  between baseline characteristics
- of households that received a district level combined information and deliberat
+ of households that received a district-level combined information and deliberat
 ion baraza, and those that did not receive any baraza (and standard errors
  below);  **, * and + denote significance at the 1, 5 and 10 percent levels.
  Reported standard errors are clustered at the level of randomization.
@@ -4920,7 +4671,7 @@ scriptsize
 \begin_layout Plain Layout
 
 Note: Column 1 reports sample means (and standard deviations below); Column
- 2 reports the effect of the sub-county level baraza intervention (and standard
+ 2 reports the effect of the sub-county-level baraza intervention (and standard
  errors below); Column 3 reports the effect of the information component
  of the baraza intervention (and standard errors below); Column 4 reports
  the effect  of the deliberation component of the baraza intervention (and
@@ -5790,7 +5541,7 @@ scriptsize
 \begin_layout Plain Layout
 
 Note: Column 1 reports sample means (and standard deviations below); Column
- 2 reports the effect of the sub-county level baraza intervention (and standard
+ 2 reports the effect of the sub-county-level baraza intervention (and standard
  errors below); Column 3 reports the effect of the information component
  of the baraza intervention (and standard errors below); Column 4 reports
  the effect  of the deliberation component of the baraza intervention (and
@@ -5799,6 +5550,223 @@ Note: Column 1 reports sample means (and standard deviations below); Column
  **, * and + denote significance at the 1, 5 and 10 percent levels as assessed
  using randomization inference.
  Reported standard errors are clustered at the level of randomization.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways true
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{llccccc} 
+\backslash
+hline 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+District & Sub-county & Community's priority & Prioritized sector & Largest
+ change
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+& & at baseline & during baraza & at endline 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Hoima	&	Kyabigambire	&			Health	&	Health	&	Education	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Kibaale	&	Kasambya	&		Health	&	Agriculture	&	Infrastructure	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Masaka	&	Mukungwe	&			Health	&	Agriculture	&	Agriculture	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Hoima	&	Kiziranfumbi	&			Health	&	Health	&	Health	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Ssembabule	&	Lwemiyaga	&			Health	&	Education	&	Agriculture	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Hoima	&	Buseruka	&		Education	&	Education	&	Health	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Luwero	&	Katikamu	&		Health	&	Health	&	Infrastructure	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Ntoroko	&	Kanara 	&		Infrastructure	&	Education	&	Health	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Pader	&	Puranga	&		Health	&	Infrastructure	&	Health	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Kanungu	&	Kanungu TC	&		Health	&	Infrastructure	&	Education	
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline  
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+scriptsize
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Alignment of priorities
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Alignment"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset

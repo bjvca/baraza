@@ -369,7 +369,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Orthogonality tests
+Descriptive statistics and balance at baseline (original design)
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:balance_orig"
@@ -1076,7 +1076,7 @@ reference "tab:balance_orig"
 \end_layout
 
 \begin_layout Section
-Minimal detectable effects
+Minimum detectable effect sizes
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Minimal-Detectable-Effects"
@@ -1088,7 +1088,7 @@ name "subsec:Minimal-Detectable-Effects"
 
 \begin_layout Standard
 The partial roll-out means a reduction in statistical power.
- In this section, we use baseline data to simulate an updated set of minimal
+ In this section, we use baseline data to simulate an updated set of minimum
  detectable effects (MDEs) for the outcomes that were pre-registered to
  be used to judge effectiveness of the intervention.
  Instead of fixing MDEs and simulating power for different sample sizes
