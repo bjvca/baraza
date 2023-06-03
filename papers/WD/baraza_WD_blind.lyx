@@ -2744,12 +2744,12 @@ name "fig:Summary-of-baraza"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/home/bjvca/data/projects/baraza/report/results/final/hetero4/impact_summary_ancova.png
+	filename /home/bjvca/data/projects/baraza/report/results/final/hetero4/impact_summary_ancova.png
 	lyxscale 10
 	scale 50
 
@@ -3519,7 +3519,7 @@ n baraza but did not receive any baraza, and those that were planned to
 placement H
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
