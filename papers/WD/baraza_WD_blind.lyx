@@ -1490,7 +1490,7 @@ s and control sub-counties for each of the three treatment arms affected
 \end_layout
 
 \begin_layout Subsection
-HERESelection of control sub-counties to be included in end-line survey
+Selection of control sub-counties for end-line survey
 \end_layout
 
 \begin_layout Standard
@@ -1501,61 +1501,54 @@ reference "fig:Factorial-design"
 
 \end_inset
 
- summarizes the factorial design that underlies the sub-county-level baraza
+ presents the factorial design that underlies the sub-county-level baraza
  impact evaluation.
  It shows that, based on the original power calculations, we planned to
- have between 51 and 53 sub-counties in each treatment cell (corresponding
- to about 2,550 to 2,650 households).
- At the start of the end-line data collection, 29 sub-counties of the 51
- that were supposed to receive the information-only treatment were treated,
- 18 sub-counties of the 51 that were supposed to receive the deliberation-only
- treatment were treated, and 20 sub-counties of the 53 that were supposed
- to receive the crossed (information + deliberation) treatment were treated.
+ have between 51 and 53 sub-counties (corresponding to about 2,550 to 2,650
+ households) in each treatment cell.
+ Just before the end-line data collection, 29 of 51 sub-counties that were
+ supposed to receive the information treatment were treated, 18 of 51 sub-counti
+es that were supposed to receive the deliberation treatment were treated,
+ and 20 of 53 sub-counties that were supposed to receive the crossed (informatio
+n + deliberation) treatment were treated.
  All eight districts that were supposed to be treated were treated, from
- which 40 sub-counties were sampled.
- Overall, this means that about 55 percent of the sub-counties that needed
- to receive any form of baraza were treated, corresponding to about 5,350
- households.
+ which 40 sub-counties (corresponding to about 2,000 households) were sampled.
+ Overall, this means that about 55 percent of all sub-counties that were
+ planned to receive any form of baraza were treated, corresponding to about
+ 5,350 households.
 \end_layout
 
 \begin_layout Standard
 Statistical power is optimal when the number of treatment units is equal
  to the number of control units, and while adding more control sub-counties
- will increase power, the gains in power must be weighed against the cost
+ will increase power, these gains in power must be weighed against the costs
  of collecting additional data.
- As only part of the sub-county-level intervention was implemented, it may
- thus not be cost effective to collect end-line data on all sub-counties
- that did not receive a treatment (either because they were allocated to
- the control or because they ended up not being treated).
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-We decided to collect end-line data on 40 control sub-counties, which is
- equal to the number of sub-counties that was treated with a district-level
- baraza (the largest number of sub-counties among the different treatments).
+ As only a share of sub-counties that were planned to be treated were treated,
+ it would not be cost effective to collect end-line data in all sub-counties
+ that were not treated.
+ We decided to collect end-line data in 40 control sub-counties, which is
+ equal to the number of sub-counties with a district-level baraza (the largest
+ number of sub-counties among the different treatment cells).
 \end_layout
 
-\end_inset
-
- This raises the question: From the potential control sub-counties (either
- those that were allocated to the control or because they ended up not being
- treated), which sub-counties should be included in the end-line data collection
-? One reasonable suggestion would be to pick them randomly.
- However, also here, if the roll-out was not random, such a strategy may
- lead to a biased estimate of the causal impact of the intervention.
- For instance, if the OPM prioritized treatment of less remote areas, randomly
- selecting control sub-counties may result in a sample in which sub-counties
- in less remote locations are relatively under-represented and sub-counties
- that are in more remote areas relatively over-represented in the control
- group.
+\begin_layout Standard
+This implies that we had to decide in which of the potential control sub-countie
+s (including those that were allocated to the control group and those that
+ ended up not being treated) we should collect end-line data.
+ One reasonable suggestion would be to pick them randomly.
+ However, if the roll-out was not random, this strategy may lead to a biased
+ estimate of the causal impact of the intervention.
+ For instance, if the OPM prioritized the treatment of less remote areas,
+ randomly selecting control sub-counties may result in a sample in which
+ less remote sub-counties are relatively under-represented and more remote
+ sub-counties are relatively over-represented in the control group.
  A better strategy may be to match each treated sub-county to a control
- sub-county that is similar in a range of observable pre-treatment characteristi
-cs that the planner had access to when the intervention was rolled out and
- are likely to have affected his or her decision 
+ sub-county that is similar in terms of a range of observable pre-treatment
+ characteristics that the planner was likely to know or have access to when
+ the intervention was rolled out 
 \begin_inset CommandInset citation
 LatexCommand citep
-key "kasy2016experimenters,bertsimas2015power"
+key "bertsimas2015power,kasy2016experimenters"
 literal "true"
 
 \end_inset
@@ -1564,26 +1557,26 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
-We used a range of sub-county characteristics that were likely to be known
- to the planner and may have affected how the intervention was rolled out
- to match each treated sub-county to a control sub-county that was similar
- in terms of these characteristics.
- More in particular, we match on the following characteristics that were
- obtained at baseline from a survey of village chairs and CAOs of each sub-count
-y: Geographic location of the sub-county using GPS coordinates of the headquarte
-rs, road infrastructure within the sub-county (km tarmac road and km all-weather
- (gravel) road), share of households with electricity, share of households
- with an iron roof or tiles, number of health centers in the sub-county,
- female primary school dropout rate, number of Universal Primary Education
- (UPE) schools in the sub-county, percent of farmers that used improved
- seed, and political connections of the sub-county (defined by having a
- minister or member of parliament coming from the sub-county).
+We matched each treated sub-county to a control sub-county that was similar
+ in terms of a range of sub-county characteristics that may have affected
+ the planner's decision how to roll out the intervention.
+ In particular, we match on the following sub-county characteristics that
+ were obtained by surveying village chairs and CAOs of all sub-counties
+ at baseline: geographic location (GPS coordinates of the headquarter),
+ road infrastructure (kilometers of tarmac and all-weather gravel roads),
+ share of households with electricity, share of households with an iron
+ roof or tiles, number of health centers, female primary school dropout
+ rate, number of Universal Primary Education schools, share of farmers using
+ improved seed, and political connections of the sub-county (defined as
+ having a minister or member of parliament coming from the sub-county).
  These characteristics are used in a probit regression to predict the probabilit
-y that a sub-county would be treated.
- The probabilities are then used to match each treated sub-county to a candidate
- control sub-county that is closest in terms of the predicted probability
- of being treated.
- Table 
+y that a sub-county is treated.
+ We then match each treated sub-county to a candidate control sub-county
+ that is closest in terms of the predicted probability of being treated.
+\end_layout
+
+\begin_layout Standard
+Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:balance_final"
@@ -1594,7 +1587,7 @@ reference "tab:balance_final"
  Two significant results out of 40 comparisons are again what can be expected
  from pure chance alone and so we conclude that also with this new sample
  we maintain balance between treatment and control on a range of baseline
- characteristics for the various comparisons.
+ characteristics.
  It is important to note that this matching was done before end-line data
  was collected and the result of this ex-ante matching was also pre-registered
  [placeholder for link to timestamped pre-registered report on GitHub
@@ -2702,7 +2695,7 @@ name "fig:Factorial-design"
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2744,7 +2737,7 @@ name "fig:Summary-of-baraza"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -5615,7 +5608,7 @@ District & Sub-county & Community's priority & Prioritized sector & Largest
 
 \begin_layout Plain Layout
 
-& & at baseline & during baraza & at endline 
+& & at baseline & during baraza & at end-line 
 \backslash
 
 \backslash
