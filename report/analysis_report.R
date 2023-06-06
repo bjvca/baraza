@@ -832,10 +832,10 @@ d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,30],df_ancova[c(1,4
 
 names(d_plot) <- c("y","ylo","yhi")
 
-d_plot$x <- rep(c("agricuture","infrastructure","health","education","","index"), each=4)
+d_plot$x <- rep(c("agriculture","infrastructure","health","education","","overall"), each=4)
 d_plot$grp <- rep(c("sc baraza","info","delib","level"), times=6)
 d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib","level"))
-d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","health","education","","index"))))
+d_plot$x <-  factor(d_plot$x, levels=rev((c("agriculture","infrastructure","health","education","","overall"))))
 
 
 
@@ -857,7 +857,7 @@ print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3))
 dev.off()
 
 ### redo graphs
-hetero <- 0
+hetero <- 4
 final_verion_swith <- TRUE
 
 save_path <- ifelse(final_verion_swith, paste(path,"report/results/final", sep = "/"), paste(path,"report/results/", sep = "/"))
@@ -877,10 +877,10 @@ d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,30],df_ancova[c(1,4
 
 names(d_plot) <- c("y","ylo","yhi")
 
-d_plot$x <- rep(c("agricuture","infrastructure","health","education","","index"), each=4)
+d_plot$x <- rep(c("agriculture","infrastructure","health","education","","overall"), each=4)
 d_plot$grp <- rep(c("sc baraza","info","delib","level"), times=6)
 d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib","level"))
-d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","health","education","","index"))))
+d_plot$x <-  factor(d_plot$x, levels=rev((c("agriculture","infrastructure","health","education","","overall"))))
 
 
 png(paste(save_path,"impact_summary_ancova.png",sep = "/"), units="px", height=3200, width= 6400, res=600)
