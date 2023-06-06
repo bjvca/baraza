@@ -1560,37 +1560,22 @@ literal "true"
 We matched each treated sub-county to a control sub-county that was similar
  in terms of a range of sub-county characteristics that may have affected
  the planner's decision how to roll out the intervention.
- In particular, we match on the following sub-county characteristics that
- were obtained by surveying village chairs and CAOs of all sub-counties
- at baseline: geographic location (GPS coordinates of the headquarter),
- road infrastructure (kilometers of tarmac and all-weather gravel roads),
- share of households with electricity, share of households with an iron
- roof or tiles, number of health centers, female primary school dropout
- rate, number of Universal Primary Education schools, share of farmers using
- improved seed, and political connections of the sub-county (defined as
- having a minister or member of parliament coming from the sub-county).
+ In particular, we match on the following characteristics that were obtained
+ by surveying village chairs and CAOs of all sub-counties at baseline: geographi
+c location (GPS coordinates of the headquarter), road infrastructure (kilometers
+ of tarmac and all-weather gravel roads), share of households with electricity,
+ share of households with an iron roof or tiles, number of health centers,
+ female primary school dropout rate, number of Universal Primary Education
+ schools, share of farmers using improved seed, and political connections
+ of the sub-county (defined as having a minister or member of parliament
+ coming from the sub-county).
  These characteristics are used in a probit regression to predict the probabilit
 y that a sub-county is treated.
  We then match each treated sub-county to a candidate control sub-county
  that is closest in terms of the predicted probability of being treated.
-\end_layout
-
-\begin_layout Standard
-Table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:balance_final"
-
-\end_inset
-
- shows baseline balance for the resulting sample.
- Two significant results out of 40 comparisons are again what can be expected
- from pure chance alone and so we conclude that also with this new sample
- we maintain balance between treatment and control on a range of baseline
- characteristics.
- It is important to note that this matching was done before end-line data
- was collected and the result of this ex-ante matching was also pre-registered
- [placeholder for link to timestamped pre-registered report on GitHub
+ Note that we completed the matching before end-line data was collected
+ and pre-registered the result here [placeholder for link to timestamped
+ pre-registered report on GitHub
 \begin_inset Note Note
 status collapsed
 
@@ -1602,6 +1587,20 @@ ort/endline_report_PAP_knitr.pdf
 \end_inset
 
 ].
+\end_layout
+
+\begin_layout Standard
+Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:balance_final"
+
+\end_inset
+
+ shows baseline balance for the resulting sample.
+ Two significant difference in 40 comparisons can be expected from chance
+ alone and we conclude that we maintain balance between treatment and control
+ with this new sample.
  
 \end_layout
 
@@ -2852,7 +2851,7 @@ load(paste(path,"report/results/final/df_averages_end.Rd", sep="/"))
 placement p
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
