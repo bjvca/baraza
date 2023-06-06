@@ -2735,6 +2735,7 @@ name "fig:Summary-of-baraza"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status collapsed
@@ -2776,6 +2777,13 @@ name "fig:connections"
 \end_layout
 
 \begin_layout Section*
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
 Tables
 \end_layout
 
@@ -2841,10 +2849,10 @@ load(paste(path,"report/results/final/df_averages_end.Rd", sep="/"))
 
 \begin_layout Standard
 \begin_inset Float table
-placement H
+placement p
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
