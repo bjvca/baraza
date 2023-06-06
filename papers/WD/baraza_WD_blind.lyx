@@ -2856,10 +2856,10 @@ load(paste(path,"report/results/final/df_averages_end.Rd", sep="/"))
 
 \begin_layout Standard
 \begin_inset Float table
-placement p
+placement H
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -5574,7 +5574,26 @@ Note: Column 1 reports sample means (and standard deviations below); Column
 \begin_inset Float table
 wide false
 sideways true
-status collapsed
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Alignment of priorities
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Alignment"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -5759,22 +5778,6 @@ end{center}
 
 \backslash
 scriptsize
-\end_layout
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Alignment of priorities
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:Alignment"
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
