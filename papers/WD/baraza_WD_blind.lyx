@@ -2174,15 +2174,13 @@ Note that unaligned priorities cannot fully explain why barazas have no
 
  For priorities to be aligned, it is important that what is discussed during
  barazas is also what citizens think is most important.
- HERE.
- This may not automatically be the case, as the most vocal individuals may
- dominate the discussion due to group dynamics and attempt to skew decisions
- during the meeting in their favor.
- To explore the alignment between what citizens deem important and what
- transpires at the baraza event, we would need detailed information about
- what was discussed and concluded during the meetings in addition to the
- baseline information of what citizens perceive as important.
- Table 
+ This is not automatically the case, as the most vocal citizens may dominate
+ the discussion due to group dynamics and attempt to skew decisions during
+ the meeting in their favor.
+ Alternatively, politicians or civil servants could influence the course
+ of the baraza.
+ We explore the alignment between what citizens perceive as important and
+ what transpires during the baraza for 10 random sub-counties in Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Alignment"
@@ -2192,22 +2190,23 @@ noprefix "false"
 
 \end_inset
 
- uses information obtained from reports redacted by the OPM for 10 random
- sub-county-level baraza events.
- Using these reports, we determine for each baraza which sector was most
- discussed (column 4).
- This is then compared to baseline data on priorities obtained from citizens
- living in that sub-county (column 3).
+.
+ To this end, we use baseline data on priorities obtained from citizens
+ living in a sub-county (column 3) and compare it to detailed information
+ about which sector was most discussed during each sub-county-level baraza
+ using reports redacted by the OPM (column 4).
  We find that what is prioritized by citizens is also discussed in the baraza
- in four out of 10 sub-counties.
- This suggests some degree of alignment between priorities of citizens and
- what is discussed during the baraza event.
+ in four out of 10 sub-counties, providing indicative evidence of some degree
+ of alignment between what citizens deem important and what is discussed
+ during barazas.
 \end_layout
 
 \begin_layout Standard
-Even if what transpires in a baraza reflects the priorities of the citizens,
- there will be no impact if officials subsequently do not act on this.
- To explore this link in the causal impact chain, we added to Table 
+Even if what transpires during barazas reflects the priorities of citizens,
+ there will be no impact if officials subsequently do not act on it.
+ To explore this link in the causal impact chain, we add a column that reports
+ in which sector most positive change was recorded during end-line for each
+ of the 10 sub-counties to Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Alignment"
@@ -2217,13 +2216,12 @@ noprefix "false"
 
 \end_inset
 
- a column where for each of the 10 sub-counties we report in what sector
- most positive changes were recorded during end-line.
+.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-We do this based on the indices that we created earlier to measure impact
+This is based on the indices that we created earlier to measure the impact
  at sector level (see Section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2240,8 +2238,8 @@ noprefix "false"
 \end_inset
 
  We find that in only two out of 10 sub-counties, the sector that was discussed
- most during the baraza event was also the sector where most positive change
- was recorded.
+ most during the baraza event was also the sector where most change was
+ recorded.
 \end_layout
 
 \begin_layout Standard
@@ -2255,195 +2253,59 @@ noprefix "false"
 
 \end_inset
 
- thus suggests that while priorities of citizens do seem to get discussed
- during barazas, it is less common that what was decided also gets implemented.
- Using focus group discussions, we gauged reasons why this link breaks down.
+ suggests that even though the priorities of citizens are to some extend
+ discussed during barazas, it is not common that what was decided gets implement
+ed.
+ Using focus group discussions, we looked for reasons why this link breaks
+ down.
  Firstly, poor relationships between politicians and technical personnel
  can hinder the effectiveness of barazas.
  For example, a poor relation or communication between a CAO and a LC5 Chairpers
 on can impede public service delivery.
  Secondly, if barazas mainly expose issues beyond the accountability of
- the officials and service providers present, they will not be conducive
- for service provision.
+ the officials and service providers that are present, they will not improve
+ services.
  Some issues fall under the responsibility of higher levels of government
- or other institutions that are beyond the operational jurisdiction of people
- present at the barazas.
+ or other institutions that are beyond the operational jurisdiction of the
+ people present at barazas.
 \end_layout
 
 \begin_layout Standard
-Finally, it may also be that barazas do not lead to changes in public service
- delivery, but that there still is a change in use and appreciation by the
- citizens.
- During qualitative research, we found that government officials, and particular
-ly civil servants, often complained that barazas should also contain an
- element of “civic education”.
- Providing information about the nature of public services and the limitations
- of what public servants can do may help manage the expectations of citizens,
- in turn increasing their use.
- One example given was that citizens complain that they still become sick
- after drinking water from boreholes that were installed by government.
- The officials responsible for water and infrastructure objected that citizens
- need to treat water (for example, by boiling or using chlorine), even if
- it comes from a borehole.
- If this information would be available to citizens, perhaps their expectations
- would be more aligned with what public servants deliver.
-\end_layout
-
-\begin_layout Standard
-To explore this civic education function of barazas, we test if, even though
- there is no impact on objectively verifiable outcomes, the baraza intervention
- affected perceptions by citizens.
- In particular, we asked citizens to rate, on a Likert scale, how satisfied
- they were with public service delivery in the four sectors.
- We find some indications that a combined information and deliberation baraza
- improved citizens satisfaction related to access to water.
- Satisfaction about schooling also improved but is just not significant.
- The 
-\begin_inset Quotes eld
-\end_inset
-
-civic education
-\begin_inset Quotes erd
-\end_inset
-
- function of baraza may also explain why 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "raffler2018weakness"
-literal "false"
-
-\end_inset
-
- find that their health-focused community monitoring intervention significantly
- increased satisfaction without affecting outcomes.
- As such, town hall-style meetings may still be beneficial even if they
- do not lead to real changes in public service delivery.
-\end_layout
-
-\begin_layout Subsection
-Heterogeneity in the timing of the intervention
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Heterogeneity-in-the"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The slow roll-out of the intervention over an extended period also introduced
- variation in the time that passed between treatment administration and
- end-line data collection.
- For instance, the first barazas were held around June 2016 (about one year
- after the baseline) and so more than three years will have passed between
- treatment administration and end-line data collection.
- For the most recent barazas, there will only be a few months between treatment
- administration and end-line data collection.
- One may argue that sub-counties or districts that were treated early on
- have been exposed to the program much longer and hence one may expect larger
- effects on a range of outcomes for these sub-counties or districts than
- areas that only recently received treatment.
- At the same time, for some outcomes, effects of the baraza intervention
- may dissipate (or even reverse) over time as enthusiasm fades, plans are
- abandoned and promises forgotten.
-\end_layout
-
-\begin_layout Standard
-To capture this, we reran the analysis and added an interaction term between
- the treatment indicator and an indicator variable that takes the value
- of one if the baraza that the household was exposed to happened more than
- one and a half years before the end-line data collection.
+Thirdly, if barazas are perceived as a one-off events and no subsequent
+ meetings are organized in the same area, officials may be less likely to
+ implement what was decided.
+ Optimism among citizens and other stakeholders can quickly turn into disappoint
+ment if none of the issues raised is addressed.
+ To investigate the role of the timing of the intervention, we reran the
+ analysis and added an interaction term between the treatment indicator
+ and an indicator variable that takes the value of one if the baraza that
+ the household was exposed to happened more than one and a half years before
+ the end-line data collection.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-The indicator is coded as zero for the control group.
+The slow roll-out of the intervention introduced variation in the time that
+ passed between treatment and end-line data collection.
+ For instance, the first barazas were held around June 2016, so that more
+ than three years have passed between treatment and end-line.
+ For the most recent barazas, there are only a few months between treatment
+ and end-line.
+ The indicator is coded as zero for the control group.
 \end_layout
 
 \end_inset
 
- Results for the coefficient estimates of the interaction terms are summarized
- in Figure 
+ Results are summarized in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Heterogeneity-time"
 
 \end_inset
 
-, focusing again on the four hypotheses and the four families of outcomes,
- and one overall index, similar to the summary in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Summary-of-baraza"
-
-\end_inset
-
-.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-We focus on summary indices but also discuss results for individual outcomes
- where relevant.
- These results are not reported here for brevity, but are available on the
- [placeholder for link to online repository]
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset CommandInset href
-LatexCommand href
-name "project git repository"
-target "https://github.com/bjvca/baraza/blob/master/report/appendices/Appendix_hetero_tables.pdf"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-For the agricultural sector, we do not find that the time elapsed between
- the intervention and end-line data collection affects the impact of sub-county
- level barazas we found in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Summary-of-baraza"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
- We find a significant negative interaction effect from sub-county level
- barazas for the infrastructure index.
- For outcomes in the health sector, we find negative interaction effects
- for sub-county level barazas and for district level barazas.
- The negative interaction effect for the sub-county level baraza seems to
- be driven by a reduction of the likelihood that households turn to government
- health facilities for maternal health if the intervention took place more
- than 1.5 years ago.
- There are indications that these households are switching back to traditional
- healers, which may point to disappointment in the lack of progress made
- in public health facilities.
- For education, we do not find significant interaction effects based for
- the index.
- We do find a positive effect of sub-county level barazas on enrollment
- if the intervention took place more than 1.5 years ago.
- Overall, results suggest that the effectiveness of barazas seems to dissipate
- over time.
+ and suggest that the effects of barazas dissipate over time as enthusiasm
+ fades, plans are abandoned and promises forgotten, especially for infrastructur
+e and health.
 \end_layout
 
 \begin_layout Subsection
