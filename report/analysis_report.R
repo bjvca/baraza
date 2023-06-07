@@ -724,8 +724,8 @@ vcov_cluster <- vcovCR(ols, cluster = endline$clusterID[endline$district_baraza 
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_ols[,2,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
-df_ols[,3,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5], nobs(ols))
+df_ols[,2,i] <- c(res[2,2],res[2,3],res[2,6], conf[2,5],conf[2,6], nobs(ols))
+df_ols[,3,i] <- c(res[3,2],res[3,3],res[3,6], conf[3,5],conf[3,6], nobs(ols))
 
 ols <- lm(as.formula(paste(outcomes[i],"information:deliberation+a21",sep="~")), data=endline[endline$district_baraza == 0 & (endline$information == endline$deliberation),]) 
 vcov_cluster <- vcovCR(ols, cluster = endline$clusterID[endline$district_baraza == 0 & (endline$information == endline$deliberation)], type = "CR0")
@@ -733,13 +733,13 @@ res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
 
-df_ols[,1,i] <- c(res[5,1],res[5,2],res[5,5], conf[5,4],conf[5,5], nobs(ols))
+df_ols[,1,i] <- c(res[5,2],res[5,3],res[5,6], conf[5,5],conf[5,6], nobs(ols))
 
 ols <- lm(as.formula(paste(outcomes[i],"district_baraza+a21",sep="~")), data=endline[(endline$information == 1 & endline$deliberation==1) | endline$district_baraza == 1 ,]) 
 vcov_cluster <- vcovCR(ols, cluster = endline$clusterID2[(endline$information == 1 & endline$deliberation==1) | endline$district_baraza == 1 ], type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
-df_ols[,4,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
+df_ols[,4,i] <- c(res[2,2],res[2,3],res[2,6], conf[2,5],conf[2,6], nobs(ols))
 
 ##ancova
 ## merge in baseline
@@ -750,14 +750,14 @@ res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 if (RI_conf_switch) {
 RI_store <- RI_conf_sc(i,outcomes, baseline_outcomes, subset(dta, district_baraza == 0) , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
-conf[2,4:5] <- RI_store$conf_2 
-conf[3,4:5] <- RI_store$conf_3
-res[2,5] <- RI_store$pval_2
-res[3,5] <- RI_store$pval_3
+conf[2,5:6] <- RI_store$conf_2 
+conf[3,5:6] <- RI_store$conf_3
+res[2,6] <- RI_store$pval_2
+res[3,6] <- RI_store$pval_3
 }
 
-df_ancova[,2,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
-df_ancova[,3,i] <- c(res[3,1],res[3,2],res[3,5], conf[3,4],conf[3,5], nobs(ols))
+df_ancova[,2,i] <- c(res[2,2],res[2,3],res[2,6], conf[2,5],conf[2,6], nobs(ols))
+df_ancova[,3,i] <- c(res[3,2],res[3,3],res[3,6], conf[3,5],conf[3,6], nobs(ols))
 
 
 ols <- lm(as.formula(paste(paste(outcomes[i],"information:deliberation+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[dta$district_baraza == 0 & (dta$information == dta$deliberation),]) 
@@ -765,11 +765,11 @@ vcov_cluster <- vcovCR(ols, cluster = dta$clusterID[dta$district_baraza == 0 & (
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 if (RI_conf_switch) {
-conf[6,4:5] <- RI_store$conf_1
-res[6,5] <- RI_store$pval_1
+conf[6,5:6] <- RI_store$conf_1
+res[6,6] <- RI_store$pval_1
 }
 
-df_ancova[,1,i] <- c(res[6,1],res[6,2],res[6,5], conf[6,4],conf[6,5], nobs(ols))
+df_ancova[,1,i] <- c(res[6,2],res[6,3],res[6,6], conf[6,5],conf[6,6], nobs(ols))
 
 ols <- lm(as.formula(paste(paste(outcomes[i],"district_baraza+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[(dta$information == 0 & dta$deliberation==0) | dta$district_baraza == 1 ,]) 
 vcov_cluster <- vcovCR(ols, cluster = dta$clusterID2[(dta$information == 0 & dta$deliberation==0) | dta$district_baraza == 1 ], type = "CR0")
@@ -777,10 +777,10 @@ res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 if (RI_conf_switch) {
 RI_store <- RI_conf_dist(i,outcomes, baseline_outcomes, subset(dta, ((information == 0 & deliberation==0) | district_baraza == 1)) , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
-conf[2,4:5] <-  RI_store$conf
-res[2,5] <- RI_store$pval
+conf[2,5:6] <-  RI_store$conf
+res[2,6] <- RI_store$pval
 }
-df_ancova[,4,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
+df_ancova[,4,i] <- c(res[2,2],res[2,3],res[2,6], conf[2,5],conf[2,6], nobs(ols))
 
 
 ols <- lm(as.formula(paste(paste(outcomes[i],"district_baraza+a21",sep="~"),baseline_outcomes[i],sep="+")), data=dta[(dta$information == 1 & dta$deliberation==1) | dta$district_baraza == 1 ,]) 
@@ -789,10 +789,10 @@ res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 if (RI_conf_switch) {
 RI_store <- RI_conf_dist(i,outcomes, baseline_outcomes, subset(dta, ((information == 1 & deliberation==1) | district_baraza == 1)) , ctrls = "a21", nr_repl = glob_repli, sig = glob_sig)
-conf[2,4:5] <-  RI_store$conf
-res[2,5] <- RI_store$pval
+conf[2,5:6] <-  RI_store$conf
+res[2,6] <- RI_store$pval
 }
-df_ancova[,5,i] <- c(res[2,1],res[2,2],res[2,5], conf[2,4],conf[2,5], nobs(ols))
+df_ancova[,5,i] <- c(res[2,2],res[2,3],res[2,6], conf[2,5],conf[2,6], nobs(ols))
 
 ## dif-in-dif - not used in analysis
 ols <- lm(as.formula(paste(outcomes[i],"information*deliberation*time",sep="~")), data=dta_long[dta_long$district_baraza == 0,])
@@ -800,8 +800,8 @@ vcov_cluster <- vcovCR(ols, cluster = dta_long$clusterID[dta_long$district_baraz
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_dif_in_dif[,2,i] <- c(res[6,1],res[6,2],res[6,5], conf[6,4], conf[6,5], nobs(ols))
-df_dif_in_dif[,3,i] <- c(res[7,1],res[7,2],res[7,5], conf[7,4], conf[7,5], nobs(ols))
+df_dif_in_dif[,2,i] <- c(res[6,2],res[6,3],res[6,6], conf[6,5], conf[6,6], nobs(ols))
+df_dif_in_dif[,3,i] <- c(res[7,2],res[7,3],res[7,6], conf[7,5], conf[7,6], nobs(ols))
 
 
 ols <- lm(as.formula(paste(outcomes[i],"information:deliberation*time",sep="~")), data=dta_long[dta_long$district_baraza == 0 & (dta_long$information == dta_long$deliberation),])
@@ -809,14 +809,14 @@ vcov_cluster <- vcovCR(ols, cluster = dta_long$clusterID[dta_long$district_baraz
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
 
-df_dif_in_dif[,1,i] <- c(res[4,1],res[4,2],res[4,5], conf[4,4], conf[4,5], nobs(ols))
+df_dif_in_dif[,1,i] <- c(res[4,2],res[4,3],res[4,6], conf[4,5], conf[4,6], nobs(ols))
 
 
 ols <- lm(as.formula(paste(outcomes[i],"district_baraza*time",sep="~")), data=dta_long[(dta_long$information == 1 & dta_long$deliberation==1) | dta_long$district_baraza == 1 ,]) 
 vcov_cluster <- vcovCR(ols, cluster = dta_long$clusterID2[(dta_long$information == 1 & dta_long$deliberation==1) | dta_long$district_baraza == 1 ], type = "CR0")
 res <- coef_test(ols, vcov_cluster)
 conf <- conf_int(ols, vcov_cluster)
-df_dif_in_dif[,4,i] <- c(res[4,1],res[4,2],res[4,5], conf[4,4], conf[4,5], nobs(ols))
+df_dif_in_dif[,4,i] <- c(res[4,2],res[4,3],res[4,6], conf[4,5], conf[4,6], nobs(ols))
 
 
 }
@@ -832,10 +832,10 @@ d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,30],df_ancova[c(1,4
 
 names(d_plot) <- c("y","ylo","yhi")
 
-d_plot$x <- rep(c("agricuture","infrastructure","health","education","","index"), each=4)
+d_plot$x <- rep(c("agriculture","infrastructure","health","education","","overall"), each=4)
 d_plot$grp <- rep(c("sc baraza","info","delib","level"), times=6)
 d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib","level"))
-d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","health","education","","index"))))
+d_plot$x <-  factor(d_plot$x, levels=rev((c("agriculture","infrastructure","health","education","","overall"))))
 
 
 
@@ -857,7 +857,7 @@ print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3))
 dev.off()
 
 ### redo graphs
-hetero <- 0
+hetero <- 4
 final_verion_swith <- TRUE
 
 save_path <- ifelse(final_verion_swith, paste(path,"report/results/final", sep = "/"), paste(path,"report/results/", sep = "/"))
@@ -877,10 +877,10 @@ d_plot <- rbind(d_plot,data.frame(rbind(df_ancova[c(1,4,5),1,30],df_ancova[c(1,4
 
 names(d_plot) <- c("y","ylo","yhi")
 
-d_plot$x <- rep(c("agricuture","infrastructure","health","education","","index"), each=4)
+d_plot$x <- rep(c("agriculture","infrastructure","health","education","","overall"), each=4)
 d_plot$grp <- rep(c("sc baraza","info","delib","level"), times=6)
 d_plot$grp <-  factor(d_plot$grp , levels=c("sc baraza","info","delib","level"))
-d_plot$x <-  factor(d_plot$x, levels=rev((c("agricuture","infrastructure","health","education","","index"))))
+d_plot$x <-  factor(d_plot$x, levels=rev((c("agriculture","infrastructure","health","education","","overall"))))
 
 
 png(paste(save_path,"impact_summary_ancova.png",sep = "/"), units="px", height=3200, width= 6400, res=600)
