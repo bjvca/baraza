@@ -494,6 +494,13 @@ name "sec:Background-of-the"
 
 \begin_layout Subsection
 Nature of the baraza institution
+\begin_inset CommandInset label
+LatexCommand label
+name "2.1 Nature of the baraza institution"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2253,7 +2260,7 @@ noprefix "false"
 
 \end_inset
 
- suggests that even though the priorities of citizens are to some extend
+ suggests that even though the priorities of citizens are to some extent
  discussed during barazas, it is not common that what was decided gets implement
 ed.
  Using focus group discussions, we looked for reasons why this link breaks
@@ -2271,16 +2278,16 @@ on can impede public service delivery.
 \end_layout
 
 \begin_layout Standard
-Thirdly, if barazas are perceived as a one-off events and no subsequent
- meetings are organized in the same area, officials may be less likely to
- implement what was decided.
+Thirdly, if barazas are perceived as one-off events and no subsequent meetings
+ are organized in the same area, officials may be less likely to implement
+ what was decided.
  Optimism among citizens and other stakeholders can quickly turn into disappoint
 ment if none of the issues raised is addressed.
  To investigate the role of the timing of the intervention, we reran the
  analysis and added an interaction term between the treatment indicator
  and an indicator variable that takes the value of one if the baraza that
- the household was exposed to happened more than one and a half years before
- the end-line data collection.
+ the household was exposed to had happened more than one and a half years
+ before the end-line data collection.
 \begin_inset Foot
 status collapsed
 
@@ -2303,9 +2310,11 @@ reference "fig:Heterogeneity-time"
 
 \end_inset
 
- and suggest that the effects of barazas dissipate over time as enthusiasm
- fades, plans are abandoned and promises forgotten, especially for infrastructur
-e and health.
+ and show that the effects of barazas dissipate over time, especially for
+ infrastructure and health.
+ This suggests that the policy program is not effective because barazas
+ are not organized more frequently and enthusiasm fades, plans are abandoned,
+ and promises forgotten over time.
 \end_layout
 
 \begin_layout Subsection
@@ -2313,9 +2322,9 @@ Political context
 \end_layout
 
 \begin_layout Standard
-The structure of the baraza and the political environment in which it is
- organized, may also affect its effectiveness.
- Indeed, drawing on a systematic review of over 90 social accountability
+The political environment in which barazas are organized may also affect
+ their effectiveness.
+ Indeed, drawing on a systematic review of more than 90 social accountability
  interventions, 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -2324,8 +2333,26 @@ literal "false"
 
 \end_inset
 
- argue that politics and context are critical to shaping their success.
- In Section 
+ argue that politics and contexts are critical for success.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "raffler2018weakness"
+literal "false"
+
+\end_inset
+
+ note that citizens can only apply bottom-up pressure on political representativ
+es if they are responsive to electoral pressure and that this condition
+ is often not fulfilled in countries with uncompetitive, semi-democratic
+ political systems.
+\end_layout
+
+\begin_layout Standard
+Barazas are organized by the OPM and several officials who belong to this
+ office have appeared in the news in the context of large corruption scandals
+ over the last decade.
+ We also saw in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Ugandan-baraza-program"
@@ -2335,60 +2362,60 @@ noprefix "false"
 
 \end_inset
 
-, we saw that the meetings are chaired by the RDC who represents the ruling
- party.
- Barazas are also organized by the OPM, an office of which several officials
- have appeared in the news in the context of large corruption scandals over
- the last decade.
- These facts may mean that certain groups in society (such as people who
- vote for the opposition) perceive barazas very differently.
- Furthermore, government officials may abuse these fora to pursue their
- own agenda and reports indeed indicate that barazas sometimes turn into
- political rallies, especially when elections are approaching.
- 
+ that the meetings are chaired by the RDC's office.
+ RDCs are direct representatives and appointees of the president, and this
+ may affect how the public views barazas.
+ Some may even argue that barazas cannot be characterized as a form of community
+-based monitoring or any collective bottom-up action at all because they
+ are helicoptered into communities by the OPM and to some extent impose
+ interactions between citizens, politicians, and civil servants.
+ Instead, some groups in society (for example, supporters of the opposition)
+ may not perceive barazas as open fora but as highly politicized events,
+ especially in comparison to the 
+\emph on
+ebimeeza
+\emph default
+ meetings which the government banned when the baraza program was rolled
+ out (see Subsection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "2.1 Nature of the baraza institution"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Government officials may abuse the meetings to pursue their own agenda,
+ and indeed, some reports indicate that barazas turned into political rallies,
+ especially when elections were approaching.
 \end_layout
 
 \begin_layout Standard
-We explore the impact of political context by looking at treatment heterogeneity
- related to connections to people in power.
- The assumption is that support for government is likely to be higher in
- sub-counties that deliver higher level (district of central level) politicians,
- such as minister, member of parliament, heads of government agencies, RDCs,
- and other district-level officials.
- We would expect that in these areas, barazas are more effective, since
- citizens can use their connections to the center to attract funding to
- issues raised, and politicians may want to reward their constituents.
-\end_layout
-
-\begin_layout Standard
-Figure 
+To explore the importance of the political context and how the program was
+ received in pro-government and pro-opposition areas, we look at treatment
+ heterogeneity related to a sub-county's connection to people in power.
+ The assumption is that a sub-county is more likely to be pro-government
+ if it delivers higher-level politicians, such as ministers, members of
+ parliament, heads of government agencies, RDCs, and other district- or
+ central-level officials.
+ One may expect that in these areas, barazas are more effective, since citizens
+ can use their connections to the center to attract funding to issues raised,
+ and politicians may want to reward their constituents.
+ Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:connections"
 
 \end_inset
 
- reports interaction effects of the different interventions with an indicator
- for sub-counties that are more connected to the center and likely to be
- more pro-government.
- We do not find significant interaction effects based on the indices.
+ reports interaction effects between the different interventions and an
+ indicator variable that takes the value of one if a sub-county is well
+ connected to people in power.
+ Based on the indices, we do not find significant interactions.
  However, coefficients are generally positive, especially for interactions
- with the deliberation focused sub-county baraza and district-level barazas.
- Examples of positive interaction effects for individual outcomes reported
- in the 
-\begin_inset CommandInset href
-LatexCommand href
-name "online appendix"
-target "https://github.com/bjvca/baraza/blob/master/report/appendices/Appendix_hetero_tables.pdf"
-literal "false"
-
-\end_inset
-
- include an increased likelihood of visiting extension offices, demonstration
- sites or model farmers and an increase in the likelihood that schools have
- a fence after a deliberation focused baraza.
- We also find a reduction in the use of unprotected water sources after
- a sub-county-level baraza.
+ with deliberation and district-level barazas.
 \end_layout
 
 \begin_layout Subsection
@@ -2396,7 +2423,8 @@ Methodological issues
 \end_layout
 
 \begin_layout Standard
-In section 
+We provided a detailed description of the implementation challenges surrounding
+ the baraza program in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Implementation-challenges-and"
@@ -2406,47 +2434,25 @@ noprefix "false"
 
 \end_inset
 
-, we already provided a detailed account of the implementation challenges
- surrounding the baraza program.
- We also argued that the primary concerns of the partial roll-out, namely
- non-random roll-out and reduced sample size, are unlikely to affect our
- conclusions.
- 
-\end_layout
-
-\begin_layout Standard
-In this sub-section, we focus on treatment heterogeneity as a potential
- reason why we do not find more convincing impact.
- This is inspired by the observation, even though we do not find an overall
- impact on public service delivery, effects often go in the right direction,
- and we do find some significant effects if we consider individual outcomes
- in Online Appendix A.4.
- Focus group discussions with citizens in a few sub-counties where barazas
- were held also indicated barazas were perceived as highly effective; they
- provided various examples of changes in public service delivery that they
- thought were due to, or accelerated by, the baraza event.
- All this suggests that impact from a barazas may be highly localized and
- context specific.
- 
-\end_layout
-
-\begin_layout Standard
-Heterogeneous treatment effects have been documented in similar community-based
- monitoring interventions, complicating estimation of average treatment
- effects 
-\begin_inset CommandInset citation
-LatexCommand citep
-before "eg."
-key "bjorkman2010community"
-literal "false"
-
-\end_inset
-
 .
- Barazas are fairly broad interventions that attempt to address a range
- of issues in a heterogeneous setting, resulting in treatments that are
- unlikely to be standardized across treatment units, at least compared to
- typical treatments in biomedical sciences 
+ We also argued that the primary concerns related to the partial roll-out,
+ namely reduced statistical power and potentially selective roll-out, are
+ unlikely to affect our conclusions.
+ In this sub-section, we focus on treatment heterogeneity as a potential
+ reason why we do not find more convincing effects.
+ Focus group discussions with citizens indicated that barazas were often
+ perceived as effective: they provided different examples of changes in
+ public services that they thought were due to, or accelerated by, the baraza
+ event.
+ Their stories suggest that the impact of barazas on public service delivery
+ may be highly localized and context specific.
+\end_layout
+
+\begin_layout Standard
+And indeed, barazas are fairly broad interventions that attempt to address
+ a range of issues in heterogeneous settings, resulting in treatments that
+ are unlikely to be standardized across treatment units, at least compared
+ to typical treatments in biomedical sciences 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "https://doi.org/10.1093/aepp/ppq023"
@@ -2455,12 +2461,33 @@ literal "false"
 \end_inset
 
 .
- A baraza in one sub-county (where drinking water infrastructure is a problem)
- may evolve in a very different direction than a baraza in another sub-county
- (where problems may be more in health care).
- Both barazas may be effective in their own right (fixing water issues in
- one case and fixing health cares issues in the second case), yet outcomes
- are averaged over treatment units, and impact is diluted.
+ For example, a baraza in one sub-county may lead to significant improvements
+ in smallholder access to extension services, but to no improvements in
+ infrastructure.
+ A baraza in another sub-county may accelerate the construction of an all-weathe
+r gravel road but agricultural public services remain the same.
+ Both barazas would be effective, yet outcomes are averaged over treatment
+ units, and impact may be diluted.
+\end_layout
+
+\begin_layout Standard
+This could be an alternative explanation why we do not find an overall impact
+ on public service delivery, even though many of the effects we measure
+ go in the expected direction, and we do find some significant effects when
+ we consider individual outcomes in a more exploratory analysis in Online
+ Appendix A.4.
+ Heterogeneous treatment effects have been documented in similar community-based
+ monitoring interventions, complicating the estimation of average treatment
+ effects 
+\begin_inset CommandInset citation
+LatexCommand citep
+before "for example,"
+key "bjorkman2010community"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -2493,7 +2520,7 @@ The OPM faced various challenges that affected the timely roll-out of the
  roll-out, more than four years after baseline data was collected.
  Various strategies were followed to diagnose, and reduce the consequences
  of, potential selection bias and sample size reduction introduced by this
- partial roll out.
+ partial roll-out.
  Early 2020, end-line data was collected on 6,700 households.
  We find that the partial roll-out did not introduce significant bias and,
  judged by a series of Minimal Detectable Effect simulations, we conclude
@@ -2556,6 +2583,15 @@ literal "false"
  action outcomes such as public spending, staff motivation and corruption.
  More research is needed to identify pre-conditions and complementary interventi
 ons needed to leverage the voices of citizens.
+\end_layout
+
+\begin_layout Standard
+When we asked the OPM for an update and if our findings affected the baraza
+ program as it is organized today, they informed us that the pandemic hindered
+ the implementation process.
+ Furthermore, the OPM now is following a blended strategy of sub-county-level
+ barazas and district-level barazas.
+ They assured us that the baraza tool is being reviewed further.
 \end_layout
 
 \begin_layout Standard
