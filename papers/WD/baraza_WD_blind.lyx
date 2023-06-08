@@ -1982,11 +1982,33 @@ ness of the deliberation component, and the impact of district-level barazas—o
 status open
 
 \begin_layout Plain Layout
-The agriculture index is composed on the variables: used inorganic fertilizer,
- used improved seed, extension visit at home, visited extension office,
- demo site or model farmer, National Agriculture Advisory Services (NAADS)/
- Operation Wealth Creation (OWC) in village, support in marketing from marketing
- committee, support in marketing from cooperative.
+The agriculture index is composed of the variables: used inorganic fertilizer,
+ used improved seed, extension visit at home, visited extension office/
+ demo site/ model farmer, National Agriculture Advisory Services/ Operation
+ Wealth Creation in village, support in marketing from marketing committee,
+ support in marketing from cooperative.
+\end_layout
+
+\begin_layout Plain Layout
+The infrastructure index is composed of the variables: used unprotected
+ water source during dry season, distance to water source (km), average
+ waiting time at source (min), water user committee in village, distance
+ to nearest all weather road (km).
+\end_layout
+
+\begin_layout Plain Layout
+The health index is composed of the variables: sought treatment for fever
+ in public health facility, went to public health facility to give birth,
+ Village Health Team in village, distance to nearest government health facility
+ (km), number of days work/ school missed due to illness, waiting time before
+ being attended (min), visited traditional health practitioner.
+\end_layout
+
+\begin_layout Plain Layout
+The education index is composed of the variables: number of children in
+ Universal Primary or Secondary School, distance to public school (km),
+ school has boundary fence, school has water facility, school has School
+ Management Committee (SMC), is informed about SMC, inspectors visited school.
 \end_layout
 
 \end_inset
