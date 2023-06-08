@@ -364,7 +364,24 @@ Sexpr{format(round(df_averages[1,8],digits=2)*100,nsmall=0)}
  The average household has two to three children attending a public school.
  We also find a slight pre-treatment imbalance on this outcome for the informati
 on treatment.
- 
+ In the fourth column of Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:balance_orig"
+
+\end_inset
+
+, we report differences between households that would be exposed to a sub-county
+ deliberation baraza and households that would not.
+ For this treatment, we cannot reject balance on any of the variables.
+ In the last column, we report differences in outcomes between households
+ that would be exposed to a district level baraza and households that would
+ not be exposed to any baraza.
+ Also here, we do not find any significant difference.
+ Overall, out of 40 comparisons, we find that three differences are significant,
+ which is what one would expect to find due to chance alone.
+ As such, we conclude that the randomization of the original design was
+ successful.
 \end_layout
 
 \begin_layout Standard
@@ -372,7 +389,7 @@ on treatment.
 placement H
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1040,10 +1057,10 @@ Note: Column 1 reports sample means (and standard deviations below); Column
  that would not receive one (and standard errors below); Column 4 reports
  differences between households that would receive a sub-county deliberation
  baraza and those that would not receive one (and standard errors below);
- Column 5 reports differences between baseline households that were planned
- to receive a district information+deliberation baraza and those that would
- not receive any baraza (and standard errors below);  **, * and + denote
- significance at the 1, 5 and 10 percent levels.
+ Column 5 reports differences between households that were planned to receive
+ a district information+deliberation baraza and those that would not receive
+ any baraza (and standard errors below);  **, * and + denote significance
+ at the 1, 5 and 10 percent levels.
  Reported standard errors are clustered at the level of randomization.
  Distance to nearest all weather road is trimmed at 5 percent and transformed
  using the inverse hyperbolic sine transformation.
@@ -1058,27 +1075,6 @@ Note: Column 1 reports sample means (and standard deviations below); Column
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-In the fourth column of Table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:balance_orig"
-
-\end_inset
-
-, we report differences between households that would be exposed to a sub-county
- deliberation baraza and households that would not.
- For this treatment, we cannot reject balance on any of the variables.
- In the last column, we report differences in outcomes between households
- that would be exposed to a district level baraza and households that would
- not be exposed to any baraza.
- Also here, we do not find any significant difference.
- Overall, out of 40 comparisons, we find that two differences are significant,
- which is what one would expect to find due to chance alone.
- As such, we conclude that the randomization of the original design was
- successful.
 \end_layout
 
 \begin_layout Section
@@ -1105,13 +1101,13 @@ The partial roll-out means a reduction in statistical power.
  that controls for the outcome at baseline and accounts for the clustered
  nature of the intervention.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Note that the level of clustering depends on the comparison.
  When we look at sub-county level barazas, clustering is at the sub-county
  level.
- For the comparison between district level barazas ans control, clustering
+ For the comparison between district level barazas and control, clustering
  is at the district level.
 \end_layout
 
@@ -1298,7 +1294,7 @@ reference "tab:Attrition"
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1437,11 +1433,10 @@ scriptsize
 
 Note: Column 1 reports the mean attrition rate (and standard deviations
  below); Column 2 reports the correlation between attrition and sub-county
- level baraza treatment (and standard errors below); Column 3 reports the
- correlation between attrition and information baraza treatment; Column
- 4 reports the correlation between attrition and deliberation baraza treatment;
- Column 5 reports the correlation between attrition and district level baraza
- treatment.
+ baraza treatment (and standard errors below); Column 3 reports the correlation
+ between attrition and information baraza treatment; Column 4 reports the
+ correlation between attrition and deliberation baraza treatment; Column
+ 5 reports the correlation between attrition and district baraza treatment.
  Reported standard errors are clustered at the level of randomization.
  
 \end_layout
