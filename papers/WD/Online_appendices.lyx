@@ -40,7 +40,7 @@ knitr
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
 \pdf_pdfborder true
-\pdf_colorlinks false
+\pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle true
 \papersize default
@@ -1191,7 +1191,7 @@ Sexpr{format(round(df_averages[1,8],digits=2)*100,nsmall=0)}
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1294,7 +1294,7 @@ reference "tab:Attrition"
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1661,878 +1661,6 @@ on and the deliberation component, but effects are imprecisely estimated.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float table
-wide false
-sideways true
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Treatment-control differences (ANCOVA) - Agriculture
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:anova_ag"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{center}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{tabular}{rccccc} 
-\backslash
-hline 
-\backslash
-hline
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-	& mean & sc baraza  & information & deliberation	& dist baraza 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-cline{2-6} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Used inorganic fertilizer (yes/no)$^
-\backslash
-dag$ &	
-\backslash
-Sexpr{format(round(df_averages[1,3],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ancova[1,1,3],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,1,3]<.01,"**",ifelse(df_ancova[3,1,3]<.05,"*",ifelse(df_a
-ncova[3,1,3]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,2,3],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,2,3]<.01,"**",ifelse(df_ancova[3,2,3]<.05,"*",ifelse(df_a
-ncova[3,2,3]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ancova[1,3,3],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,3,3]<.01,"**",ifelse(df_ancova[3,3,3]<.05,"*",ifelse(df_a
-ncova[3,3,3]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,4,3],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,4,3]<.01,"**",ifelse(df_ancova[3,4,3]<.05,"*",ifelse(df_a
-ncova[3,4,3]<.1,"+","")))}}$ 
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,3],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ancova[2,1,3],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ancova[2,2,3],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,3,3],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,4,3],digits=3),nsmall=3)})			
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Used improved seed (yes/no)$^
-\backslash
-dag$ &	
-\backslash
-Sexpr{format(round(df_averages[1,4],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ancova[1,1,4],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,1,4]<.01,"**",ifelse(df_ancova[3,1,4]<.05,"*",ifelse(df_a
-ncova[3,1,4]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,2,4],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,2,4]<.01,"**",ifelse(df_ancova[3,2,4]<.05,"*",ifelse(df_a
-ncova[3,2,4]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ancova[1,3,4],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,3,4]<.01,"**",ifelse(df_ancova[3,3,4]<.05,"*",ifelse(df_a
-ncova[3,3,4]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,4,4],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,4,4]<.01,"**",ifelse(df_ancova[3,4,4]<.05,"*",ifelse(df_a
-ncova[3,4,4]<.1,"+","")))}}$ 
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,4],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ancova[2,1,4],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ancova[2,2,4],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,3,4],digits=3),nsmall=3)})		&		(
-\backslash
-Sexpr{format(round(df_ancova[2,4,4],digits=3),nsmall=3)})		
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Obtained seed from government (yes/no) &	
-\backslash
-Sexpr{format(round(df_averages[1,5],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ancova[1,1,5],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,1,5]<.01,"**",ifelse(df_ancova[3,1,5]<.05,"*",ifelse(df_a
-ncova[3,1,5]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,2,5],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,2,5]<.01,"**",ifelse(df_ancova[3,2,5]<.05,"*",ifelse(df_a
-ncova[3,2,5]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ancova[1,3,5],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,3,5]<.01,"**",ifelse(df_ancova[3,3,5]<.05,"*",ifelse(df_a
-ncova[3,3,5]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,4,5],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,4,5]<.01,"**",ifelse(df_ancova[3,4,5]<.05,"*",ifelse(df_a
-ncova[3,4,5]<.1,"+","")))}}$ 
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,5],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ancova[2,1,5],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ancova[2,2,5],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,3,5],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,4,5],digits=3),nsmall=3)})		
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Used agro-chemical inputs (yes/no) &	
-\backslash
-Sexpr{format(round(df_averages[1,6],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ancova[1,1,6],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,1,6]<.01,"**",ifelse(df_ancova[3,1,6]<.05,"*",ifelse(df_a
-ncova[3,1,6]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,2,6],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,2,6]<.01,"**",ifelse(df_ancova[3,2,6]<.05,"*",ifelse(df_a
-ncova[3,2,6]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ancova[1,3,6],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,3,6]<.01,"**",ifelse(df_ancova[3,3,6]<.05,"*",ifelse(df_a
-ncova[3,3,6]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,4,6],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,4,6]<.01,"**",ifelse(df_ancova[3,4,6]<.05,"*",ifelse(df_a
-ncova[3,4,6]<.1,"+","")))}}$	
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,6],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ancova[2,1,6],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ancova[2,2,6],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,3,6],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,4,6],digits=3),nsmall=3)})		
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-Used improved livestock methods (yes/no)  &	
-\backslash
-Sexpr{format(round(df_averages[1,7],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ancova[1,1,7],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,1,7]<.01,"**",ifelse(df_ancova[3,1,7]<.05,"*",ifelse(df_a
-ncova[3,1,7]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,2,7],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,2,7]<.01,"**",ifelse(df_ancova[3,2,7]<.05,"*",ifelse(df_a
-ncova[3,2,7]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ancova[1,3,7],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,3,7]<.01,"**",ifelse(df_ancova[3,3,7]<.05,"*",ifelse(df_a
-ncova[3,3,7]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,4,7],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,4,7]<.01,"**",ifelse(df_ancova[3,4,7]<.05,"*",ifelse(df_a
-ncova[3,4,7]<.1,"+","")))}}$ 
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,7],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ancova[2,1,7],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ancova[2,2,7],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,3,7],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,4,7],digits=3),nsmall=3)})		
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-Extension visit at home (yes/no)$^
-\backslash
-dag$  &	
-\backslash
-Sexpr{format(round(df_averages[1,8],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ancova[1,1,8],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,1,8]<.01,"**",ifelse(df_ancova[3,1,8]<.05,"*",ifelse(df_a
-ncova[3,1,8]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,2,8],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,2,8]<.01,"**",ifelse(df_ancova[3,2,8]<.05,"*",ifelse(df_a
-ncova[3,2,8]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ancova[1,3,8],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,3,8]<.01,"**",ifelse(df_ancova[3,3,8]<.05,"*",ifelse(df_a
-ncova[3,3,8]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,4,8],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,4,8]<.01,"**",ifelse(df_ancova[3,4,8]<.05,"*",ifelse(df_a
-ncova[3,4,8]<.1,"+","")))}}$ 
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,8],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ancova[2,1,8],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ancova[2,2,8],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,3,8],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,4,8],digits=3),nsmall=3)})		
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-Visited extension office, demo site or model farmer (yes/no)$^
-\backslash
-dag$  &	
-\backslash
-Sexpr{format(round(df_averages[1,9],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ancova[1,1,9],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,1,9]<.01,"**",ifelse(df_ancova[3,1,9]<.05,"*",ifelse(df_a
-ncova[3,1,9]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,2,9],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,2,9]<.01,"**",ifelse(df_ancova[3,2,9]<.05,"*",ifelse(df_a
-ncova[3,2,9]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ancova[1,3,9],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,3,9]<.01,"**",ifelse(df_ancova[3,3,9]<.05,"*",ifelse(df_a
-ncova[3,3,9]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,4,9],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,4,9]<.01,"**",ifelse(df_ancova[3,4,9]<.05,"*",ifelse(df_a
-ncova[3,4,9]<.1,"+","")))}}$ 
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,9],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ancova[2,1,9],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ancova[2,2,9],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,3,9],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,4,9],digits=3),nsmall=3)})		
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Need extension (yes/no)  &	
-\backslash
-Sexpr{format(round(df_averages[1,10],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ancova[1,1,10],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,1,10]<.01,"**",ifelse(df_ancova[3,1,10]<.05,"*",ifelse(df
-_ancova[3,1,10]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,2,10],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,2,10]<.01,"**",ifelse(df_ancova[3,2,10]<.05,"*",ifelse(df
-_ancova[3,2,10]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ancova[1,3,10],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,3,10]<.01,"**",ifelse(df_ancova[3,3,10]<.05,"*",ifelse(df
-_ancova[3,3,10]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,4,10],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,4,10]<.01,"**",ifelse(df_ancova[3,4,10]<.05,"*",ifelse(df
-_ancova[3,4,10]<.1,"+","")))}}$ 
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,10],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ancova[2,1,10],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ancova[2,2,10],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,3,10],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,4,10],digits=3),nsmall=3)})		
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-Extension agents aware of this need? (yes/no)  &	
-\backslash
-Sexpr{format(round(df_averages[1,11],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ancova[1,1,11],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,1,11]<.01,"**",ifelse(df_ancova[3,1,11]<.05,"*",ifelse(df
-_ancova[3,1,11]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,2,11],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,2,11]<.01,"**",ifelse(df_ancova[3,2,11]<.05,"*",ifelse(df
-_ancova[3,2,11]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ancova[1,3,11],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,3,11]<.01,"**",ifelse(df_ancova[3,3,11]<.05,"*",ifelse(df
-_ancova[3,3,11]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,4,11],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,4,11]<.01,"**",ifelse(df_ancova[3,4,11]<.05,"*",ifelse(df
-_ancova[3,4,11]<.1,"+","")))}}$ 
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,11],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ancova[2,1,11],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ancova[2,2,11],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,3,11],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,4,11],digits=3),nsmall=3)})		
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Extension agents decided alone? (yes/no)  &	
-\backslash
-Sexpr{format(round(df_averages[1,12],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ancova[1,1,12],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,1,12]<.01,"**",ifelse(df_ancova[3,1,12]<.05,"*",ifelse(df
-_ancova[3,1,12]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,2,12],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,2,12]<.01,"**",ifelse(df_ancova[3,2,12]<.05,"*",ifelse(df
-_ancova[3,2,12]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ancova[1,3,12],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,3,12]<.01,"**",ifelse(df_ancova[3,3,12]<.05,"*",ifelse(df
-_ancova[3,3,12]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,4,12],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,4,12]<.01,"**",ifelse(df_ancova[3,4,12]<.05,"*",ifelse(df
-_ancova[3,4,12]<.1,"+","")))}}$ 
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,12],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ancova[2,1,12],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ancova[2,2,12],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,3,12],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,4,12],digits=3),nsmall=3)})		
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-Are there any farmer associations/groups in this village? (yes/no)  &	
-\backslash
-Sexpr{format(round(df_averages[1,13],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ancova[1,1,13],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,1,13]<.01,"**",ifelse(df_ancova[3,1,13]<.05,"*",ifelse(df
-_ancova[3,1,13]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,2,13],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,2,13]<.01,"**",ifelse(df_ancova[3,2,13]<.05,"*",ifelse(df
-_ancova[3,2,13]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ancova[1,3,13],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,3,13]<.01,"**",ifelse(df_ancova[3,3,13]<.05,"*",ifelse(df
-_ancova[3,3,13]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,4,13],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,4,13]<.01,"**",ifelse(df_ancova[3,4,13]<.05,"*",ifelse(df
-_ancova[3,4,13]<.1,"+","")))}}$ 
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,13],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ancova[2,1,13],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ancova[2,2,13],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,3,13],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,4,13],digits=3),nsmall=3)})		
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-NAADS/OWC in village? (yes/no)$^
-\backslash
-dag$  &	
-\backslash
-Sexpr{format(round(df_averages[1,14],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ancova[1,1,14],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,1,14]<.01,"**",ifelse(df_ancova[3,1,14]<.05,"*",ifelse(df
-_ancova[3,1,14]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,2,14],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,2,14]<.01,"**",ifelse(df_ancova[3,2,14]<.05,"*",ifelse(df
-_ancova[3,2,14]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ancova[1,3,14],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,3,14]<.01,"**",ifelse(df_ancova[3,3,14]<.05,"*",ifelse(df
-_ancova[3,3,14]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,4,14],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,4,14]<.01,"**",ifelse(df_ancova[3,4,14]<.05,"*",ifelse(df
-_ancova[3,4,14]<.1,"+","")))}}$ 
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,14],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ancova[2,1,14],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ancova[2,2,14],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,3,14],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,4,14],digits=3),nsmall=3)})		
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-Support in marketing from marketing committee (yes/no)$^
-\backslash
-dag$ &	
-\backslash
-Sexpr{format(round(df_averages[1,15],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ancova[1,1,15],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,1,15]<.01,"**",ifelse(df_ancova[3,1,15]<.05,"*",ifelse(df
-_ancova[3,1,15]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,2,15],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,2,15]<.01,"**",ifelse(df_ancova[3,2,15]<.05,"*",ifelse(df
-_ancova[3,2,15]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ancova[1,3,15],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,3,15]<.01,"**",ifelse(df_ancova[3,3,15]<.05,"*",ifelse(df
-_ancova[3,3,15]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,4,15],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,4,15]<.01,"**",ifelse(df_ancova[3,4,15]<.05,"*",ifelse(df
-_ancova[3,4,15]<.1,"+","")))}}$ 
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,15],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ancova[2,1,15],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ancova[2,2,15],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,3,15],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,4,15],digits=3),nsmall=3)})		
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-Support in marketing from cooperative (yes/no)$^
-\backslash
-dag$ &	
-\backslash
-Sexpr{format(round(df_averages[1,16],digits=3),nsmall=3)}		&	
-\backslash
-Sexpr{format(round(df_ancova[1,1,16],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,1,16]<.01,"**",ifelse(df_ancova[3,1,16]<.05,"*",ifelse(df
-_ancova[3,1,16]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,2,16],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,2,16]<.01,"**",ifelse(df_ancova[3,2,16]<.05,"*",ifelse(df
-_ancova[3,2,16]<.1,"+","")))}}$ &	
-\backslash
-Sexpr{format(round(df_ancova[1,3,16],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,3,16]<.01,"**",ifelse(df_ancova[3,3,16]<.05,"*",ifelse(df
-_ancova[3,3,16]<.1,"+","")))}}$	&	
-\backslash
-Sexpr{format(round(df_ancova[1,4,16],digits=3),nsmall=3)}$^{
-\backslash
-Sexpr{ifelse(df_ancova[3,4,16]<.01,"**",ifelse(df_ancova[3,4,16]<.05,"*",ifelse(df
-_ancova[3,4,16]<.1,"+","")))}}$ 
-\backslash
-
-\backslash
- 	&	(
-\backslash
-Sexpr{format(round(df_averages[2,16],digits=3),nsmall=3)})	&	(
-\backslash
-Sexpr{format(round(df_ancova[2,1,16],digits=3),nsmall=3)})		&	(
-\backslash
-Sexpr{format(round(df_ancova[2,2,16],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,3,16],digits=3),nsmall=3)})	&		(
-\backslash
-Sexpr{format(round(df_ancova[2,4,16],digits=3),nsmall=3)})		
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Number of obs.
- & 6704 & 
-\backslash
-Sexpr{format(round(df_ancova[6,1,1],digits=3),nsmall=0)} & 
-\backslash
-Sexpr{format(round(df_ancova[6,2,1],digits=3),nsmall=0)} &  
-\backslash
-Sexpr{format(round(df_ancova[6,3,1],digits=3),nsmall=0)} &  
-\backslash
-Sexpr{format(round(df_ancova[6,4,1],digits=3),nsmall=0)}  
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline  
-\backslash
-hline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{tabular}
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\backslash
-end{center}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-scriptsize
-\end_layout
-
-\begin_layout Plain Layout
-
-Note: Column 1 reports sample means (and standard deviations below); Column
- 2 reports effects of the sub-county level baraza intervention (and standard
- errors below); Column 3 reports effects of the information component of
- the baraza intervention (and standard errors below); Column 4 reports effects
- of the deliberation component of the baraza intervention (and standard
- errors below); Column 5 reports effects  of the administrative placement
- of the baraza intervention (and standard errors below).
- **, * and + denote significance at the 1, 5 and 10 percent levels as assessed
- using randomization inference.
- Reported standard errors are clustered at the level of randomization.
- $^
-\backslash
-dag$ indicates that the outcome was included in the index for the confirmatory
- analysis.
-   
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Next, we find that about 
 \begin_inset ERT
 status open
@@ -2869,7 +1997,899 @@ Sexpr{format(abs(round(df_ancova[1,1,16],digits=3)*100),nsmall=1)}
  statistical power.
  Both outcomes were also included in the index to assess agricultural sector
  impact.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways true
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Treatment-control differences (ANCOVA) - Agriculture
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:anova_ag"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{rccccc} 
+\backslash
+hline 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+	& mean & sc baraza  & information & deliberation	& dist baraza 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cline{2-6} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Used inorganic fertilizer (yes/no)$^
+\backslash
+dag$ &	
+\backslash
+Sexpr{format(round(df_averages[1,3],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ancova[1,1,3],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,3]<.01,"**",ifelse(df_ancova[3,1,3]<.05,"*",ifelse(df_a
+ncova[3,1,3]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,3],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,3]<.01,"**",ifelse(df_ancova[3,2,3]<.05,"*",ifelse(df_a
+ncova[3,2,3]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,3,3],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,3]<.01,"**",ifelse(df_ancova[3,3,3]<.05,"*",ifelse(df_a
+ncova[3,3,3]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,3],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,3]<.01,"**",ifelse(df_ancova[3,4,3]<.05,"*",ifelse(df_a
+ncova[3,4,3]<.1,"+","")))}}$ 
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,3],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,3],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,3],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,3,3],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,3],digits=3),nsmall=3)})			
+\backslash
+
+\backslash
  
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Used improved seed (yes/no)$^
+\backslash
+dag$ &	
+\backslash
+Sexpr{format(round(df_averages[1,4],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ancova[1,1,4],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,4]<.01,"**",ifelse(df_ancova[3,1,4]<.05,"*",ifelse(df_a
+ncova[3,1,4]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,4],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,4]<.01,"**",ifelse(df_ancova[3,2,4]<.05,"*",ifelse(df_a
+ncova[3,2,4]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,3,4],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,4]<.01,"**",ifelse(df_ancova[3,3,4]<.05,"*",ifelse(df_a
+ncova[3,3,4]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,4],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,4]<.01,"**",ifelse(df_ancova[3,4,4]<.05,"*",ifelse(df_a
+ncova[3,4,4]<.1,"+","")))}}$ 
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,4],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,4],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,4],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,3,4],digits=3),nsmall=3)})		&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,4],digits=3),nsmall=3)})		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Obtained seed from government (yes/no) &	
+\backslash
+Sexpr{format(round(df_averages[1,5],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ancova[1,1,5],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,5]<.01,"**",ifelse(df_ancova[3,1,5]<.05,"*",ifelse(df_a
+ncova[3,1,5]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,5],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,5]<.01,"**",ifelse(df_ancova[3,2,5]<.05,"*",ifelse(df_a
+ncova[3,2,5]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,3,5],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,5]<.01,"**",ifelse(df_ancova[3,3,5]<.05,"*",ifelse(df_a
+ncova[3,3,5]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,5],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,5]<.01,"**",ifelse(df_ancova[3,4,5]<.05,"*",ifelse(df_a
+ncova[3,4,5]<.1,"+","")))}}$ 
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,5],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,5],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,5],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,3,5],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,5],digits=3),nsmall=3)})		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Used agro-chemical inputs (yes/no) &	
+\backslash
+Sexpr{format(round(df_averages[1,6],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ancova[1,1,6],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,6]<.01,"**",ifelse(df_ancova[3,1,6]<.05,"*",ifelse(df_a
+ncova[3,1,6]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,6],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,6]<.01,"**",ifelse(df_ancova[3,2,6]<.05,"*",ifelse(df_a
+ncova[3,2,6]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,3,6],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,6]<.01,"**",ifelse(df_ancova[3,3,6]<.05,"*",ifelse(df_a
+ncova[3,3,6]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,6],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,6]<.01,"**",ifelse(df_ancova[3,4,6]<.05,"*",ifelse(df_a
+ncova[3,4,6]<.1,"+","")))}}$	
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,6],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,6],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,6],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,3,6],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,6],digits=3),nsmall=3)})		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Used improved livestock methods (yes/no)  &	
+\backslash
+Sexpr{format(round(df_averages[1,7],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ancova[1,1,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,7]<.01,"**",ifelse(df_ancova[3,1,7]<.05,"*",ifelse(df_a
+ncova[3,1,7]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,7]<.01,"**",ifelse(df_ancova[3,2,7]<.05,"*",ifelse(df_a
+ncova[3,2,7]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,3,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,7]<.01,"**",ifelse(df_ancova[3,3,7]<.05,"*",ifelse(df_a
+ncova[3,3,7]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,7],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,7]<.01,"**",ifelse(df_ancova[3,4,7]<.05,"*",ifelse(df_a
+ncova[3,4,7]<.1,"+","")))}}$ 
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,7],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,7],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,7],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,3,7],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,7],digits=3),nsmall=3)})		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Extension visit at home (yes/no)$^
+\backslash
+dag$  &	
+\backslash
+Sexpr{format(round(df_averages[1,8],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ancova[1,1,8],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,8]<.01,"**",ifelse(df_ancova[3,1,8]<.05,"*",ifelse(df_a
+ncova[3,1,8]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,8],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,8]<.01,"**",ifelse(df_ancova[3,2,8]<.05,"*",ifelse(df_a
+ncova[3,2,8]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,3,8],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,8]<.01,"**",ifelse(df_ancova[3,3,8]<.05,"*",ifelse(df_a
+ncova[3,3,8]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,8],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,8]<.01,"**",ifelse(df_ancova[3,4,8]<.05,"*",ifelse(df_a
+ncova[3,4,8]<.1,"+","")))}}$ 
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,8],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,8],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,8],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,3,8],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,8],digits=3),nsmall=3)})		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Visited extension office, demo site or model farmer (yes/no)$^
+\backslash
+dag$  &	
+\backslash
+Sexpr{format(round(df_averages[1,9],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ancova[1,1,9],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,9]<.01,"**",ifelse(df_ancova[3,1,9]<.05,"*",ifelse(df_a
+ncova[3,1,9]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,9],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,9]<.01,"**",ifelse(df_ancova[3,2,9]<.05,"*",ifelse(df_a
+ncova[3,2,9]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,3,9],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,9]<.01,"**",ifelse(df_ancova[3,3,9]<.05,"*",ifelse(df_a
+ncova[3,3,9]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,9],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,9]<.01,"**",ifelse(df_ancova[3,4,9]<.05,"*",ifelse(df_a
+ncova[3,4,9]<.1,"+","")))}}$ 
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,9],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,9],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,9],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,3,9],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,9],digits=3),nsmall=3)})		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Needs extension (yes/no)  &	
+\backslash
+Sexpr{format(round(df_averages[1,10],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ancova[1,1,10],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,10]<.01,"**",ifelse(df_ancova[3,1,10]<.05,"*",ifelse(df
+_ancova[3,1,10]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,10],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,10]<.01,"**",ifelse(df_ancova[3,2,10]<.05,"*",ifelse(df
+_ancova[3,2,10]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,3,10],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,10]<.01,"**",ifelse(df_ancova[3,3,10]<.05,"*",ifelse(df
+_ancova[3,3,10]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,10],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,10]<.01,"**",ifelse(df_ancova[3,4,10]<.05,"*",ifelse(df
+_ancova[3,4,10]<.1,"+","")))}}$ 
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,10],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,10],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,10],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,3,10],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,10],digits=3),nsmall=3)})		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Extension agents are aware of this need (yes/no)  &	
+\backslash
+Sexpr{format(round(df_averages[1,11],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ancova[1,1,11],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,11]<.01,"**",ifelse(df_ancova[3,1,11]<.05,"*",ifelse(df
+_ancova[3,1,11]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,11],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,11]<.01,"**",ifelse(df_ancova[3,2,11]<.05,"*",ifelse(df
+_ancova[3,2,11]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,3,11],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,11]<.01,"**",ifelse(df_ancova[3,3,11]<.05,"*",ifelse(df
+_ancova[3,3,11]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,11],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,11]<.01,"**",ifelse(df_ancova[3,4,11]<.05,"*",ifelse(df
+_ancova[3,4,11]<.1,"+","")))}}$ 
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,11],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,11],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,11],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,3,11],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,11],digits=3),nsmall=3)})		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Extension agents decided alone (yes/no)  &	
+\backslash
+Sexpr{format(round(df_averages[1,12],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ancova[1,1,12],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,12]<.01,"**",ifelse(df_ancova[3,1,12]<.05,"*",ifelse(df
+_ancova[3,1,12]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,12],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,12]<.01,"**",ifelse(df_ancova[3,2,12]<.05,"*",ifelse(df
+_ancova[3,2,12]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,3,12],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,12]<.01,"**",ifelse(df_ancova[3,3,12]<.05,"*",ifelse(df
+_ancova[3,3,12]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,12],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,12]<.01,"**",ifelse(df_ancova[3,4,12]<.05,"*",ifelse(df
+_ancova[3,4,12]<.1,"+","")))}}$ 
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,12],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,12],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,12],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,3,12],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,12],digits=3),nsmall=3)})		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Farmer associations/groups present in village (yes/no)  &	
+\backslash
+Sexpr{format(round(df_averages[1,13],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ancova[1,1,13],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,13]<.01,"**",ifelse(df_ancova[3,1,13]<.05,"*",ifelse(df
+_ancova[3,1,13]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,13],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,13]<.01,"**",ifelse(df_ancova[3,2,13]<.05,"*",ifelse(df
+_ancova[3,2,13]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,3,13],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,13]<.01,"**",ifelse(df_ancova[3,3,13]<.05,"*",ifelse(df
+_ancova[3,3,13]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,13],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,13]<.01,"**",ifelse(df_ancova[3,4,13]<.05,"*",ifelse(df
+_ancova[3,4,13]<.1,"+","")))}}$ 
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,13],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,13],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,13],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,3,13],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,13],digits=3),nsmall=3)})		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+NAADS/OWC in village (yes/no)$^
+\backslash
+dag$  &	
+\backslash
+Sexpr{format(round(df_averages[1,14],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ancova[1,1,14],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,14]<.01,"**",ifelse(df_ancova[3,1,14]<.05,"*",ifelse(df
+_ancova[3,1,14]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,14],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,14]<.01,"**",ifelse(df_ancova[3,2,14]<.05,"*",ifelse(df
+_ancova[3,2,14]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,3,14],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,14]<.01,"**",ifelse(df_ancova[3,3,14]<.05,"*",ifelse(df
+_ancova[3,3,14]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,14],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,14]<.01,"**",ifelse(df_ancova[3,4,14]<.05,"*",ifelse(df
+_ancova[3,4,14]<.1,"+","")))}}$ 
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,14],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,14],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,14],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,3,14],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,14],digits=3),nsmall=3)})		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Support in marketing from marketing committee (yes/no)$^
+\backslash
+dag$ &	
+\backslash
+Sexpr{format(round(df_averages[1,15],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ancova[1,1,15],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,15]<.01,"**",ifelse(df_ancova[3,1,15]<.05,"*",ifelse(df
+_ancova[3,1,15]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,15],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,15]<.01,"**",ifelse(df_ancova[3,2,15]<.05,"*",ifelse(df
+_ancova[3,2,15]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,3,15],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,15]<.01,"**",ifelse(df_ancova[3,3,15]<.05,"*",ifelse(df
+_ancova[3,3,15]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,15],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,15]<.01,"**",ifelse(df_ancova[3,4,15]<.05,"*",ifelse(df
+_ancova[3,4,15]<.1,"+","")))}}$ 
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,15],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,15],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,15],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,3,15],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,15],digits=3),nsmall=3)})		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Support in marketing from cooperative (yes/no)$^
+\backslash
+dag$ &	
+\backslash
+Sexpr{format(round(df_averages[1,16],digits=3),nsmall=3)}		&	
+\backslash
+Sexpr{format(round(df_ancova[1,1,16],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,1,16]<.01,"**",ifelse(df_ancova[3,1,16]<.05,"*",ifelse(df
+_ancova[3,1,16]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,2,16],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,2,16]<.01,"**",ifelse(df_ancova[3,2,16]<.05,"*",ifelse(df
+_ancova[3,2,16]<.1,"+","")))}}$ &	
+\backslash
+Sexpr{format(round(df_ancova[1,3,16],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,3,16]<.01,"**",ifelse(df_ancova[3,3,16]<.05,"*",ifelse(df
+_ancova[3,3,16]<.1,"+","")))}}$	&	
+\backslash
+Sexpr{format(round(df_ancova[1,4,16],digits=3),nsmall=3)}$^{
+\backslash
+Sexpr{ifelse(df_ancova[3,4,16]<.01,"**",ifelse(df_ancova[3,4,16]<.05,"*",ifelse(df
+_ancova[3,4,16]<.1,"+","")))}}$ 
+\backslash
+
+\backslash
+ 	&	(
+\backslash
+Sexpr{format(round(df_averages[2,16],digits=3),nsmall=3)})	&	(
+\backslash
+Sexpr{format(round(df_ancova[2,1,16],digits=3),nsmall=3)})		&	(
+\backslash
+Sexpr{format(round(df_ancova[2,2,16],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,3,16],digits=3),nsmall=3)})	&		(
+\backslash
+Sexpr{format(round(df_ancova[2,4,16],digits=3),nsmall=3)})		
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Number of observations & 6704 & 
+\backslash
+Sexpr{format(round(df_ancova[6,1,1],digits=3),nsmall=0)} & 
+\backslash
+Sexpr{format(round(df_ancova[6,2,1],digits=3),nsmall=0)} &  
+\backslash
+Sexpr{format(round(df_ancova[6,3,1],digits=3),nsmall=0)} &  
+\backslash
+Sexpr{format(round(df_ancova[6,4,1],digits=3),nsmall=0)}  
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline  
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+scriptsize
+\end_layout
+
+\begin_layout Plain Layout
+
+Note: Column 1 reports sample means (and standard deviations below); Column
+ 2 reports effects of sub-county barazas (and standard errors below); Column
+ 3 reports effects of information barazas (and standard errors below); Column
+ 4 reports effects of deliberation barazas (and standard errors below);
+ Column 5 reports effects  of district barazas (and standard errors below).
+ **, * and + denote significance at the 1, 5 and 10 percent levels using
+ randomization inference.
+ Reported standard errors are clustered at the level of randomization.
+ $^
+\backslash
+dag$ indicates that the outcome was included in the index for the confirmatory
+ analysis.
+   
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -3048,6 +3068,16 @@ Sexpr{format(round(df_averages[1,21]*100,digits=0),nsmall=0)}
 on treatment.
  This may be due to the belief held in many households that water from a
  safe source does not need additional treatment.
+\end_layout
+
+\begin_layout Standard
+We included one question related to road infrastructure.
+ We asked how far the household is located from the nearest all weather
+ road.
+ We find that in the full sample a household lived on average 26 km from
+ a road.
+ We do not find that the baraza program reduced the distance to the nearest
+ all weather road.
 \end_layout
 
 \begin_layout Standard
@@ -3294,7 +3324,7 @@ Sexpr{format(round(df_ancova[2,4,19],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Is there a Water User Committee in this village? (yes/no)$^
+Water user committee present in village (yes/no)$^
 \backslash
 dag$ &	
 \backslash
@@ -3341,7 +3371,11 @@ Sexpr{format(round(df_ancova[2,4,20],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Satisfied with the qualiy of water? (yes/no) &	
+\end_layout
+
+\begin_layout Plain Layout
+
+Satisfied with water qualiy (yes/no) &	
 \backslash
 Sexpr{format(round(df_averages[1,21],digits=3),nsmall=3)}		&	
 \backslash
@@ -3367,7 +3401,12 @@ _ancova[3,4,21]<.1,"+","")))}}$
 \backslash
 
 \backslash
- 	&	(
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	&	(
 \backslash
 Sexpr{format(round(df_averages[2,21],digits=3),nsmall=3)})	&	(
 \backslash
@@ -3382,6 +3421,10 @@ Sexpr{format(round(df_ancova[2,4,21],digits=3),nsmall=3)})
 
 \backslash
  
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -3431,7 +3474,11 @@ Sexpr{format(round(df_ancova[2,4,22],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Member of commitee? (yes/no) &	
+\end_layout
+
+\begin_layout Plain Layout
+
+Member of commitee (yes/no) &	
 \backslash
 Sexpr{format(round(df_averages[1,23],digits=3),nsmall=3)}		&	
 \backslash
@@ -3476,7 +3523,11 @@ Sexpr{format(round(df_ancova[2,4,23],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Committee holds public meetings? (yes/no) &	
+\end_layout
+
+\begin_layout Plain Layout
+
+Committee holds public meetings (yes/no) &	
 \backslash
 Sexpr{format(round(df_averages[1,24],digits=3),nsmall=3)}		&	
 \backslash
@@ -3589,8 +3640,7 @@ Sexpr{format(round(df_ancova[2,4,52],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Number of obs.
- & 6704 & 
+Number of observations & 6704 & 
 \backslash
 Sexpr{format(round(df_ancova[6,1,17],digits=3),nsmall=0)} & 
 \backslash
@@ -3651,14 +3701,12 @@ scriptsize
 \begin_layout Plain Layout
 
 Note: Column 1 reports sample means (and standard deviations below); Column
- 2 reports effects of the sub-county level baraza intervention (and standard
- errors below); Column 3 reports effects of the information component of
- the baraza intervention (and standard errors below); Column 4 reports effects
- of the deliberation component of the baraza intervention (and standard
- errors below); Column 5 reports effects  of the administrative placement
- of the baraza intervention (and standard errors below).
- **, * and + denote significance at the 1, 5 and 10 percent levels as assessed
- using randomization inference.
+ 2 reports effects of sub-county barazas (and standard errors below); Column
+ 3 reports effects of information barazas (and standard errors below); Column
+ 4 reports effects of deliberation barazas (and standard errors below);
+ Column 5 reports effects  of district barazas (and standard errors below).
+ **, * and + denote significance at the 1, 5 and 10 percent levels using
+ randomization inference.
  Reported standard errors are clustered at the level of randomization.
  $^
 \backslash
@@ -3678,16 +3726,6 @@ dag$ indicates that the outcome was included in the index for the confirmatory
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-We included one question related to road infrastructure.
- We asked how far the household is located from the nearest all weather
- road.
- We find that in the full sample a household lived on average 26 km from
- a road.
- We do not find that the baraza program reduced the distance to the nearest
- all weather road.
 \end_layout
 
 \begin_layout Subsection
@@ -3973,6 +4011,52 @@ We further probe for a subjective assessment of the overall quality of care
 \end_layout
 
 \begin_layout Standard
+We considered several other health related outcomes that feature prominently
+ in other studies.
+ One key outcome in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bjorkman2009power"
+literal "true"
+
+\end_inset
+
+ is immunization.
+ However, we already find close to 100 percent immunization rates in our
+ baseline data.
+ Another outcome is child mortality.
+ Child mortality rates at baseline were estimated at 38 per 1000 live births,
+ which was deemed too low to include in the analysis.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "raffler2018weakness"
+literal "true"
+
+\end_inset
+
+ find similar child mortality rates at baseline and suggest that the fact
+ that they do not find an effect while 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bjorkman2009power"
+literal "true"
+
+\end_inset
+
+ do is due to differences in baseline conditions: child mortality at baseline
+ in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bjorkman2009power"
+literal "true"
+
+\end_inset
+
+ was 117 per 1000 live births.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float table
 wide false
 sideways true
@@ -4063,7 +4147,11 @@ cline{2-6}
 
 \begin_layout Plain Layout
 
-Seek treatment for fever in public health facility (yes/no)$^
+\end_layout
+
+\begin_layout Plain Layout
+
+Sought treatment for fever in public health facility (yes/no)$^
 \backslash
 dag$ &	
 \backslash
@@ -4114,7 +4202,7 @@ Sexpr{format(round(df_ancova[2,4,25],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Go to public health facility to give birth (yes/no)$^
+Went to public health facility to give birth (yes/no)$^
 \backslash
 dag$  &	
 \backslash
@@ -4165,7 +4253,7 @@ Sexpr{format(round(df_ancova[2,4,26],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Is there a VHT in village? (yes/no)$^
+VHT present in village (yes/no)$^
 \backslash
 dag$ &	
 \backslash
@@ -4212,7 +4300,11 @@ Sexpr{format(round(df_ancova[2,4,27],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Are you or any member of the household part of the VHT (yes/no)
+\end_layout
+
+\begin_layout Plain Layout
+
+Member of the VHT (yes/no)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4262,7 +4354,11 @@ Sexpr{format(round(df_ancova[2,4,28],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-VHT organised public meetings? (yes/no)
+\end_layout
+
+\begin_layout Plain Layout
+
+VHT organised public meetings (yes/no)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4308,6 +4404,10 @@ Sexpr{format(round(df_ancova[2,4,29],digits=3),nsmall=3)})
 
 \backslash
  
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -4359,7 +4459,11 @@ Sexpr{format(round(df_ancova[2,4,30],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Any hh members sick?  (yes/no) &	
+\end_layout
+
+\begin_layout Plain Layout
+
+HH members were sick  (yes/no) &	
 \backslash
 Sexpr{format(round(df_averages[1,31],digits=3),nsmall=3)}		&	
 \backslash
@@ -4404,7 +4508,11 @@ Sexpr{format(round(df_ancova[2,4,31],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Number of days sick?&	
+\end_layout
+
+\begin_layout Plain Layout
+
+Number of days sick &	
 \backslash
 Sexpr{format(round(df_averages[1,32],digits=3),nsmall=3)}		&	
 \backslash
@@ -4453,7 +4561,7 @@ Sexpr{format(round(df_ancova[2,4,32],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Number of days work/school missed due to illness?$^
+Number of days work/school missed due to illness$^
 \backslash
 dag$  &	
 \backslash
@@ -4551,7 +4659,11 @@ Sexpr{format(round(df_ancova[2,4,34],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Has visited traditional health practitioner? (yes/no)$^
+\end_layout
+
+\begin_layout Plain Layout
+
+Visited traditional health practitioner (yes/no)$^
 \backslash
 dag$  &	
 \backslash
@@ -4594,6 +4706,10 @@ Sexpr{format(round(df_ancova[2,4,35],digits=3),nsmall=3)})
 
 \backslash
  
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -4648,6 +4764,10 @@ Sexpr{format(round(df_ancova[2,4,36],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 Time of examination (min)
 \end_layout
 
@@ -4698,7 +4818,11 @@ Sexpr{format(round(df_ancova[2,4,37],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Paid for services? (yes/no)
+\end_layout
+
+\begin_layout Plain Layout
+
+Paid for services (yes/no)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4748,7 +4872,11 @@ Sexpr{format(round(df_ancova[2,4,38],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Received medication? (yes/no)
+\end_layout
+
+\begin_layout Plain Layout
+
+Received medication (yes/no)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4794,6 +4922,10 @@ Sexpr{format(round(df_ancova[2,4,39],digits=3),nsmall=3)})
 
 \backslash
  
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -4861,8 +4993,7 @@ Sexpr{format(round(df_ancova[2,4,41],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Number of obs.
- & 6704 & 
+Number of observations & 6704 & 
 \backslash
 Sexpr{format(round(df_ancova[6,1,25],digits=3),nsmall=0)} & 
 \backslash
@@ -4923,14 +5054,12 @@ scriptsize
 \begin_layout Plain Layout
 
 Note: Column 1 reports sample means (and standard deviations below); Column
- 2 reports effects of the sub-county level baraza intervention (and standard
- errors below); Column 3 reports effects of the information component of
- the baraza intervention (and standard errors below); Column 4 reports effects
- of the deliberation component of the baraza intervention (and standard
- errors below); Column 5 reports effects  of the administrative placement
- of the baraza intervention (and standard errors below).
- **, * and + denote significance at the 1, 5 and 10 percent levels as assessed
- using randomization inference.
+ 2 reports effects of sub-county barazas (and standard errors below); Column
+ 3 reports effects of information barazas (and standard errors below); Column
+ 4 reports effects of deliberation barazas (and standard errors below);
+ Column 5 reports effects  of district barazas (and standard errors below).
+ **, * and + denote significance at the 1, 5 and 10 percent levels using
+ randomization inference.
  Reported standard errors are clustered at the level of randomization.
  $^
 \backslash
@@ -4951,53 +5080,6 @@ dag$ indicates that the outcome was included in the index for the confirmatory
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-We considered several other health related outcomes that feature prominently
- in other studies.
- One key outcome in 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "bjorkman2009power"
-literal "true"
-
-\end_inset
-
- is immunization.
- However, we already find close to 100 percent immunization rates in our
- baseline data.
- Another outcome is child mortality.
- Child mortality rates at baseline were estimated at 38 per 1000 live births,
- which was deemed too low to include in the analysis.
- 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "raffler2018weakness"
-literal "true"
-
-\end_inset
-
- find similar child mortality rates at baseline and suggest that the fact
- that they do not find an effect while 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "bjorkman2009power"
-literal "true"
-
-\end_inset
-
- do is due to differences in baseline conditions: child mortality at baseline
- in 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "bjorkman2009power"
-literal "true"
-
-\end_inset
-
- was 117 per 1000 live births.
- 
 \end_layout
 
 \begin_layout Subsection
@@ -5348,7 +5430,7 @@ Sexpr{format(round(df_ancova[2,4,44],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Has complete boundary fence (yes/no)$^
+School has complete boundary fence (yes/no)$^
 \backslash
 dag$ &	
 \backslash
@@ -5395,7 +5477,7 @@ Sexpr{format(round(df_ancova[2,4,45],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Has electricity (yes/no) &	
+School has electricity (yes/no) &	
 \backslash
 Sexpr{format(round(df_averages[1,46],digits=3),nsmall=3)}		&	
 \backslash
@@ -5440,7 +5522,7 @@ Sexpr{format(round(df_ancova[2,4,46],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Has water facility (yes/no)$^
+School has water facility (yes/no)$^
 \backslash
 dag$ &	
 \backslash
@@ -5487,7 +5569,7 @@ Sexpr{format(round(df_ancova[2,4,47],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Has PTA (yes/no)  &	
+School has PTA (yes/no)  &	
 \backslash
 Sexpr{format(round(df_averages[1,48],digits=3),nsmall=3)}		&	
 \backslash
@@ -5532,7 +5614,7 @@ Sexpr{format(round(df_ancova[2,4,48],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Has SMC (yes/no)$^
+School has SMC (yes/no)$^
 \backslash
 dag$  &	
 \backslash
@@ -5690,8 +5772,7 @@ Sexpr{format(round(df_ancova[2,4,51],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Number of obs.
- & 6704 & 
+Number of observations & 6704 & 
 \backslash
 Sexpr{format(round(df_ancova[6,1,43],digits=3),nsmall=0)} & 
 \backslash
@@ -5752,14 +5833,12 @@ scriptsize
 \begin_layout Plain Layout
 
 Note: Column 1 reports sample means (and standard deviations below); Column
- 2 reports effects of the sub-county level baraza intervention (and standard
- errors below); Column 3 reports effects of the information component of
- the baraza intervention (and standard errors below); Column 4 reports effects
- of the deliberation component of the baraza intervention (and standard
- errors below); Column 5 reports effects  of the administrative placement
- of the baraza intervention (and standard errors below).
- **, * and + denote significance at the 1, 5 and 10 percent levels as assessed
- using randomization inference.
+ 2 reports effects of sub-county barazas (and standard errors below); Column
+ 3 reports effects of information barazas (and standard errors below); Column
+ 4 reports effects of deliberation barazas (and standard errors below);
+ Column 5 reports effects  of district barazas (and standard errors below).
+ **, * and + denote significance at the 1, 5 and 10 percent levels using
+ randomization inference.
  Reported standard errors are clustered at the level of randomization.
  $^
 \backslash
@@ -5778,135 +5857,6 @@ dag$ indicates that the outcome was included in the index for the confirmatory
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Heterogeneity
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Heterogeneity"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Heterogeneity related to elite capture
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset citation
-LatexCommand citet
-key "reinikka2004local"
-literal "true"
-
-\end_inset
-
- find that in the early nineties, schools in Uganda received only about
- 13 percent of central capitation grants to cover non-wage expenses.
- While the situation likely improved over the years, elite capture of funds
- at intermediate levels remains a problem.
- We look at heterogeneity related baseline levels of elite capture, proxied
- by the share of the budget that was reportedly received in the year prior
- to baseline data collection.
- 
-\end_layout
-
-\begin_layout Standard
-Based on data we collected from government officials in all sub-counties,
- we estimate the average shares of the health, agriculture and education
- sector budgets that was not received.
- We find that, overall, only about three quarters of the budget was disbursed.
- The situation was worse in the agricultural sector, where on average 38
- percent of the budget was not received.
- In the education sector and in the health sector, disbursement rates are
- the same at 82 percent.
- For the analysis, we define an indicator variable that takes the value
- of one if the household lives in a sub-county for which overall disbursement
- was less than 85 percent and interact this variable with the treatment
- indicator.
- Coefficients of this interaction term for regressions using indices are
- reported in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:capture"
-
-\end_inset
-
-; full results are available in the 
-\begin_inset CommandInset href
-LatexCommand href
-name "online appendix"
-target "https://github.com/bjvca/baraza/blob/master/report/appendices/Appendix_hetero_tables.pdf"
-literal "false"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ../../report/results/final/hetero3/impact_summary_ancova.png
-	lyxscale 10
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Heterogeneity related to elite capture
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:capture"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We find that the information component of sub-county level baraza increases
- overall service delivery in areas characterized by relatively high levels
- of elite capture.
- For the agricultural sector, we find that the impact of sub-county level
- baraza we found in Figure 3 of the article is not subject to heterogeneity.
- However, we find that the information component of sub-county level barazas
- becomes significant in areas characterized by lower disbursement rates.
- For infrastructure, we do not find significant interaction effects, although
- all coefficients are estimated positive.
- The information component is also particularly effective in increasing
- public health service delivery in areas characterized by high levels of
- elite capture.
- For the education sector, estimated coefficients are also generally positive,
- but not significant.
- Overall, we conclude that barazas are more effective when elite capture
- is a problem.
- Especially the sharing of information at the events seems to elicit a response.
- 
 \end_layout
 
 \begin_layout Section

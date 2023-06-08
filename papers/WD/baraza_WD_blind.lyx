@@ -2865,7 +2865,7 @@ load(paste(path,"report/results/final/df_averages_end.Rd", sep="/"))
 placement H
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -2995,7 +2995,7 @@ Sexpr{format(round(df_balance[2,3,1],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Age of the household head (years)  &	
+Age of household head (years)  &	
 \backslash
 Sexpr{format(round(df_averages[1,2],digits=3),nsmall=3)}		&	
 \backslash
@@ -3042,7 +3042,7 @@ Sexpr{format(round(df_balance[2,3,2],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Head of household is woman (1=yes) &	
+Household head is female (1=yes) &	
 \backslash
 Sexpr{format(round(df_averages[1,3],digits=3),nsmall=3)}		&	
 \backslash
@@ -3084,7 +3084,7 @@ Sexpr{format(round(df_balance[2,3,3],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Head finished primary education (1=yes) &	
+HH head finished primary education (1=yes) &	
 \backslash
 Sexpr{format(round(df_averages[1,4],digits=3),nsmall=3)}		&	
 \backslash
@@ -3339,7 +3339,7 @@ Sexpr{format(round(df_balance[2,3,8],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Village Health Team in village (1=yes)  &	
+Village health team present in village (1=yes)  &	
 \backslash
 Sexpr{format(round(df_averages[1,9],digits=3),nsmall=3)}		&	
 \backslash
@@ -3501,20 +3501,19 @@ scriptsize
 \begin_layout Plain Layout
 
 Note: Column 1 reports sample means (and standard deviations below); Column
- 2 reports differences  between baseline characteristics of households that
- were planned to receive a sub-county-level combined information and deliberatio
-n baraza but did not receive any baraza, and those that were planned to
- not receive one (and standard errors below); Column 3 reports differences
-  between baseline characteristics of households that were planned to receive
- a sub-county-level information baraza but did not receive one, and those
- that were planned to not receive one (and standard errors below); Column
- 4 reports differences  between baseline characteristics of households that
- were planned to receive a sub-county-level deliberation baraza but did
- not receive one, and those that were planned to not receive one (and standard
- errors below); **, * and + denote significance at 1, 5 and 10 percent levels.
+ 2 reports differences  between households that were planned to receive
+ a sub-county information+deliberation baraza but did not receive any baraza,
+ and those that were planned to not receive one (and standard errors below);
+ Column 3 reports differences  between households that were planned to receive
+ a sub-county information baraza but did not receive one, and those that
+ were planned to not receive one (and standard errors below); Column 4 reports
+ differences  between households that were planned to receive a sub-county
+ deliberation baraza but did not receive one, and those that were planned
+ to not receive one (and standard errors below); **, * and + denote significance
+ at 1, 5 and 10 percent levels.
  Reported standard errors are clustered at the level of randomization.
- Distance to all weather road is trimmed at 5 percent and transformed using
- the inverse hyperbolic sine transformation.
+ Distance to nearest all weather road is trimmed at 5 percent and transformed
+ using the inverse hyperbolic sine transformation.
    
 \end_layout
 
@@ -3533,7 +3532,7 @@ n baraza but did not receive any baraza, and those that were planned to
 placement H
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -3669,7 +3668,7 @@ Sexpr{format(round(df_ols_end[2,4,1],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Age of the household head (years)  &	
+Age of household head (years)  &	
 \backslash
 Sexpr{format(round(df_averages_end[1,2],digits=3),nsmall=3)}		&	
 \backslash
@@ -3718,7 +3717,7 @@ Sexpr{format(round(df_ols_end[2,4,2],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Head of household is woman (1=yes) &	
+Household head is female (1=yes) &	
 \backslash
 Sexpr{format(round(df_averages_end[1,3],digits=3),nsmall=3)}		&	
 \backslash
@@ -3767,7 +3766,7 @@ Sexpr{format(round(df_ols_end[2,4,3],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Head finished primary education (1=yes) &	
+HH head finished primary education (1=yes) &	
 \backslash
 Sexpr{format(round(df_averages_end[1,4],digits=3),nsmall=3)}		&	
 \backslash
@@ -4012,7 +4011,7 @@ Sexpr{format(round(df_ols_end[2,4,8],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Village Health Team in village (1=yes)  &	
+Village health team present in village (1=yes)  &	
 \backslash
 Sexpr{format(round(df_averages_end[1,9],digits=3),nsmall=3)}		&	
 \backslash
@@ -4180,21 +4179,19 @@ scriptsize
 \begin_layout Plain Layout
 
 Note: Column 1 reports sample means (and standard deviations below); Column
- 2 reports differences  between baseline characteristics of households that
- received a sub-county-level combined information and deliberation baraza,
+ 2 reports differences  between households that received a sub-county informatio
+n+deliberation baraza, and those that did not receive any baraza (and standard
+ errors below); Column 3 reports differences  between households that received
+ a sub-county information baraza, and those that did not receive one (and
+ standard errors below); Column 4 reports differences  between households
+ that received a sub-county deliberation baraza, and those that did not
+ receive one (and standard errors below); Column 5 reports differences 
+ between households that received a district information+deliberation baraza,
  and those that did not receive any baraza (and standard errors below);
- Column 3 reports differences  between baseline characteristics of households
- that received a sub-county-level information baraza, and those that did
- not receive one (and standard errors below); Column 4 reports differences
-  between baseline characteristics of households that received a sub-county-leve
-l deliberation baraza, and those that did not receive one (and standard
- errors below); Column 5 reports differences  between baseline characteristics
- of households that received a district-level combined information and deliberat
-ion baraza, and those that did not receive any baraza (and standard errors
- below);  **, * and + denote significance at the 1, 5 and 10 percent levels.
+  **, * and + denote significance at 1, 5 and 10 percent levels.
  Reported standard errors are clustered at the level of randomization.
- Distance to all weather road is trimmed at 5 percent and transformed using
- the inverse hyperbolic sine transformation.
+ Distance to nearest all weather road is trimmed at 5 percent and transformed
+ using the inverse hyperbolic sine transformation.
  
 \end_layout
 
@@ -4249,7 +4246,7 @@ load(paste(path,"report/results/final/df_ancova_additional.Rd", sep="/"))
 \begin_inset Float table
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
