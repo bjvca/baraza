@@ -3042,7 +3042,7 @@ Sexpr{format(round(df_balance[2,3,2],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Household head is female (1=yes) &	
+Household head is woman (1=yes) &	
 \backslash
 Sexpr{format(round(df_averages[1,3],digits=3),nsmall=3)}		&	
 \backslash
@@ -3717,7 +3717,7 @@ Sexpr{format(round(df_ols_end[2,4,2],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Household head is female (1=yes) &	
+Household head is woman (1=yes) &	
 \backslash
 Sexpr{format(round(df_averages_end[1,3],digits=3),nsmall=3)}		&	
 \backslash
