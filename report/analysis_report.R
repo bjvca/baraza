@@ -857,7 +857,7 @@ print(credplot.gg(d_plot,'SDs','',levels(d_plot$x),.3))
 dev.off()
 
 ### redo graphs
-hetero <- 4
+hetero <- 1
 final_verion_swith <- TRUE
 
 save_path <- ifelse(final_verion_swith, paste(path,"report/results/final", sep = "/"), paste(path,"report/results/", sep = "/"))
