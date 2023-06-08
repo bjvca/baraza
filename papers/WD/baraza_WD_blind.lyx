@@ -114,9 +114,18 @@ In many developing countries, poor delivery of public services remains an
  intervention—information provision and citizen engagement.
  We also compare the effectiveness of barazas organized at the district
  level to the effectiveness of barazas organized at the sub-county level.
- Following a pre-specified confirmatory analysis, we do not find that the
- intervention has significant effects on general public service delivery,
- though there are signs of improvement in agricultural sector public services.
+ Following a pre-specified confirmatory analysis, we find that sub-county-level
+ barazas improve public services in the agricultural sector but that the
+ intervention has no significant effects on overall public service delivery.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Bjorn 1
+\end_layout
+
+\end_inset
+
  We discuss some of the potential reasons for this finding, including assumption
 s underlying the impact pathways, the political context in which the program
  was implemented, and challenges related to the evaluation of large policy
@@ -414,8 +423,17 @@ ns related to the general elections of 2016.
 \begin_layout Standard
 We find that barazas do not impact public service delivery as measured by
  a pre-registered summary index of various outcomes in four key sectors.
- If we zoom into these sectors, there are signs that sub-county-level barazas
- are effective in the agricultural sector.
+ If we zoom into these sectors, sub-county-level barazas seem to be effective
+ in agriculture, while the other sectors remain unaffected by the intervention.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Bjorn 2
+\end_layout
+
+\end_inset
+
  This is in line with recent overview articles, meta-analyses, and replications
  of influential studies on the benefits of community-based monitoring such
  as the one by 
@@ -1984,9 +2002,8 @@ status open
 \begin_layout Plain Layout
 The agriculture index is composed of the variables: used inorganic fertilizer,
  used improved seed, extension visit at home, visited extension office/
- demo site/ model farmer, National Agriculture Advisory Services/ Operation
- Wealth Creation in village, support in marketing from marketing committee,
- support in marketing from cooperative.
+ demo site/ model farmer, NAADS/ OWC in village, support in marketing from
+ marketing committee, support in marketing from cooperative.
 \end_layout
 
 \begin_layout Plain Layout
@@ -2064,9 +2081,6 @@ name "fn:This-method-first"
  impact on public service delivery in general.
  We do not find any significant impact of the baraza program on overall
  public service delivery.
- There are some indications that sub-county-level barazas improved public
- services in the agricultural sector, although only significant at the 10
- percent level.
 \end_layout
 
 \begin_layout Standard
@@ -2086,6 +2100,28 @@ The indices combine various outcome variables, and for some of them the
  that were not pre-registered.
  This analysis suggests a minor impact of sub-county-level barazas in some
  areas (such as schooling infrastructure or waiting time at boreholes).
+\end_layout
+
+\begin_layout Standard
+Furthermore, we find that sub-county-level barazas improved public services
+ in the agricultural sector, even though the difference is only significant
+ at the 10 percent level.
+ We see that this significant treatment effect on the agriculture index
+ is driven by three variables: in sub-counties that held a sub-county-level
+ baraza, households are more likely to have had an extension visit at home
+ and to have received marketing support from a cooperative, and National
+ Agriculture Advisory Services (NAADS) and Operation Wealth Creation (OWC)
+ are more present in villages that belong to treated sub-counties.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Bjorn 3
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -2562,9 +2598,17 @@ The OPM faced various challenges that affected the timely roll-out of the
 
 \begin_layout Standard
 Judged by an index of overall public service delivery, we find no significant
- impact of the program.
- There are indications that sub-county-level barazas improved service delivery
- in the agricultural sector.
+ impact of the program, even though sub-county-level barazas seem to have
+ improved service delivery in the agricultural sector.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Bjorn 4
+\end_layout
+
+\end_inset
+
  We then consider various potential reasons why barazas did not have the
  expected sector-wide benefits.
  We find indications of problems in the theory of change: while priorities

@@ -2003,7 +2003,7 @@ Sexpr{format(round(df_ancova[2,4,7],digits=3),nsmall=3)})
 
 \begin_layout Plain Layout
 
-Extension visist at home (yes/no)$^
+Extension visit at home (yes/no)$^
 \backslash
 dag$  &	
 \backslash
