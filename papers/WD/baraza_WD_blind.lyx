@@ -114,18 +114,9 @@ In many developing countries, poor delivery of public services remains an
  intervention—information provision and citizen engagement.
  We also compare the effectiveness of barazas organized at the district
  level to the effectiveness of barazas organized at the sub-county level.
- Following a pre-specified confirmatory analysis, we find that sub-county-level
- barazas improve public services in the agricultural sector but that the
- intervention has no significant effects on overall public service delivery.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Bjorn 1
-\end_layout
-
-\end_inset
-
+ Following a pre-specified confirmatory analysis, we do not find that the
+ intervention has significant effects on general public service delivery,
+ even though public services in the agricultural sector do improve.
  We discuss some of the potential reasons for this finding, including assumption
 s underlying the impact pathways, the political context in which the program
  was implemented, and challenges related to the evaluation of large policy
@@ -182,17 +173,6 @@ path <- strsplit(getwd(), "/papers/WD")[[1]]
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Note: now that we have removed all individual outcomes, will people not
- complain that they do not know what variables are in these indices we now
- use???
-\end_layout
-
-\end_inset
-
 In many developing countries, the delivery of public services remains problemati
 c.
  Public infrastructure, such as roads or boreholes for drinking water, is
@@ -425,15 +405,6 @@ We find that barazas do not impact public service delivery as measured by
  a pre-registered summary index of various outcomes in four key sectors.
  If we zoom into these sectors, sub-county-level barazas seem to be effective
  in agriculture, while the other sectors remain unaffected by the intervention.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Bjorn 2
-\end_layout
-
-\end_inset
-
  This is in line with recent overview articles, meta-analyses, and replications
  of influential studies on the benefits of community-based monitoring such
  as the one by 
@@ -1669,11 +1640,11 @@ https://www.socialscienceregistry.org/versions/60398/docs/version/document
 
 ].
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 The document 
@@ -2040,47 +2011,17 @@ literal "true"
 \end_inset
 
 .
- Point estimates are standardized effects and confidence intervals are obtained
- following the permutation method explained in 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "gerber2012field"
-literal "true"
-
-\end_inset
-
-.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-This method first reconstructs a complete schedule of potential outcomes
- by adding and subtracting the average treatment effect for control and
- treatment units respectively.
- These potential outcomes are then used to simulate all possible random
- allocations.
- For each allocation, average treatment effects are estimated and 2.5th and
- 97.5th percentiles are taken as the lower and upper limits of the 95 percent
- confidence interval.
- As this provides a conservative estimate of the confidence interval, it
- may be that results in the graph appear insignificant, but show up as significa
-nt when testing significance using Fisher's exact test in the tables in
- Online Appendix A.4.
-\begin_inset CommandInset label
-LatexCommand label
-name "fn:This-method-first"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
+ Point estimates are standardized effects.
  We also combine the four indices in one overall index that assesses the
  impact on public service delivery in general.
- We do not find any significant impact of the baraza program on overall
- public service delivery.
+ 
+\end_layout
+
+\begin_layout Standard
+We do not find any significant impact of the baraza program on overall public
+ service delivery.
+ We do find that sub-county-level barazas improved public services in the
+ agricultural sector..
 \end_layout
 
 \begin_layout Standard
@@ -2100,28 +2041,13 @@ The indices combine various outcome variables, and for some of them the
  that were not pre-registered.
  This analysis suggests a minor impact of sub-county-level barazas in some
  areas (such as schooling infrastructure or waiting time at boreholes).
-\end_layout
-
-\begin_layout Standard
-Furthermore, we find that sub-county-level barazas improved public services
- in the agricultural sector, even though the difference is only significant
- at the 10 percent level.
- We see that this significant treatment effect on the agriculture index
- is driven by three variables: in sub-counties that held a sub-county-level
- baraza, households are more likely to have had an extension visit at home
- and to have received marketing support from a cooperative, and National
- Agriculture Advisory Services (NAADS) and Operation Wealth Creation (OWC)
- are more present in villages that belong to treated sub-counties.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Bjorn 3
-\end_layout
-
-\end_inset
-
-
+ The Online Appendix A.4 further shows that the significant treatment effect
+ on the agriculture index is driven by three variables: in sub-counties
+ that held a sub-county-level baraza, households are more likely to have
+ had an extension visit at home and to have received marketing support from
+ a cooperative, and National Agriculture Advisory Services (NAADS) and Operation
+ Wealth Creation (OWC) are more present in villages that belong to treated
+ sub-counties.
 \end_layout
 
 \begin_layout Section
@@ -2572,15 +2498,6 @@ The OPM faced various challenges that affected the timely roll-out of the
 Judged by an index of overall public service delivery, we find no significant
  impact of the program, even though sub-county-level barazas seem to have
  improved service delivery in the agricultural sector.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Bjorn 4
-\end_layout
-
-\end_inset
-
  We then consider various potential reasons why barazas did not have the
  expected sector-wide benefits.
  We find indications of problems in the theory of change: while priorities
@@ -2632,13 +2549,6 @@ literal "false"
  corruption.
  More research is needed to identify the conditions and complementary interventi
 ons needed to leverage the voices of citizens.
-\end_layout
-
-\begin_layout Standard
-When we asked the OPM if our findings affected the program as it is organized
- today, they informed us that they now follow a blended strategy of sub-county-
- and district-level barazas, but that the pandemic hindered the implementation
- process.
 \end_layout
 
 \begin_layout Standard
