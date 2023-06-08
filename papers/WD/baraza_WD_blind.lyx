@@ -1997,7 +1997,7 @@ reference "fig:Summary-of-baraza"
 ness of the deliberation component, and the impact of district-level barazas—on
  four sectors: agriculture, infrastructure, health, and education.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 The agriculture index is composed of the variables: used inorganic fertilizer,
@@ -2130,9 +2130,9 @@ Discussion
 
 \begin_layout Standard
 The main conclusion from our confirmatory analysis is in line with what
- many other studies find: we do not measure a significant impact of the
- baraza policy program as a form of community-based monitoring on public
- service delivery as a whole 
+ other studies find: we do not find a significant impact of the baraza policy
+ program as a form of community-based monitoring on public service delivery
+ as a whole 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "olken2007monitoring,raffler2018weakness,waddington2019citizen"
@@ -2159,9 +2159,7 @@ Community-based monitoring interventions such as the baraza program can
  if politicians are already responsive to the needs of citizens and civil
  servants are already delivering services of high quality, it would be unlikely
  that barazas have any significant additional effect on objectively verifiable
- outcomes such as waiting time in health centers or student-teacher ratios
- (however, they could still change citizen perceptions of public service
- delivery—see below).
+ outcomes such as waiting time in health centers or student-teacher ratios.
 \begin_inset Foot
 status collapsed
 
@@ -2228,9 +2226,9 @@ literal "false"
 \end_inset
 
 , we asked government officials in all sub-counties of our sample at baseline
- about the proportion of their public service budget that they actually
- received for the fiscal year 2013/2014, and they reported to have received
- on average 83 percent of their health and education budgets.
+ about the proportion of the public service budget that they actually received
+ for the fiscal year 2013/2014, and they reported to have received on average
+ 83 percent of their health and education budgets.
 \end_layout
 
 \begin_layout Standard
@@ -2244,7 +2242,7 @@ status collapsed
 Note that unaligned priorities cannot fully explain why barazas have no
  effect: services may still improve, but in sectors which are not most important
  for citizens.
- However, assuming that citizens know well where progress can be made, unaligned
+ However, assuming that citizens know best where progress can be made, unaligned
  priorities will reduce the effectiveness of barazas.
 \end_layout
 
@@ -2332,24 +2330,17 @@ noprefix "false"
 \end_inset
 
  suggests that even though the priorities of citizens are to some extent
- discussed during barazas, it is not common that what was decided gets implement
-ed.
+ discussed during barazas, it is less common that what was discussed during
+ the events also gets implemented.
  Using focus group discussions, we looked for reasons why this link breaks
  down.
  Firstly, poor relationships between politicians and technical personnel
- can hinder the effectiveness of barazas.
- For example, a poor relation or communication between a CAO and a LC5 Chairpers
-on can impede public service delivery.
- Secondly, if barazas mainly expose issues beyond the accountability of
- the officials and service providers that are present, they will not improve
- services.
- Some issues fall under the responsibility of higher levels of government
- or other institutions that are beyond the operational jurisdiction of the
- people present at barazas.
-\end_layout
-
-\begin_layout Standard
-Thirdly, if barazas are perceived as one-off events and no subsequent meetings
+ (eg.
+ between a CAO and a LC5 Chairperson) can hinder the effectiveness of barazas.
+ Secondly, if barazas mainly expose issues beyond the operational jurisdiction
+ of the officials and service providers that are present, they will not
+ improve services.
+ Thirdly, if barazas are perceived as one-off events and no subsequent meetings
  are organized in the same area, officials may be less likely to implement
  what was decided.
  Optimism among citizens and other stakeholders can quickly turn into disappoint
@@ -2520,10 +2511,10 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-And indeed, barazas are fairly broad interventions that attempt to address
- a range of issues in heterogeneous settings, resulting in interventions
- that are unlikely to be standardized across treatment units, at least compared
- to typical treatments in biomedical sciences 
+Barazas are fairly broad interventions that attempt to address a range of
+ issues in heterogeneous settings, resulting in interventions that are unlikely
+ to be standardized across treatment units, at least compared to typical
+ treatments in biomedical sciences 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "https://doi.org/10.1093/aepp/ppq023"
@@ -2536,29 +2527,10 @@ literal "false"
  in smallholder access to extension services, but to no improvements in
  infrastructure.
  A baraza in another sub-county may accelerate the construction of an all-weathe
-r gravel road but agricultural public services remain the same.
+r gravel road but agricultural public services remain the same (or even
+ suffer because resources are re-allocated between sectors).
  Both barazas would be effective, yet outcomes are averaged over treatment
  units, and impact may be diluted.
-\end_layout
-
-\begin_layout Standard
-This could be an alternative explanation why we do not find an overall impact
- on public service delivery, even though many of the effects we measure
- go in the expected direction, and we do find some significant effects when
- we consider individual outcomes in a more exploratory analysis in Online
- Appendix A.4.
- Heterogeneous treatment effects have been documented in similar community-based
- monitoring interventions, complicating the estimation of average treatment
- effects 
-\begin_inset CommandInset citation
-LatexCommand citep
-before "for example,"
-key "bjorkman2010community"
-literal "false"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Section
